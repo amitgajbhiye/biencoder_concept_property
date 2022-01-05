@@ -159,8 +159,9 @@ def train(config):
             val_labels.append(label.detach().cpu().numpy())
 
         val_scores = compute_scores(
-            np.concatenate(val_labels, np.concatenate(val_preds))
+            np.concatenate(val_labels), np.concatenate(val_preds)
         )
+
         log.info("\nValidation Scores")
         log.info(val_scores)
 
