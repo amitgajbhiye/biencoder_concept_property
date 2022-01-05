@@ -2,6 +2,7 @@ import argparse
 import logging
 import torch
 import torch.nn as nn
+import numpy as np
 from tqdm.std import trange
 
 from utils.functions import (
@@ -113,7 +114,7 @@ def train(config):
         train_losses.append(avg_train_loss)
 
         log.info(
-            f"epoch_labels type: {type(torch.tensor(epoch_labels))} {torch.tensor(epoch_labels)}"
+            f"epoch_labels type: {type((epoch_labels))} {np.concatenate(epoch_labels)}"
         )
         log.info(
             f"torch.flatten(epoch_labels): {torch.flatten(torch.tensor(epoch_labels))}"
