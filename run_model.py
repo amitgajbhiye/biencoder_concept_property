@@ -137,6 +137,7 @@ def train(config):
 
         # ---------------Validation---------------------#
         log.info(f"\n Running Validation ...")
+        print(flush=True)
         model.eval()
 
         val_loss, best_val_f1, val_preds, val_labels = 0.0, 0.0, [], []
@@ -186,6 +187,8 @@ def train(config):
 
         for key, value in val_scores.items():
             log.info(f"{key} : {value}")
+
+        print(flush=True)
 
         if patience_counter >= config["training_params"].get("early_stopping_patience"):
             break
@@ -237,6 +240,7 @@ def evaluate(config):
     log.info(f"Test Metrices")
     for key, value in test_scores.items():
         log.info(f"{key} : {value}")
+    print(flush=True)
 
 
 if __name__ == "__main__":
