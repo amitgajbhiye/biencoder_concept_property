@@ -29,9 +29,7 @@ class ConceptPropertyModel(nn.Module):
                 4 * self._concept_encoder.config.hidden_size, param.get("ff1_out_dim")
             ),
             nn.ReLU(),
-            nn.Linear(
-                param.get("ff1_out_dim"), self._concept_encoder.config.num_labels
-            ),
+            nn.Linear(param.get("ff1_out_dim"), param.get("num_labels")),
         )
 
     def forward(

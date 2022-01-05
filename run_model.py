@@ -1,5 +1,6 @@
 import argparse
 import logging
+import os
 import torch
 import torch.nn as nn
 import numpy as np
@@ -88,15 +89,16 @@ def train(config):
                 property_attention_mask=property_attention_mask,
             )
 
-            log.info(f"\nlogits : {logits}")
-            log.info(f"\nprobs: {probs}")
-            log.info(f"\npreds : {preds}")
+            # log.info(f"\nlogits : {logits}")
+            # log.info(f"\nprobs: {probs}")
+            # log.info(f"\npreds : {preds}")
 
             loss = criterion(logits, label)
             loss.backward()  # Model backward pass
 
             torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
             optimizer.step()
+            scheduler.step()
 
             epoch_loss += loss.item()
             epoch_preds.append(preds.detach().cpu().numpy())
@@ -133,7 +135,7 @@ def train(config):
         log.info(f"\n Running Validation ...")
         model.eval()
 
-        val_loss, val_preds, val_labels = 0.0, [], []
+        val_loss, best_val_f1, val_preds, val_labels = 0.0, 0.0, [], []
 
         for batch in val_dataloader:
             (
@@ -162,8 +164,28 @@ def train(config):
             np.concatenate(val_labels), np.concatenate(val_preds)
         )
 
+        val_binary_f1 = val_scores.get("binary_f1")
+
+        if val_binary_f1 < best_val_f1:
+            patience_counter += 1
+        else:
+            patience_counter = 0
+            best_val_f1 = val_binary_f1
+            torch.save(
+                model.state_dict(),
+                os.path.join(
+                    config["training_params"]["export_path"],
+                    f"biencoder_bert_best_{epoch}.pt",
+                ),
+            )
         log.info("\nValidation Scores")
-        log.info(val_scores)
+        log.info(f" Best Validation F1 yet : {best_val_f1}")
+
+        for key, value in val_scores.items():
+            log.info(f"{key} : {value}")
+
+        if patience_counter >= config["training_params"].get("early_stopping_patience"):
+            break
 
 
 if __name__ == "__main__":
