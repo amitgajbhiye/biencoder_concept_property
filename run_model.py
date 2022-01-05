@@ -110,9 +110,9 @@ def train(config):
                 )
 
                 log.info(
-                    f"  Batch {step} of Batch {len(train_dataloader)} -- > \
-                        loss : {loss}, Binary F1: {batch_scores.get('binary_f1')}"
+                    f"  Batch {step} of Batch {len(train_dataloader)} -- > loss : {loss}, Binary F1: {batch_scores.get('binary_f1')}"
                 )
+                print(flush=True)
 
         avg_train_loss = epoch_loss / len(train_dataloader)
         train_losses.append(avg_train_loss)
