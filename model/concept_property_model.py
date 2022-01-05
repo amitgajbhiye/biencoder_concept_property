@@ -60,10 +60,14 @@ class ConceptPropertyModel(nn.Module):
             property_output.get("pooler_output"),
         )
 
-        # v_sum = torch.add(concept_cls, property_cls)
-
-        # concept_cls = concept_cls * concept_attention_mask.unsqueeze(1).transpose(2, 1)
-        # property_cls = property_cls * property_attention_mask.unsqueeze(1).transpose(
+        # concept_last_hidden_states = concept_last_hidden_states * concept_attention_mask.unsqueeze(
+        #     1
+        # ).transpose(
+        #     2, 1
+        # )
+        # property_last_hidden_states = property_last_hidden_states * property_attention_mask.unsqueeze(
+        #     1
+        # ).transpose(
         #     2, 1
         # )
 

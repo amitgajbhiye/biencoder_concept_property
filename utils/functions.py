@@ -66,6 +66,8 @@ def create_model(model_params):
 
 def compute_scores(labels, preds):
 
+    assert labels.shape == preds.shape, "labels shape is not equal to preds shape"
+
     scores = {
         "binary_f1": round(f1_score(labels, preds, average="binary"), 4),
         "micro_f1": round(f1_score(labels, preds, average="micro"), 4),

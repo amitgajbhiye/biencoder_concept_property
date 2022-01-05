@@ -174,8 +174,7 @@ def train(config):
             torch.save(
                 model.state_dict(),
                 os.path.join(
-                    config["training_params"]["export_path"],
-                    f"biencoder_bert_best_{epoch}.pt",
+                    config["training_params"]["export_path"], "biencoder_bert_best.pt",
                 ),
             )
         log.info("\nValidation Scores")
@@ -186,6 +185,54 @@ def train(config):
 
         if patience_counter >= config["training_params"].get("early_stopping_patience"):
             break
+
+
+def evaluate(config):
+
+    log.info(f"\n {'*' * 50}")
+    log.info(f"Testing the best model")
+
+    model = create_model(config.get("model_params"))
+
+    best_model_path = os.path.join(
+        config["training_params"]["export_path"], "biencoder_bert_best.pt",
+    )
+
+    model.load_state_dict(torch.load(best_model_path))
+    model.eval()
+    model.to(device)
+
+    test_dataloader = create_dataloader(config.get("test_dataset_params"))
+
+    test_preds, test_labels = [], []
+    with torch.no_grad():
+        for batch in test_dataloader:
+            (
+                concept_inp_id,
+                concept_attention_mask,
+                property_input_id,
+                property_attention_mask,
+                label,
+            ) = [val.to(device) for _, val in batch.items()]
+
+            _, _, preds = model(
+                concept_input_id=concept_inp_id,
+                concept_attention_mask=concept_attention_mask,
+                property_input_id=property_input_id,
+                property_attention_mask=property_attention_mask,
+            )
+
+            test_preds.append(preds.detach().cpu().numpy())
+            test_labels.append(label.detach().cpu().numpy())
+
+    all_labels = np.concatenate(test_labels)
+    all_preds = np.concatenate(test_preds)
+
+    test_scores = compute_scores(all_labels, all_preds)
+
+    log.info(f"Test Metrices")
+    for key, value in test_scores.items():
+        log.info(f"{key} : {value}")
 
 
 if __name__ == "__main__":
@@ -204,7 +251,10 @@ if __name__ == "__main__":
     config = read_config(args.config_file)
 
     log.info("The model is run with the following configuration")
-    # display(item=config)
-    log.info(config)
+
+    log.info(f"\n {config} \n")
 
     train(config)
+
+    evaluate(config)
+
