@@ -99,8 +99,8 @@ def train(config):
             optimizer.step()
 
             epoch_loss += loss.item()
-            epoch_preds.append(preds)
-            epoch_labels.append(label)
+            epoch_preds.append(preds.detach().cpu().numpy())
+            epoch_labels.append(label.detach().cpu().numpy())
 
             if step % config["training_params"]["printout_freq"] == 0 and not step == 0:
                 batch_scores = compute_scores(label, preds)
@@ -135,17 +135,16 @@ def train(config):
 
         val_loss, val_preds, val_labels = [], [], []
 
-        with torch.no_grad:
-            for batch in val_dataloader:
-                (
-                    concept_inp_id,
-                    concept_attention_mask,
-                    property_input_id,
-                    property_attention_mask,
-                    label,
-                ) = [val.to(device) for _, val in batch.items()]
+        for batch in val_dataloader:
+            (
+                concept_inp_id,
+                concept_attention_mask,
+                property_input_id,
+                property_attention_mask,
+                label,
+            ) = [val.to(device) for _, val in batch.items()]
 
-                # Model forward pass
+            with torch.no_grad():  # Model forward pass
                 logits, probs, preds = model(
                     concept_input_id=concept_inp_id,
                     concept_attention_mask=concept_attention_mask,
@@ -153,11 +152,11 @@ def train(config):
                     property_attention_mask=property_attention_mask,
                 )
 
-                loss = criterion(logits, label)
+            loss = criterion(logits, label)
 
-                val_loss += loss.item()
-                val_preds.append(preds)
-                val_labels.append(label)
+            val_loss += loss.item()
+            val_preds.append(preds.detach().cpu().numpy())
+            val_labels.append(label.detach().cpu().numpy())
 
         val_scores = compute_scores(
             np.concatenate(val_labels, np.concatenate(val_preds))
