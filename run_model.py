@@ -105,7 +105,9 @@ def train(config):
             epoch_labels.append(label.detach().cpu().numpy())
 
             if step % config["training_params"]["printout_freq"] == 0 and not step == 0:
-                batch_scores = compute_scores(label, preds)
+                batch_scores = compute_scores(
+                    label.detach().cpu().numpy(), preds.detach().cpu().numpy()
+                )
 
                 log.info(
                     f"  Batch {step} of Batch {len(train_dataloader)} -- > \
