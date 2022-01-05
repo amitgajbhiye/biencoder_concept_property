@@ -82,9 +82,9 @@ class ConceptPropertyModel(nn.Module):
 
         preds = torch.argmax(probabilities, dim=1)
 
-        log.info(
-            f"Dimensions v: {v.shape}, logits: {logits.shape}, probabilities: {probabilities.shape}, preds: {preds.shape}"
-        )
+        # log.info(
+        #     f"Dimensions v: {v.shape}, logits: {logits.shape}, probabilities: {probabilities.shape}, preds: {preds.shape}"
+        # )
 
         return logits, probabilities, preds
 
