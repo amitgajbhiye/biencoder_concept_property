@@ -112,8 +112,12 @@ def train(config):
         avg_train_loss = epoch_loss / len(train_dataloader)
         train_losses.append(avg_train_loss)
 
-        log.info(f"epoch_labels: {epoch_labels}")
-        log.info(f"torch.flatten(epoch_labels): {torch.flatten(epoch_labels)}")
+        log.info(
+            f"epoch_labels type: {type(torch.tensor(epoch_labels))} {torch.tensor(epoch_labels)}"
+        )
+        log.info(
+            f"torch.flatten(epoch_labels): {torch.flatten(torch.tensor(epoch_labels))}"
+        )
 
         epoch_scores = compute_scores(
             torch.flatten(epoch_labels), torch.flatten(epoch_preds)
