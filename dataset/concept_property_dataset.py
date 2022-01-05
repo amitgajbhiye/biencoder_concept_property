@@ -15,11 +15,11 @@ class ConceptPropertyDataset(Dataset):
             names=["concept", "property", "label"],
         )
 
-        # self.tokenizer = BertTokenizer.from_pretrained(
-        #     dataset_params.get("hf_tokenizer_path")
-        # )
+        self.tokenizer = BertTokenizer.from_pretrained(
+            dataset_params.get("hf_tokenizer_path")
+        )
 
-        self.tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
+        # self.tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
 
         self.concept_max_length = dataset_params.get("concept_max_len", 15)
         self.property_max_length = dataset_params.get("property_max_len", 20)
