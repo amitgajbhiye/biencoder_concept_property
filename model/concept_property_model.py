@@ -47,7 +47,7 @@ class ConceptPropertyModel(nn.Module):
         )
 
         property_output = self._property_encoder(
-            input_ids=property_input_id, attantion_mask=property_attention_mask
+            input_ids=property_input_id, attention_mask=property_attention_mask
         )
 
         # TODO AVG and MAX and MIn Over seq_len dimension and concatenate to feed to classifier
