@@ -131,9 +131,11 @@ def train(config):
 
         log.info(f"\nEpoch {epoch} finished !!")
         log.info(f"  Average Epoch Loss: {avg_train_loss}")
-        log.info("Epoch Scores")
-        log.info(epoch_scores)
+        log.info("Train Scores")
+        for key, value in epoch_scores.item():
+            log.info(f"{key} : {value}")
 
+        # ---------------Validation---------------------#
         log.info(f"\n Running Validation ...")
         model.eval()
 
