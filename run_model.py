@@ -133,7 +133,7 @@ def train(config):
         log.info(f"\n Running Validation ...")
         model.eval()
 
-        val_loss, val_preds, val_labels = [], [], []
+        val_loss, val_preds, val_labels = 0.0, [], []
 
         for batch in val_dataloader:
             (
