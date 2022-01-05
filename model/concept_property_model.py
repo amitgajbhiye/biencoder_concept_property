@@ -64,7 +64,7 @@ class ConceptPropertyModel(nn.Module):
 
         # v_sum = torch.add(concept_cls, property_cls)
 
-        concept_cls = concept_cls * concept_attention_mask.unsquwwze(1).transpose(2, 1)
+        concept_cls = concept_cls * concept_attention_mask.unsqueeze(1).transpose(2, 1)
         property_cls = property_cls * property_attention_mask.unsqueeze(1).transpose(
             2, 1
         )
