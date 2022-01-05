@@ -6,6 +6,13 @@ from dataset.concept_property_dataset import ConceptPropertyDataset
 from torch.utils.data import DataLoader, RandomSampler, SequentialSampler
 from model.concept_property_model import ConceptPropertyModel
 
+from sklearn.metrics import (
+    accuracy_score,
+    classification_report,
+    confusion_matrix,
+    f1_score,
+)
+
 logging.basicConfig(
     level=logging.DEBUG,
     filename="logs/logfile.log",
@@ -57,6 +64,16 @@ def create_model(model_params):
     return ConceptPropertyModel(model_params)
 
 
-def compute_scores(out_probs, label):
-    pass
+def compute_scores(labels, preds):
 
+    scores = {
+        "binary_f1": round(f1_score(labels, preds, average="binary"), 4),
+        "micro_f1": round(f1_score(labels, preds, average="micro"), 4),
+        "macro_f1": round(f1_score(labels, preds, average="macro"), 4),
+        "weighted_f1": round(f1_score(labels, preds, average="weighted"), 4),
+        "accuracy": round(accuracy_score(labels, preds), 4),
+        "classification report": classification_report(labels, preds, labels=[0, 1]),
+        "confusion matrix": confusion_matrix(labels, preds, labels=[0, 1]),
+    }
+
+    return scores
