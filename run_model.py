@@ -64,14 +64,17 @@ def train(config):
 
             (
                 concept_inp_id,
-                concept_atten_mask,
-                property_inp_id,
-                property_atten_mask,
+                concept_attention_mask,
+                property_input_id,
+                property_attention_mask,
                 label,
             ) = [val.to(device) for _, val in batch.items()]
 
             logits, probs, preds = model(
-                concept_inp_id, concept_atten_mask, property_inp_id, property_atten_mask
+                concept_input_id=concept_inp_id,
+                concept_attention_mask=concept_attention_mask,
+                property_input_id=property_input_id,
+                property_attention_mask=property_attention_mask,
             )
 
             log.info(f"\nlogits : {logits}")
