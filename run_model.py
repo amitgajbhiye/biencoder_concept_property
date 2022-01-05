@@ -114,14 +114,15 @@ def train(config):
         train_losses.append(avg_train_loss)
 
         log.info(
-            f"epoch_labels type: {type((epoch_labels))} {np.concatenate(epoch_labels)}"
+            f"epoch_labels flattened: {type(np.concatenate(epoch_labels))} {np.concatenate(epoch_labels)}"
         )
+
         log.info(
-            f"torch.flatten(epoch_labels): {torch.flatten(torch.tensor(epoch_labels))}"
+            f"epoch_preds flattened: {type(np.concatenate(epoch_preds))} {np.concatenate(epoch_preds)}"
         )
 
         epoch_scores = compute_scores(
-            torch.flatten(epoch_labels), torch.flatten(epoch_preds)
+            np.concatenate(epoch_labels), np.concatenate(epoch_preds)
         )
 
         log.info(f"\nEpoch {epoch} finished !!")
@@ -158,7 +159,9 @@ def train(config):
                 val_preds.append(preds)
                 val_labels.append(label)
 
-        val_scores = compute_scores(torch.flatten(val_labels, torch.flatten(val_preds)))
+        val_scores = compute_scores(
+            np.concatenate(val_labels, np.concatenate(val_preds))
+        )
         log.info("\nValidation Scores")
         log.info(val_scores)
 
