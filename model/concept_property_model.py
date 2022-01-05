@@ -11,15 +11,15 @@ class ConceptPropertyModel(nn.Module):
     def __init__(self, param):
         super(ConceptPropertyModel, self).__init__()
 
-        self._concept_encoder = BertModel.from_pretrained("bert-base-uncased")
-        self._property_encoder = BertModel.from_pretrained("bert-base-uncased")
+        # self._concept_encoder = BertModel.from_pretrained("bert-base-uncased")
+        # self._property_encoder = BertModel.from_pretrained("bert-base-uncased")
 
-        # self._concept_encoder = BertModel.from_pretrained(
-        #     param.get("hf_checkpoint_name")
-        # )
-        # self._property_encoder = BertModel.from_pretrained(
-        #     param.get("hf_checkpoint_name")
-        # )
+        self._concept_encoder = BertModel.from_pretrained(
+            param.get("hf_checkpoint_name")
+        )
+        self._property_encoder = BertModel.from_pretrained(
+            param.get("hf_checkpoint_name")
+        )
 
         self.dropout_prob = param.get("dropout_prob")
 
