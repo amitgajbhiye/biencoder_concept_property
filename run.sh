@@ -8,7 +8,7 @@
 
 #SBATCH -p dev
 #SBATCH --mem=10g
-#SBATCH --gres=gpu:1
+##SBATCH --gres=gpu:1
 ##SBATCH --qos=gpu7d
 #SBATCH -t 0-01:00:00
 
