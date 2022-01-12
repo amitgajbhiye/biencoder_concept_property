@@ -2,9 +2,8 @@ import logging
 
 import torch
 from torch import nn
-from torch.nn import Dropout
+
 from transformers import BertModel
-from utils.functions import replace_masked
 
 log = logging.getLogger(__name__)
 
@@ -84,10 +83,10 @@ class ConceptPropertyModel(nn.Module):
                 dim=1,
             ) / torch.sum(property_attention_mask, dim=1, keepdim=True)
 
-            v_concept_max, _ = replace_masked(
+            v_concept_max, _ = self.replace_masked(
                 concept_last_hidden_states, concept_attention_mask, -1e7
             ).max(dim=1)
-            v_property_max, _ = replace_masked(
+            v_property_max, _ = self.replace_masked(
                 property_last_hidden_states, property_attention_mask, -1e7
             ).max(dim=1)
 
@@ -148,3 +147,21 @@ class ConceptPropertyModel(nn.Module):
 
             return v
 
+    def replace_masked(tensor, mask, value):
+        """
+        Replace the all the values of vectors in 'tensor' that are masked in
+        'masked' by 'value'.
+        Args:
+            tensor: The tensor in which the masked vectors must have their values
+                replaced.
+            mask: A mask indicating the vectors which must have their values
+                replaced.
+            value: The value to place in the masked vectors of 'tensor'.
+        Returns:
+            A new tensor of the same size as 'tensor' where the values of the
+            vectors masked in 'mask' were replaced by 'value'.
+        """
+        mask = mask.unsqueeze(1).transpose(2, 1)
+        reverse_mask = 1.0 - mask
+        values_to_add = value * reverse_mask
+        return tensor * mask + values_to_add
