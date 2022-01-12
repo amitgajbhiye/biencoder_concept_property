@@ -90,9 +90,9 @@ def train(config):
             )
 
             log.info(f"\nlogits shape: {logits.shape}")
-            log.info(f"logits: {logits}")
+            # log.info(f"logits: {logits}")
             log.info(f"\nlabel shape: {label.float().unsqueeze(1).shape}")
-            log.info(f"label: {label.float().unsqueeze(1)}")
+            # log.info(f"label: {label.float().unsqueeze(1)}")
 
             loss = criterion(logits, label.float().unsqueeze(1))
             loss.backward()  # Model backward pass
