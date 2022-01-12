@@ -103,8 +103,9 @@ def train(config):
 
             epoch_loss += loss.item()
             preds = torch.round(torch.sigmoid(logits))
-            epoch_preds.append(preds.detach().cpu().numpy())
-            epoch_labels.append(label.detach().cpu().numpy())
+
+            epoch_preds.extend(preds.detach().cpu().numpy())
+            epoch_labels.extend(label.detach().cpu().numpy())
 
             if step % config["training_params"]["printout_freq"] == 0 and not step == 0:
                 batch_scores = compute_scores(
@@ -119,17 +120,10 @@ def train(config):
         avg_train_loss = epoch_loss / len(train_dataloader)
         train_losses.append(avg_train_loss)
 
-        log.info(
-            f"epoch_labels flattened: {type(np.concatenate(epoch_labels))} {np.concatenate(epoch_labels)}"
-        )
+        log.info(f"epoch_labels : {epoch_labels}")
+        log.info(f"epoch_preds :", {epoch_preds})
 
-        log.info(
-            f"epoch_preds flattened: {type(np.concatenate(epoch_preds))} {np.concatenate(epoch_preds)}"
-        )
-
-        epoch_scores = compute_scores(
-            np.concatenate(epoch_labels), np.concatenate(epoch_preds)
-        )
+        epoch_scores = compute_scores(epoch_labels, epoch_preds)
 
         log.info(f"\nEpoch {epoch} finished !!")
         log.info(f"  Average Epoch Loss: {avg_train_loss}")
@@ -165,12 +159,10 @@ def train(config):
 
             preds = torch.round(torch.sigmoid(logits))
             val_loss += loss.item()
-            val_preds.append(preds.detach().cpu().numpy())
-            val_labels.append(label.detach().cpu().numpy())
+            val_preds.extend(preds.detach().cpu().numpy())
+            val_labels.extend(label.detach().cpu().numpy())
 
-        val_scores = compute_scores(
-            np.concatenate(val_labels), np.concatenate(val_preds)
-        )
+        val_scores = compute_scores(val_labels, val_preds)
 
         val_binary_f1 = val_scores.get("binary_f1")
 
@@ -234,13 +226,13 @@ def evaluate(config):
                 property_attention_mask=property_attention_mask,
             )
             preds = torch.round(torch.sigmoid(logits))
-            test_preds.append(preds.detach().cpu().numpy())
-            test_labels.append(label.detach().cpu().numpy())
+            test_preds.extend(preds.detach().cpu().numpy())
+            test_labels.extend(label.detach().cpu().numpy())
 
-    all_labels = np.concatenate(test_labels)
-    all_preds = np.concatenate(test_preds)
+    # all_labels = np.concatenate(test_labels)
+    # all_preds = np.concatenate(test_preds)
 
-    test_scores = compute_scores(all_labels, all_preds)
+    test_scores = compute_scores(test_labels, test_preds)
 
     log.info(f"Test Metrices")
     for key, value in test_scores.items():
