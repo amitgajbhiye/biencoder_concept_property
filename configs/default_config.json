@@ -47,7 +47,7 @@
         "model_name": "biencoder_bert_model",
         "hf_checkpoint_name": "bert-base-uncased",
         "hf_model_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained",
-        "vector_strategy": "max_avg_pool",
+        "vector_strategy": "dot_product",
         "dropout_prob": 0.2,
         "ff1_inp_dim": 768,
         "ff1_out_dim": 400,

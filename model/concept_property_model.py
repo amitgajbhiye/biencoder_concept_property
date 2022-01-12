@@ -32,15 +32,22 @@ class ConceptPropertyModel(nn.Module):
             "cls_add_sub_abs": 5,
         }
 
+        self.inp_dim = (
+            self.multiplier.get(self.strategy)
+            * self._concept_encoder.config.hidden_size
+        )
+
+        self.out_dim = (
+            self.multiplier.get(self.strategy)
+            * self._concept_encoder.config.hidden_size
+        ) // 2
+
         self._classifier = nn.Sequential(
             nn.Dropout(self.dropout_prob),
-            nn.Linear(
-                self.multiplier.get(self.strategy)
-                * self._concept_encoder.config.hidden_size,
-                param.get("ff1_out_dim"),
-            ),
+            nn.Linear(self.inp_dim, self.out_dim),
             nn.ReLU(),
-            nn.Linear(param.get("ff1_out_dim"), 1),
+            nn.Dropout(self.dropout_prob),
+            nn.Linear(self.out_dim, 1),
         )
 
     def forward(
