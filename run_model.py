@@ -89,10 +89,10 @@ def train(config):
                 property_attention_mask=property_attention_mask,
             )
 
-            log.info(f"\nlogits shape: {logits.shape}")
-            # log.info(f"logits: {logits}")
-            log.info(f"\nlabel shape: {label.float().unsqueeze(1).shape}")
-            # log.info(f"label: {label.float().unsqueeze(1)}")
+            # log.info(f"\nlogits shape: {logits.shape}")
+            # # log.info(f"logits: {logits}")
+            # log.info(f"\nlabel shape: {label.float().unsqueeze(1).shape}")
+            # # log.info(f"label: {label.float().unsqueeze(1)}")
 
             loss = criterion(logits, label.float().unsqueeze(1))
             loss.backward()  # Model backward pass
@@ -120,8 +120,8 @@ def train(config):
         avg_train_loss = epoch_loss / len(train_dataloader)
         train_losses.append(avg_train_loss)
 
-        log.info(f"epoch_labels : {epoch_labels}")
-        log.info(f"epoch_preds : {epoch_preds}")
+        # log.info(f"epoch_labels : {epoch_labels}")
+        # log.info(f"epoch_preds : {epoch_preds}")
 
         epoch_scores = compute_scores(epoch_labels, epoch_preds)
 
