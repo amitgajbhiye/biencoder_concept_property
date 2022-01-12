@@ -104,8 +104,8 @@ def train(config):
             epoch_loss += loss.item()
             preds = torch.round(torch.sigmoid(logits))
 
-            epoch_preds.extend(preds.detach().cpu().numpy())
-            epoch_labels.extend(label.detach().cpu().numpy())
+            epoch_preds.extend(preds.detach().cpu().numpy().flatten())
+            epoch_labels.extend(label.detach().cpu().numpy().flatten())
 
             if step % config["training_params"]["printout_freq"] == 0 and not step == 0:
                 batch_scores = compute_scores(
@@ -159,8 +159,9 @@ def train(config):
 
             preds = torch.round(torch.sigmoid(logits))
             val_loss += loss.item()
-            val_preds.extend(preds.detach().cpu().numpy())
-            val_labels.extend(label.detach().cpu().numpy())
+
+            val_preds.extend(preds.detach().cpu().numpy().flatten())
+            val_labels.extend(label.detach().cpu().numpy().flatten())
 
         val_scores = compute_scores(val_labels, val_preds)
 
@@ -226,7 +227,7 @@ def evaluate(config):
                 property_attention_mask=property_attention_mask,
             )
             preds = torch.round(torch.sigmoid(logits))
-            test_preds.extend(preds.detach().cpu().numpy())
+            test_preds.extend(preds.detach().cpu().numpy().flatten())
             test_labels.extend(label.detach().cpu().numpy())
 
     # all_labels = np.concatenate(test_labels)

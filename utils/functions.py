@@ -66,9 +66,9 @@ def create_model(model_params):
 
 def compute_scores(labels, preds):
 
-    assert (
-        labels.shape == preds.shape
-    ), f"labels shape: {labels.shape} is not equal to preds shape {preds.shape}"
+    assert len(labels) == len(
+        preds
+    ), f"labels len: {len(labels)} is not equal to preds len {len(preds)}"
 
     scores = {
         "binary_f1": round(f1_score(labels, preds, average="binary"), 4),
