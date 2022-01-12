@@ -147,7 +147,7 @@ class ConceptPropertyModel(nn.Module):
 
             return v
 
-    def replace_masked(tensor, mask, value):
+    def replace_masked(self, tensor, mask, value):
         """
         Replace the all the values of vectors in 'tensor' that are masked in
         'masked' by 'value'.
