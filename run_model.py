@@ -34,7 +34,7 @@ def train(config):
 
     # -------------------- Preparation for training  ------------------- #
 
-    criterion = nn.CrossEntropyLoss()
+    criterion = nn.BCEWithLogitsLoss()
 
     optimizer = AdamW(model.parameters(), lr=config["training_params"].get("lr"))
 
@@ -82,16 +82,17 @@ def train(config):
             ) = [val.to(device) for _, val in batch.items()]
 
             # Model forward pass
-            logits, probs, preds = model(
+            logits = model(
                 concept_input_id=concept_inp_id,
                 concept_attention_mask=concept_attention_mask,
                 property_input_id=property_input_id,
                 property_attention_mask=property_attention_mask,
             )
 
-            # log.info(f"\nlogits : {logits}")
-            # log.info(f"\nprobs: {probs}")
-            # log.info(f"\npreds : {preds}")
+            log.info(f"\nlogits shape: {logits.shape}")
+            log.info(f"logits: {logits}")
+            log.info(f"\nlabel shape: {label.shape}")
+            log.info(f"label: {label}")
 
             loss = criterion(logits, label)
             loss.backward()  # Model backward pass
@@ -152,7 +153,7 @@ def train(config):
             ) = [val.to(device) for _, val in batch.items()]
 
             with torch.no_grad():  # Model forward pass
-                logits, probs, preds = model(
+                logits = model(
                     concept_input_id=concept_inp_id,
                     concept_attention_mask=concept_attention_mask,
                     property_input_id=property_input_id,
@@ -161,6 +162,7 @@ def train(config):
 
             loss = criterion(logits, label)
 
+            preds = torch.round(torch.sigmoid(logits))
             val_loss += loss.item()
             val_preds.append(preds.detach().cpu().numpy())
             val_labels.append(label.detach().cpu().numpy())
@@ -171,7 +173,7 @@ def train(config):
 
         val_binary_f1 = val_scores.get("binary_f1")
 
-        if val_binary_f1 < best_val_f1:
+        if val_binary_f1 <= best_val_f1:
             patience_counter += 1
         else:
             patience_counter = 0
@@ -192,6 +194,8 @@ def train(config):
 
         if patience_counter >= config["training_params"].get("early_stopping_patience"):
             break
+
+        print(flush=True)
 
 
 def evaluate(config):
@@ -222,13 +226,13 @@ def evaluate(config):
                 label,
             ) = [val.to(device) for _, val in batch.items()]
 
-            _, _, preds = model(
+            logits = model(
                 concept_input_id=concept_inp_id,
                 concept_attention_mask=concept_attention_mask,
                 property_input_id=property_input_id,
                 property_attention_mask=property_attention_mask,
             )
-
+            preds = torch.round(torch.sigmoid(logits))
             test_preds.append(preds.detach().cpu().numpy())
             test_labels.append(label.detach().cpu().numpy())
 
@@ -265,4 +269,3 @@ if __name__ == "__main__":
     train(config)
 
     evaluate(config)
-

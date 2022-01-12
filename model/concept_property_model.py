@@ -3,6 +3,7 @@ import torch
 from torch import nn
 from torch.nn import Dropout
 from transformers import BertModel
+from utils.functions import replace_masked
 
 log = logging.getLogger(__name__)
 
@@ -22,14 +23,24 @@ class ConceptPropertyModel(nn.Module):
         )
 
         self.dropout_prob = param.get("dropout_prob")
+        self.strategy = param.get("vector_strategy")
+
+        self.multiplier = {
+            "max_avg_pool": 4,
+            "cls_sub_mul": 4,
+            "mean_only": 2,
+            "cls_add_sub_abs": 5,
+        }
 
         self._classifier = nn.Sequential(
             nn.Dropout(self.dropout_prob),
             nn.Linear(
-                4 * self._concept_encoder.config.hidden_size, param.get("ff1_out_dim")
+                self.multiplier.get(self.strategy)
+                * self._concept_encoder.config.hidden_size,
+                param.get("ff1_out_dim"),
             ),
             nn.ReLU(),
-            nn.Linear(param.get("ff1_out_dim"), param.get("num_labels")),
+            nn.Linear(param.get("ff1_out_dim"), 1),
         )
 
     def forward(
@@ -48,8 +59,6 @@ class ConceptPropertyModel(nn.Module):
             input_ids=property_input_id, attention_mask=property_attention_mask
         )
 
-        # TODO AVG and MAX and MIn Over seq_len dimension and concatenate to feed to classifier
-
         concept_last_hidden_states, concept_cls = (
             concept_output.get("last_hidden_state"),
             concept_output.get("pooler_output"),
@@ -60,31 +69,81 @@ class ConceptPropertyModel(nn.Module):
             property_output.get("pooler_output"),
         )
 
-        # concept_last_hidden_states = concept_last_hidden_states * concept_attention_mask.unsqueeze(
-        #     1
-        # ).transpose(
-        #     2, 1
-        # )
-        # property_last_hidden_states = property_last_hidden_states * property_attention_mask.unsqueeze(
-        #     1
-        # ).transpose(
-        #     2, 1
-        # )
+        if self.strategy == "max_avg_pool":
 
-        v_sub = torch.sub(concept_cls, property_cls)
-        v_hadamard = torch.mul(concept_cls, property_cls)
+            v_concept_avg = torch.sum(
+                concept_last_hidden_states
+                * concept_attention_mask.unsqueeze(1).transpose(2, 1),
+                dim=1,
+            ) / torch.sum(concept_attention_mask, dim=1, keepdim=True)
 
-        v = torch.cat((concept_cls, property_cls, v_sub, v_hadamard), dim=-1)
+            v_property_avg = torch.sum(
+                property_last_hidden_states
+                * property_attention_mask.unsqueeze(1).transpose(2, 1),
+                dim=1,
+            ) / torch.sum(property_attention_mask, dim=1, keepdim=True)
 
-        logits = self._classifier(v)
+            v_concept_max, _ = replace_masked(
+                concept_last_hidden_states, concept_attention_mask, -1e7
+            ).max(dim=1)
+            v_property_max, _ = replace_masked(
+                property_last_hidden_states, property_attention_mask, -1e7
+            ).max(dim=1)
 
-        probabilities = nn.functional.softmax(logits, dim=-1)
+            v = torch.cat(
+                [v_concept_avg, v_concept_max, v_property_avg, v_property_max], dim=1
+            )
 
-        preds = torch.argmax(probabilities, dim=1)
+            logits = self._classifier(v)
 
-        # log.info(
-        #     f"Dimensions v: {v.shape}, logits: {logits.shape}, probabilities: {probabilities.shape}, preds: {preds.shape}"
-        # )
+            return logits
 
-        return logits, probabilities, preds
+        elif self.strategy == "mean_only":
+            v_concept_avg = torch.sum(
+                concept_last_hidden_states
+                * concept_attention_mask.unsqueeze(1).transpose(2, 1),
+                dim=1,
+            ) / torch.sum(concept_attention_mask, dim=1, keepdim=True)
+
+            v_property_avg = torch.sum(
+                property_last_hidden_states
+                * property_attention_mask.unsqueeze(1).transpose(2, 1),
+                dim=1,
+            ) / torch.sum(property_attention_mask, dim=1, keepdim=True)
+
+            v = torch.cat([v_concept_avg, v_property_avg], dim=1)
+
+            logits = self._classifier(v)
+
+            return logits
+
+        elif self.strategy == "cls_sub_mul":
+
+            v_sub = torch.sub(concept_cls, property_cls)
+            v_hadamard = torch.mul(concept_cls, property_cls)
+
+            v = torch.cat((concept_cls, property_cls, v_sub, v_hadamard), dim=1)
+
+            logits = self._classifier(v)
+
+            return logits
+
+        elif self.strategy == "cls_add_sub_abs":
+
+            v_add = torch.add((concept_cls, property_cls))
+            v_sub = torch.sub(concept_cls, property_cls)
+            v_abs = torch.abs(v_sub)
+
+            v = torch.cat((concept_cls, property_cls, v_add, v_sub, v_abs), dim=1)
+
+            logits = self._classifier(v)
+
+            return logits
+
+        elif self.strategy == "dot_product":
+            # The dot product of concept property cls vector will be a scalar.
+
+            v = (concept_cls * property_cls).sum(-1).reshape(concept_cls.shape[0], 1)
+
+            return v
 

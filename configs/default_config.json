@@ -2,7 +2,7 @@
     "experiment_name": "MS Conceptnet Biencoder Bert Uncased",
     "train_dataset_params": {
         "dataset_name": "MSCG_concept_property",
-        "dataset_path": "data/65k_train_ms_concept_graph.tsv",
+        "dataset_path": "data/100_train_sample.tsv",
         "hf_tokenizer_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained/tokenizer",
         "concept_max_len": 20,
         "property_max_len": 25,
@@ -16,7 +16,7 @@
     },
     "val_dataset_params": {
         "dataset_name": "MSCG_concept_property",
-        "dataset_path": "data/65k_valid_ms_concept_graph.tsv",
+        "dataset_path": "data/100_valid_sample.tsv",
         "concept_max_len": 20,
         "property_max_len": 25,
         "hf_tokenizer_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained/tokenizer",
@@ -30,7 +30,7 @@
     },
     "test_dataset_params": {
         "dataset_name": "MSCG_concept_property",
-        "dataset_path": "data/65k_test_ms_concept_graph.tsv",
+        "dataset_path": "data/100_test_sample.tsv",
         "hf_tokenizer_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained/tokenizer",
         "concept_max_len": 20,
         "property_max_len": 25,
@@ -47,14 +47,15 @@
         "model_name": "biencoder_bert_model",
         "hf_checkpoint_name": "bert-base-uncased",
         "hf_model_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained",
-        "dropout_prob": 0.1,
+        "vector_strategy": "max_avg_pool",
+        "dropout_prob": 0.2,
         "ff1_inp_dim": 768,
         "ff1_out_dim": 400,
-        "num_labels": 2
+        "num_labels": 1
     },
     "training_params": {
         "train_local": true,
-        "max_epochs": 100,
+        "max_epochs": 10,
         "lr": 2e-5,
         "num_warmup_steps": 0,
         "early_stopping_patience": 15,
