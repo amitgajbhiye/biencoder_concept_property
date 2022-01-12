@@ -66,7 +66,9 @@ def create_model(model_params):
 
 def compute_scores(labels, preds):
 
-    assert labels.shape == preds.shape, "labels shape is not equal to preds shape"
+    assert (
+        labels.shape == preds.shape
+    ), f"labels shape: {labels.shape} is not equal to preds shape {preds.shape}"
 
     scores = {
         "binary_f1": round(f1_score(labels, preds, average="binary"), 4),
@@ -81,21 +83,21 @@ def compute_scores(labels, preds):
     return scores
 
 
-def replace_masked(tensor, mask, value):
-    """
-    Replace the all the values of vectors in 'tensor' that are masked in
-    'masked' by 'value'.
-    Args:
-        tensor: The tensor in which the masked vectors must have their values
-            replaced.
-        mask: A mask indicating the vectors which must have their values
-            replaced.
-        value: The value to place in the masked vectors of 'tensor'.
-    Returns:
-        A new tensor of the same size as 'tensor' where the values of the
-        vectors masked in 'mask' were replaced by 'value'.
-    """
-    mask = mask.unsqueeze(1).transpose(2, 1)
-    reverse_mask = 1.0 - mask
-    values_to_add = value * reverse_mask
-    return tensor * mask + values_to_add
+# def replace_masked(tensor, mask, value):
+#     """
+#     Replace the all the values of vectors in 'tensor' that are masked in
+#     'masked' by 'value'.
+#     Args:
+#         tensor: The tensor in which the masked vectors must have their values
+#             replaced.
+#         mask: A mask indicating the vectors which must have their values
+#             replaced.
+#         value: The value to place in the masked vectors of 'tensor'.
+#     Returns:
+#         A new tensor of the same size as 'tensor' where the values of the
+#         vectors masked in 'mask' were replaced by 'value'.
+#     """
+#     mask = mask.unsqueeze(1).transpose(2, 1)
+#     reverse_mask = 1.0 - mask
+#     values_to_add = value * reverse_mask
+#     return tensor * mask + values_to_add
