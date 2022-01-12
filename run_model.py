@@ -121,7 +121,7 @@ def train(config):
         train_losses.append(avg_train_loss)
 
         log.info(f"epoch_labels : {epoch_labels}")
-        log.info(f"epoch_preds :", {epoch_preds})
+        log.info(f"epoch_preds : {epoch_preds}")
 
         epoch_scores = compute_scores(epoch_labels, epoch_preds)
 
