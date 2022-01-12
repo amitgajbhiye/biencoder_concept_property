@@ -91,8 +91,8 @@ def train(config):
 
             log.info(f"\nlogits shape: {logits.shape}")
             log.info(f"logits: {logits}")
-            log.info(f"\nlabel shape: {label.shape}")
-            log.info(f"label: {label}")
+            log.info(f"\nlabel shape: {label.float().unsqueeze(1).shape}")
+            log.info(f"label: {label.float().unsqueeze(1)}")
 
             loss = criterion(logits, label.float().unsqueeze(1))
             loss.backward()  # Model backward pass
@@ -102,6 +102,7 @@ def train(config):
             scheduler.step()
 
             epoch_loss += loss.item()
+            preds = torch.round(torch.sigmoid(logits))
             epoch_preds.append(preds.detach().cpu().numpy())
             epoch_labels.append(label.detach().cpu().numpy())
 
