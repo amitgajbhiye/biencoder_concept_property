@@ -94,7 +94,7 @@ def train(config):
             log.info(f"\nlabel shape: {label.shape}")
             log.info(f"label: {label}")
 
-            loss = criterion(logits, label.unsqueeze(1))
+            loss = criterion(logits, label.float().unsqueeze(1))
             loss.backward()  # Model backward pass
 
             torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
@@ -160,7 +160,7 @@ def train(config):
                     property_attention_mask=property_attention_mask,
                 )
 
-            loss = criterion(logits, label.unsqueeze(1))
+            loss = criterion(logits, label.float().unsqueeze(1))
 
             preds = torch.round(torch.sigmoid(logits))
             val_loss += loss.item()
