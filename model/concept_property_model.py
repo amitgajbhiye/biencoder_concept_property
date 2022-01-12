@@ -30,6 +30,7 @@ class ConceptPropertyModel(nn.Module):
             "cls_sub_mul": 4,
             "mean_only": 2,
             "cls_add_sub_abs": 5,
+            "dot_product": 1,
         }
 
         self.inp_dim = (
