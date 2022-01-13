@@ -1,6 +1,7 @@
 import json
 import pprint
 import logging
+import time
 
 from dataset.concept_property_dataset import ConceptPropertyDataset
 from torch.utils.data import DataLoader, RandomSampler, SequentialSampler
@@ -15,7 +16,7 @@ from sklearn.metrics import (
 
 logging.basicConfig(
     level=logging.DEBUG,
-    filename="logs/logfile.log",
+    filename=f"logs/{time.strftime('%d-%m-%Y,%H:%M:%S')}-logfile.log",
     filemode="w",
     format="%(asctime)s : %(levelname)s : %(name)s - %(message)s",
 )
