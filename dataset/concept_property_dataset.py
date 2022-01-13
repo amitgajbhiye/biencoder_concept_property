@@ -1,3 +1,4 @@
+from logging import log
 from os import sep
 import torch
 import pandas as pd
@@ -19,7 +20,17 @@ class ConceptPropertyDataset(Dataset):
             dataset_params.get("hf_tokenizer_path")
         )
 
-        # self.tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
+        if dataset_params.get("add_context"):
+
+            self.data_df["concept"] = self.data_df["concept"].astype(
+                str
+            ) + dataset_params.get("context")
+
+            log.info(
+                f"Context - {dataset_params.get('context')} - added to the concept"
+            )
+
+            log.info(self.data_df)
 
         self.concept_max_length = dataset_params.get("concept_max_len", 15)
         self.property_max_length = dataset_params.get("property_max_len", 20)

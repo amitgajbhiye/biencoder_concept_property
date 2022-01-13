@@ -2,10 +2,12 @@
     "experiment_name": "MS Conceptnet Biencoder Bert Uncased",
     "train_dataset_params": {
         "dataset_name": "MSCG_concept_property",
-        "dataset_path": "data/65k_train_ms_concept_graph.tsv",
+        "dataset_path": "data/100_train_sample.tsv",
         "hf_tokenizer_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained/tokenizer",
         "concept_max_len": 20,
         "property_max_len": 25,
+        "add_context": true,
+        "context": " is a",
         "loader_params": {
             "batch_size": 32,
             "sampler": "random",
@@ -16,10 +18,12 @@
     },
     "val_dataset_params": {
         "dataset_name": "MSCG_concept_property",
-        "dataset_path": "data/65k_valid_ms_concept_graph.tsv",
+        "dataset_path": "data/100_valid_sample.tsv",
         "concept_max_len": 20,
         "property_max_len": 25,
         "hf_tokenizer_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained/tokenizer",
+        "add_context": true,
+        "context": " is a",
         "loader_params": {
             "batch_size": 32,
             "sampler": "sequential",
@@ -30,11 +34,13 @@
     },
     "test_dataset_params": {
         "dataset_name": "MSCG_concept_property",
-        "dataset_path": "data/65k_test_ms_concept_graph.tsv",
+        "dataset_path": "data/100_test_sample.tsv",
         "hf_tokenizer_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained/tokenizer",
         "concept_max_len": 20,
         "property_max_len": 25,
         "pred_file_name": "predictions.txt",
+        "add_context": true,
+        "context": " is a",
         "loader_params": {
             "batch_size": 32,
             "sampler": "sequential",

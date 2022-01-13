@@ -136,7 +136,7 @@ def train(config):
         print(flush=True)
         model.eval()
 
-        val_loss, best_val_f1, val_preds, val_labels = 0.0, 0.0, [], []
+        val_loss, val_preds, val_labels = 0.0, [], []
 
         for batch in val_dataloader:
             (
