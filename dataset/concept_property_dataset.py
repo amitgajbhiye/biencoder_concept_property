@@ -1,9 +1,12 @@
-from logging import log
+import logging
 from os import sep
-import torch
+
 import pandas as pd
+import torch
 from torch.utils.data import Dataset
 from transformers import BertTokenizer
+
+log = logging.getLogger(__name__)
 
 
 class ConceptPropertyDataset(Dataset):
