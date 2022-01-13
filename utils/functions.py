@@ -16,7 +16,7 @@ from sklearn.metrics import (
 
 logging.basicConfig(
     level=logging.DEBUG,
-    filename=f"logs/{time.strftime('%d-%m-%Y,%H:%M:%S')}-logfile.log",
+    filename=f"logs/logfile-{time.strftime('%d-%m-%Y,%H:%M:%S')}.log",
     filemode="w",
     format="%(asctime)s : %(levelname)s : %(name)s - %(message)s",
 )
