@@ -15,17 +15,11 @@ from sklearn.metrics import (
 )
 
 
-# logging.basicConfig(
-#     level=logging.DEBUG,
-#     filename=f"logs/context-{time.strftime('%d-%m-%Y_%H-%M-%S')}.log",
-#     filemode="w",
-#     format="%(asctime)s : %(levelname)s : %(name)s - %(message)s",
-# )
-
-
 def set_logger(config):
 
-    log_file_name = f"logs/context_{config.get('experiment_name')}_{time.strftime('%d-%m-%Y_%H-%M-%S')}.log"
+    log_file_name = (
+        f"logs/{config.get('experiment_name')}_{time.strftime('%d-%m-%Y_%H-%M-%S')}.log"
+    )
     print("config.get('experiment_name') :", config.get("experiment_name"))
     print("\n log_file_name :", log_file_name)
 
@@ -101,22 +95,3 @@ def compute_scores(labels, preds):
 
     return scores
 
-
-# def replace_masked(tensor, mask, value):
-#     """
-#     Replace the all the values of vectors in 'tensor' that are masked in
-#     'masked' by 'value'.
-#     Args:
-#         tensor: The tensor in which the masked vectors must have their values
-#             replaced.
-#         mask: A mask indicating the vectors which must have their values
-#             replaced.
-#         value: The value to place in the masked vectors of 'tensor'.
-#     Returns:
-#         A new tensor of the same size as 'tensor' where the values of the
-#         vectors masked in 'mask' were replaced by 'value'.
-#     """
-#     mask = mask.unsqueeze(1).transpose(2, 1)
-#     reverse_mask = 1.0 - mask
-#     values_to_add = value * reverse_mask
-#     return tensor * mask + values_to_add

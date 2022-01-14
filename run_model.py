@@ -177,7 +177,7 @@ def train(config):
             torch.save(
                 model.state_dict(),
                 os.path.join(
-                    config["training_params"]["export_path"], "biencoder_bert_best.pt",
+                    config["training_params"]["export_path"], config["model_name"],
                 ),
             )
         log.info("\nValidation Scores")
@@ -205,7 +205,7 @@ def evaluate(config):
     model = create_model(config.get("model_params"))
 
     best_model_path = os.path.join(
-        config["training_params"]["export_path"], "biencoder_bert_best.pt",
+        config["training_params"]["export_path"], config["model_name"],
     )
 
     model.load_state_dict(torch.load(best_model_path))
@@ -260,6 +260,17 @@ if __name__ == "__main__":
 
     log.info(f"Reading Configuration File: {args.config_file}")
     config = read_config(args.config_file)
+
+    # log_file_name = f"logs/context_{config.get('experiment_name')}_{time.strftime('%d-%m-%Y_%H-%M-%S')}.log"
+    # print("config.get('experiment_name') :", config.get("experiment_name"))
+    # print("\n log_file_name :", log_file_name)
+
+    # logging.basicConfig(
+    #     level=logging.DEBUG,
+    #     filename=log_file_name,
+    #     filemode="w",
+    #     format="%(asctime)s : %(levelname)s : %(name)s - %(message)s",
+    # )
 
     log.info("The model is run with the following configuration")
 
