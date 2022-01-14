@@ -72,9 +72,9 @@ class ConceptPropertyDataset(Dataset):
                 self.data_df["concept"] = self.concept_context + self.data_df["concept"]
                 self.data_df["property"] = self.property_context
 
-            log.info(f"\n\n{self.data_df.head().values}")
-            for item in self.data_df.head(n=100).values:
-                print(f"\n{item}")
+        log.info(f"\n\n{self.data_df.head().values}")
+        for item in self.data_df.head(n=100).values:
+            print(f"\n{item}")
 
         self.concept_max_length = dataset_params.get("concept_max_len", 64)
         self.property_max_length = dataset_params.get("property_max_len", 64)
