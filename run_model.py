@@ -177,7 +177,8 @@ def train(config):
             torch.save(
                 model.state_dict(),
                 os.path.join(
-                    config["training_params"]["export_path"], config["model_name"],
+                    config["training_params"]["export_path"],
+                    config["model_params"]["model_name"],
                 ),
             )
         log.info("\nValidation Scores")
@@ -205,7 +206,7 @@ def evaluate(config):
     model = create_model(config.get("model_params"))
 
     best_model_path = os.path.join(
-        config["training_params"]["export_path"], config["model_name"],
+        config["training_params"]["export_path"], config["model_params"]["model_name"],
     )
 
     model.load_state_dict(torch.load(best_model_path))
