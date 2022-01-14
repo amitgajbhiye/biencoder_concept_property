@@ -14,12 +14,28 @@ from sklearn.metrics import (
     f1_score,
 )
 
-logging.basicConfig(
-    level=logging.DEBUG,
-    filename=f"logs/context-{time.strftime('%d-%m-%Y_%H-%M-%S')}.log",
-    filemode="w",
-    format="%(asctime)s : %(levelname)s : %(name)s - %(message)s",
-)
+
+# logging.basicConfig(
+#     level=logging.DEBUG,
+#     filename=f"logs/context-{time.strftime('%d-%m-%Y_%H-%M-%S')}.log",
+#     filemode="w",
+#     format="%(asctime)s : %(levelname)s : %(name)s - %(message)s",
+# )
+
+
+def set_logger(config):
+
+    log_file_name = f"logs/context_{config.get('experiment_name')}_{time.strftime('%d-%m-%Y_%H-%M-%S')}.log"
+    print("config.get('experiment_name') :", config.get("experiment_name"))
+    print("\n log_file_name :", log_file_name)
+
+    logging.basicConfig(
+        level=logging.DEBUG,
+        filename=log_file_name,
+        filemode="w",
+        format="%(asctime)s : %(levelname)s : %(name)s - %(message)s",
+    )
+
 
 log = logging.getLogger(__name__)
 
@@ -28,7 +44,9 @@ def read_config(config_file):
 
     if isinstance(config_file, str):
         with open(config_file, "r") as json_file:
-            return json.load(json_file)
+            config_dict = json.load(json_file)
+            set_logger(config_dict)
+            return config_dict
     else:
         return config_file
 
