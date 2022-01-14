@@ -1,10 +1,14 @@
 import argparse
 import logging
 import os
+import time
+
+import numpy as np
 import torch
 import torch.nn as nn
-import numpy as np
+from tqdm import tqdm
 from tqdm.std import trange
+from transformers import AdamW, get_linear_schedule_with_warmup
 
 from utils.functions import (
     compute_scores,
@@ -13,8 +17,6 @@ from utils.functions import (
     display,
     read_config,
 )
-from transformers import AdamW, get_linear_schedule_with_warmup
-from tqdm import tqdm
 
 log = logging.getLogger(__name__)
 
@@ -258,6 +260,15 @@ if __name__ == "__main__":
 
     log.info(f"Reading Configuration File: {args.config_file}")
     config = read_config(args.config_file)
+
+    log_file_name = f"logs/context_{config['train_dataset_params'].get('context_num')}_{time.strftime('%d-%m-%Y_%H-%M-%S')}.log"
+
+    logging.basicConfig(
+        level=logging.DEBUG,
+        filename=log_file_name,
+        filemode="w",
+        format="%(asctime)s : %(levelname)s : %(name)s - %(message)s",
+    )
 
     log.info("The model is run with the following configuration")
 
