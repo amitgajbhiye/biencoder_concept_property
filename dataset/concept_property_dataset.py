@@ -25,12 +25,20 @@ class ConceptPropertyDataset(Dataset):
 
         if dataset_params.get("add_context"):
 
-            self.data_df["concept"] = self.data_df["concept"].astype(
-                str
-            ) + dataset_params.get("context")
+            self.data_df["concept"] = dataset_params.get(
+                "concept_context"
+            ) + self.data_df["concept"].astype(str)
+
+            self.data_df["property"] = dataset_params.get(
+                "property_context"
+            ) + self.data_df["concept"].astype(str)
 
             log.info(
-                f"Context - {dataset_params.get('context')} - added to the concept"
+                f"Context - {dataset_params.get('concept_context') + '[CONCEPT]'} - added to the concept"
+            )
+
+            log.info(
+                f"Context - {dataset_params.get('property_context') + '[CONCEPT]'} - added to the property"
             )
 
             log.info(self.data_df)
