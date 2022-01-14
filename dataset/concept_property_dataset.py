@@ -41,7 +41,7 @@ class ConceptPropertyDataset(Dataset):
                 f"Context - {dataset_params.get('property_context') + '[CONCEPT]'} - added to the property"
             )
 
-            log.info(self.data_df.head)
+            log.info(self.data_df.head())
 
         self.concept_max_length = dataset_params.get("concept_max_len", 15)
         self.property_max_length = dataset_params.get("property_max_len", 20)
