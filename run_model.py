@@ -261,17 +261,6 @@ if __name__ == "__main__":
     log.info(f"Reading Configuration File: {args.config_file}")
     config = read_config(args.config_file)
 
-    log_file_name = f"logs/context_{config.get('experiment_name')}_{time.strftime('%d-%m-%Y_%H-%M-%S')}.log"
-    print("config.get('experiment_name') :", config.get("experiment_name"))
-    print("\n log_file_name :", log_file_name)
-
-    logging.basicConfig(
-        level=logging.DEBUG,
-        filename=log_file_name,
-        filemode="w",
-        format="%(asctime)s : %(levelname)s : %(name)s - %(message)s",
-    )
-
     log.info("The model is run with the following configuration")
 
     log.info(f"\n {config} \n")
