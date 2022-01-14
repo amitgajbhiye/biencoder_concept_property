@@ -8,7 +8,7 @@
         "property_max_len": 64,
         "add_context": true,
         "concept_context": "The thing which I saw yesterday is called, ",
-        "property_context": "The thing wich I saw is ",
+        "property_context": "The thing which I saw is ",
         "loader_params": {
             "batch_size": 32,
             "sampler": "random",
@@ -43,7 +43,7 @@
         "pred_file_name": "predictions.txt",
         "add_context": true,
         "concept_context": "The thing which I saw yesterday is called, ",
-        "property_context": "The thing wich I saw is ",
+        "property_context": "The thing which I saw is ",
         "loader_params": {
             "batch_size": 32,
             "sampler": "sequential",
