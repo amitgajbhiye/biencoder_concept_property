@@ -262,6 +262,7 @@ if __name__ == "__main__":
     config = read_config(args.config_file)
 
     log_file_name = f"logs/context_{config.get('experiment_name')}_{time.strftime('%d-%m-%Y_%H-%M-%S')}.log"
+    print("config.get('experiment_name') :", config.get("experiment_name"))
     print("\n log_file_name :", log_file_name)
 
     logging.basicConfig(
