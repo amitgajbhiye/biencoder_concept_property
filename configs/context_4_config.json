@@ -1,5 +1,5 @@
 {
-    "experiment_name": "MS Conceptnet Biencoder Bert Uncased",
+    "experiment_name": "context_4_biencoder",
     "train_dataset_params": {
         "dataset_name": "MSCG_concept_property",
         "dataset_path": "data/100_train_sample.tsv",

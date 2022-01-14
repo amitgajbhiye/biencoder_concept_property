@@ -261,7 +261,8 @@ if __name__ == "__main__":
     log.info(f"Reading Configuration File: {args.config_file}")
     config = read_config(args.config_file)
 
-    log_file_name = f"logs/context_{config['train_dataset_params'].get('context_num')}_{time.strftime('%d-%m-%Y_%H-%M-%S')}.log"
+    log_file_name = f"logs/context_{config.get('experiment_name')}_{time.strftime('%d-%m-%Y_%H-%M-%S')}.log"
+    print("\n log_file_name :", log_file_name)
 
     logging.basicConfig(
         level=logging.DEBUG,
