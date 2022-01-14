@@ -31,14 +31,14 @@ class ConceptPropertyDataset(Dataset):
 
             self.data_df["property"] = dataset_params.get(
                 "property_context"
-            ) + self.data_df["concept"].astype(str)
+            ) + self.data_df["property"].astype(str)
 
             log.info(
-                f"Context - {dataset_params.get('concept_context') + '[CONCEPT]'} - added to the concept"
+                f"Concept Context - {dataset_params.get('concept_context') + '[CONCEPT]'} - added to the concept"
             )
 
             log.info(
-                f"Context - {dataset_params.get('property_context') + '[CONCEPT]'} - added to the property"
+                f"Property Context - {dataset_params.get('property_context') + '[PROPERTY]'} - added to the property"
             )
 
             log.info(self.data_df.head().values)
