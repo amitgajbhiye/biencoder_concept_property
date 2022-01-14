@@ -187,6 +187,9 @@ def train(config):
         print(flush=True)
 
         if patience_counter >= config["training_params"].get("early_stopping_patience"):
+            log.info(
+                f"Early Stopping ---> Maximum Patience - {config['training_params'].get('early_stopping_patience')} Reached !!"
+            )
             break
 
         print(flush=True)

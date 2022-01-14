@@ -25,27 +25,56 @@ class ConceptPropertyDataset(Dataset):
 
         if dataset_params.get("add_context"):
 
-            self.data_df["concept"] = dataset_params.get(
-                "concept_context"
-            ) + self.data_df["concept"].astype(str)
+            if dataset_params.get("context_num") == 1:
 
-            self.data_df["property"] = dataset_params.get(
-                "property_context"
-            ) + self.data_df["property"].astype(str)
+                self.concept_context = "The thing which I saw yesterday is called, "
+                self.property_context = "The thing which I saw is "
 
-            log.info(
-                f"Concept Context - {dataset_params.get('concept_context') + '[CONCEPT]'} - added to the concept"
-            )
+                self.data_df["concept"] = self.concept_context + self.data_df[
+                    "concept"
+                ].astype(str)
 
-            log.info(
-                f"Property Context - {dataset_params.get('property_context') + '[PROPERTY]'} - added to the property"
-            )
+                self.data_df["property"] = self.property_context + self.data_df[
+                    "property"
+                ].astype(str)
 
-            log.info(self.data_df.head().values)
-            print(*self.data_df.head().values)
+            elif dataset_params.get("context_num") == 2:
+                self.concept_context = "Yesterday, I saw a "
+                self.property_context = (
+                    "The "
+                    + self.data_df["concept"].astype(str)
+                    + " that I saw yesterday is a "
+                    + self.data_df["property"].astype(str)
+                )
 
-        self.concept_max_length = dataset_params.get("concept_max_len", 15)
-        self.property_max_length = dataset_params.get("property_max_len", 20)
+                self.data_df["concept"] = self.concept_context + self.data_df["concept"]
+                self.data_df["property"] = self.property_context
+
+            elif dataset_params.get("context_num") == 3:
+                self.concept_context = "Yesterday, I saw another "
+                self.property_context = "Yesterday, I saw a thing which is"
+
+                self.data_df["concept"] = self.concept_context + self.data_df["concept"]
+                self.data_df["property"] = (
+                    self.property_context + self.data_df["property"]
+                )
+
+            elif dataset_params.get("context_num") == 4:
+                self.concept_context = "Yesterday, I saw a thing called, "
+                self.property_context = (
+                    "Yesterday, "
+                    + "I saw a thing called, "
+                    + self.data_df["concept"].astype(str)
+                    + " which is "
+                    + self.data_df["property"]
+                )
+
+            log.info(f"\n\n{self.data_df.head().values}")
+            for item in self.data_df.head().values:
+                print(f"\n{item}")
+
+        self.concept_max_length = dataset_params.get("concept_max_len", 64)
+        self.property_max_length = dataset_params.get("property_max_len", 64)
 
         self.concept_encodings = self.generate_inp_ids(
             self.data_df["concept"].tolist(), max_length=self.concept_max_length
