@@ -50,7 +50,7 @@
         }
     },
     "model_params": {
-        "model_name": "context_2_best_model.pt",
+        "model_name": "400k_context_2_best_model.pt",
         "hf_checkpoint_name": "bert-base-uncased",
         "hf_model_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained",
         "vector_strategy": "dot_product",
