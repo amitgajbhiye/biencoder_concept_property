@@ -1,5 +1,5 @@
 {
-    "experiment_name": "max_avg_pool_context_2",
+    "experiment_name": "cls_sub_mul_context_2",
     "train_dataset_params": {
         "dataset_name": "MSCG_concept_property",
         "dataset_path": "data/65k_train_ms_concept_graph.tsv",
@@ -50,10 +50,10 @@
         }
     },
     "model_params": {
-        "model_name": "max_avg_pool_context_2_best_model.pt",
+        "model_name": "cls_sub_mul_context_2_best_model.pt",
         "hf_checkpoint_name": "bert-base-uncased",
         "hf_model_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained",
-        "vector_strategy": "max_avg_pool",
+        "vector_strategy": "cls_sub_mul",
         "dropout_prob": 0.2,
         "ff1_inp_dim": 768,
         "ff1_out_dim": 400,
