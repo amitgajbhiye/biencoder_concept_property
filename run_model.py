@@ -169,18 +169,27 @@ def train(config):
 
         val_binary_f1 = val_scores.get("binary_f1")
 
-        if val_binary_f1 <= best_val_f1:
+        if val_binary_f1 < best_val_f1:
             patience_counter += 1
         else:
             patience_counter = 0
             best_val_f1 = val_binary_f1
-            torch.save(
-                model.state_dict(),
-                os.path.join(
-                    config["training_params"]["export_path"],
-                    config["model_params"]["model_name"],
-                ),
+
+            best_model_path = os.path.join(
+                config["training_params"]["export_path"],
+                config["model_params"]["model_name"],
             )
+
+            log.info(f"patience_counter : {patience_counter}")
+            log.info(f"best_model_path : {best_model_path}")
+
+            torch.save(
+                model.state_dict(), best_model_path,
+            )
+
+            log.info(f"Best model at epoch: {epoch}, Binary F1: {val_binary_f1}")
+            log.info(f"The model is saved in : {best_model_path}")
+
         log.info("\nValidation Scores")
         log.info(f" Best Validation F1 yet : {best_val_f1}")
 
