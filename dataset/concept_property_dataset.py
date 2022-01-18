@@ -27,7 +27,7 @@ class ConceptPropertyDataset(Dataset):
 
             if dataset_params.get("context_num") == 1:
 
-                self.concept_context = "The thing which I saw yesterday is called a "
+                self.concept_context = "The thing which I saw yesterday is called "
                 self.property_context = "The thing which I saw yesterday is a "
 
                 self.data_df["concept"] = self.concept_context + self.data_df[
@@ -52,7 +52,7 @@ class ConceptPropertyDataset(Dataset):
 
             elif dataset_params.get("context_num") == 3:
                 self.concept_context = "Yesterday, I saw another "
-                self.property_context = "Yesterday, I saw a thing which is a"
+                self.property_context = "Yesterday, I saw a thing which is "
 
                 self.data_df["concept"] = self.concept_context + self.data_df["concept"]
                 self.data_df["property"] = (
