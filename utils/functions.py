@@ -1,18 +1,29 @@
 import json
-import pprint
 import logging
+import os
+import pprint
 import time
 
+import numpy as np
+import torch
 from dataset.concept_property_dataset import ConceptPropertyDataset
-from torch.utils.data import DataLoader, RandomSampler, SequentialSampler
 from model.concept_property_model import ConceptPropertyModel
-
 from sklearn.metrics import (
     accuracy_score,
     classification_report,
     confusion_matrix,
     f1_score,
 )
+from torch.utils.data import DataLoader, RandomSampler, SequentialSampler
+
+
+def set_seed(seed):
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed(seed)
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
+    os.environ["PYTHONHASHSEED"] = str(seed)
 
 
 def set_logger(config):

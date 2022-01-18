@@ -16,6 +16,7 @@ from utils.functions import (
     create_model,
     display,
     read_config,
+    set_seed,
 )
 
 log = logging.getLogger(__name__)
@@ -257,6 +258,8 @@ def evaluate(config):
 
 
 if __name__ == "__main__":
+
+    set_seed(12345)
 
     parser = argparse.ArgumentParser(description="Siamese Concept Property Model")
 

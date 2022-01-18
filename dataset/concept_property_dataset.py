@@ -45,10 +45,10 @@ class ConceptPropertyDataset(Dataset):
                 )
 
                 self.data_df["concept"] = (
-                    self.concept_context + self.data_df["concept"] + "."
+                    self.concept_context + self.data_df["concept"].astype(str) + "."
                 )
                 self.data_df["property"] = (
-                    self.property_context + self.data_df["property"] + "."
+                    self.property_context + self.data_df["property"].astype(str) + "."
                 )
 
             elif dataset_params.get("context_num") == 3:
@@ -56,19 +56,21 @@ class ConceptPropertyDataset(Dataset):
                 self.property_context = "The property of the concept that I saw yesterday is that the concept is a "
 
                 self.data_df["concept"] = (
-                    self.concept_context + self.data_df["concept"] + "."
+                    self.concept_context + self.data_df["concept"].astype(str) + "."
                 )
                 self.data_df["property"] = (
-                    self.property_context + self.data_df["property"] + "."
+                    self.property_context + self.data_df["property"].astype(str) + "."
                 )
 
             elif dataset_params.get("context_num") == 4:
                 self.concept_context = "Yesterday, I saw another "
                 self.property_context = "Yesterday, I saw a thing which is "
 
-                self.data_df["concept"] = self.concept_context + self.data_df["concept"]
+                self.data_df["concept"] = (
+                    self.concept_context + self.data_df["concept"].astype(str) + "."
+                )
                 self.data_df["property"] = (
-                    self.property_context + self.data_df["property"]
+                    self.property_context + self.data_df["property"].astype(str) + "."
                 )
 
         log.info(f"\n\n{self.data_df.head().values}")
