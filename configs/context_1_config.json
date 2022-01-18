@@ -1,5 +1,5 @@
 {
-    "experiment_name": "context_1_dot_product",
+    "experiment_name": "context_1_a_removed_dot_product",
     "train_dataset_params": {
         "dataset_name": "MSCG_concept_property",
         "dataset_path": "data/65k_train_ms_concept_graph.tsv",
@@ -50,7 +50,7 @@
         }
     },
     "model_params": {
-        "model_name": "context_1_dot_product_best_model.pt",
+        "model_name": "context_1_a_removed_dot_product_best_model.pt",
         "hf_checkpoint_name": "bert-base-uncased",
         "hf_model_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained",
         "vector_strategy": "dot_product",
