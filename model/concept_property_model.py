@@ -119,11 +119,13 @@ class ConceptPropertyModel(nn.Module):
                 dim=1,
             ) / torch.sum(property_attention_mask, dim=1, keepdim=True)
 
-            v = torch.cat([v_concept_avg, v_property_avg], dim=1)
+            v = (
+                (v_concept_avg * v_property_avg)
+                .sum(-1)
+                .reshape(v_concept_avg.shape[0], 1)
+            )
 
-            logits = self._classifier(v)
-
-            return logits
+            return v
 
         elif self.strategy == "cls_sub_mul":
 
