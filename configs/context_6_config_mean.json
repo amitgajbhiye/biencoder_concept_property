@@ -1,5 +1,5 @@
 {
-    "experiment_name": "context_5_mean_only",
+    "experiment_name": "context_6_mean_only",
     "train_dataset_params": {
         "dataset_name": "MSCG_concept_property",
         "dataset_path": "data/65k_train_ms_concept_graph.tsv",
@@ -7,7 +7,7 @@
         "concept_max_len": 64,
         "property_max_len": 64,
         "add_context": true,
-        "context_num": 5,
+        "context_num": 6,
         "loader_params": {
             "batch_size": 32,
             "sampler": "random",
@@ -23,7 +23,7 @@
         "property_max_len": 64,
         "hf_tokenizer_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained/tokenizer",
         "add_context": true,
-        "context_num": 5,
+        "context_num": 6,
         "loader_params": {
             "batch_size": 32,
             "sampler": "sequential",
@@ -40,7 +40,7 @@
         "property_max_len": 64,
         "pred_file_name": "predictions.txt",
         "add_context": true,
-        "context_num": 5,
+        "context_num": 6,
         "loader_params": {
             "batch_size": 32,
             "sampler": "sequential",
@@ -50,7 +50,7 @@
         }
     },
     "model_params": {
-        "model_name": "context_5_mean_only_best_model.pt",
+        "model_name": "context_6_mean_only_best_model.pt",
         "hf_checkpoint_name": "bert-base-uncased",
         "hf_model_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained",
         "vector_strategy": "mean_only",
@@ -65,7 +65,7 @@
         "lr": 2e-6,
         "num_warmup_steps": 0,
         "early_stopping_patience": 20,
-        "export_path": "trained_models/context_5_mean_only",
+        "export_path": "trained_models/context_6_mean_only",
         "printout_freq": 100,
         "checkpoint_path": "",
         "load_checkpoint": -1,

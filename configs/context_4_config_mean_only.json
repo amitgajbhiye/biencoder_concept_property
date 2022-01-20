@@ -1,5 +1,5 @@
 {
-    "experiment_name": "context_4_dot_product",
+    "experiment_name": "context_4_mean_only",
     "train_dataset_params": {
         "dataset_name": "MSCG_concept_property",
         "dataset_path": "data/65k_train_ms_concept_graph.tsv",
@@ -50,7 +50,7 @@
         }
     },
     "model_params": {
-        "model_name": "context_4_dot_product_best_model.pt",
+        "model_name": "context_4_mean_only_best_model.pt",
         "hf_checkpoint_name": "bert-base-uncased",
         "hf_model_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained",
         "vector_strategy": "mean_only",
@@ -65,7 +65,7 @@
         "lr": 2e-6,
         "num_warmup_steps": 0,
         "early_stopping_patience": 20,
-        "export_path": "trained_models/context_4_dot_product",
+        "export_path": "trained_models/context_4_mean_only",
         "printout_freq": 100,
         "checkpoint_path": "",
         "load_checkpoint": -1,
