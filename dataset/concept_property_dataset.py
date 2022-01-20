@@ -72,6 +72,18 @@ class ConceptPropertyDataset(Dataset):
                 self.data_df["property"] = (
                     self.property_context + self.data_df["property"].astype(str) + "."
                 )
+            elif dataset_params.get("context_num") == 5:
+
+                self.concept_context = "The thing which I saw yesterday is called a "
+                self.property_context = "The property of the thing which I saw yesterday is that the thing is a "
+
+                self.data_df["concept"] = (
+                    self.concept_context + self.data_df["concept"].astype(str) + "."
+                )
+
+                self.data_df["property"] = (
+                    self.property_context + self.data_df["property"].astype(str) + "."
+                )
 
         log.info(f"\n\n{self.data_df.head().values}")
         for item in self.data_df.head(n=100).values:
