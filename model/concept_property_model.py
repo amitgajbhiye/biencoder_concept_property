@@ -2,7 +2,7 @@ import logging
 
 import torch
 from torch import nn
-
+from torch.nn.functional import normalize
 from transformers import BertModel
 
 log = logging.getLogger(__name__)
@@ -113,6 +113,9 @@ class ConceptPropertyModel(nn.Module):
                 dim=1,
             ) / torch.sum(concept_attention_mask, dim=1, keepdim=True)
 
+            v_concept_avg = normalize(v_concept_avg, p=2, dim=1)
+            log.info(f"Shape of normalised v_concept_avg :{v_concept_avg.shape}")
+
             v_property_avg = torch.sum(
                 property_last_hidden_states
                 * property_attention_mask.unsqueeze(1).transpose(2, 1),
@@ -152,6 +155,8 @@ class ConceptPropertyModel(nn.Module):
 
         elif self.strategy == "dot_product":
             # The dot product of concept property cls vector will be a scalar.
+
+            concept_cls = normalize(concept_cls, p=2, dim=1)
 
             v = (concept_cls * property_cls).sum(-1).reshape(concept_cls.shape[0], 1)
 
