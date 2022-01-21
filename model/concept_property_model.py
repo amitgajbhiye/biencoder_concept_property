@@ -114,7 +114,6 @@ class ConceptPropertyModel(nn.Module):
             ) / torch.sum(concept_attention_mask, dim=1, keepdim=True)
 
             v_concept_avg = normalize(v_concept_avg, p=2, dim=1)
-            log.info(f"Shape of normalised v_concept_avg :{v_concept_avg.shape}")
 
             v_property_avg = torch.sum(
                 property_last_hidden_states
