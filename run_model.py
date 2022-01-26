@@ -45,6 +45,9 @@ def train(config):
         len(train_dataloader) * config["training_params"]["max_epochs"]
     )
 
+    # warmup_steps = math.ceil(len(train_dataloader) * num_epochs * 0.1)  # 10% of train data for warm-up
+    # log.info(f"Warmup-steps: {warmup_steps}")
+
     scheduler = get_linear_schedule_with_warmup(
         optimizer,
         num_warmup_steps=config["training_params"]["num_warmup_steps"],
