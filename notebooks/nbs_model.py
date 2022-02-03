@@ -44,11 +44,11 @@ class ConceptPropertyModel(nn.Module):
     def __init__(self):
         super(ConceptPropertyModel, self).__init__()
 
-        self._concept_encoder = BertModel.from_pretrained("bert-base-uncased")
-        self._property_encoder = BertModel.from_pretrained("bert-base-uncased")
+        # self._concept_encoder = BertModel.from_pretrained("bert-base-uncased")
+        # self._property_encoder = BertModel.from_pretrained("bert-base-uncased")
 
-        # self._concept_encoder = BertModel.from_pretrained("/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained")
-        # self._property_encoder = BertModel.from_pretrained("/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained")
+        self._concept_encoder = BertModel.from_pretrained("/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained")
+        self._property_encoder = BertModel.from_pretrained("/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained")
 
         self.dropout_prob = 0.2
         self.strategy = "mean"
@@ -150,8 +150,8 @@ class ConceptPropertyDataset(Dataset):
             names=["concept", "property"],
         )
         
-        self.tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
-        # self.tokenizer = BertTokenizer.from_pretrained("/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained/tokenizer")
+        # self.tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
+        self.tokenizer = BertTokenizer.from_pretrained("/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained/tokenizer")
 
         # self.concepts_unique = self.data_df["concept"].unique()
         # self.properties_unique = self.data_df["property"].unique()
@@ -646,8 +646,8 @@ class TestDataset(Dataset):
             names=["concept", "property", "label"],
         )
         
-        self.tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
-        # self.tokenizer = BertTokenizer.from_pretrained("/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained/tokenizer")
+        # self.tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
+        self.tokenizer = BertTokenizer.from_pretrained("/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained/tokenizer")
 
         self.context_num = context_num
         self.label = self.data_df["label"].values
