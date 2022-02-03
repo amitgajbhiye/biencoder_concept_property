@@ -129,7 +129,7 @@ file_valid = "mscg_valid_pos.tsv"
 # file_valid = "mscg_test_pos.tsv"
 
 context_num = 3
-best_model_path = "3_cntx_best_model.pt"
+best_model_path = "3_cntx_new_nbs_best_model.pt"
 
 
 num_epoch = 100
