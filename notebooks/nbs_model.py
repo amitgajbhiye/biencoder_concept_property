@@ -117,7 +117,7 @@ class ConceptPropertyModel(nn.Module):
             return concept_cls, property_cls, logits
 
 
-# ## Datasets Class to load data
+# ## Data Files
 
 # In[ ]:
 
@@ -128,14 +128,16 @@ file_valid = "mscg_valid_pos.tsv"
 # file_train = "mscg_test_pos.tsv"
 # file_valid = "mscg_test_pos.tsv"
 
-context_num = 1
-best_model_path = "1_cntx_best_model.pt"
+context_num = 3
+best_model_path = "3_cntx_best_model.pt"
 
 
 num_epoch = 100
 bs = 32
 early_stopping_patience = 15
 
+
+# ## Datasets Class to load data
 
 # In[ ]:
 
@@ -304,14 +306,6 @@ class ConceptPropertyDataset(Dataset):
             "property_inp_id": property_ids.get("input_ids"),
             "property_atten_mask": property_ids.get("attention_mask")}
         
-
-
-# ## Data Files
-
-# In[ ]:
-
-
-
 
 
 # ## Data Loaders
