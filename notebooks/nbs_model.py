@@ -745,10 +745,10 @@ def test_old_data(test_dataset, test_dl):
     
     print ("Testing the model with old data 5 negatives")
     
-    best_model_path = best_model_path
+    best_model = best_model_path
     
     model = ConceptPropertyModel()
-    model.load_state_dict(torch.load(best_model_path))
+    model.load_state_dict(torch.load(best_model))
     model.eval()
     model.to(device)
     
@@ -812,10 +812,10 @@ def test_nbs(test_nbs_dataset, test_nbs_dl):
     print ("*" * 50)
     print ("\nTesting the model with Negative Batch sampling")
     
-    best_model_path = best_model_path
+    best_model = best_model_path
     
     model = ConceptPropertyModel()
-    model.load_state_dict(torch.load(best_model_path))
+    model.load_state_dict(torch.load(best_model))
     
     model.eval()
     model.to(device)
