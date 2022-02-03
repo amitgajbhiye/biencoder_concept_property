@@ -145,7 +145,7 @@ class ConceptPropertyDataset(Dataset):
         
         # print ("self.con_pro_dict :", self.con_pro_dict)
         
-        self.context_num = 2
+        self.context_num = 1
         
     def create_concept_idx_dicts(self):
         
@@ -706,7 +706,7 @@ def test_old_data(test_dataset, test_dl):
     
     print ("Testing the model with old data 5 negatives")
     
-    best_model_path = "best_model.pt"
+    best_model_path = "1_cntx_best_model.pt"
     
     model = ConceptPropertyModel()
     model.load_state_dict(torch.load(best_model_path))
