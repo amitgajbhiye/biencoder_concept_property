@@ -232,10 +232,7 @@ class ConceptPropertyDataset(Dataset):
             
             concepts_batch = [concept_context + x + "." for x in batch[0]]
             property_batch = [property_context + x + "." for x in batch[1]]
-            
-            print ("\nConcept Batch [0:5] :", concepts_batch[0:5], flush=True)
-            print ("Property Batch [0:5] :", property_batch[0:5], flush=True)
-        
+                    
         elif self.context_num == 2:
             
             concept_context = "The notion we are modelling : "
@@ -244,8 +241,6 @@ class ConceptPropertyDataset(Dataset):
             concepts_batch = [concept_context + x + "." for x in batch[0]]
             property_batch = [property_context + x + "." for x in batch[1]]
             
-            print ("\nConcept Batch [0:5] :", concepts_batch[0:5], flush=True)
-            print ("Property Batch [0:5] :", property_batch[0:5], flush=True)
             
         elif self.context_num == 3:
             
@@ -255,8 +250,6 @@ class ConceptPropertyDataset(Dataset):
             concepts_batch = ["[MASK] " * prefix_num + concept + " " + "[MASK] " * suffix_num + "." for concept in batch[0]]
             property_batch = ["[MASK] " * prefix_num + prop + " " + "[MASK] " * suffix_num + "." for prop in batch[1]]
             
-            print ("\nConcept Batch [0:5] :", concepts_batch[0:5], flush=True)
-            print ("Property Batch [0:5] :", property_batch[0:5], flush=True)
         
         elif self.context_num == 5:
             
@@ -265,10 +258,7 @@ class ConceptPropertyDataset(Dataset):
             
             concepts_batch = [concept_context + x + "." for x in batch[0]]
             property_batch = [property_context + x + "." for x in batch[1]]
-            
-            print ("\nConcept Batch [0:5] :", concepts_batch[0:5], flush=True)
-            print ("Property Batch [0:5] :", property_batch[0:5], flush=True)
-        
+                    
         
         return concepts_batch, property_batch
         
