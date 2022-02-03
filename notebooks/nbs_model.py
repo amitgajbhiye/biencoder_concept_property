@@ -122,6 +122,24 @@ class ConceptPropertyModel(nn.Module):
 # In[ ]:
 
 
+file_train = "mscg_train_pos.tsv"
+file_valid = "mscg_valid_pos.tsv"
+
+# file_train = "mscg_test_pos.tsv"
+# file_valid = "mscg_test_pos.tsv"
+
+context_num = 1
+best_model_path = "1_cntx_best_model.pt"
+
+
+num_epoch = 100
+bs = 32
+early_stopping_patience = 15
+
+
+# In[ ]:
+
+
 class ConceptPropertyDataset(Dataset):
     
     def __init__(self, data_file_path):
@@ -132,8 +150,8 @@ class ConceptPropertyDataset(Dataset):
             names=["concept", "property"],
         )
         
-        # self.tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
-        self.tokenizer = BertTokenizer.from_pretrained("/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained/tokenizer")
+        self.tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
+        # self.tokenizer = BertTokenizer.from_pretrained("/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained/tokenizer")
 
         # self.concepts_unique = self.data_df["concept"].unique()
         # self.properties_unique = self.data_df["property"].unique()
@@ -145,7 +163,7 @@ class ConceptPropertyDataset(Dataset):
         
         # print ("self.con_pro_dict :", self.con_pro_dict)
         
-        self.context_num = 1
+        self.context_num = context_num
         
     def create_concept_idx_dicts(self):
         
@@ -293,15 +311,7 @@ class ConceptPropertyDataset(Dataset):
 # In[ ]:
 
 
-file_train = "mscg_train_pos.tsv"
-file_valid = "mscg_valid_pos.tsv"
 
-# file_train = "mscg_test_pos.tsv"
-# file_valid = "mscg_test_pos.tsv"
-
-num_epoch = 100
-bs = 32
-early_stopping_patience = 15
 
 
 # ## Data Loaders
@@ -535,7 +545,7 @@ def train():
 
 def evaluate():
     
-    val_loss = 0.0 
+    val_loss = 0.0
     
     model.eval()
     
@@ -614,7 +624,7 @@ for epoch in range(start_epoch, num_epoch+1):
     else:
         patience_counter = 0
         best_val_f1 = val_f1
-        torch.save(model.state_dict(), "best_model.pt")
+        torch.save(model.state_dict(), best_model_path)
     
     if patience_counter > early_stopping_patience:
         break
@@ -636,10 +646,10 @@ class TestDataset(Dataset):
             names=["concept", "property", "label"],
         )
         
-        # self.tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
-        self.tokenizer = BertTokenizer.from_pretrained("/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained/tokenizer")
+        self.tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
+        # self.tokenizer = BertTokenizer.from_pretrained("/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained/tokenizer")
 
-        self.context_num = 4
+        self.context_num = context_num
         self.label = self.data_df["label"].values
         
     
@@ -661,7 +671,42 @@ class TestDataset(Dataset):
             concepts_batch = [concept_context + x + "." for x in batch[0]]
             property_batch = [property_context + x + "." for x in batch[1]]
             
-            return concepts_batch, property_batch
+        elif self.context_num == 1:
+            
+            concept_context = "Concept : "
+            property_context = "Property : "
+            
+            concepts_batch = [concept_context + x + "." for x in batch[0]]
+            property_batch = [property_context + x + "." for x in batch[1]]
+                    
+        elif self.context_num == 2:
+            
+            concept_context = "The notion we are modelling : "
+            property_context = "The notion we are modelling : "
+            
+            concepts_batch = [concept_context + x + "." for x in batch[0]]
+            property_batch = [property_context + x + "." for x in batch[1]]
+            
+            
+        elif self.context_num == 3:
+            
+            prefix_num = 5
+            suffix_num = 4  
+            
+            concepts_batch = ["[MASK] " * prefix_num + concept + " " + "[MASK] " * suffix_num + "." for concept in batch[0]]
+            property_batch = ["[MASK] " * prefix_num + prop + " " + "[MASK] " * suffix_num + "." for prop in batch[1]]
+            
+        
+        elif self.context_num == 5:
+            
+            concept_context = "The notion we are modelling is called "
+            property_context = "The notion we are modelling is called "
+            
+            concepts_batch = [concept_context + x + "." for x in batch[0]]
+            property_batch = [property_context + x + "." for x in batch[1]]
+                    
+        
+        return concepts_batch, property_batch
         
     def tokenize(self, concept_batch, property_batch, concept_max_len=64, property_max_len=64):
         
@@ -706,7 +751,7 @@ def test_old_data(test_dataset, test_dl):
     
     print ("Testing the model with old data 5 negatives")
     
-    best_model_path = "1_cntx_best_model.pt"
+    best_model_path = best_model_path
     
     model = ConceptPropertyModel()
     model.load_state_dict(torch.load(best_model_path))
@@ -773,7 +818,7 @@ def test_nbs(test_nbs_dataset, test_nbs_dl):
     print ("*" * 50)
     print ("\nTesting the model with Negative Batch sampling")
     
-    best_model_path = "best_model.pt"
+    best_model_path = best_model_path
     
     model = ConceptPropertyModel()
     model.load_state_dict(torch.load(best_model_path))
@@ -821,48 +866,6 @@ def test_nbs(test_nbs_dataset, test_nbs_dl):
 
 
 test_nbs(test_nbs_dataset, test_nbs_dl)
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
 
 
 # In[ ]:
