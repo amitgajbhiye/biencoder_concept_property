@@ -129,7 +129,7 @@ file_valid = "mscg_valid_pos.tsv"
 # file_valid = "mscg_test_pos.tsv"
 
 context_num = 3
-best_model_path = "3_cntx_new_nbs_best_model.pt"
+best_model_path = "3_cntx_len_2_new_nbs_best_model.pt"
 
 
 num_epoch = 100
@@ -261,11 +261,13 @@ class ConceptPropertyDataset(Dataset):
             concepts_batch = [concept_context + x + "." for x in batch[0]]
             property_batch = [property_context + x + "." for x in batch[1]]
             
-            
         elif self.context_num == 3:
             
-            prefix_num = 5
-            suffix_num = 4  
+            prefix_num = 2
+            suffix_num = 2
+            
+            print ("prefix_num :", prefix_num)
+            print ("suffix_num :", suffix_num)
             
             concepts_batch = ["[MASK] " * prefix_num + concept + " " + "[MASK] " * suffix_num + "." for concept in batch[0]]
             property_batch = ["[MASK] " * prefix_num + prop + " " + "[MASK] " * suffix_num + "." for prop in batch[1]]
@@ -528,12 +530,6 @@ def evaluate():
     
     epoch_logits = torch.round(torch.sigmoid(torch.vstack(epoch_logits))).reshape(-1, 1).detach().cpu().numpy()
     epoch_labels = torch.vstack(epoch_labels).reshape(-1, 1).detach().cpu().numpy()
-
-    print ("epoch_logits type: ", type(epoch_logits), flush=True)
-    print ("epoch_logits shape :", epoch_logits.shape, flush=True)
-    
-    print ("epoch_labels type :", type(epoch_labels), flush=True)
-    print ("epoch_labels type :", epoch_labels.shape, flush=True)
     
     scores = compute_scores(epoch_labels, epoch_logits)
     
