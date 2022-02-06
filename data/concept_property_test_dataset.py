@@ -1,106 +1,27 @@
-import logging
-from os import sep
-
 import pandas as pd
 import torch
-import numpy as np
 from torch.utils.data import Dataset
 from transformers import BertTokenizer
-from utils.functions import add_context
-
-log = logging.getLogger(__name__)
 
 
-class ConceptPropertyDataset(Dataset):
-    def __init__(self, dataset_params, dataset_type):
+class TestDataset(Dataset):
+    def __init__(self, dataset_params):
 
-        if dataset_type == "train":
-            self.data_df = pd.read_csv(
-                dataset_params.get("train_file_path"),
-                sep="\t",
-                header=None,
-                names=["concept", "property"],
-            )
-        elif dataset_type == "valid":
-            self.data_df = pd.read_csv(
-                dataset_params.get("val_file_path"),
-                sep="\t",
-                header=None,
-                names=["concept", "property"],
-            )
+        self.data_df = pd.read_csv(
+            dataset_params.get("test_file_path"),
+            sep="\t",
+            header=None,
+            names=["concept", "property", "label"],
+        )
 
         # self.tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
         self.tokenizer = BertTokenizer.from_pretrained(
             dataset_params.get("hf_tokenizer_path")
         )
 
-        self.concept2idx, self.idx2concept = self.create_concept_idx_dicts()
-        self.property2idx, self.idx2property = self.create_property_idx_dicts()
-
-        self.con_pro_dict, self.prop_con_dict = self.populate_dict()
-
-        # print ("self.con_pro_dict :", self.con_pro_dict)
-
         self.context_num = dataset_params.get("context_num")
 
-    def create_concept_idx_dicts(self):
-
-        unique_concepts = self.data_df["concept"].unique()
-
-        item2idx, idx2item = {}, {}
-
-        for idx, item in enumerate(unique_concepts):
-            item2idx[item] = idx
-            idx2item[idx] = item
-
-        return item2idx, idx2item
-
-    def create_property_idx_dicts(self):
-
-        unique_properties = self.data_df["property"].unique()
-
-        item2idx, idx2item = {}, {}
-
-        for idx, item in enumerate(unique_properties):
-            item2idx[item] = idx
-            idx2item[idx] = item
-
-        return item2idx, idx2item
-
-    def populate_dict(self):
-
-        concept_property_dict, property_concept_dict = {}, {}
-
-        unique_concepts = self.data_df["concept"].unique()
-        unique_properties = self.data_df["property"].unique()
-
-        self.data_df.set_index("concept", inplace=True)
-
-        for concept in unique_concepts:
-
-            concept_id = self.concept2idx[concept]
-
-            property_list = self.data_df.loc[concept].values.flatten()
-            property_ids = np.asarray([self.property2idx[x] for x in property_list])
-
-            concept_property_dict[concept_id] = property_ids
-
-        self.data_df.reset_index(inplace=True)
-
-        self.data_df.set_index("property", inplace=True)
-
-        for prop in unique_properties:
-
-            property_id = self.property2idx[prop]
-
-            concept_list = self.data_df.loc[prop].values.flatten()
-            concept_ids = np.asarray([self.concept2idx[x] for x in concept_list])
-
-            property_concept_dict[property_id] = concept_ids
-
-        self.data_df.reset_index(inplace=True)
-
-        return concept_property_dict, property_concept_dict
+        self.label = self.data_df["label"].values
 
     def __len__(self):
 
