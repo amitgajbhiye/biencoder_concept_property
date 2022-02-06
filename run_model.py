@@ -24,16 +24,6 @@ log = logging.getLogger(__name__)
 device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
 
 
-# train_single_epoch(
-#     model=model,
-#     train_dataset=train_dataset,
-#     train_dataloader=train_dataloader,
-#     loss_fn=loss_fn,
-#     optimizer=optimizer,
-#     scheduler=scheduler,
-# )
-
-
 def train_single_epoch(
     model, train_dataset, train_dataloader, loss_fn, optimizer, scheduler
 ):
@@ -323,11 +313,11 @@ def test_best_model(config):
         preds = torch.round(torch.sigmoid(logits))
         all_test_preds.extend(preds.detach().cpu().numpy().flatten())
 
-    test_scores = compute_scores(label, all_test_preds)
+    test_scores = compute_scores(label, np.asarray(all_test_preds))
 
     log.info(f"Test Metrices")
     log.info(f"Test labels shape: {label.shape}")
-    log.info(f"Test Preds shape: {all_test_preds.shape}")
+    log.info(f"Test Preds shape: {np.asarray(all_test_preds).shape}")
 
     for key, value in test_scores.items():
         log.info(f"{key} : {value}")
