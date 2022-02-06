@@ -1,16 +1,15 @@
 #!/bin/bash --login
-#SBATCH --job-name=context_1_dot_product
-#SBATCH --output=logs/context_1_dot_product_out.file
-#SBATCH --error=logs/context_1_dot_product_err.file
+#SBATCH --job-name=context_4
+#SBATCH --output=logs/context_4_out.file
+#SBATCH --error=logs/context_4_err.file
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
 #SBATCH -A scw1858
 
-#SBATCH -p gpu,gpu_v100
-#SBATCH --mem=10g
+#SBATCH -p gpu_v100,gpu
+#SBATCH --mem=15g
 #SBATCH --gres=gpu:1
-#SBATCH --qos=gpu7d
-#SBATCH -t 0-13:00:00
+#SBATCH -t 0-4:00:00
 
 echo 'This script is running on:'
 hostname
@@ -25,6 +24,6 @@ conda activate venv
 
 echo 'Running experiment...'
 
-python3 run_model.py --config_file configs/context_1_config.json
+python3 run_model.py --config_file configs/nbs_config.json
 
 echo finished!

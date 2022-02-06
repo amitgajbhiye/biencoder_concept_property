@@ -1,5 +1,5 @@
 {
-    "experiment_name": "negative batch sampling",
+    "experiment_name": "context4_nbs",
     "dataset_params": {
         "dataset_name": "MSCG_concept_property",
         "train_file_path": "data/train_data/MSCG/mscg_train_pos.tsv",
