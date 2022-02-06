@@ -6,7 +6,7 @@ import torch
 import numpy as np
 from torch.utils.data import Dataset
 from transformers import BertTokenizer
-from utils.functions import add_context
+
 
 log = logging.getLogger(__name__)
 
