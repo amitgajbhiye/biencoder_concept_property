@@ -1,5 +1,5 @@
 {
-    "experiment_name": "context_4_nbs",
+    "experiment_name": "context_4_nbs_run_2",
     "dataset_params": {
         "dataset_name": "MSCG_concept_property",
         "train_file_path": "data/train_data/MSCG/mscg_new_pos_train.tsv",
@@ -17,7 +17,7 @@
         }
     },
     "model_params": {
-        "model_name": "context_4_new_best_model.pt",
+        "model_name": "context_4_new_run_2_best_model.pt",
         "hf_checkpoint_name": "bert-base-uncased",
         "hf_model_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained",
         "vector_strategy": "mean"
