@@ -32,11 +32,18 @@ def train_single_epoch(
 
     model.train()
 
+    print_freq = 0
+
     for step, batch in enumerate(train_dataloader):
 
         model.zero_grad()
 
         concepts_batch, property_batch = train_dataset.add_context(batch)
+
+        if print_freq < 1:
+            log.info(f"concepts_batch : {concepts_batch}")
+            log.info(f"property_batch : {property_batch}")
+            print_freq += 1
 
         ids_dict = train_dataset.tokenize(concepts_batch, property_batch)
 
