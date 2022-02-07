@@ -9,7 +9,7 @@
         "concept_max_len": 64,
         "property_max_len": 64,
         "add_context": true,
-        "context_num": 1,
+        "context_num": 2,
         "loader_params": {
             "batch_size": 32,
             "num_workers": 4,
