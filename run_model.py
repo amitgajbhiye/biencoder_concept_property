@@ -256,7 +256,7 @@ def train(config):
             log.info(f"Best model at epoch: {epoch}, Binary F1: {val_binary_f1}")
             log.info(f"The model is saved in : {best_model_path}")
 
-        log.info("\nValidation Scores")
+        log.info("Validation Scores")
         log.info(f" Best Validation F1 yet : {best_val_f1}")
 
         for key, value in valid_scores.items():
