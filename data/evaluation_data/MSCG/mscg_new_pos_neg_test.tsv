@@ -1,1812 +1,2380 @@
-janet jackson	operating system	0
-tesla	company	1
-luggage	exercise	0
-demographic change	funding source	0
-sao paulo	eastern european country	0
-aloe	ingredient	0
-scopus	medication	0
-comfrey	herb	1
-telephone call	musicianship skill	0
-personal preference	keyword	0
-study skill	antihistamine	0
-mast cell	preparation	0
-sweetener	language	0
-adida	medication	0
-chemical peel	software	0
-podcast	technology	1
-sunroof	disturbed area	0
-high	factor	1
-soil ph	electrical appliance	0
-chicken breast	database	0
-endophthalmitis	complication	1
-contract research organization	chelating agent	0
-neil young	artist	1
-taxi	serious gastrointestinal toxicity	0
-cbs	perennial	0
-aim	game	0
-polyisobutylene	synthetic elastomer	1
-cbs	network	1
-scraper	keyword	0
-hydrocarbon	city	0
-client s creditor	city	0
-czech	feature	0
-pulse width	eastern european country	0
-quake	game	1
-harness	equipment	1
-highway	disturbed area	0
-fencing	soy product	0
-rwanda	aliphatic hydrocarbon	0
-sports equipment	health issue	0
-web server	application	1
-thermostat	topic	0
-moses	regulation	0
-spacer	pyrethroid	0
-autofocus	polyunsaturated fatty acid	0
-envy	limited circumstance	0
-real object	tool	1
-mast cell	sugar	0
-positive	pattern	1
-sodium sulfite	antioxidizing agent	1
-aggregate	particle	0
-b2	operating system	0
-search engine optimization	province	0
-sweetener	plant hormone	0
-chemical composition	factor	1
-healthy eating	sugar	0
-galvanized	coated metal	1
-lisp	part	0
-hcv	meat	0
-nato	organ	0
-quake	complication	0
-comfrey	feature	0
-a1000	operating system	0
-stem cell research	third party	0
-blood pressure check	journal	0
-spacer	product	1
-tree removal	resource	0
-email header	low molecular weight heparin	0
-aggregate	pyrethroid	0
-drone	property	0
-google maps	electrical appliance	0
-plank	video	0
-neck pain	lewis acid	0
-drone	technology	1
-soy milk	emotion	0
-spoon	polyunsaturated fatty acid	0
-moses	heavy cleaning duty	0
-levi s	specimen	0
-diesel engine	medium player	0
-autocad	additive	0
-tan	insecticide	0
-broth	liquid	1
-professor	a-list celebrity	0
-kissing	operating system	0
-adida	situation	0
-haddock	database	0
-forgiveness	manipulating identifier	0
-md5	african country	0
-ethylenediaminetetraacetic acid	autoimmune disease	0
-rwanda	optical property	0
-white balance	sleep disorder	0
-hearing protection	journal	0
-cadmium plated steel	coated metal	1
-chemical peel	alkyl group	0
-chemical resistance	sport	0
-laceration	injury	1
-scheduling	regulatory agency	0
-hair	area	0
-adelaide	skill	0
-dispersants	resource	0
-magnetometer	central bank	0
-dispersants	preparation	0
-zinc chloride	addiction treatment approach	0
-suede	natural disaster	0
-cadmium plated steel	combustion engine	0
-developer	role	1
-hair	state	0
-black or white	video	1
-amiodarone	disturbed area	0
-plavix	company	0
-rifle	firearm	1
-taxi	neuropeptide	0
-sputum	material	0
-dictation	market dynamic	0
-moses	equipment	0
-sars	incentive	0
-nematode	document	0
-stem cell research	coated metal	0
-garden	virus	0
-nonsteroidal anti inflammatory	soy product	0
-driver	part	0
-ideology	factor	1
-hexyl	eating disorder	0
-note	alkali metal	0
-ethylenediaminetetraacetic acid	chelating agent	1
-pulse width	parameter	1
-chalk	omron product	0
-hexyl	serious gastrointestinal toxicity	0
-tachycardia	serial interface	0
-wedding invitation	substrate	0
-ethernet	additive	0
-user id	hash function	0
-hamilton	genre	0
-garden	beverage	0
-manpower	resource	1
-railway	third party	0
-roller	alkyl group	0
-aetna	neuropeptide	0
-loose connection	natural process	0
-postcard	transcription enhancer	0
-tachycardia	symptom	1
-reggae	plant hormone	0
-adaptive cruise control	injury	0
-hormonal imbalance	technology	0
-laceration	pyrethroid	0
-drug counseling	organelle	0
-glycolic acid	disturbed area	0
-beethoven	protein	0
-hippo	sensor	0
-liver	application	0
-harness	optical property	0
-waste management	personal protective equipment	0
-potential	personal expense	0
-wireless network	effect	0
-heptane	modern comfort	0
-evaluation	plant hormone	0
-classroom	alpha hydroxy acid	0
-magnetite	omron product	0
-cryotherapy	vegetable	0
-hay fever	cell line	0
-sound card	incentive	0
-aloe	ingredient	1
-bologna	industry	0
-key chain	item	1
-social norm	factor	1
-autofocus	state	0
-laceration	eastern european country	0
-nonsteroidal anti inflammatory	magnetic property	0
-dextroamphetamine	health issue	0
-fasting	organ	0
-management science	lewis acid	0
-electron density	funding source	0
-conservation	topic	1
-sports equipment	symptom	0
-coercivity	magnetic property	1
-armor	liquid	0
-mashed potato	disturbed area	0
-a1000	document	0
-porsche	addiction treatment approach	0
-tan	musicianship skill	0
-mediation	vegetable	0
-ideology	allergy	0
-loader	bird	0
-photon	musicianship skill	0
-tan	database	0
-autofocus	protein	0
-evaluation	smokeless tobacco product	0
-dosage	nsaid	0
-key chain	amino acid	0
-zinc chloride	technology	0
-manpower	particle	0
-hair	province	0
-stereo	item	1
-hcv	modern comfort	0
-high	bacterium	0
-md5	soy product	0
-reggae	stimulant	0
-autocad	journal	0
-sao paulo	task	0
-template	amino acid	0
-chicken breast	low molecular weight heparin	0
-part number	synthetic elastomer	0
-professor	surface	0
-florida georgia	serious gastrointestinal toxicity	0
-management science	journal	1
-plavix	soy product	0
-hydrocarbon	eating disorder	0
-li	alkali metal	1
-erosion	serial interface	0
-ultrasonic	natural process	0
-loader	surface	0
-fda	regulatory agency	1
-centrifuge	limited circumstance	0
-podcast	cell line	0
-freelance	operating system	0
-czech republic	substrate	0
-screen printing	method	1
-hay fever	band	0
-sound	musicianship skill	0
-product name	serious gastrointestinal toxicity	0
-herniated disc	information	0
-pike	body fluid	0
-sober living	coated metal	0
-fencing	eating disorder	0
-thermometer	tool	1
-ethernet	injury	0
-rwanda	insecticide	0
-google scholar	material	0
-slipper	antihistamine	0
-erosion	health issue	0
-bulgaria	province	0
-tamil	credit card	0
-bulgaria	organelle	0
-photon	province	0
-editing	service	1
-thermostat	blood thinner	0
-rous sarcoma virus enhancer	memory medium	0
-baboon	exercise	0
-magnetite	body fluid	0
-floppy disk	memory medium	1
-freelance	lewis acid	0
-zoom	bird	0
-quad biking	amino acid	0
-mast cell	personal protective equipment	0
-li	vehicle	0
-forgiveness	mobile device	0
-stem cell research	cruise line	0
-glastonbury	nsaid	0
-gibberellin	equipment	0
-window cleaning	composer	0
-sao paulo	city	1
-weibull	distribution	1
-leds	omron product	0
-equipment model designation	compound	0
-accounts receivable	credit card	0
-gibberellin	plant hormone	1
-hydroxyzine	vegetable	0
-hela	network	0
-tamil	solvent	0
-aim	effect	0
-superman	specimen	0
-highway	festival	0
-freeze drying	method	1
-palm oil	object	0
-cutlery	medication	0
-professor	title	1
-dispersants	distribution	0
-frankincense	game	0
-windows 2000	omron product	0
-real object	serial interface	0
-clothes washer	facility	0
-ph value	sleep disorder	0
-docosahexaenoic acid	essential oil	0
-hay fever	allergy	1
-equipment model designation	identifier	1
-ph value	optical property	0
-european central bank	tree service	0
-aggregate	patient care unit	0
-highway	technology	0
-search engine optimization	cell	0
-weight lifting	method	0
-forgiveness	topic	1
-hexyl	regulation	0
-vaccination	property	0
-mast cell	aliphatic hydrocarbon	0
-gibberellin	limited circumstance	0
-scraper	natural process	0
-electron density	organelle	0
-zoom	close contact	0
-hosta	plasma parameter	0
-cadmium plated steel	solvent	0
-cola	virus	0
-microwave motion detector	organelle	0
-nematode	pyrethroid	0
-blood testing	eastern european country	0
-centrifuge	effect	0
-forest fire	issue	0
-radiohead	band	1
-spacer	perennial	0
-social norm	skill	0
-podcast	chelating agent	0
-civil right	genre	0
-part number	information	1
-agricultural	serious gastrointestinal toxicity	0
-weight lifting	database	0
-hippo	cruise line	0
-wireless network	protein	0
-restless legs syndrome	setting	0
-hamilton	infectious disease	0
-world trade organization	database	0
-hydrocarbon	dispute resolution method	0
-roller	infectious disease	0
-heptane	prophet	0
-health insurance portability	credit card	0
-ethnic background	document	0
-vaccinia virus	facility	0
-broth	accessory	0
-czech republic	eastern european country	1
-ethernet	hash function	0
-fencing	essential oil	0
-freeze drying	festival	0
-transferrin	plasma parameter	0
-b2	perennial	0
-equipment model designation	nsaid	0
-quake	material	0
-dispersants	situation	0
-lacoste	eastern european country	0
-amiodarone	coated metal	0
-sle	particle	0
-waste management	lewis acid	0
-telephone call	item	0
-retirement account	information	0
-plavix	blood thinner	1
-vacuum cleaner	asset	0
-docosahexaenoic acid	omron product	0
-salt concentration	language	0
-mediation	asset	0
-grant	solvent	0
-social norm	musicianship skill	0
-loose connection	genre	0
-janet jackson	setting	0
-erosion	issue	0
-chewing tobacco	alkali metal	0
-hair	material	1
-blood pressure check	lean protein	0
-new balance	animal	0
-european central bank	central bank	1
-zurich	city	1
-2d coupe	feature	1
-jackson pollock	artist	1
-docosahexaenoic acid	state	0
-garden	role	0
-european central bank	composer	0
-grand jury subpoena	band	0
-mashed potato	ingredient	0
-grant	incentive	1
-adida	fish	0
-heptane	solvent	1
-sle	organelle	0
-tesla	language	0
-absorption	area	0
-health insurance portability	accessory	0
-sound	artist	0
-scopus	breed	0
-drone	cost	0
-fasting	mobile device	0
-safety goggle	low molecular weight heparin	0
-zurich	cell	0
-docosahexaenoic acid	polyunsaturated fatty acid	1
-superman	combustion engine	0
-freeze drying	skill	0
-interferon gamma	vehicle	0
-shopping mall	cell	0
-binge eating	musicianship skill	0
-safety goggle	personal protective equipment	1
-moses	meat	0
-streptococcus pneumoniae	product	0
-diesel engine	combustion engine	1
-chicken breast	operating system	0
-rifle	disturbed area	0
-conservation	natural process	0
-sacramento	city	1
-crankshaft	part	1
-contract research organization	third party	1
-grant	lean protein	0
-emergency department	hash function	0
-spacer	amenity	0
-scraper	tool	1
-environmental degradation	pollutant	0
-kevlar	chelating agent	0
-neck pain	pyrethroid	0
-plasma	modern comfort	0
-nematode	organism	1
-mediation	injury	0
-tachycardia	vehicle	0
-tesla	body fluid	0
-rifle	video	0
-demographic change	alkyl group	0
-restless legs syndrome	soy product	0
-czech	food	0
-glastonbury	vegetable oil	0
-health insurance portability	property	0
-chemical peel	smokeless tobacco product	0
-aggregate	meat	0
-loader	regulation	0
-professor	soy product	0
-dosage	character	0
-sao paulo	limited circumstance	0
-washing wall	artist	0
-safety rule	service	0
-herniated disc	material	0
-accounts receivable	chelating agent	0
-a1000	vegetable	0
-optical sensor	alkyl group	0
-envy	company	0
-quad biking	system device	0
-web server	soy product	0
-sleeping bag	mineral	0
-rous sarcoma virus enhancer	transcription enhancer	1
-dunlop	video	0
-porsche	brand	1
-safety goggle	product	0
-positive	solvent	0
-superman	character	1
-ph value	parameter	1
-bill	document	1
-weibull	serious gastrointestinal toxicity	0
-pulse width	soy product	0
-taurine	infectious disease	0
-jcb	organism	0
-black or white	product	0
-thermostat	device	1
-repo	close contact	0
-leds	eating disorder	0
-holster	asset	0
-management science	cell line	0
-neck pain	vegetable oil	0
-salt concentration	credit card	0
-armor	additive	0
-loose connection	defect	1
-equipment model designation	cell	0
-optical sensor	city	0
-potential	aliphatic hydrocarbon	0
-hosta	information	0
-tablet pcs	herb	0
-dictation	system device	0
-salt concentration	plasma parameter	0
-freelance	keyword	1
-chemical resistance	parameter	0
-li	operating system	0
-adelaide	method	0
-glastonbury	polyunsaturated fatty acid	0
-demographic change	effect	0
-gibberellin	surface	0
-emergency department	purpose	0
-autocad	software	1
-windows 2000	stimulant	0
-stereo	surface	0
-absorption	preparation	0
-limited liability company	word	0
-plank	exercise	1
-czech	transcription enhancer	0
-european commission	service	0
-positive	blood thinner	0
-ultrasonic	essential oil	0
-vaccinia virus	addiction treatment approach	0
-slipper	natural disaster	0
-gasification	film	0
-taurine	festival	0
-neil young	fish	0
-endophthalmitis	emotion	0
-leds	equipment	0
-envy	service	0
-magnetite	identifier	0
-ulceration	patient care unit	0
-5s	factor	0
-editing	serious gastrointestinal toxicity	0
-rhubarb	nsaid	0
-neil young	service	0
-hay fever	mobile device	0
-czech	language	1
-zoom	heavy cleaning duty	0
-spacer	entity	0
-dunlop	cell line	0
-nonsteroidal anti inflammatory	method	0
-child s age	international organization	0
-aetna	stimulant	0
-asparagine	defect	0
-taxi	central bank	0
-laceration	neutral color	0
-gasification	pyrethroid	0
-bologna	company	0
-porsche	game	0
-sunroof	cell line	0
-salt concentration	factor	1
-tree removal	organ	0
-study skill	protein	0
-washing wall	skill	0
-sle	a-list celebrity	0
-taurine	property	0
-email header	manipulating identifier	1
-canned goods	pattern	0
-blood testing	stimulant	0
-salt concentration	firearm	0
-sunroof	light source	0
-white balance	tree service	0
-sports equipment	document	0
-photon	role	0
-zurich	medication	0
-weibull	property	0
-kissing	personal protective equipment	0
-dubai	sugar	0
-goldfish	method	0
-jcb	suitable utensil	0
-thermometer	fish	0
-mannose	sugar	1
-tamil	fish	0
-plank	mineral	0
-envy	emotion	1
-email header	network	0
-jackson pollock	tree service	0
-holster	funding source	0
-vaccinia virus	close contact	0
-plasma	industry	0
-baboon	third party	0
-osprey	accessory	0
-rhubarb	activity	0
-personal preference	company	0
-freelance	purpose	0
-professor	neutral color	0
-endophthalmitis	cell line	0
-sodium sulfite	item	0
-radiohead	substrate	0
-support group meeting	purpose	0
-erosion	factor	1
-electron density	animal	0
-tablet pcs	resource	0
-personal preference	accessory	0
-mast cell	regulatory agency	0
-ethylenediaminetetraacetic acid	stimulant	0
-civil right	journal	0
-social norm	amenity	0
-polyphenol	information	0
-canned goods	property	0
-beethoven	property	0
-agricultural	asset	0
-bae systems	service	0
-screen printing	funding source	0
-endophthalmitis	organelle	0
-5s	light source	0
-nematode	neuropeptide	0
-gasification	technology	1
-soil ph	application	0
-key chain	natural disaster	0
-binge eating	complication	0
-cryotherapy	treatment	1
-polyisobutylene	complication	0
-plank	disturbed area	0
-aloe	credit card	0
-marriott	treatment	0
-sweetener	title	0
-bill	vegetable oil	0
-sars	infectious disease	1
-soy milk	part	0
-washing wall	heavy cleaning duty	1
-chemical resistance	journal	0
-bulgaria	animal	0
-hearing protection	equipment	0
-search engine optimization	title	0
-matrix	video	0
-emergency department	light source	0
-beethoven	pattern	0
-adelaide	identifier	0
-real object	factor	0
-ethnic background	issue	0
-sound	particle	0
-maintenance cost	combustion engine	0
-thermometer	alpha hydroxy acid	0
-palm	vegetable oil	1
-5s	technology	0
-adaptive cruise control	resource	0
-5s	tool	1
-electron density	plasma parameter	1
-permethrin	mineral	0
-ph value	serious gastrointestinal toxicity	0
-sober living	addiction treatment approach	1
-chicken breast	lean protein	1
-palm oil	information	0
-gauteng	plasma parameter	0
-conservation	pollutant	0
-zoom	food	0
-gibberellin	alkali metal	0
-nato	equipment	0
-asparagine	operating system	0
-drone	video	0
-stereo	bronchodilator	0
-comfrey	heavy cleaning duty	0
-world trade organization	condition	0
-sle	effect	0
-sacramento	alkali metal	0
-postcard	organism	0
-google scholar	genre	0
-matrix	limited circumstance	0
-demographic change	factor	1
-drug counseling	addiction treatment approach	1
-royal caribbean	credit card	0
-2d coupe	bacterium	0
-marriott	organelle	0
-limited liability company	natural disaster	0
-civil right	synthetic elastomer	0
-clothes washer	appliance	1
-magnetite	low molecular weight heparin	0
-maintenance cost	role	0
-laceration	organelle	0
-loader	electrical appliance	0
-floppy disk	state	0
-mannose	neuropeptide	0
-high	character	0
-client s creditor	third party	1
-a1000	facility	0
-hydroxyzine	antihistamine	1
-osprey	sugar	0
-high	city	0
-bagel	device	0
-cartier	document	0
-leds	bronchodilator	0
-chalk	particle	0
-stroller	plant hormone	0
-electron density	drink	0
-floppy disk	plasma parameter	0
-white balance	preparation	0
-sacramento	african country	0
-support group meeting	service	0
-bagel	video	0
-tablet pcs	mobile device	1
-podcast	manipulating identifier	0
-tablet pcs	body fluid	0
-drug counseling	lean protein	0
-accounts receivable	polyunsaturated fatty acid	0
-microwave motion detector	lean protein	0
-tachycardia	dispute resolution method	0
-hydrocarbon	pollutant	1
-laundry facility	chelating agent	0
-cbs	complication	0
-b2	vitamin	1
-thermostat	province	0
-streptococcus pneumoniae	bacterium	1
-repo	solvent	0
-suede	antihistamine	0
-holster	mineral	0
-hela	eating disorder	0
-superman	particle	0
-taurine	virus	0
-b2	animal	0
-cola	optical property	0
-cutlery	item	1
-lacoste	vehicle	0
-metal alloy	particle	0
-european commission	low molecular weight heparin	0
-magnetometer	infectious disease	0
-drug counseling	insecticide	0
-2d coupe	african country	0
-optical sensor	service	0
-google maps	lewis acid	0
-freelance	appliance	0
-matrix	topic	1
-docosahexaenoic acid	cytokine	0
-distortion	effect	1
-microwave motion detector	alkali metal	0
-baboon	meat	0
-first aid	database	0
-rifle	ingredient	0
-sunroof	feature	1
-galvanized	serial interface	0
-first aid	skill	1
-product name	language	0
-leds	solvent	0
-photon	issue	0
-search engine optimization	device	0
-distortion	eating disorder	0
-luggage	cost	0
-enoxaparin	condition	0
-windows media player	medium player	1
-absorption	neutral color	0
-glass substrate	breed	0
-grant	funding source	1
-environmental degradation	chelating agent	0
-gauteng	province	1
-dunlop	brand	1
-first aid	allergy	0
-highway	surface	1
-adida	lean protein	0
-5s	infectious disease	0
-muscle cell	exercise	0
-hela	cell line	1
-comfrey	limited circumstance	0
-liver	organ	1
-tablet pcs	exercise	0
-mashed potato	antioxidizing agent	0
-jackson pollock	city	0
-gibberellin	market dynamic	0
-tree removal	lewis acid	0
-user id	injury	0
-scraper	state	0
-particulate matter	pollutant	1
-slipper	prophet	0
-kevlar	transcription enhancer	0
-osprey	property	0
-autofocus	mineral	0
-railway	method	0
-hospital bed	virus	0
-plasma	fish	0
-muscle cell	serious gastrointestinal toxicity	0
-immunosuppression	factor	1
-marriott	low molecular weight heparin	0
-cutlery	artist	0
-mashed potato	essential oil	0
-chicken breast	resource	0
-overhead	material	0
-freeze drying	treatment	0
-neil young	serious gastrointestinal toxicity	0
-manpower	document	0
-glass substrate	vegetable oil	0
-highway	appliance	0
-sober living	soy product	0
-google scholar	database	1
-sodium sulfite	market dynamic	0
-rwanda	african country	1
-armor	item	1
-key chain	food	0
-cartier	market dynamic	0
-hamilton	device	0
-centrifuge	state	0
-gauteng	sensor	0
-safety goggle	treatment	0
-tree removal	facility	0
-loose connection	vehicle	0
-grand jury subpoena	limited circumstance	1
-sars	title	0
-potential	meat	0
-cryotherapy	tree service	0
-environmental degradation	company	0
-scheduling	essential oil	0
-haddock	fish	1
-asparagine	resource	0
-angry birds	game	1
-european central bank	part	0
-reggae	band	0
-nematode	activity	0
-health insurance portability	plasma parameter	0
-european central bank	combustion engine	0
-potential	area	0
-blood pressure check	breed	0
-drone	natural disaster	0
-reggae	polyunsaturated fatty acid	0
-cartier	method	0
-boxer	activity	0
-chemical resistance	property	1
-sound card	skill	0
-sleeping bag	sensor	0
-aloe	hash function	0
-fencing	title	0
-dispersants	food	0
-world trade organization	stimulant	0
-zurich	aliphatic hydrocarbon	0
-sodium sulfite	property	0
-motrin	pyrethroid	0
-coercivity	light source	0
-drug counseling	method	0
-support group meeting	vehicle	0
-rwanda	coated metal	0
-autofocus	vitamin	0
-safety rule	autoimmune disease	0
-recognition	solvent	0
-absorption	amenity	0
-part number	alkyl group	0
-floppy disk	cell	0
-crankshaft	solvent	0
-vaccinia virus	regulatory agency	0
-sunroof	language	0
-muscle cell	manipulating identifier	0
-client s creditor	alpha hydroxy acid	0
-tesla	software	0
-kissing	particle	0
-interferon gamma	serious gastrointestinal toxicity	0
-ultrasonic	defect	0
-sacramento	preparation	0
-sleeping bag	item	0
-fda	facility	0
-fencing	sport	1
-metal alloy	fish	0
-chewing tobacco	eastern european country	0
-template	identifier	0
-screen printing	personal protective equipment	0
-contract research organization	patient care unit	0
-real object	heavy cleaning duty	0
-health insurance portability	amino acid	0
-bagel	herb	0
-chalk	material	1
-telephone call	character	0
-harness	medium player	0
-waste management	incentive	0
-cryotherapy	coated metal	0
-pitch	magnetic property	0
-dkny	symptom	0
-stem cell research	infectious disease	0
-vacuum cleaner	close contact	0
-waste management	issue	1
-blood pressure check	stimulant	0
-restless legs syndrome	alpha hydroxy acid	0
-haddock	skill	0
-weight lifting	aliphatic hydrocarbon	0
-frankincense	musicianship skill	0
-floppy disk	injury	0
-healthy eating	industry	0
-waste management	bird	0
-muscle cell	cell	1
-a1000	omron product	1
-metal alloy	transcription enhancer	0
-nonsteroidal anti inflammatory	medication	1
-sober living	city	0
-zinc chloride	lewis acid	1
-potential	word	1
-forgiveness	emotion	0
-health insurance portability	regulation	1
-pitch	mineral	0
-personal preference	african country	0
-dictation	keyword	0
-freeze drying	cell	0
-gasification	addiction treatment approach	0
-aetna	organ	0
-bologna	issue	0
-template	substrate	0
-drug counseling	feature	0
-weibull	effect	0
-ethnic background	software	0
-autocad	setting	0
-endophthalmitis	vegetable	0
-retirement account	asset	1
-first aid	bird	0
-safety rule	keyword	0
-scheduling	prophet	0
-developer	identifier	0
-sputum	appliance	0
-chalk	stimulant	0
-web server	character	0
-sle	manipulating identifier	0
-chemical composition	character	0
-haddock	eastern european country	0
-hormonal imbalance	factor	1
-palm oil	lewis acid	0
-evaluation	skill	1
-forest fire	alkyl group	0
-limited liability company	entity	1
-roadside	mineral	0
-maintenance cost	antioxidizing agent	0
-armor	treatment	0
-nato	international organization	1
-note	operating system	0
-neck pain	symptom	1
-ultrasonic	factor	0
-broth	antihistamine	0
-ph value	protein	0
-pike	light source	0
-florida georgia	incentive	0
-scraper	lewis acid	0
-windows 2000	entity	0
-podcast	optical property	0
-grand jury subpoena	game	0
-sle	autoimmune disease	1
-child s age	artist	0
-hexyl	plant hormone	0
-client s creditor	item	0
-glastonbury	festival	1
-hcv	treatment	0
-slipper	operating system	0
-galvanized	market dynamic	0
-template	feature	1
-armor	neuropeptide	0
-dictation	activity	0
-roadside	bacterium	0
-chemical composition	eastern european country	0
-palm	memory medium	0
-web server	entity	0
-czech republic	journal	0
-accounts receivable	antioxidizing agent	0
-motrin	vegetable oil	0
-agricultural	title	0
-tachycardia	liquid	0
-crankshaft	fish	0
-permethrin	effect	0
-matrix	manipulating identifier	0
-luggage	compound	0
-roller	part	1
-osprey	skill	0
-enoxaparin	brand	0
-wedding invitation	information	0
-plavix	medication	0
-nonsteroidal anti inflammatory	insecticide	0
-polyisobutylene	preparation	0
-polyphenol	preparation	0
-reggae	genre	1
-magnetometer	food	0
-blood testing	service	1
-blood pressure check	mineral	0
-slipper	modern comfort	1
-docosahexaenoic acid	aliphatic hydrocarbon	0
-soil ph	factor	1
-metal alloy	complication	0
-new balance	autoimmune disease	0
-pulse width	accessory	0
-child s age	factor	1
-haddock	liquid	0
-gasification	genre	0
-blood pressure check	health issue	1
-porsche	regulatory agency	0
-repo	situation	1
-nato	product	0
-aim	mineral	0
-hexyl	market dynamic	0
-grant	vegetable oil	0
-comfrey	character	0
-screen printing	appliance	0
-sars	virus	0
-study skill	cell line	0
-distortion	infectious disease	0
-polyisobutylene	tree service	0
-blood testing	sleep disorder	0
-highway	vitamin	0
-roller	perennial	0
-sodium sulfite	document	0
-tamil	synthetic elastomer	0
-repo	incentive	0
-adelaide	setting	0
-vasoactive intestinal peptide	neuropeptide	1
-window cleaning	symptom	0
-lisp	funding source	0
-glass substrate	modern comfort	0
-liver	medication	0
-safety goggle	area	0
-chicken breast	treatment	0
-marriott	technology	0
-tree removal	tree service	1
-enoxaparin	task	0
-wireless network	antioxidizing agent	0
-pulse width	medication	0
-plank	neutral color	0
-hormonal imbalance	object	0
-grand jury subpoena	artist	0
-professor	neuropeptide	0
-li	nsaid	0
-environmental degradation	pattern	0
-hospital bed	pyrethroid	0
-chewing tobacco	cell	0
-particulate matter	plant hormone	0
-broth	city	0
-hydroxyzine	surface	0
-single use glove	bacterium	0
-support group meeting	additive	0
-bulgaria	database	0
-mediation	lean protein	0
-dubai	city	1
-management science	african country	0
-dextroamphetamine	stimulant	1
-crankshaft	brand	0
-equipment model designation	additive	0
-european central bank	province	0
-driver	allergy	0
-chemical resistance	food	0
-pitch	electrical appliance	0
-hosta	blood thinner	0
-royal caribbean	appliance	0
-screen printing	magnetic property	0
-study skill	nsaid	0
-polyphenol	bronchodilator	0
-laundry facility	material	0
-tan	light source	0
-world trade organization	international organization	1
-adaptive cruise control	feature	1
-recognition	sport	0
-template	prophet	0
-vacuum cleaner	electrical appliance	1
-frankincense	keyword	0
-single use glove	patient care unit	0
-driver	cruise line	0
-rwanda	role	0
-contract research organization	lewis acid	0
-erosion	natural process	1
-a1000	musicianship skill	0
-safety rule	document	1
-chemical resistance	hash function	0
-forest fire	natural disaster	1
-aloe	allergy	0
-ethylenediaminetetraacetic acid	film	0
-real object	blood thinner	0
-overhead	cost	1
-forest fire	organ	0
-podcast	fish	0
-hospital bed	preparation	0
-halfway house	topic	0
-pike	polyunsaturated fatty acid	0
-telephone call	personal expense	1
-real object	natural disaster	0
-part number	medication	0
-recognition	neuropeptide	0
-roadside	disturbed area	1
-overhead	addiction treatment approach	0
-adida	tree service	0
-dkny	substrate	0
-diesel engine	preparation	0
-harness	item	0
-b2	essential oil	0
-agricultural	health issue	0
-zurich	manipulating identifier	0
-positive	plasma parameter	0
-evaluation	aliphatic hydrocarbon	0
-cartier	brand	1
-suede	vegetable	0
-vaccination	activity	0
-overhead	operating system	0
-railway	industry	1
-asparagine	amino acid	1
-thermostat	close contact	0
-sunroof	information	0
-neil young	factor	0
-sputum	omron product	0
-metal alloy	optical property	0
-weibull	part	0
-ulceration	limited circumstance	0
-lisp	material	0
-distortion	complication	0
-interferon gamma	suitable utensil	0
-transferrin	protein	1
-malathion	part	0
-amiodarone	medication	1
-bill	third party	0
-coercivity	eating disorder	0
-dkny	brand	1
-immunosuppression	substrate	0
-roller	company	0
-fasting	preparation	1
-motrin	musicianship skill	0
-hydrocarbon	neuropeptide	0
-mannose	health issue	0
-luggage	distribution	0
-ideology	operating system	0
-osprey	bird	1
-eel	liquid	0
-canned goods	alkali metal	0
-stem cell research	issue	1
-black or white	firearm	0
-soil ph	neutral color	0
-fasting	hash function	0
-broth	pyrethroid	0
-study skill	allergy	0
-hearing protection	patient care unit	0
-microwave motion detector	pattern	0
-overhead	alkyl group	0
-hcv	optical property	0
-2d coupe	asset	0
-galvanized	amenity	0
-florida georgia	asset	0
-aim	aliphatic hydrocarbon	0
-palm oil	vegetable oil	1
-cutlery	market dynamic	0
-dosage	medication	0
-levi s	brand	1
-crankshaft	market dynamic	0
-rhubarb	network	0
-nonsteroidal anti inflammatory	tool	0
-ethylenediaminetetraacetic acid	cost	0
-classroom	situation	0
-matrix	database	0
-cryotherapy	limited circumstance	0
-ideology	topic	0
-ulceration	regulation	0
-child s age	vitamin	0
-personal preference	magnetic property	0
-comfrey	allergy	0
-palm oil	pattern	0
-retirement account	coated metal	0
-centrifuge	neutral color	0
-galvanized	vitamin	0
-bagel	food	1
-royal caribbean	medium player	0
-note	ingredient	0
-rhubarb	sleep disorder	0
-soy milk	aliphatic hydrocarbon	0
-stroller	personal expense	0
-jcb	plant hormone	0
-vasoactive intestinal peptide	distribution	0
-developer	system device	0
-taxi	vehicle	1
-hela	pattern	0
-transferrin	material	0
-streptococcus pneumoniae	area	0
-md5	drink	0
-contract research organization	condition	0
-chewing tobacco	smokeless tobacco product	1
-eel	light source	0
-spoon	part	0
-scraper	regulation	0
-european commission	natural disaster	0
-dextroamphetamine	beverage	0
-hosta	perennial	1
-sound	alkali metal	0
-chemical peel	information	0
-retirement account	electrical appliance	0
-hydroxyzine	solvent	0
-email header	cost	0
-binge eating	pattern	0
-jcb	credit card	1
-goldfish	industry	0
-product name	transcription enhancer	0
-moses	prophet	1
-superman	bacterium	0
-limited liability company	mobile device	0
-ideology	language	0
-plank	dispute resolution method	0
-radiohead	province	0
-electron density	equipment	0
-windows 2000	cell line	0
-aetna	lean protein	0
-hosta	city	0
-cbs	market dynamic	0
-hamilton	natural process	0
-dextroamphetamine	natural disaster	0
-new balance	brand	1
-glycolic acid	natural disaster	0
-ulceration	serial interface	0
-positive	amenity	0
-postcard	solvent	0
-european commission	accessory	0
-equipment model designation	close contact	0
-white balance	service	0
-tan	province	0
-fda	virus	0
-adaptive cruise control	situation	0
-md5	area	0
-gauteng	pollutant	0
-hippo	chelating agent	0
-accounts receivable	band	0
-centrifuge	equipment	1
-crankshaft	soy product	0
-google maps	band	0
-windows 2000	bronchodilator	0
-sober living	autoimmune disease	0
-florida georgia	plant hormone	0
-shopping mall	soy product	0
-washing wall	suitable utensil	0
-palm	natural disaster	0
-mannose	prophet	0
-management science	facility	0
-sacramento	exercise	0
-chalk	bronchodilator	0
-dispersants	additive	1
-aim	word	1
-heptane	aliphatic hydrocarbon	1
-rhubarb	vegetable	1
-sars	regulatory agency	0
-jcb	activity	0
-emergency department	limited circumstance	0
-high	stimulant	0
-hamilton	antioxidizing agent	0
-product name	disturbed area	0
-hormonal imbalance	film	0
-weibull	entity	0
-kevlar	breed	0
-black or white	mobile device	0
-roadside	herb	0
-grant	game	0
-key chain	stimulant	0
-pike	stimulant	0
-florida georgia	stimulant	0
-civil right	memory medium	0
-pitch	parameter	1
-canned goods	genre	0
-dubai	topic	0
-chemical composition	issue	0
-windows media player	treatment	0
-google maps	application	1
-cola	drink	1
-glass substrate	personal protective equipment	0
-albuterol	bronchodilator	1
-dkny	antioxidizing agent	0
-sleeping bag	skill	0
-dictation	musicianship skill	1
-zurich	activity	0
-royal caribbean	cruise line	1
-first aid	low molecular weight heparin	0
-windows 2000	operating system	1
-glycolic acid	alpha hydroxy acid	1
-conservation	amenity	0
-stroller	item	1
-armor	funding source	0
-levi s	natural disaster	0
-radiohead	area	0
-roller	object	0
-lacoste	facility	0
-client s creditor	central bank	0
-single use glove	suitable utensil	1
-stroller	stimulant	0
-hexyl	alkyl group	1
-jackson pollock	property	0
-sound card	vehicle	0
-vaccination	condition	0
-laundry facility	amenity	1
-halfway house	addiction treatment approach	1
-shopping mall	information	0
-driver	market dynamic	1
-permethrin	pyrethroid	1
-halfway house	effect	0
-drone	bacterium	0
-albuterol	cell line	0
-personal preference	factor	1
-cartier	emotion	0
-spoon	object	1
-boxer	essential oil	0
-goldfish	market dynamic	0
-shopping mall	amenity	1
-nematode	african country	0
-adaptive cruise control	third party	0
-fasting	infectious disease	0
-sodium sulfite	antihistamine	0
-demographic change	tree service	0
-new balance	medium player	0
-porsche	information	0
-vasoactive intestinal peptide	musicianship skill	0
-chalk	health issue	0
-vaccination	service	1
-screen printing	bird	0
-safety goggle	manipulating identifier	0
-child s age	property	0
-repo	musicianship skill	0
-angry birds	regulatory agency	0
-civil right	central bank	0
-matrix	film	1
-black or white	method	0
-beethoven	manipulating identifier	0
-nato	asset	0
-ultrasonic	system device	1
-enoxaparin	compound	0
-evaluation	character	0
-malathion	company	0
-email header	genre	0
-zoom	mobile device	0
-sports equipment	magnetic property	0
-sleeping bag	issue	0
-white balance	setting	1
-czech republic	health issue	0
-transferrin	stimulant	0
-scheduling	issue	1
-stem cell research	particle	0
-recognition	film	0
-world trade organization	cost	0
-restless legs syndrome	transcription enhancer	0
-hospital bed	brand	0
-social norm	central bank	0
-harness	cytokine	0
-ideology	ingredient	0
-moses	defect	0
-mashed potato	food	1
-janet jackson	modern comfort	0
-window cleaning	feature	0
-hormonal imbalance	limited circumstance	0
-reggae	cell	0
-mediation	light source	0
-sound card	service	0
-ethernet	serial interface	1
-chemical peel	character	0
-editing	identifier	0
-photon	particle	1
-fda	material	0
-superman	medium player	0
-vacuum cleaner	alpha hydroxy acid	0
-chemical composition	particle	0
-support group meeting	addiction treatment approach	1
-developer	property	0
-malathion	software	0
-envy	meat	0
-tachycardia	limited circumstance	0
-salt concentration	solvent	0
-particulate matter	polyunsaturated fatty acid	0
-quad biking	eastern european country	0
-blood testing	natural disaster	0
-user id	information	1
-erosion	antioxidizing agent	0
-healthy eating	software	0
-coercivity	vegetable oil	0
-postcard	polyunsaturated fatty acid	0
-herniated disc	blood thinner	0
-windows media player	resource	0
-garden	regulation	0
-stereo	serious gastrointestinal toxicity	0
-boxer	facility	0
-stereo	injury	0
-beethoven	composer	1
-golgi apparatus	state	0
-broth	keyword	0
-glass substrate	activity	0
-cadmium plated steel	health issue	0
-bae systems	company	1
-streptococcus pneumoniae	vegetable oil	0
-golgi apparatus	organelle	1
-google scholar	compound	0
-haddock	fish	0
-taurine	activity	0
-email header	vegetable oil	0
-microwave motion detector	system device	1
-stroller	sport	0
-safety rule	sensor	0
-european commission	soy product	0
-thermometer	task	0
-lacoste	pyrethroid	0
-world trade organization	role	0
-maintenance cost	transcription enhancer	0
-eel	exercise	0
-angry birds	application	0
-glycolic acid	role	0
-czech	cell	0
-radiohead	animal	0
-pike	solvent	0
-tesla	feature	0
-manpower	composer	0
-aloe	device	0
-hippo	limited circumstance	0
-google scholar	parameter	0
-malathion	insecticide	1
-search engine optimization	service	1
-agricultural	industry	1
-railway	serial interface	0
-sputum	virus	0
-retirement account	state	0
-pitch	personal expense	0
-cartier	perennial	0
-sound card	device	1
-lisp	company	0
-cola	beverage	1
-bae systems	essential oil	0
-eel	feature	0
-porsche	sensor	0
-palm	soy product	0
-tablet pcs	natural process	0
-czech	journal	0
-limited liability company	brand	0
-conservation	organism	0
-manpower	herb	0
-interferon gamma	topic	0
-plavix	game	0
-halfway house	product	0
-fencing	food	0
-ethernet	service	0
-distortion	market dynamic	0
-hydrocarbon	additive	0
-golgi apparatus	cost	0
-laceration	virus	0
-frankincense	word	0
-vaccinia virus	virus	1
-cryotherapy	close contact	0
-editing	aliphatic hydrocarbon	0
-mashed potato	medication	0
-grant	natural process	0
-garden	part	0
-liver	hash function	0
-taurine	amino acid	1
-chewing tobacco	musicianship skill	0
-sports equipment	infectious disease	0
-soy milk	property	0
-note	information	1
-single use glove	incentive	0
-loader	equipment	1
-bologna	artist	0
-optical sensor	a-list celebrity	0
-vasoactive intestinal peptide	beverage	0
-hela	memory medium	0
-levi s	third party	0
-quake	database	0
-sleeping bag	item	1
-soil ph	close contact	0
-hearing protection	personal protective equipment	1
-sputum	specimen	1
-interferon gamma	cytokine	1
-bill	regulation	0
-sound card	particle	0
-zinc chloride	incentive	0
-diesel engine	defect	0
-magnetometer	mobile device	0
-immunosuppression	personal protective equipment	0
-permethrin	operating system	0
-levi s	soy product	0
-radiohead	operating system	0
-tesla	neutral color	0
-part number	method	0
-amiodarone	method	0
-marriott	company	1
-forgiveness	aliphatic hydrocarbon	0
-manpower	sugar	0
-hearing protection	manipulating identifier	0
-boxer	herb	0
-dosage	third party	0
-polyphenol	compound	1
-cbs	coated metal	0
-blood testing	light source	0
-tree removal	artist	0
-cola	funding source	0
-cadmium plated steel	journal	0
-weight lifting	city	0
-particulate matter	funding source	0
-environmental degradation	surface	0
-photon	addiction treatment approach	0
-liver	brand	0
-coercivity	industry	0
-metal alloy	material	1
-cadmium plated steel	ingredient	0
-zinc chloride	product	0
-baboon	animal	1
-shopping mall	omron product	0
-golgi apparatus	video	0
-autofocus	feature	1
-search engine optimization	chelating agent	0
-bagel	company	0
-transferrin	antihistamine	0
-maintenance cost	company	0
-2d coupe	band	0
-aggregate	fish	0
-albuterol	artist	0
-quad biking	activity	1
-angry birds	vehicle	0
-leds	light source	1
-immunosuppression	amenity	0
-rifle	operating system	0
-osprey	autoimmune disease	0
-microwave motion detector	dispute resolution method	0
-vacuum cleaner	prophet	0
-aetna	essential oil	0
-kissing	organism	0
-palm	bronchodilator	0
-ulceration	tree service	0
-freeze drying	transcription enhancer	0
-maintenance cost	cost	1
-grand jury subpoena	software	0
-aetna	company	1
-window cleaning	antioxidizing agent	0
-motrin	nsaid	1
-md5	hash function	1
-taxi	object	0
-recognition	chelating agent	0
-tamil	purpose	0
-hay fever	tool	0
-chewing tobacco	particle	0
-hormonal imbalance	bronchodilator	0
-holster	accessory	1
-pitch	animal	0
-dextroamphetamine	alkyl group	0
-dictation	facility	0
-canned goods	item	1
-harness	disturbed area	0
-cola	object	0
-weight lifting	sport	1
-binge eating	plasma parameter	0
-classroom	additive	0
-ph value	substrate	0
-clothes washer	african country	0
-cutlery	surface	0
-quake	hash function	0
+ox	animal	1
+cereal	food	1
+antibiotic	treatment	1
+antimony	utility service	0
+magnetic resonance imaging	test	1
+adobe photoshop	application	1
+golf	recreational activity	1
+water skiing	user	0
+enclosure	source	0
+decongestant	movement disorder	0
+vitamin c	personal characteristic	0
+formic	organic acid	1
+electricity	sector	1
+nausea	symptom	1
+malnutrition	condition	1
+watermelon	crop	1
+medical check up	condition	0
+polyoxymethylene	polyacetal	1
+potato	vegetable	1
+microwave	brain region	0
+activity	procedure	0
+medical device	industry	1
+prada	brand	1
+wallet	accessory	1
+sunlight	ace inhibitor	0
+spacer	equipment	0
+ontario	taxane	0
+animal	government program	0
+patient s age	factor	1
+fitness	simple analgesic	0
+thailand	economy	1
+juice	food	1
+horse	livestock	1
+newspaper	traditional medium	1
+computer equipment	region	0
+vitamin a	contaminant	0
+age	parameter	1
+tensile strength	sociodemographic factor	0
+mcp 1	winter sport	0
+hormone	autoimmune disease	0
+conflict resolution	corrosive material	0
+democrat	political tag	1
+thigh	post translational modification	0
+nausea	common side effect	1
+benadryl	nutrient	0
+age	short chain fatty acid	0
+paint	industry	1
+stone	english speaking country	0
+glycosylation	skill	0
+schizophrenia	skin disorder	0
+emirates	currency	0
+adhesion	science	0
+hard hat	personal protective equipment	1
+cattail	scripting language	0
+healthcare bill	fatty fish	0
+lamb	personal factor	0
+carbon capture	hazardous material	0
+age	demographic datum	1
+chemistry	course	1
+gis	european country	0
+hippocampus	water sport	0
+cholera	water borne disease	1
+potato	crop	1
+parkinson s disease	neurological disease	1
+tenant	applicant	1
+social security number	clinical datum	0
+lighting	environmental factor	1
+adjuvant	fossil fuel	0
+electricity	energy source	1
+argon	inert gas	1
+motorola	criterion	0
+sle	social medium site	0
+burberry	chemokine	0
+promoter	natural material	0
+carbon capture	object	0
+metal	usb device	0
+san antonio	chemokine	0
+bakersfield public record	control variable	0
+wallet	program	0
+aluminum oxide	basic service	0
+alkalinity	province	0
+watermelon	fruit	1
+fhm	antibiotic	0
+emc	safety equipment	0
+finnish	seafood	0
+parkinson s disease	building material	0
+rayon	synthetic fiber	1
+motorola	demographic information	0
+myspace	website	1
 boxer	breed	1
-motrin	database	0
-stroller	application	0
-rhubarb	limited circumstance	0
-stereo	substrate	0
-golgi apparatus	lewis acid	0
-glycolic acid	heavy cleaning duty	0
-weight lifting	feature	0
-lacoste	infectious disease	0
-social norm	system device	0
-railway	nsaid	0
-wedding invitation	artist	0
-adelaide	virus	0
-enoxaparin	low molecular weight heparin	1
-autocad	body fluid	0
-matrix	pyrethroid	0
-ethernet	genre	0
-plavix	property	0
-sober living	food	0
-palm oil	treatment	0
-dkny	emotion	0
-2d coupe	company	0
-boxer	artist	0
-potential	antihistamine	0
-centrifuge	cytokine	0
-bae systems	heavy cleaning duty	0
-autocad	soy product	0
-royal caribbean	genre	0
-tamil	language	1
-optical sensor	sensor	1
-jackson pollock	protein	0
-web server	tree service	0
-aim	issue	0
-ethnic background	factor	1
-sars	soy product	0
-albuterol	network	0
-product name	information	1
-fda	issue	0
-healthy eating	heavy cleaning duty	0
-management science	appliance	0
-tan	neutral color	1
-wireless network	neutral color	0
-taxi	company	0
-hearing protection	transcription enhancer	0
-windows media player	tool	0
-hair	personal protective equipment	0
-cbs	close contact	0
-sacramento	effect	0
-thermometer	genre	0
-gauteng	parameter	0
-vasoactive intestinal peptide	body fluid	0
-key chain	city	0
-windows media player	personal expense	0
-florida georgia	state	1
-albuterol	a-list celebrity	0
-marriott	mobile device	0
-repo	game	0
-dunlop	regulation	0
-permethrin	injury	0
-single use glove	vegetable oil	0
-scheduling	task	1
-loose connection	cytokine	0
-lisp	language	1
-glycolic acid	insecticide	0
-binge eating	personal protective equipment	0
-part number	entity	0
-albuterol	coated metal	0
-bulgaria	treatment	0
-canned goods	effect	0
-particulate matter	exercise	0
-spoon	bacterium	0
-washing wall	role	0
-classroom	amenity	0
-loose connection	substrate	0
-adaptive cruise control	state	0
-kissing	close contact	1
-loader	defect	0
-hospital bed	document	0
-goldfish	fish	1
-sweetener	task	0
-wedding invitation	equipment	0
-suede	object	0
-halfway house	compound	0
-healthy eating	topic	1
-soy milk	sport	0
-child s age	modern comfort	0
-scopus	issue	0
-ulceration	serious gastrointestinal toxicity	1
-sports equipment	item	1
-vasoactive intestinal peptide	nsaid	0
-suede	resource	0
-gasification	drink	0
-goldfish	cell	0
-postcard	sugar	0
-railway	document	0
-garden	area	1
-sweetener	cell	0
-spacer	regulation	0
-quake	chelating agent	0
-dubai	lean protein	0
-dosage	factor	1
-muscle cell	personal expense	0
-gauteng	preparation	0
-li	genre	0
-lisp	tool	0
+age	aspect	1
+motivation	concept	1
+lighting	vector borne disease	0
+desktop	personal protective equipment	0
+price	social network	0
+collagen	structural protein	1
+type 1 diabetes	patient demographic	0
+open flame	complementary therapy	0
+tenant	person	1
+film	material	1
+pastel	protein	0
+ceramic	starchy vegetable	0
+vitamin a	nutrient	1
+couple small cookie	poor factor	0
+age	item	1
+firm size	water soluble vitamin	0
+portugal	consideration	0
+glass	industry	1
+age	sociodemographic characteristic	1
+ontario	advantage	0
+experience	phagocytic cell	0
+newspaper	addiction treatment approach	0
+wells fargo	terrible factor	0
+myspace	resource	0
+schedule	airline	0
+electric vehicle	procedure	0
+vitamins a	adverse event	0
+hard hat	expense	0
+support group meeting	industry	0
+pretzel	biological process	0
+blackjack	cell	0
+friendship	hardwood	0
+thailand	gastrointestinal adverse effect	0
+firm size	potential confounding factor	0
+copenhagen	tropical disease	0
+fhm	clinical characteristic	0
+smart card	technology	1
+metal	neurodegenerative disorder	0
+malaria	snack	0
+white bread	neurological disease	0
+woodland	malignancy	0
+social norm	factor	1
+alfalfa	inert gas	0
+sexual orientation	skill	0
+meal	cost	1
+antimony	hydrocarbon	0
+crab	socio demographic characteristic	0
+county	parameter	0
+horse	legume	0
+healthcare bill	independent variable	0
+software	shape	0
+thailand	peripheral device	0
+dill	mosquito borne disease	0
+dose	professional phagocyte	0
+expenditure	energy source	0
+css	mental disorder	0
+conflict resolution	topic	1
+glass	brittle material	1
+bread	product	1
+promoter	science	0
+trout	specie	1
+ccj	undesirable factor	1
+diphenhydramine	recreational activity	0
+myofascial release	mineral	0
+aspect	valuable information	0
+animal	theme	1
+pyramid scheme	criterion	0
+human being	posttranslational modification	0
+age	reason	1
+potato	root crop	1
+trout	region	0
+hard hat	province	0
+white bread	fuel	0
+schizophrenia	physical property	0
+employer	cost	0
+coverall	local government	0
+fitting	socio demographic characteristic	0
+fhm	negative factor	0
+malaria	illness	1
+licensing	university	0
+extraction time	natural element	0
+thermal stability	property	1
+fertilizer	chemical	1
+dhea	neuropsychiatric disorder	0
+butyrate	processed meat	0
+project	farm animal	0
+activity	factor	1
+age	social factor	1
+age	covariate	1
+craigslist	socio demographic variable	0
+catering	valuable	0
+argon	noble gas	1
+potato	grain	0
+horse	farm animal	1
+social security number	sensitive datum	1
+biscuit	hydrocarbon	0
+anandamide	advantage	0
+honda	clinical information	0
+sle	facility	0
+motivation	prognostic factor	0
+genetic predisposition	bakery item	0
+water skiing	antibiotic	0
+macrophage	professional phagocyte	1
+adhesion	property	1
+kenya	diagnostic test	0
+ceramic	sociodemographic factor	0
+healthcare bill	small financial expense	1
+rayon	product	0
+couple small cookie	monetary cost	0
+perl	oily fish	0
+copenhagen	input device	0
+quantity	cytokine	0
+microwave	amenity	1
+base two	sensitive personal information	0
+bulimia	eating disorder	1
+gymnasium	western country	0
+desktop	endocannabinoid	0
+fibroblast growth factor	external factor	0
+johnny cash	sensitive information	0
+emirates	science	0
+cetirizine	social network site	0
+cetirizine	antihistamine	1
+consultancy	advantage	0
+age	confounding factor	1
+x-rays	test	1
+apoptosis	cellular process	1
+stability	nutrient	0
+heart	green leafy vegetable	0
+metaphor	member state	0
+fitness	agent	0
+harvard	school	1
+quercetin	polyphenol	1
+age	background variable	1
+dishwasher	extreme weather event	0
+pacing	fresh fruit	0
+bracelet	jewelry	1
+extraction time	skin condition	0
+jaundice	symptom	1
+enalapril	neurodegenerative disorder	0
+mumbai	issue	0
+trout	fatty fish	1
+keyboard	post translational modification	0
+smart card	asset	0
+malnutrition	asian country	0
+expenditure	public program	0
+breast cancer	skin disease	0
+malnutrition	cosmetic part	0
+midazolam	intellectual property right	0
+stone	building material	1
+price	stakeholder	0
+peace	mental illness	0
+licensing	confounding variable	0
+flooding	science	0
+argon	ingredient	0
+snapper	metal	0
+cereal	item	1
+hormone	vital organ	0
+electricity	utility	1
+medium	recyclable material	0
+head	brand	0
+sle	autoimmune disease	1
+enalapril	habitat	0
+polymerase chain reaction	molecular method	1
+patent	natural polymer	0
+ccj	awful factor	1
+in situ hybridization	feature	0
+sunlight	word	0
+magnetic resonance imaging	technique	1
+mrs	side effect	0
+biotite	social medium	0
+benadryl	simple carb	0
+woodland	physical property	0
+sle	expense	0
+cricket	insect	1
+last name	traditional medium	0
+hippocampus	region	1
+medical check up	firearm	0
+homosexuality	sensor	0
+patent	inorganic contaminant	0
+adobe photoshop	invertebrate	0
+alfalfa	antihistamine	0
+activity	inert gas	0
+thigh	variable	0
+malathion	insecticide	1
+bioethanol	tropical fruit	0
+payroll advance	name	1
+prada	part of the world	0
+ceramic	place	0
+wall street journal	newspaper	1
+polymerase chain reaction	personally identifiable information	0
+newspaper	source	1
+bakersfield public record	natural element	0
+biscuit	brain region	0
+homosexuality	confounding variable	0
+vitamin c	starchy vegetable	0
+pretzel	software	0
+hard hat	protective equipment	1
+software	flavonoid	0
+bacon	food	1
+coercivity	magnetic property	1
+glycine	print medium	0
+hippocampus	brain region	1
+potato	starch	1
+sears	company	1
+homosexuality	topic	1
+age	personal factor	1
+first aid	inorganic material	0
+malaria	tropical disease	1
+baboon	breed partner	0
+breast cancer	side effect	0
+wallet	personal item	1
+nausea	publication	0
+age	socio demographic datum	1
+breathing exercise	cold water fish	0
+age	personally identifiable information	0
+petroleum	industry	1
+polymerase chain reaction	conductive material	0
+environment	sector	1
+ccj	less than perfect credit factor	1
+rayon	additive	0
+magnetic resonance imaging	method	1
+dental care	fresh fruit	0
+bracelet	course	0
+collagen	protein	1
+hippocampus	component	0
+alfalfa	breed	0
+paint	material	1
+price	attribute	1
+schizophrenia	ingredient	0
+medical device	apps	0
+employer	consideration	0
+music festival	crustacean	0
+transcript	cruciferous vegetable	0
+range	brain region	0
+age	confounding variable	1
+role playing	polyacetal	0
+heart	organ	1
+sears	retailer	1
+keyboard	peripheral	1
+antimony	public program	0
+electricity	industry	1
+css	physical property	0
+preservative	ingredient	1
+butyrate	short chain fatty acid	1
+firm size	sociodemographic variable	0
+hot flash	recyclable material	0
+decongestant	patient demographic	0
+pulse width	poor factor	0
+autonomy	professional phagocyte	0
+alfalfa	designer	0
+glass	surface	1
+bread	complex carbohydrate	0
+emirates	physical symptom	0
+nmr	recyclable material	0
+currency fluctuation	destination	0
+promoter	essential service	0
+potato	ingredient	1
+difficulty swallowing	cell	0
+turkish steam bath	substance	0
+mahogany	legume	0
+prada	socio demographic variable	0
+paint	coating	1
+malnutrition	psychiatric condition	0
+hot flash	symptom	1
+enclosure	topic	0
+opioid antagonist	medication	1
+electric vehicle	organic acid	0
+bromocriptine	dopamine agonist	1
+experience	personal factor	0
+bacon	adverse event	0
+glass	substrate	1
+ridge	inflammatory cell	0
+midazolam	characteristic	0
+electricity	basic amenity	1
+cabbage	simple analgesic	0
+baseball	sport activity	1
+film	patient related factor	0
+bracelet	item	1
+vitamin c	social networking site	0
+meal	vegetable	0
+hydrogen bonding	print medium	0
+animal	object	1
+social security number	personal information	1
+healthcare bill	monetary expense	1
+bulgur	animal	0
+macrolide	physical symptom	0
+glass	smooth surface	1
+lighting	newspaper	0
+pulse width	parameter	1
+wallet	innate immune cell	0
+naloxone	additive	0
+disney	pharmaceutically acceptable excipient	0
+magnetic resonance imaging	imaging method	1
+nausea	physical symptom	1
+apoptosis	flavonol	0
+polyoxymethylene	demographic factor	0
+browser	psychiatric disorder	0
+radiator	artist	0
+waterskiing	problem	0
+human being	seafood	0
+ireland	jurisdiction	1
+food security	scripting language	0
+dublin	city	1
+casting	starchy food	0
+mahogany	mineral	0
+ireland	state	1
+financial institution	skin disease	0
+blackjack	table game	1
+heart	fossil fuel	0
+burberry	theme	0
+baseball	unlawful multi-level marketing	0
+antihistamine	medication	1
+finite difference method	numerical method	1
+electricity	credit factor	0
+lighter	social factor	0
+midazolam	common side effect	0
+liposuction	traditional risk factor	0
+formic	field	0
+wallet	valuable	1
+potato	root vegetable	1
+ccj	below average credit factor	1
+alkalinity	phagocyte	0
+aluminum oxide	vegetable	0
+macrophage	phagocyte	1
+sims	peripheral device	0
+wallet	person	0
+snapper	carbohydrate	0
+adjuvant	vector borne disease	0
+range	applicant	0
+pastel	medium	1
+financial institution	organization	1
+glycine	antibiotic	0
+motivation	designer	0
+tensile strength	mechanical property	1
+sexual orientation	antioxidant	0
+antihistamine	simple painkiller	0
+portugal	discipline	0
+glass	accessory	1
+price	criterion	1
+golf	peripheral	0
+metaphor	literary device	1
+boxer	complication	0
+healthcare bill	corrosive material	0
+cereal	imaging modality	0
+cereal	social network site	0
+licensing	mammal	0
+genetic	field	1
+range	appliance	1
+homosexuality	client	0
+fitness	topic	1
+malathion	western country	0
+collagen	natural polymer	1
+mask	utility service	0
+skiing	sport	1
+procter	area	0
+geometry	social medium site	0
+boxer	cell	0
+cabbage	plant	1
+mask	protective clothing	1
+simplicity	molecular technique	0
+loyalty	metal	0
+role playing	flavonoid	0
+perl	facility	0
+pyramid scheme	brain region	0
+turpentine	streaming service	0
+expenditure	power tool	0
+glasgow	recreational activity	0
+vitamin a	vitamin	1
+b12	demographic datum	0
+water skiing	water sport	1
+x-rays	diagnostic test	1
+simplicity	protein	0
+head	imaging technique	0
+mrs	title	1
+decongestant	medication	1
+parkinson s disease	disorder	1
+trout	independent variable	0
+il 2	cruciferous vegetable	0
+hormone	potassium rich food	0
+mask	personal protective equipment	1
+breast cancer	malignancy	1
+motorola	manufacturer	1
+newspaper	resource	1
+juice	vector borne disease	0
+cabbage	cruciferous vegetable	1
+liposuction	hardwood	0
+dishwasher	amenity	1
+baseball	cruciferous vegetable	0
+schedule	information	1
+watermelon	place	0
+head	supplement	0
+metal	product	1
+computer equipment	brittle material	0
+glasgow	hormone	0
+political affiliation	hormone	0
+emerald	gemstone	1
+macrolide	baked goods	0
+dryer	government program	0
+potato	product	1
+catering	sensitive datum	0
+bacon	beverage	0
+cd s	social network site	0
+flooding	natural hazard	1
+ox	treatment	0
+electricity	expense	1
+argon	gas	1
+myofascial release	invertebrate	0
+employer	sensitive information	0
+hsbc	question	0
+argon	rare gas	1
+b12	low credit score factor	0
+australia	case	1
+garden	undesirable factor	0
+age	language	0
+software	intangible asset	1
+cricket	patient characteristic	0
+baboon	prebiotic	0
+medicare	domesticated animal	0
+smart card	province	0
+gis	tool	1
+tensile strength	region	0
+lamb	meat	1
+white bread	refined carbohydrate	1
+white bread	agent	0
+hard hat	personal item	0
+pacing	narrative technique	1
+hydrogen bonding	brand	0
+myspace	social medium	1
+antibiotic	document	0
+pretzel	confounding factor	0
+san antonio	discipline	0
+dishwasher	seafood	0
+lighting	apps	0
+bacon	basic amenity	0
+myofascial release	programming language	0
+healthcare bill	destination	0
+snapper	person	0
+acupuncture	treatment	1
+inulin	expense	0
+heart	vital organ	1
+emerald	accessory	0
+dublin	food	0
+liposuction	procedure	1
+medicare	basic service	0
+opioid antagonist	publication	0
+netflix	apps	1
+microwave	device	1
+age	personal datum	1
+water activity	adverse effect	0
+loyalty	character	0
+quantity	clinical characteristic	0
+glass	entitlement program	0
+australia	destination	1
+coercivity	numerical method	0
+naacp	organization	1
+keyboard	field	0
+bakersfield public record	protective equipment	0
+laundry	facility	1
+procter	short chain fatty acid	0
+watermelon	inflammatory cell	0
+spacer	potassium rich food	0
+picnic	fish	0
+firm size	variable	1
+skiing	jurisdiction	0
+head start	root crop	0
+lighting	factor	1
+turnip	root crop	1
+decongestant	social medium site	0
+stone	material	1
+bread	climacteric fruit	0
+thailand	asian country	1
+fitting	variable	0
+css	infection	0
+age	patient characteristic	1
+argon	demographic datum	0
+mcp 1	cost	0
+cereal	product	1
+head	protein	0
+lighter	item	1
+open shortest path first	growth factor	0
+employer	stakeholder	1
+bread	bakery item	1
+paint	tool	0
+antibiotic	medication	1
+parkinson s disease	movement disorder	1
+hsbc	market	0
+age	potential confounder	1
+tenant	software	0
+wall street journal	medium outlet	1
+bracelet	attribute	0
+contact detail	user	0
+alfalfa	crop	1
+glass	object	1
+motorola	breed partner	1
+paint	product	1
+anandamide	base	0
+cattail	traditional material	0
+manpower	hormone sensitive condition	0
+juice	terrible factor	0
+demand	factor	1
+glycine	currency	0
+acupuncture	awful factor	0
+thailand	market	1
+mask	environmental factor	0
+motivation	issue	1
+inulin	infection	0
+trout	value	0
+flooding	disaster	1
+nausea	adverse effect	1
+alkalinity	extreme weather event	0
+banana	flavor	1
+bulimia	industry	0
+browser	application	1
+disney	small portion	0
+expenditure	fiber	0
+harvard	university	1
+banana	fruit	1
+hydrogen bonding	antigen presenting cell	0
+myspace	member state	0
+prada	drink	0
+aspect	skill	0
+chemistry	molecular method	0
+electricity	facility	1
+difficulty swallowing	practice	0
+schizophrenia	serious mental illness	1
+catering	institution	0
+bracelet	brand	0
+mount katahdin	pollutant	0
+project	vector borne disease	0
+water activity	nonspecific symptom	0
+medium	systemic symptom	0
+head start	stakeholder	0
+hormone	factor	1
+democrat	inorganic contaminant	0
+copyrighted material	brittle material	0
+il 2	symptom	0
+consultancy	staple	0
+info trac	supplemental material	1
+portugal	nation	1
+radiator	green vegetable	0
+wall street journal	ace inhibitor	0
+medium	institution	1
+ridge	adverse event	0
+mcp 1	chemokine	1
+banana	character	0
+age	clinical variable	1
+lighting	feature	1
+batman	gastrointestinal symptom	0
+metal	conductive material	1
+homosexuality	issue	1
+turnip	equipment	0
+political affiliation	question	0
+carnation	noble gas	0
+hippocampus	brain area	1
+loyalty	molecular method	0
+radar	technology	1
+system administrator	input	0
+crab	livestock	0
+rowing	staple	0
+loyalty	department store	0
+cholera	natural disaster	0
+bulgur	parameter	0
+sound	domesticated animal	0
+fertilizer	industry	1
+nausea	adverse reaction	1
+zoledronic acid	antihistamine	0
+rifle	popular social networking site	0
+head	body part	1
+petroleum	document	0
+breathing exercise	relaxation technique	1
+newspaper	mass medium	1
+bulimia	technique	0
+turkish steam bath	popular amenity	1
+hormone	insecticide	0
+cabbage	crop	1
+environment	issue	1
+hydrogen bonding	interaction	1
+paracetamol	simple analgesic	1
+licensing	institution	0
+biotite	concept	0
+keyboard	item	1
+myspace	social network	1
+sexual orientation	cold water fish	0
+inulin	building material	0
+barcelona	phagocyte	0
+golf	item	0
+age	feature	1
+coverall	external factor	0
+stone	natural material	1
+juice	drink	1
+sears	political tag	0
+white bread	food	1
+processor	root vegetable	0
+emirates	mammal	0
+system administrator	poor credit factor	0
+wall street journal	imaging modality	0
+healthcare bill	store	0
+electricity	topic	0
+breast cancer	relaxation technique	0
+ireland	personally identifiable information	0
+pulse width	host factor	0
+bulimia	minor side effect	0
+turnip	investigation	0
+activity	food	0
+baseball	southeast asian country	0
+naloxone	instrument	0
+judiciary	neurological disease	0
+lighting	equipment	1
+netflix	starchy vegetable	0
+dill	factor	0
+last name	variable	0
+dublin	household appliance	0
+quercetin	flavonol	1
+pacing	hormone	0
+microwave	confounding variable	0
+patent	intellectual property right	1
+polyoxymethylene	state	0
+golf	amenity	1
+formic	mass medium	0
+biotite	category	0
+ontario	bank	0
+mumbai	department store	0
+open flame	illness	0
+type 1 diabetes	small monetary expense	0
+cattail	plant	1
+processor	inflammatory cell	0
+nmr	bill	0
+music festival	event	1
+stability	terrible factor	0
+australia	place	1
+social security number	object	0
+bromocriptine	instrument	0
+activity	information	1
+mask	unlawful multi-level marketing	0
+sears	basic service	0
+acupuncture	therapy	1
+euro	farm animal	0
+microwave	appliance	1
+argon	flavor	0
+medicare	western country	0
+dental care	service	1
+picnic	grain	0
+film	domestic animal	0
+sexual orientation	issue	1
+sears	department store	1
+malaria	winter sport	0
+metal	substance	1
+pentane	breed partner	0
+rafting	activity	1
+firm size	rare gas	0
+nausea	illness	0
+role playing	mosquito borne disease	0
+homosexuality	conductive material	0
+australia	economy	1
+breast cancer	component	0
+deep vein thrombosis	immune cell	0
+xvid	department store	0
+age	clinical factor	1
+lamb	cold water fish	0
+metaphor	account factor	0
+opioid antagonist	problem	0
+browser	covariate	0
+autonomy	imaging technique	0
+cattail	household appliance	0
+glass	medium	1
+sunlight	environmental factor	1
+emirates	social medium	0
+uv stabilizer	neuropsychiatric disorder	0
+wall street journal	character	0
+jaundice	flavor	0
+spss	hard or sharp object	0
+dose	factor	1
+glycine	amino acid	1
+naacp	clinical variable	0
+medical device	characteristic	0
+antihistamine	casino game	0
+licensing	issue	1
+cabbage	food	1
+meal	immune cell	0
+horse	personal characteristic	0
+aspect	component	0
+stability	issue	1
+paracetamol	over the counter painkiller	1
+fibroblast growth factor	illness	0
+cereal	crop	1
+stone	complication	0
+animal	topic	1
+software	socio demographic datum	0
+anandamide	brand	0
+johnny cash	confounding factor	0
+promoter	regulatory element	1
+australia	part of the world	1
+medical device	ecm protein	0
+electric vehicle	variable	0
+biotite	mineral	1
+barcelona	withdrawal symptom	0
+burberry	basic amenity	0
+argon	inert atmosphere	1
+adhesion	risk factor	0
+ccj	credit score factor	1
+medium	sector	1
+bracelet	valuable information	0
+sims	game	1
+cetirizine	member state	0
+bromocriptine	shellfish	0
+keyboard	social networking site	0
+uv stabilizer	simple analgesic	0
+metal	oily fish	0
+music festival	insect	0
+range	recreational activity	0
+liposuction	application	0
+potato	complex carbohydrate	1
+macrolide	antibiotic	1
+chemistry	water borne disease	0
+honda	manufacturer	1
+ontario	jurisdiction	1
+euro	green vegetable	0
+emerald	public utility	0
+catering	service	1
+price	commonwealth country	0
+fitting	product	1
+san antonio	disorder	0
+biscuit	item	1
+experience	factor	1
+diphenhydramine	condition	0
+rayon	value	0
+schizophrenia	disorder	1
+political affiliation	sensitive personal information	1
+emc	large appliance	0
+dill	mechanical property	0
+adhesion	hazardous material	0
+cricket	waterborne disease	0
+animal	category	1
+medium	stakeholder	1
+glass	product	1
+peace	agricultural input	0
+thermal stability	socio demographic characteristic	0
+motivation	variable	1
+processor	component	1
+diphenhydramine	antihistamine	1
+mumbai	mosquito borne disease	0
+political	confounding variable	0
+age	confounder	1
+eczema	legume	0
+quantity	essential service	0
+malaria	mosquito borne disease	1
+malathion	mineral	0
+role playing	protective equipment	0
+turkish steam bath	activity	0
+trout	oily fish	1
+eczema	skin condition	1
+tensile strength	physical property	1
+white bread	carbohydrate	1
+myspace	demographic datum	0
+enalapril	ace inhibitor	1
+aspect	personal expense	0
+food security	physical property	0
+pulse width	popular video format	0
+paracetamol	painkiller	1
+water skiing	flavor	0
+san antonio	city	1
+garden	root crop	0
+eczema	difference	0
+adjuvant	professional phagocyte	0
+lighting	attribute	0
+collagen	material	1
+genetic predisposition	extreme weather event	0
+disney	brand	1
+zoledronic acid	organization	0
+schizophrenia	psychiatric disorder	1
+antibiotic	factor	1
+adobe photoshop	software	1
+polymerase chain reaction	technique	1
+software	resource	1
+wallet	item	1
+trout	brittle material	0
+thailand	water soluble vitamin	0
+hydrogen bonding	painkiller	0
+metaphor	innate immune cell	0
+manpower	mental illness	0
+harvard	covariate	0
+argon	carrier gas	1
+ccj	terrible factor	1
+medical check up	regulatory element	0
+pentane	hydrocarbon	1
+x-rays	investigation	1
+sears	store	1
+paracetamol	analgesic	1
+aluminum oxide	information	0
+tenant	oecd country	0
+motivation	topic	1
+bread	food	1
+social norm	source	0
+glasgow	smooth surface	0
+nmr	recreational activity	0
+collagen	accessory	0
+eczema	demographic information	0
+head start	basic amenity	0
+horse	university	0
+alfalfa	legume	1
+acupuncture	method	1
+sunlight	factor	1
+schedule	breed	0
+age	question	1
+system administrator	financial aspect of product development	0
+turpentine	environmental factor	0
+payroll advance	financial expense	0
+role playing	brittle material	0
+turpentine	demographic datum	0
+lamb	cellular process	0
+bulgur	cruciferous vegetable	0
+white bread	simple carb	1
+rifle	physical symptom	0
+juice	liquid	1
+social norm	airline	0
+thermal stability	natural material	0
+finnish	complementary therapy	0
+open shortest path first	popular amenity	0
+newcastle	datum	0
+ccj	poor credit factor	1
+glass	fiber	1
+demand	popular amenity	0
+couple small cookie	theme	0
+software	area	1
+in situ hybridization	adjuvant	0
+boxer	gastrointestinal symptom	0
+county	demographic information	0
+banana	department store	0
+sims	university	0
+drill	manufacturer	0
+price	information	1
+finite difference method	water soluble vitamin	0
+age	potential confounding factor	1
+css	mineral	0
+zoledronic acid	bisphosphonate	1
+medium	name	0
+electricity	essential service	1
+adobe photoshop	jurisdiction	0
+sims	unlawful multi-level marketing	0
+young s modulus	fresh fruit	0
+banana	potassium rich food	1
+naacp	growth factor	0
+burberry	organism	0
+conflict resolution	extracellular matrix protein	0
+last name	undesirable factor	0
+glass	recyclable material	1
+stone	traditional material	1
+loyalty	numerical method	0
+golf	service	0
+gymnasium	organism	0
+potato	structural protein	0
+project	seafood	0
+open shortest path first	adverse event	0
+x-rays	infection	0
+midazolam	movement disorder	0
+vitamin c	european country	0
+vitamins a	antioxidant	1
+cd s	supplemental material	1
+software	item	1
+argon	popular social networking site	0
+paracetamol	jurisdiction	0
+quantity	flavonoids	0
+friendship	gas	0
+biscuit	food	1
+stone	control variable	0
+price	grain	0
+radar	variable	0
+polymerase chain reaction	polyphenol	0
+golf	carbohydrate	0
+snapper	mineral	0
+political affiliation	organic acid	0
+inulin	prebiotic	1
+craigslist	website	1
+democrat	simple carb	0
+parkinson s disease	condition	1
+cd s	sensitive datum	0
+banana	crop	1
+meal	service	1
+petroleum	invertebrate	0
+apoptosis	simple carb	0
+electricity	amenity	1
+utah	mechanical property	0
+woodland	starchy food	0
+mrs	theme	0
+social security number	information	1
+metal	item	1
+mrs	molecular technique	0
+base two	skin problem	0
+hot flash	appliance	0
+parkinson s disease	transparent material	0
+sims	complementary therapy	0
+pentane	personal factor	0
+autonomy	concept	1
+polyoxymethylene	outdoor activity	0
+vitamins a	place	0
+stability	grain	0
+contact detail	information	1
+low tire pressure warning	biological factor	0
+ccj	substance	0
+antihistamine	medicine	1
+smart card	skin problem	0
+garden	processed meat	0
+consultancy	service	1
+metal	object	1
+skiing	software	0
+fertilizer	local government	0
+golf	outdoor activity	1
+aspect	factor	1
+lighting	service	1
+meal	expense	1
+glass	substance	1
+cricket	sport	1
+apoptosis	body part	0
+couple small cookie	social medium site	0
+age	sociodemographic variable	1
+dishwasher	peripheral	0
+simplicity	advantage	1
+ccj	low credit score factor	1
+age	biological factor	1
+open flame	narrative technique	0
+processor	social network site	0
+baseball	activity	1
+fitness	anxiety disorder	0
+craigslist	imaging study	0
+electric vehicle	scripting language	0
+midazolam	vegetable	0
+macrophage	phagocytic cell	1
+genetic	financial aspect of product development	0
+uv stabilizer	conductive material	0
+young s modulus	simple carb	0
+laundry	inert gas	0
+lighter	baseline characteristic	0
+antimony	skin problem	0
 sound	topic	1
-note	mobile device	0
-li	symptom	0
-clothes washer	neuropeptide	0
-scheduling	service	0
-scopus	material	0
-jcb	sport	0
-clothes washer	international organization	0
-magnetite	mineral	1
-developer	food	0
-malathion	alpha hydroxy acid	0
-erosion	cytokine	0
-hosta	manipulating identifier	0
-diesel engine	band	0
-herniated disc	incentive	0
-conservation	topic	0
-dubai	brand	0
-holster	organ	0
-chemical composition	sensor	0
-lacoste	brand	1
-limited liability company	symptom	0
-window cleaning	resource	0
-golgi apparatus	band	0
-dunlop	tool	0
-hydroxyzine	african country	0
-laundry facility	sugar	0
-web server	disturbed area	0
-window cleaning	service	1
-single use glove	factor	0
-restless legs syndrome	sleep disorder	1
-waste management	tree service	0
-plasma	bronchodilator	0
-bologna	meat	1
-herniated disc	application	0
-endophthalmitis	personal expense	0
-quad biking	condition	0
-palm	animal	0
-retirement account	factor	0
-mast cell	cell	1
-liver	cost	0
-magnetometer	sensor	1
-frankincense	regulatory agency	0
-coercivity	composer	0
-polyisobutylene	part	0
-contract research organization	heavy cleaning duty	0
-particulate matter	journal	0
-levi s	surface	0
-spoon	role	0
-hcv	virus	1
-fasting	purpose	0
-5s	serial interface	0
-positive	vehicle	0
-kevlar	surface	0
-roadside	regulatory agency	0
-amiodarone	specimen	0
-adida	brand	1
-civil right	issue	1
-driver	chelating agent	0
-laundry facility	vegetable oil	0
-mannose	medium player	0
-sao paulo	factor	0
-plasma	device	0
-google maps	facility	0
-accounts receivable	asset	1
-wedding invitation	purpose	1
-herniated disc	condition	1
-environmental degradation	issue	1
-sound	specimen	0
-driver	distribution	0
-hay fever	province	0
-soil ph	artist	0
-muscle cell	item	0
-royal caribbean	antioxidizing agent	0
-recognition	factor	1
-jackson pollock	electrical appliance	0
-ethnic background	prophet	0
-frankincense	essential oil	1
-google maps	product	0
-ethnic background	sport	0
-hamilton	city	1
-bae systems	brand	0
-ethylenediaminetetraacetic acid	african country	0
-white balance	regulation	0
-telephone call	equipment	0
-template	festival	0
-study skill	topic	1
-european commission	international organization	1
-agricultural	solvent	0
-adelaide	city	1
-wireless network	system device	0
-halfway house	organ	0
-forest fire	system device	0
-dextroamphetamine	addiction treatment approach	0
-postcard	item	1
-washing wall	keyword	0
-transferrin	musicianship skill	0
-user id	situation	0
-grand jury subpoena	protein	0
-hcv	market dynamic	0
-magnetometer	bird	0
-kevlar	role	0
-thermometer	cost	0
-binge eating	eating disorder	1
-google scholar	database	0
-developer	pollutant	0
-janet jackson	funding source	0
-janet jackson	a-list celebrity	1
-ultrasonic	operating system	0
-goldfish	bird	0
-hippo	animal	1
-glastonbury	condition	0
-cutlery	complication	0
-rifle	alpha hydroxy acid	0
-vacuum cleaner	parameter	0
-bae systems	keyword	0
-hydroxyzine	state	0
-new balance	prophet	0
-clothes washer	part	0
-vaccinia virus	manipulating identifier	0
-classroom	incentive	0
-envy	plasma parameter	0
-pike	fish	1
-scopus	database	1
-heptane	body fluid	0
-heptane	cell line	0
-bill	network	0
-permethrin	document	0
-bologna	coated metal	0
-eel	fish	1
-new balance	disturbed area	0
-safety rule	word	0
-laundry facility	insecticide	0
-baboon	cell	0
-neck pain	funding source	0
-dubai	equipment	0
-bagel	parameter	0
-neil young	cytokine	0
-emergency department	patient care unit	1
-vaccination	material	0
-glastonbury	brand	0
-wedding invitation	genre	0
-diesel engine	sport	0
-thermostat	injury	0
-zoom	feature	1
-zinc chloride	effect	0
-luggage	item	1
-asparagine	artist	0
-shopping mall	medium player	0
-sputum	industry	0
-restless legs syndrome	condition	0
-magnetite	item	0
-plasma	body fluid	1
-immunosuppression	plant hormone	0
-optical sensor	application	0
-cola	material	0
-classroom	facility	1
-support group meeting	game	0
-hair	system device	0
-immunosuppression	ingredient	0
-windows media player	service	0
-malathion	bronchodilator	0
-eel	antihistamine	0
-pulse width	product	0
-sao paulo	market dynamic	0
-scopus	area	0
-black or white	antioxidizing agent	0
-md5	regulatory agency	0
-healthy eating	title	0
-high	neuropeptide	0
-nato	sleep disorder	0
-dosage	setting	0
-first aid	cytokine	0
-forgiveness	perennial	0
-editing	facility	0
-editing	organism	0
-sweetener	ingredient	1
-hospital bed	item	1
-janet jackson	pollutant	0
-absorption	optical property	1
-interferon gamma	bird	0
-emergency department	credit card	0
-b2	condition	0
-glass substrate	substrate	1
-roadside	mobile device	0
-amiodarone	suitable utensil	0
-baboon	specimen	0
-hippo	low molecular weight heparin	0
-spoon	compound	0
-luggage	object	0
-streptococcus pneumoniae	mineral	0
-polyisobutylene	pollutant	0
-bill	manipulating identifier	0
-rous sarcoma virus enhancer	credit card	0
-wireless network	serial interface	1
-dunlop	database	0
-czech republic	central bank	0
-absorption	band	0
-client s creditor	nsaid	0
-polyphenol	material	0
-slipper	hash function	0
-kissing	specimen	0
-fda	credit card	0
-kevlar	material	1
-dkny	synthetic elastomer	0
-product name	bacterium	0
-demographic change	sport	0
-floppy disk	additive	0
-motrin	lewis acid	0
-holster	medication	0
-mannose	information	0
-rous sarcoma virus enhancer	amino acid	0
-user id	mobile device	0
-distortion	alpha hydroxy acid	0
-bulgaria	eastern european country	1
-angry birds	herb	0
-telephone call	distribution	0
-streptococcus pneumoniae	musicianship skill	0
-freelance	lean protein	0
-suede	material	1
-angry birds	neuropeptide	0
-chemical peel	treatment	1
-note	disturbed area	0
-mediation	dispute resolution method	1
-hela	symptom	0
-aggregate	material	1
-enoxaparin	eating disorder	0
-heptane	liquid	0
-evaluation	alpha hydroxy acid	0
-user id	appliance	0
-scheduling	symptom	0
-rous sarcoma virus enhancer	resource	0
-galvanized	cruise line	0
-beethoven	technology	0
-polyphenol	african country	0
-neck pain	transcription enhancer	0
-soy milk	soy product	1
-rous sarcoma virus enhancer	eating disorder	0
-asparagine	city	0
-vaccination	skill	0
-quad biking	additive	0
-czech republic	eating disorder	0
-overhead	antioxidizing agent	0
-forest fire	bronchodilator	0
+loyalty	quality	1
+kenya	hormone	0
+bulgur	state	0
+pentane	natural polymer	0
+bracelet	emergency	0
+vitamin a	fat soluble vitamin	1
+naacp	process	0
+picnic	activity	1
+adhesion	large appliance	0
+dishwasher	dopamine agonist	0
+heart	shape	1
+nausea	sector	0
+newspaper	gastrointestinal adverse effect	0
+electric vehicle	technology	1
+preservative	additive	1
+bromocriptine	source	0
+zoledronic acid	consideration	0
+credit card information	local material	0
+difficulty swallowing	reason	0
+system administrator	gastrointestinal effect	0
+casting	process	1
+schizophrenia	psychotic disorder	1
+age	datum	1
+australia	market	1
+political	valuable information	0
+friendship	shape	0
+australia	english speaking country	1
+baseball	team sport	1
+paclitaxel	demographic variable	0
+dishwasher	household appliance	1
+ceramic	brittle material	1
+genetic	accessory	0
+emc	cell	0
+social norm	additive	0
+kenya	component	0
+computer equipment	emergency	1
+animal	organism	1
+pastel	bakery item	0
+consultancy	peripheral device	0
+support group meeting	ace inhibitor	0
+animal	unlawful multi-level marketing	0
+netflix	company	1
+ceramic	endocannabinoid	0
+cetirizine	natural hazard	0
+age	clinical datum	1
+juice	beverage	1
+breast cancer	theme	0
+dishwasher	unlawful multi-level marketing	0
+polyoxymethylene	infectious disease	0
+biscuit	concept	0
+age	environmental factor	1
+coverall	root vegetable	0
+age	variable	1
+stability	parameter	1
+peace	confounder	0
+social security number	personally identifiable information	1
+nausea	problem	1
+glass	confounding factor	0
+paint	fish	0
+xvid	terrible factor	0
+argon	program	0
+antibiotic	mosquito borne disease	0
+homosexuality	regulatory element	0
+cetirizine	input	0
+aluminum oxide	credit factor	0
+decongestant	basic service	0
+coercivity	problem	0
+meal	livestock	0
+schizophrenia	psychiatric condition	1
+australia	commonwealth country	1
+geographic location	cold water fish	0
+eczema	skin problem	1
+peace	issue	1
+credit card information	sensitive information	1
+carbon capture	household appliance	0
+age	patient related factor	1
+fitness	difference	0
+acupuncture	practice	1
+geometry	gastrointestinal adverse effect	0
+crab	small monetary cost	0
+paclitaxel	socio demographic datum	0
+patent	variable	0
+preservative	activity	0
+banana	item	1
+bread	carbohydrate	1
+rifle	monetary expense	0
+open shortest path first	biological factor	0
+pyramid scheme	unlawful multi level marketing	1
+turpentine	sensitive information	0
+newcastle	city	1
+parkinson s disease	neurodegenerative disorder	1
+in situ hybridization	baseline characteristic	0
+spss	input device	0
+polyoxymethylene	procedure	0
+project	sensitive information	0
+blackjack	object	0
+low tire pressure warning	patient information	0
+water skiing	activity	1
+ip	english speaking country	0
+thermal stability	store	0
+smart card	physical symptom	0
+ontario	province	1
+x-rays	addiction treatment approach	0
+genetic	factor	0
+vitamin a	carbohydrate	0
+drill	client	0
+stability	characteristic	1
+environment	tropical disease	0
+ceramic	substrate	1
+thigh	area	1
+fhm	test	0
+golf	sport	1
+social phobia	substance	0
+mahogany	popular video format	0
+simplicity	socio demographic datum	0
+bromocriptine	agricultural input	0
+golf	concept	0
+support group meeting	addiction treatment approach	1
+genetic	factor	1
+age	risk factor	1
+drill	case	0
+flooding	african country	0
+malathion	shape	0
+myspace	skin disease	0
+activity	simple analgesic	0
+stone	medication	0
+food security	issue	1
+harvard	fruit	0
+base two	reason	0
+paclitaxel	topic	0
+young s modulus	mechanical property	1
+dose	poor credit factor	0
+water skiing	common hotel facility	1
+paracetamol	medicine	1
+waterskiing	activity	1
+metal	contaminant	1
+age	condition	1
+dhea	hormone	1
+mrs	social network site	0
+mcp 1	basic criterion	0
+medical check up	demographic characteristic	0
+cd s	fat soluble vitamin	0
+social phobia	institution	0
+quercetin	state	0
+skiing	winter sport	1
+paint	item	1
+bread	below average credit factor	0
+b12	personal metal item	0
+political	factor	1
+mumbai	social network	0
+rowing	antibiotic	0
+fhm	magazine	1
+medical device	popular amenity	0
+catering	household appliance	0
+malaria	communicable disease	1
+cattail	poor factor	0
+patent	asset	1
+dental care	state	0
+collagen	immune cell	0
+mrs	sociodemographic characteristic	0
+age	information	1
+dryer	natural element	0
+preservative	ecm protein	0
+banana	product	1
+mount katahdin	attraction	1
+county	root vegetable	0
+paclitaxel	communicable disease	0
+acupuncture	financial cost	0
+ccj	poor factor	1
+potato	neurodegenerative disease	0
+acupuncture	state	0
+cereal	complex carbohydrate	1
+base two	mosquito borne disease	0
+wells fargo	sport	0
+apoptosis	common hotel facility	0
+netflix	outdoor activity	0
+midazolam	benzodiazepine	1
+australia	western country	1
+bulimia	disorder	1
+copyrighted material	continuous variable	0
+coercivity	sociodemographic characteristic	0
+electricity	basic service	1
+banana	food	1
+water activity	activity	1
+ip	symptom	0
+inulin	awful factor	0
+chemistry	science	1
+spacer	stakeholder	0
+newspaper	material	1
+breathing exercise	public utility	0
+coercivity	simple analgesic	0
+computer equipment	confidential information	0
+horse	large animal	1
+baboon	inflammatory cell	0
+vitamin a	print medium	0
+difficulty swallowing	flavonol	0
+magnetic resonance imaging	imaging test	1
+australia	natural polymer	0
+malaria	imaging technique	0
+mumbai	suitable material	0
+system administrator	field	0
+difficulty swallowing	symptom	1
+social phobia	flavonol	0
+mask	protective equipment	1
+political	menopausal symptom	0
+collagen	ecm protein	1
+harvard	advantage	0
+golf	sport activity	1
+pentane	casino game	0
+financial institution	tool	0
+portugal	member state	1
+age	socio demographic variable	1
+diphenhydramine	inert gas	0
+extraction time	sensitive information	0
+collagen	extracellular matrix protein	1
+mount katahdin	socio demographic factor	0
+flooding	statistical package	0
+open flame	english speaking country	0
+bread	staple	1
+diphenhydramine	traditional medium	0
+ontario	streaming service	0
+pastel	firm characteristic	0
+bioethanol	utility service	0
+peace	opioid antagonist	0
+county	website	0
+skiing	antigen presenting cell	0
+myofascial release	technique	1
+software	industry	1
+waterskiing	antigen presenting cell	0
+geographic location	factor	1
+breathing exercise	property	0
+bread	grain	1
+malaria	incompatible	0
+credit card information	sensitive personal information	0
+bacon	meat	1
+nausea	gastrointestinal symptom	1
+procter	company	1
+finite difference method	tropical fruit	0
+newspaper	brand	0
+ox	chemical	0
+eczema	skin disorder	1
+nausea	minor side effect	1
+vitamin c	antioxidant	1
+extraction time	clinical parameter	0
+fibroblast growth factor	character	0
+trout	mineral	0
+quercetin	flavonoid	1
+music festival	side effect	0
+metal	surface	1
+woodland	source	0
+opioid antagonist	smooth surface	0
+electricity	item	1
+browser	poor factor	0
+democrat	relaxation technique	0
+stability	property	1
+payroll advance	metal	0
+electricity	utility service	1
+motivation	beverage	0
+san antonio	utility service	0
+alkalinity	nutrient	0
+woodland	habitat	1
+expenditure	financial aspect of product development	1
+preservative	adjuvant	1
+breathing exercise	habitat	0
+age	demographic information	1
+hsbc	demographic question	0
+biotite	imaging test	0
+horse	animal	1
+formic	pollutant	0
+transcript	reason	0
+food security	difference	0
+copyrighted material	material	1
+gymnasium	personal datum	0
+turpentine	diagnostic test	0
+potato	food	1
+magnetic resonance imaging	imaging modality	1
+judiciary	brain region	0
+malnutrition	factor	1
+utah	state	1
+political affiliation	structural protein	0
+juice	item	1
+age	basic criterion	1
+nmr	artist	0
+heart	tissue	1
+finite difference method	element	0
+gymnasium	facility	1
+euro	currency	1
+ireland	disaster	0
+harvard	rigid material	0
+film	medium	1
+stability	factor	1
+film	item	1
+cricket	clinical characteristic	0
+skiing	surface	0
+price	confounding factor	0
+banana	fresh fruit	1
+bread	baked goods	1
+australia	nation	1
+cricket	menopausal symptom	0
+doxycycline	clinical parameter	0
+acupuncture	technique	1
+social security number	sensitive information	1
+activity	natural material	0
+doxycycline	magnetic property	0
+portugal	addiction treatment approach	0
+spss	accessory	0
+lighting	therapy	0
+juice	antihistamine	0
+bread	carb	1
+petroleum	sport activity	0
+apoptosis	biological process	1
+horse	mammal	1
+geometry	topic	1
+age	demographic factor	1
+in situ hybridization	technique	1
+flooding	natural disaster	1
+thailand	valuable information	0
+formic	clinical parameter	0
+white bread	root crop	0
+healthcare bill	small financial cost	1
+x-rays	service	1
+medicare	program	1
+stone	object	1
+harvard	micronutrient	0
+mount katahdin	sociodemographic characteristic	0
+deep vein thrombosis	complication	1
+peace	patient characteristic	0
+nausea	side effect	1
+eczema	condition	1
+tensile strength	information	0
+b12	vitamin	1
+demand	area	0
+diphenhydramine	numerical method	0
+magnetic resonance imaging	animal	0
+chemistry	field	1
+banana	print medium	0
+turnip	root vegetable	1
+disney	client	1
+barcelona	vitamin	0
+rafting	legume	0
+css	snack	0
+naloxone	aspect	0
+paint	hazardous material	1
+glass	item	1
+nausea	nonspecific symptom	1
+genetic predisposition	program	0
+social phobia	anxiety disorder	1
+xvid	popular video format	1
+dhea	credit score factor	0
+tensile strength	small portion	0
+schizophrenia	condition	1
+fitness	local material	0
+head start	software	0
+firm size	factor	1
+contact detail	personal information	1
+dill	herb	1
+democrat	mental illness	0
+potato	plant	1
+watermelon	credit score factor	0
+malaria	vector borne disease	1
+sound	fruit	0
+thigh	imaging method	0
+browser	surface	0
+turkish steam bath	endocannabinoid	0
+bulimia	skin disorder	0
+fitting	patient related factor	0
+quercetin	medium	0
+couple small cookie	clinical characteristic	0
+hot flash	gastrointestinal effect	0
+age	patient factor	1
+contact detail	currency	0
+cereal	diagnostic test	0
+metal	inorganic material	0
+transcript	hard or sharp object	0
+environment	poor credit factor	0
+radar	phagocyte	0
+paracetamol	legume	0
+paclitaxel	taxane	1
+age	criterion	1
+political	smooth surface	0
+xvid	sector	0
+mumbai	city	1
+netflix	clinical parameter	0
+uv stabilizer	additive	1
+age	demographic characteristic	1
+skiing	root vegetable	0
+aspect	popular social networking site	0
+magnetic resonance imaging	endocannabinoid	0
+pentane	literary device	0
+geographic location	synthetic fiber	0
+sound	inorganic contaminant	0
+benadryl	industry	0
+age	factor	1
+prada	designer	1
+dose	hazardous material	0
+pyramid scheme	minor side effect	0
+finite difference method	pollutant	0
+batman	cell	0
+aluminum oxide	material	1
+age	sociodemographic factor	1
+turpentine	solvent	1
+low tire pressure warning	feature	1
+cabbage	green leafy vegetable	1
+range	newspaper	0
+australia	hormone	0
+batman	polyacetal	0
+sexual orientation	factor	1
+banana	chemokine	0
+patient s age	base	0
+ceramic	surface	1
+utah	descriptive statistic	0
+currency fluctuation	demographic characteristic	0
+base two	base	1
+x-rays	fuel	0
+pacing	category	0
+disney	source	0
+fitting	polyacetal	0
+myspace	social network site	1
+motivation	factor	1
+schizophrenia	neuropsychiatric disorder	1
+macrophage	less than perfect credit factor	0
+antibiotic	hydrocarbon	0
+difficulty swallowing	instrument	0
+potato	starchy food	1
+first aid	mental disorder	0
+tenant	treatment	0
+heart	imaging technique	0
+first aid	essential service	0
+johnny cash	gastrointestinal symptom	0
+radiator	heat source	1
+jaundice	insecticide	0
+catering	hazardous material	0
+petroleum	object	0
+geometry	extreme weather event	0
+emc	carb	0
+dublin	fuel	0
+australia	oecd country	1
+geographic location	event	0
+ip	household appliance	0
+chemistry	table game	0
+extraction time	parameter	1
+metaphor	demographic question	0
+social phobia	insecticide	0
+demand	narrative technique	0
+macrophage	antigen presenting cell	1
+vitamin a	antioxidant	1
+australia	developed country	1
+genetic	sensitive information	0
+sunlight	green vegetable	0
+bacon	facility	0
+batman	character	1
+waterskiing	designer	0
+magnetic resonance imaging	imaging study	1
+watermelon	insect	0
+antibiotic	personal factor	0
+lighter	cosmetic part	0
+macrophage	clinical information	0
+enclosure	product	1
+burberry	brand	1
+young s modulus	starchy vegetable	0
+last name	emergency	0
+perl	food	0
+dishwasher	item	1
+genetic	topic	1
+doxycycline	agricultural input	0
+simplicity	chemical	0
+glycosylation	nonspecific symptom	0
+newspaper	simple carb	0
+fertilizer	airline	0
+barcelona	hormone	0
+last name	department store	0
+nausea	gastrointestinal adverse effect	1
+schizophrenia	illness	1
+nausea	gastrointestinal side effect	1
+hippocampus	undesirable factor	0
+vitamin c	ingredient	1
+glycosylation	local material	0
+age	intrinsic factor	1
+dryer	activity	0
+animal	subject	1
+enalapril	commodity	0
+medicare	government program	1
+parkinson s disease	neurological disorder	1
+fertilizer	nation	0
+animal	medicine	0
+batman	sensitive datum	0
+macrophage	green vegetable	0
+browser	meat	0
+emerald	designer	0
+age	demographic	1
+turnip	staple	0
+ccj	protective clothing	0
+nausea	condition	1
+county	equipment	0
+netflix	streaming service	1
+smart card	cellular process	0
+blackjack	game	1
+banana	climacteric fruit	1
+transcript	document	1
+malathion	complication	0
+healthcare bill	financial expense	1
+fur	polyacetal	0
+consultancy	opioid antagonist	0
+dryer	large appliance	1
+emc	commonwealth country	0
+age	demographic variable	1
+casting	brittle material	0
+kenya	supplemental material	0
+loyalty	value	1
+liposuction	clinical parameter	0
+deep vein thrombosis	province	0
+liposuction	place	0
+motorola	company	1
+polymerase chain reaction	natural disaster	0
+australia	jurisdiction	1
+role playing	activity	1
+macrophage	immune cell	1
+craigslist	site	1
+sexual orientation	company	0
+microwave	item	1
+baseball	event	1
+parkinson s disease	neurodegenerative disease	1
+golf	activity	1
+euro	insect	0
+conflict resolution	skill	1
+pyramid scheme	patient characteristic	0
+deep vein thrombosis	power tool	0
+patient s age	science	0
+conflict resolution	sociodemographic characteristic	0
+medium	material	1
+boxer	imaging test	0
+ip	clinical datum	0
+vitamins a	rigid material	0
+ccj	traditional medium	0
+perl	programming language	1
+nmr	demographic datum	0
+x-rays	service	0
+quantity	information	1
+dryer	appliance	1
+glycine	difference	0
+wall street journal	website	0
+sears	plant	0
+rafting	clinical information	0
+cabbage	team sport	0
+currency fluctuation	hardwood	0
+thermal stability	unlawful multi level marketing	0
+white bread	subject	0
+apoptosis	process	1
+adobe photoshop	program	1
+contact detail	bisphosphonate	0
+info trac	snack	0
+genetic predisposition	host factor	0
+human being	specie	1
+newspaper	item	1
+nausea	root vegetable	0
+radar	organic acid	0
+glass	material	1
+social security number	sociodemographic variable	0
+newspaper	medium	0
+fibroblast growth factor	growth factor	1
+prada	essential service	0
+schedule	small monetary cost	0
+dose	traditional material	0
+newcastle	gas	0
+age	investigation	0
+patient s age	designer	0
+flooding	extreme weather event	1
+trout	fish	1
+adobe photoshop	animal	0
+meal	confounder	0
+naloxone	character	0
+geometry	contaminant	0
+juice	fluid	1
+ridge	antigen presenting cell	0
+genetic	risk factor	1
+dill	post translational modification	0
+bulimia	patient information	0
+hippocampus	asian country	0
+carnation	flower	1
+medical check up	domesticated animal	0
+age	clinical parameter	1
+manpower	resource	1
+wallet	applicant	0
+mahogany	hardwood	1
+bulgur	water sport	0
+social security number	confidential information	1
+honda	company	1
+emerald	amino acid	0
+medical check up	medical treatment	1
+in situ hybridization	social factor	0
+lighting	item	1
+macrolide	inorganic material	0
+bracelet	personal metal item	1
+finnish	language	1
+promoter	confounder	0
+water activity	bisphosphonate	0
+keyboard	input device	1
+copyrighted material	traditional material	0
+cholera	waterborne disease	1
+age	patient demographic	1
+motorola	gastrointestinal side effect	0
+sears	building material	0
+judiciary	institution	1
+perl	person	0
+first aid	website	0
+dublin	malignancy	0
+australia	high income country	1
+bakersfield public record	valuable information	1
+ireland	brain region	0
+paracetamol	poor factor	0
+age	basic demographic information	1
+ridge	illness	0
+drill	power tool	1
+age	personal item	0
+uv stabilizer	specie	0
+gis	clinical information	0
+preservative	neurodegenerative disorder	0
+fertilizer	input	1
+anandamide	endocannabinoid	1
+rifle	intellectual property right	0
+hard hat	polyphenol	0
+rowing	peripheral device	0
+snapper	fish	1
+baseball	socio demographic datum	0
+rowing	sport	1
+blackjack	casino game	1
+software	product	1
+acupuncture	grain	0
+chemistry	area	1
+enclosure	product	0
+electricity	public utility	1
+macrolide	local material	0
+quantity	factor	1
+hippocampus	city	0
+finnish	transparent material	0
+perl	flower	0
+paint	medium	1
+environment	topic	1
+price	variable	1
+juice	natural element	0
+age	clinical information	1
+medium	extracellular matrix protein	0
+turkish steam bath	valuable information	0
+carnation	demographic characteristic	0
+support group meeting	currency	0
+social security number	criterion	0
+prada	streaming service	0
+harvard	institution	1
+glycosylation	posttranslational modification	1
+keyboard	mammal	0
+biscuit	product	1
+quantity	category	0
+age	traditional risk factor	1
+age	characteristic	1
+price	factor	1
+crab	animal	1
+system administrator	user	1
+boxer	building material	0
+lighter	program	0
+ccj	course	0
+newcastle	bill	0
+utah	withdrawal symptom	0
+dental care	brain area	0
+waterskiing	modality	0
+dental care	demographic datum	0
+apoptosis	natural hazard	0
+antihistamine	site	0
+lighting	issue	1
+antimony	procedure	0
+bioethanol	material	0
+patent	background variable	0
+tenant	neurodegenerative disorder	0
+environment	factor	1
+magnetic resonance imaging	neurodegenerative disorder	0
+paint	substance	1
+cholera	brand	0
+carbon capture	monetary expense	0
+fur	skill	0
+tensile strength	shellfish	0
+motorola	demographic variable	0
+cricket	game	1
+laundry	hazardous material	0
+netflix	environmental factor	0
+nausea	gastrointestinal disturbance	1
+schedule	poor factor	0
+expenditure	common side effect	0
+medicare	reason	0
+electricity	cost	1
+australia	organ	0
+polymerase chain reaction	method	1
+newcastle	name	0
+australia	state	1
+gymnasium	applicant	0
+petroleum	fossil fuel	1
+first aid	skill	1
+parkinson s disease	surface	0
+healthcare bill	small monetary expense	1
+watermelon	innate immune cell	0
+kenya	clinical datum	0
+cholera	tissue	0
+casting	object	0
+manpower	commodity	0
+myspace	social medium site	1
+radar	application	1
+open shortest path first	hard or sharp object	0
+butyrate	tool	0
+breast cancer	hormone sensitive condition	1
+processor	skin disease	0
+friendship	commodity	0
+democrat	carrier gas	0
+dhea	brain area	0
+magnetic resonance imaging	imaging technique	1
+sle	host factor	0
+portugal	streaming service	0
+inulin	high income country	0
+antihistamine	base	0
+motivation	condition	0
+age	control variable	1
+medium	area	1
+pretzel	medication	0
+copyrighted material	minor side effect	0
+paclitaxel	gastrointestinal effect	0
+pretzel	green leafy vegetable	0
+electricity	neurodegenerative disorder	0
+rifle	question	0
+head	patient characteristic	0
+age	independent variable	1
+malaria	infection	1
+age	patient information	1
+gis	analgesic	0
+copenhagen	mosquito borne disease	0
+magnetic resonance imaging	modality	1
+hot flash	item	0
+computer equipment	demographic variable	0
+cholera	demographic datum	0
+macrophage	social network	0
+crab	seafood	1
+malaria	infectious disease	1
+opioid antagonist	suitable material	0
+eczema	skin disease	1
+vitamin c	supplement	1
+bromocriptine	asset	0
+judiciary	source	0
+ccj	credit factor	1
+mcp 1	flavonoids	0
+baseball	game	1
+malaria	cosmetic part	0
+ireland	place	1
+macrophage	cell	1
+dental care	simple analgesic	0
+rayon	property	0
+deep vein thrombosis	clinical information	0
+glass	hard or sharp object	1
+age	demographic question	1
+age	difference	1
+css	technology	1
+fibroblast growth factor	shape	0
+watermelon	food	1
+cabbage	green vegetable	1
+info trac	organ	0
+fertilizer	pollutant	1
+age	continuous variable	1
+copenhagen	city	1
+medium	industry	1
+patent	cytokine	0
+macrophage	mineral	0
+lighting	aspect	1
+stone	item	1
+nausea	financial expense	0
+patient s age	post translational modification	0
+disney	sociodemographic characteristic	0
+motorola	organization	0
+jaundice	illness	0
+age	consideration	1
+banana	tropical fruit	1
+gymnasium	natural material	0
+rowing	social factor	0
+skiing	activity	1
+ireland	nation	1
+myspace	magazine	0
+transcript	mass medium	0
+newspaper	medium	1
+ccj	biofuel	0
+info trac	terrible factor	0
+project	mammal	0
+picnic	event	1
+keyboard	software	0
+nmr	technique	1
+perl	language	1
+thailand	usb device	0
+paint	chemical	1
+chemistry	traditional medium	0
+autonomy	vitamin	0
+environment	contaminant	0
+glass	fresh fruit	0
+hydrogen bonding	place	0
+wells fargo	adverse event	0
+netflix	imaging study	0
+music festival	document	0
+flooding	surface	0
+b12	skin disorder	0
+procter	developed country	0
+coverall	safety equipment	0
+ox	name	0
+medicare	body part	0
+food security	tropical fruit	0
+pyramid scheme	supplement	0
+butyrate	illness	0
+social security number	imaging test	0
+credit card information	patient demographic	0
+australia	designer	0
+horse	sociodemographic factor	0
+tenant	english speaking country	0
+wells fargo	company	1
+myspace	site	1
+adjuvant	pharmaceutically acceptable excipient	1
+acupuncture	service	1
+cabbage	usb device	0
+sound	activity	0
+decongestant	specie	0
+magnetic resonance imaging	immune cell	0
+paracetamol	simple painkiller	1
+euro	organism	0
+gis	technology	1
+fitting	political tag	0
+bread	starchy food	1
+stability	legume	0
+glass	cosmetic part	1
+cd s	local material	0
+crab	crustacean	1
+stability	sociodemographic characteristic	0
+craigslist	mental disorder	0
+stone	scripting language	0
+firm size	brittle material	0
+healthcare bill	small monetary cost	1
+benadryl	antihistamine	1
+enalapril	protective equipment	0
+bioethanol	game	0
+keyboard	peripheral device	1
+ox	large appliance	0
+potato	starchy vegetable	1
+macrophage	cell type	1
+paint	confounding factor	0
+vitamins a	nutrient	1
+medical device	brain region	0
+type 1 diabetes	demographic variable	0
+music festival	basic service	0
+ceramic	adverse event	0
+ip	protocol	1
+environment	prebiotic	0
+pastel	movement disorder	0
+licensing	social network site	0
+glasgow	fluid	0
+bracelet	accessory	1
+age	baseline characteristic	1
+financial institution	phagocytic cell	0
+crab	invertebrate	1
+experience	name	0
+chemistry	subject	1
+paint	organization	0
+alkalinity	parameter	1
+newspaper	publication	1
+glass	quality	0
+electricity	service	1
+info trac	basic amenity	0
+jaundice	complication	0
+transcript	instrument	0
+electricity	medium	0
+contact detail	equipment	0
+sexual orientation	small portion	0
+schizophrenia	mental disorder	1
+petroleum	consideration	0
+snapper	simple painkiller	0
+drill	procedure	0
+preservative	intangible asset	0
+quercetin	molecular technique	0
+range	refined carbohydrate	0
+environment	area	1
+hormone	emergency	0
+gis	entitlement program	0
+formic	carrier gas	0
+glycosylation	simple painkiller	0
+bread	side effect	0
+human being	instrument	0
+cabbage	solvent	0
+crab	gastrointestinal disturbance	0
+pulse width	base	0
+coverall	protective clothing	1
+medicare	public program	1
+radar	simple painkiller	0
+baseball	sport	1
+potato	water soluble vitamin	0
+breathing exercise	table game	0
+microwave	emergency	0
+benadryl	investigation	0
+radiator	disaster	0
+mount katahdin	painkiller	0
+myofascial release	starchy food	0
+wells fargo	imaging study	0
+honda	statistical package	0
+biscuit	molecular technique	0
+butyrate	personal protective equipment	0
+il 2	potassium rich food	0
+sears	independent variable	0
+procter	activity	0
+blackjack	team sport	0
+firm size	firm characteristic	1
+dryer	high income country	0
+cd s	risk factor	0
+biscuit	clinical factor	0
+naloxone	opioid antagonist	1
+mount katahdin	factor	0
+bioethanol	conductive material	0
+doxycycline	item	0
+spacer	department store	0
+adjuvant	recreational activity	0
+experience	variable	1
+il 2	mental disorder	0
+consultancy	recreational activity	0
+spacer	commodity	0
+cereal	carbohydrate	1
+baboon	vital organ	0
+malnutrition	tropical fruit	0
+patient s age	intangible asset	0
+cholera	infectious disease	1
+euro	food	0
+garden	infectious disease	0
+ip	suitable material	0
+honda	concept	0
+radar	sensor	1
+emc	company	1
+schizophrenia	social networking site	0
+price	issue	1
+cholera	antioxidant	0
+manpower	poor factor	0
+copenhagen	dopamine agonist	0
+metal	inorganic contaminant	1
+copenhagen	terrible factor	0
+quercetin	basic information	0
+hsbc	antibiotic	0
+coercivity	school	0
+healthcare bill	financial cost	1
+ridge	fatty fish	0
+bread	item	1
+newspaper	print medium	1
+meal	property	0
+friendship	topic	1
+microwave	natural element	0
+magnetic resonance imaging	adverse effect	0
+coverall	menopausal symptom	0
+pyramid scheme	unlawful multi-level marketing	1
+doxycycline	demographic information	0
+desktop	hazardous material	0
+horse	specie	1
+contact detail	substance	0
+human being	nation	0
+mahogany	demographic characteristic	0
+sound	issue	0
+preservative	plant	0
+polymerase chain reaction	serious mental illness	0
+wall street journal	publication	1
+low tire pressure warning	topic	0
+antimony	metal	1
+barcelona	city	1
+nausea	withdrawal symptom	1
+conflict resolution	poor credit factor	0
+fur	item	1
+cereal	suitable material	0
+finite difference method	endocannabinoid	0
+extraction time	bank	0
+vitamins a	domestic animal	0
+metal	incompatible	1
+currency fluctuation	less than perfect credit factor	0
+vitamin a	micronutrient	1
+desktop	name	0
+laundry	service	1
+finnish	breed	0
+vitamin c	small financial expense	0
+currency fluctuation	confidential information	0
+desktop	starch	0
+pulse width	industry	0
+vitamin a	aspect	0
+nausea	complication	1
+potato	carbohydrate	1
+cereal	starchy food	1
+parkinson s disease	chemical	0
+finnish	adverse reaction	0
+portugal	european country	1
+dryer	emergency	0
+banana	firm characteristic	0
+glasgow	city	1
+cabbage	vegetable	1
+open flame	ignition source	1
+chemistry	eating disorder	0
+bread	starch	1
+cabbage	city	0
+role playing	technique	1
+lamb	medicine	0
+crab	shellfish	1
+utah	negative factor	0
+fur	feature	0
+horse	domesticated animal	1
+rifle	firearm	1
+enclosure	animal	0
+butyrate	adverse reaction	0
+waterskiing	substrate	0
+spacer	product	1
+patent	intangible asset	1
+radiator	event	0
+ridge	feature	1
+fertilizer	agricultural input	1
+friendship	part of the world	0
+pacing	asian country	0
+schedule	narrative technique	0
+sunlight	breed partner	0
+dhea	therapy	0
+kenya	african country	1
+wallet	information	0
+casting	variable	0
+anandamide	oily fish	0
+water skiing	relaxation technique	0
+eczema	minor side effect	0
+geographic location	essential service	0
+carbon capture	technology	1
+fhm	bakery item	0
+info trac	hard or sharp object	0
+head start	building material	0
+nausea	gastrointestinal effect	1
+zoledronic acid	phagocyte	0
+naacp	event	0
+age	clinical characteristic	1
+mask	invertebrate	0
+age	basic information	1
+healthcare bill	monetary cost	1
+nausea	systemic symptom	1
+benadryl	insect	0
+antibiotic	skin disease	0
+rafting	mental disorder	0
+biotite	smooth surface	0
+schizophrenia	phagocytic cell	0
+type 1 diabetes	personally identifiable information	0
+bread	character	0
+environment	external factor	1
+macrolide	antibiotic	0
+metal	rigid material	1
+thigh	livestock	0
+experience	starch	0
+vitamin a	basic service	0
+bakersfield public record	fruit	0
+turnip	vegetable	1
+paracetamol	financial cost	0
+antimony	element	1
+acupuncture	modality	1
+head start	program	1
+employer	monetary expense	0
+autonomy	imaging modality	0
+hot flash	crustacean	0
+netflix	service	1
+manpower	market	0
+adjuvant	analgesic	0
+in situ hybridization	smooth surface	0
+age	personal information	1
+thailand	place	1
+picnic	conductive material	0
+spss	statistical package	1
+genetic predisposition	factor	1
+fur	intangible asset	0
+parkinson s disease	mass medium	0
+carbon capture	imaging modality	0
+glass	numerical method	0
+baseball	scripting language	0
+thailand	nation	1
+batman	print medium	0
+medicare	entitlement program	1
+open shortest path first	protocol	1
+age	issue	1
+collagen	incompatible	0
+credit card information	socio demographic variable	0
+young s modulus	protocol	0
+employer	waterborne disease	0
+quercetin	facility	0
+xvid	breed	0
+food security	protective clothing	0
+lighter	socio demographic variable	0
+enclosure	category	0
+jaundice	site	0
+bulgur	grain	1
+honda	suitable material	0
+glass	transparent material	1
+adhesion	province	0
+age	socio demographic factor	1
+hsbc	bank	1
+flooding	starchy vegetable	0
+social norm	social network site	0
+software	professional phagocyte	0
+electricity	medicine	0
+alfalfa	plant	1
+san antonio	personal protective equipment	0
+ireland	valuable	0
+couple small cookie	small portion	1
+motivation	relaxation technique	0
+craigslist	literary device	0
+emerald	surface	0
+environment	legume	0
+processor	clinical feature	0
+il 2	cytokine	1
+johnny cash	utility service	0
+bacon	processed meat	1
+age	attribute	1
+rafting	insect	0
+barcelona	test	0
+antihistamine	peripheral	0
+picnic	streaming service	0
+australia	area	1
+age	category	1
+carnation	vector borne disease	0
+social security number	sensitive personal information	1
+support group meeting	casino game	0
+garden	shape	0
+il 2	word	0
+spss	mental disorder	0
+eczema	apps	0
+mask	university	0
+drill	tool	1
+enalapril	communicable disease	0
+genetic	monetary expense	0
+metal	substrate	1
+trout	cold water fish	1
+fertilizer	product	1
+county	local government	1
+demand	sport	0
+autonomy	store	0
+support group meeting	professional phagocyte	0
+ireland	european country	1
+casting	destination	0
+adobe photoshop	substrate	0
+sunlight	mineral	0
+anandamide	insecticide	0
+vitamin c	water soluble vitamin	1
+geometry	simple analgesic	0
+copyrighted material	medium outlet	0
+flooding	event	1
+potato	item	1
+computer equipment	flavonoid	0
+ccj	negative factor	1
+bakersfield public record	withdrawal symptom	0
+carnation	firm characteristic	0
+keyboard	device	1
+project	word	1
+fur	safety equipment	0
+alkalinity	snack	0
+malathion	practice	0
+medical check up	service	1
+potato	streaming service	0
+base two	neuropsychiatric disorder	0
+honda	investigation	0
+myspace	popular social networking site	1
+skiing	outdoor activity	1
+glycosylation	topic	0
+promoter	character	0
+rowing	activity	1
+myofascial release	continuous variable	0
+polymerase chain reaction	molecular technique	1
+water activity	appliance	0
+rowing	monetary cost	0
+young s modulus	prebiotic	0
+metaphor	noble gas	0
+schizophrenia	mental illness	1
+burberry	medical treatment	0
+dublin	complication	0
+hot flash	menopausal symptom	1
+age	personal characteristic	1
+ceramic	industry	1
+bioethanol	biofuel	1
+sle	peripheral device	0
+age	host factor	1
+wells fargo	bank	1
+rayon	insect	0
+electricity	fuel	1
+ireland	rigid material	0
+experience	attraction	0
+age	clinical feature	1
+genetic predisposition	confounder	0
+malnutrition	gastrointestinal adverse effect	0
+juice	flavonoids	0
+ox	demographic question	0
+laundry	firm characteristic	0
+vitamin c	nutrient	1
+metal	commodity	1
+perl	scripting language	1
+thailand	southeast asian country	1
+political affiliation	habitat	0
+first aid	natural disaster	0
+water activity	gemstone	0
+water skiing	vegetable	0
+fertilizer	corrosive material	1
+financial institution	starchy food	0
+type 1 diabetes	starchy vegetable	0
+stone	local material	1
+metal	pollutant	1
+myspace	social networking site	1
+lamb	neurodegenerative disorder	0
+juice	product	1
+chemistry	discipline	1
+electric vehicle	document	0
+age	prognostic factor	1
+aluminum oxide	contaminant	0
+x-rays	regulatory element	0
+laundry	personal expense	1
+nausea	adverse event	1
+payroll advance	host factor	0
+metal	suitable material	1
+electricity	topic	1
+laundry	language	0
+naacp	micronutrient	0
+rafting	event	0
+radiator	sensitive datum	0
+low tire pressure warning	regulatory element	0
+wells fargo	monetary cost	0
+paracetamol	quality	0
+metal	material	1
+spss	literary device	0
+payroll advance	expense	0
+social phobia	common hotel facility	0
+drill	concept	0
+acupuncture	beverage	0
+thigh	gemstone	0
+fibroblast growth factor	region	0
+bacon	condition	0
+blackjack	neurodegenerative disease	0
+mahogany	technique	0
+desktop	device	1
+electricity	bill	1
+portugal	concept	0
+currency fluctuation	factor	1
+naloxone	social medium	0
+picnic	print medium	0
+pastel	sport	0
+honda	brand	1
+crab	inert atmosphere	0
+baboon	illness	0
+keyboard	instrument	1
+open flame	basic amenity	0
+glasgow	amino acid	0
+software	technology	0
+animal	information	0
+woodland	analgesic	0
+conflict resolution	additive	0
+age	socio demographic characteristic	1
+emirates	airline	1
+vitamin c	vitamin	1
+metal	prognostic factor	0
+social norm	financial aspect of product development	0
+lighting	element	1
+wall street journal	brain region	0
+simplicity	sensitive information	0
+gis	personal metal item	0
+dhea	additive	0
+metal	inorganic material	1
+geometry	factor	1
+johnny cash	artist	1
+political	clinical feature	0
+glycine	person	0
+cricket	personal datum	0
+ceramic	material	1
+range	descriptive statistic	1
+cattail	instrument	0
+judiciary	infection	0
+horse	opioid antagonist	0
+hard hat	safety equipment	1
+disney	company	1
+glycosylation	post translational modification	1
+film	metal	0
+cereal	demographic characteristic	0
+acupuncture	complementary therapy	1
+australia	dopamine agonist	0
+low tire pressure warning	local material	0
+turnip	flower	0
+medium	factor	1
+dill	instrument	0
+financial institution	variable	0
+heart	skin condition	0
+flooding	hazard	1
+blackjack	monetary expense	0
+thermal stability	neuropsychiatric disorder	0
+quercetin	flavonoids	1
+pacing	patient factor	0
+johnny cash	farm animal	0
+zoledronic acid	patient related factor	0
+adobe photoshop	tool	0
+collagen	short chain fatty acid	0
+animal	amino acid	0
+dishwasher	appliance	1
+craigslist	infectious disease	0
+sims	clinical information	0
+dose	component	0
+doxycycline	antibiotic	1
+newcastle	potassium rich food	0
+hard hat	imaging test	0
+stone	natural element	1
+preservative	agent	1
+turkish steam bath	bank	0
+human being	financial expense	0
+deep vein thrombosis	sociodemographic variable	0
+cetirizine	case	0
+heart	african country	0
+paint	over the counter painkiller	0
+radar	small financial cost	0
+mcp 1	oecd country	0
+last name	information	1
+film	menopausal symptom	0
+film	word	0
+pretzel	snack	1
+judiciary	below average credit factor	0
+ireland	member state	1
+geographic location	word	0
+turnip	literary device	0
+uv stabilizer	person	0
+medium	traditional material	0
+disney	symptom	0
+carnation	ingredient	0
+garden	area	1
+metal	industry	1
+xvid	science	0
+antibiotic	medicine	1
+fertilizer	gastrointestinal disturbance	0
+collagen	skill	0
+ccj	factor	1
+hsbc	company	1
+payroll advance	credit score factor	0
+baboon	animal	1
+glass	inorganic material	1
+tensile strength	property	1
+opioid antagonist	painkiller	0
+friendship	theme	1
+demand	issue	0
+macrophage	innate immune cell	1
+vitamins a	university	0
+b12	neuropsychiatric disorder	0
+keyboard	usb device	1
+hsbc	carbohydrate	0
+utah	essential service	0
+horse	domestic animal	1
+ontario	local government	0
+medium	topic	1
+hormone	substance	1
+microwave	question	0
+type 1 diabetes	autoimmune disease	1
+australia	region	1
+laundry	addiction treatment approach	0
+alfalfa	less than perfect credit factor	0
+age	account factor	1
+procter	confidential information	0
+macrophage	inflammatory cell	1
+fertilizer	physical symptom	0
+credit card information	ace inhibitor	0
