@@ -7,17 +7,14 @@ immigration	issue
 copying	clerical duty
 vogue	magazine
 address	datum
-pakistan	state
 welding	mean
 rhinoplasty	procedure
 obesity	comorbidity
 bacterium	microorganism
 drowsiness	side effect
-noise	effect
 nutrient	factor
 low back pain	condition
 birthdays	occasion
-sexual orientation	factor
 role	concept
 bolt	hardware
 acetaminophen	medicine
@@ -31,7 +28,6 @@ bathroom	facility
 triton x 100	detergent
 answering telephone	clerical duty
 computer	electronic device
-anxiety	side effect
 abc	network
 speed	information
 sculpture	medium
@@ -42,7 +38,6 @@ address	customer information
 ash	tree
 citric acid	acid
 cauliflower	food
-age	control variable
 stability	issue
 bed	item
 gift	item
@@ -57,12 +52,10 @@ gender	attribute
 pepper	plant
 gender	confounding factor
 promoter	regulatory element
-snow	adverse weather condition
 iron	essential nutrient
 squat	simple athletic movement
 tape recording	single verbatim record
 sport	interest
-rug	item
 sweden	nation
 bankruptcy	blemished credit score
 pca	method
@@ -102,7 +95,6 @@ cat	household pet
 fog	weather
 thermistor	temperature sensor
 copyright	issue
-age	personal datum
 plier	tool
 sanitary napkin	absorbent article
 jewelry	small item
@@ -136,7 +128,6 @@ potassium	mineral
 housing	topic
 yeast	model organism
 dog	pet
-management	factor
 space	factor
 science	subject
 poor diet	factor
@@ -146,7 +137,6 @@ hard hat	protective equipment
 sucrose	simple sugar
 boat	recreational vehicle
 pastry	baked goods
-management	subject
 person	resource
 driver	market dynamic
 tortoise	animal
@@ -165,7 +155,6 @@ caterpillar	company
 face	biometric
 copyright	intellectual property right
 morphine	opiate
-amphetamine	psychostimulant
 animal	theme
 gasoline	material
 doctor	health professional
@@ -191,7 +180,6 @@ customer service	area
 guitar	stringed instrument
 biotechnology	sector
 metoclopramide	prokinetic agent
-phone bill	financial cost
 education	information
 acetonitrile	organic solvent
 door	component
@@ -245,7 +233,6 @@ dust	impurity
 biocide	additive
 tennis court	common hotel facility
 sickle cell disease	condition
-age	prognostic factor
 ph	property
 photo	file
 sausage	meat product
@@ -296,7 +283,6 @@ spring	mechanism
 title	field
 hotel	location
 tube	product
-digital camera	electronic device
 notepad	plain text editor
 polyethylene	plastic material
 maximum loan amount	loan option
@@ -304,7 +290,6 @@ river	feature
 hypoxia	condition
 train	public transportation
 india	developing country
-anxiety	psychological symptom
 volleyball	sport
 primate	specie
 polyether	common linker
@@ -318,7 +303,6 @@ lentil	legume
 olanzapine	atypical antipsychotic
 lsh	web page
 service	activity
-si	semiconductor
 istanbul	city
 facebook	technology
 radar	application
@@ -383,7 +367,6 @@ agriculture	industry
 chemical	method
 asia	region
 size	aspect
-body size	factor
 malaysia	asian country
 credit card	product
 u s	developed country
@@ -392,7 +375,6 @@ escherichia coli	bacterium
 song	activity
 cr	element
 school	public building
-nerve growth factor	neurotrophic factor
 nursing	career
 school	building
 human rights watch	human right organization
@@ -400,17 +382,14 @@ poster	resource
 email	technology
 glycerol	additive
 erosion	factor
-age	socio demographic datum
 japan	region
 delhi	city
 first aid	skill
-france	western country
 sodium benzoate	preservative
 mortar	material
 defoaming agent	additive
 personal digital assistant	device
 contract research organization	third party
-dill	herb
 grapefruit	citrus fruit
 sweden	member state
 phone expense	financial cost
@@ -466,7 +445,6 @@ fwd	feature
 component	product
 doctor	healthcare provider
 hyderabad	city
-wiki	social medium
 smoke	effect
 men of truth	person able man
 heart failure	chronic disease
@@ -480,7 +458,6 @@ size	option
 tylenol	counter medication
 florence	city
 password	personal information
-anxiety	topic
 bar	facility
 laser	device
 insomnia	side effect
@@ -493,7 +470,6 @@ email	apps
 zinc	element
 technology	sector
 mannitol	sugar alcohol
-fruit	plant food
 biology	course
 maximum amount borrowed	loan option
 magnetic resonance imaging	imaging study
@@ -513,7 +489,6 @@ bridal shower	event
 element	term
 sesame	oil
 electricity expense	monetary expense
-age	feature
 car	item
 anti oxidant	additive
 insurance	industry
@@ -542,12 +517,9 @@ washer	item
 coffee	hot beverage
 ph	soil factor
 rihanna	artist
-mother s day	occasion
 survey	research method
-frankincense	essential oil
 methylprednisolone	corticosteroid
 drought	stress
-medical expense	small monetary cost
 egg yolk	food
 airport	location
 cost	problem
@@ -560,7 +532,6 @@ leadership	topic
 nature of the violation	factor
 globalization	issue
 hallway	common area
-cleaner	product
 neuropeptide y	neuropeptide
 bass	instrument
 mortality	outcome
@@ -582,7 +553,6 @@ telephone bill	financial cost
 person	object
 diabetes mellitus	cardiovascular risk factor
 mcdonald s	brand
-light emitting diode	device
 sheep	domestic animal
 distance	parameter
 gasoline	flammable liquid
@@ -595,7 +565,6 @@ chicken	white meat
 alcohol	polar solvent
 transportation	supportive service
 bank statement	document
-ridge	feature
 butane	gas
 earthquake	natural calamity
 pollution	environmental issue
@@ -607,14 +576,12 @@ x ray	test
 purse	accessory
 load	parameter
 motor	part
-age	sociodemographic factor
 rabbit	animal
 arsenic	heavy metal
 china	east asian country
 birth	event
 position	information
 asthma	inflammatory disease
-water	medium
 demographic	datum
 industrial	industry
 tachycardia	symptom
@@ -623,7 +590,6 @@ tape	item
 dance	extracurricular activity
 labor cost	factor
 cost of living	item
-fruit	crop
 facebook	medium
 linkedin	social medium tool
 river	natural feature
@@ -641,10 +607,8 @@ alzheimer s disease	condition
 turbulence	factor
 tire	product
 fireplace	amenity
-beverage	sector
 kale	green leafy vegetable
 coercivity	magnetic property
-age	criterion
 blurred vision	symptom
 steel	material
 sugarcane	crop
@@ -702,7 +666,6 @@ current density	parameter
 bacterium	biological agent
 excel	computer program
 baseboard	millwork
-nanoparticle	formulation
 personal digital assistant	mobile device
 pdas	mobile device
 comb	personal item
@@ -710,7 +673,6 @@ search engine optimization	service
 car repair	brief term need
 letter	document
 policy	information
-option	derivative instrument
 holiday benefit	benefit accrual
 hotel	business
 dna methylation	epigenetic mechanism
@@ -719,14 +681,12 @@ depression	affective disorder
 milk	drink
 mobile phone	portable electronic device
 complete blood count	blood test
-anxiety	negative feeling
 vegetable	natural food
 acai berry eating habit	outrageous diet
 minnow	live bait
 parasailing	activity
 image	file
 truck	equipment
-age	item
 reliability	factor
 vauxhall cars	car
 artist	information
@@ -751,7 +711,6 @@ fluorescein	fluorescent compound
 biology	discipline
 papaya	tropical fruit
 viscosity modifier	additive
-age	potential confounder
 title	information
 ownership	issue
 plant	eukaryote
@@ -769,7 +728,6 @@ superoxide anion	reactive oxygen specie
 medical bill	small financial cost
 string	object
 tree	obstruction
-age	personal characteristic
 commitment	value
 fee	information
 long sleeved shirt	protective clothing
@@ -777,7 +735,6 @@ chip	food
 philips	company
 swimming pool	facility
 physic	field
-maize	food crop
 iphone	product
 door	building component
 rosemary	ingredient
@@ -788,7 +745,6 @@ tire	item
 school	facility
 education	socioeconomic factor
 electrocardiogram	test
-ketoprofen	nsaid
 time	factor
 swimming pool	amenity
 locke	philosopher
@@ -849,7 +805,6 @@ salary	factor
 europe	mature market
 production	activity
 travel	industry
-coconut oil	natural oil
 rosiglitazone	thiazolidinedione
 hospital	public building
 ultimate tensile strength	mechanical property
@@ -871,7 +826,6 @@ herb	plant
 photocopier	office machine
 thiamin	vitamin
 selenium	antioxidant
-prednisone	treatment
 credit card number	information
 bathroom	room
 drought	natural disaster
@@ -912,7 +866,6 @@ transport	activity
 earthquake	hazard
 wine	item
 mirtazapine	antidepressant
-biofeedback	relaxation technique
 countertop	surface
 rock climbing	activity
 fertilizer	industry
@@ -934,7 +887,6 @@ jet pool	common hotel facility
 polyethylene	thermoplastic
 alcohol	functional group
 road	project
-sit up	exercise
 facebook	online social network
 plastic	suitable material
 stress	trigger
@@ -947,11 +899,9 @@ unfavorable earnings report	adverse event
 scraper	tool
 vegetable	food
 sport	topic
-soccer	sport activity
 layout	factor
 energy	concept
 polyester	material
-corticosteroids	medication
 conservation	topic
 yogurt	milk product
 panasonic	manufacturer
@@ -959,8 +909,6 @@ mobile phone	electronic device
 power	issue
 marketing	service
 oracle	vendor
-spray drying	technique
-rheumatoid arthritis	autoimmune condition
 drink	item
 fluorine	halogen
 corporation	organization
@@ -980,7 +928,6 @@ arsenic	n type impurity
 arthritis	chronic condition
 hepatitis a	virus
 fabric	material
-water	sector
 customer name	information
 type 2 diabetes	potential several health
 science	subject area
@@ -1028,7 +975,6 @@ housing	expense
 mobile phone	product
 baboon	animal
 bruise	injury
-alkaloid	phytochemical
 capsule	oral dosage form
 racquetball	sport
 polycarbonate	resin
@@ -1042,14 +988,12 @@ echinacea	herb
 ring	item
 iron	mineral
 weather	variable
-medical expense	monetary expense
 school	organisation
 co2	gas
 food	issue
 shop	business
 marketing	area
 hepatitis	infectious disease
-management	field
 m4a	popular audio format
 radish	root vegetable
 humidity	environmental condition
@@ -1075,23 +1019,18 @@ video poker machine	gaming machine
 san jose	city
 lacoste	brand
 dietary habit	factor
-geese	animal
 ascorbate	antioxidant
 vitamin c	ingredient
 gold	resource
 youtube	social medium site
-mammal	vertebrate
 endometriosis	condition
 industry	field
 financials	detailed business information
-anxiety	emotion
 real estate	asset
 glucose	simple sugar
-onion	ingredient
 telephone number	personal datum
 brother	family member
 tomato	fruit
-kerosene	flammable liquid
 nitrogen	impurity
 technology	topic
 c reactive protein	acute phase reactant
@@ -1099,7 +1038,6 @@ assessment	issue
 australia	western country
 switch	component
 weather	datum
-phone bill	small monetary expense
 blood	body fluid
 ad	neurodegenerative disease
 brazil	market
@@ -1157,7 +1095,6 @@ long pant	protective clothing
 zinc	trace mineral
 kanye west	artist
 bayer	company
-kidney	bean
 resource	issue
 jewelry	valuable
 dizziness	side effect
@@ -1166,7 +1103,6 @@ john locke	philosopher
 raccoon	mammal
 anorexia	eating disorder
 meal	expense
-magnesium	mineral
 bruce springsteen	artist
 tricyclic antidepressant	medication
 obesity	modifiable risk factor
@@ -1192,7 +1128,6 @@ fitness center	feature
 stroller	item
 volcanic eruption	natural hazard
 glutamate	excitatory amino acid
-water	basic service
 hot dog	snack
 tensile strength	property
 default	poor credit document
@@ -1235,7 +1170,6 @@ gis	technology
 medication	information
 cheerleading	sport activity
 food service	industry
-oxford	university
 car repair	short term need
 location	criterion
 powder	form
@@ -1256,7 +1190,6 @@ telephone expense	small financial cost
 food	application
 linkedin	social networking site
 ibuprofen	over the counter painkiller
-metformin	medication
 refrigerator	product
 dust	factor
 hockey	team sport
@@ -1299,13 +1232,11 @@ power window	feature
 radiation	environmental factor
 peripheral	device
 grocery fee	short phrase need
-anxiety	emotional problem
 tobacco	industry
 amount	factor
 high blood pressure	health problem
 iran	place
 road	infrastructure project
-soil	material
 slipper	modern comfort
 tea	beverage
 bha	synthetic antioxidant
@@ -1330,7 +1261,6 @@ singapore	place
 selenium	nutrient
 solvent	reaction condition
 carbon black	filler
-water	natural resource
 acetaminophen	over the counter pain medication
 gps	system
 geometry	factor
@@ -1344,8 +1274,6 @@ metal	material
 computed tomography	modality
 automobile	collateral
 e mail address	contact information
-anxiety	psychological problem
-club house	amenity
 information retrieval	application
 ownership	factor
 x ray	imaging study
@@ -1365,7 +1293,6 @@ massage	modality
 karate	martial art
 drosophila	model organism
 electrical energy expense	monetary cost
-catholicism	religion
 house renovation	short term requirement
 outdoor pool	popular facility
 quality	topic
@@ -1386,14 +1313,12 @@ ion exchange	technique
 server	resource
 philips	brand
 internet	technological development
-pumpkin	vegetable
 pitch	parameter
 gabapentin	medication
 corn	starchy vegetable
 smoking	variable
 grapefruit	citrous fruit
 high pest population	condition
-transportation cost	factor
 oregano	spice
 genetic algorithm	algorithm
 police	public service
@@ -1402,7 +1327,6 @@ belt	part
 boxes	item
 address	personal datum
 canada	western country
-web server	application
 time of day	factor
 royal dutch shell	company
 motion	topic
@@ -1475,13 +1399,11 @@ football	sport
 bubble film	material
 wool	natural fiber
 business	course
-anxiety	mood disorder
 rat	small mammal
 rain	inclement weather
 ashwagandha	herb
 pool	facility
 ambulance	emergency vehicle
-age	category
 cellular phone	electronic device
 vegetarian	dietary requirement
 nutrient	environmental factor
@@ -1533,7 +1455,6 @@ cake	gift
 resistor	circuit element
 economic	field
 tiling	solution
-jazz	music
 plumber	trade
 light	condition
 amazon com	website
@@ -1552,7 +1473,6 @@ house renovation	monetary expense
 psychology	field
 halibut	fish
 shea butter	natural ingredient
-rheumatoid arthritis	condition
 ice cream	product
 migration	factor
 antioxidant	material
@@ -1561,7 +1481,6 @@ reflection	effect
 solar	renewable energy
 rope	item
 new york	city
-home addition	job
 singapore	market
 marble	material
 swimming	water sport
@@ -1570,21 +1489,17 @@ crude oil	commodity
 electricity bill	financial expense
 vitamin a	vitamin
 cat	domestic pet
-ache	common ailment
 guilt	emotion
 childcare	service
 nitrogen	macronutrient
 anorexia	constitutional symptom
-being a couple small cookie	small portion
 literature	topic
 vibration	factor
 alfalfa	crop
 gender	factor
 towel rack	practical accessory
 fever	factor
-age	information
 parsnip	vegetable
-anxiety	mental health condition
 office	place
 bacterium	micro organism
 carbon black	pigment
@@ -1617,7 +1532,6 @@ politic	subject
 group discussion	activity
 retinopathy	complication
 motorola	manufacturer
-age	confounding variable
 beet	root vegetable
 glycerin	polyhydric alcohol
 anemia	medical condition
@@ -1682,8 +1596,6 @@ gymnastics	activity
 classroom	facility
 middle east	market
 high blood pressure	condition
-nurse	person
-nerve growth factor	growth factor
 spleen	organ
 brother	brand
 search	application
@@ -1697,7 +1609,6 @@ bluetooth	technology
 atrial fibrillation	arrhythmia
 schizophrenia	mental illness
 antihistamine	medication
-maltose	sugar
 retrovirus	viral vector
 flax	natural fiber
 coffee	refreshment
@@ -1736,11 +1647,9 @@ clay	filler
 mexico	market
 greece	european country
 prednisolone	corticosteroid
-indigestion	symptom
 methylene blue	dye
 parking lot	area
 deer	specie
-anxiety	medical condition
 hawk	raptor
 keyboard	device
 smoking status	factor
@@ -1772,7 +1681,6 @@ wedding ceremony expense	small financial expense
 education	measure
 seasonality	factor
 gold	metal
-water	utility service
 economy	issue
 pryca	shop
 sulfur	mineral
@@ -1780,7 +1688,6 @@ wheat bread	whole wheat product
 abs	plastic
 astragalus	herb
 golf	activity
-family income	factor
 floppy disk	memory medium
 restylane	hyaluronic acid filler
 switzerland	european country
@@ -1793,7 +1700,6 @@ fructose	carbohydrate
 breathing exercise	relaxation technique
 potato	plant
 facebook	tech giant
-age	clinical factor
 manganese	transition metal
 symbol	method
 garlic	flavor
@@ -1819,7 +1725,6 @@ terrorism	threat
 brass	material
 education	socio economic factor
 birth certificate	document
-juice	beverage
 google maps	application
 bank account	asset
 cobalt	heavy metal
@@ -1827,7 +1732,6 @@ running	activity
 cookie	sweet
 trade show	marketing event
 ecology	field
-oil change	maintenance
 class size	factor
 book	medium
 willow	tree
@@ -1858,11 +1762,9 @@ heavy metal	toxin
 tuna	cold water fish
 steel	energy intensive industry
 zinc chloride	lewis acid
-fridge	item
 ibuprofen	analgesic
 light	abiotic factor
 roadside	disturbed area
-ada	language
 video surveillance	application
 ethereal	sniffer
 bronze	alloy
@@ -1880,12 +1782,10 @@ cadmium	trace element
 date of birth	personal information
 bread	product
 stent	implantable medical device
-kidney	tissue
 china	developing country
 capital punishment	issue
 freedom of speech	right
 type 2 diabetes	potential several health risk
-brussel sprout	cruciferous vegetable
 coal	raw material
 aids	condition
 photo	information
@@ -1896,7 +1796,6 @@ meal	service
 biodiesel	biofuels
 labor	patient care unit
 unilever	client
-training pant	disposable absorbent article
 equipment	resource
 temperature	meteorological variable
 hospitality	sector
@@ -1904,8 +1803,6 @@ saxophone	instrument
 ethylene vinyl acetate	polymer
 kitchen	amenity
 acetaminophen	pain medication
-sink	fixture
-thai	language
 au	noble metal
 speech	service
 memory	topic
@@ -1933,7 +1830,6 @@ air	environmental factor
 il 6	pro inflammatory cytokine
 genetic algorithm	evolutionary algorithm
 sorghum	crop
-budget	word
 rice	commodity
 audio	medium
 oil	raw material
@@ -1947,7 +1843,6 @@ width	dimension
 transport	industry
 ivy	plant
 blood pressure check	health issue
-munich	city
 mushroom	food
 car	product
 temperature	ambient condition
@@ -1963,14 +1858,11 @@ hurricane katrina	disaster
 desk	furniture
 dns	service
 delusion	psychotic symptom
-carbamazepine	medication
-anxiety	psychological disorder
 processing	factor
 mercury	pollutant
 quantitative	diagnostic assay
 food	organization
 butter	saturated fat
-maize	specie
 material	parameter
 acetic acid	solvent
 china	power
@@ -1997,14 +1889,12 @@ biology	area
 health	category
 insolvency	faulty credit score
 web development	service
-orange	citrus fruit
 pdgf	growth factor
 ptfe	material
 military	industry
 creativity	characteristic
 shoulder	area
 dubai	city
-shelter	basic need
 li	alkali metal
 world bank	international organization
 4 h	organization
@@ -2033,7 +1923,6 @@ evolution	topic
 education	social factor
 gene	factor
 projector	equipment
-room service	hospitality service
 traffic volume	factor
 cambria suites boise airport hotel	luxury hotel
 chair	product
@@ -2041,10 +1930,8 @@ facebook	company
 youtube	site
 brazil	power
 conference calling	feature
-x rays	test
 australia	state
 usher	artist
-divorce	life event
 gdp	variable
 bacillus subtilis	bacterium
 chicken	specie
@@ -2054,7 +1941,6 @@ solar	renewable energy source
 design	activity
 trailer	vehicle
 mathematic	area
-wire	material
 merger	event
 transportation	sector
 ccj	negative factor
@@ -2068,7 +1954,6 @@ phosphorylation	modification
 high speed broadband	vital utility
 karnataka	state
 d c	city
-mahogany	hardwood
 florida	area
 ethnic background	factor
 sunglasses	accessory
@@ -2080,9 +1965,7 @@ artificial intelligence	technology
 rectangle	shape
 internet	wide area network
 diarrhea	side effect
-glamour	magazine
 fuel	item
-fruit	healthy snack
 food	sector
 applesauce	food
 aspirin	antiplatelet drug
@@ -2092,7 +1975,6 @@ physical inactivity	factor
 project manager	role
 il-6	cytokines
 eli lilly	company
-full name	information
 compression	feature
 wedding ceremony cost	financial expense
 mental health	topic
@@ -2111,7 +1993,6 @@ turmeric	herb
 laboratory	facility
 health	subject
 bag	product
-transparency	principle
 gravity	external force
 disappointment	emotion
 tungsten	material
@@ -2119,7 +2000,6 @@ painting	medium
 rain	weather
 cadmium	toxic heavy metal
 resource	factor
-bathing	task
 wind power	energy source
 glucocorticoid	hormone
 mp4	video format
@@ -2129,7 +2009,6 @@ ribbon	item
 bass	fish
 cds	supplemental material
 fever	constitutional symptom
-age	patient demographic
 mp3	audio file
 planning	skill
 constipation	digestive problem
@@ -2142,7 +2021,6 @@ meat	high protein food
 tertiary amine	catalyst
 taste	sense
 roller	part
-simplicity	advantage
 table tennis	sport
 instrument	component
 coloring agent	additive
@@ -2168,7 +2046,6 @@ horse	specie
 publishing	industry
 starling	bird
 game	activity
-tissue paper	combustible decoration
 mexico	economy
 seasonal outdoor pool	recreational amenity
 ccj	credit factor
@@ -2192,7 +2069,6 @@ chicken	dish
 target	retailer
 lime	additive
 polysilicon	material
-beverage	product
 metal oxide	material
 radiator	heat source
 olive oil	good fat
@@ -2209,13 +2085,11 @@ wage	factor
 methyl group	alkyl group
 dental implant	dental treatment
 backpack	item
-snow	weather condition
 aspirin	anti inflammatory drug
 histone modification	epigenetic mechanism
 processed pastry	item
 type 2 diabetes	potential several health hazard
 teacher	professional
-fruit	carbohydrate
 tobacco	item
 dredging	activity
 wheelchair	equipment
@@ -2262,7 +2136,6 @@ tungsten	metal
 aluminum alloy	material
 hepatitis	infection
 alzheimer s	neurodegenerative disease
-prune	dried fruit
 risk management	issue
 avis	car rental company
 scanner	input device
@@ -2282,7 +2155,6 @@ myspace	website
 job satisfaction	factor
 insulin like growth factor	growth factor
 spleen	tissue
-photograph	material
 uncle	family member
 depression	health issue
 cotton	sex lighter material
@@ -2295,7 +2167,6 @@ pregnancy	medical condition
 home renovation	financial expense
 plant height	growth parameter
 engineering	area
-nurse	professional
 mobility	trend
 bosch	brand
 dancing	hobby
@@ -2312,12 +2183,10 @@ loneliness	emotion
 median	statistic
 study property listing	duty
 tomato	product
-pakistan	place
 india	case
 ruthenium	noble metal
 strawberry	berry
 dry mouth	side effect
-chemical resistance	property
 at least one of	expression
 proton pump inhibitor	medication
 security	service
@@ -2358,7 +2227,6 @@ bowling	sport
 ipod	electronic device
 pdas	portable device
 pascal	language
-apache	web server
 migraine	headache
 radiation	cancer treatment
 low temperature	factor
@@ -2403,7 +2271,6 @@ email address	personally identifiable information
 flexibility	characteristic
 clock	item
 potassium	element
-age	basic criterion
 newspaper	traditional medium
 copper	raw material
 poultry	animal product
@@ -2422,7 +2289,6 @@ vanilla	flavor
 government regulation	factor
 lily	flower
 ethyl acetate	organic solvent
-granite	natural stone
 snapper	fish
 vehicle repair	short term requirement
 silica	inorganic filler
@@ -2430,7 +2296,6 @@ rubella	infection
 geology	science
 account number	confidential information
 polyvinyl chloride	plastic
-grease	contaminant
 italian	romance language
 catalyst	additive
 patient age	factor
@@ -2471,7 +2336,6 @@ neutrophil	immune cell
 drought	extreme weather event
 medium	institution
 sat	test
-grease	material
 zinc	trace metal
 european commission	international organization
 tree	obstacle
@@ -2483,7 +2347,6 @@ protein	molecule
 octreotide	somatostatin analog
 redness	symptom
 panel	product
-automotive	application
 millet	cereal
 global warming	issue
 brick	building material
@@ -2507,7 +2370,6 @@ bottle	item
 indomethacin	nonsteroidal anti inflammatory drug
 plasmid dna	microorganism
 angle	parameter
-text	feature
 india	part of the world
 toluene	organic solvent
 polyurethane	polymer
@@ -2541,8 +2403,6 @@ heart disease	chronic illness
 wheelchair	item
 focus group	technique
 ice cream	food
-enzyme	protein
-jazz	style
 reading	activity
 sparrow	bird
 portugal	nation
@@ -2621,12 +2481,10 @@ courgette	vegetable
 eyelash extension	beauty service
 social medium	topic
 atorvastatin	statin
-magnesium	supplement
 ion exchange	process
 staffing	factor
 gentamicin	aminoglycoside antibiotic
 contract	documentation
-hippocampus	region
 myspace	social medium site
 elk	animal
 airline	industry
@@ -2635,7 +2493,6 @@ zoloft	antidepressant
 sporting achievement	occasion information
 superman	character
 sport	activity
-france	civil law country
 butylated hydroxytoluene	synthetic antioxidant
 spinach	leafy green vegetable
 mineral	nutrient
@@ -2702,7 +2559,6 @@ fuel	product
 mathematic	field
 fatigue	common symptom
 shop	amenity
-training pant	absorbent article
 ultrasound	imaging study
 house renovation	small financial expense
 watermelon	fruit
@@ -2772,7 +2628,6 @@ animal	category
 girl scouts	organization
 cardiovascular disease	health problem
 author	information
-grease	substance
 economy	factor
 common cold	infection
 hour	information
@@ -2814,8 +2669,6 @@ parsnip	root vegetable
 rat	mammal
 mariah carey	artist
 bleach	chemical
-age	background variable
-personality	variable
 insect	factor
 justice	concept
 house renovation	short term need
@@ -2835,7 +2688,6 @@ field trip	event
 blood pressure	vital sign
 benzene	aromatic hydrocarbon
 deforestation	activity
-ski	equipment
 video poker	game
 child support	issue
 tea	drink
@@ -2853,7 +2705,6 @@ plavix	blood thinner
 potassium	essential mineral
 audi	manufacturer
 carboxymethylcellulose	adhesive
-complimentary tea	modern comfort
 rat	specie
 computer	equipment
 ethanol	biofuels
@@ -2866,11 +2717,9 @@ superoxide radical	reactive oxygen specie
 cereal	food
 collage	technique
 garage	outbuilding
-human	diploid organism
 corticosteroid	medication
 film	material
 tag	game
-solubility	property
 singapore airlines	airline
 qantas	airline
 electricity	essential service
@@ -2901,7 +2750,6 @@ plans	word
 funding	issue
 justin martyr	church father
 london	area
-age	personal information
 ph	condition
 dance	art form
 kiwi	fruit
@@ -2918,7 +2766,6 @@ photoperiod	environmental factor
 gender	categorical variable
 hypokalemia	electrolyte disturbance
 health insurance	benefit
-france	market
 guitar	instrument
 grape	flavor
 chronic pain	condition
@@ -2927,7 +2774,6 @@ banana	item
 bank statement	personal datum
 ceramide	sphingolipid
 sustainability	concept
-kerosene	petroleum product
 pear	fresh fruit
 united states	region
 deer	mammal
@@ -2940,10 +2786,8 @@ heparin	glycosaminoglycan
 erosion	natural process
 rice	crop
 bond	financial asset
-france	developed country
 spinach	leafy vegetable
 ford	brand
-medical expense	monetary cost
 training	aspect
 chiropractic	therapy
 maintaining records management system	office duty
@@ -2960,18 +2804,14 @@ nutritional deficiency	factor
 jewelry	gift
 grass	plant
 reaction time	factor
-age	intrinsic factor
 collectible	item
 engineering	program
 twig	debris
 triangle	geometric shape
 molecular weight	factor
-medical expense	small financial cost
-granite	igneous rock
 madrid	city
 nylon	synthetic fiber
 comment	information
-medical expense	small monetary expense
 arm	area
 las vegas	market
 cape town	city
@@ -3001,11 +2841,9 @@ custody	issue
 ip	protocol
 silicon nitride film	film
 duration	information
-automotive	industry
 low cost	advantage
 rottweiler	breed
 ibuprofen	nonsteroidal anti-inflammatory drug
-beverage	item
 staphylococcus	bacterium
 australia	market
 glove	protective clothing
@@ -3041,7 +2879,6 @@ south australia	state
 ether	organic solvent
 southwest airlines	company
 anastrozole	aromatase inhibitor
-pseudomonas aeruginosa	gram negative bacterium
 science	topic
 pie	baked goods
 boxing	sport
@@ -3056,7 +2893,6 @@ shovel	equipment
 united	airline
 image	datum
 networking	area
-france	eu member state
 oak	specie
 body temperature	factor
 schizophrenia	psychiatric disorder
@@ -3070,7 +2906,6 @@ uttar pradesh	state
 picture	file
 diffusion	process
 linkedin	social network
-natural	adhesive
 cytokinin	plant hormone
 sheep	livestock
 facebook	social networking website
@@ -3085,14 +2920,12 @@ squat	exercise
 dinner	event
 smoking	unhealthy behavior
 culture	factor
-weakness	symptom
 crane	equipment
 anger	strong emotion
 vegetable	ingredient
 elisa	immunoassay
 phone	item
 telephone bill	small monetary expense
-water	ingredient
 india	asian country
 percentage	descriptive statistic
 closing statement	document
@@ -3102,12 +2935,10 @@ book	work
 depression	factor
 silica	mineral
 habitat for humanity	organization
-age	host factor
 cauliflower	exception
 chitosan	natural polymer
 medline	database
 cyclophosphamide	alkylating agent
-age	clinical parameter
 amino	functional group
 gasoline	item
 water skiing	water sport
@@ -3117,7 +2948,6 @@ money progress loan	money financial loan
 copenhagen	city
 belt	leather item
 dance	art
-tubing	product
 logo	purpose
 false tooth	prosthesis
 default	credit score record
@@ -3132,13 +2962,11 @@ table	flat surface
 printing	cost
 can	item
 vegetable	crop
-age	socio demographic variable
 rabbit	small animal
 snowboarding	sport
 world cup	event
 identity	issue
 skiing	outdoor activity
-prednisone	medication
 left	spatial or directional term
 jiva spa	facility
 soup	liquid
@@ -3146,12 +2974,9 @@ king mackerel	fish
 whiplash	injury
 spider	insect
 propylene	olefin
-juice	liquid
 paint thinner	volatile solvent
-petroleum	industry
 salary	issue
 sofa	affordable and multifunctional furniture piece
-phone bill	financial expense
 trust	factor
 salmon	cold water fish
 filter	component
@@ -3176,8 +3001,6 @@ amazon.com	website
 high sensitivity	advantage
 event driven	processing strategy
 oil	product
-sales event	event
-water	molecule
 acupuncture	complementary therapy
 haircut	service
 date	datum
@@ -3215,7 +3038,6 @@ land use	issue
 face	area
 economist	publication
 paper	medium
-gypsum	material
 poly	polyester
 tesco	supermarket
 pipe	material
@@ -3259,11 +3081,8 @@ ibuprofen	anti-inflammatory drug
 claritin	antihistamine
 customer service	skill
 antibody	molecule
-wire	conductor
-phone bill	monetary expense
 apple	brand
 mrs	title
-prednisone	glucocorticoid
 ham s f10	commercially available medium
 ireland	member state
 protein	compound
@@ -3278,7 +3097,6 @@ vomiting	gastrointestinal disturbance
 hunting	activity
 market	convenient facility
 parity	factor
-ceftriaxone	third generation cephalosporin
 mental health	issue
 type 2 diabetes	health risk
 perfume	item
@@ -3297,21 +3115,17 @@ asthma	chronic respiratory disease
 oil	liquid
 egf	growth factor
 transportation	support service
-phone bill	monetary cost
 clay	soil
 michael kors	brand
 drought	extreme climatic event
 obesity	chronic disease
 shop	place
-photograph	item
 enron	scandal
 pilates	class
 cost	practical consideration
 ampicillin	antibiotic
 intelligence	quality
-aretha franklin	artist
 peanut butter	flavor
-sucralose	artificial sweetener
 harp	instrument
 ethyl group	alkyl group
 bear	predator
@@ -3386,8 +3200,6 @@ strength	mechanical property
 coffee	product
 traditional checking	account
 screwdriver	hand tool
-new south wales	state
-water	utility
 sustainability	factor
 gentamicin	antibiotic
 rolling stones	artist
@@ -3413,10 +3225,8 @@ leather	industry
 snack size candy bar	small portion
 benadryl	antihistamine
 cheese	item
-rice cake	traditional best loved dish
 radio	medium
 spice	ingredient
-age	independent variable
 phone expense	monetary expense
 eye protection	personal protective equipment
 unicef	organization
@@ -3428,7 +3238,6 @@ law	career
 india	region
 dust	contaminant
 flour	item
-short	item
 burning	operation
 tomato	crop
 line	object
@@ -3464,19 +3273,15 @@ honesty	quality
 anatomy	subject
 density	fluid property
 stress	common ailment
-age	attribute
 aspirin	painkiller
 training	factor
-wikipedia	source
 backgammon	game
 lace	material
 height	anthropometric measurement
 pike	fish
 sheep	ruminant
 reaction temperature	reaction condition
-adobe illustrator	program
 orientation	factor
-water	facility
 hydrogen peroxide	agent
 irritable bowel syndrome	condition
 lamotrigine	anticonvulsant
@@ -3485,11 +3290,9 @@ poly	synthetic polymer
 italy	eu country
 director	role
 fatigue	flu like symptom
-age	patient factor
 accommodation	expense
 education	department
 adenoviruses	virus
-new south wales	jurisdiction
 window	item
 key executive	detailed business information
 smoking	issue
@@ -3506,7 +3309,6 @@ property tax	expense
 elevation	factor
 culture	variable
 haemorrhage	complication
-fruit	high-fiber food
 market size	factor
 antioxidant	biological activity
 nitrogen oxide	pollutant
@@ -3540,7 +3342,6 @@ approvals for storage of diesel from chief controller of explosives	statutory cl
 painting	task
 finance	field
 stability	parameter
-flyer	marketing material
 internet	communication technology
 swimming pool	recreational facility
 black pepper	spice
@@ -3576,7 +3377,6 @@ huawei	company
 ultrasound	test
 interest rate swap	derivative financial instrument
 athletics	sport
-nurse	health professional
 anticipate	word
 hurricane	natural disaster
 alanine	amino acid
@@ -3617,7 +3417,6 @@ sulfate	anion
 cds	product
 interactive financial calculator	resource
 structure	feature
-bht	synthetic antioxidant
 electricity bill	monetary cost
 psychotherapy	treatment
 light	term
@@ -3632,7 +3431,6 @@ citrate	buffer
 dolphin	marine mammal
 cut	injury
 amazon.com	site
-transparency	value
 mexico	latin american country
 brass	non ferrous metal
 maintenance	activity
@@ -3640,7 +3438,6 @@ user id	information
 madonna	artist
 chicago	big city
 rain	weather condition
-finch	bird
 new york	market
 house renovation	small monetary expense
 eastern cape	province
@@ -3671,13 +3468,11 @@ education	policy area
 inflammation	condition
 beta blocker	medicine
 tofu	soy product
-facial	spa service
 pollution	environmental problem
 brake	complete under car service
 new orleans	city
 china	nation
 microsoft windows	operating system
-sexism	issue
 il 1	pro inflammatory cytokine
 timber	natural material
 lard	animal fat
@@ -3687,7 +3482,6 @@ type 2 diabetes	health concern
 macy s	department store
 humidity	environmental parameter
 saving	asset
-pakistan	muslim country
 porsche	brand
 scallop	shellfish
 government	stakeholder
@@ -3737,7 +3531,6 @@ chess	game
 fistula	complication
 range	descriptive statistic
 china	large country
-soil	natural resource
 road	infrastructure
 diaper holder	absorbent article
 cloth	material
@@ -3762,7 +3555,6 @@ pheasant	bird
 microsoft	industry leader
 speed	feature
 learning	topic
-divorce	life change
 shelf	accessory
 email distribution list	electronic forum
 pressure	quantity
@@ -3773,7 +3565,6 @@ australia	nation
 marital status	variable
 t cell	immune cell
 butter	animal fat
-age	confounding factor
 picture	visual
 zinc	micronutrient
 polyurethane	material
@@ -3781,7 +3572,6 @@ fatigue	issue
 raccoon	animal
 school	public institution
 tiger	big cat
-orange	warm color
 costco	retailer
 amazon com	online retailer
 depression	non motor symptom
@@ -3790,17 +3580,13 @@ sweating	symptom
 anemia	condition
 plier	hand tool
 acai berry diet program	crazy diet
-packaging	industry
 website	resource
 vegf	angiogenic factor
-france	eu country
-magnesium	cation
 trout	oily fish
 income	demographic variable
 protein	biomolecules
 sweating	physical symptom
 napkin	item
-whole grain	food
 kidney disease	condition
 body weight	parameter
 hurricane	disaster
@@ -3854,7 +3640,6 @@ warehousing	service
 mpeg	video format
 x ray	investigation
 remote control	feature
-contact detail	personal information
 sodium chloride	salt
 budapest	city
 cholesterol	sterol
@@ -3863,7 +3648,6 @@ bronchitis	condition
 safety	area
 transportation	service
 helmet	item
-deli tissue	suitable utensil
 communication	life skill
 physic	area
 shower	facility
@@ -3890,12 +3674,10 @@ genetic algorithm	method
 cheetah	predator
 mediation	dispute resolution method
 healthcare bill	monetary expense
-wikipedia	website
 money	valuable
 nutrient	pollutant
 space	concept
 land	capital asset
-maize	plant
 plum	fruit tree
 voltage	parameter
 cayenne	spice
@@ -3924,8 +3706,6 @@ type 2 diabetes	ailment
 irrigation	agricultural practice
 generalized anxiety disorder	anxiety disorder
 skiing	activity
-noise	problem
-biofeedback	technique
 night sweat	symptom
 polyethylene	plastic
 bleeding	serious complication
@@ -3969,7 +3749,6 @@ terrorism	issue
 birmingham	city
 potassium	alkali metal soap
 tent	item
-photograph	information
 cultural background	factor
 calculator	item
 new york times	publication
@@ -3984,10 +3763,7 @@ thinner	solvent
 hat	prop
 sardine	fatty fish
 leased line	real world connection
-php	programming language
 boat	item
-option	contract
-water	impurity
 jaundice	symptom
 chemical vapor deposition	method
 epoxy resin	material
@@ -4004,7 +3780,6 @@ tool	product
 refrigerator	amenity
 straw	material
 non skid safety shoe	protective equipment
-fruit	ingredient
 animal	topic
 wrench	tool
 cement	material
@@ -4017,11 +3792,9 @@ motivation	topic
 x ray	imaging technique
 depression	psychiatric symptom
 canada	area
-marigold	plant
 camera	equipment
 lavender	essential oil
 oxalic acid	organic acid
-magnesium	ion
 ethane	hydrocarbon
 exxonmobil	company
 surveillance	application
@@ -4041,7 +3814,6 @@ height	trait
 stress	issue
 cat	domestic animal
 drawing	document
-age	biological factor
 hypoxia	stimulus
 brake fluid	fluid
 usaid	donor
@@ -4075,7 +3847,6 @@ wedding ceremony expense	monetary cost
 pseudomonas	bacterium
 wedding	social event
 nail biting	habit
-lemon	citrus fruit
 poor diet	lifestyle factor
 political affiliation	sensitive personal information
 sport	theme
@@ -4089,7 +3860,6 @@ glucose	carbohydrate
 isoleucine	amino acid
 corn	grain
 hot flash	menopausal symptom
-job title	information
 aspirin	nonsteroidal anti-inflammatory drug
 dna	nucleic acid
 sprain	minor injury
@@ -4117,7 +3887,6 @@ delusion	positive symptom
 electricity bill	small financial cost
 women s right	issue
 sandwich meat	deli favorite
-amphetamine	substance
 nylon	polymer
 insurance	item
 speed	advantage
@@ -4125,13 +3894,10 @@ gun control	issue
 elevation	information
 regret	emotion
 education	program
-text	material
-kerosene	solvent
 policy	document
 museum	institution
 fertilizer	pollutant
 globalisation	trend
-instruction	information
 copper	metallic material
 glycolic acid	alpha hydroxy acid
 toluene	solvent
@@ -4146,26 +3912,21 @@ teflon	material
 time	condition
 brazing	operation
 kevlar	material
-onion	item
 bluetooth	connectivity option
 acai berry diet regime	outrageous diet
 iron maiden	band
 breed	information
 mp4	video file
 air pollution	environmental problem
-anxiety	psychological condition
 unemployment rate	factor
 grade	factor
-age	patient information
 sandwich	item
 hormonal change	factor
 proportion	descriptive statistic
-age	factor
 birth	document
 severity	factor
 bridge	structure
 solvent	substance
-age	patient related factor
 sodium hydroxide	base
 social	area
 heat stabilizer	additive
@@ -4178,13 +3939,11 @@ rosemary	spice
 benzene	organic solvent
 aphid	pest
 dog	predator
-packaging	application
 methylphenidate	psychostimulant
 corporation	entity
 authentication	security service
 tree	plant
 nsw	state
-lemon	fruit
 environment	factor
 delivery	service
 mussel	seafood
@@ -4221,7 +3980,6 @@ vitamin	nutrient
 dictionary	resource
 marriott	company
 packing	service
-giraffe	animal
 neuroticism	personality trait
 los angeles	large city
 dizziness	symptom
@@ -4234,11 +3992,9 @@ ipad	mobile device
 new zealand	place
 maintenance	topic
 olive oil	ingredient
-apron	personal protective equipment
 nirvana	band
 aromatherapy	therapy
 pepper	seasoning
-anxiety	symptom
 field trip	activity
 mercedes benz	company
 spreading rumor	action
@@ -4272,7 +4028,6 @@ customer's account status	information
 bacon	food
 naltrexone	opioid antagonist
 energy	issue
-full name	personal information
 nail	material
 heavy metal	pollutant
 telecommunication	area
@@ -4311,7 +4066,6 @@ ice skating	activity
 perception	topic
 mild steel	material
 hard work	value
-water	element
 feldspar	mineral
 corner	feature
 word processor	program
@@ -4331,7 +4085,6 @@ entertainment	industry
 car	object
 meat	food product
 pvc	material
-fruit	meal
 saliva	body fluid
 drought	disaster
 real estate	area
@@ -4352,7 +4105,6 @@ il 4	th2 cytokine
 helmet	accessory
 telecommunication	industry
 natural gas	fuel
-x rays	imaging test
 phosphoric acid	acid
 protease	enzyme
 yellow	bright color
@@ -4379,7 +4131,6 @@ medicaid	public program
 money progress mortgage	cash financial loan
 climate change	topic
 germanium	material
-water	liquid
 deutsche bank	bank
 ultrasound	technology
 cotton	crop
@@ -4413,7 +4164,6 @@ butane	hydrocarbon
 chemical	industry
 corrosion inhibitor	additive
 inflation	issue
-juice	fluid
 passive infrared	system device
 grocery fee	brief phrase need
 argon	gas
@@ -4423,7 +4173,6 @@ insurance company	financial institution
 certificate	document
 financial times	publication
 firefox	program
-marks spencer	retailer
 heating	utility
 genistein	isoflavone
 abscisic acid	hormone
@@ -4448,7 +4197,6 @@ radio	electronic equipment
 mobile phone	mobile device
 milk	dairy food
 chromium	heavy metal
-fruit	healthy food
 renault cars	car
 model	method
 precipitation	variable
@@ -4487,7 +4235,6 @@ transportation	cost
 email	communication
 lipstick	cosmetic
 jharkhand	state
-shipping	industry
 carnegie hall	venue
 business	topic
 benzine	strong solvent
@@ -4540,7 +4287,6 @@ mobility	technology
 paper	material
 dog	mammal
 server	device
-age	condition
 rabbit	species
 library	amenity
 nbc	network
@@ -4580,7 +4326,6 @@ gasification	technology
 vaccination	service
 copper	micronutrient
 humidity	condition
-soccer	event
 rent	expense
 bankruptcy	issue
 depression	problem
@@ -4588,7 +4333,6 @@ standard poor s	credit rating agency
 site	factor
 address	personal information
 marketing	factor
-prednisone	corticosteroid
 flow rate	parameter
 data mining	technology
 punjab	state
@@ -4630,7 +4374,6 @@ water depth	factor
 discover	credit card
 nitrogen oxide	air pollutant
 columbus	city
-php	language
 painting	hobby
 pharmacist	health professional
 chlorine	halogen atom
@@ -4654,7 +4397,6 @@ volvo	company
 ideality factor	diode parameter
 cds	item
 carnation	flower
-commission	key performance indicator
 medical bill	small monetary cost
 kale	dark green leafy vegetable
 martial art	sport
@@ -4669,7 +4411,6 @@ constipation	condition
 telephone expense	small monetary expense
 chloride	electrolyte
 horse	farm animal
-bathing	service
 russia	market
 shipbuilding	industry
 depression	common mental disorder
@@ -4677,8 +4418,6 @@ telecom	sector
 food stamp	program
 internet	modern technology
 time	magazine
-sleep apnea	sleep disorder
-cyclosporine	immunosuppressive agent
 appliance	product
 bean	legume
 heat	environmental factor
@@ -4704,18 +4443,15 @@ dyslexia	disability
 hp	brand
 feather	decorative object
 disney	brand
-small subunit of rubisco	plant promoter
 toilet paper	paper product
 india	culture
 resistor	passive component
 united states	jurisdiction
 microwave motion detector	system device
 oracle	database
-surface area	property
 fruit juice	drink
 rosemary	fresh herb
 human right	topic
-bathing	daily activity
 diabetes mellitus	comorbidity
 titanium	refractory metal
 democracy	concept
@@ -4723,7 +4459,6 @@ cancer cell	cell
 copying	administrative duty
 ladybug	beneficial insect
 zurich	city
-wiki	technology
 zinc	metal
 office	environment
 dairy product	food
@@ -4746,7 +4481,6 @@ ether	functional group
 earthquake	natural disaster
 vitamins c	nutrient
 azathioprine	immunosuppressive agent
-particle size	property
 sugar	substance
 audio	feature
 alcohol	lifestyle factor
@@ -4758,7 +4492,6 @@ gold	element
 deer	wild animal
 phone expense	small monetary cost
 kickstarter	site
-black bear	animal
 window	component
 pollen	substance
 wound dehiscence	complication
@@ -4770,7 +4503,6 @@ bean	vegetable
 mp4	popular video format
 vehicle	pharmaceutically acceptable excipients
 animation	feature
-lemon	food
 bottle	object
 cat	domesticated animal
 solidarity	value
@@ -4789,7 +4521,6 @@ antibody	agent
 military	application
 banking	service industry
 drill	power tool
-coconut oil	oil
 everyone loves the side dish that i brought	realistic outcome
 vinegar	acid
 doorknob	surface
@@ -4803,7 +4534,6 @@ oil	fluid
 agriculture	activity
 electrical	item
 fatigue	factor
-fruit	snack
 malnutrition	condition
 cosmetic	product
 accelerometers	sensor
@@ -4811,7 +4541,6 @@ phone	service
 deer	animal
 crayon	material
 column	element
-anxiety	issue
 solicitor	professional
 heart disease	common disease
 library	service
@@ -4861,7 +4590,6 @@ fence	feature
 geography	discipline
 soda	sugary drink
 dielectric function	optical property
-soil	environment
 systemic lupus erythematosus	autoimmune disease
 occupation	characteristic
 family history	risk factor
@@ -4875,7 +4603,6 @@ credit card	sensitive information
 optical disk	datum storage device
 maintenance	factor
 coconut	oil
-scratch	defect
 road	linear feature
 diode	device
 midazolam	benzodiazepine
@@ -4908,7 +4635,6 @@ wedding	large event
 google chrome	browser
 cafeteria	facility
 cornwall	area
-rodent	specie
 sociology	social science
 cloud computing	trend
 organic material	incompatible
@@ -4937,7 +4663,6 @@ sewing	skill
 artwork	item
 history	aspect
 habitat loss	factor
-rheumatoid arthritis	inflammatory condition
 acidosis	factor
 android	platform
 reliability	attribute
@@ -4947,7 +4672,6 @@ logistic	issue
 pregnant woman	person
 sprain	injury
 hypercholesterolemia	cardiovascular risk factor
-fruit	complex carbohydrate
 tem	technique
 farming	human activity
 potassium hydroxide	base
@@ -4977,7 +4701,6 @@ natural gas	commodity
 sulfur	element
 front end loader	heavy equipment
 school	setting
-mother s day	holiday
 scrum	agile method
 immigration	factor
 cdna molecule	nucleic acid molecule
@@ -5007,8 +4730,6 @@ europe	developed market
 ccj	undesirable factor
 hardware	product
 corticosteroid	medicine
-management	issue
-water	material
 fax machine	standard office equipment
 bae systems	company
 poultry	perishable food
@@ -5016,7 +4737,6 @@ email address	contact information
 ammonium	alkali metal soap
 ph	experimental condition
 snowboarding	outdoor activity
-nurse	health care worker
 saliva	bodily fluid
 china	asian country
 apparel	product
@@ -5026,14 +4746,12 @@ hallucination	positive symptom
 location	parameter
 vertigo	symptom
 sawing	operation
-text	object
 broccoli	crop
 toughness	property
 aspirin	over-the-counter medication
 landslide	natural disaster
 viscosity	property
 hospital	public institution
-database	secondary source
 housing	sector
 deforestation	land use change
 crutch	assistive device
@@ -5051,12 +4769,10 @@ cosmetic	item
 interleukin 1	proinflammatory cytokine
 krypton	inert gas
 meningioma	tumor
-vaseline	oil based lubricant
 flour	food
 barclays	company
 crab	shellfish
 pigment	additive
-saw	tool
 bangladesh	asian country
 fruit fly	insect
 stock	security
@@ -5071,9 +4787,6 @@ outlook	program
 culture	concept
 sputum	specimen
 kale	food
-age	social factor
-water	resource
-marigold	flower
 light	element
 keyboard	input device
 infrastructure	issue
@@ -5084,8 +4797,6 @@ wood chip	organic mulch
 laser	technology
 insurance company	organization
 e mail address	personal datum
-academic	occasion information
-packaging	factor
 manganese	mineral
 new york	state
 green tea herb diet	mad diet
@@ -5096,13 +4807,10 @@ sardine	fish
 crepe paper	combustible decoration
 barley	grain
 3g	access technology
-water	public facility
 paper	surface
 ketone	functional group
 google analytics	tool
 helicopter	aircraft
-age	parameter
-age	demographic
 glaucoma	eye disease
 rabbit	mammal
 sweden	northern european country
@@ -5122,13 +4830,11 @@ uv stabilizer	additive
 hyperlipidemia	risk factor
 meditation	tool
 bean	meat alternative
-budget	factor
 time	reaction condition
 chemistry	science
 ozone	pollutant
 weddings	event
 hydroxyl	functional group
-linearity	analytical parameter
 retail	business
 heated swimming pool	facility
 depression	illness
@@ -5159,7 +4865,6 @@ sprint	company
 facelift	procedure
 excel	application
 colonoscopy	procedure
-soccer	sport
 honey	natural ingredient
 chewing tobacco	smokeless tobacco product
 cash progress mortgage	cash loan
@@ -5179,7 +4884,6 @@ flexibility	skill
 sugar	additive
 nematode	organism
 beer s law limit	optical characteristic
-onion	root vegetable
 restylane	filler
 share	asset
 freeview	digital television system
@@ -5187,7 +4891,6 @@ ageing population	factor
 ti	metal
 burberry	brand
 ethnicity	information
-stripe	pattern
 romania	eastern european country
 hydrogen peroxide	chemical
 brussels sprout	vegetable
@@ -5211,15 +4914,12 @@ saudi arabia	muslim country
 white balance	setting
 social support	psychosocial factor
 vegetable	fiber rich food
-product	factor
-aggression	behavior
 bench	item
 drought	abiotic stress
 gender	covariate
 environment	sector
 vehicle repair	short term need
 brazil	middle income country
-cello	instrument
 sociology	area
 brain derived neurotrophic factor	neurotrophin
 state	adding new input
@@ -5228,7 +4928,6 @@ stock	financial asset
 reggae	genre
 anemia	complication
 sugar	simple carbohydrate
-age	demographic characteristic
 linkedin	website
 precipitation	method
 gender	information
@@ -5265,7 +4964,6 @@ asthma	disorder
 rock	item
 brazil	emerging economy
 ultrasound	modality
-shelter	need
 quetiapine	atypical antipsychotic
 food	need
 hormone	substance
@@ -5273,7 +4971,6 @@ bdnf	neurotrophic factor
 youtube	social medium tool
 rat	pest
 jam	food
-apron	protective clothing
 finite difference method	numerical method
 cabinet	product
 metal	conductive material
@@ -5304,7 +5001,6 @@ rice	staple food
 mineral spirit	volatile waste
 fireplace	original feature
 ibuprofen	nsaids
-magnesium	metal
 arthritis	degenerative disease
 air conditioning	modern amenity
 xenon	gas
@@ -5329,16 +5025,13 @@ drosophila	organism
 myalgia	symptom
 tio 2	metal oxide
 flute	instrument
-grease	stain
 mandarin	language
-scratch	damage
 email	channel
 air conditioning	facility
 graphic design	service
 amino acid	small molecule
 autonomy	concept
 price	criterion
-brown grain	complex carbohydrate entirely grain product
 school	area
 aerospace	sector
 birthday	personal information
@@ -5359,9 +5052,7 @@ bathroom	area
 gas	fuel
 trypsin	serine protease
 sat	standardized test
-transparency	issue
 acetaminophen	pain reliever
-water	issue
 tea	item
 transportation	field
 pepper	ingredient
@@ -5406,7 +5097,6 @@ pesticide	contaminant
 surgery	treatment
 income	socio economic factor
 hoist	equipment
-fridge	appliance
 metal	pollutant
 trauma	issue
 basic warranty	warranty term
@@ -5417,7 +5107,6 @@ salad	item
 earthquake	extreme event
 video	rich medium
 corn	food crop
-climate control	feature
 poultry	food
 supervisory	device
 blood	tissue
@@ -5436,7 +5125,6 @@ hickory	hardwood
 experience	variable
 c reactive protein	inflammatory marker
 birthday	information
-whole grain	complex carbohydrate
 software	product
 chronic obstructive pulmonary disease	condition
 scarf	item
@@ -5470,7 +5158,6 @@ manual	document
 company name	information
 coal	energy source
 calcium	ion
-age	confounder
 jimi hendrix	artist
 gold	preciou metal
 pectin	soluble fiber
@@ -5490,7 +5177,6 @@ cow	farm animal
 push-ups	exercise
 remote keyless entry	feature
 grand theft auto	game
-diltiazem	calcium channel blocker
 airline	company
 social security	benefit
 meat	animal food
@@ -5499,14 +5185,12 @@ ketone	solvent
 insurance company	third party
 arrear	blemished credit score
 benzene	aromatic solvent
-orange	bright color
 raspberry	berry
 manganese	trace metal
 municipal judge	format
 depression	psychiatric condition
 methamphetamine	stimulant
 height	variable
-basket	item
 china	jurisdiction
 religion	theme
 yoghurt	dairy product
@@ -5539,7 +5223,6 @@ vitamin a	antioxidant
 free wi fi	popular facility
 paris	city
 rice	grain
-therapist	professional
 preservative	additive
 hemoglobin	protein
 computer	item
@@ -5554,7 +5237,6 @@ il 7	cytokine
 cow	mammal
 magnetic disk	storage device
 transport	cost
-granite	material
 flavonoid	compound
 disney	company
 restylane	dermal filler
@@ -5564,7 +5246,6 @@ blood	fluid
 social medium	channel
 linguistic	discipline
 shaft	part
-particle size	factor
 alprazolam	benzodiazepine
 fear god	person able man
 acupuncture	treatment
@@ -5580,7 +5261,6 @@ operation	area
 education	resource
 milk	beverage
 broken bone	injury
-scratch	cosmetic damage
 outdoor pool	recreational amenity
 e commerce	application
 adobe	company
@@ -5598,7 +5278,6 @@ honey	ingredient
 trekking	activity
 height	physical characteristic
 cash advance loan	money loan
-hope	emotion
 time	aspect
 temperature	physical property
 delay	parameter
@@ -5640,7 +5319,6 @@ communication	issue
 schizophrenia	serious mental illness
 smartphones	device
 myspace	social network site
-amphetamine	stimulant drug
 sociology	field
 general electric	company
 reaction temperature	factor
@@ -5652,7 +5330,6 @@ heart	vital organ
 industry journal	secondary source
 graphic	element
 metal	rigid material
-phone bill	small financial cost
 sepsis	complication
 drought	disturbance
 industrial	application
@@ -5660,7 +5337,6 @@ fashion show	event
 radiation	factor
 cafe	amenity
 zebra mussel	invasive specie
-age	variable
 guinea pig	animal
 sem	technique
 java	object oriented language
@@ -5676,7 +5352,6 @@ alzheimer s disease	neurodegenerative disorder
 wedding reception	event
 dengue	vector borne disease
 equipment	expense
-digital camera	product
 cookie	product
 poster	medium
 wild dingo	animal
@@ -5688,14 +5363,12 @@ unemployment	condition
 road	structure
 polyethylene	polymer
 internet	tool
-divorce	factor
 psoriasis	skin problem
 waste	issue
 smoking cessation	lifestyle change
 sears	retailer
 connector	component
 architect	profession
-older age	factor
 blackberry	fruit
 grape	crop
 thigh	area
@@ -5716,7 +5389,6 @@ umbrella	item
 monoclonal	antibody
 character	element
 happiness	positive emotion
-carbamazepine	anticonvulsants
 pesticide	item
 culvert	structure
 newsletter	innocent traffic method
@@ -5762,7 +5434,6 @@ system administrator	user
 shopping mall	amenity
 safety glass	safety equipment
 malaysia	southeast asian country
-budget	financial aspect of product development
 watching television	activity
 chromium	material
 sunflower	flower
@@ -5773,7 +5444,6 @@ gender	personal characteristic
 raloxifene	serm
 telephone bill	small financial cost
 relative humidity	meteorological parameter
-age	basic demographic information
 belt	prop
 carpal tunnel syndrome	condition
 coca-cola	brand
@@ -5783,7 +5453,6 @@ occupation	information
 rosemary	essential oil
 presentation	activity
 arthritis	chronic disease
-water	product
 drupal	content management system
 belt	item
 lavender	plant
@@ -5792,20 +5461,15 @@ cambridge	university
 cattle	ruminant
 netherlands	nation
 bearing	part
-carbamazepine	anticonvulsant
 competition	issue
 pantiliner	absorbent article
 lorazepam	benzodiazepines
 heat	ignition source
 european union	organization
 itune	application
-water	input
-age	socio demographic characteristic
 new zealand	nation
 motor	product
 cubicle	gently used product
-age	consideration
-room service	hospitality amenity
 sediment	pollutant
 pond	water
 netherlands	eu member state
@@ -5814,7 +5478,6 @@ health	aspect
 velocity	quantity
 massage	service
 gel	hair product
-text	medium
 finance	sector
 hermanus	seaside village
 papaya	food
@@ -5825,10 +5488,8 @@ web based forum	electronic forum
 cotton	plant
 zinc	mineral
 salad	dish
-rheumatoid arthritis	chronic inflammatory disease
 printer	external device
 radio frequency identification	technology
-nurse	medical professional
 brazil	latin american country
 duck	animal
 bench	amenity
@@ -5869,7 +5530,6 @@ royalist	political tag
 stabilizer	ingredient
 marketing	industry
 leadership	soft skill
-rodent	mammal
 transportation	activity
 finance	factor
 pollution	human activity
@@ -5884,18 +5544,15 @@ asia	part of the world
 mango	fruit
 coffee	caffeinated beverage
 asthma	health condition
-fairness	concept
 pablo picasso	artist
 ph value	parameter
 wax	substance
 version	information
 history	field
-anxiety	disorder
 pressure	factor
 cutlery	item
 exhibition	event
 training	activity
-onion	vegetable
 sulfur	nutrient
 guilt	feeling
 safari	browser
@@ -5915,7 +5572,6 @@ diet	lifestyle choice
 administration	area
 mount kineo	attraction
 climate change	environmental challenge
-prague	city
 control	factor
 cream	ingredient
 coronary heart disease	cardiovascular disease
@@ -5954,7 +5610,6 @@ nonunion	complication
 location	feature
 new york	area
 iron	metal
-photograph	evidence
 obesity	traditional risk factor
 endometriosis	hormone sensitive condition
 aerospace	field
@@ -5972,7 +5627,6 @@ linkedin	tool
 buttock	area
 corn	vegetable
 salt concentration	factor
-parkinson s	neurodegenerative disease
 youtube	apps
 marble	surface
 natural disaster	factor
@@ -5982,8 +5636,6 @@ estrogen	steroid hormone
 chip	item
 money advance mortgage	cash financial loan
 millet	grain
-christmas	peak period
-ache	symptom
 u s	market
 height	datum
 rope	object
@@ -6012,7 +5664,6 @@ norway	nordic country
 new york times	medium outlet
 stress	emotion
 facebook	social network
-age	reason
 exercise	topic
 acetaminophen	over the counter pain reliever
 indomethacin	nsaid
@@ -6039,7 +5690,6 @@ flow rate	factor
 design	issue
 sight	sense
 russia	state
-soil	environmental factor
 dosage	factor
 obesity	medical condition
 piston	part
@@ -6053,7 +5703,6 @@ washington dc	city
 interest	expense
 bond	item
 football	sport activity
-dimethyl sulfoxide	solvent
 development	area
 depression	topic
 positive	pattern
@@ -6098,7 +5747,6 @@ temperature	physical factor
 skateboarding	activity
 teeth whitening	treatment
 imatinib	tyrosine kinase inhibitor
-illustrated embodiment	embodiment
 1 owner	feature
 agriculture	issue
 corn	row crop
@@ -6113,13 +5761,11 @@ naproxen	non steroidal anti inflammatory drug
 mini golf	activity
 carpeting	modern comfort
 flexibility	advantage
-automotive	sector
 mathematics	subject
 urinary tract infection	complication
 competition	activity
 python	scripting language
 nutrient availability	factor
-tangerine	citrus fruit
 malaria	vector borne disease
 lemonade	beverage
 green tea extract diet	mad diet
@@ -6128,7 +5774,6 @@ chemistry	subject
 cobalt	trace element
 depreciation	cost
 maintenance	item
-beverage	industry
 culture	aspect
 real estate	investment
 canada	economy
@@ -6142,7 +5787,6 @@ greek	language
 cabinet	item
 linux	platform
 repair	expense
-particle size	parameter
 dental care	service
 sadness	negative emotion
 un	organization
@@ -6156,9 +5800,7 @@ tiredness	symptom
 ebay	company
 benzene	strong solvent
 humidity	variable
-blackboard	learning management system
 nanotube	one dimensional nanostructure
-judaism	religion
 chain	part
 shenzhen	city
 assonance	device
@@ -6168,11 +5810,9 @@ amplitude	parameter
 carbon nanotube	nanomaterial
 headset	accessory
 mp3 player	device
-photograph	source
 florida georgia	state
 metal	substance
 thyroid disease	condition
-human	animal
 platinum	metal
 marriage	life change
 wall street journal	medium outlet
@@ -6182,7 +5822,6 @@ radio	electrical appliance
 sunflower oil	oil
 ammonia	chemical
 flac	popular audio format
-si	element
 lack of sleep	factor
 electron density	plasma parameter
 economy	topic
@@ -6203,8 +5842,6 @@ calculator	office equipment
 bond	asset
 black or white	video
 compost	organic matter
-indiana	state
-wire	object
 health	issue
 barrel	unstable object
 insurance company	business
@@ -6212,7 +5849,6 @@ hospital	place
 canada	place
 exhibition	activity
 musical instrument	item
-age	continuous variable
 laser	light source
 andhra pradesh	state
 paper	recyclable
@@ -6228,7 +5864,6 @@ brazil	economy
 environmental	factor
 moisture	environmental factor
 password	sensitive datum
-water	factor
 seal	marine mammal
 radar	technology
 agriculture	field
@@ -6237,12 +5872,10 @@ oil	food
 measle	vaccine preventable disease
 website	information
 cheese	dairy food
-mammal	organism
 sanitation	issue
 paper boxes	container
 type 2 diabetes	chronic disease
 purple	bright color
-rodent	pest
 road	infrastructure asset
 respirator	personal protective equipment
 sun	company
@@ -6293,7 +5926,6 @@ watch	item
 starbucks	brand
 electrical energy expense	financial expense
 date of the offense	factor
-water	basic necessity
 tobacco	goods
 furnace	appliance
 child custody	issue
@@ -6345,7 +5977,6 @@ pricing	information
 psychiatrist	professional
 johannesburg	city
 chicken	protein
-divorce	family law matter
 software	item
 child care	issue
 temperature	environmental variable
@@ -6370,7 +6001,6 @@ illustrator	software
 infrastructure	factor
 type 2 diabetes	potential several side effect
 potato	crop
-celecoxib	cox 2 inhibitor
 middle name	adding new input
 wool	natural fabric
 chocolate	flavor
@@ -6379,7 +6009,6 @@ snowboarding	activity
 sand	granular material
 problem solving	skill
 left	term
-super bowl	event
 pork	meat
 united states	western country
 high blood pressure	medical condition
@@ -6425,7 +6054,6 @@ oak	tree
 parkinson s disease	neurological disorder
 density	characteristic
 chamomile	ingredient
-pakistan	asian country
 fence	item
 cake	baked good
 102 a	product dispenser
@@ -6438,7 +6066,6 @@ textile	industry
 university	institution
 basketball	athletic activity
 acai berry diet program	ridiculous diet
-enthalpy	thermodynamic parameter
 bandwidth	parameter
 date	basic information
 eagle	bird
@@ -6472,7 +6099,6 @@ tuberculosis	infection
 physical condition	factor
 abseiling	activity
 vancomycin	antibiotic
-lemon	flavor
 fern	plant
 receipt	documentation
 oxygen	factor
@@ -6481,7 +6107,6 @@ post traumatic stress disorder	anxiety disorder
 cardiovascular disease	comorbidity
 leadership	area
 communication	application
-birthday party	occasion
 coal	material
 security	function
 yield strength	mechanical property
@@ -6560,7 +6185,6 @@ barley	cereal grain
 fan	equipment
 sweden	scandinavian country
 train	vehicle
-soccer	contact sport
 copier	equipment
 low income	factor
 graphite	solid lubricant
@@ -6573,18 +6197,14 @@ continental airlines	airline
 medication	treatment
 elbow	fitting
 antibiotic	treatment
-celecoxib	selective cox 2 inhibitor
 glycine	amino acid
 hydroxyl radical	reactive oxygen specie
 screen printing	method
-legal fee	cost
 tractor	heavy equipment
-linearity	parameter
 school	service
 cattle	specie
 ph	water quality parameter
 material	aspect
-enthalpy	thermodynamic property
 ramones	band
 definition	information
 bottled water	item
@@ -6596,7 +6216,6 @@ ebay	website
 ocala public record	valuable information
 high blood pressure	complication
 chicken	lean meat
-geese	bird
 flickr	service
 necklace	item
 nitrogen	carrier gas
@@ -6614,19 +6233,16 @@ primate	animal
 rice	cereal crop
 maple	computer algebra system
 leds	light source
-aggression	symptom
 pencil	tool
 air conditioning	modern comfort
 oatmeal	food
 jpmorgan chase	bank
-teaching	profession
 resistor	component
 tetrahydrofuran	solvent
 ipods	item
 weather	external factor
 router	equipment
 form	information
-age	potential confounding factor
 stress	variable
 electricity	topic
 angry birds	game
@@ -6642,7 +6258,6 @@ cat	carnivore
 local anesthetic	adjuvant
 mp3 player	electronic device
 common cold	viral infection
-christmas	holiday
 nutrition	issue
 ford	company
 palladium	preciou metal
@@ -6662,12 +6277,8 @@ il 6	inflammatory cytokine
 ofloxacin	fluoroquinolone
 euthanasia	issue
 hospital	health care facility
-lg	company
-france	state
 tungsten	conductive material
 backpacking	activity
-digital camera	equipment
-rodent	small mammal
 california colorado	state
 cable	component
 fever	symptom
@@ -6676,7 +6287,6 @@ epidermal growth factor	growth factor
 volkswagen	company
 electricity	sector
 inc	stock
-nifedipine	calcium channel blocker
 canada	nation
 sodium hydroxide	chemical
 electricity bill	small financial expense
@@ -6691,7 +6301,6 @@ microsoft word	application
 minecraft	game
 3g2	video format
 default	credit score document
-text	content
 denmark	european country
 poster	visual aid
 green tea supplement diet	crazy diet
@@ -6718,7 +6327,6 @@ gentamicin	aminoglycoside
 refrigerator	home appliance
 table	method
 walker	item
-insulin resistance	factor
 bond	investment
 korean	language
 medical	area
@@ -6735,7 +6343,6 @@ stanford	school
 medical	field
 virus	infectious agent
 scalability	issue
-nerve growth factor	neurotrophin
 motivation	concept
 sample size	factor
 apple	fruit tree
@@ -6770,7 +6377,6 @@ victoria	jurisdiction
 water temperature	environmental factor
 cheesecake	dessert
 effect of ph	parameter
-hindi	language
 gasoline	chemical
 laser	technique
 working condition	factor
@@ -6779,11 +6385,9 @@ fast payday cash	name
 default	factor
 lack of resource	factor
 x ray	technique
-flyer	material
 gender	characteristic
 ibm	vendor
 cleaning	housekeeping duty
-shipping	factor
 hospital	health care provider
 maintenance	area
 pramipexole	dopamine agonist
@@ -6791,14 +6395,12 @@ boot	item
 nike	client
 metal	contaminant
 hard disk	storage device
-sphere	shape
 hardwood floor	feature
 epinephrine	catecholamine
 magnesium stearate	lubricant
 platinum	preciou metal
 viscosity	fluid property
 expenditure	financial aspect of product development
-digital camera	device
 gender	personal information
 fitting	product
 coffee	liquid
@@ -6813,7 +6415,6 @@ carpet	damaging surface
 laminin	ecm protein
 physical therapy	service
 newsletter	publication
-linearity	analytical performance parameter
 steak	meat
 conflict resolution	topic
 neural network	technique
@@ -6823,7 +6424,6 @@ cultivar	factor
 psychologist	mental health professional
 trichostatin a	hdac inhibitor
 catch diode	external component
-google scholar	database
 waxing	service
 youtube	social medium platform
 oil	pollutant
@@ -6843,13 +6443,11 @@ cellular phone	application
 cash advance mortgage	money financial loan
 nutritional status	factor
 ibuprofen	anti inflammatory drug
-handball	sport
 deforestation	factor
 politics	issue
 marine	industry
 spain	mediterranean country
 louis vuitton	brand
-water	small molecule
 pilates	activity
 communication	factor
 mileage	expense
@@ -6876,9 +6474,7 @@ grocery charge	brief phrase requirement
 african americans	group
 spain	member state
 cockroach	insect
-maize	crop
 zeolite	adsorbent
-snow	weather
 engineering	profession
 mathematica	computer algebra system
 hulu	service
@@ -6897,8 +6493,6 @@ rain	adverse weather condition
 blueberry	flavor
 politic	factor
 ultrasound	service
-text	information
-patience	quality
 lupus	autoimmune disorder
 hydrochloric	acid
 wolf	specie
@@ -6919,7 +6513,6 @@ door	opening
 psychological	factor
 neutrophil	phagocytic cell
 free wi fi	amenity
-better homes	buy product
 insomnia	condition
 cookie	web site browser software tool
 diclofenac	nsaid
@@ -6935,13 +6528,10 @@ greece	mediterranean country
 chest x-ray	test
 alcohol	organic solvent
 boxes	unstable object
-age	issue
 high blood pressure	health issue
 role	issue
 rock climbing	outdoor activity
-black cohosh	herb
 sugar	material
-parking place	place
 solder	material
 sodium hydroxide	strong base
 paypal	company
@@ -6955,41 +6545,32 @@ solar	technology
 pudding	soft food
 eel	fish
 typhoon	natural disaster
-onion	food
 united states	democracy
 mobile device	technology
 salmon	fish
 mexico	middle income country
 crocodile	reptile
 telephone	electrical appliance
-divorce	issue
 tungsten	refractory metal
 dna methylation	epigenetic change
 power moonroof	feature
-human	species
 cardboard	combustible decoration
 glucose oxidase	enzyme
 blog	website
-france	member state
 backpack	personal item
 chile	latin american country
 saudi arabia	islamic country
 length	dimension
 starch	additive
-human	specie
 government	topic
 philosophy	area
 anorexia nervosa	eating disorder
-pseudomonas aeruginosa	bacterium
-posture	factor
 jet ski	personal watercraft
-audi cars	car
 contact	information
 diet	environmental factor
 transistor	electronic component
 ipad	electronic device
 finance	area
-soil	factor
 patagonia	company
 school	group
 family	group
@@ -7039,7 +6620,6 @@ judiciary	institution
 food	necessity
 insect	arthropod
 acupuncture	technique
-rheumatoid arthritis	type of arthritis
 linux	system
 courage	value
 clarithromycin	macrolide
@@ -7051,18 +6631,14 @@ asthma	problem
 education	issue
 myspace	social network
 mining	human activity
-prednisone	corticosteroids
 alcohol	liquid
 dermatitis	skin condition
 restroom	amenity
-kidney	vital organ
 payment gateway	third party service provider
-anxiety	negative emotion
 steel	product
 david bowie	artist
 mac address	information
 helmet	equipment
-aunt	relative
 cilantro	herb
 installing cabinet	improvement
 bat	specie
@@ -7088,10 +6664,8 @@ honey	food
 acetic	organic acid
 brick	surface
 cash advance mortgage	cash loan
-age	sociodemographic variable
 oil	fuel
 calcite	mineral
-lg	manufacturer
 bread	baked goods
 il 6	cytokine
 jeremiah	prophet
@@ -7126,7 +6700,6 @@ climate change	global challenge
 anthropology	discipline
 aging population	factor
 ritalin	stimulant
-onion	crop
 scissor	supply
 sauerkraut	fermented food
 file name	information
@@ -7137,7 +6710,6 @@ texture	property
 natural disaster	emergency situation
 oil	energy source
 haryana	state
-solubility	physical property
 vegetable	meal
 zappos	company
 barley	food
@@ -7179,21 +6751,17 @@ employer	stakeholder
 sheep	mammal
 ethyl acetate	solvent
 pepsi	company
-water	area
 owl	predator
 butter	ingredient
 crab	seafood
 depression	issue
 sun exposure	factor
 vitamin b12	nutrient
-age	demographic question
 archaeology	discipline
 catering	service
-anxiety	common mental disorder
 school	social institution
 kissing	close contact
 substance p	neuropeptide
-vob	video format
 swordfish	fish
 cube	shape
 transfer	personnel action
@@ -7234,7 +6802,6 @@ microsoft	vendor
 honesty	attribute
 toluene	aromatic compound
 brie	soft cheese
-database	application
 browser type	information
 chickpea	pulse
 lymphocyte	cell type
@@ -7242,7 +6809,6 @@ japan	place
 natural gas	fossil fuel
 material	cost
 pepper	spice
-budget	constraint
 quality	characteristic
 kingfisher	bird
 carnival	event
@@ -7257,15 +6823,12 @@ brussels sprout	cruciferous vegetable
 ultrasound	imaging modality
 photo	item
 size	issue
-text message	signal
 structure	issue
 berlin	city
-water	bill
 carpeting	item
 school	public facility
 cranberry	so called designer sandwich
 advertising	cost
-water	amenity
 processor	component
 brokerage cost	initial direct cost
 phone number	information
@@ -7275,7 +6838,6 @@ paxil	antidepressant
 middle east	part of the world
 legume	food
 shovel	item
-age	aspect
 bear	animal
 search	feature
 blogging	innocent traffic method
@@ -7291,7 +6853,6 @@ trademark	intangible asset
 law	profession
 polymerase chain reaction	molecular method
 trade show	event
-personality	characteristic
 drought	natural hazard
 argon	inert atmosphere
 carbon tetrachloride	solvent
@@ -7353,7 +6914,6 @@ couch	item
 alcoholics anonymous	self help group
 valve	part
 potassium	alkali metal
-failure of communication	emergency
 infrastructure	sector
 salmon	seafood
 energy	cost
@@ -7364,7 +6924,6 @@ macular degeneration	eye disease
 rolling stones	band
 bar	place
 blogging	artless traffic method
-water	agent
 lithium	medication
 rock	natural material
 chicken	meat
@@ -7372,11 +6931,9 @@ temperature	physical condition
 chemical	pollutant
 tensile	mechanical property
 obstruction	complication
-magnesium	nutrient
 aspartame	sweetener
 strain	factor
 embodiment illustrated in fig	embodiment
-enzyme	biomolecule
 unemployment	problem
 location	aspect of the property
 cisco systems	company
@@ -7396,7 +6953,6 @@ faxing	administrative duty
 sugar	item
 computer terminal	office equipment
 air	substance
-vegetable oil	oil
 cpu	resource
 advertising	activity
 motor	inductive load
@@ -7437,7 +6993,6 @@ tree	natural feature
 htc	company
 hardness	property
 wear	factor
-scratch	minor alloy wheel damage
 loss of appetite	symptom
 dmf	solvent
 mercury	heavy metal
@@ -7447,7 +7002,6 @@ accountant	professional
 xml	markup language
 observation	technique
 marital status	demographic information
-photograph	document
 equality	concept
 tomato	vegetable
 thyroid disease	medical condition
@@ -7455,7 +7009,6 @@ staphylococcus aureus	bacterium
 new brunswick	province
 sale	activity
 hepatitis b	infectious disease
-anxiety	psychosocial factor
 wi fi	technology
 reading	hobby
 neural network	artificial intelligence technique
@@ -7463,7 +7016,6 @@ malawi	african country
 cash progress loan	cash financial loan
 literature	field
 drought	natural event
-cairo	city
 queensland	jurisdiction
 house renovation	short phrase need
 hardness	characteristic
@@ -7481,7 +7033,6 @@ tremor	side effect
 gender	socio demographic variable
 cigarette smoking	risk factor
 toy	small dog breed
-lil wayne	artist
 charger	accessory
 physical therapy	treatment
 door	object
@@ -7515,7 +7066,6 @@ cotton	material
 pressure	reaction condition
 cooperation	skill
 sales tax	tax
-water	fluid
 duration	factor
 microsoft	brand
 fuel	hazardous material
@@ -7536,14 +7086,11 @@ netherlands	state
 roulette	table game
 maine state park	attraction
 halfway house	addiction treatment approach
-fruit	food
 jewel	decorative object
 verapamil	calcium channel blocker
-stem cell research	issue
 employment	factor
 shakespeare	writer
 battery	power supply
-water	basic need
 handout	material
 blood pressure	factor
 food	supply
@@ -7572,7 +7119,6 @@ scopus	database
 resolution	parameter
 printer	peripheral device
 methionine	amino acid
-pumpkin	seed
 protein	nutrient
 reaction time	parameter
 meditation	technique
@@ -7603,9 +7149,7 @@ nightclub	recreational amenity
 oak	hard wood
 fibroblast	cell type
 electricity expense	financial expense
-snow	inclement weather
 cod	specie
-soccer	game
 toluene	chemical
 facebook	channel
 vegetable	food product
@@ -7619,7 +7163,6 @@ hypotension	adverse effect
 microsoft windows	system
 smartphone	electronic device
 kim kardashian	celebrity
-nurse	healthcare provider
 mississippi	state
 steel wool	abrasive material
 democracy	value
@@ -7636,7 +7179,6 @@ heart	shape
 school	project
 central	region
 vietnam	asian country
-database	tool
 sedentary lifestyle	factor
 gucci	brand
 maintenance cost	cost
@@ -7650,12 +7192,10 @@ food	basic human need
 lufthansa	airline
 virtual reality	application
 general electric	firm
-juice	product
 climate	variable
 sheep	farm animal
 depression	emotion
 tiff	format
-private sector	stakeholder
 education	subject
 depression	mental health problem
 kidney disease	medical condition
@@ -7673,7 +7213,6 @@ dog walking	service
 acai berry diet	mad diet
 christianity	religion
 genotype	factor
-electrical stimulation	modality
 apple computer	company
 crocus	bulb
 grocery charge	short term requirement
@@ -7717,7 +7256,6 @@ chipmunk	animal
 interview prospective client	duty
 solvent	parameter
 golf tournament	event
-age	demographic factor
 calgary	city
 diamond	mineral
 shrimp	invertebrate
@@ -7735,7 +7273,6 @@ intuit	company
 brazil	state
 dash	character
 height	demographic datum
-nsaids	medication
 logo	image
 pesticide	pollutant
 car	vehicle
@@ -7771,14 +7308,11 @@ fashion	topic
 quebec	province
 gardening	activity
 bermuda	warm season grass
-age	datum
 security	application
-water	public service
 aac	popular audio format
 comcast	company
 employment	issue
 prom	event
-magnesium	electrolyte
 house	object
 insulation	porous material
 foot	area
@@ -7788,7 +7322,6 @@ benzene	hydrocarbon
 raspberry	fruit
 medical bill	small monetary expense
 microwave oven	appliance
-prednisone	steroid
 filing	clerical duty
 microsoft	firm
 ductility	property
@@ -7799,9 +7332,7 @@ prozac	antidepressant
 honesty	value
 banquet	event
 hebrew	language
-fruit	product
 gender	parameter
-valine	amino acid
 carbon monoxide	toxic gas
 zeolite	material
 closet	area
@@ -7813,7 +7344,6 @@ edta	chelating agent
 carrot	plant
 computer science	subject
 power	utility
-medical expense	small financial expense
 carbon steel	material
 loyalty	value
 abs brake	feature
@@ -7832,7 +7362,6 @@ union	operation
 housing	factor
 mail	application
 corn	oil
-mitsubishi	company
 automobile	asset
 frequency distribution	descriptive statistic
 snack size candy rod	small portion
@@ -7840,15 +7369,12 @@ tornado	event
 cytomegalovirus	virus
 cholera	water borne disease
 candle	item
-age	demographic datum
 phosphorus	element
 femur	long bone
 heron	bird
 flood	natural event
-laundry	personal expense
 professor	title
 fishing	industry
-snow	surface
 hat	protective clothing
 salmon	species
 soap	product
@@ -7862,10 +7388,8 @@ equipment	tangible asset
 smoking	modifiable risk factor
 food	product
 mobile phone	mobile communication device
-age	clinical feature
 insurance company	investor
 rhodium	metal
-christmas	festival
 blog	technology
 consultancy	service
 default	credit document
@@ -7907,7 +7431,6 @@ ethyl	alkyl
 development	factor
 moisture	parameter
 air conditioner	item
-united way	organization
 floor	surface
 kant	philosopher
 disabled dating club	agency
@@ -7915,7 +7438,6 @@ carp	specie
 michael jackson	artist
 ethanol	alcohol
 yeast	eukaryote
-onion	plant
 wine	alcoholic beverage
 acetic acid	organic acid
 sears	store
@@ -7981,7 +7503,6 @@ bead	embellishment
 hallway	area
 oil	burning fossil fuel
 vacancy	defect
-whole grain	healthy food
 doxorubicin	chemotherapeutic agent
 suede	material
 marketing	activity
@@ -8025,7 +7546,6 @@ nike	brand
 healthcare bill	small financial expense
 scissor	tool
 psychology	profession
-lg	brand
 grazing	disturbance
 sand	sediment
 silicon	semiconductor
@@ -8060,7 +7580,6 @@ platinum	catalyst
 feather	diver material
 flv	video format
 chart	visual aid
-phone bill	urgent expense
 toluene	compound
 video	item
 field hockey	sport
@@ -8071,7 +7590,6 @@ porosity	defect
 facebook	tech company
 carbon monoxide	air pollutant
 switch	device
-abscess	complication
 development	topic
 il 2	cytokine
 stucco	material
@@ -8101,7 +7619,6 @@ crop rotation	cultural practice
 type	information
 dust	allergen
 corn	product
-whole grain	high fiber food
 olive oil	natural oil
 superoxide	reactive oxygen specie
 relative humidity	parameter
@@ -8122,7 +7639,6 @@ titanium	material
 blood test	diagnostic test
 wordpress	platform
 tire	material
-neuron	cell
 streptomycin	antibiotic
 polyclonal antibody	antibody
 reading	task
@@ -8143,14 +7659,11 @@ home	setting
 temperature	climatic condition
 vomiting	gastrointestinal symptom
 nitrogen	inert atmosphere
-rifle	firearm
 wind speed	meteorological condition
 chicken	item
 gold	precious metal
 screen reader	assistive technology
-juice	item
 windows nt	operating system
-lemon	essential oil
 solar radiation	factor
 las vegas	city
 compressive strength	mechanical property
@@ -8193,7 +7706,6 @@ intelligence	factor
 huggies	brand
 information technology	industry
 washing machine	item
-water	component
 talc	lubricant
 lentil	food
 quake	game
@@ -8220,7 +7732,6 @@ bean	high protein food
 india	emerging economy
 rope	equipment
 maturity	factor
-fossil fuel combustion	human activity
 glycerin	ingredient
 thanksgiving	occasion
 butterfly	pollinator
@@ -8231,7 +7742,6 @@ athlete s foot	fungal infection
 flexibility	property
 needle	sharp
 india	middle income country
-divorce	event
 blanket	prop
 monopoly	board game
 iron	material
@@ -8254,7 +7764,6 @@ table	element
 turtle	reptile
 breast cancer	hormone sensitive condition
 saturation magnetization	magnetic property
-alcohol use	factor
 watch	valuable
 auxin	plant hormone
 schizophrenia	disorder
@@ -8283,13 +7792,10 @@ flexibility	factor
 shell	natural material
 compressor	equipment
 diversity	issue
-france	jurisdiction
-packaging	service
 location	rich datum
 finance	service
 answering telephone	office duty
 office	building
-neuron	excitable cell
 dong quai	herb
 herpes virus	virus
 commitment	factor
@@ -8308,7 +7814,6 @@ india	market
 religion	concept
 casting	process
 ibuprofen	pain medication
-styrene	monomer
 banana	food
 selenium	trace mineral
 asia	area
@@ -8335,7 +7840,6 @@ supplier	stakeholder
 brokerage commission	transaction cost
 viscosity	factor
 library	public place
-onion	veggie
 soil ph	factor
 facebook	social website
 scarf	accessory
@@ -8346,7 +7850,6 @@ candle	open flame
 elephant	wild animal
 corn	vegetable oil
 library	organization
-alcohol use	risk factor
 thiamine	vitamin
 copper	conductive material
 diuretic	medication
@@ -8384,7 +7887,6 @@ vehicle	object
 antihistamine	medicine
 swap	derivative instrument
 kindness	value
-age	demographic variable
 hepatitis	virus
 cleaning soap dish	practical accessory
 religion	topic
@@ -8394,14 +7896,12 @@ hotel	public place
 video	application
 vehicle repair	short phrase requirement
 home renovation	small monetary expense
-aunt	family member
 tea	hot drink
 target	word
 durability	feature
 sunflower	plant
 ribbon	material
 spinach	green leafy vegetable
-anxiety	psychiatric symptom
 asthma	health problem
 thumb sucking	habit
 lactic	organic acid
@@ -8453,8 +7953,6 @@ mars	planet
 nebraska	state
 line	element
 cottage cheese	food
-ax	tool
-automotive	market
 bloating	symptom
 portable computer	electronic device
 electricity	fuel
@@ -8474,14 +7972,12 @@ seattle	city
 surfactant	component
 australia	destination
 obesity	lifestyle factor
-medical expense	financial cost
 wavelength	parameter
 rain	element
 adenovirus	virus
 crown	procedure
 co 2	gas
 desk	modern comfort
-personality	factor
 honeybee	insect
 missouri	state
 power	sector
@@ -8490,9 +7986,7 @@ caterpillar inc	big corporation
 massage	technique
 tobacco	crop
 fastener	product
-patience	virtue
 credit card due	monetary cost
-age	covariate
 green tea supplement diet	insane diet
 climate change	global problem
 international monetary fund	international institution
@@ -8500,13 +7994,10 @@ cryotherapy	treatment
 carotenoid	antioxidant
 amplifier	component
 working condition	issue
-management	discipline
 personality trait	factor
 cooking	everyday activity
 medical bill	urgent expense
-age	clinical characteristic
 facebook	service
-water	coolant
 modem	device
 ultrasonography	imaging study
 fruit basket	gift
@@ -8532,7 +8023,6 @@ fatigue	systemic symptom
 paint	item
 copper	material
 freesat	digital television system
-wire	item
 rosemary	herb
 russia	emerging market
 inheritance	concept
@@ -8545,7 +8035,6 @@ vase	item
 protein	biological macromolecule
 silver	commodity
 attorney	professional
-management	area
 automotive industry	industry
 euro	currency
 obesity	metabolic disorder
@@ -8555,7 +8044,6 @@ alcohol	risk factor
 chrysler	brand
 phoenix	city
 vmi northstar	brand
-christmas	busy period
 social science	discipline
 salvation army	organization
 herring	fish
@@ -8596,7 +8084,6 @@ quercetin	flavonol
 bean	crop
 law	institution
 dichloromethane	hydrocarbon
-lemon	citrus oil
 vitamin e	natural ingredient
 india	south asian country
 flour	ingredient
@@ -8633,7 +8120,6 @@ china	part of the world
 central	area
 police	authority
 nursing	program
-anxiety	mental health disorder
 social security number	personal information
 dendritic cell	innate immune cell
 need	factor
@@ -8708,11 +8194,9 @@ history	issue
 pillow	item
 school	institution
 duke	school
-lease	document
 fence	physical barrier
 development	biological process
 canon	company
-anxiety	psychological factor
 chemical	agent
 future	derivative instrument
 energy	industry
@@ -8739,7 +8223,6 @@ chinese hamster ovary cell	mammalian cell
 lake	surface water
 converse	brand
 flood	hazard
-text	element
 precision	parameter
 oil	sector
 rabbit	small mammal
@@ -8755,14 +8238,12 @@ brighton	place
 resistor	device
 collaboration	skill
 european union	international organization
-pumpkin	crop
 kleenex	brand
 blackjack	table game
 museum	place
 pastry	baked good
 japan	jurisdiction
 website	medium
-wire	metal object
 kayak	hotel aggregator
 bird	wildlife
 australia	jurisdiction
@@ -8784,7 +8265,6 @@ social phobia	anxiety disorder
 bacterium	particle
 psychiatrist	mental health professional
 intel	company
-age	personal factor
 silica	filler
 extreme temperature	abiotic stress
 pickup truck	vehicle
@@ -8798,7 +8278,6 @@ bacterium	decomposer
 obesity	chronic condition
 sedative	medication
 surgical	disposable glove
-blackboard	management system
 gluten free	diet
 engine	part
 oven	gas appliance
@@ -8814,13 +8293,11 @@ alcohol	compound
 xml	standard
 cement	sector
 italy	nation
-age	patient characteristic
 broth	liquid
 advil	nsaid
 washer	appliance
 distance	information
 monopoly	game
-carbamazepine	aeds
 tuberculosis	infectious disease
 biotechnology	technology
 sle	autoimmune disease
@@ -8858,12 +8335,10 @@ angle	product
 photovoltaic	technology
 planning	topic
 accelerometer	inertial sensor
-age	demographic information
 wind power	renewable energy source
 skiing	sport
 soda	food
 dizziness	central nervous system effect
-diary	source
 phone number	contact information
 recognition	factor
 antistatic agent	additive
@@ -8871,7 +8346,6 @@ pregnancy	risk factor
 hat	clothing
 area	feature
 interview	qualitative method
-shipping	consideration factor
 dhea	hormone
 antimony	element
 smartphone	technology
@@ -8911,8 +8385,6 @@ marker	material
 squat	compound exercise
 gender	baseline characteristic
 acne	side effect
-natural	term
-option	derivative
 wmv	popular video format
 quartz	crystal
 ibuprofen	anti inflammatory medication
@@ -8924,7 +8396,6 @@ aerospace	application
 ipod	item
 future	derivative
 o 2	gas
-human	mammal
 electron microscopy	method
 yeast	microbe
 aluminium	material
@@ -8937,7 +8408,6 @@ electricity	service
 depression	mental illness
 density	physical parameter
 los angeles times	publication
-checker	game
 auxin	hormone
 iron	metal ion
 putrescine	polyamine
@@ -8950,7 +8420,6 @@ education	profession
 width	factor
 manganese	metal
 cable	accessory
-christmas	event
 phenolic acid	phenolic compound
 filing	office task
 aerospace	industry
@@ -8998,7 +8467,6 @@ west bengal	state
 case	accessory
 physiotherapy	service
 amide	functional group
-onion	spice
 world trade organization	international organization
 braille	format
 fuel	cost
@@ -9014,7 +8482,6 @@ environment	external factor
 back pain	symptom
 apostrophe	character
 photo	medium
-water	topic
 gas	expense
 home renovation	brief term requirement
 chemical composition	factor
@@ -9023,14 +8490,11 @@ oil	activity
 dust	substance
 argon	carrier gas
 pyrite	mineral
-fair	event
 printer	output device
 palm	vegetable oil
 mentoring	service
 laptop computer	electronic device
 energy	parameter
-water	clear liquid
-black bear	specie
 brazil	developing country
 freight	ancillary charge
 european union	jurisdiction
@@ -9081,7 +8545,6 @@ ethanol	fuel
 allstate	company
 school	environment
 mpg	video format
-database	resource
 dior	brand
 parenting	topic
 tetrahydrofuran	cyclic ether
@@ -9111,7 +8574,6 @@ melon	fruit
 default	poor credit record
 economic	factor
 solenoid	component
-sports equipment	item
 school	location
 4d sport utility	feature
 london	place
@@ -9159,7 +8621,6 @@ smell	sense
 outdoor pool	amenity
 ear	area
 oxytocin	hormone
-unemployment insurance	program
 maths	subject
 insulation	factor
 hospital	healthcare provider
@@ -9204,7 +8665,6 @@ wind speed	factor
 gis	tool
 strategy	topic
 insect	organism
-room service	hospitality facility
 numbness	symptom
 wind speed	meteorological parameter
 health	public service
@@ -9221,7 +8681,6 @@ deletion	mutation
 vogue	fashion magazine
 hip hop	style
 insolvency	blemished credit score
-clam	shellfish
 painting	visual art
 lean meat	food
 date	fruit
@@ -9230,7 +8689,6 @@ facebook	social network site
 global warming	environmental issue
 telephone bill	small monetary cost
 discussion	activity
-carbamazepine	antiepileptic drug
 outdoor pool	popular amenity
 chromium	mineral
 anorexia nervosa	disorder
@@ -9246,13 +8704,11 @@ urinary tract infection	infection
 poliovirus	virus
 sunflower	oil
 rhodamine	fluorescent compound
-nurse	health care professional
 beer	beverage
 pdf	format
 vegetation	factor
 basketball	game
 madhya pradesh	state
-age	sociodemographic characteristic
 denmark	member state
 alcohol	food
 florida	state
@@ -9264,14 +8720,12 @@ qualification	factor
 cough	respiratory symptom
 shale	sedimentary rock
 marital status	characteristic
-amphetamine	stimulant
 xml	open standard
 walleye	fish
 mass	property
 artificial intelligence	field
 fao	international organization
 epoxy	adhesive
-x rays	diagnostic test
 pesticide	product
 velocity	factor
 pear	food
@@ -9283,9 +8737,7 @@ ethyl alcohol	alcohol
 temperature	property
 soil moisture	environmental factor
 weight loss	constitutional symptom
-age	baseline characteristic
 front end loader	machine
-seminar	event
 video	material
 vitamin c	nutrient
 biocompatibility	property
@@ -9303,9 +8755,7 @@ broccoli	cruciferous vegetable
 bucket	item
 ibuprofen	nonsteroidal anti inflammatory drug
 stain	item
-edmonton	city
 brush	material
-rheumatoid arthritis	medical condition
 human right	concept
 ipad	apple device
 fresh fruit	healthy snack
@@ -9317,13 +8767,10 @@ mcdonald s	fast food restaurant
 biotechnology	industry
 sugar	stimulant
 rhubarb	vegetable
-soccer	activity
 new york	jurisdiction
 dehydration	complication
-birth control pill	medication
 conference	activity
 shea butter	ingredient
-facial	spa treatment
 injury	condition
 skype	program
 median	descriptive statistic
@@ -9335,7 +8782,6 @@ spermine	polyamine
 salmon	cold-water fish
 netscape navigator	browser
 superoxide	reactive oxygen species
-water	additive
 pancreatitis	complication
 temperature	factor
 cyclophosphamide	immunosuppressive drug
@@ -9351,7 +8797,6 @@ volleyball	activity
 telephone	amenity
 angioedema	hypersensitivity reaction
 vitamin	micronutrient
-water	beverage
 finance	discipline
 temperature	weather condition
 oil	material
@@ -9396,8 +8841,6 @@ spina bifida	neural tube defect
 blood pressure	physiological parameter
 animal	subject
 mountaineering	activity
-orange	citrous fruit
-nurse	health care provider
 monkey	animal
 tax	issue
 graphite	carbon material
@@ -9405,7 +8848,6 @@ swiss	cheese
 il 1	inflammatory cytokine
 coyote	mammal
 biology	science
-france	nation
 sapphire	material
 telephone	utility
 honor	value
@@ -9413,7 +8855,6 @@ match com	site
 baccarat	game
 avocado	good fat
 sausage	food
-age	account factor
 alcohol	chemical
 morphine	opioid
 electricity	item
@@ -9440,7 +8881,6 @@ ice hockey	sport
 trigonometry	topic
 chemical	factor
 open house	event
-stronger community bond	reason
 wolf	animal
 tamoxifen	serm
 green tea leaf diet	outrageous diet
@@ -9453,7 +8893,6 @@ politic	topic
 olive	natural oil
 paper	object
 leadership	concept
-cyclosporine	calcineurin inhibitor
 boxing	contact sport
 fever	condition
 wedding ceremony expense	small monetary expense
@@ -9473,7 +8912,6 @@ pcs	device
 antioxidant	component
 amiodarone	medication
 polythiophene	conducting polymer
-water	natural element
 polyaniline	conducting polymer
 interest	information
 american red cross	organization
@@ -9493,7 +8931,6 @@ jewelry	accessory
 reliability	quality
 zinc	transition metal
 meditation	relaxation technique
-age	clinical variable
 hypotension	side effect
 steel	sector
 sport	industry
@@ -9515,7 +8952,6 @@ perfume	chemical
 assembly	service
 innovation	factor
 heater	equipment
-personality	topic
 interleukin 6	proinflammatory cytokine
 blue	cool color
 fertilizer	agricultural input
@@ -9591,12 +9027,10 @@ rowing	sport
 korea	market
 sand	inert material
 chill	flu like symptom
-fruit	natural food
 california	jurisdiction
 ddt	organochlorine pesticide
 high cholesterol	risk factor
 nevada	state
-cyclosporine	immunosuppressant
 cycling	activity
 nickel	transition metal
 crohn s disease	inflammatory bowel disease
@@ -9610,8 +9044,6 @@ moscow	city
 party	occasion
 wedding cost	monetary expense
 skin irritation	side effect
-juice	drink
-phone bill	small monetary cost
 delivery	factor
 flax	crop
 paclitaxel	taxane
@@ -9634,14 +9066,12 @@ schizophrenia	condition
 inner	spatially relative term
 smartphone	device
 migration	topic
-soil	resource
 crp	inflammatory marker
 feed rate	parameter
 harness	equipment
 healthcare expense	small financial expense
 durability	factor
 diabetes mellitus	risk factor
-teaching	activity
 private equity	asset
 conflict	factor
 polyimide	material
@@ -9649,7 +9079,6 @@ dog	specie
 welding	operation
 cnn	medium outlet
 scissors	tool
-flyer	promotional material
 mango	fresh fruit
 deforestation	issue
 ccl2	chemokine
@@ -9696,7 +9125,6 @@ stainless steel	material
 safety	aspect
 gender	demographic characteristic
 pulse	food
-geese	waterfowl
 arsenic	metal
 filter	item
 montreal	city
@@ -9709,12 +9137,10 @@ air	factor
 alcohol	addiction
 tissue	biological sample
 size	physicochemical property
-oil change	complete under car service
 gonorrhea	stds
 rate	parameter
 facebook	social medium tool
 road	impervious surface
-water	contaminant
 basic fibroblast growth factor	growth factor
 flavonoid	nonnutritive bioactive plant substance
 gymnastic	sport
@@ -9723,7 +9149,6 @@ purchase agreement	document
 container	product
 moisture content	property
 polyaniline	polymer
-water	essential service
 malaria	infection
 formaldehyde	chemical
 boat	vehicle
@@ -9731,13 +9156,11 @@ coca cola	company
 sodium	alkali metal
 muscle pain	symptom
 metal	product
-fruit	plant based food
 mackerel	fatty fish
 mexico city	city
 peanut	vegetable oil
 medication	item
 inulin	prebiotic
-rodent	animal
 colombia	latin american country
 water temperature	factor
 nursing	area
@@ -9773,7 +9196,6 @@ diameter	parameter
 gas	symptom
 attention deficit disorder	chronic or acute health problem
 united states	society
-pseudomonas aeruginosa	pathogen
 whole grain bread	food
 monitor	output device
 bicycling	activity
@@ -9784,7 +9206,6 @@ wall	hard surface
 fishing	sport
 greed	emotion
 functional magnetic resonance imaging	neuroimaging technique
-rheumatoid arthritis	autoimmune disorder
 japan	culture
 australia	oecd country
 woman	topic
@@ -9792,14 +9213,12 @@ political instability	factor
 tax	item
 radiotherapy	treatment
 repair	job
-magnesium	element
 theater	activity
 allergy	problem
 hydrochloric acid	strong acid
 pencil	item
 critical thinking	skill
 bagel	food
-parkinson s	neurodegenerative disorder
 depreciation	item
 education	demographic factor
 gender	category
@@ -9809,7 +9228,6 @@ time	resource
 milk	ingredient
 small sample size	limitation
 facebook	tool
-orange	food
 cholera	infectious disease
 australia	area
 wireless network	serial interface
@@ -9836,7 +9254,6 @@ plant	photosynthetic organism
 jacuzzi	popular amenity
 book	object
 ibm	organization
-cyclosporine	immunosuppressive drug
 video	medium file
 painting	job
 stiff neck	area
@@ -9866,7 +9283,6 @@ science fiction	genre
 melbourne	city
 wedding	private function
 methylation	histone modification
-ketchup	condiment
 wedding accessory	party item
 kansas	state
 quercetin	flavonoids
@@ -9886,12 +9302,10 @@ temperature	culture condition
 visa	credit card company
 glucose	monosaccharide
 food	good
-orange	fruit juice
 dog	small animal
 tamil nadu	state
 carrot	root crop
 cat	small animal
-fruit	fresh food
 world bank	global institution
 mug	item
 ibuprofen	medicine
@@ -9908,19 +9322,15 @@ golf course	amenity
 nanowire	one dimensional nanostructure
 acai berry diet	insane diet
 spain	european country
-water	supply
 insect	pest
 rice	staple
 concert	cultural event
-vitamins e	antioxidant
 tree	feature
 gps detector	device
-surface area	factor
 gender	social factor
 cap	accessory
 obesity	environmental factor
 temperament	factor
-hippocampus	brain area
 hydrogen peroxide	ros
 oxfam	organization
 home renovation	brief term need
@@ -9929,7 +9339,6 @@ sheet metal	material
 hypothyroidism	endocrine disorder
 library	facility
 property tax	cost
-anxiety	mental health problem
 abs	material
 swimming	sport activity
 violin	musical instrument
@@ -9943,7 +9352,6 @@ infection of the uterus	sickness
 paper towel	item
 uranium	metal
 honesty	virtue
-fruit	food item
 couple small cookie	small portion
 technology	resource
 earthquake	disaster
@@ -10020,7 +9428,6 @@ sucrose	sweetener
 cantaloupe	fruit
 education	service
 zucchini	veggie
-linearity	validation parameter
 wic	program
 door	feature
 planning	task
@@ -10043,7 +9450,6 @@ tea	food
 metal	surface
 pneumonia	illness
 configuration	information
-granite	rock
 firewall	security measure
 resource availability	factor
 tool	object
@@ -10093,7 +9499,6 @@ acetonitrile	solvent
 candle	product
 tetrahydrofuran	ether
 ito	transparent conductive material
-mashed potato	food
 insurance	expense
 beer	product
 hypomagnesemia	electrolyte disturbance
@@ -10102,7 +9507,6 @@ filing	administrative duty
 acetylation	post translational modification
 stomach upset	side effect
 green tea extract diet	outrageous diet
-noise	issue
 poster	educational material
 tea tree	essential oil
 investment	asset
@@ -10112,13 +9516,11 @@ climate change	area
 cane	aid
 clay	natural material
 tylenol	medication
-clam	bivalve
 salary	expense
 arthritis	inflammatory condition
 heptane	solvent
 mod	video format
 obesity	condition
-rheumatoid arthritis	inflammatory disease
 office	facility
 liver disease	condition
 cash advance mortgage	cash financial loan
@@ -10127,7 +9529,6 @@ accommodation	service
 honey	sweetener
 letter	source
 regulation	issue
-x rays	investigation
 mattress	item
 informed consent	issue
 information	service
@@ -10142,7 +9543,6 @@ cellular phone	mobile device
 tea	refreshment
 inflammatory bowel disease	condition
 colored pencil	medium
-kerosene	fuel
 efficiency	parameter
 fungicide	additive
 runny nose	symptom
@@ -10170,7 +9570,6 @@ rice	product
 joy	positive emotion
 caenorhabditis elegans	organism
 kcl	salt
-alkaloid	secondary metabolite
 hexagon	shape
 physics	subject
 glucose	nutrient
@@ -10179,7 +9578,6 @@ green tea leaf diet	insane diet
 homelessness	factor
 ring	product
 chemotherapy	cancer treatment
-noise	impact
 europe	part of the world
 spain	southern european country
 swimming pool	popular facility
@@ -10192,7 +9590,6 @@ dyslipidemia	traditional risk factor
 texas instruments	company
 fiber	material
 billiard	activity
-france	economy
 gas	sector
 cactus	plant
 carbon	nutrient
@@ -10214,12 +9611,8 @@ cookie	baked goods
 bleach	harsh chemical
 banana	climacteric fruit
 flood	disaster
-shelter	necessity
-water	drink
 pigeon	bird
 honey	product
-medical expense	financial expense
-motrin	nsaid
 coal	fossil fuel
 health	factor
 mold	allergen
@@ -10228,12 +9621,10 @@ bike rack	accessory
 travel	expense
 north carolina	state
 cooperation	value
-latitude	factor
 iran	state
 health	service
 athens	exotic location
 sorghum	grain
-fruit	item
 vegetable	plant
 agricultural	industry
 graduation	event
@@ -10282,7 +9673,6 @@ beryllium	metal
 poster	item
 glaucoma	eye condition
 overall health	factor
-shipping	cost
 ring	jewelry
 ebay	marketplace
 hydrocarbon	pollutant
@@ -10332,7 +9722,6 @@ javascript	language
 tornado	severe weather
 tobacco	substance
 java	programming language
-boeing	company
 social security	personal information
 typing	clerical task
 metal alloy	material
@@ -10398,7 +9787,6 @@ bumetanide	loop diuretic
 light	device
 nutrition	factor
 sauce	condiment
-magnesium	essential mineral
 property tax	tax
 delta air lines	airline
 protective in transit insurance	charge
@@ -10417,12 +9805,8 @@ pregnant woman	group
 avon	company
 malaysia	economy
 dimension	information
-anchovy	fish
 liposuction	procedure
 pregnancy	issue
-management	service
-amaranth	grain
-text	datum
 blogging	unworldly traffic method
 stevie wonder	artist
 dress	item
@@ -10434,8 +9818,6 @@ phosphate	buffer
 hospital	provider
 phone expense	monetary cost
 sodium	nutrient
-laundry	service
-age	clinical datum
 vitamin e	nutrient
 mutual fund	investment
 sodium	electrolyte
@@ -10452,7 +9834,6 @@ original canon cartridge	refill product
 high blood pressure	ailment
 calcium	metal ion
 hp	company
-oil change	service
 sweet potato	vegetable
 tin	element
 copper	alloying element
@@ -10497,7 +9878,6 @@ arthritis	chronic illness
 computer	system
 tampa	city
 cranberry	fruit
-southeast asia	region
 physiotherapist	professional
 translation	service
 retinal detachment	complication
@@ -10505,12 +9885,8 @@ retrovirus	virus
 carpet	product
 being overweight	factor
 social support	factor
-sexuality	topic
 appliance	item
-glutamine	amino acid
-water	public utility
 user name	information
-water	polar solvent
 pride	emotion
 leptin	hormone
 radio	mass medium
@@ -10524,7 +9900,6 @@ truck	commercial vehicle
 cobalt	element
 metal	industry
 fishery	sector
-noise	environmental factor
 income	characteristic
 transportation	industry
 new mexico	state
@@ -10540,7 +9915,6 @@ tax	area
 sub saharan africa	region
 safety	criterion
 lights heated seat	electrical component
-profitability	factor
 education	institution
 dust mite	allergen
 stearic acid	fatty acid
@@ -10552,7 +9926,6 @@ festival	event
 lactose	carbohydrate
 oil	substance
 communication	transferable skill
-cysteine	amino acid
 flash	technology
 south dakota	state
 lisp	language
@@ -10561,17 +9934,12 @@ raccoon	specie
 vehicle repair	brief phrase need
 discrimination	topic
 motivation	variable
-management	skill
 glaucoma	eye problem
 russia	power
 garlic	spice
 natural gas	gaseous fuel
-photograph	image
-lemon	acidic food
 specie	factor
 sofa	item
-hippocampus	brain region
-albuterol	bronchodilator
 notepad	text editor
 pcr	technique
 hsbc	bank
@@ -10593,9 +9961,7 @@ deforestation	human activity
 isolation	issue
 cherry	fruit
 aarp	organization
-water	solvent
 mmp 9 inhibitor	anti angiogenesis agent
-unhcr	agency
 kerala	state
 water content	factor
 marketing	topic
@@ -10613,7 +9979,6 @@ butyl	alkyl group
 interleukin 2	cytokine
 apoptosis	cellular process
 density	factor
-water	industry
 drill	tool
 crane	heavy equipment
 inflammation	process
@@ -10662,7 +10027,6 @@ il 4	cytokine
 climatic condition	factor
 bmw	car manufacturer
 chicken	animal
-france	european nation
 macy's	department store
 vaginal dryness	symptom
 new york	large city
@@ -10674,13 +10038,11 @@ nursing	field
 mushroom	vegetable
 injury	factor
 nitrogen	pollutant
-light emitting diode	light source
 bedding	combustible material
 drainage	issue
 insurance	financial product
 status	factor
 postage	item
-christmas	occasion
 denim	fabric
 life expectancy	indicator
 old age	factor
@@ -10692,10 +10054,7 @@ density	physical property
 filler	component
 transportation	issue
 biodegradability	property
-rheumatoid arthritis	chronic disease
 kidney bean	legume
-african union	regional organization
-shelter	basic necessity
 fennel	herb
 snack	item
 earthquake	natural phenomenon
@@ -10716,9 +10075,7 @@ wine	beverage
 embryonic stem cell	pluripotent stem cell
 michelin	brand
 asthma	chronic lung disease
-legal cost	initial direct cost
 surgery	service
-magnesium	trace element
 amine	functional group
 mail	service
 skeletal muscle	tissue
@@ -10745,7 +10102,6 @@ crohn s disease	treating condition
 bread	food
 access	issue
 peach	fruit
-msm glucosamine sulfate	supplement
 babysitting	service
 equity	issue
 climate change	global issue
@@ -10755,7 +10111,6 @@ catalysis	application
 glutathione	antioxidant
 home renovation	short term need
 refractive index	physical property
-si	material
 ebay	online marketplace
 repair	service
 drinking	behavior
@@ -10781,7 +10136,6 @@ difficulty breathing	symptom
 costco	store
 wool	material
 surfactant	material
-docosahexaenoic acid	polyunsaturated fatty acid
 apricot	fruit
 representation contract	document
 model	information
@@ -10838,7 +10192,6 @@ high blood pressure	illness
 gas	utility service
 temperature	condition
 leadership	skill
-anxiety	feeling
 light	environmental factor
 turmeric	spice
 size	consideration
@@ -10849,21 +10202,17 @@ nokia	company
 psychology	area
 starch	ingredient
 beam	structural element
-anxiety	withdrawal symptom
 time	element
 barley	crop
 nitrogen	element
-fruit	high fiber food
 wall	obstruction
 car repair	short phrase need
 heat	environmental condition
 aspirin	blood thinner
-maltose	disaccharide
 corn oil	oil
 caste	factor
 stockholm	city
 sandwich	snack
-procedure	information
 surfactant	ingredient
 bathroom	aspect of the property
 bird	predator
@@ -10872,7 +10221,6 @@ tape	supply
 heat	modality
 access code	supplemental material
 guilt	psychological factor
-oil change	routine maintenance
 graph	visual aid
 collagen	material
 sleeping bag	item
@@ -10886,7 +10234,6 @@ ultrasound	investigation
 moosehead historical society	attraction
 cash advance loan	money financial loan
 n 2	gas
-magnesium	material
 virus	germ
 lack of exercise	lifestyle factor
 bike riding	activity
@@ -10901,7 +10248,6 @@ montana	state
 olivine	mineral
 glutamate	amino acid
 age of the patient	factor
-france	western european country
 earthquake	emergency
 filter	equipment
 night sweat	systemic symptom
@@ -10909,10 +10255,8 @@ specificity	parameter
 alcohol	volatile solvent
 contact number	information
 measle	illness
-fruit	plant
 arsenic	contaminant
 radio	appliance
-grease	lubricant
 chlorine	disinfectant
 medical	service
 machinery	item
@@ -10924,8 +10268,6 @@ gender	personal factor
 date	meeting
 vitamin	essential nutrient
 drug counseling	addiction treatment approach
-onion	topping
-procedure	document
 watermelon	food
 thermometer	tool
 facebook	sns
@@ -10934,11 +10276,9 @@ dioxane	ether
 florida	place
 gwyneth paltrow	celebrity
 cayenne pepper	spice
-sexuality	issue
 capacity	information
 adenovirus	viral vector
 vertical	term
-kidney	organ
 imf	international institution
 oil	natural resource
 influenza	infectious disease
@@ -10949,11 +10289,8 @@ bulk modulus	ground state property
 image	information
 risk	factor
 jet skiing	water sport
-loss	issue
 home renovation	short phrase requirement
 sorbitol	sugar alcohol
-product	information
-lemon	ingredient
 textile	sector
 swimming pool	popular amenity
 analgesic	medication
@@ -11011,7 +10348,6 @@ ontario	jurisdiction
 azathioprine	immunosuppressant
 mozambique	african country
 malaria	mosquito borne disease
-galvanized	coated metal
 java	technology
 chanel	brand
 economic development	issue
@@ -11028,7 +10364,6 @@ big datum	technology
 car	asset
 technology	field
 second	term
-fertiliser	input
 mexico	place
 range	appliance
 telephone bill	small financial expense
@@ -11051,7 +10386,6 @@ vascular endothelial growth factor	growth factor
 zumba	class
 will	legal document
 will	document
-pacing	narrative technique
 education	indicator
 russia	place
 bp	oil company
@@ -11070,7 +10404,6 @@ diamond	shape
 policy	factor
 amd	company
 ngos	actor
-anxiety	mental health issue
 email	tool
 rotary	service club
 toshiba	brand
@@ -11126,7 +10459,6 @@ washington post	publication
 speed	datum
 keyboard	instrument
 drought	condition
-bathing	activity
 density	variable
 sugar	goods
 galileo	scientist
@@ -11177,7 +10509,6 @@ filing	duty
 thyme	essential oil
 time	reaction parameter
 monthly repayment plan	aspect of the car loan
-human	primate
 staple	fastener
 crohn's disease	inflammatory bowel disease
 strawberry	food
@@ -11188,10 +10519,8 @@ sale	department
 whale watching	activity
 clothe	combustible material
 scissor	item
-phone bill	small financial expense
 marjoram	herb
 red hat	company
-granite	stone
 formic	organic acid
 hookworm	intestinal parasite
 doctor	health care provider
@@ -11200,11 +10529,9 @@ friend	source
 eye	organ
 specification	information
 carbon nanotube	carbon material
-mammal	animal
 los angeles	area
 playground	facility
 dendritic cell	immune cell
-rheumatoid arthritis	rheumatic disease
 refrigerator	large appliance
 exposure	factor
 ruler	tool
@@ -11267,7 +10594,6 @@ solar cell	application
 pharmacy	service
 anthropology	social science
 pharmacist	professional
-bht	antioxidant
 cytokinin	hormone
 weight gain	side effect
 volcano	natural disaster
@@ -11298,7 +10624,6 @@ reliability	value
 defense	sector
 rent	cost
 retail	sector
-age	risk factor
 milan	city
 knee	area
 swimming	outdoor activity
@@ -11314,7 +10639,6 @@ tendon	tissue
 hiking	outdoors
 halo	game
 costco	company
-water	renewable resource
 compost	soil amendment
 car repair	brief phrase requirement
 grapefruit	fruit
@@ -11331,7 +10655,6 @@ naacp	organization
 gender	sociodemographic variable
 material	item
 growth	factor
-pakistan	nation
 banking	sector
 polyester	fabric
 dizziness	physical symptom
@@ -11342,7 +10665,6 @@ absorption	optical property
 depression	feeling
 inflation	variable
 transcription	process
-anxiety	psychological issue
 texture	feature
 egret	bird
 project	word
@@ -11352,7 +10674,6 @@ electroporation	mechanical method
 recession	difficult time
 cooking	household chore
 stanford	university
-nurse	profession
 air temperature	factor
 apple	flavor
 paper clip	object
@@ -11392,7 +10713,6 @@ patch	nicotine replacement therapy
 real object	tool
 transportation	expense
 blood testing	service
-chimpanzee	primate
 maple	specie
 multiple sclerosis	neurological disease
 health	variable
@@ -11410,7 +10730,6 @@ selenium	element
 central america	region
 electrical	industry
 b vitamin	nutrient
-sexual orientation	issue
 cystic fibrosis	condition
 hplc	method
 sewing	activity
@@ -11431,7 +10750,6 @@ wav	popular audio format
 stainless steel	metallic material
 interview	technique
 apple	fruit
-anxiety	psychiatric disorder
 hawaii	area
 european central bank	central bank
 laptop computer	device
@@ -11441,7 +10759,6 @@ maintenance	cost
 google drive	service
 depression	health problem
 beijing	large city
-anxiety	mental illness
 methotrexate	immunosuppressive drug
 reverb	effect
 watermelon	crop
@@ -11478,16 +10795,13 @@ smoking	risk factor
 lowes	home improvement store
 stone	natural material
 copper	nutrient
-management	topic
 oat	cereal
 metal	item
 fao	agency
-slate	material
 sweden	european country
 expedia	website
 ceramic	material
 functionality	factor
-young s modulus	mechanical property
 fao	organization
 medical	benefit
 cycling	exercise
@@ -11497,7 +10811,6 @@ marriage	topic
 alkyl	saturated or unsaturated hydrocarbon radical
 easyjet	airline
 history	topic
-lemon	oil
 electricity bill	small monetary cost
 vegetable	healthy snack
 italian	language
@@ -11537,8 +10850,6 @@ horse	domesticated animal
 orienteering	activity
 mineral	resource
 world bank	international agency
-anxiety	condition
-magnesium	micronutrient
 population size	factor
 blanket	item
 communication	field
@@ -11556,7 +10867,6 @@ world bank	organization
 carrot	food
 laptop computer	portable electronic device
 freelance	keyword
-water	protic solvent
 medium	area
 gelatin	material
 hypoxia	factor
@@ -11574,7 +10884,6 @@ hematoma	postoperative complication
 sauna	facility
 credit card due	small monetary expense
 engineer	professional
-age	environmental factor
 payroll	service
 toluene	aromatic
 grass	vegetation
@@ -11587,7 +10896,6 @@ knob	hardware
 jehovah s witnesses	group
 peptide	common linker
 medicaid	program
-prune	fruit
 pesticide	toxin
 glycosylation	post translational modification
 ar	gas
@@ -11605,7 +10913,6 @@ n acetylcysteine	antioxidant
 boxes	object
 finance	issue
 breakfast cereal	food
-laundry	facility
 copier	office equipment
 table	database object
 meat	product
@@ -11626,7 +10933,6 @@ catechin	flavonoid
 globalization	topic
 camel	animal
 silverware	item
-anxiety	mental disorder
 vinyl	material
 marc jacobs	designer
 sanitary napkin	disposable absorbent article
@@ -11647,7 +10953,6 @@ psoriasis	skin disorder
 steel	construction material
 disposable diaper	disposable absorbent article
 shanghai	city
-water	environmental factor
 cycling	outdoor activity
 syrup	oral fluid
 respiratory syncytial virus	virus
@@ -11681,7 +10986,6 @@ dsr	protocol
 unesco	organization
 social security number	information
 corn	grass crop
-petroleum	fossil fuel
 machinery	tangible asset
 income	variable
 boys	organization
@@ -11701,7 +11005,6 @@ vitamin c	water soluble vitamin
 osteoporosis	condition
 viewer feedback forum	innocent traffic method
 responsibility	topic
-noise	factor
 meat	perishable food
 acai berry eating habit	mad diet
 green tea extract diet	ridiculous diet
@@ -11752,7 +11055,6 @@ trust	entity
 fever	systemic manifestation
 serotonin	neurotransmitter
 fax machine	equipment
-age	characteristic
 presence	feature
 cap	item
 throughput	performance metric
@@ -11763,7 +11065,6 @@ nasa	organization
 printer	peripheral
 shower	amenity
 copier	office machine
-gypsum	mineral
 spinach	dark green leafy vegetable
 usability	factor
 poster	marketing material
@@ -11778,16 +11079,12 @@ sulfur	impurity
 flavonoid	secondary metabolite
 progressive muscle relaxation	relaxation technique
 complexity	issue
-budget	issue
 billing	function
 event	information
 needle	diver material
 time management	life skill
-jazz	genre
 garage	structure
-metamucil	fiber supplement
 hypothyroidism	medical condition
-orange	fruit
 presentation	statement
 malignancy	condition
 dandelion root	herb
@@ -11796,13 +11093,11 @@ ibuprofen	anti inflammatory
 triethylamine	base
 excavation	construction activity
 chemical	hazardous material
-water	compound
 dvds	item
 education	matter
 skype	application
 food	regulatory agency
 anger	negative emotion
-rheumatoid arthritis	autoimmune disease
 camembert	soft cheese
 virus	contaminant
 then	word
@@ -11815,11 +11110,9 @@ pad thai	traditional best loved dish
 cobalt	material
 dkny	brand
 power generation	industry
-facial	treatment
 product development	area
 fixture	item
 medical checkup	medical treatment
-wiki	tool
 bathroom	wet area
 anger	emotional state
 streptokinase	thrombolytic agent
@@ -11833,15 +11126,11 @@ goldman sachs	investment bank
 spice	product
 popcorn	food
 insulation	material
-nurse	healthcare professional
 redness	side effect
 benzine	solvent
 photon	particle
 temperature	meteorological condition
 blood pressure	variable
-divorce	topic
-divorce	situation
-sleep apnea	disorder
 facebook	social medium application
 plum	fruit
 business	field
@@ -11849,7 +11138,6 @@ cooler	item
 construction	service
 leopard	predator
 porosity	property
-water	cooling fluid
 concert	activity
 argon	noble gas
 insecticide	pesticide
@@ -11872,7 +11160,6 @@ rice	starchy food
 precision	validation parameter
 stigma	factor
 work	activity
-france	european country
 electricity	expense
 paint	hazardous material
 stone	object
@@ -11886,7 +11173,6 @@ surgical technique	factor
 hawk	predator
 fatty acid	nutrient
 broccoli	green leafy vegetable
-coconut oil	healthy fat
 carbon	impurity
 lithium	mood stabilizer
 gray	neutral color
@@ -11898,14 +11184,12 @@ base two	base
 meat	protein food
 tax history	information
 tinnitus	symptom
-facial	service
 mp3 player	item
 chip	snack
 bearing	component
 computer	electronics
 chair	equipment
 xenon	inert gas
-seminar	activity
 healthcare bill	financial cost
 carrot	fresh vegetable
 chocolate	item
@@ -11913,7 +11197,6 @@ vomiting	symptom
 money progress mortgage	money financial loan
 diwali	festival
 tie	accessory
-fairness	value
 collage	medium
 gasoline	product
 cost	reason
@@ -11921,9 +11204,7 @@ monster	energy drink
 smoking	risky behavior
 zinc	supplement
 spacer	product
-divorce	case
 acetic acid	carboxylic acid
-age	basic information
 annual report	document
 microsoft word	word processing program
 image	feature
@@ -11940,7 +11221,6 @@ distance	variable
 antibiotic	medicine
 zinc	material
 pioglitazone	thiazolidinedione
-nonsteroidal anti inflammatory	medication
 tcs	company
 date	factor
 minnesota	state
@@ -11960,8 +11240,6 @@ data mining	technique
 yeast	microorganism
 income	demographic
 location	characteristic
-juice	food
-anxiety	emotional state
 united states	state
 6 speed automatic electronic with overdrive	feature
 social service	service
@@ -11973,7 +11251,6 @@ methanol	solvent
 fever	sign
 animal rna virus	virus
 mercury	chemical
-corporate event	event
 peanut	oil
 silicon	substrate
 quantity	factor
@@ -11990,7 +11267,6 @@ bolt	mean
 intestine	organ
 heart disease	non communicable disease
 education	aspect
-orange	flavor
 gender	cross cutting issue
 vitamin e	antioxidant
 hedge fund	investment
@@ -12010,14 +11286,12 @@ income	demographic characteristic
 wedding	celebration
 nigeria	nation
 chisel	hand tool
-age	traditional risk factor
 radio	equipment
 ethyl ether	ether
 grocery fee	brief term requirement
 pressure	condition
 flood	natural hazard
 flute	musical instrument
-ebola	virus
 house renovation	monetary cost
 hair dryer	amenity
 human right	area
@@ -12038,7 +11312,6 @@ type 1 diabetes	autoimmune disease
 interleukin-1	cytokines
 gucci	designer
 expertise	factor
-neurologist	specialist
 internet	computer network
 role playing	activity
 grief	issue
@@ -12051,7 +11324,6 @@ canoeing	outdoor activity
 software	intangible asset
 viewer feedback forum	ingenuous traffic method
 slavery	issue
-france	place
 wall	barrier
 netball	sport
 night sweat	constitutional symptom
@@ -12064,7 +11336,6 @@ technology	issue
 defense	industry
 fuzzy logic	artificial intelligence technique
 baseball	event
-france	case
 baptism	event
 medication	factor
 toyota	japanese company
@@ -12096,20 +11367,17 @@ social	issue
 cheese	food
 ionic strength	factor
 keyword	information
-rheumatoid arthritis	form of arthritis
 hobby	activity
 silicon	semiconductor material
 gravity	force
 hydrogen peroxide	oxidant
 cargo carrier	accessory
 wheel	part
-room service	service
 canvas	fabric
 gold	natural resource
 temperature	operating condition
 toxoplasmosis	infection
 polyoxymethylene	polyacetal
-fruit	food product
 style	factor
 sexual abuse	issue
 spain	market
@@ -12167,7 +11435,6 @@ fertilizer	product
 mupirocin	topical antibiotic
 mortgage	secured debt
 water quality	issue
-chimpanzee	animal
 smartphone	portable device
 cosmopolitan	magazine
 citibank	company
@@ -12178,9 +11445,7 @@ loader	equipment
 irrigation	factor
 air	natural resource
 acetylation	histone modification
-rheumatoid arthritis	systemic disease
 selenium	heavy metal
-patience	skill
 biscuit	product
 blackberry	berry
 height	personal information
@@ -12214,7 +11479,6 @@ intestine	tissue
 snack size candy tag	small portion
 china	case
 meat	protein rich food
-water	surface
 concentration	parameter
 wolf	wild animal
 tomato	ingredient
@@ -12233,7 +11497,6 @@ bereavement	life event
 frame	item
 myocardial infarction	cardiovascular disease
 gas	item
-cadmium plated steel	coated metal
 fog	weather condition
 foam	material
 elvis presley	artist
@@ -12248,15 +11511,12 @@ yamaha	brand
 inflation	economic factor
 electricity expense	small financial cost
 hurricane	extreme weather event
-water	item
-rodent	small animal
 brick	material
 security	feature
 oxidizing agent	incompatible
 wedding ceremony expense	financial expense
 divx	popular video format
 flood	natural disturbance
-birthday party	event
 vitamin	additive
 moisture content	parameter
 medium	stakeholder
@@ -12269,7 +11529,6 @@ intelligence	trait
 creativity	skill
 internet	information technology
 scarf	prop
-maize	cereal
 5s	tool
 rhodium	noble metal
 frequency	characteristic
@@ -12290,12 +11549,10 @@ ccj	awful factor
 colon cancer	health issue
 aspirin	nsaids
 squid	seafood
-solubility	factor
 lathe	machine tool
 home depot	home improvement store
 united states	common law country
 nicotine	substance
-php	technology
 neutrophil	cell
 cross country	sport
 chemical	product
@@ -12335,17 +11592,13 @@ toy	personal item
 personal	factor
 shampoo	personal care product
 america online	online service
-age	socio demographic factor
 hockey	contact sport
 skiing	winter sport
-fruit	fiber rich food
 grinder	tool
 elongation	mechanical property
-seminar	marketing event
 alcohol	factor
 material	factor
 picture	hang heavy item
-water	service
 auto	industry
 heating	cost
 jam	product
@@ -12360,8 +11613,6 @@ smoking habit	factor
 honesty	characteristic
 job training	service
 prayer	spiritual practice
-lovastatin	statin
-wikipedia	site
 virtual reality	technology
 cost	aspect
 duck	poultry
@@ -12371,7 +11622,6 @@ cisco	company
 syllabus	material
 teacher	stakeholder
 valentine s day	occasion
-divorce	circumstance
 food security	issue
 health club	recreational amenity
 colon cancer	health concern
@@ -12379,13 +11629,11 @@ state	institution
 stainless steel	high quality material
 season	factor
 queensland	state
-surface area	parameter
 liquid	fluid
 key	metal object
 brie	cheese
 football	traditional sport
 shellfish	food
-orange	fresh fruit
 coumadin	blood thinner
 india	large country
 cotton	fabric
@@ -12441,7 +11689,6 @@ algebra	topic
 virus	pathogen
 facebook	social networking tool
 pneumonia	infection
-contact detail	information
 design	aspect
 police	professional
 chromium	alloying element
@@ -12467,22 +11714,18 @@ hypothyroidism	condition
 quantity	information
 customer service	factor
 tradition	factor
-sewerage	service
 4 wheel disc brakes	feature
-human	organism
 fire department	statutory clearance
 tobacco	stimulant
 household size	factor
 table	information
 war	issue
 description	field
-soccer	team sport
 pneumonia	infectious disease
 braun entervan	brand
 reading	interest
 canoeing	activity
 jogging	activity
-anandamide	endocannabinoid
 body mass index	factor
 facebook	social site
 politic	field
@@ -12490,7 +11733,6 @@ maintenance	issue
 grass	material
 phone expense	small financial cost
 brush	item
-coconut oil	ingredient
 ativan	benzodiazepine
 jogging	cardiovascular exercise
 marriage certificate	document
@@ -12508,7 +11750,6 @@ education	category
 sugar	industry
 cereal	item
 cisplatin	agent
-divorce	life transition
 saccharin	artificial sweetener
 effective communication	skill
 desk	item
@@ -12536,7 +11777,6 @@ bar	amenity
 argon	inert gas
 indomethacin	non steroidal anti inflammatory drug
 bathroom	fixture
-pumpkin	food
 personal care	service
 malic	organic acid
 salmon	food item
@@ -12550,9 +11790,7 @@ serum	biological fluid
 pressure ulcer	chronic wound
 newspaper	item
 conflict resolution	skill
-neuron	cell type
 helium	rare gas
-anxiety	factor
 mean	statistical measure
 cable	equipment
 inequality	issue
@@ -12560,8 +11798,6 @@ sheep	domesticated animal
 tooth bleaching	dental treatment
 cricket	insect
 bread	staple
-age	difference
-anxiety	problem
 transportation	barrier
 chicken	poultry
 sierra club	organization
@@ -12572,8 +11808,6 @@ router	device
 pollen	airborne allergen
 banking	industry
 account number	sensitive information
-age	clinical information
-maize	cereal crop
 salami	meat
 cigarette smoking	environmental factor
 copper	mineral
@@ -12637,9 +11871,7 @@ communication	industry
 caterpillar	insect
 south carolina	state
 convention	event
-age	question
 solvent	product
-water	substance
 scanner	device
 block	prop
 notebook computer	portable electronic device
@@ -12648,7 +11880,6 @@ telephone expense	monetary expense
 camera	device
 western europe	mature market
 greenpeace	environmental group
-organization listing	term
 promotion	factor
 volleyball	event
 chair	furniture
