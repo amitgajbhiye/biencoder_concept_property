@@ -1,10 +1,10 @@
 {
-    "experiment_name": "context_4_nbs",
+    "experiment_name": "context_4_70k_data",
     "dataset_params": {
-        "dataset_name": "MSCG_concept_property",
-        "train_file_path": "data/train_data/MSCG/mscg_train_pos.tsv",
-        "val_file_path": "data/train_data/MSCG/mscg_valid_pos.tsv",
-        "test_file_path": "data/evaluation_data/MSCG/65k_test_ms_concept_graph.tsv",
+        "dataset_name": "70k_mscg",
+        "train_file_path": "data/train_data/MSCG/70k_nbs_pos_train_mscg.tsv",
+        "val_file_path": "data/train_data/MSCG/70k_nbs_pos_valid_mscg.tsv",
+        "test_file_path": "data/evaluation_data/MSCG/70k_test_ms_concept_graph.tsv",
         "hf_tokenizer_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained/tokenizer",
         "concept_max_len": 64,
         "property_max_len": 64,
@@ -17,7 +17,7 @@
         }
     },
     "model_params": {
-        "model_name": "context_4_best_model.pt",
+        "model_name": "context_4_70k_best_model.pt",
         "hf_checkpoint_name": "bert-base-uncased",
         "hf_model_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained",
         "vector_strategy": "mean"
@@ -27,7 +27,7 @@
         "num_warmup_steps": 0,
         "max_epochs": 100,
         "early_stopping_patience": 20,
-        "export_path": "trained_models/context_4_best_model",
+        "export_path": "trained_models/context_4_70k_best_model",
         "printout_freq": 100,
         "checkpoint_path": "",
         "load_checkpoint": -1,
