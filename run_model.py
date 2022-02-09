@@ -222,6 +222,8 @@ def evaluate(config):
         config["training_params"]["export_path"], config["model_params"]["model_name"],
     )
 
+    log.info(f"Loading the best model : {best_model_path}")
+
     model.load_state_dict(torch.load(best_model_path))
     model.eval()
     model.to(device)

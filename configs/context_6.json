@@ -1,8 +1,8 @@
 {
-    "experiment_name": "context_6_mean_only",
+    "experiment_name": "context_6",
     "train_dataset_params": {
-        "dataset_name": "MSCG_concept_property",
-        "dataset_path": "data/65k_train_ms_concept_graph.tsv",
+        "dataset_name": "70k_mscg",
+        "dataset_path": "data/train/MSCG/70k_train_ms_concept_graph.tsv",
         "hf_tokenizer_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained/tokenizer",
         "concept_max_len": 64,
         "property_max_len": 64,
@@ -17,8 +17,8 @@
         }
     },
     "val_dataset_params": {
-        "dataset_name": "MSCG_concept_property",
-        "dataset_path": "data/65k_valid_ms_concept_graph.tsv",
+        "dataset_name": "70k_mscg",
+        "dataset_path": "data/train/MSCG/70k_valid_ms_concept_graph.tsv",
         "concept_max_len": 64,
         "property_max_len": 64,
         "hf_tokenizer_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained/tokenizer",
@@ -33,8 +33,8 @@
         }
     },
     "test_dataset_params": {
-        "dataset_name": "MSCG_concept_property",
-        "dataset_path": "data/65k_test_ms_concept_graph.tsv",
+        "dataset_name": "70k_mscg",
+        "dataset_path": "data/evaluation/MSCG/70k_test_ms_concept_graph.tsv",
         "hf_tokenizer_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained/tokenizer",
         "concept_max_len": 64,
         "property_max_len": 64,
@@ -50,7 +50,7 @@
         }
     },
     "model_params": {
-        "model_name": "context_6_mean_only_best_model.pt",
+        "model_name": "70k_context_6_best_model.pt",
         "hf_checkpoint_name": "bert-base-uncased",
         "hf_model_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained",
         "vector_strategy": "mean_only",
