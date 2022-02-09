@@ -1,5 +1,5 @@
 {
-    "experiment_name": "context_6",
+    "experiment_name": "70k_context_6",
     "train_dataset_params": {
         "dataset_name": "70k_mscg",
         "dataset_path": "data/train/MSCG/70k_train_ms_concept_graph.tsv",
