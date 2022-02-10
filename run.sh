@@ -1,7 +1,7 @@
 #!/bin/bash --login
-#SBATCH --job-name=nbs70kcntx4
-#SBATCH --output=logs/70k_nbs_cntx_4_out.file
-#SBATCH --error=logs/70k_nbs_cntx_4_err.file
+#SBATCH --job-name=8bs70kcntx4
+#SBATCH --output=logs/70k_8bs_cntx_4_out.file
+#SBATCH --error=logs/70k_8bs_cntx_4_err.file
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
 #SBATCH -A scw1858
@@ -24,6 +24,6 @@ conda activate venv
 
 echo 'Running experiment...'
 
-python3 run_model.py --config_file configs/context_4_config.json
+python3 run_model.py --config_file configs/context_4_bs_8_config.json
 
 echo finished!
