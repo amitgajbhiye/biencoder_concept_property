@@ -59,6 +59,7 @@ def train_single_epoch(
             concept_attention_mask=concept_attention_mask,
             property_input_id=property_input_id,
             property_attention_mask=property_attention_mask,
+            ids_dict=ids_dict,
         )
 
         batch_loss, batch_logits, batch_labels = calculate_loss(

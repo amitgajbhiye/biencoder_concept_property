@@ -160,6 +160,13 @@ class ConceptPropertyDataset(Dataset):
             concepts_batch = [concept_context + x + "." for x in batch[0]]
             property_batch = [property_context + x + "." for x in batch[1]]
 
+        elif self.context_num == 6:
+
+            context = " means [MASK] "
+
+            concepts_batch = [x + context + "." for x in batch[0]]
+            property_batch = [x + context + "." for x in batch[1]]
+
         return concepts_batch, property_batch
 
     def tokenize(

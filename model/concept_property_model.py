@@ -31,6 +31,7 @@ class ConceptPropertyModel(nn.Module):
         concept_attention_mask,
         property_input_id,
         property_attention_mask,
+        ids_dict,
     ):
 
         concept_output = self._concept_encoder(
@@ -89,3 +90,58 @@ class ConceptPropertyModel(nn.Module):
             )
 
             return concept_cls, property_cls, logits
+
+        elif self.strategy == "mask_token":
+
+            # The dot product of the mask tokens.
+
+            # Index of mask token in concept input ids
+            _, concept_mask_token_index = (
+                concept_input_id == torch.tensor(103)
+            ).nonzero(as_tuple=True)
+
+            concept_mask_vector = torch.vstack(
+                [
+                    torch.index_select(v, 0, torch.tensor(idx))
+                    for v, idx in zip(
+                        concept_last_hidden_states, concept_mask_token_index
+                    )
+                ]
+            )
+            # Normalising concept vectors
+            concept_mask_vector = normalize(concept_mask_vector, p=2, dim=1)
+
+            # Index of mask token in property input id
+            _, property_mask_token_index = (
+                property_input_id == torch.tensor(103)
+            ).nonzero(as_tuple=True)
+
+            property_mask_vector = torch.vstack(
+                [
+                    torch.index_select(v, 0, torch.tensor(idx))
+                    for v, idx in zip(
+                        property_last_hidden_states, property_mask_token_index
+                    )
+                ]
+            )
+
+            logits = (
+                (concept_mask_vector * property_mask_vector)
+                .sum(-1)
+                .reshape(concept_mask_vector.shape[0], 1)
+            )
+
+            print("*" * 50)
+            print("concept_input_id")
+            print(concept_input_id)
+            print("concept_mask_token_index")
+            print(concept_mask_token_index)
+            print()
+            print("property_input_id")
+            print(property_input_id)
+            print("property_mask_token_index")
+            print(property_mask_token_index)
+
+            print("*" * 50)
+
+            return concept_mask_vector, property_mask_vector, logits
