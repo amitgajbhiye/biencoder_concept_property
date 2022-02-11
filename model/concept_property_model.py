@@ -1,4 +1,5 @@
 import logging
+import tokenizers
 
 import torch
 from torch import nn
@@ -133,11 +134,25 @@ class ConceptPropertyModel(nn.Module):
             print("*" * 50)
             print("concept_input_id")
             print(concept_input_id)
+
+            from transformers import BertTokenizer
+
+            tokenizers = BertTokenizer.from_pretrained(
+                "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained/tokenizer"
+            )
+            for i in concept_input_id:
+                print(tokenizers.convert_ids_to_tokens(torch.tensor(i)))
+
             print("concept_mask_token_index")
             print(concept_mask_token_index)
+
             print()
             print("property_input_id")
             print(property_input_id)
+
+            for i in property_input_id:
+                print(tokenizers.convert_ids_to_tokens(torch.tensor(i)))
+
             print("property_mask_token_index")
             print(property_mask_token_index)
 
