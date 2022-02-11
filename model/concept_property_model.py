@@ -31,7 +31,6 @@ class ConceptPropertyModel(nn.Module):
         concept_attention_mask,
         property_input_id,
         property_attention_mask,
-        ids_dict,
     ):
 
         concept_output = self._concept_encoder(
