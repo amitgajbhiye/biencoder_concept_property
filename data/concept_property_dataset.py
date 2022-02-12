@@ -199,7 +199,12 @@ class ConceptPropertyDataset(Dataset):
         if self.context_num in (1, 2, 3, 4, 5):
 
             log.info(f"Context Num : {self.context_num}")
+
+            # Printing for debugging
             print(f"Context Num : {self.context_num}")
+            print("concept_batch :", concept_batch)
+            print("property_batch :", property_batch)
+            print()
 
             concept_ids = self.tokenizer(
                 concept_batch,
@@ -221,16 +226,16 @@ class ConceptPropertyDataset(Dataset):
         else:
 
             log.info(f"Context Num : {self.context_num}")
-            print(f"Context Num : {self.context_num}")
-
-            print("concept_batch :", concept_batch)
-            print("type(concept_batch) :", type(concept_batch))
 
             context_second_sent = ["[MASK]" for i in range(len(concept_batch))]
             property_second_sent = ["[MASK]" for i in range(len(concept_batch))]
 
+            # Printing for debugging
+            print(f"Context Num : {self.context_num}")
+            print("concept_batch :", concept_batch)
             print("context_second_sent :", context_second_sent)
-            print("type(context_second_sent) :", type(context_second_sent))
+            print("property_batch :", property_batch)
+            print("property_second_sent :", property_second_sent)
             print()
 
             concept_ids = self.tokenizer(
