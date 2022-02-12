@@ -25,7 +25,7 @@
     "training_params": {
         "lr": 2e-6,
         "num_warmup_steps": 0,
-        "max_epochs": 100,
+        "max_epochs": 10,
         "early_stopping_patience": 20,
         "export_path": "trained_models/context_4_70k_best_model",
         "printout_freq": 100,
