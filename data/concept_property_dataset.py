@@ -223,6 +223,9 @@ class ConceptPropertyDataset(Dataset):
             log.info(f"Context Num : {self.context_num}")
             print(f"Context Num : {self.context_num}")
 
+            print("concept_batch :", concept_batch)
+            print("type(concept_batch) :", type(concept_batch))
+
             context_second_sent = ["[MASK]" * len(concept_batch)]
             property_second_sent = ["[MASK]" * len(property_batch)]
 
