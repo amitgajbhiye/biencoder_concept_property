@@ -113,6 +113,7 @@ class ConceptPropertyDataset(Dataset):
 
     def add_context(self, batch):
 
+        ############### The Following Input Template uses Mean Strategy ###############
         if self.context_num == 1:
 
             concept_context = "Concept : "
@@ -161,23 +162,26 @@ class ConceptPropertyDataset(Dataset):
             concepts_batch = [concept_context + x + "." for x in batch[0]]
             property_batch = [property_context + x + "." for x in batch[1]]
 
-        ########################################################################
+        ############### The Following Input Template uses Mask Strategy ###############
 
         elif self.context_num == 6:
 
-            context = " means"  # [CLS] CONCEPT means [MASK]. [SEP]
+            # [CLS] CONCEPT means [MASK] [SEP]
+            context = " means [MASK]"
 
-            concepts_batch = [x + context + "." for x in batch[0]]
-            property_batch = [x + context + "." for x in batch[1]]
+            concepts_batch = [x + context for x in batch[0]]
+            property_batch = [x + context for x in batch[1]]
 
         elif self.context_num == 7:
 
-            # [CLS] CONCEPT [SEP] [MASK]. [SEP]
+            # [CLS] CONCEPT [SEP] [MASK] [SEP]
 
-            concepts_batch = [x + "." for x in batch[0]]
-            property_batch = [x + "." for x in batch[1]]
+            concepts_batch = [x for x in batch[0]]
+            property_batch = [x for x in batch[1]]
 
         elif self.context_num == 8:
+
+            # [CLS] The notion we are modelling is CONCEPT. [SEP] [MASK] [SEP]
 
             context = "The notion we are modelling is "
 
@@ -186,7 +190,36 @@ class ConceptPropertyDataset(Dataset):
 
         elif self.context_num == 9:
 
+            # [CLS] The spaceship we are modelling is CONCEPT. []
+
             context = "The spaceship we are modelling is "
+
+            concepts_batch = [context + x + "." for x in batch[0]]
+            property_batch = [context + x + "." for x in batch[1]]
+
+        elif self.context_num == 10:
+
+            # [CLS] We are modelling CONCEPT.[SEP] [MASK] [SEP]
+
+            context = "We are modelling "
+
+            concepts_batch = [context + x + "." for x in batch[0]]
+            property_batch = [context + x + "." for x in batch[1]]
+
+        elif self.context_num == 11:
+
+            # [CLS] The notion we are modelling this morning is CONCEPT.[SEP][MASK][SEP]
+
+            context = "The notion we are modelling this morning is "
+
+            concepts_batch = [context + x + "." for x in batch[0]]
+            property_batch = [context + x + "." for x in batch[1]]
+
+        elif self.context_num == 12:
+
+            # [CLS] As I have mentioned earlier, the notion we are modelling this morning is CONCEPT.[SEP][MASK][SEP]
+
+            context = "As I have mentioned earlier, the notion we are modelling this morning is "
 
             concepts_batch = [context + x + "." for x in batch[0]]
             property_batch = [context + x + "." for x in batch[1]]
@@ -197,7 +230,7 @@ class ConceptPropertyDataset(Dataset):
         self, concept_batch, property_batch, concept_max_len=64, property_max_len=64
     ):
 
-        if self.context_num in (1, 2, 3, 4, 5):
+        if self.context_num in (1, 2, 3, 4, 5, 6):
 
             # Printing for debugging
             print(f"Context Num : {self.context_num}")
