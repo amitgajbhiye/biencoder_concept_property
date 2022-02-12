@@ -231,12 +231,13 @@ class ConceptPropertyDataset(Dataset):
             property_second_sent = ["[MASK]" for i in range(len(concept_batch))]
 
             # Printing for debugging
+
+            print("*" * 50)
             print(f"Context Num : {self.context_num}")
             print("concept_batch :", concept_batch)
             print("context_second_sent :", context_second_sent)
             print("property_batch :", property_batch)
             print("property_second_sent :", property_second_sent)
-            print()
 
             concept_ids = self.tokenizer(
                 concept_batch,
@@ -257,6 +258,25 @@ class ConceptPropertyDataset(Dataset):
                 truncation=True,
                 return_tensors="pt",
             )
+
+            # Printing for debugging
+            print("concept_ids")
+            print(concept_ids.get("input_ids"))
+            print("concept_token_type_id")
+            print(concept_ids.get("token_type_ids"))
+
+            for i in concept_ids.get("input_ids"):
+                print(self.tokenizers.convert_ids_to_tokens(torch.tensor(i)))
+
+            print()
+            print("property_inp_id")
+            print(property_ids.get("input_ids"))
+            print("property_token_type_id")
+            print(property_ids.get("token_type_ids"))
+
+            for i in property_ids.get("input_ids"):
+                print(self.tokenizers.convert_ids_to_tokens(torch.tensor(i)))
+            print("*" * 50)
 
         return {
             "concept_inp_id": concept_ids.get("input_ids"),

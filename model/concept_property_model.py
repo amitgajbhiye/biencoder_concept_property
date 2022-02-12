@@ -137,34 +137,10 @@ class ConceptPropertyModel(nn.Module):
                 .reshape(concept_mask_vector.shape[0], 1)
             )
 
-            print("*" * 50)
-
-            # Printing for debugging
-            from transformers import BertTokenizer
-
-            tokenizers = BertTokenizer.from_pretrained(
-                "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained/tokenizer"
-            )
-
-            print("concept_input_id")
-            print(concept_input_id)
-
-            for i in concept_input_id:
-                print(tokenizers.convert_ids_to_tokens(torch.tensor(i)))
-
             print("concept_mask_token_index")
             print(concept_mask_token_index)
 
-            print()
-            print("property_input_id")
-            print(property_input_id)
-
-            for i in property_input_id:
-                print(tokenizers.convert_ids_to_tokens(torch.tensor(i)))
-
             print("property_mask_token_index")
             print(property_mask_token_index)
-
-            print("*" * 50)
 
             return concept_mask_vector, property_mask_vector, logits
