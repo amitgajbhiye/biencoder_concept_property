@@ -130,8 +130,8 @@ class ConceptPropertyDataset(Dataset):
 
         elif self.context_num == 3:
 
-            prefix_num = 2
-            suffix_num = 2
+            prefix_num = 5
+            suffix_num = 4
 
             print("prefix_num :", prefix_num)
             print("suffix_num :", suffix_num)
@@ -160,12 +160,35 @@ class ConceptPropertyDataset(Dataset):
             concepts_batch = [concept_context + x + "." for x in batch[0]]
             property_batch = [property_context + x + "." for x in batch[1]]
 
+        ########################################################################
+
         elif self.context_num == 6:
 
-            context = " means [MASK] "
+            context = " means"  # [CLS] CONCEPT means [MASK]. [SEP]
 
             concepts_batch = [x + context + "." for x in batch[0]]
             property_batch = [x + context + "." for x in batch[1]]
+
+        elif self.context_num == 7:
+
+            # [CLS] CONCEPT [SEP] [MASK]. [SEP]
+
+            concepts_batch = [x + "." for x in batch[0]]
+            property_batch = [x + "." for x in batch[1]]
+
+        elif self.context_num == 8:
+
+            context = "The notion we are modelling is "
+
+            concepts_batch = [context + x + "." for x in batch[0]]
+            property_batch = [context + x + "." for x in batch[1]]
+
+        elif self.context_num == 9:
+
+            context = "The spaceship we are modelling is "
+
+            concepts_batch = [context + x + "." for x in batch[0]]
+            property_batch = [context + x + "." for x in batch[1]]
 
         return concepts_batch, property_batch
 
@@ -173,26 +196,81 @@ class ConceptPropertyDataset(Dataset):
         self, concept_batch, property_batch, concept_max_len=64, property_max_len=64
     ):
 
-        concept_ids = self.tokenizer(
-            concept_batch,
-            max_length=concept_max_len,
-            padding=True,
-            truncation=True,
-            return_tensors="pt",
-        )
+        if self.context_num in (1, 2, 3, 4, 5):
 
-        property_ids = self.tokenizer(
-            property_batch,
-            max_length=property_max_len,
-            padding=True,
-            truncation=True,
-            return_tensors="pt",
-        )
+            log.info(f"Context Num : {self.context_num}")
+            print(f"Context Num : {self.context_num}")
+
+            concept_ids = self.tokenizer(
+                concept_batch,
+                add_special_tokens=True,
+                max_length=concept_max_len,
+                padding=True,
+                truncation=True,
+                return_tensors="pt",
+            )
+
+            property_ids = self.tokenizer(
+                property_batch,
+                add_special_tokens=True,
+                max_length=property_max_len,
+                padding=True,
+                truncation=True,
+                return_tensors="pt",
+            )
+        else:
+
+            log.info(f"Context Num : {self.context_num}")
+            print(f"Context Num : {self.context_num}")
+
+            context_second_sent = [["MASK"] * len(concept_batch)]
+            property_second_sent = [["MASK"] * len(property_batch)]
+
+            concept_ids = self.tokenizer(
+                concept_batch,
+                context_second_sent,
+                add_special_tokens=True,
+                max_length=concept_max_len,
+                padding=True,
+                truncation=True,
+                return_tensors="pt",
+            )
+
+            property_ids = self.tokenizer(
+                property_batch,
+                property_second_sent,
+                add_special_tokens=True,
+                max_length=property_max_len,
+                padding=True,
+                truncation=True,
+                return_tensors="pt",
+            )
 
         return {
             "concept_inp_id": concept_ids.get("input_ids"),
             "concept_atten_mask": concept_ids.get("attention_mask"),
+            "concept_token_type_id": concept_ids.get("token_type_ids"),
             "property_inp_id": property_ids.get("input_ids"),
             "property_atten_mask": property_ids.get("attention_mask"),
+            "property_token_type_id": property_ids.get("token_type_ids"),
         }
 
+
+class TestDataset(ConceptPropertyDataset):
+    def __init__(self, dataset_params):
+
+        self.data_df = pd.read_csv(
+            dataset_params.get("test_file_path"),
+            sep="\t",
+            header=None,
+            names=["concept", "property", "label"],
+        )
+
+        # self.tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
+        self.tokenizer = BertTokenizer.from_pretrained(
+            dataset_params.get("hf_tokenizer_path")
+        )
+
+        self.context_num = dataset_params.get("context_num")
+
+        self.label = self.data_df["label"].values

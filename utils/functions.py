@@ -6,8 +6,9 @@ import time
 
 import numpy as np
 import torch
-from data.concept_property_dataset import ConceptPropertyDataset
-from data.concept_property_test_dataset import TestDataset
+from data.concept_property_dataset import ConceptPropertyDataset, TestDataset
+
+# from data.concept_property_test_dataset import TestDataset
 from model.concept_property_model import ConceptPropertyModel
 from sklearn.metrics import (
     accuracy_score,

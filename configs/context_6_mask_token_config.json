@@ -2,8 +2,8 @@
     "experiment_name": "context_6_mask_token_nbs_70k_data",
     "dataset_params": {
         "dataset_name": "70k_mscg",
-        "train_file_path": "data/train_data/MSCG/70k_nbs_pos_train_mscg.tsv",
-        "val_file_path": "data/train_data/MSCG/70k_nbs_pos_valid_mscg.tsv",
+        "train_file_path": "data/train_data/MSCG/sample_nbs_pos_train_mscg.tsv",
+        "val_file_path": "data/train_data/MSCG/sample_nbs_pos_valid_mscg.tsv",
         "test_file_path": "data/evaluation_data/MSCG/70k_test_ms_concept_graph.tsv",
         "hf_tokenizer_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained/tokenizer",
         "concept_max_len": 25,

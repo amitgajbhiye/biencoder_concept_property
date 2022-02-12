@@ -50,15 +50,19 @@ def train_single_epoch(
         (
             concept_inp_id,
             concept_attention_mask,
+            concept_token_type_id,
             property_input_id,
             property_attention_mask,
+            property_token_type_id,
         ) = [val.to(device) for _, val in ids_dict.items()]
 
         concept_embedding, property_embedding, logits = model(
             concept_input_id=concept_inp_id,
             concept_attention_mask=concept_attention_mask,
+            concept_token_type_id=concept_token_type_id,
             property_input_id=property_input_id,
             property_attention_mask=property_attention_mask,
+            property_token_type_id=property_token_type_id,
         )
 
         batch_loss, batch_logits, batch_labels = calculate_loss(
@@ -103,8 +107,10 @@ def evaluate(model, valid_dataset, valid_dataloader, loss_fn, device):
         (
             concept_inp_id,
             concept_attention_mask,
+            concept_token_type_id,
             property_input_id,
             property_attention_mask,
+            property_token_type_id,
         ) = [val.to(device) for _, val in ids_dict.items()]
 
         with torch.no_grad():
@@ -112,8 +118,10 @@ def evaluate(model, valid_dataset, valid_dataloader, loss_fn, device):
             concept_embedding, property_embedding, logits = model(
                 concept_input_id=concept_inp_id,
                 concept_attention_mask=concept_attention_mask,
+                concept_token_type_id=concept_token_type_id,
                 property_input_id=property_input_id,
                 property_attention_mask=property_attention_mask,
+                property_token_type_id=property_token_type_id,
             )
 
         batch_loss, batch_logits, batch_labels = calculate_loss(
@@ -306,8 +314,10 @@ def test_best_model(config):
         (
             concept_inp_id,
             concept_attention_mask,
+            concept_token_type_id,
             property_input_id,
             property_attention_mask,
+            property_token_type_id,
         ) = [val.to(device) for _, val in ids_dict.items()]
 
         with torch.no_grad():
@@ -315,8 +325,10 @@ def test_best_model(config):
             concept_embedding, property_embedding, logits = model(
                 concept_input_id=concept_inp_id,
                 concept_attention_mask=concept_attention_mask,
+                concept_token_type_id=concept_token_type_id,
                 property_input_id=property_input_id,
                 property_attention_mask=property_attention_mask,
+                property_token_type_id=property_token_type_id,
             )
 
         preds = torch.round(torch.sigmoid(logits))

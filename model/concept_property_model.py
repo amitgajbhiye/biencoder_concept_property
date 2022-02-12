@@ -30,16 +30,22 @@ class ConceptPropertyModel(nn.Module):
         self,
         concept_input_id,
         concept_attention_mask,
+        concept_token_type_id,
         property_input_id,
         property_attention_mask,
+        property_token_type_id,
     ):
 
         concept_output = self._concept_encoder(
-            input_ids=concept_input_id, attention_mask=concept_attention_mask
+            input_ids=concept_input_id,
+            attention_mask=concept_attention_mask,
+            token_type_ids=concept_token_type_id,
         )
 
         property_output = self._property_encoder(
-            input_ids=property_input_id, attention_mask=property_attention_mask
+            input_ids=property_input_id,
+            attention_mask=property_attention_mask,
+            token_type_ids=property_token_type_id,
         )
 
         concept_last_hidden_states, concept_cls = (
@@ -135,6 +141,7 @@ class ConceptPropertyModel(nn.Module):
             print("concept_input_id")
             print(concept_input_id)
 
+            # Printing for debugging
             from transformers import BertTokenizer
 
             tokenizers = BertTokenizer.from_pretrained(
