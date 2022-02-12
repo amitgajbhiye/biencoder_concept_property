@@ -40,8 +40,9 @@ class ConceptPropertyDataset(Dataset):
         self.con_pro_dict, self.prop_con_dict = self.populate_dict()
 
         # print ("self.con_pro_dict :", self.con_pro_dict)
-
         self.context_num = dataset_params.get("context_num")
+
+        log.info(f"Context Num : {self.context_num}")
 
     def create_concept_idx_dicts(self):
 
@@ -195,13 +196,8 @@ class ConceptPropertyDataset(Dataset):
     def tokenize(
         self, concept_batch, property_batch, concept_max_len=64, property_max_len=64
     ):
-        print_freq = 0
 
         if self.context_num in (1, 2, 3, 4, 5):
-
-            if print_freq < 1:
-                log.info(f"Context Num : {self.context_num}")
-                print_freq += 1
 
             # Printing for debugging
             print(f"Context Num : {self.context_num}")
@@ -247,10 +243,6 @@ class ConceptPropertyDataset(Dataset):
             print("*" * 50)
 
         else:
-
-            if print_freq < 1:
-                log.info(f"Context Num : {self.context_num}")
-                print_freq += 1
 
             context_second_sent = ["[MASK]" for i in range(len(concept_batch))]
             property_second_sent = ["[MASK]" for i in range(len(concept_batch))]
