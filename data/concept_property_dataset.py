@@ -195,10 +195,13 @@ class ConceptPropertyDataset(Dataset):
     def tokenize(
         self, concept_batch, property_batch, concept_max_len=64, property_max_len=64
     ):
+        print_freq = 0
 
         if self.context_num in (1, 2, 3, 4, 5):
 
-            log.info(f"Context Num : {self.context_num}")
+            if print_freq < 1:
+                log.info(f"Context Num : {self.context_num}")
+                print_freq += 1
 
             # Printing for debugging
             print(f"Context Num : {self.context_num}")
@@ -223,9 +226,31 @@ class ConceptPropertyDataset(Dataset):
                 truncation=True,
                 return_tensors="pt",
             )
+
+            # Printing for debugging
+            print("concept_ids")
+            print(concept_ids.get("input_ids"))
+            print("concept_token_type_id")
+            print(concept_ids.get("token_type_ids"))
+
+            for i in concept_ids.get("input_ids"):
+                print(self.tokenizer.convert_ids_to_tokens(torch.tensor(i)))
+
+            print()
+            print("property_inp_id")
+            print(property_ids.get("input_ids"))
+            print("property_token_type_id")
+            print(property_ids.get("token_type_ids"))
+
+            for i in property_ids.get("input_ids"):
+                print(self.tokenizer.convert_ids_to_tokens(torch.tensor(i)))
+            print("*" * 50)
+
         else:
 
-            log.info(f"Context Num : {self.context_num}")
+            if print_freq < 1:
+                log.info(f"Context Num : {self.context_num}")
+                print_freq += 1
 
             context_second_sent = ["[MASK]" for i in range(len(concept_batch))]
             property_second_sent = ["[MASK]" for i in range(len(concept_batch))]
@@ -266,7 +291,7 @@ class ConceptPropertyDataset(Dataset):
             print(concept_ids.get("token_type_ids"))
 
             for i in concept_ids.get("input_ids"):
-                print(self.tokenizers.convert_ids_to_tokens(torch.tensor(i)))
+                print(self.tokenizer.convert_ids_to_tokens(torch.tensor(i)))
 
             print()
             print("property_inp_id")
@@ -275,7 +300,7 @@ class ConceptPropertyDataset(Dataset):
             print(property_ids.get("token_type_ids"))
 
             for i in property_ids.get("input_ids"):
-                print(self.tokenizers.convert_ids_to_tokens(torch.tensor(i)))
+                print(self.tokenizer.convert_ids_to_tokens(torch.tensor(i)))
             print("*" * 50)
 
         return {
