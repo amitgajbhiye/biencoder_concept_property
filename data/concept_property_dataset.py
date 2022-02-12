@@ -226,8 +226,12 @@ class ConceptPropertyDataset(Dataset):
             print("concept_batch :", concept_batch)
             print("type(concept_batch) :", type(concept_batch))
 
-            context_second_sent = ["[MASK]" * len(concept_batch)]
-            property_second_sent = ["[MASK]" * len(property_batch)]
+            context_second_sent = ["[MASK]" for i in range(len(concept_batch))]
+            property_second_sent = ["[MASK]" for i in range(len(concept_batch))]
+
+            print("context_second_sent :", context_second_sent)
+            print("type(context_second_sent) :", type(context_second_sent))
+            print()
 
             concept_ids = self.tokenizer(
                 concept_batch,

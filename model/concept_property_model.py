@@ -138,8 +138,6 @@ class ConceptPropertyModel(nn.Module):
             )
 
             print("*" * 50)
-            print("concept_input_id")
-            print(concept_input_id)
 
             # Printing for debugging
             from transformers import BertTokenizer
@@ -147,6 +145,10 @@ class ConceptPropertyModel(nn.Module):
             tokenizers = BertTokenizer.from_pretrained(
                 "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained/tokenizer"
             )
+
+            print("concept_input_id")
+            print(concept_input_id)
+
             for i in concept_input_id:
                 print(tokenizers.convert_ids_to_tokens(torch.tensor(i)))
 
