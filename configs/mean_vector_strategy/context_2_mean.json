@@ -1,5 +1,5 @@
 {
-    "experiment_name": "2_cntx_mean_70k_data",
+    "experiment_name": "2_is_cntx_mean_70k_data",
     "dataset_params": {
         "dataset_name": "70k_mscg",
         "train_file_path": "data/train_data/MSCG/70k_nbs_pos_train_mscg.tsv",
@@ -17,7 +17,7 @@
         }
     },
     "model_params": {
-        "model_name": "2_cntx_mean_70k_data_best_model.pt",
+        "model_name": "2_is_cntx_mean_70k_data_best_model.pt",
         "hf_checkpoint_name": "bert-base-uncased",
         "hf_model_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained",
         "vector_strategy": "mean"

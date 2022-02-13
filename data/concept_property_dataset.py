@@ -124,8 +124,8 @@ class ConceptPropertyDataset(Dataset):
 
         elif self.context_num == 2:
 
-            concept_context = "The notion we are modelling : "
-            property_context = "The notion we are modelling : "
+            concept_context = "The notion we are modelling is "
+            property_context = "The notion we are modelling is "
 
             concepts_batch = [concept_context + x + "." for x in batch[0]]
             property_batch = [property_context + x + "." for x in batch[1]]
