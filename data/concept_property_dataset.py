@@ -190,7 +190,7 @@ class ConceptPropertyDataset(Dataset):
 
         elif self.context_num == 9:
 
-            # [CLS] The spaceship we are modelling is CONCEPT. []
+            # [CLS] The spaceship we are modelling is CONCEPT. [SEP] [MASK] [SEP]
 
             context = "The spaceship we are modelling is "
 
