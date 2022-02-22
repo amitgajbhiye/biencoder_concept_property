@@ -27,13 +27,13 @@ echo 'Running Experiments...'
 
 # echo
 
-# echo '2. Running top_100k_mscg_and_gkb_config ' 
-# python3 run_model.py --config_file configs/100k_dataset_experiments/top_100k_mscg_and_gkb_config.json
+echo '2. Running top_100k_mscg_and_gkb_config ' 
+python3 run_model.py --config_file configs/100k_dataset_experiments/top_100k_mscg_and_gkb_config.json
 
 # echo
 
-echo '3. Running top_100k_gkb_ext_prop_config' 
-python3 run_model.py --config_file configs/100k_dataset_experiments/top_100k_gkb_ext_prop_config.json
+# echo '3. Running top_100k_gkb_ext_prop_config' 
+# python3 run_model.py --config_file configs/100k_dataset_experiments/top_100k_gkb_ext_prop_config.json
 
 # echo
 
