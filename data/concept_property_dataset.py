@@ -99,6 +99,9 @@ class ConceptPropertyDataset(Dataset):
 
             property_id = self.property2idx[prop]
 
+            print("Property in populate_dict")
+            print(prop)
+
             concept_list = self.data_df.loc[prop].values.flatten()
             concept_ids = np.asarray([self.concept2idx[x] for x in concept_list])
 
