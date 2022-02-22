@@ -1,7 +1,7 @@
 #!/bin/bash --login
 #SBATCH --job-name=100kDataExp
-#SBATCH --output=logs/100kDataExp/batch_100k_dataset_experiments_out.file
-#SBATCH --error=logs/100kDataExp/batch_100k_dataset_experiments_out.file
+#SBATCH --output=logs/100kDataExp/out_batch_100k_dataset_experiments.txt
+#SBATCH --error=logs/100kDataExp/err_batch_100k_dataset_experiments.txt
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
 #SBATCH -A scw1858
