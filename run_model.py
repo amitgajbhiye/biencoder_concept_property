@@ -133,6 +133,17 @@ def evaluate(model, valid_dataset, valid_dataloader, loss_fn, device):
             device=device,
         )  # dataset, batch, concept_embedding, property_embedding, loss_fn, device
 
+        log.info(f"batch_logits")
+        log.info(f"{type(batch_logits)}")
+        log.info(batch_logits)
+
+        log.info(f"batch_labels")
+        log.info(f"{type(batch_labels)}")
+        log.info(batch_labels)
+
+        log.info("batch_loss")
+        log.info(batch_loss)
+
         epoch_logits.append(batch_logits)
         epoch_labels.append(batch_labels)
 
