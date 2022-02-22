@@ -272,6 +272,11 @@ def train(config):
 
         print(flush=True)
 
+        print("train_losses", flush=True)
+        print(train_losses, flush=True)
+        print("valid_losses", flush=True)
+        print(valid_losses, flush=True)
+
         if patience_counter >= config["training_params"].get("early_stopping_patience"):
             log.info(
                 f"Early Stopping ---> Maximum Patience - {config['training_params'].get('early_stopping_patience')} Reached !!"
@@ -368,5 +373,5 @@ if __name__ == "__main__":
 
     train(config)
 
-    test_best_model(config)
+    # test_best_model(config)
 
