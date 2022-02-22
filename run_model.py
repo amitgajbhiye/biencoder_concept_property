@@ -85,6 +85,18 @@ def train_single_epoch(
         scheduler.step()
         torch.cuda.empty_cache()
 
+        if step % 100 == 0 and not step == 0:
+
+            batch_labels = batch_labels.cpu().numpy().flatten()
+            batch_logits = batch_logits.cpu().numpy().flatten()
+
+            batch_scores = compute_scores(batch_labels, batch_logits)
+
+            log.info(
+                f"Batch {step} of {len(train_dataloader)} ----> Batch Loss : {batch_loss}, Batch Binary F1 {batch_scores.get('binary_f1')}"
+            )
+            print(flush=True)
+
     avg_epoch_loss = epoch_loss / len(train_dataloader)
 
     return avg_epoch_loss
@@ -132,17 +144,6 @@ def evaluate(model, valid_dataset, valid_dataloader, loss_fn, device):
             loss_fn=loss_fn,
             device=device,
         )  # dataset, batch, concept_embedding, property_embedding, loss_fn, device
-
-        log.info(f"batch_logits")
-        log.info(f"{type(batch_logits)}")
-        log.info(batch_logits)
-
-        log.info(f"batch_labels")
-        log.info(f"{type(batch_labels)}")
-        log.info(batch_labels)
-
-        log.info("batch_loss")
-        log.info(batch_loss)
 
         epoch_logits.append(batch_logits)
         epoch_labels.append(batch_labels)
@@ -251,6 +252,7 @@ def train(config):
         valid_losses.append(valid_loss)
 
         log.info(f"  Average validation Loss: {valid_loss}")
+        print(flush=True)
 
         val_binary_f1 = valid_scores.get("binary_f1")
 

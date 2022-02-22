@@ -109,9 +109,6 @@ class ConceptPropertyDataset(Dataset):
 
             property_id = self.property2idx[prop]
 
-            print("Property in populate_dict")
-            print(prop)
-
             concept_list = self.data_df.loc[prop].values.flatten()
             concept_ids = np.asarray([self.concept2idx[x] for x in concept_list])
 
@@ -300,7 +297,7 @@ class ConceptPropertyDataset(Dataset):
 
             # Printing for debugging
 
-            print("*" * 50)
+            print("*" * 50, flush=True)
             print(f"Context Num : {self.context_num}")
             print("concept_batch :", concept_batch)
             print("context_second_sent :", context_second_sent)
@@ -344,7 +341,7 @@ class ConceptPropertyDataset(Dataset):
 
             for i in property_ids.get("input_ids"):
                 print(self.tokenizer.convert_ids_to_tokens(torch.tensor(i)))
-            print("*" * 50)
+            print("*" * 50, flush=True)
 
         return {
             "concept_inp_id": concept_ids.get("input_ids"),

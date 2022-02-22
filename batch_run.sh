@@ -22,7 +22,6 @@ conda activate venv
 
 echo 'Running Experiments...'
 
-
 echo '1. Running prefix_adjectives_8k_mscg ' 
 python3 run_model.py --config_file configs/100k_dataset_experiments/prefix_adjectives_8k_mscg.json
 
