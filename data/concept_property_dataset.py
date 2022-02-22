@@ -21,9 +21,9 @@ class ConceptPropertyDataset(Dataset):
                 header=None,
                 names=["concept", "property"],
             )
-            self.data_df.drop_duplicates(inplace=True)
-            self.data_df = self.data_df.sample(frac=1)
-            self.data_df.reset_index(inplace=True)
+            # self.data_df.drop_duplicates(inplace=True)
+            # self.data_df = self.data_df.sample(frac=1)
+            # self.data_df.reset_index(inplace=True)
 
             log.info(f"Train Data size {self.data_df.shape}")
 
@@ -34,9 +34,9 @@ class ConceptPropertyDataset(Dataset):
                 header=None,
                 names=["concept", "property"],
             )
-            self.data_df.drop_duplicates(inplace=True)
-            self.data_df = self.data_df.sample(frac=1)
-            self.data_df.reset_index(inplace=True)
+            # self.data_df.drop_duplicates(inplace=True)
+            # self.data_df = self.data_df.sample(frac=1)
+            # self.data_df.reset_index(inplace=True)
 
             log.info(f"Validation Data size {self.data_df.shape}")
 
