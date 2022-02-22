@@ -87,8 +87,8 @@ def train_single_epoch(
 
         if step % 100 == 0 and not step == 0:
 
-            batch_labels = batch_labels.detach().cpu().numpy().flatten()
-            batch_logits = batch_logits.detach().cpu().numpy().flatten()
+            batch_labels = torch.vstack(batch_labels).reshape(-1, 1).detach().cpu().numpy()
+            batch_logits = torch.round(torch.sigmoid(torch.vstack(batch_logits))).reshape(-1, 1).detach().cpu().numpy())
 
             batch_scores = compute_scores(batch_labels, batch_logits)
 
