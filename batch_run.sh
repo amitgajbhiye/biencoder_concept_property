@@ -1,15 +1,15 @@
 #!/bin/bash --login
 #SBATCH --job-name=100kDataExp
-#SBATCH --output=logs/batch_100k_dataset_experiments_out.file
-#SBATCH --error=logs/batch_100k_dataset_experiments_out.file
+#SBATCH --output=logs/100kDataExp/batch_100k_dataset_experiments_out.file
+#SBATCH --error=logs/100kDataExp/batch_100k_dataset_experiments_out.file
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
 #SBATCH -A scw1858
 
 #SBATCH -p gpu_v100
-#SBATCH --mem=15g
+#SBATCH --mem=10g
 #SBATCH --gres=gpu:1
-#SBATCH -t 0-18:00:00
+#SBATCH -t 0-2:00:00
 
 echo 'This script is running on:'
 hostname
@@ -22,8 +22,8 @@ conda activate venv
 
 echo 'Running Experiments...'
 
-echo '1. Running top_100k_mscg_config Experiment' 
-python3 run_model.py --config_file configs/100k_dataset_experiments/top_100k_mscg_config.json
+# echo '1. Running top_100k_mscg_config Experiment' 
+# python3 run_model.py --config_file configs/100k_dataset_experiments/top_100k_mscg_config.json
 
 echo
 
