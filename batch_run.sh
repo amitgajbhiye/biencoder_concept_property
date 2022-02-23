@@ -37,17 +37,17 @@ python3 run_model.py --config_file configs/100k_dataset_experiments/prefix_augme
 
 echo
 
-echo '4. Running top_100k_gkb_ext_prop_config ' 
+echo '4. Running top_100k_mscg_and_gkb_config ' 
 python3 run_model.py --config_file configs/100k_dataset_experiments/top_100k_gkb_ext_prop_config.json
 
 echo
 
-echo '5. Running top_100k_gkb_ext_prop_config ' 
+echo '5. Running top_100k_mscg_and_gkb_config' 
 python3 run_model.py --config_file configs/100k_dataset_experiments/top_100k_mscg_and_gkb_config.json
 
 echo
 
-echo '6. Running top_100k_gkb_ext_prop_config ' 
+echo '6. Running top_100k_mscg_config ' 
 python3 run_model.py --config_file configs/100k_dataset_experiments/top_100k_mscg_config.json
 
 
