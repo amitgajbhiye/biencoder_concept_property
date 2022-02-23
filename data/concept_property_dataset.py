@@ -247,11 +247,11 @@ class ConceptPropertyDataset(Dataset):
 
         if self.context_num in (1, 2, 3, 4, 5, 6):
 
-            # Printing for debugging
-            print(f"Context Num : {self.context_num}")
-            print("concept_batch :", concept_batch)
-            print("property_batch :", property_batch)
-            print()
+            # # Printing for debugging
+            # print(f"Context Num : {self.context_num}")
+            # print("concept_batch :", concept_batch)
+            # print("property_batch :", property_batch)
+            # print()
 
             concept_ids = self.tokenizer(
                 concept_batch,
@@ -271,38 +271,37 @@ class ConceptPropertyDataset(Dataset):
                 return_tensors="pt",
             )
 
-            # Printing for debugging
-            print("concept_ids")
-            print(concept_ids.get("input_ids"))
-            print("concept_token_type_id")
-            print(concept_ids.get("token_type_ids"))
+            # # Printing for debugging
+            # print("concept_ids")
+            # print(concept_ids.get("input_ids"))
+            # print("concept_token_type_id")
+            # print(concept_ids.get("token_type_ids"))
 
-            for i in concept_ids.get("input_ids"):
-                print(self.tokenizer.convert_ids_to_tokens(torch.tensor(i)))
+            # for i in concept_ids.get("input_ids"):
+            #     print(self.tokenizer.convert_ids_to_tokens(torch.tensor(i)))
 
-            print()
-            print("property_inp_id")
-            print(property_ids.get("input_ids"))
-            print("property_token_type_id")
-            print(property_ids.get("token_type_ids"))
+            # print()
+            # print("property_inp_id")
+            # print(property_ids.get("input_ids"))
+            # print("property_token_type_id")
+            # print(property_ids.get("token_type_ids"))
 
-            for i in property_ids.get("input_ids"):
-                print(self.tokenizer.convert_ids_to_tokens(torch.tensor(i)))
-            print("*" * 50)
+            # for i in property_ids.get("input_ids"):
+            #     print(self.tokenizer.convert_ids_to_tokens(torch.tensor(i)))
+            # print("*" * 50)
 
         else:
 
             context_second_sent = ["[MASK]" for i in range(len(concept_batch))]
             property_second_sent = ["[MASK]" for i in range(len(concept_batch))]
 
-            # Printing for debugging
-
-            print("*" * 50, flush=True)
-            print(f"Context Num : {self.context_num}")
-            print("concept_batch :", concept_batch)
-            print("context_second_sent :", context_second_sent)
-            print("property_batch :", property_batch)
-            print("property_second_sent :", property_second_sent)
+            # # Printing for debugging
+            # print("*" * 50, flush=True)
+            # print(f"Context Num : {self.context_num}")
+            # print("concept_batch :", concept_batch)
+            # print("context_second_sent :", context_second_sent)
+            # print("property_batch :", property_batch)
+            # print("property_second_sent :", property_second_sent)
 
             concept_ids = self.tokenizer(
                 concept_batch,
@@ -324,24 +323,24 @@ class ConceptPropertyDataset(Dataset):
                 return_tensors="pt",
             )
 
-            # Printing for debugging
-            print("concept_ids")
-            print(concept_ids.get("input_ids"))
-            print("concept_token_type_id")
-            print(concept_ids.get("token_type_ids"))
+            # # Printing for debugging
+            # print("concept_ids")
+            # print(concept_ids.get("input_ids"))
+            # print("concept_token_type_id")
+            # print(concept_ids.get("token_type_ids"))
 
-            for i in concept_ids.get("input_ids"):
-                print(self.tokenizer.convert_ids_to_tokens(torch.tensor(i)))
+            # for i in concept_ids.get("input_ids"):
+            #     print(self.tokenizer.convert_ids_to_tokens(torch.tensor(i)))
 
-            print()
-            print("property_inp_id")
-            print(property_ids.get("input_ids"))
-            print("property_token_type_id")
-            print(property_ids.get("token_type_ids"))
+            # print()
+            # print("property_inp_id")
+            # print(property_ids.get("input_ids"))
+            # print("property_token_type_id")
+            # print(property_ids.get("token_type_ids"))
 
-            for i in property_ids.get("input_ids"):
-                print(self.tokenizer.convert_ids_to_tokens(torch.tensor(i)))
-            print("*" * 50, flush=True)
+            # for i in property_ids.get("input_ids"):
+            #     print(self.tokenizer.convert_ids_to_tokens(torch.tensor(i)))
+            # print("*" * 50, flush=True)
 
         return {
             "concept_inp_id": concept_ids.get("input_ids"),
