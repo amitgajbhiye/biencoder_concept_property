@@ -92,11 +92,7 @@ def train_single_epoch(
             batch_labels = label.reshape(-1, 1).detach().cpu().numpy()
 
             batch_logits = (
-                torch.round(torch.sigmoid(batch_logits))
-                .reshape(-1, 1)
-                .detach()
-                .cpu()
-                .numpy()
+                torch.round(torch.sigmoid(logits)).reshape(-1, 1).detach().cpu().numpy()
             )
 
             batch_scores = compute_scores(batch_labels, batch_logits)
