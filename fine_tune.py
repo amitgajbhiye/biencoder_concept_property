@@ -72,7 +72,7 @@ def train_single_epoch(
             .reshape(concept_embedding.shape[0], 1)
         )
 
-        batch_loss = loss_fn(logits, label.reshape_as(logits).to(device))
+        batch_loss = loss_fn(logits, label.reshape_as(logits).float().to(device))
 
         epoch_loss += batch_loss.item()
 
