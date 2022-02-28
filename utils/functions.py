@@ -7,6 +7,7 @@ import time
 import numpy as np
 import torch
 from data.concept_property_dataset import ConceptPropertyDataset, TestDataset
+from data.mcrae_dataset import McRaeConceptPropertyDataset
 
 # from data.concept_property_test_dataset import TestDataset
 from model.concept_property_model import ConceptPropertyModel
@@ -208,4 +209,49 @@ def calculate_loss(
     batch_labels = torch.vstack(batch_labels).reshape(-1, 1)
 
     return loss_pos_concept + loss_neg_concept, batch_logits, batch_labels
+
+
+def load_pretrained_model(config):
+
+    log.info(f"\n {'*' * 50}")
+    log.info(f"Finetuning the best model")
+
+    model = create_model(config.get("model_params"))
+    pretrained_model_path = config["model_params"]["pretrained_model_path"]
+
+    model.load_state_dict(torch.load(pretrained_model_path))
+
+    log.info(f"The pretrained model is loaded : {pretrained_model_path}")
+
+    return model
+
+
+def mcrae_dataset_and_dataloader(dataset_params, dataset_type):
+
+    if dataset_type in ("train", "valid"):
+        dataset = McRaeConceptPropertyDataset(dataset_params, dataset_type)
+        data_sampler = RandomSampler(dataset)
+
+        dataloader = DataLoader(
+            dataset,
+            batch_size=dataset_params["loader_params"]["batch_size"],
+            sampler=data_sampler,
+            num_workers=dataset_params["loader_params"]["num_workers"],
+            pin_memory=dataset_params["loader_params"]["pin_memory"],
+        )
+
+    elif dataset_type == "test":
+
+        dataset = McRaeConceptPropertyDataset(dataset_params, dataset_type)
+        data_sampler = SequentialSampler(dataset)
+
+        dataloader = DataLoader(
+            dataset,
+            batch_size=dataset_params["loader_params"]["batch_size"],
+            sampler=data_sampler,
+            num_workers=dataset_params["loader_params"]["num_workers"],
+            pin_memory=dataset_params["loader_params"]["pin_memory"],
+        )
+
+    return dataset, dataloader
 
