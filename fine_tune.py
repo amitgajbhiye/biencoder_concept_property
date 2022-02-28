@@ -340,3 +340,6 @@ if __name__ == "__main__":
     model = load_pretrained_model(config)
 
     train(model, config)
+
+    test_best_model(config)
+
