@@ -1,18 +1,20 @@
 import logging
-import torch
 import os
-import torch.nn as nn
-
 from argparse import ArgumentParser
-from utils.functions import (
-    set_seed,
-    read_config,
-    load_pretrained_model,
-    compute_scores,
-    mcrae_dataset_and_dataloader,
-)
+
+import numpy as np
+import torch
+import torch.nn as nn
 from transformers import AdamW, get_linear_schedule_with_warmup
 
+from utils.functions import (
+    compute_scores,
+    create_model,
+    load_pretrained_model,
+    mcrae_dataset_and_dataloader,
+    read_config,
+    set_seed,
+)
 
 log = logging.getLogger(__name__)
 
@@ -247,6 +249,71 @@ def train(model, config):
         #     break
 
         # print(flush=True)
+
+
+def test_best_model(config):
+
+    log.info(f"\n {'*' * 50}")
+    log.info(f"Testing the fine tuned model")
+
+    model = create_model(config.get("model_params"))
+
+    best_model_path = os.path.join(
+        config["training_params"].get("export_path"),
+        config["model_params"].get("model_name"),
+    )
+
+    log.info(f"Testing the best model : {best_model_path}")
+
+    model.load_state_dict(torch.load(best_model_path))
+    model.eval()
+    model.to(device)
+
+    test_dataset, test_dataloader = mcrae_dataset_and_dataloader(
+        config.get("dataset_params"), dataset_type="test"
+    )
+
+    label = test_dataset.label
+    all_test_preds = []
+
+    for step, batch in enumerate(test_dataloader):
+
+        concepts_batch, property_batch = test_dataset.add_context(batch)
+
+        ids_dict = test_dataset.tokenize(concepts_batch, property_batch)
+
+        (
+            concept_inp_id,
+            concept_attention_mask,
+            concept_token_type_id,
+            property_input_id,
+            property_attention_mask,
+            property_token_type_id,
+        ) = [val.to(device) for _, val in ids_dict.items()]
+
+        with torch.no_grad():
+
+            concept_embedding, property_embedding, logits = model(
+                concept_input_id=concept_inp_id,
+                concept_attention_mask=concept_attention_mask,
+                concept_token_type_id=concept_token_type_id,
+                property_input_id=property_input_id,
+                property_attention_mask=property_attention_mask,
+                property_token_type_id=property_token_type_id,
+            )
+
+        preds = torch.round(torch.sigmoid(logits))
+        all_test_preds.extend(preds.detach().cpu().numpy().flatten())
+
+    test_scores = compute_scores(label, np.asarray(all_test_preds))
+
+    log.info(f"Test Metrices")
+    log.info(f"Test labels shape: {label.shape}")
+    log.info(f"Test Preds shape: {np.asarray(all_test_preds).shape}")
+
+    for key, value in test_scores.items():
+        log.info(f"{key} : {value}")
+    print(flush=True)
 
 
 if __name__ == "__main__":

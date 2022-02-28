@@ -22,7 +22,7 @@ conda activate venv
 
 echo 'Running experiment...'
 
-echo '6. Running top_100k_mscg_config ' 
+echo 'Running Finetuning on Mcrae - fine_tune_mcrae_data_config' 
 python3 fine_tune.py --config_file configs/fine_tune/fine_tune_mcrae_data_config.json
 
 echo 'finished!'
