@@ -24,10 +24,10 @@ def train_single_epoch(
     model, train_dataset, train_dataloader, loss_fn, optimizer, scheduler
 ):
 
-    epoch_loss = 0.0
-
+    model.to(device)
     model.train()
 
+    epoch_loss = 0.0
     print_freq = 0
 
     for step, batch in enumerate(train_dataloader):
