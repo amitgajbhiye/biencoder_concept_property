@@ -255,3 +255,11 @@ def mcrae_dataset_and_dataloader(dataset_params, dataset_type):
 
     return dataset, dataloader
 
+
+def count_parameters(model):
+
+    total_params = sum(p.numel() for p in model.parameters())
+    trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
+
+    return (total_params, trainable_params)
+

@@ -14,6 +14,7 @@ from utils.functions import (
     mcrae_dataset_and_dataloader,
     read_config,
     set_seed,
+    count_parameters,
 )
 
 log = logging.getLogger(__name__)
@@ -333,7 +334,16 @@ if __name__ == "__main__":
 
     log.info(f"\n {config} \n")
 
-    model = load_pretrained_model(config)
+    model = create_model(config["model_params"])
+    log.info(f"The following model is trained")
+    log.info(model)
+
+    total_params, trainable_params = count_parameters(model)
+
+    log.info(f"The total number of parameters in the model : {total_params}")
+    log.info(f"Trainable parameters in the model : {trainable_params}")
+
+    # model = load_pretrained_model(config)
 
     train(model, config)
 
