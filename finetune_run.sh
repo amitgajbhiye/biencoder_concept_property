@@ -6,7 +6,7 @@
 #SBATCH --ntasks=5
 #SBATCH -A scw1858
 
-#SBATCH -p gpu_v100
+#SBATCH -p gpu_v100,gpu
 #SBATCH --mem=13g
 #SBATCH --gres=gpu:1
 #SBATCH -t 0-1:00:00
