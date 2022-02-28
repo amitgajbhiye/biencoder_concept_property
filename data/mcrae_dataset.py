@@ -65,6 +65,8 @@ class McRaeConceptPropertyDataset(Dataset):
 
         self.context_num = dataset_params.get("context_num")
 
+        self.label = self.data_df["label"].values
+
         log.info(f"Context Num : {self.context_num}")
 
     def __len__(self):
