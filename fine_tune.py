@@ -89,7 +89,7 @@ def train_single_epoch(
 
         if step % 100 == 0 and not step == 0:
 
-            batch_labels = batch_labels.reshape(-1, 1).detach().cpu().numpy()
+            batch_labels = label.reshape(-1, 1).detach().cpu().numpy()
 
             batch_logits = (
                 torch.round(torch.sigmoid(batch_logits))
