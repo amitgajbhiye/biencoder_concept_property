@@ -352,11 +352,13 @@ def cross_validation(model, config, concept_property_df, label_df):
         train_df = pd.concat(
             (concept_property_train_fold, label_train_fold), axis=1, ignore_index=True
         )
+        train_df.reset_index(inplace=True, drop=True)
         train_df.rename(columns={0: "concept", 1: "property", 2: "label"}, inplace=True)
 
         valid_df = pd.concat(
             (concept_property_valid_fold, label_valid_fold), axis=1, ignore_index=True
         )
+        valid_df.reset_index(inplace=True, drop=True)
         valid_df.rename(columns={0: "concept", 1: "property", 2: "label"}, inplace=True)
 
         log.info(f"train_df.head()")
