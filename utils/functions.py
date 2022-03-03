@@ -5,6 +5,7 @@ import pprint
 import time
 
 import numpy as np
+import pandas as pd
 import torch
 from data.concept_property_dataset import ConceptPropertyDataset, TestDataset
 from data.mcrae_dataset import McRaeConceptPropertyDataset
@@ -55,6 +56,24 @@ def read_config(config_file):
             return config_dict
     else:
         return config_file
+
+
+def read_data(dataset_params):
+
+    data_df = pd.read_csv(
+        dataset_params.get("train_file_path"),
+        sep="\t",
+        header=None,
+        names=["concept", "property", "label"],
+    )
+
+    data_df.drop_duplicates(inplace=True)
+    data_df.dropna(inplace=True)
+    # self.data_df = self.data_df.sample(n=500)
+
+    log.info(f"Total Data size {data_df.shape}")
+
+    return data_df[["concept", "property"]], data_df[["label"]]
 
 
 def create_dataset_and_dataloader(dataset_params, dataset_type):
@@ -226,10 +245,10 @@ def load_pretrained_model(config):
     return model
 
 
-def mcrae_dataset_and_dataloader(dataset_params, dataset_type):
+def mcrae_dataset_and_dataloader(dataset_params, data_df, dataset_type):
 
     if dataset_type in ("train", "valid"):
-        dataset = McRaeConceptPropertyDataset(dataset_params, dataset_type)
+        dataset = McRaeConceptPropertyDataset(dataset_params, data_df, dataset_type)
         data_sampler = RandomSampler(dataset)
 
         dataloader = DataLoader(

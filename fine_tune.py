@@ -1,20 +1,25 @@
 import logging
 import os
 from argparse import ArgumentParser
+from cProfile import label
 
 import numpy as np
+import pandas as pd
 import torch
 import torch.nn as nn
+from matplotlib.pyplot import axis
+from sklearn.model_selection import StratifiedKFold
 from transformers import AdamW, get_linear_schedule_with_warmup
 
 from utils.functions import (
     compute_scores,
+    count_parameters,
     create_model,
     load_pretrained_model,
     mcrae_dataset_and_dataloader,
     read_config,
+    read_data,
     set_seed,
-    count_parameters,
 )
 
 log = logging.getLogger(__name__)
@@ -108,17 +113,82 @@ def train_single_epoch(
     return avg_epoch_loss
 
 
-def train(model, config):
+def evaluate(model, valid_dataset, valid_dataloader, loss_fn, device):
+
+    model.eval()
+
+    val_loss = 0.0
+    val_logits, val_label = [], []
+    print_freq = 0
+
+    for step, batch in enumerate(valid_dataloader):
+
+        label = batch.pop(-1)
+
+        concepts_batch, property_batch = valid_dataset.add_context(batch)
+
+        if print_freq < 1:
+            log.info(f"concepts_batch : {concepts_batch}")
+            log.info(f"property_batch : {property_batch}")
+            print_freq += 1
+
+        ids_dict = valid_dataset.tokenize(concepts_batch, property_batch)
+
+        (
+            concept_inp_id,
+            concept_attention_mask,
+            concept_token_type_id,
+            property_input_id,
+            property_attention_mask,
+            property_token_type_id,
+        ) = [val.to(device) for _, val in ids_dict.items()]
+
+        with torch.no_grad():
+
+            concept_embedding, property_embedding, logits = model(
+                concept_input_id=concept_inp_id,
+                concept_attention_mask=concept_attention_mask,
+                concept_token_type_id=concept_token_type_id,
+                property_input_id=property_input_id,
+                property_attention_mask=property_attention_mask,
+                property_token_type_id=property_token_type_id,
+            )
+
+        batch_loss = loss_fn(logits, label.reshape_as(logits).float().to(device))
+
+        val_loss += batch_loss.item()
+        torch.cuda.empty_cache()
+
+        val_logits.append(logits)
+        val_label.append(label)
+
+    epoch_logits = (
+        torch.round(torch.sigmoid(torch.vstack(epoch_logits)))
+        .reshape(-1, 1)
+        .detach()
+        .cpu()
+        .numpy()
+    )
+    epoch_labels = torch.vstack(epoch_labels).reshape(-1, 1).detach().cpu().numpy()
+
+    scores = compute_scores(epoch_labels, epoch_logits)
+
+    avg_val_loss = val_loss / len(valid_dataloader)
+
+    return avg_val_loss, scores
+
+
+def train(model, config, train_df, valid_df=None):
 
     log.info("Initialising datasets...")
 
     train_dataset, train_dataloader = mcrae_dataset_and_dataloader(
-        config.get("dataset_params"), dataset_type="train"
+        config.get("dataset_params"), train_df, dataset_type="train"
     )
 
-    # valid_dataset, valid_dataloader = create_dataset_and_dataloader(
-    #     config.get("dataset_params"), dataset_type="valid"
-    # )
+    valid_dataset, valid_dataloader = mcrae_dataset_and_dataloader(
+        config.get("dataset_params"), valid_df, dataset_type="valid"
+    )
 
     # -------------------- Preparation for training  ------------------- #
 
@@ -165,19 +235,20 @@ def train(model, config):
         log.info(f"Train Epoch {epoch} finished !!")
         log.info(f"  Average Train Loss: {train_loss}")
 
-        model_save_path = os.path.join(
-            config["training_params"].get("export_path"),
-            config["model_params"].get("model_name"),
-        )
+        if valid_df is None:
+            model_save_path = os.path.join(
+                config["training_params"].get("export_path"),
+                config["model_params"].get("model_name"),
+            )
 
-        log.info(f"patience_counter : {patience_counter}")
-        log.info(f"best_model_path : {model_save_path}")
+            log.info(f"patience_counter : {patience_counter}")
+            log.info(f"best_model_path : {model_save_path}")
 
-        torch.save(
-            model.state_dict(), model_save_path,
-        )
+            torch.save(
+                model.state_dict(), model_save_path,
+            )
 
-        log.info(f"The model is saved in : {model_save_path}")
+            log.info(f"The model is saved in : {model_save_path}")
 
         # ----------------------------------------------#
         # ----------------------------------------------#
@@ -185,67 +256,113 @@ def train(model, config):
         # ----------------------------------------------#
         # ----------------------------------------------#
 
-        # log.info(f"Running Validation ....")
-        # print(flush=True)
+        if valid_df is not None:
+            log.info(f"Running Validation ....")
+            print(flush=True)
 
-        # valid_loss, valid_scores = evaluate(
-        #     model=model,
-        #     valid_dataset=valid_dataset,
-        #     valid_dataloader=valid_dataloader,
-        #     loss_fn=loss_fn,
-        #     device=device,
-        # )
+            valid_loss, valid_scores = evaluate(
+                model=model,
+                valid_dataset=valid_dataset,
+                valid_dataloader=valid_dataloader,
+                loss_fn=loss_fn,
+                device=device,
+            )
 
-        # epoch_count.append(epoch)
-        # train_losses.append(train_loss)
-        # valid_losses.append(valid_loss)
+            epoch_count.append(epoch)
+            train_losses.append(train_loss)
+            valid_losses.append(valid_loss)
 
-        # log.info(f"  Average validation Loss: {valid_loss}")
-        # print(flush=True)
+            log.info(f"  Average validation Loss: {valid_loss}")
+            print(flush=True)
 
-        # val_binary_f1 = valid_scores.get("binary_f1")
+            val_binary_f1 = valid_scores.get("binary_f1")
 
-        # if val_binary_f1 < best_val_f1:
-        #     patience_counter += 1
-        # else:
-        #     patience_counter = 0
-        #     best_val_f1 = val_binary_f1
+            if val_binary_f1 < best_val_f1:
+                patience_counter += 1
+            else:
+                patience_counter = 0
+                best_val_f1 = val_binary_f1
 
-        #     best_model_path = os.path.join(
-        #         config["training_params"].get("export_path"),
-        #         config["model_params"].get("model_name"),
-        #     )
+                best_model_path = os.path.join(
+                    config["training_params"].get("export_path"),
+                    config["model_params"].get("model_name"),
+                )
 
-        #     log.info(f"patience_counter : {patience_counter}")
-        #     log.info(f"best_model_path : {best_model_path}")
+                log.info(f"patience_counter : {patience_counter}")
+                log.info(f"best_model_path : {best_model_path}")
 
-        #     torch.save(
-        #         model.state_dict(), best_model_path,
-        #     )
+                torch.save(
+                    model.state_dict(), best_model_path,
+                )
 
-        #     log.info(f"Best model at epoch: {epoch}, Binary F1: {val_binary_f1}")
-        #     log.info(f"The model is saved in : {best_model_path}")
+                log.info(f"Best model at epoch: {epoch}, Binary F1: {val_binary_f1}")
+                log.info(f"The model is saved in : {best_model_path}")
 
-        # log.info("Validation Scores")
-        # log.info(f" Best Validation F1 yet : {best_val_f1}")
+            log.info("Validation Scores")
+            log.info(f" Best Validation F1 yet : {best_val_f1}")
 
-        # for key, value in valid_scores.items():
-        #     log.info(f"{key} : {value}")
+            for key, value in valid_scores.items():
+                log.info(f"{key} : {value}")
 
-        # print(flush=True)
+            print(flush=True)
 
-        # print("train_losses", flush=True)
-        # print(train_losses, flush=True)
-        # print("valid_losses", flush=True)
-        # print(valid_losses, flush=True)
+            print("train_losses", flush=True)
+            print(train_losses, flush=True)
+            print("valid_losses", flush=True)
+            print(valid_losses, flush=True)
 
-        # if patience_counter >= config["training_params"].get("early_stopping_patience"):
-        #     log.info(
-        #         f"Early Stopping ---> Maximum Patience - {config['training_params'].get('early_stopping_patience')} Reached !!"
-        #     )
-        #     break
+            if patience_counter >= config["training_params"].get(
+                "early_stopping_patience"
+            ):
+                log.info(
+                    f"Early Stopping ---> Maximum Patience - {config['training_params'].get('early_stopping_patience')} Reached !!"
+                )
+                break
 
-        # print(flush=True)
+            print(flush=True)
+
+
+def cross_validation(model, config, concept_property_df, label_df):
+
+    skf = StratifiedKFold(n_splits=5)
+
+    for fold_num, (train_index, test_index) in enumerate(
+        skf.split(concept_property_df, label_df)
+    ):
+
+        (concept_property_train_fold, concept_property_valid_fold,) = (
+            concept_property_df.iloc[train_index],
+            concept_property_df.iloc[test_index],
+        )
+
+        label_train_fold, label_valid_fold = (
+            label_df.iloc[train_index],
+            label_df.iloc[test_index],
+        )
+
+        train_df = pd.concat((concept_property_train_fold, label_train_fold), axis=1)
+        valid_df = pd.concat((concept_property_valid_fold, label_valid_fold), axis=1)
+
+        log.info(f"Running fold  : {fold_num} of {skf.n_splits}")
+
+        log.info(f"Total concept_property_df shape : {concept_property_df.shape}")
+        log.info(f"Total label_df shape : {label_df.shape}")
+
+        log.info("After Validation Split")
+        log.info(
+            f"concept_property_train_fold.shape : {concept_property_train_fold.shape}"
+        )
+        log.info(f"label_train_fold.shape : {label_train_fold.shape.shape}")
+
+        log.info(
+            f"concept_property_valid_fold.shape : {concept_property_valid_fold.shape}"
+        )
+
+        log.info(f"label_valid_fold.shape : {label_valid_fold}")
+
+        log.info(f"Initialising training with fold : {fold_num}")
+
+        train(model, config, train_df, valid_df)
 
 
 def test_best_model(config):
@@ -334,18 +451,23 @@ if __name__ == "__main__":
 
     log.info(f"\n {config} \n")
 
+    # model = load_pretrained_model(config)
     model = create_model(config["model_params"])
     log.info(f"The following model is trained")
     log.info(model)
 
     total_params, trainable_params = count_parameters(model)
-
     log.info(f"The total number of parameters in the model : {total_params}")
     log.info(f"Trainable parameters in the model : {trainable_params}")
 
-    # model = load_pretrained_model(config)
+    concept_property_df, label_df = read_data(config["dataset_params"])
+    assert concept_property_df.shape[0] == label_df.shape[0]
 
-    train(model, config)
+    if config["training_params"].get("do_cv"):
+        cross_validation(model, config, concept_property_df, label_df)
+    else:
+        train_df = pd.concat((concept_property_df, label_df), axis=1)
+        train(model, config, train_df)
 
     test_best_model(config)
 

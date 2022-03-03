@@ -12,38 +12,15 @@ log = logging.getLogger(__name__)
 
 
 class McRaeConceptPropertyDataset(Dataset):
-    def __init__(self, dataset_params, dataset_type):
+    def __init__(self, dataset_params, data_df, dataset_type):
 
-        if dataset_type == "train":
-            self.data_df = pd.read_csv(
-                dataset_params.get("train_file_path"),
-                sep="\t",
-                header=None,
-                names=["concept", "property", "label"],
-            )
+        if dataset_type in ("train", "valid"):
 
+            self.data_df = data_df
             self.data_df.drop_duplicates(inplace=True)
             self.data_df.dropna(inplace=True)
-            self.data_df = self.data_df.sample(frac=1)
-            # self.data_df = self.data_df.sample(n=500)
-            self.data_df.reset_index(inplace=True, drop=True)
-
-            log.info(f"Train Data size {self.data_df.shape}")
-
-        elif dataset_type == "valid":
-            self.data_df = pd.read_csv(
-                dataset_params.get("val_file_path"),
-                sep="\t",
-                header=None,
-                names=["concept", "property", "label"],
-            )
-
-            self.data_df.drop_duplicates(inplace=True)
-            self.data_df.dropna(inplace=True)
-            self.data_df = self.data_df.sample(frac=1)
-            # self.data_df.reset_index(inplace=True)
-
-            log.info(f"Validation Data size {self.data_df.shape}")
+            self.data_df = self.data_df.sample(n=100)
+            self.data_df.reset_index(drop=True, inplace=True)
 
         elif dataset_type == "test":
             self.data_df = pd.read_csv(
