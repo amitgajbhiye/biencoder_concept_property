@@ -24,6 +24,6 @@ echo 'Running experiment...'
 
 echo 'CV Test' 
 
-python3 run_model.py --config_file configs/fine_tune/mcrae_fine_tune_100k_mscg_8k_prefix_adj_100k_gkb_properties_config.json
+python3 fine_tune.py --config_file configs/fine_tune/mcrae_fine_tune_100k_mscg_8k_prefix_adj_100k_gkb_properties_config.json
 
 echo 'finished!'
