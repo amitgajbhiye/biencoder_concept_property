@@ -352,19 +352,17 @@ def cross_validation(model, config, concept_property_df, label_df):
         train_df = pd.concat(
             (concept_property_train_fold, label_train_fold), axis=1, ignore_index=True
         )
-        train_df.rename(
-            columns={"0": "concept", "1": "property", "2": "label"}, inplace=True
-        )
+        train_df.rename(columns={0: "concept", 1: "property", 2: "label"}, inplace=True)
 
         valid_df = pd.concat(
             (concept_property_valid_fold, label_valid_fold), axis=1, ignore_index=True
         )
-        valid_df.rename(
-            columns={"0": "concept", "1": "property", "2": "label"}, inplace=True
-        )
+        valid_df.rename(columns={0: "concept", 1: "property", 2: "label"}, inplace=True)
 
-        log.info(f"train_df.head() : {train_df.head()}")
-        log.info(f"valid_df.head() : {valid_df.head()}")
+        log.info(f"train_df.head()")
+        log.info(f"{train_df.head()}")
+        log.info(f"valid_df.head()")
+        log.info(f"{valid_df.head()}")
 
         log.info(f"Running fold  : {fold_num + 1} of {skf.n_splits}")
 
@@ -382,6 +380,11 @@ def cross_validation(model, config, concept_property_df, label_df):
         )
 
         log.info(f"label_valid_fold.shape : {label_valid_fold.shape}")
+
+        log.info(f"Train Df shape for this fold: {train_df.shape}")
+        log.info(f"Train df columns : {train_df.columns}")
+        log.info(f"Valid Df shape fo this fold: {valid_df.shape}")
+        log.info(f"Valid df columns : {valid_df.columns}")
 
         log.info(f"Initialising training with fold : {fold_num + 1}")
 
