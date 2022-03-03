@@ -1,7 +1,7 @@
 #!/bin/bash --login
 #SBATCH --job-name=cvTest
-#SBATCH --output=logs/100kDataExp/out_cv_test.txt
-#SBATCH --error=logs/100kDataExp/err_cv_test.txt
+#SBATCH --output=logs/100k_cv_models/out_cv_test.txt
+#SBATCH --error=logs/100k_cv_models/err_cv_test.txt
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
 #SBATCH -A scw1858
