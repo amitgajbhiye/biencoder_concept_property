@@ -261,7 +261,9 @@ def mcrae_dataset_and_dataloader(dataset_params, data_df, dataset_type):
 
     elif dataset_type == "test":
 
-        dataset = McRaeConceptPropertyDataset(dataset_params, dataset_type)
+        dataset = McRaeConceptPropertyDataset(
+            dataset_params, dataset_type, data_df=None
+        )
         data_sampler = SequentialSampler(dataset)
 
         dataloader = DataLoader(
