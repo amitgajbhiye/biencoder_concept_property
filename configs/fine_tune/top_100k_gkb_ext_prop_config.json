@@ -1,11 +1,11 @@
 {
-    "experiment_name": "cv_bert_large_mcrae_data_fine_tuned_on_100k_mscg_8k_prefix_adj_100k_gkb_properties_best_model",
+    "experiment_name": "cv_bert_base_mcrae_fine_tuned_on_top_100k_gkb_ext_prop_model",
     "dataset_params": {
-        "dataset_name": "mcrae_data",
+        "dataset_name": "mcrae",
         "train_file_path": "data/evaluation_data/extended_mcrae/train_mcrae.tsv",
         "val_file_path": "None",
         "test_file_path": "data/evaluation_data/extended_mcrae/test_mcrae.tsv",
-        "hf_tokenizer_path": "/scratch/c.scmag3/conceptEmbeddingModel/bert-large-uncased/tokenizer",
+        "hf_tokenizer_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained/tokenizer",
         "concept_max_len": 64,
         "property_max_len": 64,
         "add_context": true,
@@ -17,11 +17,11 @@
         }
     },
     "model_params": {
-        "pretrained_model_name": "bert_large_100k_mscg_8k_prefix_adj_100k_gkb_properties_best_model.pt",
-        "pretrained_model_path": "trained_models/100k_data_experiments/bert_large_100k_mscg_8k_prefix_adj_100k_gkb_properties_best_model.pt",
-        "model_name": "cv_bert_large_mcrae_data_fine_tuned_on_100k_mscg_8k_prefix_adj_100k_gkb_properties_best_model.pt",
+        "pretrained_model_name": "gkb_ext_prop_top_100k_best_model.pt",
+        "pretrained_model_path": "trained_models/100k_data_experiments/gkb_ext_prop_top_100k_best_model.pt",
+        "model_name": "cv_bert_base_mcrae_fine_tuned_on_top_100k_gkb_ext_prop_model.pt",
         "hf_checkpoint_name": "bert-base-uncased",
-        "hf_model_path": "/scratch/c.scmag3/conceptEmbeddingModel/bert-large-uncased/model",
+        "hf_model_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained",
         "vector_strategy": "mask_token"
     },
     "training_params": {

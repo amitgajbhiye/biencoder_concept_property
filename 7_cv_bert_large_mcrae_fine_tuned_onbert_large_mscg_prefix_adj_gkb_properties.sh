@@ -1,5 +1,5 @@
 #!/bin/bash --login
-#SBATCH --job-name=blFiT
+#SBATCH --job-name=blmag
 
 #SBATCH --output=logs/100k_cv_models/out_cv_bert_large_fine_tune_mscg_and_prefix_adj_and_gkb_properties.txt
 #SBATCH --error=logs/100k_cv_models/err_cv_bert_large_fine_tune_mscg_and_prefix_adj_and_gkb_properties.txt

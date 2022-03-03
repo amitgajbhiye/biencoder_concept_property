@@ -1,5 +1,5 @@
 #!/bin/bash --login
-#SBATCH --job-name=
+#SBATCH --job-name=mag
 
 #SBATCH --output=logs/100k_cv_models/out_cv_bert_base_mcrae_fine_tuned_on_100k_mscg_8k_prefix_adj_100k_gkb_properties.txt
 #SBATCH --error=logs/100k_cv_models/err_cv_bert_base_mcrae_fine_tuned_on_100k_mscg_8k_prefix_adj_100k_gkb_properties.txt
