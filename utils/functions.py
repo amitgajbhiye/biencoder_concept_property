@@ -32,7 +32,7 @@ def set_seed(seed):
 
 def set_logger(config):
 
-    log_file_name = f"logs/100kDataExp/{config.get('experiment_name')}_{time.strftime('%d-%m-%Y_%H-%M-%S')}.log"
+    log_file_name = f"logs/100k_cv_models/{config.get('experiment_name')}_{time.strftime('%d-%m-%Y_%H-%M-%S')}.log"
     print("config.get('experiment_name') :", config.get("experiment_name"))
     print("\n log_file_name :", log_file_name)
 
