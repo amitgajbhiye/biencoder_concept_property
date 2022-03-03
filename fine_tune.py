@@ -352,8 +352,15 @@ def cross_validation(model, config, concept_property_df, label_df):
         train_df = pd.concat(
             (concept_property_train_fold, label_train_fold), axis=1, ignore_index=True
         )
+        train_df.rename(
+            columns={"0": "concept", "1": "property", "2": "label"}, inplace=True
+        )
+
         valid_df = pd.concat(
             (concept_property_valid_fold, label_valid_fold), axis=1, ignore_index=True
+        )
+        valid_df.rename(
+            columns={"0": "concept", "1": "property", "2": "label"}, inplace=True
         )
 
         log.info(f"train_df.head() : {train_df.head()}")
@@ -469,8 +476,8 @@ if __name__ == "__main__":
 
     model = load_pretrained_model(config)
 
-    log.info(f"The pretrained model that is loaded is :")
-    log.info(model)
+    # log.info(f"The pretrained model that is loaded is :")
+    # log.info(model)
 
     total_params, trainable_params = count_parameters(model)
     log.info(f"The total number of parameters in the model : {total_params}")
