@@ -349,8 +349,12 @@ def cross_validation(model, config, concept_property_df, label_df):
         assert concept_property_train_fold.shape[0] == label_train_fold.shape[0]
         assert concept_property_valid_fold.shape[0] == label_valid_fold.shape[0]
 
-        train_df = pd.concat((concept_property_train_fold, label_train_fold), axis=1)
-        valid_df = pd.concat((concept_property_valid_fold, label_valid_fold), axis=1)
+        train_df = pd.concat(
+            (concept_property_train_fold, label_train_fold), axis=1, ignore_index=True
+        )
+        valid_df = pd.concat(
+            (concept_property_valid_fold, label_valid_fold), axis=1, ignore_index=True
+        )
 
         log.info(f"train_df.head() : {train_df.head()}")
         log.info(f"valid_df.head() : {valid_df.head()}")
