@@ -159,8 +159,8 @@ def evaluate(model, valid_dataset, valid_dataloader, loss_fn, device):
         val_loss += batch_loss.item()
         torch.cuda.empty_cache()
 
-        val_logits.append(logits)
-        val_label.append(label)
+        val_logits.extend(logits)
+        val_label.extend(label)
 
     epoch_logits = (
         torch.round(torch.sigmoid(torch.vstack(val_logits)))
