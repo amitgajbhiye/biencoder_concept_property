@@ -1,5 +1,5 @@
 {
-    "experiment_name": "cv_bert_large_fine_tune_mcrae_data",
+    "experiment_name": "bert_large_fine_tune_mcrae_data",
     "dataset_params": {
         "dataset_name": "mcrae_data",
         "train_file_path": "data/evaluation_data/extended_mcrae/train_mcrae.tsv",
