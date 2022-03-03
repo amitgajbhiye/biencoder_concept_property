@@ -349,7 +349,7 @@ def cross_validation(model, config, concept_property_df, label_df):
         train_df = pd.concat((concept_property_train_fold, label_train_fold), axis=1)
         valid_df = pd.concat((concept_property_valid_fold, label_valid_fold), axis=1)
 
-        log.info(f"Running fold  : {fold_num} of {skf.n_splits}")
+        log.info(f"Running fold  : {fold_num + 1} of {skf.n_splits}")
 
         log.info(f"Total concept_property_df shape : {concept_property_df.shape}")
         log.info(f"Total label_df shape : {label_df.shape}")
@@ -366,7 +366,7 @@ def cross_validation(model, config, concept_property_df, label_df):
 
         log.info(f"label_valid_fold.shape : {label_valid_fold}")
 
-        log.info(f"Initialising training with fold : {fold_num}")
+        log.info(f"Initialising training with fold : {fold_num + 1}")
 
         train(model, config, train_df, valid_df)
 
