@@ -187,13 +187,18 @@ def evaluate(model, valid_dataset, valid_dataloader, loss_fn, device):
 def train(model, config, train_df, valid_df=None):
 
     log.info("Initialising datasets...")
+    # dataset_params, dataset_type, data_df=None
 
     train_dataset, train_dataloader = mcrae_dataset_and_dataloader(
-        config.get("dataset_params"), train_df, dataset_type="train"
+        dataset_params=config.get("dataset_params"),
+        dataset_type="train",
+        data_df=train_df,
     )
 
     valid_dataset, valid_dataloader = mcrae_dataset_and_dataloader(
-        config.get("dataset_params"), valid_df, dataset_type="valid"
+        dataset_params=config.get("dataset_params"),
+        dataset_type="valid",
+        data_df=valid_df,
     )
 
     # -------------------- Preparation for training  ------------------- #

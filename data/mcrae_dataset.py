@@ -12,7 +12,7 @@ log = logging.getLogger(__name__)
 
 
 class McRaeConceptPropertyDataset(Dataset):
-    def __init__(self, dataset_params, data_df, dataset_type):
+    def __init__(self, dataset_params, dataset_type, data_df=None):
 
         if dataset_type in ("train", "valid"):
 

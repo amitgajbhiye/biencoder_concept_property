@@ -245,7 +245,7 @@ def load_pretrained_model(config):
     return model
 
 
-def mcrae_dataset_and_dataloader(dataset_params, data_df, dataset_type):
+def mcrae_dataset_and_dataloader(dataset_params, dataset_type, data_df=None):
 
     if dataset_type in ("train", "valid"):
         dataset = McRaeConceptPropertyDataset(dataset_params, data_df, dataset_type)
