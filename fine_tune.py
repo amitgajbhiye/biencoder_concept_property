@@ -162,6 +162,9 @@ def evaluate(model, valid_dataset, valid_dataloader, loss_fn, device):
         val_logits.extend(logits)
         val_label.extend(label)
 
+    log.info(f"val_logits : {val_logits}")
+    log.info(f"val_label : {val_label}")
+
     epoch_logits = (
         torch.round(torch.sigmoid(torch.vstack(val_logits)))
         .reshape(-1, 1)
