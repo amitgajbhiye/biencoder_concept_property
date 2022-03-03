@@ -68,8 +68,8 @@ def read_data(dataset_params):
 
     data_df.drop_duplicates(inplace=True)
     data_df.dropna(inplace=True)
-    data_df = data_df.sample(n=500)
-    data_df.reset_index(drop=True, inplace=True)
+    # data_df = data_df.sample(n=500)
+    # data_df.reset_index(drop=True, inplace=True)
 
     log.info(f"Total Data size {data_df.shape}")
 
