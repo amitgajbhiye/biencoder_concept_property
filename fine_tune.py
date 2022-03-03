@@ -262,6 +262,7 @@ def train(model, config, train_df, valid_df=None):
         # ----------------------------------------------#
 
         if valid_df is not None:
+
             log.info(f"Running Validation ....")
             print(flush=True)
 
@@ -345,8 +346,14 @@ def cross_validation(model, config, concept_property_df, label_df):
             label_df.iloc[test_index],
         )
 
+        assert concept_property_train_fold.shape[0] == label_train_fold.shape[0]
+        assert concept_property_valid_fold.shape[0] == label_valid_fold.shape[0]
+
         train_df = pd.concat((concept_property_train_fold, label_train_fold), axis=1)
         valid_df = pd.concat((concept_property_valid_fold, label_valid_fold), axis=1)
+
+        log.info(f"train_df.head() : {train_df.head()}")
+        log.info(f"valid_df.head() : {valid_df.head()}")
 
         log.info(f"Running fold  : {fold_num + 1} of {skf.n_splits}")
 
@@ -456,15 +463,16 @@ if __name__ == "__main__":
 
     log.info(f"\n {config} \n")
 
-    # model = load_pretrained_model(config)
-    model = create_model(config["model_params"])
-    log.info(f"The following model is trained")
+    model = load_pretrained_model(config)
+
+    log.info(f"The pretrained model that is loaded is :")
     log.info(model)
 
     total_params, trainable_params = count_parameters(model)
     log.info(f"The total number of parameters in the model : {total_params}")
     log.info(f"Trainable parameters in the model : {trainable_params}")
 
+    log.info("Reading input data file")
     concept_property_df, label_df = read_data(config["dataset_params"])
     assert concept_property_df.shape[0] == label_df.shape[0]
 
@@ -473,6 +481,5 @@ if __name__ == "__main__":
     else:
         train_df = pd.concat((concept_property_df, label_df), axis=1)
         train(model, config, train_df)
-
-    test_best_model(config)
+        test_best_model(config)
 

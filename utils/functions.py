@@ -10,7 +10,6 @@ import torch
 from data.concept_property_dataset import ConceptPropertyDataset, TestDataset
 from data.mcrae_dataset import McRaeConceptPropertyDataset
 
-# from data.concept_property_test_dataset import TestDataset
 from model.concept_property_model import ConceptPropertyModel
 from sklearn.metrics import (
     accuracy_score,
@@ -69,7 +68,8 @@ def read_data(dataset_params):
 
     data_df.drop_duplicates(inplace=True)
     data_df.dropna(inplace=True)
-    # self.data_df = self.data_df.sample(n=500)
+    data_df = data_df.sample(n=500)
+    data_df.reset_index(drop=True, inplace=True)
 
     log.info(f"Total Data size {data_df.shape}")
 
@@ -232,11 +232,11 @@ def calculate_loss(
 
 def load_pretrained_model(config):
 
-    log.info(f"\n {'*' * 50}")
-    log.info(f"Finetuning the best model")
-
     model = create_model(config.get("model_params"))
     pretrained_model_path = config["model_params"]["pretrained_model_path"]
+
+    log.info(f"\n {'*' * 50}")
+    log.info(f"Finetuning the pretrained model loaded from : {pretrained_model_path}")
 
     model.load_state_dict(torch.load(pretrained_model_path))
 
