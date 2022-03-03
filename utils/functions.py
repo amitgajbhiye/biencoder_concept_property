@@ -248,7 +248,9 @@ def load_pretrained_model(config):
 def mcrae_dataset_and_dataloader(dataset_params, dataset_type, data_df=None):
 
     if dataset_type in ("train", "valid"):
-        dataset = McRaeConceptPropertyDataset(dataset_params, data_df, dataset_type)
+        dataset = McRaeConceptPropertyDataset(
+            dataset_params=dataset_params, dataset_type=dataset_type, data_df=data_df
+        )
         data_sampler = RandomSampler(dataset)
 
         dataloader = DataLoader(
@@ -262,7 +264,7 @@ def mcrae_dataset_and_dataloader(dataset_params, dataset_type, data_df=None):
     elif dataset_type == "test":
 
         dataset = McRaeConceptPropertyDataset(
-            dataset_params, dataset_type, data_df=None
+            dataset_params=dataset_params, dataset_type=dataset_type, data_df=None
         )
         data_sampler = SequentialSampler(dataset)
 

@@ -395,7 +395,7 @@ def test_best_model(config):
     model.to(device)
 
     test_dataset, test_dataloader = mcrae_dataset_and_dataloader(
-        config.get("dataset_params"), dataset_type="test"
+        dataset_params=config.get("dataset_params"), dataset_type="test", data_df=None
     )
 
     label = test_dataset.label
