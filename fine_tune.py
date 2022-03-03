@@ -162,9 +162,6 @@ def evaluate(model, valid_dataset, valid_dataloader, loss_fn, device):
         val_logits.extend(logits)
         val_label.extend(label)
 
-    log.info(f"val_logits : {val_logits}")
-    log.info(f"val_label : {val_label}")
-
     epoch_logits = (
         torch.round(torch.sigmoid(torch.vstack(val_logits)))
         .reshape(-1, 1)
@@ -173,9 +170,6 @@ def evaluate(model, valid_dataset, valid_dataloader, loss_fn, device):
         .numpy()
     )
     epoch_labels = torch.vstack(val_label).reshape(-1, 1).detach().cpu().numpy()
-
-    log.info(f"epoch_logits : {epoch_logits}")
-    log.info(f"epoch_labels : {epoch_labels}")
 
     scores = compute_scores(epoch_labels, epoch_logits)
 
