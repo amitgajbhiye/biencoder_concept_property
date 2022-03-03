@@ -19,7 +19,7 @@ class McRaeConceptPropertyDataset(Dataset):
             self.data_df = data_df
             self.data_df.drop_duplicates(inplace=True)
             self.data_df.dropna(inplace=True)
-            self.data_df = self.data_df.sample(n=100)
+            self.data_df = self.data_df.sample(n=500)
             self.data_df.reset_index(drop=True, inplace=True)
 
         elif dataset_type == "test":

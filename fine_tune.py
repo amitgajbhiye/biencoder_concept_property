@@ -363,7 +363,7 @@ def cross_validation(model, config, concept_property_df, label_df):
             f"concept_property_valid_fold.shape : {concept_property_valid_fold.shape}"
         )
 
-        log.info(f"label_valid_fold.shape : {label_valid_fold}")
+        log.info(f"label_valid_fold.shape : {label_valid_fold.shape}")
 
         log.info(f"Initialising training with fold : {fold_num + 1}")
 
