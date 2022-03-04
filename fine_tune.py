@@ -328,7 +328,7 @@ def train(model, config, train_df, valid_df=None):
             print(flush=True)
 
 
-def cross_validation(model, config, concept_property_df, label_df):
+def cross_validation(config, concept_property_df, label_df):
 
     skf = StratifiedKFold(n_splits=5)
 
@@ -384,11 +384,21 @@ def cross_validation(model, config, concept_property_df, label_df):
         log.info(f"label_valid_fold.shape : {label_valid_fold.shape}")
 
         log.info(f"Train Df shape for this fold: {train_df.shape}")
-        log.info(f"Train df columns : {train_df.columns}")
+        log.info(f"Train Df columns : {train_df.columns}")
         log.info(f"Valid Df shape fo this fold: {valid_df.shape}")
-        log.info(f"Valid df columns : {valid_df.columns}")
+        log.info(f"Valid Df columns : {valid_df.columns}")
 
-        log.info(f"Initialising training with fold : {fold_num + 1}")
+        log.info(f"Initialising training for fold : {fold_num + 1}")
+
+        log.info(f"Loading the fresh model for fold : {fold_num + 1}")
+        model = load_pretrained_model(config)
+
+        # log.info(f"The pretrained model that is loaded is :")
+        # log.info(model)
+
+        total_params, trainable_params = count_parameters(model)
+        log.info(f"The total number of parameters in the model : {total_params}")
+        log.info(f"Trainable parameters in the model : {trainable_params}")
 
         train(model, config, train_df, valid_df)
 
@@ -479,23 +489,24 @@ if __name__ == "__main__":
 
     log.info(f"\n {config} \n")
 
-    model = load_pretrained_model(config)
-
-    # log.info(f"The pretrained model that is loaded is :")
-    # log.info(model)
-
-    total_params, trainable_params = count_parameters(model)
-    log.info(f"The total number of parameters in the model : {total_params}")
-    log.info(f"Trainable parameters in the model : {trainable_params}")
-
     log.info("Reading input data file")
     concept_property_df, label_df = read_data(config["dataset_params"])
     assert concept_property_df.shape[0] == label_df.shape[0]
 
     if config["training_params"].get("do_cv"):
-        cross_validation(model, config, concept_property_df, label_df)
+        cross_validation(config, concept_property_df, label_df)
     else:
         train_df = pd.concat((concept_property_df, label_df), axis=1)
+
+        model = load_pretrained_model(config)
+
+        # log.info(f"The pretrained model that is loaded is :")
+        # log.info(model)
+
+        total_params, trainable_params = count_parameters(model)
+        log.info(f"The total number of parameters in the model : {total_params}")
+        log.info(f"Trainable parameters in the model : {trainable_params}")
+
         train(model, config, train_df)
         test_best_model(config)
 
