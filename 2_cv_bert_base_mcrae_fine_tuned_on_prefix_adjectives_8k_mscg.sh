@@ -1,8 +1,8 @@
 #!/bin/bash --login
 #SBATCH --job-name=a
 
-#SBATCH --output=logs/100k_cv_models/out_cv_bert_base_mcrae_fine_tuned_on_prefix_adjectives_8k_mscg_model.txt
-#SBATCH --error=logs/100k_cv_models/err_cv_bert_base_mcrae_fine_tuned_on_prefix_adjectives_8k_mscg_model.txt
+#SBATCH --output=logs/100k_cv_logs/out_cv_bert_base_mcrae_fine_tuned_on_prefix_adjectives_8k_mscg_model.txt
+#SBATCH --error=logs/100k_cv_logs/err_cv_bert_base_mcrae_fine_tuned_on_prefix_adjectives_8k_mscg_model.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5

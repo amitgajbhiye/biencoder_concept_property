@@ -1,8 +1,8 @@
 #!/bin/bash --login
 #SBATCH --job-name=g
 
-#SBATCH --output=logs/100k_cv_models/out_cv_bert_base_mcrae_fine_tuned_on_top_100k_gkb_ext_prop.txt
-#SBATCH --error=logs/100k_cv_models/err_cv_bert_base_mcrae_fine_tuned_on_top_100k_gkb_ext_prop
+#SBATCH --output=logs/100k_cv_logs/out_cv_bert_base_mcrae_fine_tuned_on_top_100k_gkb_ext_prop.txt
+#SBATCH --error=logs/100k_cv_logs/err_cv_bert_base_mcrae_fine_tuned_on_top_100k_gkb_ext_prop
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
