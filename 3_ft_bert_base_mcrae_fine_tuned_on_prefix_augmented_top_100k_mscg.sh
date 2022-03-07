@@ -2,7 +2,7 @@
 #SBATCH --job-name=ma
 
 #SBATCH --output=logs/100k_mcrae_ft_logs/out_ft_bert_base_mcrae_fine_tuned_on_prefix_augmented_top_100k_mscg_model.txt
-#SBATCH --error=logs/100k_ft_100k_mcrae_ft_logslogs/err_cv_bert_base_mcrae_fine_tuned_on_prefix_augmented_top_100k_mscg_model.txt
+#SBATCH --error=logs/100k_mcrae_ft_logs/err_cv_bert_base_mcrae_fine_tuned_on_prefix_augmented_top_100k_mscg_model.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
