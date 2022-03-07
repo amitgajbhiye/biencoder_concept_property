@@ -188,12 +188,6 @@ def train(model, config, train_df, valid_df=None):
         data_df=train_df,
     )
 
-    valid_dataset, valid_dataloader = mcrae_dataset_and_dataloader(
-        dataset_params=config.get("dataset_params"),
-        dataset_type="valid",
-        data_df=valid_df,
-    )
-
     # -------------------- Preparation for training  ------------------- #
 
     loss_fn = nn.BCEWithLogitsLoss()
@@ -262,6 +256,12 @@ def train(model, config, train_df, valid_df=None):
 
         # when doing cross validation (cv)
         if valid_df is not None:
+
+            valid_dataset, valid_dataloader = mcrae_dataset_and_dataloader(
+                dataset_params=config.get("dataset_params"),
+                dataset_type="valid",
+                data_df=valid_df,
+            )
 
             log.info(f"Running Validation ....")
             print(flush=True)
