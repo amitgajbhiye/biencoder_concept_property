@@ -497,7 +497,6 @@ if __name__ == "__main__":
     if config["training_params"].get("do_cv"):
         cross_validation(config, concept_property_df, label_df)
     else:
-
         log.info(f" Training the model without cross validdation")
         log.info(f"Parameter 'do_cv' is {config['training_params'].get('do_cv')}")
 
