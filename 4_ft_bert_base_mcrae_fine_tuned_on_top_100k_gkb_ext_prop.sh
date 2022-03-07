@@ -1,8 +1,8 @@
 #!/bin/bash --login
 #SBATCH --job-name=g
 
-#SBATCH --output=logs/100k_mcrae_ft_logs/out_ft_bert_base_mcrae_fine_tuned_on_top_100k_gkb_ext_prop.txt
-#SBATCH --error=logs/100k_mcrae_ft_logs/err_ft_bert_base_mcrae_fine_tuned_on_top_100k_gkb_ext_prop
+#SBATCH --output=logs/100k_property_split_logs/out_ft_bert_base_mcrae_fine_tuned_on_top_100k_gkb_ext_prop.txt
+#SBATCH --error=logs/100k_property_split_logs/err_ft_bert_base_mcrae_fine_tuned_on_top_100k_gkb_ext_prop
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5

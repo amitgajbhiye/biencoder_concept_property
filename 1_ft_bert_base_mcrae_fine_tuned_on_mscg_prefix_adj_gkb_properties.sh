@@ -1,8 +1,8 @@
 #!/bin/bash --login
 #SBATCH --job-name=mag
 
-#SBATCH --output=logs/100k_mcrae_ft_logs/out_ft_bert_base_mcrae_fine_tuned_on_100k_mscg_8k_prefix_adj_100k_gkb_properties.txt
-#SBATCH --error=logs/100k_mcrae_ft_logs/err_ft_bert_base_mcrae_fine_tuned_on_100k_mscg_8k_prefix_adj_100k_gkb_properties.txt
+#SBATCH --output=logs/100k_property_split_logs/out_ft_bert_base_mcrae_fine_tuned_on_100k_mscg_8k_prefix_adj_100k_gkb_properties.txt
+#SBATCH --error=logs/100k_property_split_logs/err_ft_bert_base_mcrae_fine_tuned_on_100k_mscg_8k_prefix_adj_100k_gkb_properties.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5

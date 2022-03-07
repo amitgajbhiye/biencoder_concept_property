@@ -1,10 +1,10 @@
 {
-    "experiment_name": "ft_bert_base_mcrae_fine_tuned_on_100k_mscg_8k_prefix_adj_100k_gkb_properties",
+    "experiment_name": "property_split_ft_bert_base_mcrae_fine_tuned_on_100k_mscg_8k_prefix_adj_100k_gkb_properties",
     "dataset_params": {
         "dataset_name": "mcrae",
-        "train_file_path": "data/evaluation_data/extended_mcrae/train_mcrae.tsv",
+        "train_file_path": "data/evaluation_data/extended_mcrae/property_split/train_split_property.tsv",
         "val_file_path": "None",
-        "test_file_path": "data/evaluation_data/extended_mcrae/test_mcrae.tsv",
+        "test_file_path": "data/evaluation_data/extended_mcrae/property_split/test_split_property.tsv",
         "hf_tokenizer_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained/tokenizer",
         "concept_max_len": 64,
         "property_max_len": 64,
@@ -19,7 +19,7 @@
     "model_params": {
         "pretrained_model_name": "100k_mscg_8k_prefix_adj_100k_gkb_properties_best_model.pt",
         "pretrained_model_path": "trained_models/100k_data_experiments/100k_mscg_8k_prefix_adj_100k_gkb_properties_best_model.pt",
-        "model_name": "ft_bert_base_mcrae_fine_tuned_on_100k_mscg_8k_prefix_adj_100k_gkb_properties.pt",
+        "model_name": "property_split_ft_bert_base_mcrae_fine_tuned_on_100k_mscg_8k_prefix_adj_100k_gkb_properties.pt",
         "hf_checkpoint_name": "bert-base-uncased",
         "hf_model_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained",
         "vector_strategy": "mask_token"
