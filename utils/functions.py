@@ -31,7 +31,7 @@ def set_seed(seed):
 
 def set_logger(config):
 
-    log_file_name = f"logs/100k_cv_logs/log_{config.get('experiment_name')}_{time.strftime('%d-%m-%Y_%H-%M-%S')}.txt"
+    log_file_name = f"logs/100k_mcrae_ft_logs/log_{config.get('experiment_name')}_{time.strftime('%d-%m-%Y_%H-%M-%S')}.txt"
     print("config.get('experiment_name') :", config.get("experiment_name"))
     print("\n log_file_name :", log_file_name)
 
@@ -272,6 +272,7 @@ def mcrae_dataset_and_dataloader(dataset_params, dataset_type, data_df=None):
             dataset,
             batch_size=dataset_params["loader_params"]["batch_size"],
             sampler=data_sampler,
+            shuffle=False,
             num_workers=dataset_params["loader_params"]["num_workers"],
             pin_memory=dataset_params["loader_params"]["pin_memory"],
         )

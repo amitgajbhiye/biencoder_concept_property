@@ -181,7 +181,6 @@ def evaluate(model, valid_dataset, valid_dataloader, loss_fn, device):
 def train(model, config, train_df, valid_df=None):
 
     log.info("Initialising datasets...")
-    # dataset_params, dataset_type, data_df=None
 
     train_dataset, train_dataloader = mcrae_dataset_and_dataloader(
         dataset_params=config.get("dataset_params"),
@@ -261,6 +260,7 @@ def train(model, config, train_df, valid_df=None):
         # ----------------------------------------------#
         # ----------------------------------------------#
 
+        # when doing cross validation (cv)
         if valid_df is not None:
 
             log.info(f"Running Validation ....")
@@ -460,6 +460,7 @@ def test_best_model(config):
     test_scores = compute_scores(label, np.asarray(all_test_preds))
 
     log.info(f"Test Metrices")
+    log.info(f"Test DF shape : {test_dataset.data_df.shape}")
     log.info(f"Test labels shape: {label.shape}")
     log.info(f"Test Preds shape: {np.asarray(all_test_preds).shape}")
 
@@ -496,7 +497,13 @@ if __name__ == "__main__":
     if config["training_params"].get("do_cv"):
         cross_validation(config, concept_property_df, label_df)
     else:
+
+        log.info(f" Training the model without cross validdation")
+        log.info(f"Parameter 'do_cv' is {config['training_params'].get('do_cv')}")
+
         train_df = pd.concat((concept_property_df, label_df), axis=1)
+
+        log.info(f"Train DF shape : {train_df.shape}")
 
         model = load_pretrained_model(config)
 
@@ -504,9 +511,10 @@ if __name__ == "__main__":
         # log.info(model)
 
         total_params, trainable_params = count_parameters(model)
+
         log.info(f"The total number of parameters in the model : {total_params}")
         log.info(f"Trainable parameters in the model : {trainable_params}")
 
-        train(model, config, train_df)
+        train(model, config, train_df, valid_df=None)
         test_best_model(config)
 
