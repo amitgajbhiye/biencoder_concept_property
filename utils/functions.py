@@ -107,6 +107,7 @@ def create_dataset_and_dataloader(dataset_params, dataset_type):
 
 
 def create_model(model_params):
+    log.info(f"Creating a model from scratch")
     return ConceptPropertyModel(model_params)
 
 
