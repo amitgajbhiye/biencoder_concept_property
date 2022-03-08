@@ -1,10 +1,10 @@
 {
-    "experiment_name": "baseline_bert_large_mcrae_data_without_fine_tune",
+    "experiment_name": "con_prop_split_baseline_bert_large_mcrae_data_without_fine_tune",
     "dataset_params": {
-        "dataset_name": "property_split_mcrae_bert_large_mcrae_data_without_fine_tune",
-        "train_file_path": "data/evaluation_data/extended_mcrae/property_split/train_split_property.tsv",
+        "dataset_name": "con_prop_split_baseline_bert_large_mcrae_data_without_fine_tune",
+        "train_file_path": "data/evaluation_data/extended_mcrae/concept_property_split/train_split_concept_property.tsv",
         "val_file_path": "None",
-        "test_file_path": "data/evaluation_data/extended_mcrae/property_split/test_split_property.tsv",
+        "test_file_path": "data/evaluation_data/extended_mcrae/concept_property_split/test_split_concept_property.tsv",
         "hf_tokenizer_path": "/scratch/c.scmag3/conceptEmbeddingModel/bert-large-uncased/tokenizer",
         "concept_max_len": 64,
         "property_max_len": 64,
@@ -19,7 +19,7 @@
     "model_params": {
         "pretrained_model_name": "None",
         "pretrained_model_path": "None",
-        "model_name": "property_split_baseline_bert_large_mcrae_data_without_fine_tune.pt",
+        "model_name": "con_prop_split_baseline_bert_large_mcrae_data_without_fine_tune.pt",
         "hf_checkpoint_name": "bert-large-uncased",
         "hf_model_path": "/scratch/c.scmag3/conceptEmbeddingModel/bert-large-uncased/model",
         "vector_strategy": "mask_token"
@@ -29,7 +29,7 @@
         "num_warmup_steps": 0,
         "max_epochs": 6,
         "early_stopping_patience": 20,
-        "export_path": "trained_models/property_split_100k_mcrae_fine_tuned_models",
+        "export_path": "trained_models/concept_property_split_100k_mcrae_fine_tuned_models",
         "printout_freq": 100,
         "checkpoint_path": "",
         "load_checkpoint": -1,

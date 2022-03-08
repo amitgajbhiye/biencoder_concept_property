@@ -1,7 +1,7 @@
 #!/bin/bash --login
 #SBATCH --job-name=finetune
-#SBATCH --output=logs/100k_property_split_logs/out_property_split_bert_large_without_ft_baseline.txt
-#SBATCH --error=logs/100k_property_split_logs/err_property_split_bert_large_without_ft_baseline.txt
+#SBATCH --output=logs/100k_concept_property_split_logs/out_property_split_bert_large_without_ft_baseline.txt
+#SBATCH --error=logs/100k_concept_property_split_logs/err_property_split_bert_large_without_ft_baseline.txt
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
 #SBATCH -A scw1858
@@ -9,7 +9,7 @@
 #SBATCH -p gpu_v100
 #SBATCH --mem=15g
 #SBATCH --gres=gpu:1
-#SBATCH -t 0-6:00:00
+#SBATCH -t 0-4:00:00
 
 echo 'This script is running on:'
 hostname
