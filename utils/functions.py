@@ -8,7 +8,6 @@ import pandas as pd
 import torch
 from data.concept_property_dataset import ConceptPropertyDataset, TestDataset
 from data.mcrae_dataset import McRaeConceptPropertyDataset
-from fine_tune import train
 from model.concept_property_model import ConceptPropertyModel
 from sklearn.metrics import (
     accuracy_score,
