@@ -565,19 +565,21 @@ if __name__ == "__main__":
     log.info("Reading input data file")
     concept_property_df, label_df = read_train_data(config["dataset_params"])
 
-    assert concept_property_df.shape[0] == label_df.shape[0]
+    # assert concept_property_df.shape[0] == label_df.shape[0]
 
     if config["training_params"].get("do_cv"):
 
-        cv_split = config["training_params"].get("cv_split")
+        log.info(config["training_params"].get("do_cv"))
 
-        if cv_split == "model_selection":
+        cv_type = config["training_params"].get("cv_type")
+
+        if cv_type == "model_selection":
             model_selection_cross_validation(config, concept_property_df, label_df)
 
-        elif cv_split == "model_evaluation_property":
+        elif cv_type == "model_evaluation_property":
             model_evaluation_property_cross_validation(config)
 
-        elif cv_split == "model_evaluation_concept_property":
+        elif cv_type == "model_evaluation_concept_property":
             model_evaluation_concept_property_cross_validation(config)
 
     else:
