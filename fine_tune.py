@@ -1,4 +1,6 @@
+from cgi import test
 import logging
+from operator import index
 import os
 from argparse import ArgumentParser
 from cProfile import label
@@ -18,8 +20,9 @@ from utils.functions import (
     load_pretrained_model,
     mcrae_dataset_and_dataloader,
     read_config,
-    read_data,
+    read_train_data,
     set_seed,
+    read_train_and_test_data,
 )
 
 log = logging.getLogger(__name__)
@@ -328,7 +331,7 @@ def train(model, config, train_df, valid_df=None):
             print(flush=True)
 
 
-def cross_validation(config, concept_property_df, label_df):
+def model_selection_cross_validation(config, concept_property_df, label_df):
 
     skf = StratifiedKFold(n_splits=5)
 
@@ -401,6 +404,75 @@ def cross_validation(config, concept_property_df, label_df):
         log.info(f"Trainable parameters in the model : {trainable_params}")
 
         train(model, config, train_df, valid_df)
+
+
+def model_evaluation_property_cross_validation(config):
+
+    log.info(f"Training the model with PROPERTY cross validation")
+    log.info(f"Parameter 'do_cv' is : {config['training_params'].get('do_cv')}")
+    log.info(f"Parameter 'cv_type' is : {config['training_params'].get('cv_type')}")
+
+    train_and_test_df = read_train_and_test_data(config.get("dataset_params"))
+
+    train_and_test_df.set_index("prop_id", inplace=True)
+
+    prop_ids = np.sort(train_and_test_df.index.unique())
+
+    test_fold_mapping = {
+        fold: test_prop_id for fold, test_prop_id in enumerate(np.split(prop_ids, 5))
+    }
+
+    log.info(f"unique prop_ids in train_and_test_df : {prop_ids}")
+    log.info(f"test_fold_mapping : {test_fold_mapping}")
+
+    for fold, test_prop_id in test_fold_mapping.items():
+
+        train_df = train_and_test_df.drop(index=test_prop_id, inplace=False)
+        test_df = train_and_test_df[train_and_test_df.index.isin(test_prop_id)]
+
+        train_df.reset_index(inplace=True)
+        test_df.reset_index(inplace=True)
+
+        log.info(
+            f"For fold : {fold}, Train DF shape : {train_df.shape}, Test DF shape :{test_df.shape}"
+        )
+
+        log.info("Asserting no overlap in train and test data")
+
+        df1 = train_df.merge(
+            test_df,
+            how="inner",
+            on=["concept", "property", "prop_id", "label"],
+            indicator=False,
+        )
+        df2 = train_df.merge(test_df, how="inner", on=["prop_id"], indicator=False)
+
+        assert df1.empty
+        assert df2.empty
+
+        log.info("Assertion Passed !!!")
+
+        train_df = train_df[["concept", "property", "label"]]
+        test_df = test_df[["concept", "property", "label"]]
+
+        # model = create_model(config.get("model_params"))
+        model = load_pretrained_model(config)
+
+        # log.info(f"The pretrained model that is loaded is :")
+        # log.info(model)
+
+        total_params, trainable_params = count_parameters(model)
+
+        log.info(f"The total number of parameters in the model : {total_params}")
+        log.info(f"Trainable parameters in the model : {trainable_params}")
+
+        train(model, config, train_df, valid_df=None)
+
+        # test_best_model(config)
+
+
+def model_evaluation_concept_property_cross_validation(config):
+    pass
 
 
 def test_best_model(config):
@@ -491,11 +563,23 @@ if __name__ == "__main__":
     log.info(f"\n {config} \n")
 
     log.info("Reading input data file")
-    concept_property_df, label_df = read_data(config["dataset_params"])
+    concept_property_df, label_df = read_train_data(config["dataset_params"])
+
     assert concept_property_df.shape[0] == label_df.shape[0]
 
     if config["training_params"].get("do_cv"):
-        cross_validation(config, concept_property_df, label_df)
+
+        cv_split = config["training_params"].get("cv_split")
+
+        if cv_split == "model_selection":
+            model_selection_cross_validation(config, concept_property_df, label_df)
+
+        elif cv_split == "model_evaluation_property":
+            model_evaluation_property_cross_validation(config)
+
+        elif cv_split == "model_evaluation_concept_property":
+            model_evaluation_concept_property_cross_validation(config)
+
     else:
         log.info(f" Training the model without cross validdation")
         log.info(f"Parameter 'do_cv' is {config['training_params'].get('do_cv')}")

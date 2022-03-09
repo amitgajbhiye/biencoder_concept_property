@@ -1,7 +1,6 @@
 import json
 import logging
 import os
-import pprint
 import time
 
 import numpy as np
@@ -9,7 +8,7 @@ import pandas as pd
 import torch
 from data.concept_property_dataset import ConceptPropertyDataset, TestDataset
 from data.mcrae_dataset import McRaeConceptPropertyDataset
-
+from fine_tune import train
 from model.concept_property_model import ConceptPropertyModel
 from sklearn.metrics import (
     accuracy_score,
@@ -31,7 +30,7 @@ def set_seed(seed):
 
 def set_logger(config):
 
-    log_file_name = f"logs/100k_concept_property_split_logs/log_{config.get('experiment_name')}_{time.strftime('%d-%m-%Y_%H-%M-%S')}.txt"
+    log_file_name = f"logs/100k_property_split_logs/log_{config.get('experiment_name')}_{time.strftime('%d-%m-%Y_%H-%M-%S')}.txt"
     print("config.get('experiment_name') :", config.get("experiment_name"))
     print("\n log_file_name :", log_file_name)
 
@@ -57,7 +56,7 @@ def read_config(config_file):
         return config_file
 
 
-def read_data(dataset_params):
+def read_train_data(dataset_params):
 
     data_df = pd.read_csv(
         dataset_params.get("train_file_path"),
@@ -74,6 +73,57 @@ def read_data(dataset_params):
     log.info(f"Total Data size {data_df.shape}")
 
     return data_df[["concept", "property"]], data_df[["label"]]
+
+
+def read_train_and_test_data(dataset_params):
+
+    train_df = pd.read_csv(
+        dataset_params.get("train_file_path"),
+        sep="\t",
+        header=None,
+        names=["concept", "property", "label"],
+    )
+
+    test_df = pd.read_csv(
+        dataset_params.get("test_file_path"),
+        sep="\t",
+        header=None,
+        names=["concept", "property", "label"],
+    )
+
+    train_and_test_df = pd.concat((train_df, test_df), axis=0, ignore_index=True)
+
+    train_and_test_df = train_and_test_df.sample(frac=1, ignore_index=True)
+
+    train_and_test_df["prop_id"] = int(-1)
+
+    unique_property = train_and_test_df["property"].unique()
+    num_unique_property = len(unique_property)
+
+    log.info(f"Train and Test Data DF shape {train_and_test_df.shape}")
+    log.info(
+        f"Number of Unique Property in Train and Test Combined DF : {num_unique_property}"
+    )
+    log.info(f"Unique Property in Train and Test Combined DF : {unique_property}")
+
+    prop_to_id_dict = {prop: id for id, prop in enumerate(unique_property)}
+    prop_ids = list(prop_to_id_dict.values())
+
+    log.info(f"Property ids in prop_to_id_dict : {prop_ids}")
+
+    train_and_test_df.set_index("property", inplace=True)
+
+    for prop in unique_property:
+        train_and_test_df.loc[prop, "prop_id"] = prop_to_id_dict.get(prop)
+
+    log.info("Train Test DF after assigning 'prop_id'")
+    log.info(train_and_test_df.sample(n=10))
+
+    assert sorted(prop_ids) == sorted(
+        train_and_test_df["prop_id"].unique()
+    ), "Assigned 'prop_ids' do not match"
+
+    return train_and_test_df
 
 
 def create_dataset_and_dataloader(dataset_params, dataset_type):
