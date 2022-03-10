@@ -96,7 +96,8 @@ def read_train_and_test_data(dataset_params):
     train_and_test_df = train_and_test_df.sample(frac=1)
     train_and_test_df.reset_index(inplace=True, drop=True)
 
-    train_and_test_df["prop_id"] = int(-1)
+    train_and_test_df["con_id"] = int(-1)
+    train_and_test_df["prop_id"] = int(-2)
 
     unique_concept = train_and_test_df["concept"].unique()
     unique_property = train_and_test_df["property"].unique()
