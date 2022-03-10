@@ -1,4 +1,5 @@
 from cgi import test
+import itertools
 import logging
 from operator import index
 import os
@@ -463,8 +464,10 @@ def model_evaluation_property_cross_validation(config):
         train_df = train_df[["concept", "property", "label"]]
         test_df = test_df[["concept", "property", "label"]]
 
-        # model = create_model(config.get("model_params"))
-        model = load_pretrained_model(config)
+        # Fine tuning bert large baseline
+        model = create_model(config.get("model_params"))
+
+        # model = load_pretrained_model(config)
 
         # log.info(f"The pretrained model that is loaded is :")
         # log.info(model)
@@ -501,18 +504,34 @@ def model_evaluation_concept_property_cross_validation(config):
 
     train_and_test_df = read_train_and_test_data(config.get("dataset_params"))
 
-    train_and_test_df.set_index("prop_id", inplace=True)
+    con_ids = np.sort(train_and_test_df["con_id"].unique())
+    prop_ids = np.sort(train_and_test_df["prop_id"].unique())
 
-    prop_ids = np.sort(train_and_test_df.index.unique())
+    train_and_test_df.set_index(["con_id", "prop_id"], inplace=True)
 
-    test_fold_mapping = {
-        fold: test_prop_id for fold, test_prop_id in enumerate(np.split(prop_ids, 5))
+    con_folds = {
+        fold: test_con_id
+        for fold, test_con_id in enumerate(np.array_split(np.asarray(con_ids), 3))
     }
 
-    log.info(f"unique prop_ids in train_and_test_df : {prop_ids}")
-    log.info(f"Test Fold Mapping")
-    for key, value in test_fold_mapping.items():
-        log.info(f"{key} : {value}")
+    prop_folds = {
+        fold: test_prop_id
+        for fold, test_prop_id in enumerate(np.array_split(np.asarray(prop_ids), 3))
+    }
+
+    con_prop_test_fold_combination = itertools.product(
+        list(con_folds.keys(con_folds)), repeat=2
+    )
+
+    for fold, (test_con_fold, test_prop_fold) in enumerate(
+        con_prop_test_fold_combination
+    ):
+
+        log.info(
+            f"Fold {fold} Test Concept fold: {test_con_fold}, Test Property Fold: {test_prop_fold}"
+        )
+
+        ####################################################
 
 
 def test_best_model(config, fold=None, test_df=None):
