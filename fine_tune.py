@@ -181,7 +181,7 @@ def evaluate(model, valid_dataset, valid_dataloader, loss_fn, device):
     return avg_val_loss, scores
 
 
-def train(model, config, train_df, valid_df=None):
+def train(model, config, train_df, fold=None, valid_df=None):
 
     log.info("Initialising datasets...")
 
@@ -239,7 +239,7 @@ def train(model, config, train_df, valid_df=None):
         if valid_df is None:
             model_save_path = os.path.join(
                 config["training_params"].get("export_path"),
-                config["model_params"].get("model_name"),
+                f"fold_{fold}_" + config["model_params"].get("model_name"),
             )
 
             log.info(f"patience_counter : {patience_counter}")
@@ -423,9 +423,16 @@ def model_evaluation_property_cross_validation(config):
     }
 
     log.info(f"unique prop_ids in train_and_test_df : {prop_ids}")
-    log.info(f"test_fold_mapping : {test_fold_mapping}")
+    log.info(f"Test Fold Mapping")
+    for key, value in test_fold_mapping:
+        log.info(f"{key} : {value}")
+
+    label, preds = [], []
 
     for fold, test_prop_id in test_fold_mapping.items():
+
+        log.info(f"Training the model on fold : {fold}")
+        log.info(f"The model will be tested on prop_ids : {test_prop_id}")
 
         train_df = train_and_test_df.drop(index=test_prop_id, inplace=False)
         test_df = train_and_test_df[train_and_test_df.index.isin(test_prop_id)]
@@ -466,25 +473,44 @@ def model_evaluation_property_cross_validation(config):
         log.info(f"The total number of parameters in the model : {total_params}")
         log.info(f"Trainable parameters in the model : {trainable_params}")
 
-        train(model, config, train_df, valid_df=None)
+        train(model, config, train_df, fold, valid_df=None)
+        fold_label, fold_preds = test_best_model(config, fold=fold, test_df=test_df)
 
-        # test_best_model(config)
+        label.append(fold_label)
+        preds.append(fold_preds)
+
+        log.info(f"Test scores for {fold} fold")
+        scores = compute_scores(fold_label, fold_preds)
+
+        for key, value in scores.items():
+            log.info(f"{key} : {value}")
+
+    log.info(f"Test scores for all the Folds")
+    scores = compute_scores(np.asarray(label).flatten(), np.asarray(preds).flatten())
+
+    for key, value in scores.items():
+        log.info(f"{key} : {value}")
 
 
 def model_evaluation_concept_property_cross_validation(config):
     pass
 
 
-def test_best_model(config):
+def test_best_model(config, fold=None, test_df=None):
 
     log.info(f"\n {'*' * 50}")
     log.info(f"Testing the fine tuned model")
 
     model = create_model(config.get("model_params"))
 
+    # best_model_path = os.path.join(
+    #     config["training_params"].get("export_path"),
+    #     config["model_params"].get("model_name"),
+    # )
+
     best_model_path = os.path.join(
         config["training_params"].get("export_path"),
-        config["model_params"].get("model_name"),
+        f"fold_{fold}_" + config["model_params"].get("model_name"),
     )
 
     log.info(f"Testing the best model : {best_model_path}")
@@ -494,7 +520,9 @@ def test_best_model(config):
     model.to(device)
 
     test_dataset, test_dataloader = mcrae_dataset_and_dataloader(
-        dataset_params=config.get("dataset_params"), dataset_type="test", data_df=None
+        dataset_params=config.get("dataset_params"),
+        dataset_type="test",
+        data_df=test_df,
     )
 
     label = test_dataset.label
@@ -540,6 +568,8 @@ def test_best_model(config):
         log.info(f"{key} : {value}")
     print(flush=True)
 
+    return label, np.asarray(all_test_preds)
+
 
 if __name__ == "__main__":
 
@@ -559,33 +589,51 @@ if __name__ == "__main__":
     config = read_config(args.config_file)
 
     log.info("The model is run with the following configuration")
-
     log.info(f"\n {config} \n")
-
-    log.info("Reading input data file")
-    concept_property_df, label_df = read_train_data(config["dataset_params"])
-
-    assert concept_property_df.shape[0] == label_df.shape[0]
 
     if config["training_params"].get("do_cv"):
 
         cv_type = config["training_params"].get("cv_type")
 
-        log.info(f'do_cv : {config["training_params"].get("do_cv")}')
-        log.info(f"cv_type : {cv_type}")
-
         if cv_type == "model_selection":
+
+            log.info(
+                f"Cross Validation for Hyperparameter Tuning - that is Model Selection"
+            )
+            log.info("Reading Input Train File")
+            concept_property_df, label_df = read_train_data(config["dataset_params"])
+
+            assert concept_property_df.shape[0] == label_df.shape[0]
+
             model_selection_cross_validation(config, concept_property_df, label_df)
 
-        elif cv_type == "model_evaluation_property":
+        elif cv_type == "model_evaluation_property_split":
+
+            log.info(f'Parameter do_cv : {config["training_params"].get("do_cv")}')
+            log.info(
+                "Cross Validation for Model Evaluation - Data Splited on Property basis"
+            )
+            log.info(f"Parameter cv_type : {cv_type}")
+
             model_evaluation_property_cross_validation(config)
 
-        elif cv_type == "model_evaluation_concept_property":
+        elif cv_type == "model_evaluation_concept_property_split":
+
+            log.info(f'Parameter do_cv : {config["training_params"].get("do_cv")}')
+            log.info(
+                "Cross Validation for Model Evaluation - Data Splited on both Concept and Property basis"
+            )
+            log.info(f"Parameter cv_type : {cv_type}")
+
             model_evaluation_concept_property_cross_validation(config)
 
     else:
-        log.info(f" Training the model without cross validdation")
+        log.info(f"Training the model without cross validdation")
         log.info(f"Parameter 'do_cv' is {config['training_params'].get('do_cv')}")
+
+        log.info("Reading Input Train File")
+        concept_property_df, label_df = read_train_data(config["dataset_params"])
+        assert concept_property_df.shape[0] == label_df.shape[0]
 
         train_df = pd.concat((concept_property_df, label_df), axis=1)
 

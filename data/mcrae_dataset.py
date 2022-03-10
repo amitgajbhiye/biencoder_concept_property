@@ -21,15 +21,19 @@ class McRaeConceptPropertyDataset(Dataset):
             self.data_df.dropna(inplace=True)
 
         elif dataset_type == "test":
-            self.data_df = pd.read_csv(
-                dataset_params.get("test_file_path"),
-                sep="\t",
-                header=None,
-                names=["concept", "property", "label"],
-            )
 
-            self.data_df.drop_duplicates(inplace=True)
-            self.data_df.dropna(inplace=True)
+            if data_df is not None:
+                self.data_df = data_df
+            else:
+                self.data_df = pd.read_csv(
+                    dataset_params.get("test_file_path"),
+                    sep="\t",
+                    header=None,
+                    names=["concept", "property", "label"],
+                )
+
+                self.data_df.drop_duplicates(inplace=True)
+                self.data_df.dropna(inplace=True)
 
             log.info(f"Test Data size {self.data_df.shape}")
 

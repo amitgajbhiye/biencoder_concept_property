@@ -26,7 +26,7 @@
     },
     "training_params": {
         "do_cv": true,
-        "cv_type": "model_evaluation_property",
+        "cv_type": "model_evaluation_property_split",
         "lr": 2e-6,
         "num_warmup_steps": 0,
         "max_epochs": 4,
