@@ -9,10 +9,10 @@
 
 #SBATCH -A scw1858
 
-#SBATCH -p gpu_v100
+#SBATCH -p gpu,gpu_v100
 #SBATCH --mem=10g
 #SBATCH --gres=gpu:1
-#SBATCH -t 0-06:00:00
+#SBATCH -t 0-08:00:00
 
 echo 'This script is running on:'
 hostname

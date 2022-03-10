@@ -1,3 +1,4 @@
+from enum import unique
 import json
 import logging
 import os
@@ -97,15 +98,43 @@ def read_train_and_test_data(dataset_params):
 
     train_and_test_df["prop_id"] = int(-1)
 
+    unique_concept = train_and_test_df["concept"].unique()
     unique_property = train_and_test_df["property"].unique()
+
+    num_unique_concept = len(unique_concept)
     num_unique_property = len(unique_property)
 
-    log.info(f"Train and Test Data DF shape {train_and_test_df.shape}")
+    log.info(f"Train and Test Data DF shape : {train_and_test_df.shape}")
+
+    log.info(
+        f"Number of Unique Concepts in Train and Test Combined DF : {num_unique_concept}"
+    )
+    log.info(f"Unique Concepts in Train and Test Combined DF : {unique_concept}")
+
     log.info(
         f"Number of Unique Property in Train and Test Combined DF : {num_unique_property}"
     )
     log.info(f"Unique Property in Train and Test Combined DF : {unique_property}")
 
+    con_to_id_dict = {con: id for id, con in enumerate(unique_concept)}
+    con_ids = list(con_to_id_dict.values())
+    log.info(f"Concept ids in con_to_id_dict : {con_ids}")
+
+    train_and_test_df.set_index("concept", inplace=True)
+
+    for con in unique_concept:
+        train_and_test_df.loc[con, "con_id"] = con_to_id_dict.get(con)
+
+    train_and_test_df.reset_index(inplace=True)
+
+    log.info("Train Test DF after assigning 'con_id'")
+    log.info(train_and_test_df.sample(n=10))
+
+    assert sorted(con_ids) == sorted(
+        train_and_test_df["con_id"].unique()
+    ), "Assigned 'con_ids' do not match"
+
+    #################################
     prop_to_id_dict = {prop: id for id, prop in enumerate(unique_property)}
     prop_ids = list(prop_to_id_dict.values())
 
@@ -116,10 +145,10 @@ def read_train_and_test_data(dataset_params):
     for prop in unique_property:
         train_and_test_df.loc[prop, "prop_id"] = prop_to_id_dict.get(prop)
 
+    train_and_test_df.reset_index(inplace=True)
+
     log.info("Train Test DF after assigning 'prop_id'")
     log.info(train_and_test_df.sample(n=10))
-
-    train_and_test_df.reset_index(inplace=True)
 
     assert sorted(prop_ids) == sorted(
         train_and_test_df["prop_id"].unique()

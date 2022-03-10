@@ -414,6 +414,7 @@ def model_evaluation_property_cross_validation(config):
 
     train_and_test_df = read_train_and_test_data(config.get("dataset_params"))
 
+    train_and_test_df.drop("con_id", axis=1, inplace=True)
     train_and_test_df.set_index("prop_id", inplace=True)
 
     prop_ids = np.sort(train_and_test_df.index.unique())
