@@ -493,7 +493,25 @@ def model_evaluation_property_cross_validation(config):
 
 
 def model_evaluation_concept_property_cross_validation(config):
-    pass
+
+    log.info(f"Training the model with CONCEPT-PROPERTY cross validation")
+    log.info(f"Parameter 'do_cv' is : {config['training_params'].get('do_cv')}")
+    log.info(f"Parameter 'cv_type' is : {config['training_params'].get('cv_type')}")
+
+    train_and_test_df = read_train_and_test_data(config.get("dataset_params"))
+
+    train_and_test_df.set_index("prop_id", inplace=True)
+
+    prop_ids = np.sort(train_and_test_df.index.unique())
+
+    test_fold_mapping = {
+        fold: test_prop_id for fold, test_prop_id in enumerate(np.split(prop_ids, 5))
+    }
+
+    log.info(f"unique prop_ids in train_and_test_df : {prop_ids}")
+    log.info(f"Test Fold Mapping")
+    for key, value in test_fold_mapping.items():
+        log.info(f"{key} : {value}")
 
 
 def test_best_model(config, fold=None, test_df=None):
