@@ -1,8 +1,8 @@
 #!/bin/bash --login
 #SBATCH --job-name=finetune
 
-#SBATCH --output=logs/100k_concept_property_split_logs/out_concept_property_split_bert_large_without_ft_baseline.txt
-#SBATCH --error=logs/100k_concept_property_split_logs/err_concept_property_split_bert_large_without_ft_baseline.txt
+#SBATCH --output=logs/100k_property_split_logs/out_concept_property_split_bert_large_without_ft_baseline.txt
+#SBATCH --error=logs/100k_property_split_logs/err_concept_property_split_bert_large_without_ft_baseline.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5

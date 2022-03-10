@@ -479,7 +479,7 @@ def model_evaluation_property_cross_validation(config):
         label.append(fold_label)
         preds.append(fold_preds)
 
-        log.info(f"Test scores for {fold} fold")
+        log.info(f"Test scores for fold :  {fold}")
         scores = compute_scores(fold_label, fold_preds)
 
         for key, value in scores.items():
