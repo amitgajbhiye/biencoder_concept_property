@@ -29,7 +29,7 @@
         "cv_type": "model_evaluation_property_split",
         "lr": 2e-6,
         "num_warmup_steps": 0,
-        "max_epochs": 1,
+        "max_epochs": 14,
         "early_stopping_patience": 20,
         "export_path": "trained_models/property_split_100k_mcrae_fine_tuned_models",
         "printout_freq": 100,

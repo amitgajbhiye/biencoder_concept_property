@@ -434,6 +434,8 @@ def model_evaluation_property_cross_validation(config):
 
     for fold, test_prop_id in test_fold_mapping.items():
 
+        log.info()
+        log.info("^" * 20)
         log.info(f"Training the model on fold : {fold}")
         log.info(f"The model will be tested on prop_ids : {test_prop_id}")
 
@@ -467,15 +469,6 @@ def model_evaluation_property_cross_validation(config):
 
         # If you want to load untrained model
         # model = create_model(config.get("model_params"))
-
-        log.info(
-            f"train_df shape in model_evaluation_property_cross_validation : {train_df.shape}"
-        )
-        log.info(
-            f"test_df shape in model_evaluation_property_cross_validation : {test_df.shape}"
-        )
-        log.info(f"TestDF")
-        log.info(test_df)
 
         model = load_pretrained_model(config)
 

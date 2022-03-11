@@ -317,8 +317,7 @@ def load_pretrained_model(config):
     model = create_model(config.get("model_params"))
     pretrained_model_path = config["model_params"]["pretrained_model_path"]
 
-    log.info(f"\n {'*' * 50}")
-    log.info(f"Finetuning the pretrained model loaded from : {pretrained_model_path}")
+    log.info(f"Loading the pretrained model loaded from : {pretrained_model_path}")
 
     model.load_state_dict(torch.load(pretrained_model_path))
 
