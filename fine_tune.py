@@ -4,7 +4,6 @@ import logging
 import os
 from argparse import ArgumentParser
 
-
 import numpy as np
 import pandas as pd
 import torch
@@ -468,6 +467,15 @@ def model_evaluation_property_cross_validation(config):
 
         # If you want to load untrained model
         # model = create_model(config.get("model_params"))
+
+        log.info(
+            f"train_df shape in model_evaluation_property_cross_validation : {train_df.shape}"
+        )
+        log.info(
+            f"test_df shape in model_evaluation_property_cross_validation : {test_df.shape}"
+        )
+        log.info(f"TestDF")
+        log.info(test_df)
 
         model = load_pretrained_model(config)
 
