@@ -416,8 +416,8 @@ def model_evaluation_property_cross_validation(config):
     train_and_test_df.drop("con_id", axis=1, inplace=True)
     train_and_test_df.set_index("prop_id", inplace=True)
 
-    # prop_ids = np.sort(train_and_test_df.index.unique())
-    prop_ids = np.random.permutation(train_and_test_df.index.unique())
+    prop_ids = np.sort(train_and_test_df.index.unique())
+    # prop_ids = np.random.permutation(train_and_test_df.index.unique())
 
     log.info(f"Property ID after shuffle : {prop_ids}")
 
@@ -488,7 +488,10 @@ def model_evaluation_property_cross_validation(config):
         log.info(f"Trainable parameters in the model : {trainable_params}")
 
         train(model, config, train_df, fold, valid_df=None)
-        fold_label, fold_preds = test_best_model(config, fold=fold, test_df=test_df)
+
+        fold_label, fold_preds = test_best_model(
+            config=config, test_df=test_df, fold=fold,
+        )
 
         label.append(fold_label)
         preds.append(fold_preds)
@@ -544,10 +547,11 @@ def model_evaluation_concept_property_cross_validation(config):
         ####################################################
 
 
-def test_best_model(config, fold=None, test_df=None):
+def test_best_model(config, test_df, fold=None):
 
     log.info(f"\n {'*' * 50}")
     log.info(f"Testing the fine tuned model")
+    log.info(f"Test DF shape in test_best_model : {test_df.shape}")
 
     model = create_model(config.get("model_params"))
 

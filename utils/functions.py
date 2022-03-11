@@ -345,9 +345,17 @@ def mcrae_dataset_and_dataloader(dataset_params, dataset_type, data_df=None):
 
     elif dataset_type in ("test",):
 
-        dataset = McRaeConceptPropertyDataset(
-            dataset_params=dataset_params, dataset_type=dataset_type, data_df=None
-        )
+        if data_df is not None:
+            dataset = McRaeConceptPropertyDataset(
+                dataset_params=dataset_params,
+                dataset_type=dataset_type,
+                data_df=data_df,
+            )
+        else:
+            dataset = McRaeConceptPropertyDataset(
+                dataset_params=dataset_params, dataset_type=dataset_type, data_df=None,
+            )
+
         data_sampler = SequentialSampler(dataset)
 
         dataloader = DataLoader(
