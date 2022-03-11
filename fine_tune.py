@@ -1,16 +1,15 @@
-from cgi import test
 import itertools
 import logging
-from operator import index
+
 import os
 from argparse import ArgumentParser
-from cProfile import label
+
 
 import numpy as np
 import pandas as pd
 import torch
 import torch.nn as nn
-from matplotlib.pyplot import axis
+
 from sklearn.model_selection import StratifiedKFold
 from transformers import AdamW, get_linear_schedule_with_warmup
 
@@ -418,7 +417,10 @@ def model_evaluation_property_cross_validation(config):
     train_and_test_df.drop("con_id", axis=1, inplace=True)
     train_and_test_df.set_index("prop_id", inplace=True)
 
-    prop_ids = np.sort(train_and_test_df.index.unique())
+    # prop_ids = np.sort(train_and_test_df.index.unique())
+    prop_ids = np.random.shuffle(train_and_test_df.index.unique())
+
+    log.info(f"Property ID after shuffle : {prop_ids}")
 
     test_fold_mapping = {
         fold: test_prop_id for fold, test_prop_id in enumerate(np.split(prop_ids, 5))
@@ -464,7 +466,7 @@ def model_evaluation_property_cross_validation(config):
         train_df = train_df[["concept", "property", "label"]]
         test_df = test_df[["concept", "property", "label"]]
 
-        # Fine tuning bert large baseline
+        # If you want to load untrained model
         model = create_model(config.get("model_params"))
 
         # model = load_pretrained_model(config)
