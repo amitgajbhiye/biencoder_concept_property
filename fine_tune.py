@@ -467,9 +467,9 @@ def model_evaluation_property_cross_validation(config):
         test_df = test_df[["concept", "property", "label"]]
 
         # If you want to load untrained model
-        model = create_model(config.get("model_params"))
+        # model = create_model(config.get("model_params"))
 
-        # model = load_pretrained_model(config)
+        model = load_pretrained_model(config)
 
         # log.info(f"The pretrained model that is loaded is :")
         # log.info(model)
