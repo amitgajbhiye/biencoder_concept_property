@@ -417,9 +417,6 @@ def model_evaluation_property_cross_validation(config):
     train_and_test_df.set_index("prop_id", inplace=True)
 
     prop_ids = np.sort(train_and_test_df.index.unique())
-    # prop_ids = np.random.permutation(train_and_test_df.index.unique())
-
-    log.info(f"Property ID after shuffle : {prop_ids}")
 
     test_fold_mapping = {
         fold: test_prop_id for fold, test_prop_id in enumerate(np.split(prop_ids, 5))
@@ -435,7 +432,7 @@ def model_evaluation_property_cross_validation(config):
     for fold, test_prop_id in test_fold_mapping.items():
 
         log.info("\n")
-        log.info("^" * 20)
+        log.info("^" * 50)
         log.info(f"Training the model on fold : {fold}")
         log.info(f"The model will be tested on prop_ids : {test_prop_id}")
 
@@ -472,9 +469,6 @@ def model_evaluation_property_cross_validation(config):
 
         model = load_pretrained_model(config)
 
-        # log.info(f"The pretrained model that is loaded is :")
-        # log.info(model)
-
         total_params, trainable_params = count_parameters(model)
 
         log.info(f"The total number of parameters in the model : {total_params}")
@@ -482,18 +476,14 @@ def model_evaluation_property_cross_validation(config):
 
         train(model, config, train_df, fold, valid_df=None)
 
+        log.info(f"Test scores for fold :  {fold}")
+
         fold_label, fold_preds = test_best_model(
             config=config, test_df=test_df, fold=fold,
         )
 
         label.append(fold_label)
         preds.append(fold_preds)
-
-        log.info(f"Test scores for fold :  {fold}")
-        scores = compute_scores(fold_label, fold_preds)
-
-        for key, value in scores.items():
-            log.info(f"{key} : {value}")
 
     log.info(f"Test scores for all the Folds")
     scores = compute_scores(np.asarray(label).flatten(), np.asarray(preds).flatten())

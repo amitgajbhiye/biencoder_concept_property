@@ -1,5 +1,5 @@
 {
-    "experiment_name": "run2_prop_split_ft_bert_base_mcrae_fine_tuned_on_top_100k_gkb_ext_prop_model",
+    "experiment_name": "prop_split_ft_bert_base_mcrae_fine_tuned_on_top_100k_gkb_ext_prop_model",
     "dataset_params": {
         "dataset_name": "propert_split_mcrae",
         "train_file_path": "data/evaluation_data/extended_mcrae/train_mcrae.tsv",

@@ -1,5 +1,5 @@
 {
-    "experiment_name": "prop_split_baseline_bert_large_mcrae_data_without_fine_tune.pt",
+    "experiment_name": "prop_split_baseline_bert_large_mcrae_data_without_fine_tune_model",
     "dataset_params": {
         "dataset_name": "propert_split_mcrae",
         "train_file_path": "data/evaluation_data/extended_mcrae/train_mcrae.tsv",
@@ -19,7 +19,7 @@
     "model_params": {
         "pretrained_model_name": "None",
         "pretrained_model_path": "None",
-        "model_name": "prop_split_baseline_bert_large_mcrae_data_without_fine_tune.pt",
+        "model_name": "prop_split_baseline_bert_large_mcrae_data_without_fine_tune_model.pt",
         "hf_checkpoint_name": "bert-base-uncased",
         "hf_model_path": "/scratch/c.scmag3/conceptEmbeddingModel/bert-large-uncased/model",
         "vector_strategy": "mask_token"
