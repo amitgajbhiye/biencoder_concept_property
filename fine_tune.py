@@ -434,7 +434,7 @@ def model_evaluation_property_cross_validation(config):
 
     for fold, test_prop_id in test_fold_mapping.items():
 
-        log.info()
+        log.info("\n")
         log.info("^" * 20)
         log.info(f"Training the model on fold : {fold}")
         log.info(f"The model will be tested on prop_ids : {test_prop_id}")
