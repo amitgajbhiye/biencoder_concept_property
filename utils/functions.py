@@ -343,7 +343,7 @@ def mcrae_dataset_and_dataloader(dataset_params, dataset_type, data_df=None):
             pin_memory=dataset_params["loader_params"]["pin_memory"],
         )
 
-    elif dataset_type == "test":
+    elif dataset_type in ("test",):
 
         dataset = McRaeConceptPropertyDataset(
             dataset_params=dataset_params, dataset_type=dataset_type, data_df=None
