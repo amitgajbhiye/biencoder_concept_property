@@ -494,7 +494,7 @@ def model_evaluation_property_cross_validation(config):
 
     log.info(f"Test scores for all the Folds")
     label = np.vstack(label).flatten()
-    preds = np.vstack(np.array(preds,)).flatten()
+    preds = np.vstack(preds).flatten()
 
     log.info(f"All labels shape : {label.shape}")
     log.info(f"All preds shape : {preds.shape}")
@@ -622,7 +622,7 @@ def test_best_model(config, test_df, fold=None):
         log.info(f"{key} : {value}")
     print(flush=True)
 
-    return label, np.array(all_test_preds)
+    return label, np.array(all_test_preds, dtype=np.int32)
 
 
 if __name__ == "__main__":
