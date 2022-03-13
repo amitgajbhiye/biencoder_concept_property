@@ -493,8 +493,8 @@ def model_evaluation_property_cross_validation(config):
         preds.append(fold_preds)
 
     log.info(f"Test scores for all the Folds")
-    label = np.vstack(label).flatten()
-    preds = np.vstack(preds).flatten()
+    label = np.concatenate(label, axis=0)
+    preds = np.concatenate(preds, axis=0).flatten()
 
     log.info(f"All labels shape : {label.shape}")
     log.info(f"All preds shape : {preds.shape}")
