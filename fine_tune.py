@@ -481,18 +481,17 @@ def model_evaluation_property_cross_validation(config):
         train(model, config, train_df, fold, valid_df=None)
 
         log.info(f"Test scores for fold :  {fold}")
+        log.info(f"Fold : {fold} label shape - {fold_label.shape}")
+        log.info(f"Fold : {fold} preds shape - {fold_preds.shape}")
 
         fold_label, fold_preds = test_best_model(
             config=config, test_df=test_df, fold=fold,
         )
 
-        log.info(f"Fold : {fold} label shape - {fold_label.shape}")
-        log.info(f"Fold : {fold} preds shape - {fold_preds.shape}")
-
         label.append(fold_label)
         preds.append(fold_preds)
 
-    log.info("*" * 50)
+    log.info(f"\n {'*' * 50}")
     log.info(f"Test scores for all the Folds")
     label = np.concatenate(label, axis=0)
     preds = np.concatenate(preds, axis=0).flatten()
