@@ -492,18 +492,13 @@ def model_evaluation_property_cross_validation(config):
         label.append(fold_label)
         preds.append(fold_preds)
 
+    log.info("*" * 50)
     log.info(f"Test scores for all the Folds")
     label = np.concatenate(label, axis=0)
     preds = np.concatenate(preds, axis=0).flatten()
 
     log.info(f"All labels shape : {label.shape}")
     log.info(f"All preds shape : {preds.shape}")
-
-    log.info(f"label : {label}")
-    log.info(f"preds : {preds}")
-
-    print(f"label : {label}")
-    print(f"preds : {preds}")
 
     scores = compute_scores(label, preds)
 
