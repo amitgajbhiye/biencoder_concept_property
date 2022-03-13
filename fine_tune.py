@@ -1,3 +1,4 @@
+from distutils.log import info
 import itertools
 import logging
 
@@ -413,6 +414,9 @@ def model_evaluation_property_cross_validation(config):
 
     train_and_test_df = read_train_and_test_data(config.get("dataset_params"))
 
+    # sampling data for testing
+    train_and_test_df = train_and_test_df[0:2000]
+
     train_and_test_df.drop("con_id", axis=1, inplace=True)
     train_and_test_df.set_index("prop_id", inplace=True)
 
@@ -486,7 +490,19 @@ def model_evaluation_property_cross_validation(config):
         preds.append(fold_preds)
 
     log.info(f"Test scores for all the Folds")
-    scores = compute_scores(np.asarray(label).flatten(), np.asarray(preds).flatten())
+    label = np.array(label).flatten()
+    preds = np.array(preds).flatten()
+
+    log.info(f"All labels shape : {label.shape}")
+    log.info(f"All preds shape : {preds.shape}")
+
+    log.info(f"label : {label}")
+    log.info(f"preds : {preds}")
+
+    print(f"label : {label}")
+    print(f"preds : {preds}")
+
+    scores = compute_scores(label, preds)
 
     for key, value in scores.items():
         log.info(f"{key} : {value}")
@@ -603,7 +619,7 @@ def test_best_model(config, test_df, fold=None):
         log.info(f"{key} : {value}")
     print(flush=True)
 
-    return label, np.asarray(all_test_preds)
+    return label, np.array(all_test_preds)
 
 
 if __name__ == "__main__":
