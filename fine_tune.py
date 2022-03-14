@@ -524,7 +524,9 @@ def model_evaluation_concept_property_cross_validation(config):
         for fold, test_prop_id in enumerate(np.array_split(np.asarray(prop_ids), 3))
     }
 
-    con_prop_test_fold_combination = itertools.product(list(con_folds.keys()), repeat=2)
+    con_prop_test_fold_combination = list(
+        itertools.product(list(con_folds.keys()), repeat=2)
+    )
 
     log.info(f"Test Concept Fold Mapping")
     for key, value in con_folds.items():
@@ -540,7 +542,7 @@ def model_evaluation_concept_property_cross_validation(config):
         con_prop_test_fold_combination
     ):
         log.info(
-            f"Fold {fold} Test Concept fold: {test_con_fold}, Test Property Fold: {test_prop_fold}"
+            f"Fold {fold}, Test Concept fold: {test_con_fold}, Test Property Fold: {test_prop_fold}"
         )
 
         test_con_id = con_folds.get(test_con_fold)
