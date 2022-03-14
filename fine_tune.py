@@ -536,6 +536,7 @@ def model_evaluation_concept_property_cross_validation(config):
 
     log.info(f"con_prop_test_fold_combination : {list(con_prop_test_fold_combination)}")
 
+    label, preds = [], []
     for fold, (test_con_fold, test_prop_fold) in enumerate(
         con_prop_test_fold_combination
     ):
