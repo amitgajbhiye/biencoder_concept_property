@@ -4,6 +4,7 @@ import logging
 
 import os
 from argparse import ArgumentParser
+from tkinter.tix import Tree
 
 import numpy as np
 import pandas as pd
@@ -465,10 +466,10 @@ def model_evaluation_property_cross_validation(config):
         train_df = train_df[["concept", "property", "label"]]
         test_df = test_df[["concept", "property", "label"]]
 
-        # If you want to load untrained model
-        # model = create_model(config.get("model_params"))
+        # If you want to load untrained model - for baselines results
+        model = create_model(config.get("model_params"))
 
-        model = load_pretrained_model(config)
+        # model = load_pretrained_model(config)
 
         total_params, trainable_params = count_parameters(model)
 
@@ -514,8 +515,6 @@ def model_evaluation_concept_property_cross_validation(config):
     con_ids = np.sort(train_and_test_df["con_id"].unique())
     prop_ids = np.sort(train_and_test_df["prop_id"].unique())
 
-    train_and_test_df.set_index(["con_id", "prop_id"], inplace=True)
-
     con_folds = {
         fold: test_con_id
         for fold, test_con_id in enumerate(np.array_split(np.asarray(con_ids), 3))
@@ -530,15 +529,101 @@ def model_evaluation_concept_property_cross_validation(config):
         list(con_folds.keys(con_folds)), repeat=2
     )
 
+    log.info(f"Test Concept Fold Mapping")
+    for key, value in con_folds.items():
+        log.info(f"{key} : {value}")
+
+    log.info(f"Test Property Fold Mapping")
+    for key, value in prop_folds.items():
+        log.info(f"{key} : {value}")
+
+    log.info(f"con_prop_test_fold_combination : {con_prop_test_fold_combination}")
+
     for fold, (test_con_fold, test_prop_fold) in enumerate(
         con_prop_test_fold_combination
     ):
-
         log.info(
             f"Fold {fold} Test Concept fold: {test_con_fold}, Test Property Fold: {test_prop_fold}"
         )
 
-        ####################################################
+        test_con_id = con_folds.get(test_con_fold)
+        test_prop_id = prop_folds.get(test_prop_fold)
+
+        train_and_test_df.set_index("con_id", inplace=True)
+
+        con_id_df = train_and_test_df[train_and_test_df.index.isin(test_con_id)]
+        con_id_df.reset_index(inplace=True)
+        con_id_df.set_index("prop_id", inplace=True)
+
+        test_df = con_id_df[con_id_df.index.isin(test_prop_id)]
+
+        train_df = train_and_test_df.drop(index=test_con_id, inplace=False)
+        train_df.reset_index(inplace=True)
+        train_df.set_index("prop_id", inplace=True)
+        train_df.drop(index=test_prop_id, inplace=True)
+
+        train_df.reset_index(inplace=True)
+        test_df.reset_index(inplace=True)
+        train_and_test_df.reset_index(inplace=True)
+
+        log.info("Asserting no overlap in train and test data")
+
+        df1 = train_df.merge(
+            test_df,
+            how="inner",
+            on=["concept", "property", "con_id", "prop_id", "label"],
+            indicator=False,
+        )
+        df2 = train_df.merge(test_df, how="inner", on=["con_id"], indicator=False)
+        df3 = train_df.merge(test_df, how="inner", on=["prop_id"], indicator=False)
+
+        assert df1.empty
+        assert df2.empty
+        assert df3.empty
+
+        log.info("Assertion Passed !!!")
+
+        train_df = train_df[["concept", "property", "label"]]
+        test_df = test_df[["concept", "property", "label"]]
+
+        log.info(
+            f"For fold : {fold}, Train DF shape : {train_df.shape}, Test DF shape :{test_df.shape}"
+        )
+
+        model = load_pretrained_model(config)
+
+        total_params, trainable_params = count_parameters(model)
+
+        log.info(f"The total number of parameters in the model : {total_params}")
+        log.info(f"Trainable parameters in the model : {trainable_params}")
+
+        train(model, config, train_df, fold, valid_df=None)
+
+        log.info(f"Test scores for fold :  {fold}")
+
+        fold_label, fold_preds = test_best_model(
+            config=config, test_df=test_df, fold=fold,
+        )
+
+        label.append(fold_label)
+        preds.append(fold_preds)
+
+        log.info(f"Fold : {fold} label shape - {fold_label.shape}")
+        log.info(f"Fold : {fold} preds shape - {fold_preds.shape}")
+
+    log.info(f"\n {'*' * 50}")
+    log.info(f"Test scores for all the Folds")
+
+    label = np.concatenate(label, axis=0)
+    preds = np.concatenate(preds, axis=0)
+
+    log.info(f"All labels shape : {label.shape}")
+    log.info(f"All preds shape : {preds.shape}")
+
+    scores = compute_scores(label, preds)
+
+    for key, value in scores.items():
+        log.info(f"{key} : {value}")
 
 
 def test_best_model(config, test_df, fold=None):
