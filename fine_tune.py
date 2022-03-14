@@ -1,10 +1,9 @@
-from distutils.log import info
 import itertools
 import logging
 
 import os
 from argparse import ArgumentParser
-from tkinter.tix import Tree
+
 
 import numpy as np
 import pandas as pd
@@ -467,9 +466,9 @@ def model_evaluation_property_cross_validation(config):
         test_df = test_df[["concept", "property", "label"]]
 
         # If you want to load untrained model - for baselines results
-        model = create_model(config.get("model_params"))
+        # model = create_model(config.get("model_params"))
 
-        # model = load_pretrained_model(config)
+        model = load_pretrained_model(config)
 
         total_params, trainable_params = count_parameters(model)
 
@@ -549,6 +548,9 @@ def model_evaluation_concept_property_cross_validation(config):
         test_con_id = con_folds.get(test_con_fold)
         test_prop_id = prop_folds.get(test_prop_fold)
 
+        log.info(f"Concept ids on which the model will be tested : {test_con_id}")
+        log.info(f"Property ids on which the model will be tested : {test_prop_id}")
+
         train_and_test_df.set_index("con_id", inplace=True)
 
         con_id_df = train_and_test_df[train_and_test_df.index.isin(test_con_id)]
@@ -589,6 +591,8 @@ def model_evaluation_concept_property_cross_validation(config):
         log.info(
             f"For fold : {fold}, Train DF shape : {train_df.shape}, Test DF shape :{test_df.shape}"
         )
+        log.info(f"Train DF Columns : {train_df.columns}")
+        log.info(f"Test Df Columns : {test_df.columns}")
 
         model = load_pretrained_model(config)
 

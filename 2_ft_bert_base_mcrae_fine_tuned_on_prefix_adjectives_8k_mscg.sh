@@ -1,8 +1,8 @@
 #!/bin/bash --login
 #SBATCH --job-name=a
 
-#SBATCH --output=logs/100k_property_split_logs/out_pcv_bert_base_mcrae_fine_tuned_on_prefix_adjectives_8k_mscg_model.txt
-#SBATCH --error=logs/100k_property_split_logs/err_pcv_bert_base_mcrae_fine_tuned_on_prefix_adjectives_8k_mscg_model.txt
+#SBATCH --output=logs/100k_concept_property_split_logs/out_cpcv_bert_base_mcrae_fine_tuned_on_prefix_adjectives_8k_mscg_model.txt
+#SBATCH --error=logs/100k_concept_property_split_logs/err_cpcv_bert_base_mcrae_fine_tuned_on_prefix_adjectives_8k_mscg_model.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
@@ -25,8 +25,8 @@ conda activate venv
 
 echo 'Running experiment...'
 
-echo 'PCV bert base fine tune on McRae train set config_file - configs/fine_tune/pcv_prefix_adjectives_8k_mscg.json' 
+echo 'CPCV bert base fine tune on McRae train set config_file - configs/fine_tune/cpcv_prefix_adjectives_8k_mscg.json' 
 
-python3 fine_tune.py --config_file configs/fine_tune/pcv_prefix_adjectives_8k_mscg.json
+python3 fine_tune.py --config_file configs/fine_tune/cpcv_prefix_adjectives_8k_mscg.json
 
 echo 'finished!'
