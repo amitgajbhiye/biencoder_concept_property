@@ -466,9 +466,9 @@ def model_evaluation_property_cross_validation(config):
         test_df = test_df[["concept", "property", "label"]]
 
         # If you want to load untrained model - for baselines results
-        model = create_model(config.get("model_params"))
+        # model = create_model(config.get("model_params"))
 
-        # model = load_pretrained_model(config)
+        model = load_pretrained_model(config)
 
         total_params, trainable_params = count_parameters(model)
 
@@ -593,7 +593,10 @@ def model_evaluation_concept_property_cross_validation(config):
         log.info(f"Train DF Columns : {train_df.columns}")
         log.info(f"Test Df Columns : {test_df.columns}")
 
-        model = load_pretrained_model(config)
+        # If you want to load untrained model - for baselines results
+        model = create_model(config.get("model_params"))
+
+        # model = load_pretrained_model(config)
 
         total_params, trainable_params = count_parameters(model)
 
