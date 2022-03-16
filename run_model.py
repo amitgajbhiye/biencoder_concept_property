@@ -43,8 +43,8 @@ def train_single_epoch(
             log.info(f"concepts_batch : {concepts_batch}")
             log.info(f"property_batch : {property_batch}")
 
-            print(f"concepts_batch : {concepts_batch}")
-            print(f"property_batch : {property_batch}")
+            print(f"concepts_batch : {concepts_batch}", flush=True)
+            print(f"property_batch : {property_batch}", flush=True)
 
             print_freq += 1
 
