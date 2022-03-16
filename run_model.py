@@ -42,6 +42,10 @@ def train_single_epoch(
         if print_freq < 1:
             log.info(f"concepts_batch : {concepts_batch}")
             log.info(f"property_batch : {property_batch}")
+
+            print(f"concepts_batch : {concepts_batch}")
+            print(f"property_batch : {property_batch}")
+
             print_freq += 1
 
         ids_dict = train_dataset.tokenize(concepts_batch, property_batch)
@@ -100,6 +104,10 @@ def train_single_epoch(
 
             log.info(
                 f"Batch {step} of {len(train_dataloader)} ----> Batch Loss : {batch_loss}, Batch Binary F1 {batch_scores.get('binary_f1')}"
+            )
+            print(
+                f"Batch {step} of {len(train_dataloader)} ----> Batch Loss : {batch_loss}, Batch Binary F1 {batch_scores.get('binary_f1')}",
+                flush=True,
             )
             print(flush=True)
 

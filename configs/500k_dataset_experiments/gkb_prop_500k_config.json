@@ -1,10 +1,10 @@
 {
-    "experiment_name": "gkb_ext_prop_top_100k",
+    "experiment_name": "gkb_prop_500k_bert_base",
     "dataset_params": {
-        "dataset_name": "gkb_ext_prop_top_100k",
-        "train_file_path": "data/train_data/MSCG/train_extracted_property_100k_gkb_data.tsv",
-        "val_file_path": "data/train_data/MSCG/valid_extracted_property_100k_gkb_data.tsv",
-        "test_file_path": "data/evaluation_data/MSCG/70k_test_ms_concept_graph.tsv",
+        "dataset_name": "gkb_prop_500k",
+        "train_file_path": "data/train_data/500k_MSCG/gkb_prop_500k_train.tsv",
+        "val_file_path": "data/train_data/500k_MSCG/gkb_prop_500k_valid.tsv",
+        "test_file_path": "None",
         "hf_tokenizer_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained/tokenizer",
         "concept_max_len": 64,
         "property_max_len": 64,
@@ -17,7 +17,7 @@
         }
     },
     "model_params": {
-        "model_name": "gkb_ext_prop_top_100k_best_model.pt",
+        "model_name": "gkb_prop_500k_bert_base_best_model.pt",
         "hf_checkpoint_name": "bert-base-uncased",
         "hf_model_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained",
         "vector_strategy": "mask_token"
@@ -27,7 +27,7 @@
         "num_warmup_steps": 0,
         "max_epochs": 100,
         "early_stopping_patience": 20,
-        "export_path": "trained_models/100k_data_experiments",
+        "export_path": "trained_models/500k_trained_models",
         "printout_freq": 100,
         "checkpoint_path": "",
         "load_checkpoint": -1,

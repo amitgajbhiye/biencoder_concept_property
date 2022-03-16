@@ -26,7 +26,7 @@ conda activate venv
 
 echo 'Running experiment...'
 
-echo 'Bert Large - Training On mscg_plus_prefix_adjective_plus_gkb_500k_config.json' 
-python3 run_model.py --config_file configs/500k_dataset_experiments/mscg_plus_prefix_adjective_plus_gkb_500k_config.json
+echo 'Bert Large - Training On configs/500k_dataset_experiments/bert_large_mscg_plus_prefix_adjective_plus_gkb_500k_config.json' 
+python3 run_model.py --config_file configs/500k_dataset_experiments/bert_large_mscg_plus_prefix_adjective_plus_gkb_500k_config.json
 
 echo 'finished!'
