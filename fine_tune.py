@@ -237,19 +237,24 @@ def train(model, config, train_df, fold=None, valid_df=None):
         log.info(f"  Average Train Loss: {train_loss}")
 
         if valid_df is None:
-            model_save_path = os.path.join(
-                config["training_params"].get("export_path"),
-                f"fold_{fold}_" + config["model_params"].get("model_name"),
-            )
+            if fold is not None:
+                model_save_path = os.path.join(
+                    config["training_params"].get("export_path"),
+                    f"fold_{fold}_" + config["model_params"].get("model_name"),
+                )
+            else:
+                model_save_path = os.path.join(
+                    config["training_params"].get("export_path"),
+                    config["model_params"].get("model_name"),
+                )
 
-            log.info(f"patience_counter : {patience_counter}")
-            log.info(f"best_model_path : {model_save_path}")
+        log.info(f"best_model_path : {model_save_path}")
 
-            torch.save(
-                model.state_dict(), model_save_path,
-            )
+        torch.save(
+            model.state_dict(), model_save_path,
+        )
 
-            log.info(f"The model is saved in : {model_save_path}")
+        log.info(f"The model is saved in : {model_save_path}")
 
         # ----------------------------------------------#
         # ----------------------------------------------#

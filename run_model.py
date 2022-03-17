@@ -400,5 +400,6 @@ if __name__ == "__main__":
 
     train(config)
 
+    # We are not testing the model yet..We will test it on McRae Testset after finetuning
     # test_best_model(config)
 
