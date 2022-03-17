@@ -4,7 +4,7 @@
         "dataset_name": "mscg_and_gkb_top_100k",
         "train_file_path": "data/train_data/100k_mscg_plus_100k_gkb_properties/train_top_100k_gkb_mscg.tsv",
         "val_file_path": "data/train_data/100k_mscg_plus_100k_gkb_properties/valid_sampled_10k_top_100k_gkb_mscg.tsv",
-        "test_file_path": "data/evaluation_data/MSCG/70k_test_ms_concept_graph.tsv",
+        "test_file_path": "None",
         "hf_tokenizer_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained/tokenizer",
         "concept_max_len": 64,
         "property_max_len": 64,

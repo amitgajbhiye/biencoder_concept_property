@@ -594,9 +594,9 @@ def model_evaluation_concept_property_cross_validation(config):
         log.info(f"Test Df Columns : {test_df.columns}")
 
         # If you want to load untrained model - for baselines results
-        model = create_model(config.get("model_params"))
+        # model = create_model(config.get("model_params"))
 
-        # model = load_pretrained_model(config)
+        model = load_pretrained_model(config)
 
         total_params, trainable_params = count_parameters(model)
 
@@ -640,15 +640,18 @@ def test_best_model(config, test_df, fold=None):
 
     model = create_model(config.get("model_params"))
 
-    # best_model_path = os.path.join(
-    #     config["training_params"].get("export_path"),
-    #     config["model_params"].get("model_name"),
-    # )
-
-    best_model_path = os.path.join(
-        config["training_params"].get("export_path"),
-        f"fold_{fold}_" + config["model_params"].get("model_name"),
-    )
+    if fold is not None:
+        log.info(f"Testing the model for Cross Validation, Fold Number : {fold}")
+        best_model_path = os.path.join(
+            config["training_params"].get("export_path"),
+            f"fold_{fold}_" + config["model_params"].get("model_name"),
+        )
+    else:
+        log.info(f"Testing the model without Cross Validation")
+        best_model_path = os.path.join(
+            config["training_params"].get("export_path"),
+            config["model_params"].get("model_name"),
+        )
 
     log.info(f"Testing the best model : {best_model_path}")
 
@@ -776,8 +779,8 @@ if __name__ == "__main__":
 
         log.info(f"Train DF shape : {train_df.shape}")
 
-        model = create_model(config.get("model_params"))
-        # model = load_pretrained_model(config)
+        # model = create_model(config.get("model_params"))
+        model = load_pretrained_model(config)
 
         # log.info(f"The pretrained model that is loaded is :")
         # log.info(model)
