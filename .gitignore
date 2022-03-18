@@ -59,7 +59,6 @@ cover/
 *.pot
 
 # Django stuff:
-*.log
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
@@ -157,4 +156,5 @@ dataset/__pycache__/
 model/__pycache__/
 utils/__pycache__/
 trained_models/
+logs/
 utils/__pycache__/functions.cpython-39.pyc
