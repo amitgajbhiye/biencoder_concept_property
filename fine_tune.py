@@ -784,7 +784,10 @@ if __name__ == "__main__":
 
         log.info(f"Train DF shape : {train_df.shape}")
 
+        # For training the model from scratch
         # model = create_model(config.get("model_params"))
+
+        # For fintuning a pretrained model
         model = load_pretrained_model(config)
 
         # log.info(f"The pretrained model that is loaded is :")
