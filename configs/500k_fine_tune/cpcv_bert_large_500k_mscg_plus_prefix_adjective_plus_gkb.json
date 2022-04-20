@@ -1,5 +1,5 @@
 {
-    "experiment_name": "bert_large_mcrae_finetuned_on_500k_mscg_plus_prefix_adjective_plus_gkb",
+    "experiment_name": "con_prop_split_bert_large_mcrae_finetuned_on_500k_mscg_plus_prefix_adjective_plus_gkb",
     "dataset_params": {
         "dataset_name": "concept_property_split_mcrae",
         "train_file_path": "data/evaluation_data/extended_mcrae/train_mcrae.tsv",
@@ -17,9 +17,9 @@
         }
     },
     "model_params": {
-        "pretrained_model_name": "--------",
-        "pretrained_model_path": "trained_models/500k_trained_models/---",
-        "model_name": "bert_large_mcrae_finetuned_on_500k_mscg_plus_prefix_adjective_plus_gkb.pt",
+        "pretrained_model_name": "bert_large_mscg_plus_prefix_adjective_plus_gkb_500k_best_model.pt",
+        "pretrained_model_path": "trained_models/500k_trained_models/bert_large_mscg_plus_prefix_adjective_plus_gkb_500k_best_model.pt",
+        "model_name": "con_prop_split_bert_large_mcrae_finetuned_on_500k_mscg_plus_prefix_adjective_plus_gkb.pt",
         "hf_checkpoint_name": "bert-base-uncased",
         "hf_model_path": "/scratch/c.scmag3/conceptEmbeddingModel/bert-large-uncased/model",
         "vector_strategy": "mask_token"
