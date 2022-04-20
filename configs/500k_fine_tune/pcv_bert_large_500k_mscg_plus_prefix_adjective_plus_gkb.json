@@ -17,8 +17,8 @@
         }
     },
     "model_params": {
-        "pretrained_model_name": "--------",
-        "pretrained_model_path": "trained_models/500k_trained_models/---",
+        "pretrained_model_name": "bert_large_mscg_plus_prefix_adjective_plus_gkb_500k_best_model.pt",
+        "pretrained_model_path": "trained_models/500k_trained_models/bert_large_mscg_plus_prefix_adjective_plus_gkb_500k_best_model.pt",
         "model_name": "prop_split_bert_large_mcrae_finetuned_on_500k_mscg_plus_prefix_adjective_plus_gkb.pt",
         "hf_checkpoint_name": "bert-base-uncased",
         "hf_model_path": "/scratch/c.scmag3/conceptEmbeddingModel/bert-large-uncased/model",
