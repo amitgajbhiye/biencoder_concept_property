@@ -799,5 +799,5 @@ if __name__ == "__main__":
         log.info(f"Trainable parameters in the model : {trainable_params}")
 
         train(model, config, train_df, valid_df=None)
-        test_best_model(config)
+        test_best_model(config=config, test_df=None, fold=None)
 
