@@ -641,7 +641,7 @@ def test_best_model(config, test_df, fold=None):
 
     log.info(f"\n {'*' * 50}")
     log.info(f"Testing the fine tuned model")
-    log.info(f"Test DF shape in test_best_model : {test_df.shape}")
+    # log.info(f"Test DF shape in test_best_model : {test_df.shape}")
 
     model = create_model(config.get("model_params"))
 
