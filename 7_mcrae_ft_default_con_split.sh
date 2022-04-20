@@ -27,6 +27,6 @@ conda activate venv
 echo 'Running experiment...'
 
 echo 'Bert Base - Training on configs/500k_fine_tune/ft_prefix_adjectives_41k_mscg.json' 
-python3 run_model.py --config_file configs/500k_fine_tune/ft_prefix_adjectives_41k_mscg.json
+python3 fine_tune.py --config_file configs/500k_fine_tune/ft_prefix_adjectives_41k_mscg.json
 
 echo 'finished!'
