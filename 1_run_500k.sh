@@ -2,15 +2,15 @@
 
 #SBATCH --job-name=blmag
 
-#SBATCH --output=logs/500k_data_logs/out_bert_large_mscg_plus_prefix_adjective_plus_gkb_500k.txt
-#SBATCH --error=logs/500k_data_logs/err_bert_large_mscg_plus_prefix_adjective_plus_gkb_500k.txt
+#SBATCH --output=logs/logs/500k_data_logs/out_bert_large_mscg_plus_prefix_adjective_plus_gkb_500k.txt
+#SBATCH --error=logs/logs/500k_data_logs/err_bert_large_mscg_plus_prefix_adjective_plus_gkb_500k.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
 #SBATCH -A scw1858
 
 #SBATCH -p gpu_v100
-#SBATCH --mem=15g
+#SBATCH --mem=18g
 #SBATCH --gres=gpu:1
 
 #SBATCH -t 2-00:00:00
