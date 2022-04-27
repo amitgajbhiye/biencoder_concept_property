@@ -39,6 +39,7 @@ class McRaeConceptPropertyDataset(Dataset):
 
                 self.data_df.drop_duplicates(inplace=True)
                 self.data_df.dropna(inplace=True)
+                self.data_df.reset_index(drop=True, inplace=True)
 
             log.info(f"Test Data size {self.data_df.shape}")
 
