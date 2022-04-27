@@ -2,8 +2,8 @@
 
 #SBATCH --job-name=blmag
 
-#SBATCH --output=logs/cslb_con_split_100k_fine_tuned_logs/test_out_cslb_ft_bert_large_mscg_plus_prefix_adjective_plus_gkb_100k.txt
-#SBATCH --error=logs/cslb_con_split_100k_fine_tuned_logs/test_err_cslb_ft_bert_large_mscg_plus_prefix_adjective_plus_gkb_100k.txt
+#SBATCH --output=logs/cslb_con_split_100k_fine_tuned_logs/out_cslb_ft_bert_large_mscg_plus_prefix_adjective_plus_gkb_100k.txt
+#SBATCH --error=logs/cslb_con_split_100k_fine_tuned_logs/err_cslb_ft_bert_large_mscg_plus_prefix_adjective_plus_gkb_100k.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
