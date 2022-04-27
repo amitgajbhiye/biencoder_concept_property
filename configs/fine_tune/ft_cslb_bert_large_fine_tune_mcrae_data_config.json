@@ -1,0 +1,44 @@
+{
+    "experiment_name": "con_split_ft_bert_large_cslb_data_fine_tuned_on_100k_mscg_8k_prefix_adj_100k_gkb_prop",
+    "dataset_params": {
+        "dataset_name": "cslb",
+        "train_file_path": "data/evaluation_data/CSLB/cslb_train_pos_neg_data.tsv",
+        "val_file_path": "None",
+        "test_file_path": "data/evaluation_data/CSLB/cslb_test_pos_neg_data.tsv",
+        "hf_tokenizer_path": "/scratch/c.scmag3/conceptEmbeddingModel/bert-large-uncased/tokenizer",
+        "concept_max_len": 64,
+        "property_max_len": 64,
+        "add_context": true,
+        "context_num": 6,
+        "loader_params": {
+            "batch_size": 32,
+            "num_workers": 4,
+            "pin_memory": true
+        }
+    },
+    "model_params": {
+        "pretrained_model_name": "bert_large_100k_mscg_8k_prefix_adj_100k_gkb_properties_best_model.pt",
+        "pretrained_model_path": "trained_models/100k_data_experiments/bert_large_100k_mscg_8k_prefix_adj_100k_gkb_properties_best_model.pt",
+        "model_name": "con_split_ft_bert_large_cslb_data_fine_tuned_on_100k_mscg_8k_prefix_adj_100k_gkb_prop.pt",
+        "hf_checkpoint_name": "bert-base-uncased",
+        "hf_model_path": "/scratch/c.scmag3/conceptEmbeddingModel/bert-large-uncased/model",
+        "vector_strategy": "mask_token"
+    },
+    "training_params": {
+        "do_cv": false,
+        "lr": 2e-6,
+        "num_warmup_steps": 0,
+        "max_epochs": 6,
+        "early_stopping_patience": 20,
+        "export_path": "trained_models/cslb_con_split_100k_fine_tuned_models",
+        "printout_freq": 100,
+        "checkpoint_path": "",
+        "load_checkpoint": -1,
+        "lr_policy": "warmup",
+        "lr_decay_iters": 15
+    },
+    "visualization_params": {
+        "name": "None"
+    },
+    "model_update_freq": 1
+}
