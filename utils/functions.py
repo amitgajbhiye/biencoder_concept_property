@@ -161,7 +161,7 @@ def read_train_and_test_data(dataset_params):
     train_and_test_df.reset_index(inplace=True)
 
     log.info("Train Test DF after assigning 'prop_id'")
-    log.info(train_and_test_df.sample(n=10))
+    log.info(train_and_test_df.sample(n=15))
 
     assert sorted(prop_ids) == sorted(
         train_and_test_df["prop_id"].unique()
