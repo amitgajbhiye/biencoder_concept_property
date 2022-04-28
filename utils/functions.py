@@ -94,6 +94,7 @@ def read_train_and_test_data(dataset_params):
 
     train_and_test_df = train_and_test_df.sample(frac=1)
     train_and_test_df.drop_duplicates(inplace=True)
+    train_and_test_df.dropna(how="any", inplace=True)
     train_and_test_df.reset_index(inplace=True, drop=True)
 
     print()
@@ -152,7 +153,7 @@ def read_train_and_test_data(dataset_params):
     log.info(f"Number of Property ids in prop_to_id_dict : {len(prop_ids)}")
     log.info(f"Property ids in prop_to_id_dict : {prop_ids}")
 
-    # train_and_test_df.set_index("property", inplace=True)
+    train_and_test_df.set_index("property", inplace=True)
 
     # log.info(f"Train Test DF after setting 'property' as index : {train_and_test_df}")
     # log.info(
@@ -177,17 +178,20 @@ def read_train_and_test_data(dataset_params):
     #         f"Train Test df shape after removing duplicated property index : {train_and_test_df.shape}"
     #     )
 
-    for prop in unique_property:
-        train_and_test_df.loc[
-            train_and_test_df["property"] == prop, "prop_id"
-        ] = prop_to_id_dict.get(prop)
+    # for prop in unique_property:
+    #     train_and_test_df.loc[
+    #         train_and_test_df["property"] == prop, "prop_id"
+    #     ] = prop_to_id_dict.get(prop)
 
     # for prop in unique_property:
     #     train_and_test_df[train_and_test_df["property"] == prop][
     #         "prop_id"
     #     ] == prop_to_id_dict.get(prop)
 
-    # train_and_test_df.reset_index(inplace=True)
+    for prop in unique_property:
+        train_and_test_df.loc[prop, "prop_id"] = prop_to_id_dict.get(prop)
+
+    train_and_test_df.reset_index(inplace=True)
 
     log.info("Train Test DF after assigning 'prop_id'")
     log.info(train_and_test_df.head(n=10))
@@ -205,9 +209,9 @@ def read_train_and_test_data(dataset_params):
     print(f"{train_and_test_df[train_and_test_df['prop_id'] == -2].shape}", flush=True)
     print(f"{train_and_test_df[train_and_test_df['prop_id'] == -2]}", flush=True)
 
-    # assert sorted(prop_ids) == sorted(
-    #     train_and_test_df["prop_id"].unique()
-    # ), "Assigned 'prop_ids' do not match"
+    assert sorted(prop_ids) == sorted(
+        train_and_test_df["prop_id"].unique()
+    ), "Assigned 'prop_ids' do not match"
 
     return train_and_test_df
 
