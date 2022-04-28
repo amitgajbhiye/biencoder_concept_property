@@ -161,6 +161,18 @@ def read_train_and_test_data(dataset_params):
         f"Duplicated rows : {train_and_test_df.loc[~train_and_test_df.index.duplicated(), :]}"
     )
 
+    if not train_and_test_df.index.is_unique:
+
+        log.info(f"Train Test DF shape : {train_and_test_df.shape}")
+        log.info(f"Removing duplicated property index")
+        train_and_test_df = train_and_test_df.loc[
+            ~train_and_test_df.index.duplicated(), :
+        ]
+
+        print(
+            f"Train Test df shape after removing duplicated property index : {train_and_test_df.shape}"
+        )
+
     for prop in unique_property:
         train_and_test_df.loc[prop, "prop_id"] = prop_to_id_dict.get(prop)
 
