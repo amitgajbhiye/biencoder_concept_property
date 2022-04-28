@@ -197,6 +197,11 @@ def read_train_and_test_data(dataset_params):
     log.info(sorted(train_and_test_df["prop_id"].unique()))
     log.info(f"\n")
 
+    print(f"sorted(prop_ids) : {sorted(prop_ids)}")
+    print(
+        f'sorted(train_and_test_df["prop_id"].unique()) : {sorted(train_and_test_df["prop_id"].unique())}'
+    )
+
     # assert sorted(prop_ids) == sorted(
     #     train_and_test_df["prop_id"].unique()
     # ), "Assigned 'prop_ids' do not match"
