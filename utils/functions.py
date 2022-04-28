@@ -201,6 +201,8 @@ def read_train_and_test_data(dataset_params):
     print(
         f'sorted(train_and_test_df["prop_id"].unique()) : {sorted(train_and_test_df["prop_id"].unique())}'
     )
+    print(f"{train_and_test_df[train_and_test_df['prop_id'] == -2].shape}")
+    print(f"{train_and_test_df[train_and_test_df['prop_id'] == -2]}")
 
     # assert sorted(prop_ids) == sorted(
     #     train_and_test_df["prop_id"].unique()
