@@ -432,6 +432,7 @@ def model_evaluation_property_cross_validation(config):
     log.info(f"unique prop_ids in train_and_test_df : {prop_ids}")
     log.info(f"Test Fold Mapping")
     for key, value in test_fold_mapping.items():
+        log.info(f"Fold - {key} : Test Prop id length :{len(value)}")
         log.info(f"{key} : {value}")
 
     label, preds = [], []

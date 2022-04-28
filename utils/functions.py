@@ -155,59 +155,13 @@ def read_train_and_test_data(dataset_params):
 
     train_and_test_df.set_index("property", inplace=True)
 
-    # log.info(f"Train Test DF after setting 'property' as index : {train_and_test_df}")
-    # log.info(
-    #     f"Checking if property index in unique : {train_and_test_df.index.is_unique}"
-    # )
-    # log.info(
-    #     f"Duplicated rows : {train_and_test_df.loc[~train_and_test_df.index.duplicated(), :]}"
-    # )
-
-    # log.info(f"Duplicated properties : {train_and_test_df.index.duplicated()}")
-
-    # if not train_and_test_df.index.is_unique:
-
-    #     log.info(f"Train Test DF shape : {train_and_test_df.shape}")
-    #     log.info(f"Removing duplicated property index")
-
-    #     train_and_test_df = train_and_test_df.loc[
-    #         ~train_and_test_df.index.duplicated(keep="first"), :
-    #     ]
-
-    #     print(
-    #         f"Train Test df shape after removing duplicated property index : {train_and_test_df.shape}"
-    #     )
-
-    # for prop in unique_property:
-    #     train_and_test_df.loc[
-    #         train_and_test_df["property"] == prop, "prop_id"
-    #     ] = prop_to_id_dict.get(prop)
-
-    # for prop in unique_property:
-    #     train_and_test_df[train_and_test_df["property"] == prop][
-    #         "prop_id"
-    #     ] == prop_to_id_dict.get(prop)
-
     for prop in unique_property:
         train_and_test_df.loc[prop, "prop_id"] = prop_to_id_dict.get(prop)
 
     train_and_test_df.reset_index(inplace=True)
 
     log.info("Train Test DF after assigning 'prop_id'")
-    log.info(train_and_test_df.head(n=10))
-
-    log.info(f"sorted(prop_ids) : {sorted(prop_ids)}")
-    log.info(f"\n")
-    log.info(sorted(train_and_test_df["prop_id"].unique()))
-    log.info(f"\n")
-
-    print(f"sorted(prop_ids) : {sorted(prop_ids)}", flush=True)
-    print(
-        f'sorted(train_and_test_df["prop_id"].unique()) : {sorted(train_and_test_df["prop_id"].unique())}',
-        flush=True,
-    )
-    print(f"{train_and_test_df[train_and_test_df['prop_id'] == -2].shape}", flush=True)
-    print(f"{train_and_test_df[train_and_test_df['prop_id'] == -2]}", flush=True)
+    log.info(train_and_test_df.sample(n=10))
 
     assert sorted(prop_ids) == sorted(
         train_and_test_df["prop_id"].unique()
