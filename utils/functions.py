@@ -149,6 +149,7 @@ def read_train_and_test_data(dataset_params):
     prop_to_id_dict = {prop: id for id, prop in enumerate(unique_property)}
     prop_ids = list(prop_to_id_dict.values())
 
+    log.info(f"Number of Property ids in prop_to_id_dict : {len(prop_ids)}")
     log.info(f"Property ids in prop_to_id_dict : {prop_ids}")
 
     # train_and_test_df.set_index("property", inplace=True)
@@ -189,11 +190,16 @@ def read_train_and_test_data(dataset_params):
     # train_and_test_df.reset_index(inplace=True)
 
     log.info("Train Test DF after assigning 'prop_id'")
-    log.info(train_and_test_df.sample(n=10))
+    log.info(train_and_test_df.head(n=10))
 
-    assert sorted(prop_ids) == sorted(
-        train_and_test_df["prop_id"].unique()
-    ), "Assigned 'prop_ids' do not match"
+    log.info(f"sorted(prop_ids) : {sorted(prop_ids)}")
+    log.info(f"\n")
+    log.info(sorted(train_and_test_df["prop_id"].unique()))
+    log.info(f"\n")
+
+    # assert sorted(prop_ids) == sorted(
+    #     train_and_test_df["prop_id"].unique()
+    # ), "Assigned 'prop_ids' do not match"
 
     return train_and_test_df
 
