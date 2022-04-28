@@ -153,7 +153,13 @@ def read_train_and_test_data(dataset_params):
 
     train_and_test_df.set_index("property", inplace=True)
 
-    log.info(f"Train Test DF after setting 'property as index' : {train_and_test_df}")
+    log.info(f"Train Test DF after setting 'property' as index : {train_and_test_df}")
+    log.info(
+        f"Checking if property index in unique : {train_and_test_df.index.is_unique}"
+    )
+    log.info(
+        f"Duplicated rows : {train_and_test_df.loc[~train_and_test_df.index.duplicated(), :]}"
+    )
 
     for prop in unique_property:
         train_and_test_df.loc[prop, "prop_id"] = prop_to_id_dict.get(prop)
