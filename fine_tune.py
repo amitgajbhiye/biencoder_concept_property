@@ -425,7 +425,8 @@ def model_evaluation_property_cross_validation(config):
     prop_ids = np.sort(train_and_test_df.index.unique())
 
     test_fold_mapping = {
-        fold: test_prop_id for fold, test_prop_id in enumerate(np.split(prop_ids, 5))
+        fold: test_prop_id
+        for fold, test_prop_id in enumerate(np.array_split(prop_ids, 5))
     }
 
     log.info(f"unique prop_ids in train_and_test_df : {prop_ids}")
