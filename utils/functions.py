@@ -92,9 +92,9 @@ def read_train_and_test_data(dataset_params):
 
     train_and_test_df = pd.concat((train_df, test_df), axis=0, ignore_index=True)
 
-    train_and_test_df = train_and_test_df.sample(frac=1)
-    train_and_test_df.drop_duplicates(inplace=True)
-    train_and_test_df.reset_index(inplace=True, drop=True)
+    # train_and_test_df = train_and_test_df.sample(frac=1)
+    # train_and_test_df.drop_duplicates(inplace=True)
+    # train_and_test_df.reset_index(inplace=True, drop=True)
 
     print()
     print("+++++++++++ Index Unique +++++++++++++")
