@@ -102,12 +102,9 @@ def read_train_and_test_data(dataset_params):
     print(
         f"Duplicated Index Unique : {train_and_test_df.loc[train_and_test_df.index.duplicated(), :]}"
     )
+    print("train_and_test_df")
+    print(train_and_test_df.head())
     print()
-
-    log.info(f"Index Unique : {train_and_test_df.index.is_unique}")
-    log.info(
-        f"Duplicated Index Unique : {train_and_test_df.loc[train_and_test_df.index.duplicated(), :]}"
-    )
 
     train_and_test_df["con_id"] = int(-1)
     train_and_test_df["prop_id"] = int(-2)
