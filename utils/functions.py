@@ -176,13 +176,15 @@ def read_train_and_test_data(dataset_params):
     #         f"Train Test df shape after removing duplicated property index : {train_and_test_df.shape}"
     #     )
 
-    # for prop in unique_property:
-    #     train_and_test_df.loc[prop, "prop_id"] = prop_to_id_dict.get(prop)
-
     for prop in unique_property:
-        train_and_test_df[train_and_test_df["property"] == prop][
-            "prop_id"
-        ] == prop_to_id_dict.get(prop)
+        train_and_test_df.loc[
+            train_and_test_df["property"] == prop, "prop_id"
+        ] = prop_to_id_dict.get(prop)
+
+    # for prop in unique_property:
+    #     train_and_test_df[train_and_test_df["property"] == prop][
+    #         "prop_id"
+    #     ] == prop_to_id_dict.get(prop)
 
     # train_and_test_df.reset_index(inplace=True)
 
