@@ -1,7 +1,7 @@
 {
     "experiment_name": "prop_split_bert_large_without_fine_tune_cslb_data",
     "dataset_params": {
-        "dataset_name": "propert_split_cslb",
+        "dataset_name": "property_split_cslb",
         "train_file_path": "data/evaluation_data/CSLB/cslb_train_pos_neg_data.tsv",
         "val_file_path": "None",
         "test_file_path": "data/evaluation_data/CSLB/cslb_test_pos_neg_data.tsv",
