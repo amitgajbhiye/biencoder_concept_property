@@ -2,8 +2,8 @@
 
 #SBATCH --job-name=ma
 
-#SBATCH --output=logs/logs/500k_data_logs/concept_property_split_fine_tuned_logs/out_mcrae_ft_mscg_plus_prefix_adjective_500k_bert_base.txt
-#SBATCH --error=logs/logs/500k_data_logs/concept_property_split_fine_tuned_logs/err_mcrae_ft_mscg_plus_prefix_adjective_500k_bert_base.txt
+#SBATCH --output=logs/cslb_con_prop_split_100k_fine_tuned_logs/out_cslb_ft_mscg_plus_prefix_adjective_100k_bert_base.txt
+#SBATCH --error=logs/cslb_con_prop_split_100k_fine_tuned_logs/err_cslb_ft_mscg_plus_prefix_adjective_100k_bert_base.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
@@ -26,7 +26,7 @@ conda activate venv
 
 echo 'Running experiment...'
 
-echo 'Bert Base - Training on configs/500k_fine_tune/cpcv_500k_mscg_plus_prefix_adj.json' 
-python3 fine_tune.py --config_file configs/500k_fine_tune/cpcv_500k_mscg_plus_prefix_adj.json
+echo 'Bert Base - Training on configs/fine_tune/cslb_cpcv_prefix_augmented_top_100k_mscg_config.json' 
+python3 fine_tune.py --config_file configs/fine_tune/cslb_cpcv_prefix_augmented_top_100k_mscg_config.json
 
 echo 'finished!'
