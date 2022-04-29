@@ -518,6 +518,9 @@ def model_evaluation_concept_property_cross_validation(config):
 
     train_and_test_df = read_train_and_test_data(config.get("dataset_params"))
 
+    print("train_and_test_df")
+    print(train_and_test_df)
+
     con_ids = np.sort(train_and_test_df["con_id"].unique())
     prop_ids = np.sort(train_and_test_df["prop_id"].unique())
 
@@ -535,10 +538,12 @@ def model_evaluation_concept_property_cross_validation(config):
 
     log.info(f"Test Concept Fold Mapping")
     for key, value in con_folds.items():
+        log.info(f"Fold {key} : Test Concept id Length {len(value)}")
         log.info(f"{key} : {value}")
 
     log.info(f"Test Property Fold Mapping")
     for key, value in prop_folds.items():
+        log.info(f"Fold {key} : Test Property id Length {len(value)}")
         log.info(f"{key} : {value}")
 
     log.info(f"con_prop_test_fold_combination : {list(con_prop_test_fold_combination)}")
