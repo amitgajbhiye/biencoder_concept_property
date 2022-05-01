@@ -573,7 +573,7 @@ def model_evaluation_concept_property_cross_validation(config):
         train_df = train_and_test_df.drop(index=test_con_id, inplace=False)
         train_df.reset_index(inplace=True)
         train_df.set_index("prop_id", inplace=True)
-        train_df.drop(index=test_prop_id, inplace=True)
+        train_df.drop(index=test_prop_id, axis=0, inplace=True)
 
         train_df.reset_index(inplace=True)
         test_df.reset_index(inplace=True)

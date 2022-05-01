@@ -167,6 +167,8 @@ def read_train_and_test_data(dataset_params):
         train_and_test_df["prop_id"].unique()
     ), "Assigned 'prop_ids' do not match"
 
+    train_and_test_df.to_csv("cslb_train_and_test.tsv", sep="\t")
+
     return train_and_test_df
 
 
