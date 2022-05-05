@@ -29,7 +29,7 @@ def set_seed(seed):
 
 def set_logger(config):
 
-    log_file_name = f"logs/cslb_con_prop_split_100k_fine_tuned_logs/log_{config.get('experiment_name')}_{time.strftime('%d-%m-%Y_%H-%M-%S')}.txt"
+    log_file_name = f"logs/cslb_fine_tuned_100k_logs/log_{config.get('experiment_name')}_{time.strftime('%d-%m-%Y_%H-%M-%S')}.txt"
     print("config.get('experiment_name') :", config.get("experiment_name"))
     print("\n log_file_name :", log_file_name)
 
@@ -66,6 +66,15 @@ def read_train_data(dataset_params):
 
     data_df.drop_duplicates(inplace=True)
     data_df.dropna(inplace=True)
+
+    log.info(f"Concept Column is null ? : {data_df['concept'].is_null().any()}")
+    log.info(f"Property Column is null ? : {data_df['property'].is_null().any()}")
+    log.info(f"Label Column is null ? : {data_df['label'].is_null().any()}")
+
+    data_df.dropna(subset=["concept"], inplace=True)
+    data_df.dropna(subset=["property"], inplace=True)
+    data_df.dropna(subset=["label"], inplace=True)
+
     data_df = data_df.sample(frac=1)
     data_df.reset_index(drop=True, inplace=True)
 
@@ -92,9 +101,23 @@ def read_train_and_test_data(dataset_params):
 
     train_and_test_df = pd.concat((train_df, test_df), axis=0, ignore_index=True)
 
-    train_and_test_df = train_and_test_df.sample(frac=1)
-    train_and_test_df.drop_duplicates(inplace=True)
+    log.info(
+        f"Concept Column is null ? : {train_and_test_df['concept'].is_null().any()}"
+    )
+    log.info(
+        f"Property Column is null ? : {train_and_test_df['property'].is_null().any()}"
+    )
+    log.info(f"Label Column is null ? : {train_and_test_df['label'].is_null().any()}")
+
+    train_and_test_df.dropna(subset=["concept"], inplace=True)
+    train_and_test_df.dropna(subset=["property"], inplace=True)
+    train_and_test_df.dropna(subset=["label"], inplace=True)
     train_and_test_df.dropna(how="any", inplace=True)
+
+    train_and_test_df.drop_duplicates(inplace=True)
+
+    train_and_test_df = train_and_test_df.sample(frac=1)
+
     train_and_test_df.reset_index(inplace=True, drop=True)
 
     print()

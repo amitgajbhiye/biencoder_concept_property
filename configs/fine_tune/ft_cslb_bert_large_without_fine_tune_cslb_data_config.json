@@ -2,9 +2,9 @@
     "experiment_name": "con_split_ft_bert_large_cslb_data_without_fine_tune_baseline_model",
     "dataset_params": {
         "dataset_name": "cslb",
-        "train_file_path": "data/evaluation_data/CSLB/cslb_train_pos_neg_data.tsv",
+        "train_file_path": "data/evaluation_data/CSLB/20_neg_cslb_train_pos_neg_data.tsv",
         "val_file_path": "None",
-        "test_file_path": "data/evaluation_data/CSLB/cslb_test_pos_neg_data.tsv",
+        "test_file_path": "data/evaluation_data/CSLB/20_neg_cslb_test_pos_neg_data.tsv",
         "hf_tokenizer_path": "/scratch/c.scmag3/conceptEmbeddingModel/bert-large-uncased/tokenizer",
         "concept_max_len": 64,
         "property_max_len": 64,

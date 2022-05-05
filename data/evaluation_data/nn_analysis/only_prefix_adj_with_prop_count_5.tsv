@@ -1,0 +1,993 @@
+dummy	large	0
+dummy	common	0
+dummy	natural	0
+dummy	physical	0
+dummy	traditional	0
+dummy	basic	0
+dummy	small	0
+dummy	personal	0
+dummy	environmental	0
+dummy	popular	0
+dummy	medical	0
+dummy	external	0
+dummy	conventional	0
+dummy	social	0
+dummy	organic	0
+dummy	local	0
+dummy	modern	0
+dummy	essential	0
+dummy	electronic	0
+dummy	international	0
+dummy	serious	0
+dummy	big	0
+dummy	complex	0
+dummy	soft	0
+dummy	advanced	0
+dummy	financial	0
+dummy	heavy	0
+dummy	suitable	0
+dummy	global	0
+dummy	industrial	0
+dummy	biological	0
+dummy	sensitive	0
+dummy	mechanical	0
+dummy	clinical	0
+dummy	secondary	0
+dummy	great	0
+dummy	critical	0
+dummy	commercial	0
+dummy	professional	0
+dummy	electrical	0
+dummy	recreational	0
+dummy	hard	0
+dummy	structural	0
+dummy	severe	0
+dummy	fresh	0
+dummy	strong	0
+dummy	functional	0
+dummy	economic	0
+dummy	private	0
+dummy	active	0
+dummy	valuable	0
+dummy	optional	0
+dummy	synthetic	0
+dummy	demographic	0
+dummy	famous	0
+dummy	high	0
+dummy	solid	0
+dummy	systemic	0
+dummy	national	0
+dummy	technical	0
+dummy	practical	0
+dummy	exotic	0
+dummy	healthy	0
+dummy	agricultural	0
+dummy	federal	0
+dummy	oral	0
+dummy	negative	0
+dummy	european	0
+dummy	western	0
+dummy	psychological	0
+dummy	legal	0
+dummy	hazardous	0
+dummy	ancillary	0
+dummy	free	0
+dummy	cultural	0
+dummy	potential	0
+dummy	statistical	0
+dummy	daily	0
+dummy	visual	0
+dummy	dietary	0
+dummy	administrative	0
+dummy	classical	0
+dummy	volatile	0
+dummy	portable	0
+dummy	aquatic	0
+dummy	fundamental	0
+dummy	classic	0
+dummy	musical	0
+dummy	american	0
+dummy	open	0
+dummy	regular	0
+dummy	typical	0
+dummy	domestic	0
+dummy	cellular	0
+dummy	physiological	0
+dummy	pathological	0
+dummy	flammable	0
+dummy	corporate	0
+dummy	normal	0
+dummy	combustible	0
+dummy	analytical	0
+dummy	native	0
+dummy	urban	0
+dummy	seasonal	0
+dummy	third	0
+dummy	single	0
+dummy	auxiliary	0
+dummy	porous	0
+dummy	contemporary	0
+dummy	physicochemical	0
+dummy	optical	0
+dummy	abiotic	0
+dummy	tropical	0
+dummy	positive	0
+dummy	therapeutic	0
+dummy	operational	0
+dummy	academic	0
+dummy	neurological	0
+dummy	promotional	0
+dummy	loose	0
+dummy	peripheral	0
+dummy	invasive	0
+dummy	consumable	0
+dummy	diagnostic	0
+dummy	white	0
+dummy	behavioral	0
+dummy	cosmetic	0
+dummy	durable	0
+dummy	creative	0
+dummy	detailed	0
+dummy	topical	0
+dummy	expensive	0
+dummy	good	0
+dummy	artificial	0
+dummy	renewable	0
+dummy	formal	0
+dummy	southern	0
+dummy	green	0
+dummy	live	0
+dummy	aromatic	0
+dummy	hot	0
+dummy	surgical	0
+dummy	indian	0
+dummy	rich	0
+dummy	interactive	0
+dummy	regional	0
+dummy	educational	0
+dummy	scientific	0
+dummy	mathematical	0
+dummy	architectural	0
+dummy	technological	0
+dummy	dynamic	0
+dummy	viral	0
+dummy	temporary	0
+dummy	tangible	0
+dummy	multinational	0
+dummy	aliphatic	0
+dummy	dangerous	0
+dummy	variable	0
+dummy	original	0
+dummy	annual	0
+dummy	closely related	0
+dummy	low	0
+dummy	religious	0
+dummy	contextual	0
+dummy	powerful	0
+dummy	independent	0
+dummy	sharp	0
+dummy	difficult	0
+dummy	edible	0
+dummy	institutional	0
+dummy	flexible	0
+dummy	nutritional	0
+dummy	poor	0
+dummy	organizational	0
+dummy	pharmaceutical	0
+dummy	continuous	0
+dummy	literary	0
+dummy	vulnerable	0
+dummy	undesirable	0
+dummy	unwanted	0
+dummy	historical	0
+dummy	graphic	0
+dummy	long	0
+dummy	competitive	0
+dummy	retail	0
+dummy	real	0
+dummy	portable electronic	0
+dummy	intangible	0
+dummy	extrinsic	0
+dummy	beneficial	0
+dummy	genetic	0
+dummy	neutral	0
+dummy	northern	0
+dummy	notable	0
+dummy	unpleasant	0
+dummy	atmospheric	0
+dummy	biochemical	0
+dummy	disposable	0
+dummy	regulatory	0
+dummy	electric	0
+dummy	political	0
+dummy	exogenous	0
+dummy	eastern	0
+dummy	flat	0
+dummy	ecological	0
+dummy	asian	0
+dummy	endogenous	0
+dummy	emotional	0
+dummy	perishable	0
+dummy	successful	0
+dummy	central	0
+dummy	personally identifiable	0
+dummy	african	0
+dummy	climatic	0
+dummy	soluble	0
+dummy	pharmacological	0
+dummy	limited	0
+dummy	intrinsic	0
+dummy	graphical	0
+dummy	removable	0
+dummy	transferable	0
+dummy	geographic	0
+dummy	noble	0
+dummy	socio economic	0
+dummy	static	0
+dummy	antimicrobial	0
+dummy	chemotherapeutic	0
+dummy	supplementary	0
+dummy	conservative	0
+dummy	weak	0
+dummy	thermoplastic	0
+dummy	macroeconomic	0
+dummy	unusual	0
+dummy	socioeconomic	0
+dummy	athletic	0
+dummy	aggressive	0
+dummy	british	0
+dummy	unhealthy	0
+dummy	ordinary	0
+dummy	geographical	0
+dummy	fibrous	0
+dummy	magnetic	0
+dummy	innovative	0
+dummy	traumatic	0
+dummy	automotive	0
+dummy	unexpected	0
+dummy	catastrophic	0
+dummy	chinese	0
+dummy	desirable	0
+dummy	constitutional	0
+dummy	strenuous	0
+dummy	somatic	0
+dummy	unsaturated	0
+dummy	red	0
+dummy	mammalian	0
+dummy	modifiable	0
+dummy	italian	0
+dummy	sociodemographic	0
+dummy	meteorological	0
+dummy	numerical	0
+dummy	prestigious	0
+dummy	gaseous	0
+dummy	spiritual	0
+dummy	sugary	0
+dummy	moral	0
+dummy	first	0
+dummy	exceptional	0
+dummy	ethical	0
+dummy	non polar	0
+dummy	abrasive	0
+dummy	ceramic	0
+dummy	facial	0
+dummy	over-the-counter	0
+dummy	morphological	0
+dummy	rigid	0
+dummy	bodily	0
+dummy	illegal	0
+dummy	unforeseen	0
+dummy	terrible	0
+dummy	mixed	0
+dummy	impervious	0
+dummy	wearable	0
+dummy	thermodynamic	0
+dummy	non native	0
+dummy	compatible	0
+dummy	vertical	0
+dummy	precious	0
+dummy	visible	0
+dummy	deciduous	0
+dummy	authentic	0
+dummy	neuropsychiatric	0
+dummy	spatial	0
+dummy	oily	0
+dummy	japanese	0
+dummy	clear	0
+dummy	pulmonary	0
+dummy	composite	0
+dummy	influential	0
+dummy	sophisticated	0
+dummy	agronomic	0
+dummy	instructional	0
+dummy	cruciferous	0
+dummy	neurodegenerative	0
+dummy	non ferrous	0
+dummy	infectious	0
+dummy	geometrical	0
+dummy	nuclear	0
+dummy	controversial	0
+dummy	immunosuppressive	0
+dummy	tough	0
+dummy	liberal	0
+dummy	short	0
+dummy	personal electronic	0
+dummy	airborne	0
+dummy	elastic	0
+dummy	upper	0
+dummy	physical and	0
+dummy	non medical	0
+dummy	nutritious	0
+dummy	monetary	0
+dummy	recyclable	0
+dummy	occupational	0
+dummy	prognostic	0
+dummy	aesthetic	0
+dummy	risky	0
+dummy	ethnic	0
+dummy	expendable	0
+dummy	adventurous	0
+dummy	mobile electronic	0
+dummy	chromatographic	0
+dummy	actual	0
+dummy	electrically conductive	0
+dummy	addictive	0
+dummy	non financial	0
+dummy	protein-rich	0
+dummy	categorical	0
+dummy	extraneous	0
+dummy	attractive	0
+dummy	german	0
+dummy	aprotic	0
+dummy	atypical	0
+dummy	electrically	0
+dummy	luxurious	0
+dummy	biodegradable	0
+dummy	artistic	0
+dummy	affective	0
+dummy	opportunistic	0
+dummy	chronic medical	0
+dummy	abdominal	0
+dummy	stationary	0
+dummy	biocompatible	0
+dummy	non porous	0
+dummy	extra	0
+dummy	civil	0
+dummy	initial	0
+dummy	english	0
+dummy	australian	0
+dummy	effective	0
+dummy	military	0
+dummy	intestinal	0
+dummy	acoustic	0
+dummy	informal	0
+dummy	sometimes	0
+dummy	elementary	0
+dummy	multilateral	0
+dummy	crucial	0
+dummy	strategic	0
+dummy	modern electronic	0
+dummy	pathophysiological	0
+dummy	delicious	0
+dummy	biophysical	0
+dummy	municipal	0
+dummy	biotic	0
+dummy	close	0
+dummy	eukaryotic	0
+dummy	non surgical	0
+dummy	intellectual	0
+dummy	poisonous	0
+dummy	probiotic	0
+dummy	audio visual	0
+dummy	vigorous	0
+dummy	inactive	0
+dummy	rural	0
+dummy	sensitive personal	0
+dummy	biomedical	0
+dummy	behavioural	0
+dummy	anatomical	0
+dummy	characteristic	0
+dummy	new	0
+dummy	unstructured	0
+dummy	nonpolar	0
+dummy	non conductive	0
+dummy	physical and mechanical	0
+dummy	stable	0
+dummy	hydrolytic	0
+dummy	transitional	0
+dummy	serial	0
+dummy	lignocellulosic	0
+dummy	parasitic	0
+dummy	carnivorous	0
+dummy	heterogeneous	0
+dummy	non-starchy	0
+dummy	monthly	0
+dummy	geological	0
+dummy	topographic	0
+dummy	assistive	0
+dummy	nice	0
+dummy	electrochemical	0
+dummy	interpersonal	0
+dummy	broad	0
+dummy	outstanding	0
+dummy	proprietary	0
+dummy	stochastic	0
+dummy	charitable	0
+dummy	commercially available	0
+dummy	comfortable	0
+dummy	methodological	0
+dummy	commercially important	0
+dummy	observable	0
+dummy	unstable	0
+dummy	unrefined	0
+dummy	urinary	0
+dummy	french	0
+dummy	viscous	0
+dummy	intravenous	0
+dummy	herbaceous	0
+dummy	criminal	0
+dummy	microstructural	0
+dummy	common medical	0
+dummy	superficial	0
+dummy	avian	0
+dummy	whole	0
+dummy	osmotic	0
+dummy	carbonaceous	0
+dummy	kinetic	0
+dummy	allied	0
+dummy	audiovisual	0
+dummy	nocturnal	0
+dummy	complete	0
+dummy	electromagnetic	0
+dummy	cyclical	0
+dummy	extraordinary	0
+dummy	prepared	0
+dummy	vocational	0
+dummy	poetic	0
+dummy	proteolytic	0
+dummy	offshore	0
+dummy	automatic	0
+dummy	vaginal	0
+dummy	holistic	0
+dummy	theoretical	0
+dummy	non traditional	0
+dummy	identifiable	0
+dummy	middle eastern	0
+dummy	extra-curricular	0
+dummy	hematopoietic	0
+dummy	derivative	0
+dummy	legendary	0
+dummy	alcoholic	0
+dummy	separate	0
+dummy	unsecured	0
+dummy	paradoxical	0
+dummy	sustainable	0
+dummy	neurodevelopmental	0
+dummy	autonomic	0
+dummy	personal or	0
+dummy	residual	0
+dummy	pedestrian	0
+dummy	non invasive	0
+dummy	unnecessary	0
+dummy	unprocessed	0
+dummy	non functional	0
+dummy	reusable	0
+dummy	adjunctive	0
+dummy	bilateral	0
+dummy	neurotrophic	0
+dummy	second	0
+dummy	voluntary	0
+dummy	nonrenewable	0
+dummy	aqueous	0
+dummy	latin american	0
+dummy	tertiary	0
+dummy	oxidative	0
+dummy	romantic	0
+dummy	geopolitical	0
+dummy	noninvasive	0
+dummy	textural	0
+dummy	non pharmacological	0
+dummy	valid	0
+dummy	full	0
+dummy	impermeable	0
+dummy	aliphatic and aromatic	0
+dummy	online social	0
+dummy	horticultural	0
+dummy	anesthetic	0
+dummy	nonferrous	0
+dummy	unfavorable	0
+dummy	topographical	0
+dummy	customary	0
+dummy	residential	0
+dummy	benthic	0
+dummy	empirical	0
+dummy	inductive	0
+dummy	manual	0
+dummy	economically important	0
+dummy	integral	0
+dummy	personal financial	0
+dummy	implantable	0
+dummy	socio cultural	0
+dummy	spectral	0
+dummy	hematological	0
+dummy	sexual	0
+dummy	instrumental	0
+dummy	intensive	0
+dummy	sociocultural	0
+dummy	antibacterial	0
+dummy	democratic	0
+dummy	geophysical	0
+dummy	movable	0
+dummy	non-ferrous	0
+dummy	natural and synthetic	0
+dummy	abnormal	0
+dummy	incompatible	0
+dummy	north american	0
+dummy	nonmetallic	0
+dummy	evolutionary	0
+dummy	leguminous	0
+dummy	feral	0
+dummy	trophic	0
+dummy	extractive	0
+dummy	young	0
+dummy	water-soluble	0
+dummy	washable	0
+dummy	fiscal	0
+dummy	clinicopathological	0
+dummy	infrastructural	0
+dummy	minimally invasive	0
+dummy	reputable	0
+dummy	adaptive	0
+dummy	nonessential	0
+dummy	amorphous	0
+dummy	excitable	0
+dummy	herbivorous	0
+dummy	anonymous	0
+dummy	semi precious	0
+dummy	injectable	0
+dummy	naturally	0
+dummy	venomous	0
+dummy	cutaneous	0
+dummy	non-profit	0
+dummy	derivative financial	0
+dummy	implantable medical	0
+dummy	nontraditional	0
+dummy	uncomfortable	0
+dummy	diabetic	0
+dummy	non monetary	0
+dummy	semantic	0
+dummy	anhydrous	0
+dummy	casual	0
+dummy	large urban	0
+dummy	serious medical	0
+dummy	productive	0
+dummy	epithelial	0
+dummy	elective	0
+dummy	huge	0
+dummy	populous	0
+dummy	chemically	0
+dummy	narrative	0
+dummy	optoelectronic	0
+dummy	tiny	0
+dummy	visceral	0
+dummy	upscale	0
+dummy	logistical	0
+dummy	hydrological	0
+dummy	cortic	0
+dummy	quiet	0
+dummy	non technical	0
+dummy	extensive	0
+dummy	final	0
+dummy	durable medical	0
+dummy	eligible	0
+dummy	genetic and	0
+dummy	insoluble	0
+dummy	carbohydrate-rich	0
+dummy	nitrogenous	0
+dummy	usable	0
+dummy	low-impact	0
+dummy	sedimentary	0
+dummy	overseas	0
+dummy	small open	0
+dummy	densely populated	0
+dummy	nervous	0
+dummy	intramural	0
+dummy	spatially relative	0
+dummy	extremely	0
+dummy	additionally	0
+dummy	cryptographic	0
+dummy	humoral	0
+dummy	non hazardous	0
+dummy	hous	0
+dummy	inflammable	0
+dummy	accessible	0
+dummy	genetic and environmental	0
+dummy	mild systemic	0
+dummy	non selective	0
+dummy	physiological and pathological	0
+dummy	vegetarian	0
+dummy	bibliographic	0
+dummy	unpredictable	0
+dummy	adhesive	0
+dummy	east asian	0
+dummy	spatially	0
+dummy	semi-precious	0
+dummy	psychological and social	0
+dummy	inexpensive	0
+dummy	interdisciplinary	0
+dummy	antineoplastic	0
+dummy	international financial	0
+dummy	rare and interesting	0
+dummy	non genetic	0
+dummy	large financial	0
+dummy	sociological	0
+dummy	adverse environmental	0
+dummy	irritative	0
+dummy	protic	0
+dummy	logistic	0
+dummy	situational	0
+dummy	non precious	0
+dummy	iron-rich	0
+dummy	basic social	0
+dummy	calcium-rich	0
+dummy	purely	0
+dummy	demographic and	0
+dummy	non academic	0
+dummy	co-curricular	0
+dummy	large and small	0
+dummy	unicellular	0
+dummy	immunological	0
+dummy	large and	0
+dummy	nongovernmental	0
+dummy	extreme environmental	0
+dummy	unsupervised	0
+dummy	antiepileptic	0
+dummy	anadromous	0
+dummy	basic personal	0
+dummy	photosynthetic	0
+dummy	pharmacokinetic	0
+dummy	non volatile	0
+dummy	objectionable	0
+dummy	non-metallic	0
+dummy	occasional	0
+dummy	non competitive	0
+dummy	nonpharmacological	0
+dummy	non-specific	0
+dummy	small electrical	0
+dummy	biologically active	0
+dummy	true	0
+dummy	non-steroidal	0
+dummy	well-known	0
+dummy	endemic	0
+dummy	non residential	0
+dummy	additive	0
+dummy	fantastic	0
+dummy	traditional economic	0
+dummy	non-perishable	0
+dummy	excessive	0
+dummy	western european	0
+dummy	easily repairable	0
+dummy	non enzymatic	0
+dummy	sedentary	0
+dummy	nonperishable	0
+dummy	proper personal	0
+dummy	compressible	0
+dummy	complementary and alternative	0
+dummy	untreated	0
+dummy	flammable or explosive	0
+dummy	vocal	0
+dummy	narcotic	0
+dummy	supranational	0
+dummy	treatable	0
+dummy	radiological	0
+dummy	publicly available	0
+dummy	biotic and abiotic	0
+dummy	unanticipated	0
+dummy	reliable	0
+dummy	popular social	0
+dummy	heuristic	0
+dummy	equally important	0
+dummy	commercial and	0
+dummy	photographic	0
+dummy	uncooked	0
+dummy	sudden	0
+dummy	massive	0
+dummy	noncombustible	0
+dummy	susceptible	0
+dummy	fermentable	0
+dummy	water-based	0
+dummy	adjustable	0
+dummy	black	0
+dummy	illustrative	0
+dummy	global environmental	0
+dummy	neuromuscular	0
+dummy	commonly available	0
+dummy	hydrous	0
+dummy	taxonomic	0
+dummy	nonfinancial	0
+dummy	plant-based	0
+dummy	ophthalmic	0
+dummy	epigenetic	0
+dummy	long-term	0
+dummy	nonconductive	0
+dummy	rapid	0
+dummy	private or public	0
+dummy	strong negative	0
+dummy	metamorphic	0
+dummy	southeastern	0
+dummy	safe	0
+dummy	atherosclerotic	0
+dummy	secretarial	0
+dummy	small electronic	0
+dummy	expensive and exotic	0
+dummy	physiochemical	0
+dummy	preliminary	0
+dummy	phytochemical	0
+dummy	topological	0
+dummy	transnational	0
+dummy	expressive	0
+dummy	ferromagnetic	0
+dummy	civilian	0
+dummy	rhetorical	0
+dummy	prosthetic	0
+dummy	phagocytic	0
+dummy	linguistic	0
+dummy	extreme natural	0
+dummy	organic and inorganic	0
+dummy	ferrous	0
+dummy	adequate medical	0
+dummy	cementitious	0
+dummy	psychotic	0
+dummy	nonlinear	0
+dummy	alongside	0
+dummy	organisational	0
+dummy	nonverbal	0
+dummy	fiber-rich	0
+dummy	non-renewable	0
+dummy	oncolytic	0
+dummy	superior	0
+dummy	involuntary	0
+dummy	neural	0
+dummy	national new	0
+dummy	diagnostic and therapeutic	0
+dummy	holometabolous	0
+dummy	demographic and clinical	0
+dummy	informational	0
+dummy	festive	0
+dummy	basic statistical	0
+dummy	navigational	0
+dummy	preventable	0
+dummy	key economic	0
+dummy	gross	0
+dummy	reasonable	0
+dummy	basic medical	0
+dummy	neurological and psychiatric	0
+dummy	zoonotic	0
+dummy	competitively sensitive	0
+dummy	pituitary	0
+dummy	nonfunctional	0
+dummy	nonsurgical	0
+dummy	radiographic	0
+dummy	dicotyledonous	0
+dummy	local and national	0
+dummy	antipsychotic	0
+dummy	theatrical	0
+dummy	thermophysical	0
+dummy	intraoperative	0
+dummy	biotic and	0
+dummy	revolutionary	0
+dummy	indigenous	0
+dummy	antiviral	0
+dummy	astronomical	0
+dummy	nonenzymatic	0
+dummy	physiological and	0
+dummy	exemplary	0
+dummy	humanitarian	0
+dummy	parenteral	0
+dummy	environmentally sensitive	0
+dummy	large open	0
+dummy	smooth flat	0
+dummy	antihypertensive	0
+dummy	unconventional	0
+dummy	stylistic	0
+dummy	nominal	0
+dummy	non magnetic	0
+dummy	asynchronous	0
+dummy	non personally identifiable	0
+dummy	textual	0
+dummy	noxious	0
+dummy	global financial	0
+dummy	oceanic	0
+dummy	abundant natural	0
+dummy	subatomic	0
+dummy	transactional	0
+dummy	thoughtful	0
+dummy	nonselective	0
+dummy	ordinary and necessary	0
+dummy	small monetary	0
+dummy	obstructive	0
+dummy	inflatable	0
+dummy	great affordable	0
+dummy	islamic	0
+dummy	extreme climatic	0
+dummy	uncontrollable	0
+dummy	diversified technical	0
+dummy	pancreatic	0
+dummy	traditional financial	0
+dummy	national and international	0
+dummy	electropositive	0
+dummy	pharmaceutically acceptable	0
+dummy	generally unpublished	0
+dummy	busy	0
+dummy	neurological and	0
+dummy	non-alcoholic	0
+dummy	small financial	0
+dummy	subcortical	0
+dummy	paramagnetic	0
+dummy	desirable personal	0
+dummy	optimal	0
+dummy	object-oriented	0
+dummy	ionizable	0
+dummy	electro optical	0
+dummy	contemporary economic	0
+dummy	synchronous	0
+dummy	extractable	0
+dummy	ordinary pharmaceutical	0
+dummy	lovely	0
+dummy	large pharmaceutical	0
+dummy	unauthorized	0
+dummy	extensible	0
+dummy	dramatic	0
+dummy	antithrombotic	0
+dummy	solid pharmaceutical	0
+dummy	hard and	0
+dummy	nosocomial	0
+dummy	unsubstituted	0
+dummy	measurable	0
+dummy	contemporary social	0
+dummy	post-translational	0
+dummy	utilitarian	0
+dummy	back	0
+dummy	upholstered	0
+dummy	cultural and individual	0
+dummy	unheated	0
+dummy	procedural	0
+dummy	rheumatic	0
+dummy	numeric	0
+dummy	differenttherapeuticapproacheswithcommonimmunotherapeutic	0
+dummy	interstitial	0
+dummy	breakable	0
+dummy	individualistic	0
+dummy	deterministic	0
+dummy	commercial and public	0
+dummy	local environmental	0
+dummy	socio-demographic	0
+dummy	unprocessed or little processed	0
+dummy	piscivorous	0
+dummy	menstrual	0
+dummy	ablative	0
+dummy	biblical	0
+dummy	entrepreneurial	0
+dummy	currently available	0
+dummy	antibiotic	0
+dummy	currently	0
+dummy	intermediary	0
+dummy	long-lived	0
+dummy	routine medical	0
+dummy	edaphic	0
+dummy	extrahepatic	0
+dummy	non reactive	0
+dummy	wearable and	0
+dummy	iterative	0
+dummy	sensitive and	0
+dummy	heavily	0
+dummy	antidiabetic	0
+dummy	biologically relevant	0
+dummy	typical analytical	0
+dummy	forensic	0
+dummy	antiarrhythmic	0
+dummy	ectothermic	0
+dummy	mexican	0
+dummy	charismatic	0
+dummy	dermatological	0
+dummy	problematic	0
+dummy	pedagogical	0
+dummy	oriental	0
+dummy	exclusive	0
+dummy	solanaceous	0
+dummy	environmentally	0
+dummy	controllable	0
+dummy	anatomic	0
+dummy	local and	0
+dummy	focal	0
+dummy	tropical and subtropical	0
+dummy	spanish	0
+dummy	dangerous or flammable	0
+dummy	abiotic environmental	0
+dummy	hydrolyzable	0
+dummy	immovable	0
+dummy	small valuable	0
+dummy	diamagnetic	0
+dummy	nongenetic	0
+dummy	archaeological	0
+dummy	easy	0
+dummy	medically important	0
+dummy	seismic	0
+dummy	hepatic	0
+dummy	locally available	0
+dummy	natural environmental	0
+dummy	non abrasive	0
+dummy	psychological and	0
+dummy	tonal	0
+dummy	acceptable	0
+dummy	inertial	0
+dummy	scholarly	0
+dummy	permeable	0
+dummy	quantitative and qualitative	0
+dummy	non-verbal	0
+dummy	ferrous non ferrous	0
+dummy	iconic american	0
+dummy	preferably	0
+dummy	nonbiodegradable	0
+dummy	neuronal	0
+dummy	epidemiological	0
+dummy	non aromatic	0
+dummy	aliphatic and	0
+dummy	capitalist economic	0
+dummy	indo european	0
+dummy	northern and midwestern industrial	0
+dummy	oleaginous	0
+dummy	moveable	0
+dummy	unearned	0
+dummy	ferrous and non ferrous	0
+dummy	non-cash	0
+dummy	animal-based	0
+dummy	interventional	0
+dummy	nonionic	0
+dummy	botanical	0
+dummy	non aqueous	0
+dummy	soviet	0
+dummy	catalytic	0
+dummy	natural and	0
+dummy	weekly	0
+dummy	nasty	0
+dummy	seemingly diverse	0
+dummy	thermodynamical	0
+dummy	eastern european	0
+dummy	naturally gluten free	0
+dummy	ethical and environmentally conscious	0
+dummy	energetic	0
+dummy	non-governmental	0
+dummy	unfamiliar	0
+dummy	analytic	0
+dummy	external environmental	0
+dummy	naturally healthy	0
+dummy	oil-rich	0
+dummy	playable	0
+dummy	private or	0
+dummy	fnancial	0
+dummy	endothelial	0
+dummy	impressive	0
+dummy	compositional	0
+dummy	myriad industrial	0
+dummy	experiential	0
+dummy	happy	0
+dummy	probabilistic	0
+dummy	social and	0
+dummy	malicious	0
+dummy	human neurological	0
+dummy	seasonal fresh	0
+dummy	neurocognitive	0
+dummy	costly	0
+dummy	enzymatic	0
+dummy	monocotyledonous	0
+dummy	non economic	0
+dummy	prebiotic	0
+dummy	grammatical	0
+dummy	spiritual and metaphysical	0
+dummy	eusocial	0
+dummy	unlimited	0
+dummy	electromechanical	0
+dummy	potassium-rich	0
+dummy	electrical and	0
+dummy	purely subjective	0
