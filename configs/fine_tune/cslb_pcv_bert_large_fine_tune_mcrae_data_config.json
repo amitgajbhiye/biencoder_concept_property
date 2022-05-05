@@ -2,9 +2,9 @@
     "experiment_name": "prop_split_ft_bert_large_cslb_data_fine_tuned_on_100k_mscg_8k_prefix_adj_100k_gkb_prop",
     "dataset_params": {
         "dataset_name": "propert_split_cslb",
-        "train_file_path": "data/evaluation_data/CSLB/cslb_train_pos_neg_data.tsv",
+        "train_file_path": "data/evaluation_data/CSLB/20_neg_cslb_train_pos_neg_data.tsv",
         "val_file_path": "None",
-        "test_file_path": "data/evaluation_data/CSLB/cslb_test_pos_neg_data.tsv",
+        "test_file_path": "data/evaluation_data/CSLB/20_neg_cslb_test_pos_neg_data.tsv",
         "hf_tokenizer_path": "/scratch/c.scmag3/conceptEmbeddingModel/bert-large-uncased/tokenizer",
         "concept_max_len": 64,
         "property_max_len": 64,
