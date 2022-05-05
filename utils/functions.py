@@ -67,9 +67,9 @@ def read_train_data(dataset_params):
     data_df.drop_duplicates(inplace=True)
     data_df.dropna(inplace=True)
 
-    log.info(f"Concept Column is null ? : {data_df['concept'].is_null().any()}")
-    log.info(f"Property Column is null ? : {data_df['property'].is_null().any()}")
-    log.info(f"Label Column is null ? : {data_df['label'].is_null().any()}")
+    log.info(f"Concept Column is null ? : {data_df['concept'].isnull().any()}")
+    log.info(f"Property Column is null ? : {data_df['property'].isnull().any()}")
+    log.info(f"Label Column is null ? : {data_df['label'].isnull().any()}")
 
     data_df.dropna(subset=["concept"], inplace=True)
     data_df.dropna(subset=["property"], inplace=True)
@@ -102,12 +102,12 @@ def read_train_and_test_data(dataset_params):
     train_and_test_df = pd.concat((train_df, test_df), axis=0, ignore_index=True)
 
     log.info(
-        f"Concept Column is null ? : {train_and_test_df['concept'].is_null().any()}"
+        f"Concept Column is null ? : {train_and_test_df['concept'].isnull().any()}"
     )
     log.info(
-        f"Property Column is null ? : {train_and_test_df['property'].is_null().any()}"
+        f"Property Column is null ? : {train_and_test_df['property'].isnull().any()}"
     )
-    log.info(f"Label Column is null ? : {train_and_test_df['label'].is_null().any()}")
+    log.info(f"Label Column is null ? : {train_and_test_df['label'].isnull().any()}")
 
     train_and_test_df.dropna(subset=["concept"], inplace=True)
     train_and_test_df.dropna(subset=["property"], inplace=True)
