@@ -1,6 +1,6 @@
 #!/bin/bash --login
 
-#SBATCH --job-name=blmag
+#SBATCH --job-name=cp_blmag
 
 #SBATCH --output=logs/cslb_con_prop_split_100k_fine_tuned_logs/out_cslb_ft_bert_large_mscg_plus_prefix_adjective_plus_gkb_100k.txt
 #SBATCH --error=logs/cslb_con_prop_split_100k_fine_tuned_logs/err_cslb_ft_bert_large_mscg_plus_prefix_adjective_plus_gkb_100k.txt

@@ -1,6 +1,6 @@
 #!/bin/bash --login
 
-#SBATCH --job-name=ma
+#SBATCH --job-name=cp_ma
 
 #SBATCH --output=logs/cslb_con_prop_split_100k_fine_tuned_logs/out_cslb_ft_mscg_plus_prefix_adjective_100k_bert_base.txt
 #SBATCH --error=logs/cslb_con_prop_split_100k_fine_tuned_logs/err_cslb_ft_mscg_plus_prefix_adjective_100k_bert_base.txt
