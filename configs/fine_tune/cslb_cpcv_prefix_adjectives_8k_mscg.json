@@ -2,9 +2,9 @@
     "experiment_name": "con_prop_split_bert_base_cslb_fine_tuned_on_prefix_adjectives_8k_mscg_model",
     "dataset_params": {
         "dataset_name": "concept_property_split_cslb",
-        "train_file_path": "data/evaluation_data/CSLB/cslb_train_pos_neg_data.tsv",
+        "train_file_path": "data/evaluation_data/CSLB/20_neg_cslb_train_pos_neg_data.tsv",
         "val_file_path": "None",
-        "test_file_path": "data/evaluation_data/CSLB/cslb_test_pos_neg_data.tsv",
+        "test_file_path": "data/evaluation_data/CSLB/20_neg_cslb_test_pos_neg_data.tsv",
         "hf_tokenizer_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained/tokenizer",
         "concept_max_len": 64,
         "property_max_len": 64,
