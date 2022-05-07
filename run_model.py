@@ -50,7 +50,17 @@ def train_single_epoch(
 
         ids_dict = train_dataset.tokenize(concepts_batch, property_batch)
 
+        log.info(f"\n")
+        log.info(f"******************************")
+
+        for key, value in ids_dict.items():
+            log.info(f"{key} : {value}")
+
+        log.info(f"******************************")
+        log.info(f"\n")
+
         if train_dataset.hf_tokenizer_name in ("roberta-base", "roberta-large"):
+
             (
                 concept_inp_id,
                 concept_attention_mask,
@@ -209,7 +219,7 @@ def train(config):
 
     model = create_model(config.get("model_params"))
     model.to(device)
-    log.info(f"Model Loaded : {model}")
+    # log.info(f"Model Loaded : {model}")
 
     # -------------------- Preparation for training  ------------------- #
 
