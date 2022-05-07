@@ -204,8 +204,8 @@ class ConceptPropertyDataset(Dataset):
             # context = " means [MASK]"
             context = " means " + self.mask_token
 
-            concepts_batch = [x.strip() + context for x in batch[0]]
-            property_batch = [x.strip() + context for x in batch[1]]
+            concepts_batch = [x.strip().replace(".", "") + context for x in batch[0]]
+            property_batch = [x.strip().replace(".", "") + context for x in batch[1]]
 
         elif self.context_num == 7:
 
