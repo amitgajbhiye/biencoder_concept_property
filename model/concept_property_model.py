@@ -31,9 +31,9 @@ class ConceptPropertyModel(nn.Module):
         #     model_params.get("hf_model_path")
         # )
 
-        self.model_class, self.mask_token_id = MODEL_CLASS.get(
-            model_params.get("hf_checkpoint_name")
-        )
+        self.hf_checkpoint_name = model_params.get("hf_checkpoint_name")
+
+        self.model_class, self.mask_token_id = MODEL_CLASS.get(self.hf_checkpoint_name)
 
         self._concept_encoder = self.model_class.from_pretrained(
             model_params.get("hf_model_path")
