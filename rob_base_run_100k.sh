@@ -2,8 +2,8 @@
 
 #SBATCH --job-name=robB_T
 
-#SBATCH --output=logs/roberta_base_100k_model_training/out_rob_base_100k_mscg_8k_prefix_adj_100k_gkb_prop.txt
-#SBATCH --error=logs/roberta_base_100k_model_training/err_rob_base_100k_mscg_8k_prefix_adj_100k_gkb_prop.txt
+#SBATCH --output=logs/roberta_base_100k_model_training_logs/out_rob_base_100k_mscg_8k_prefix_adj_100k_gkb_prop.txt
+#SBATCH --error=logs/roberta_base_100k_model_training_logs/err_rob_base_100k_mscg_8k_prefix_adj_100k_gkb_prop.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
