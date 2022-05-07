@@ -57,7 +57,7 @@ def train_single_epoch(
             property_input_id,
             property_attention_mask,
             property_token_type_id,
-        ) = [val.to(device) for _, val in ids_dict.items()]
+        ) = [val.to(device) for _, val in ids_dict.items() if val is not None]
 
         concept_embedding, property_embedding, logits = model(
             concept_input_id=concept_inp_id,
@@ -198,6 +198,7 @@ def train(config):
 
     model = create_model(config.get("model_params"))
     model.to(device)
+    log.info(f"Model Loaded : {model}")
 
     # -------------------- Preparation for training  ------------------- #
 

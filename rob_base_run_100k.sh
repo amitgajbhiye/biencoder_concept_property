@@ -2,8 +2,8 @@
 
 #SBATCH --job-name=robB_T
 
-#SBATCH --output=logs/roberta_base_100k_model_training_logs/out_rob_base_100k_mscg_8k_prefix_adj_100k_gkb_prop.txt
-#SBATCH --error=logs/roberta_base_100k_model_training_logs/err_rob_base_100k_mscg_8k_prefix_adj_100k_gkb_prop.txt
+#SBATCH --output=logs/all_lms_100k_train_logs/out_rob_base_100k_mscg_8k_prefix_adj_100k_gkb_prop.txt
+#SBATCH --error=logs/all_lms_100k_train_logs/err_rob_base_100k_mscg_8k_prefix_adj_100k_gkb_prop.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
@@ -14,7 +14,7 @@
 #SBATCH --mem=13g
 #SBATCH --gres=gpu:1
 
-#SBATCH -t 1-00:00:00
+#SBATCH -t 0-02:00:00
 
 echo 'This script is running on:'
 hostname
