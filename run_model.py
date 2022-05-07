@@ -50,14 +50,14 @@ def train_single_epoch(
 
         ids_dict = train_dataset.tokenize(concepts_batch, property_batch)
 
-        log.info(f"\n")
-        log.info(f"******************************")
+        # log.info(f"\n")
+        # log.info(f"******************************")
 
-        for key, value in ids_dict.items():
-            log.info(f"{key} : {value}")
+        # for key, value in ids_dict.items():
+        #     log.info(f"{key} : {value}")
 
-        log.info(f"******************************")
-        log.info(f"\n")
+        # log.info(f"******************************")
+        # log.info(f"\n")
 
         if train_dataset.hf_tokenizer_name in ("roberta-base", "roberta-large"):
 

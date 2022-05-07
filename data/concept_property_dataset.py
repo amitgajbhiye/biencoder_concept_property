@@ -60,6 +60,8 @@ class ConceptPropertyDataset(Dataset):
             dataset_params.get("hf_tokenizer_path")
         )
 
+        self.mask_token = self.tokenizer.mask_token
+
         self.concept2idx, self.idx2concept = self.create_concept_idx_dicts()
         self.property2idx, self.idx2property = self.create_property_idx_dicts()
 
@@ -70,6 +72,7 @@ class ConceptPropertyDataset(Dataset):
 
         log.info(f"hf_tokenizer_name : {dataset_params.get('hf_tokenizer_name')}")
         log.info(f"self.tokenizer_class : {self.tokenizer_class}")
+        log.info(f"Mask Token for the Model : {self.mask_token}")
         log.info(f"Context Num : {self.context_num}")
 
     def create_concept_idx_dicts(self):
@@ -195,7 +198,8 @@ class ConceptPropertyDataset(Dataset):
         elif self.context_num == 6:
 
             # [CLS] CONCEPT means [MASK] [SEP]
-            context = " means [MASK]"
+            # context = " means [MASK]"
+            context = " means " + self.mask_token
 
             concepts_batch = [x + context for x in batch[0]]
             property_batch = [x + context for x in batch[1]]
