@@ -260,12 +260,6 @@ class ConceptPropertyDataset(Dataset):
 
         if self.context_num in (1, 2, 3, 4, 5, 6):
 
-            # # Printing for debugging
-            # print(f"Context Num : {self.context_num}")
-            # print("concept_batch :", concept_batch)
-            # print("property_batch :", property_batch)
-            # print()
-
             concept_ids = self.tokenizer(
                 concept_batch,
                 add_special_tokens=True,
@@ -355,14 +349,25 @@ class ConceptPropertyDataset(Dataset):
             #     print(self.tokenizer.convert_ids_to_tokens(torch.tensor(i)))
             # print("*" * 50, flush=True)
 
-        return {
-            "concept_inp_id": concept_ids.get("input_ids"),
-            "concept_atten_mask": concept_ids.get("attention_mask"),
-            "concept_token_type_id": concept_ids.get("token_type_ids"),
-            "property_inp_id": property_ids.get("input_ids"),
-            "property_atten_mask": property_ids.get("attention_mask"),
-            "property_token_type_id": property_ids.get("token_type_ids"),
-        }
+        if self.hf_tokenizer_name in ("roberta-base", "roberta-large"):
+
+            return {
+                "concept_inp_id": concept_ids.get("input_ids"),
+                "concept_atten_mask": concept_ids.get("attention_mask"),
+                "property_inp_id": property_ids.get("input_ids"),
+                "property_atten_mask": property_ids.get("attention_mask"),
+            }
+
+        else:
+
+            return {
+                "concept_inp_id": concept_ids.get("input_ids"),
+                "concept_atten_mask": concept_ids.get("attention_mask"),
+                "concept_token_type_id": concept_ids.get("token_type_ids"),
+                "property_inp_id": property_ids.get("input_ids"),
+                "property_atten_mask": property_ids.get("attention_mask"),
+                "property_token_type_id": property_ids.get("token_type_ids"),
+            }
 
 
 class TestDataset(ConceptPropertyDataset):
