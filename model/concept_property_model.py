@@ -1,7 +1,5 @@
 import logging
 
-# import tokenizers
-
 import torch
 from torch import nn
 from torch.nn.functional import normalize

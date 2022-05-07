@@ -1,8 +1,6 @@
 import logging
-from os import sep
 
 import pandas as pd
-import torch
 import numpy as np
 from torch.utils.data import Dataset
 from transformers import BertTokenizer, RobertaTokenizer
@@ -35,9 +33,6 @@ class ConceptPropertyDataset(Dataset):
             # self.data_df.reset_index(inplace=True)
 
             log.info(f"Train Data size {self.data_df.shape}")
-
-            # Sampling Top 100 data for experiment
-            self.data_df = self.data_df[0:100]
 
         elif dataset_type == "valid":
             self.data_df = pd.read_csv(
