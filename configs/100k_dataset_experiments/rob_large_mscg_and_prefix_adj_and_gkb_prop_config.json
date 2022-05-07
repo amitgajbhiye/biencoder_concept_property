@@ -1,12 +1,12 @@
 {
-    "experiment_name": "rob_base_100k_mscg_8k_prefix_adj_100k_gkb_properties",
+    "experiment_name": "rob_large_100k_mscg_plus_8k_prefix_adj_plus_100k_gkb_prop",
     "dataset_params": {
-        "dataset_name": "100k_mscg_8k_prefix_adj_100k_gkb_properties",
+        "dataset_name": "100k_mscg_and_8k_prefix_adj_and_100k_gkb_properties",
         "train_file_path": "data/train_data/100k_mscg_8k_prefix_adj_100k_gkb_properties/train_100k_mscg_8k_prefix_adj_100k_gkb_properties.tsv",
         "val_file_path": "data/train_data/100k_mscg_8k_prefix_adj_100k_gkb_properties/valid_10k_sampled_100k_mscg_8k_prefix_adj_100k_gkb_properties.tsv",
         "test_file_path": "None",
-        "hf_tokenizer_name": "roberta-base",
-        "hf_tokenizer_path": "/scratch/c.scmag3/conceptEmbeddingModel/roberta-base/tokenizer",
+        "hf_tokenizer_name": "roberta-large",
+        "hf_tokenizer_path": "/scratch/c.scmag3/conceptEmbeddingModel/roberta-large/tokenizer",
         "concept_max_len": 64,
         "property_max_len": 64,
         "add_context": true,
@@ -18,16 +18,16 @@
         }
     },
     "model_params": {
-        "model_name": "rob_base_100k_mscg_8k_prefix_adj_100k_gkb_properties_best_model.pt",
-        "hf_checkpoint_name": "roberta-base",
-        "hf_model_path": "/scratch/c.scmag3/conceptEmbeddingModel/roberta-base/model",
+        "model_name": "rob_large_100k_mscg_plus_8k_prefix_adj_plus_100k_gkb_prop_best_model.pt",
+        "hf_checkpoint_name": "roberta-large",
+        "hf_model_path": "/scratch/c.scmag3/conceptEmbeddingModel/roberta-large/model",
         "vector_strategy": "mask_token"
     },
     "training_params": {
         "lr": 2e-6,
         "num_warmup_steps": 0,
         "max_epochs": 100,
-        "early_stopping_patience": 12,
+        "early_stopping_patience": 8,
         "export_path": "trained_models/roberta_100k_trained_models",
         "printout_freq": 100,
         "checkpoint_path": "",
