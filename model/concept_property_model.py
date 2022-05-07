@@ -1,12 +1,20 @@
 import logging
-import tokenizers
+
+# import tokenizers
 
 import torch
 from torch import nn
 from torch.nn.functional import normalize
-from transformers import BertModel
+from transformers import BertModel, RobertaModel
 
 log = logging.getLogger(__name__)
+
+MODEL_CLASS = {
+    "bert-base-uncased": (BertModel, 103),
+    "bert-large-uncased": (BertModel, 103),
+    "roberta-base": (RobertaModel, 50264),
+    "roberta-large": (RobertaModel, 50264),
+}
 
 
 class ConceptPropertyModel(nn.Module):
@@ -16,15 +24,30 @@ class ConceptPropertyModel(nn.Module):
         # self._concept_encoder = BertModel.from_pretrained("bert-base-uncased")
         # self._property_encoder = BertModel.from_pretrained("bert-base-uncased")
 
-        self._concept_encoder = BertModel.from_pretrained(
+        # self._concept_encoder = BertModel.from_pretrained(
+        #     model_params.get("hf_model_path")
+        # )
+        # self._property_encoder = BertModel.from_pretrained(
+        #     model_params.get("hf_model_path")
+        # )
+
+        self.model_class, self.mask_token_id = MODEL_CLASS.get(
+            model_params.get("hf_checkpoint_name")
+        )
+
+        self._concept_encoder = self.model_class.from_pretrained(
             model_params.get("hf_model_path")
         )
-        self._property_encoder = BertModel.from_pretrained(
+
+        self._property_encoder = self.model_class.from_pretrained(
             model_params.get("hf_model_path")
         )
 
         self.dropout_prob = model_params.get("dropout_prob")
         self.strategy = model_params.get("vector_strategy")
+
+        log.info(f"Model Class : {self.model_class}")
+        log.info(f"Mask Token ID : {self.mask_token_id}")
 
     def forward(
         self,
@@ -103,7 +126,7 @@ class ConceptPropertyModel(nn.Module):
 
             # Index of mask token in concept input ids
             _, concept_mask_token_index = (
-                concept_input_id == torch.tensor(103)
+                concept_input_id == torch.tensor(self.mask_token_id)
             ).nonzero(as_tuple=True)
 
             concept_mask_vector = torch.vstack(

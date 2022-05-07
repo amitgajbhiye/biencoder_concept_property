@@ -6,6 +6,7 @@ import torch
 import numpy as np
 from torch.utils.data import Dataset
 from transformers import BertTokenizer
+from concept_property_dataset import TOKENIZER_CLASS
 
 
 log = logging.getLogger(__name__)
@@ -43,8 +44,12 @@ class McRaeConceptPropertyDataset(Dataset):
 
             log.info(f"Test Data size {self.data_df.shape}")
 
+        self.tokenizer_class = TOKENIZER_CLASS.get(
+            dataset_params.get("hf_tokenizer_name")
+        )
+
         # self.tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
-        self.tokenizer = BertTokenizer.from_pretrained(
+        self.tokenizer = self.tokenizer_class.from_pretrained(
             dataset_params.get("hf_tokenizer_path")
         )
 
@@ -52,6 +57,8 @@ class McRaeConceptPropertyDataset(Dataset):
 
         self.label = self.data_df["label"].values
 
+        log.info(f"hf_tokenizer_name : {dataset_params.get('hf_tokenizer_name')}")
+        log.info(f"self.tokenizer_class : {self.tokenizer_class}")
         log.info(f"Context Num : {self.context_num}")
 
     def __len__(self):

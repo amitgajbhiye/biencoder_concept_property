@@ -5,6 +5,7 @@
         "train_file_path": "data/train_data/MSCG/train_prefix_augmented_original_100k_mscg_data.tsv",
         "val_file_path": "data/train_data/MSCG/valid_prefix_augmented_original_100k_mscg_data.tsv",
         "test_file_path": "None",
+        "hf_tokenizer_name": "bert-base-uncased",
         "hf_tokenizer_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained/tokenizer",
         "concept_max_len": 64,
         "property_max_len": 64,
