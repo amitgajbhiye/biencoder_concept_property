@@ -51,9 +51,9 @@ class ConceptPropertyDataset(Dataset):
 
             log.info(f"Validation Data size {self.data_df.shape}")
 
-        self.tokenizer_class = TOKENIZER_CLASS.get(
-            dataset_params.get("hf_tokenizer_name")
-        )
+        self.hf_tokenizer_name = dataset_params.get("hf_tokenizer_name")
+
+        self.tokenizer_class = TOKENIZER_CLASS.get(self.hf_tokenizer_name)
 
         # self.tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
         self.tokenizer = self.tokenizer_class.from_pretrained(

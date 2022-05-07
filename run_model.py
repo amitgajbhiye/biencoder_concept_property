@@ -50,7 +50,7 @@ def train_single_epoch(
 
         ids_dict = train_dataset.tokenize(concepts_batch, property_batch)
 
-        if train_dataset.hf_checkpoint_name in ("roberta-base", "roberta-large"):
+        if train_dataset.hf_tokenizer_name in ("roberta-base", "roberta-large"):
             (
                 concept_inp_id,
                 concept_attention_mask,
