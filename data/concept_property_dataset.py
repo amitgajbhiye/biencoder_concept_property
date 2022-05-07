@@ -36,6 +36,9 @@ class ConceptPropertyDataset(Dataset):
 
             log.info(f"Train Data size {self.data_df.shape}")
 
+            # Sampling Top 100 data for experiment
+            self.data_df = self.data_df[0:100]
+
         elif dataset_type == "valid":
             self.data_df = pd.read_csv(
                 dataset_params.get("val_file_path"),
@@ -201,8 +204,8 @@ class ConceptPropertyDataset(Dataset):
             # context = " means [MASK]"
             context = " means " + self.mask_token
 
-            concepts_batch = [x + context for x in batch[0]]
-            property_batch = [x + context for x in batch[1]]
+            concepts_batch = [x.strip() + context for x in batch[0]]
+            property_batch = [x.strip() + context for x in batch[1]]
 
         elif self.context_num == 7:
 
@@ -282,7 +285,7 @@ class ConceptPropertyDataset(Dataset):
                 return_tensors="pt",
             )
 
-            # # Printing for debugging
+            # Printing for debugging
             # print("concept_ids")
             # print(concept_ids.get("input_ids"))
             # print("concept_token_type_id")

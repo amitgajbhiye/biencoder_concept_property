@@ -142,7 +142,7 @@ class ConceptPropertyModel(nn.Module):
 
             # Index of mask token in property input id
             _, property_mask_token_index = (
-                property_input_id == torch.tensor(103)
+                property_input_id == torch.tensor(self.mask_token_id)
             ).nonzero(as_tuple=True)
 
             property_mask_vector = torch.vstack(
