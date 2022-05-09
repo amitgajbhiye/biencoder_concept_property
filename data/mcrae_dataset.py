@@ -53,12 +53,15 @@ class McRaeConceptPropertyDataset(Dataset):
             dataset_params.get("hf_tokenizer_path")
         )
 
+        self.mask_token = self.tokenizer.mask_token
+
         self.context_num = dataset_params.get("context_num")
 
         self.label = self.data_df["label"].values
 
         log.info(f"hf_tokenizer_name : {dataset_params.get('hf_tokenizer_name')}")
         log.info(f"self.tokenizer_class : {self.tokenizer_class}")
+        log.info(f"Mask Token for the Model : {self.mask_token}")
         log.info(f"Context Num : {self.context_num}")
 
     def __len__(self):
@@ -129,10 +132,15 @@ class McRaeConceptPropertyDataset(Dataset):
         elif self.context_num == 6:
 
             # [CLS] CONCEPT means [MASK] [SEP]
-            context = " means [MASK]"
+            # context = " means [MASK]"
 
-            concepts_batch = [x + context for x in batch[0]]
-            property_batch = [x + context for x in batch[1]]
+            # concepts_batch = [x + context for x in batch[0]]
+            # property_batch = [x + context for x in batch[1]]
+
+            context = " means " + self.mask_token
+
+            concepts_batch = [x.strip().replace(".", "") + context for x in batch[0]]
+            property_batch = [x.strip().replace(".", "") + context for x in batch[1]]
 
         elif self.context_num == 7:
 

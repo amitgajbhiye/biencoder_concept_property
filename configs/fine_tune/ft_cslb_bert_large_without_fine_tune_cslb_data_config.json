@@ -5,6 +5,7 @@
         "train_file_path": "data/evaluation_data/CSLB/20_neg_cslb_train_pos_neg_data.tsv",
         "val_file_path": "None",
         "test_file_path": "data/evaluation_data/CSLB/20_neg_cslb_test_pos_neg_data.tsv",
+        "hf_tokenizer_name": "bert-large-uncased",
         "hf_tokenizer_path": "/scratch/c.scmag3/conceptEmbeddingModel/bert-large-uncased/tokenizer",
         "concept_max_len": 64,
         "property_max_len": 64,
@@ -20,7 +21,7 @@
         "pretrained_model_name": "None",
         "pretrained_model_path": "None",
         "model_name": "con_split_ft_bert_large_cslb_data_without_fine_tune_baseline_model.pt",
-        "hf_checkpoint_name": "bert-base-uncased",
+        "hf_checkpoint_name": "bert-large-uncased",
         "hf_model_path": "/scratch/c.scmag3/conceptEmbeddingModel/bert-large-uncased/model",
         "vector_strategy": "mask_token"
     },
