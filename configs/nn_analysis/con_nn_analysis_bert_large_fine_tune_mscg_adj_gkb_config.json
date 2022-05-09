@@ -5,6 +5,7 @@
         "train_file_path": "None",
         "val_file_path": "None",
         "test_file_path": "data/evaluation_data/nn_analysis/con_df.tsv",
+        "hf_tokenizer_name": "bert-large-uncased",
         "hf_tokenizer_path": "/home/amitgajbhiye/cardiff_work/100k_data_experiments/bert_large_uncased_pretrained/tokenizer",
         "concept_max_len": 64,
         "property_max_len": 64,
