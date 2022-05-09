@@ -27,11 +27,11 @@ from utils.functions import mcrae_dataset_and_dataloader
 from sklearn.neighbors import NearestNeighbors
 from collections import Counter
 
-# device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
-# assert os.environ["CONDA_DEFAULT_ENV"] == "gvenv", "Activate 'gvenv' conda environment"
+device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
+assert os.environ["CONDA_DEFAULT_ENV"] == "gvenv", "Activate 'gvenv' conda environment"
 
-# print (f"Device Name : {device}")
-# print (f"Conda Environment Name : {os.environ['CONDA_DEFAULT_ENV']}")
+print (f"Device Name : {device}")
+print (f"Conda Environment Name : {os.environ['CONDA_DEFAULT_ENV']}")
 
 
 # In[2]:
@@ -203,12 +203,12 @@ def preprocess_hd_data(vocab_file, test_concept_file):
 local_prop_config_file_path = "configs/nn_analysis/prop_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
 hawk_prop_config_file_path = "configs/nn_analysis/hawk_prop_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
 
-# torch.cuda.empty_cache()
+torch.cuda.empty_cache()
 
 prop_config = read_config(hawk_prop_config_file_path)
 prop_model = load_pretrained_model(prop_config)
 prop_model.eval()
-# prop_model.to(device)
+prop_model.to(device)
 print("Property Model Loaded")
 
 
@@ -347,7 +347,7 @@ with open ("data/evaluation_data/nn_analysis/hd_data/hd_prop_name_emb.pickle", "
 # Loading the model model to generate concept embeddings
 # Here change the concept test file the file where the test (query) concepts are loaded
 
-# torch.cuda.empty_cache()
+torch.cuda.empty_cache()
 
 local_con_conf_file_path = "configs/nn_analysis/con_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
 hawk_con_conf_file_path = "configs/nn_analysis/hawk_prop_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
@@ -355,7 +355,7 @@ hawk_con_conf_file_path = "configs/nn_analysis/hawk_prop_nn_analysis_bert_large_
 con_config = read_config(hawk_con_conf_file_path)
 con_model = load_pretrained_model(con_config)
 con_model.eval()
-# con_model.to(device)
+con_model.to(device)
 print ("Concept Model Loaded")
 
 
