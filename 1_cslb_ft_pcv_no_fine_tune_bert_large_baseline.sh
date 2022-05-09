@@ -1,19 +1,20 @@
 #!/bin/bash --login
 
-#SBATCH --job-name=blmag
+#SBATCH --job-name=ps_blmag
 
-#SBATCH --output=logs/cslb_prop_split_100k_fine_tuned_logs/out_cslb_ft_bert_large_baseline.txt
-#SBATCH --error=logs/cslb_prop_split_100k_fine_tuned_logs/err_cslb_ft_bert_large_baseline.txt
+#SBATCH --output=logs/cslb_fine_tuned_100k_logs/out_cslb_prop_split_bert_large_baseline.txt
+#SBATCH --error=logs/cslb_fine_tuned_100k_logs/err_cslb_prop_split_bert_large_baseline.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
 #SBATCH -A scw1858
 
-#SBATCH -p gpu_v100,gpu
+#SBATCH -p gpu_v100
 #SBATCH --mem=15g
 #SBATCH --gres=gpu:1
 
-#SBATCH -t 0-20:00:00
+#SBATCH --qos="gpu7d"
+#SBATCH -t 3-00:00:00
 
 echo 'This script is running on:'
 hostname
