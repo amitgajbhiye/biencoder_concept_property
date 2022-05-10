@@ -318,8 +318,9 @@ prop_trans = transform(prop_emb)
 # In[ ]:
 
 
-prop_name_emb_dict = {"prop_name_list" : prop_list, 
-                     "prop_transformed_emb" : prop_trans}
+prop_name_emb_dict = {"name_list_prop" : prop_list,
+                      "untransformed_prop_emb":prop_emb,
+                     "transformed_prop_emb" : prop_trans}
 
 
 # In[ ]:
