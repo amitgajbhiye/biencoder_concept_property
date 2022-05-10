@@ -2,7 +2,7 @@
 #SBATCH --job-name=hd_nn
 
 #SBATCH --output=logs/cslb_fine_tuned_100k_logs/out_concepts_embeddngs_hd_data_nn_analysis.txt
-#SBATCH --error=logs/cslb_fine_tuned_100k_logs/err_properties_embeddngs_hd_data_nn_analysis.txt
+#SBATCH --error=logs/cslb_fine_tuned_100k_logs/err_concepts_embeddngs_hd_data_nn_analysis.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5

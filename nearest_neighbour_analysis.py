@@ -368,7 +368,7 @@ con_trans = transform(con_emb)
 
 
 con_name_emb_dict = {"name_list_con" : con_list,
-                     "untransformed_con_emb", con_emb,
+                     "untransformed_con_emb": con_emb,
                     "transformed_con_emb" : con_trans}
 
 
