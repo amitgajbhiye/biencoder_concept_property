@@ -1,7 +1,7 @@
 {
     "experiment_name": "prop_nn_ana_bert_large_mcrae_data_fine_tuned_on_100k_mscg_8k_prefix_adj_100k_gkb_properties_model",
     "dataset_params": {
-        "dataset_name": "mscg_pre_adj_gkb",
+        "dataset_name": "hd_data",
         "train_file_path": "None",
         "val_file_path": "None",
         "test_file_path": "data/evaluation_data/nn_analysis/hd_data/properties_hd_vocab_con_prop.tsv",
