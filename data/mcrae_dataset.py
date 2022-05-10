@@ -299,12 +299,22 @@ class McRaeConceptPropertyDataset(Dataset):
             #     print(self.tokenizer.convert_ids_to_tokens(torch.tensor(i)))
             # print("*" * 50, flush=True)
 
-        return {
-            "concept_inp_id": concept_ids.get("input_ids"),
-            "concept_atten_mask": concept_ids.get("attention_mask"),
-            "concept_token_type_id": concept_ids.get("token_type_ids"),
-            "property_inp_id": property_ids.get("input_ids"),
-            "property_atten_mask": property_ids.get("attention_mask"),
-            "property_token_type_id": property_ids.get("token_type_ids"),
-        }
+        if self.hf_tokenizer_name in ("roberta-base", "roberta-large"):
+
+            return {
+                "concept_inp_id": concept_ids.get("input_ids"),
+                "concept_atten_mask": concept_ids.get("attention_mask"),
+                "property_inp_id": property_ids.get("input_ids"),
+                "property_atten_mask": property_ids.get("attention_mask"),
+            }
+        else:
+
+            return {
+                "concept_inp_id": concept_ids.get("input_ids"),
+                "concept_atten_mask": concept_ids.get("attention_mask"),
+                "concept_token_type_id": concept_ids.get("token_type_ids"),
+                "property_inp_id": property_ids.get("input_ids"),
+                "property_atten_mask": property_ids.get("attention_mask"),
+                "property_token_type_id": property_ids.get("token_type_ids"),
+            }
 
