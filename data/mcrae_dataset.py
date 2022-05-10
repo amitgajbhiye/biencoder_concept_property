@@ -21,8 +21,6 @@ class McRaeConceptPropertyDataset(Dataset):
             self.data_df.drop_duplicates(inplace=True)
             self.data_df.dropna(inplace=True)
 
-            self.data_df = data_df[0:200]
-
         elif dataset_type in ("test",):
             if data_df is not None:
 
