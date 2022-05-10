@@ -21,6 +21,8 @@ class McRaeConceptPropertyDataset(Dataset):
             self.data_df.drop_duplicates(inplace=True)
             self.data_df.dropna(inplace=True)
 
+            self.data_df = data_df[0:200]
+
         elif dataset_type in ("test",):
             if data_df is not None:
 
@@ -44,9 +46,9 @@ class McRaeConceptPropertyDataset(Dataset):
 
             log.info(f"Test Data size {self.data_df.shape}")
 
-        self.tokenizer_class = TOKENIZER_CLASS.get(
-            dataset_params.get("hf_tokenizer_name")
-        )
+        self.hf_tokenizer_name = dataset_params.get("hf_tokenizer_name")
+
+        self.tokenizer_class = TOKENIZER_CLASS.get(self.hf_tokenizer_name)
 
         # self.tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
         self.tokenizer = self.tokenizer_class.from_pretrained(

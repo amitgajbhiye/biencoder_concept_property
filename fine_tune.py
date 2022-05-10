@@ -59,14 +59,27 @@ def train_single_epoch(
 
         ids_dict = train_dataset.tokenize(concepts_batch, property_batch)
 
-        (
-            concept_inp_id,
-            concept_attention_mask,
-            concept_token_type_id,
-            property_input_id,
-            property_attention_mask,
-            property_token_type_id,
-        ) = [val.to(device) for _, val in ids_dict.items()]
+        if train_dataset.hf_tokenizer_name in ("roberta-base", "roberta-large"):
+
+            (
+                concept_inp_id,
+                concept_attention_mask,
+                property_input_id,
+                property_attention_mask,
+            ) = [val.to(device) for _, val in ids_dict.items()]
+
+            concept_token_type_id = None
+            property_token_type_id = None
+
+        else:
+            (
+                concept_inp_id,
+                concept_attention_mask,
+                concept_token_type_id,
+                property_input_id,
+                property_attention_mask,
+                property_token_type_id,
+            ) = [val.to(device) for _, val in ids_dict.items()]
 
         concept_embedding, property_embedding, logits = model(
             concept_input_id=concept_inp_id,
@@ -137,14 +150,25 @@ def evaluate(model, valid_dataset, valid_dataloader, loss_fn, device):
 
         ids_dict = valid_dataset.tokenize(concepts_batch, property_batch)
 
-        (
-            concept_inp_id,
-            concept_attention_mask,
-            concept_token_type_id,
-            property_input_id,
-            property_attention_mask,
-            property_token_type_id,
-        ) = [val.to(device) for _, val in ids_dict.items()]
+        if valid_dataset.hf_tokenizer_name in ("roberta-base", "roberta-large"):
+            (
+                concept_inp_id,
+                concept_attention_mask,
+                property_input_id,
+                property_attention_mask,
+            ) = [val.to(device) for _, val in ids_dict.items()]
+
+            concept_token_type_id = None
+            property_token_type_id = None
+        else:
+            (
+                concept_inp_id,
+                concept_attention_mask,
+                concept_token_type_id,
+                property_input_id,
+                property_attention_mask,
+                property_token_type_id,
+            ) = [val.to(device) for _, val in ids_dict.items()]
 
         with torch.no_grad():
 
@@ -689,14 +713,27 @@ def test_best_model(config, test_df, fold=None):
 
         ids_dict = test_dataset.tokenize(concepts_batch, property_batch)
 
-        (
-            concept_inp_id,
-            concept_attention_mask,
-            concept_token_type_id,
-            property_input_id,
-            property_attention_mask,
-            property_token_type_id,
-        ) = [val.to(device) for _, val in ids_dict.items()]
+        if test_dataset.hf_tokenizer_name in ("roberta-base", "roberta-large"):
+
+            (
+                concept_inp_id,
+                concept_attention_mask,
+                property_input_id,
+                property_attention_mask,
+            ) = [val.to(device) for _, val in ids_dict.items()]
+
+            concept_token_type_id = None
+            property_token_type_id = None
+
+        else:
+            (
+                concept_inp_id,
+                concept_attention_mask,
+                concept_token_type_id,
+                property_input_id,
+                property_attention_mask,
+                property_token_type_id,
+            ) = [val.to(device) for _, val in ids_dict.items()]
 
         with torch.no_grad():
 
