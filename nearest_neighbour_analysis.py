@@ -339,7 +339,7 @@ torch.cuda.empty_cache()
 local_con_conf_file_path = "configs/nn_analysis/con_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
 hawk_con_conf_file_path = "configs/nn_analysis/hawk_con_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
 
-con_config = read_config(local_con_conf_file_path)
+con_config = read_config(hawk_con_conf_file_path)
 con_model = load_pretrained_model(con_config)
 con_model.eval()
 con_model.to(device)
