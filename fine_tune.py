@@ -12,6 +12,7 @@ import torch.nn as nn
 
 from sklearn.model_selection import StratifiedKFold
 from transformers import AdamW, get_linear_schedule_with_warmup
+from yaml import load
 
 from utils.functions import (
     compute_scores,
@@ -496,10 +497,16 @@ def model_evaluation_property_cross_validation(config):
         train_df = train_df[["concept", "property", "label"]]
         test_df = test_df[["concept", "property", "label"]]
 
-        # If you want to load untrained model - for baselines results
-        model = create_model(config.get("model_params"))
+        load_pretrained = config.get("model_params").get("load_pretrained")
 
-        # model = load_pretrained_model(config)
+        if load_pretrained:
+            log.info(f"load_pretrained is : {load_pretrained}")
+            log.info(f"Loading Pretrained Model ...")
+            model = load_pretrained_model(config)
+        else:
+            # Untrained LM is Loaded  - for baselines results
+            log.info(f"load_pretrained is : {load_pretrained}")
+            model = create_model(config.get("model_params"))
 
         total_params, trainable_params = count_parameters(model)
 
@@ -632,10 +639,16 @@ def model_evaluation_concept_property_cross_validation(config):
         log.info(f"Train DF Columns : {train_df.columns}")
         log.info(f"Test Df Columns : {test_df.columns}")
 
-        # If you want to load untrained model - for baselines results
-        model = create_model(config.get("model_params"))
+        load_pretrained = config.get("model_params").get("load_pretrained")
 
-        # model = load_pretrained_model(config)
+        if load_pretrained:
+            log.info(f"load_pretrained is : {load_pretrained}")
+            log.info(f"Loading Pretrained Model ...")
+            model = load_pretrained_model(config)
+        else:
+            # Untrained LM is Loaded  - for baselines results
+            log.info(f"load_pretrained is : {load_pretrained}")
+            model = create_model(config.get("model_params"))
 
         total_params, trainable_params = count_parameters(model)
 
@@ -831,11 +844,16 @@ if __name__ == "__main__":
 
         log.info(f"Train DF shape : {train_df.shape}")
 
-        # For training the model from scratch
-        model = create_model(config.get("model_params"))
+        load_pretrained = config.get("model_params").get("load_pretrained")
 
-        # For fintuning a pretrained model
-        # model = load_pretrained_model(config)
+        if load_pretrained:
+            log.info(f"load_pretrained is : {load_pretrained}")
+            log.info(f"Loading Pretrained Model ...")
+            model = load_pretrained_model(config)
+        else:
+            # Untrained LM is Loaded  - for baselines results
+            log.info(f"load_pretrained is : {load_pretrained}")
+            model = create_model(config.get("model_params"))
 
         # log.info(f"The pretrained model that is loaded is :")
         # log.info(model)
