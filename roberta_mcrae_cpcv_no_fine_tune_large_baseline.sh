@@ -7,7 +7,7 @@
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
-#SBATCH -A scw1858s
+#SBATCH -A scw1858
 
 #SBATCH -p gpu_v100,gpu
 #SBATCH --mem=15g
