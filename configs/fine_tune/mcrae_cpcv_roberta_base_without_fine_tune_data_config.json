@@ -1,0 +1,48 @@
+{
+    "experiment_name": "con_prop_split_roberta_base_mcrae_data_without_fine_tune_baseline_model",
+    "log_dirctory": "mcrae_roberta_logs",
+    "dataset_params": {
+        "dataset_name": "concept_property_split_mcrae",
+        "train_file_path": "data/evaluation_data/extended_mcrae/train_mcrae.tsv",
+        "val_file_path": "None",
+        "test_file_path": "data/evaluation_data/extended_mcrae/test_mcrae.tsv",
+        "hf_tokenizer_name": "roberta-base",
+        "hf_tokenizer_path": "/scratch/c.scmag3/conceptEmbeddingModel/roberta-base/tokenizer",
+        "concept_max_len": 64,
+        "property_max_len": 64,
+        "add_context": true,
+        "context_num": 6,
+        "loader_params": {
+            "batch_size": 32,
+            "num_workers": 4,
+            "pin_memory": true
+        }
+    },
+    "model_params": {
+        "load_pretrained": false,
+        "pretrained_model_name": "None",
+        "pretrained_model_path": "None",
+        "model_name": "con_prop_split_roberta_base_mcrae_data_without_fine_tune_baseline_model.pt",
+        "hf_checkpoint_name": "roberta-base",
+        "hf_model_path": "/scratch/c.scmag3/conceptEmbeddingModel/roberta-base/model",
+        "vector_strategy": "mask_token"
+    },
+    "training_params": {
+        "do_cv": true,
+        "cv_type": "model_evaluation_concept_property_split",
+        "lr": 2e-6,
+        "num_warmup_steps": 0,
+        "max_epochs": 14,
+        "early_stopping_patience": 20,
+        "export_path": "trained_models/concept_property_split_100k_mcrae_fine_tuned_models",
+        "printout_freq": 100,
+        "checkpoint_path": "",
+        "load_checkpoint": -1,
+        "lr_policy": "warmup",
+        "lr_decay_iters": 15
+    },
+    "visualization_params": {
+        "name": "None"
+    },
+    "model_update_freq": 1
+}
