@@ -115,10 +115,14 @@ class McRaeConceptPropertyDataset(Dataset):
         if self.context_num in (1, 2, 3, 4, 5, 6):
 
             # # Printing for debugging
-            # print(f"Context Num : {self.context_num}")
-            # print("concept_batch :", concept_batch)
-            # print("property_batch :", property_batch)
-            # print()
+            print(f"Context Num : {self.context_num}")
+
+            print(f"Tokenized Sentences")
+            # x = [self.tokenizer.tokenize(sent) for sent in joint_con_prop_batch]
+            x = self.tokenizer.tokenize(joint_con_prop_batch)
+            print(x)
+            y = [self.tokenizer.convert_tokens_to_ids(x)]
+            print(y)
 
             ids = self.tokenizer(
                 joint_con_prop_batch,
@@ -128,6 +132,9 @@ class McRaeConceptPropertyDataset(Dataset):
                 truncation=True,
                 return_tensors="pt",
             )
+
+            print(ids)
+            print()
 
         if self.hf_tokenizer_name in ("roberta-base", "roberta-large"):
 

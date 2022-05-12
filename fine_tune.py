@@ -705,10 +705,12 @@ def test_best_model(config, test_df, fold=None):
         data_df=test_df,
     )
 
-    label = torch.tensor(test_dataset.label, dtype=torch.long).to(device)
+    all_label = test_dataset.label
     all_test_preds = []
 
     for step, batch in enumerate(test_dataloader):
+
+        batch_label = torch.tensor(batch.pop(-1), dtype=torch.long).to(device)
 
         joint_test_con_prop_batch = test_dataset.add_context(batch)
 
@@ -732,26 +734,24 @@ def test_best_model(config, test_df, fold=None):
                 input_id=inp_id,
                 attention_mask=attention_mask,
                 token_type_id=token_type_id,
-                label=label,
+                label=batch_label,
             )
 
         batch_preds = batch_logits.argmax(dim=1)
         all_test_preds.extend(batch_preds.detach().cpu().numpy().flatten())
 
-    test_scores = compute_scores(
-        label.detach().cpu().numpy(), np.asarray(all_test_preds)
-    )
+    test_scores = compute_scores(all_label, np.asarray(all_test_preds))
 
     log.info(f"Test Metrices")
     log.info(f"Test DF shape : {test_dataset.data_df.shape}")
-    log.info(f"Test labels shape: {label.shape}")
+    log.info(f"Test labels shape: {all_label.shape}")
     log.info(f"Test Preds shape: {np.asarray(all_test_preds).shape}")
 
     for key, value in test_scores.items():
         log.info(f"{key} : {value}")
     print(flush=True)
 
-    return label, np.array(all_test_preds, dtype=np.int32)
+    return all_label, np.array(all_test_preds, dtype=np.int32)
 
 
 if __name__ == "__main__":
