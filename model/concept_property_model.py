@@ -33,7 +33,7 @@ class ConceptPropertyModel(nn.Module):
             model_params.get("hf_model_path"), num_labels=2
         )
 
-    def forward(self, input_id, attention_mask, token_type_id, label):
+    def forward(self, input_id, attention_mask, token_type_id, label=None):
 
         model_output = self._concept_property_encoder(
             input_ids=input_id,
