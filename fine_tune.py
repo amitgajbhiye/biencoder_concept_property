@@ -46,58 +46,50 @@ def train_single_epoch(
 
         model.zero_grad()
 
-        label = batch.pop(-1)
+        label = torch.tensor(batch.pop(-1), dtype=torch.long).to(device)
+
+        log.info(f"Batch labels type : {type(label)}, shape : {label.shape}")
 
         print("label")
         print(label)
 
-        concepts_batch, property_batch = train_dataset.add_context(batch)
+        joint_con_prop_batch = train_dataset.add_context(batch)
 
         if print_freq < 1:
-            log.info(f"concepts_batch : {concepts_batch}")
-            log.info(f"property_batch : {property_batch}")
+            log.info(f"joint_con_prop_batch : {joint_con_prop_batch}")
             print_freq += 1
 
-        ids_dict = train_dataset.tokenize(concepts_batch, property_batch)
+        ids_dict = train_dataset.tokenize(joint_con_prop_batch)
 
         if train_dataset.hf_tokenizer_name in ("roberta-base", "roberta-large"):
 
-            (
-                concept_inp_id,
-                concept_attention_mask,
-                property_input_id,
-                property_attention_mask,
-            ) = [val.to(device) for _, val in ids_dict.items()]
+            (inp_id, attention_mask,) = [val.to(device) for _, val in ids_dict.items()]
 
-            concept_token_type_id = None
-            property_token_type_id = None
+            token_type_id = None
 
         else:
-            (
-                concept_inp_id,
-                concept_attention_mask,
-                concept_token_type_id,
-                property_input_id,
-                property_attention_mask,
-                property_token_type_id,
-            ) = [val.to(device) for _, val in ids_dict.items()]
+            (inp_id, attention_mask, token_type_id,) = [
+                val.to(device) for _, val in ids_dict.items()
+            ]
 
-        concept_embedding, property_embedding, logits = model(
-            concept_input_id=concept_inp_id,
-            concept_attention_mask=concept_attention_mask,
-            concept_token_type_id=concept_token_type_id,
-            property_input_id=property_input_id,
-            property_attention_mask=property_attention_mask,
-            property_token_type_id=property_token_type_id,
+        batch_loss, batch_logits = model(
+            input_id=inp_id,
+            attention_mask=attention_mask,
+            token_type_id=token_type_id,
+            label=label,
         )
 
-        logits = (
-            (concept_embedding * property_embedding)
-            .sum(-1)
-            .reshape(concept_embedding.shape[0], 1)
-        )
+        log.info(f"batch_loss : {batch_loss}")
+        log.info(f"batch_logits shape: {batch_logits.shape}")
+        log.info(f"batch_logits : {batch_logits}")
 
-        batch_loss = loss_fn(logits, label.reshape_as(logits).float().to(device))
+        # logits = (
+        #     (concept_embedding * property_embedding)
+        #     .sum(-1)
+        #     .reshape(concept_embedding.shape[0], 1)
+        # )
+
+        # batch_loss = loss_fn(logits, label.reshape_as(logits).float().to(device))
 
         epoch_loss += batch_loss.item()
 
@@ -114,9 +106,9 @@ def train_single_epoch(
 
             batch_labels = label.reshape(-1, 1).detach().cpu().numpy()
 
-            batch_logits = (
-                torch.round(torch.sigmoid(logits)).reshape(-1, 1).detach().cpu().numpy()
-            )
+            # batch_logits = (
+            #     torch.round(torch.sigmoid(logits)).reshape(-1, 1).detach().cpu().numpy()
+            # )
 
             batch_scores = compute_scores(batch_labels, batch_logits)
 
@@ -864,5 +856,5 @@ if __name__ == "__main__":
         log.info(f"Trainable parameters in the model : {trainable_params}")
 
         train(model, config, train_df, valid_df=None)
-        test_best_model(config=config, test_df=None, fold=None)
+        # test_best_model(config=config, test_df=None, fold=None)
 
