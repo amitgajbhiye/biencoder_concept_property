@@ -50,10 +50,9 @@ def train_single_epoch(
 
         log.info(f"Batch labels type : {type(label)}, shape : {label.shape}")
 
-        print("label")
-        print(label)
-
         joint_con_prop_batch = train_dataset.add_context(batch)
+
+        print(f"joint_con_prop_batch : {joint_con_prop_batch} \n")
 
         if print_freq < 1:
             log.info(f"joint_con_prop_batch : {joint_con_prop_batch}")
@@ -78,13 +77,13 @@ def train_single_epoch(
             token_type_id=token_type_id,
             label=label,
         )
-        batch_decisions = batch_logits.argmax(dim=1)
+        batch_preds = batch_logits.argmax(dim=1)
 
         log.info(f"batch_loss : {batch_loss}")
         log.info(f"batch_logits shape: {batch_logits.shape}")
         log.info(f"batch_logits : {batch_logits}")
-        log.info(f"batch_decisions shape: {batch_decisions.shape}")
-        log.info(f"batch_decisions : {batch_decisions}")
+        log.info(f"batch_preds shape: {batch_preds.shape}")
+        log.info(f"batch_preds : {batch_preds}")
 
         epoch_loss += batch_loss.item()
 
@@ -106,7 +105,7 @@ def train_single_epoch(
             # )
 
             batch_scores = compute_scores(
-                batch_labels, batch_decisions.detach().cpu().numpy()
+                batch_labels, batch_preds.detach().cpu().numpy()
             )
 
             log.info(
@@ -706,52 +705,42 @@ def test_best_model(config, test_df, fold=None):
         data_df=test_df,
     )
 
-    label = test_dataset.label
+    label = torch.tensor(test_dataset.label, dtype=torch.long).to(device)
     all_test_preds = []
 
     for step, batch in enumerate(test_dataloader):
 
-        concepts_batch, property_batch = test_dataset.add_context(batch)
+        joint_test_con_prop_batch = test_dataset.add_context(batch)
 
-        ids_dict = test_dataset.tokenize(concepts_batch, property_batch)
+        print(f"joint_test_con_prop_batch : {joint_test_con_prop_batch}")
+
+        ids_dict = test_dataset.tokenize(joint_test_con_prop_batch)
 
         if test_dataset.hf_tokenizer_name in ("roberta-base", "roberta-large"):
 
-            (
-                concept_inp_id,
-                concept_attention_mask,
-                property_input_id,
-                property_attention_mask,
-            ) = [val.to(device) for _, val in ids_dict.items()]
-
-            concept_token_type_id = None
-            property_token_type_id = None
+            (inp_id, attention_mask,) = [val.to(device) for _, val in ids_dict.items()]
+            token_type_id = None
 
         else:
-            (
-                concept_inp_id,
-                concept_attention_mask,
-                concept_token_type_id,
-                property_input_id,
-                property_attention_mask,
-                property_token_type_id,
-            ) = [val.to(device) for _, val in ids_dict.items()]
+            (inp_id, attention_mask, token_type_id,) = [
+                val.to(device) for _, val in ids_dict.items()
+            ]
 
         with torch.no_grad():
 
-            concept_embedding, property_embedding, logits = model(
-                concept_input_id=concept_inp_id,
-                concept_attention_mask=concept_attention_mask,
-                concept_token_type_id=concept_token_type_id,
-                property_input_id=property_input_id,
-                property_attention_mask=property_attention_mask,
-                property_token_type_id=property_token_type_id,
+            batch_loss, batch_logits = model(
+                input_id=inp_id,
+                attention_mask=attention_mask,
+                token_type_id=token_type_id,
+                label=label,
             )
 
-        preds = torch.round(torch.sigmoid(logits))
-        all_test_preds.extend(preds.detach().cpu().numpy().flatten())
+        batch_preds = batch_logits.argmax(dim=1)
+        all_test_preds.extend(batch_preds.detach().cpu().numpy().flatten())
 
-    test_scores = compute_scores(label, np.asarray(all_test_preds))
+    test_scores = compute_scores(
+        label.detach().cpu().numpy(), np.asarray(all_test_preds)
+    )
 
     log.info(f"Test Metrices")
     log.info(f"Test DF shape : {test_dataset.data_df.shape}")

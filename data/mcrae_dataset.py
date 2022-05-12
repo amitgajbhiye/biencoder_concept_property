@@ -87,7 +87,7 @@ class McRaeConceptPropertyDataset(Dataset):
 
             for con, prop in zip(batch[0], batch[1]):
                 joint_con_prop_batch.append(
-                    "concept " + con.strip() + "has property " + prop.strip()
+                    "concept " + con.strip() + " has property " + prop.strip()
                 )
         elif self.context_num == 2:
 
@@ -96,7 +96,7 @@ class McRaeConceptPropertyDataset(Dataset):
                     con.strip() + self.tokenizer.sep_token + prop.strip()
                 )
 
-        log.info("After adding context batch : {joint_con_prop}")
+        log.info(f"After adding context batch : {joint_con_prop_batch}")
 
         return joint_con_prop_batch
 
