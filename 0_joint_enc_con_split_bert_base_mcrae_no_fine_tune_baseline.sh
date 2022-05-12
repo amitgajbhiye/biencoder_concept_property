@@ -26,6 +26,6 @@ conda activate venv
 
 echo 'Running experiment...'
 
-python3 fine_tune.py --config_file 0_joint_enc_con_split_bert_base_mcrae_no_fine_tune_baseline.sh
+python3 fine_tune.py --config_file configs/fine_tune/joint_encoder_mcrae_con_split_bert_base_without_fine_tune_baseline_config.json
 
 echo 'finished!'
