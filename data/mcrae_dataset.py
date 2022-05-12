@@ -45,7 +45,7 @@ class McRaeConceptPropertyDataset(Dataset):
             log.info(f"Test Data size {self.data_df.shape}")
 
         ###############33#####
-        self.data_df = self.data_df[0:500]
+        self.data_df = self.data_df[0:1000]
 
         self.hf_tokenizer_name = dataset_params.get("hf_tokenizer_name")
 
