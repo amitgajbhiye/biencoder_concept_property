@@ -78,10 +78,13 @@ def train_single_epoch(
             token_type_id=token_type_id,
             label=label,
         )
+        batch_decisions = batch_logits.argmax(dim=1)
 
         log.info(f"batch_loss : {batch_loss}")
         log.info(f"batch_logits shape: {batch_logits.shape}")
         log.info(f"batch_logits : {batch_logits}")
+        log.info(f"batch_decisions shape: {batch_decisions.shape}")
+        log.info(f"batch_decisions : {batch_decisions}")
 
         # logits = (
         #     (concept_embedding * property_embedding)
@@ -102,7 +105,7 @@ def train_single_epoch(
         scheduler.step()
         torch.cuda.empty_cache()
 
-        if step % 100 == 0 and not step == 0:
+        if step % 10 == 0 and not step == 0:
 
             batch_labels = label.reshape(-1, 1).detach().cpu().numpy()
 
@@ -110,7 +113,9 @@ def train_single_epoch(
             #     torch.round(torch.sigmoid(logits)).reshape(-1, 1).detach().cpu().numpy()
             # )
 
-            batch_scores = compute_scores(batch_labels, batch_logits)
+            batch_scores = compute_scores(
+                batch_labels, batch_decisions.detach().cpu().numpy()
+            )
 
             log.info(
                 f"Batch {step} of {len(train_dataloader)} ----> Batch Loss : {batch_loss}, Batch Binary F1 {batch_scores.get('binary_f1')}"
