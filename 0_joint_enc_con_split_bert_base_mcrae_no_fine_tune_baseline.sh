@@ -2,8 +2,8 @@
 
 #SBATCH --job-name=JmcCSbb
 
-#SBATCH --output=logs/mcrae_bert_base_baseline_log/out_jont_enc_mcrae_con_split_bert_base_baseline.txt
-#SBATCH --error=logs/mcrae_bert_base_baseline_log/err_jont_enc_mcrae_con_split_bert_base_baseline.txt
+#SBATCH --output=logs/joint_enc_logs/out_jont_enc_mcrae_con_split_bert_base_baseline.txt
+#SBATCH --error=logs/joint_enc_logs/err_jont_enc_mcrae_con_split_bert_base_baseline.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
