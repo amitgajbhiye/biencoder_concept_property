@@ -118,10 +118,10 @@ class McRaeConceptPropertyDataset(Dataset):
             print(f"Context Num : {self.context_num}")
 
             print(f"Tokenized Sentences")
-            # x = [self.tokenizer.tokenize(sent) for sent in joint_con_prop_batch]
-            x = self.tokenizer.tokenize(joint_con_prop_batch)
+            x = [self.tokenizer.tokenize(sent) for sent in joint_con_prop_batch]
+            # x = self.tokenizer.tokenize(joint_con_prop_batch)
             print(x)
-            y = [self.tokenizer.convert_tokens_to_ids(x)]
+            y = [self.tokenizer.convert_tokens_to_ids(j) for j in x]
             print(y)
 
             ids = self.tokenizer(
