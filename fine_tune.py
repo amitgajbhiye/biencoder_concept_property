@@ -86,14 +86,6 @@ def train_single_epoch(
         log.info(f"batch_decisions shape: {batch_decisions.shape}")
         log.info(f"batch_decisions : {batch_decisions}")
 
-        # logits = (
-        #     (concept_embedding * property_embedding)
-        #     .sum(-1)
-        #     .reshape(concept_embedding.shape[0], 1)
-        # )
-
-        # batch_loss = loss_fn(logits, label.reshape_as(logits).float().to(device))
-
         epoch_loss += batch_loss.item()
 
         batch_loss.backward()
@@ -105,7 +97,7 @@ def train_single_epoch(
         scheduler.step()
         torch.cuda.empty_cache()
 
-        if step % 10 == 0 and not step == 0:
+        if step % 100 == 0 and not step == 0:
 
             batch_labels = label.reshape(-1, 1).detach().cpu().numpy()
 
@@ -861,5 +853,5 @@ if __name__ == "__main__":
         log.info(f"Trainable parameters in the model : {trainable_params}")
 
         train(model, config, train_df, valid_df=None)
-        # test_best_model(config=config, test_df=None, fold=None)
+        test_best_model(config=config, test_df=None, fold=None)
 
