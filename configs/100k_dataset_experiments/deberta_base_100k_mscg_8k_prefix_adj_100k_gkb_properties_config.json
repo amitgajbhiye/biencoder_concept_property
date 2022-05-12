@@ -1,0 +1,43 @@
+{
+    "experiment_name": "deberta_base_100k_mscg_8k_prefix_adj_100k_gkb_properties",
+    "log_dirctory": "all_lms_100k_train_logs",
+    "dataset_params": {
+        "dataset_name": "100k_mscg_8k_prefix_adj_100k_gkb_properties",
+        "train_file_path": "data/train_data/100k_mscg_8k_prefix_adj_100k_gkb_properties/train_100k_mscg_8k_prefix_adj_100k_gkb_properties.tsv",
+        "val_file_path": "data/train_data/100k_mscg_8k_prefix_adj_100k_gkb_properties/valid_10k_sampled_100k_mscg_8k_prefix_adj_100k_gkb_properties.tsv",
+        "test_file_path": "None",
+        "hf_tokenizer_name": "deberta-base",
+        "hf_tokenizer_path": "/scratch/c.scmag3/conceptEmbeddingModel/deberta_base/tokenizer",
+        "concept_max_len": 64,
+        "property_max_len": 64,
+        "add_context": true,
+        "context_num": 6,
+        "loader_params": {
+            "batch_size": 8,
+            "num_workers": 4,
+            "pin_memory": true
+        }
+    },
+    "model_params": {
+        "model_name": "deberta_base_100k_mscg_8k_prefix_adj_100k_gkb_properties.pt",
+        "hf_checkpoint_name": "deberta-base",
+        "hf_model_path": "/scratch/c.scmag3/conceptEmbeddingModel/deberta_base/model",
+        "vector_strategy": "mask_token"
+    },
+    "training_params": {
+        "lr": 2e-6,
+        "num_warmup_steps": 0,
+        "max_epochs": 100,
+        "early_stopping_patience": 12,
+        "export_path": "trained_models/deberta_100k_trained_models",
+        "printout_freq": 100,
+        "checkpoint_path": "",
+        "load_checkpoint": -1,
+        "lr_policy": "warmup",
+        "lr_decay_iters": 15
+    },
+    "visualization_params": {
+        "name": "None"
+    },
+    "model_update_freq": 1
+}

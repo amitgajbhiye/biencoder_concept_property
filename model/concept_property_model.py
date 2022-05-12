@@ -3,7 +3,7 @@ import logging
 import torch
 from torch import nn
 from torch.nn.functional import normalize
-from transformers import BertModel, RobertaModel
+from transformers import BertModel, RobertaModel, DebertaModel
 
 log = logging.getLogger(__name__)
 
@@ -12,6 +12,8 @@ MODEL_CLASS = {
     "bert-large-uncased": (BertModel, 103),
     "roberta-base": (RobertaModel, 50264),
     "roberta-large": (RobertaModel, 50264),
+    "deberta-base": (DebertaModel, 50264),
+    "deberta-large": (DebertaModel, 50264),
 }
 
 

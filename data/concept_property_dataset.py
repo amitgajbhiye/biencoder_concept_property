@@ -3,7 +3,7 @@ import logging
 import pandas as pd
 import numpy as np
 from torch.utils.data import Dataset
-from transformers import BertTokenizer, RobertaTokenizer
+from transformers import BertTokenizer, RobertaTokenizer, DebertaTokenizer
 
 
 log = logging.getLogger(__name__)
@@ -13,6 +13,8 @@ TOKENIZER_CLASS = {
     "bert-large-uncased": BertTokenizer,
     "roberta-base": RobertaTokenizer,
     "roberta-large": RobertaTokenizer,
+    "deberta-base": DebertaTokenizer,
+    "deberta-large": DebertaTokenizer,
 }
 
 
