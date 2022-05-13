@@ -1,10 +1,11 @@
 {
     "experiment_name": "prop_nn_ana_bert_large_mcrae_data_fine_tuned_on_100k_mscg_8k_prefix_adj_100k_gkb_properties_model",
+    "log_dirctory": "nn_analysis",
     "dataset_params": {
         "dataset_name": "hd_data",
         "train_file_path": "None",
         "val_file_path": "None",
-        "test_file_path": "data/evaluation_data/nn_analysis/hd_data/properties_hd_vocab_con_prop.tsv",
+        "test_file_path": "data/evaluation_data/nn_analysis/noun_properties.tsv",
         "hf_tokenizer_name": "bert-large-uncased",
         "hf_tokenizer_path": "/home/amitgajbhiye/cardiff_work/100k_data_experiments/bert_large_uncased_pretrained/tokenizer",
         "concept_max_len": 64,
@@ -18,6 +19,7 @@
         }
     },
     "model_params": {
+        "load_pretrained": true,
         "pretrained_model_name": "bert_large_100k_mscg_8k_prefix_adj_100k_gkb_properties_best_model.pt",
         "pretrained_model_path": "/home/amitgajbhiye/cardiff_work/100k_data_experiments/bert_large_100k_mscg_8k_prefix_adj_100k_gkb_properties_best_model.pt",
         "model_name": "None",

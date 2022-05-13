@@ -18,6 +18,7 @@
         }
     },
     "model_params": {
+        "load_pretrained": true,
         "pretrained_model_name": "bert_large_100k_mscg_8k_prefix_adj_100k_gkb_properties_best_model.pt",
         "pretrained_model_path": "trained_models/100k_data_experiments/bert_large_100k_mscg_8k_prefix_adj_100k_gkb_properties_best_model.pt",
         "model_name": "None",

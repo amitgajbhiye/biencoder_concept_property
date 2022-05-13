@@ -158,3 +158,4 @@ utils/__pycache__/
 trained_models/
 logs/
 utils/__pycache__/functions.cpython-39.pyc
+.pickle

@@ -7,7 +7,7 @@
 # tok = BertTokenizer.from_pretrained("bert-large-uncased")
 # tok.save_pretrained("/home/amitgajbhiye/cardiff_work/100k_data_experiments/bert_large_uncased_pretrained/tokenizer/")
 
-# In[ ]:
+# In[1]:
 
 
 import numpy as np
@@ -15,7 +15,6 @@ import pandas as pd
 import os
 
 import torch
-import pickle
 import nltk
 
 from model.concept_property_model import ConceptPropertyModel
@@ -24,9 +23,6 @@ from utils.functions import load_pretrained_model
 from utils.functions import read_config
 from utils.functions import mcrae_dataset_and_dataloader
 
-from sklearn.neighbors import NearestNeighbors
-from collections import Counter
-
 device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
 # assert os.environ["CONDA_DEFAULT_ENV"] == "gvenv", "Activate 'gvenv' conda environment"
 
@@ -34,7 +30,7 @@ print (f"Device Name : {device}")
 print (f"Conda Environment Name : {os.environ['CONDA_DEFAULT_ENV']}")
 
 
-# In[ ]:
+# In[2]:
 
 
 def pos_tagger(x):
@@ -46,7 +42,7 @@ def pos_tagger(x):
     
 
 
-# In[ ]:
+# In[3]:
 
 
 def tag_adj(pos_tag_list):
@@ -57,6 +53,21 @@ def tag_adj(pos_tag_list):
     # print (all([tag == "JJ" for tag in tags]))
     
     if all ([tag == "JJ" for tag in tags]):
+        # print (f"Returning True : {tags}")
+        return True
+    else:
+        # print (f"Returning False : {tags}")
+        return False
+
+
+# In[4]:
+
+
+def tag_noun(pos_tag_list):
+    
+    tags = [word_tag[1] for word_tag in pos_tag_list]
+    
+    if  tags[-1] in ("NN","NNS","NNPS"):
         # print (f"Returning True : {tags}")
         return True
     else:
@@ -132,32 +143,65 @@ def get_top_k_properties(con_prop_file, pos_tag = False, cut_off = 5):
     
     if pos_tag:
         df_prop_count_cut_off["pos_tag"] = df_prop_count_cut_off["property"].apply(pos_tagger)
+        
         df_prop_count_cut_off["is_only_adj"] = df_prop_count_cut_off["pos_tag"].apply(tag_adj)
-        df_prop_count_cut_off = df_prop_count_cut_off[df_prop_count_cut_off["is_only_adj"] == True]
         
-        adj_true_df = df_prop_count_cut_off[df_prop_count_cut_off["is_only_adj"] == True]
+        df_prop_count_cut_off["is_last_word_noun"] = df_prop_count_cut_off["pos_tag"].apply(tag_noun)
         
-        print (f"adj_true_df shape {adj_true_df.shape}")
-        print (f"adj_true_df['property'].unique - len :", adj_true_df['property'].unique().shape)
         
-    
-    df_prop_count_cut_off.to_csv("data/evaluation_data/nn_analysis/df_with_tags.tsv", sep="\t", index=False)
+    df_prop_count_cut_off.to_csv("data/evaluation_data/nn_analysis/df_with_adj_and_noun_tags.tsv", sep="\t", index=False)
     print (df_prop_count_cut_off)
     
-    unique_properties = df_prop_count_cut_off["property"].unique()
-    unique_properties = [x.strip().replace("(part)", "").replace(".", "") for x in unique_properties]
-    num_unique_properties = df_prop_count_cut_off["property"].unique().shape
-
-    print (f"Number of unique properties in cut_off DF : {num_unique_properties}")
-    # print (f"Unique Properties are : {unique_properties}")
     
-    df_list = [("dummy", prop, 0) for prop in unique_properties]
+    df_is_only_adj = df_prop_count_cut_off[df_prop_count_cut_off["is_only_adj"] == True]
+    
+    adj_file_name = "data/evaluation_data/nn_analysis/prefix_plus_gkb_df_with_only_adj_properties.tsv"
+    df_is_only_adj.to_csv(adj_file_name, sep="\t", index=None, header=None)
+    
+    unique_adj_prop = df_is_only_adj["property"].unique()
+    unique_adj_prop = [x.strip().replace("(part)", "").replace(".", "") for x in unique_adj_prop]
+    unique_adj_prop = [("dummy_con", prop, 0) for prop in unique_adj_prop]
+    df_unique_adj_prop = pd.DataFrame.from_records(unique_adj_prop)
+    
+    df_adj_prop_file_name = "data/evaluation_data/nn_analysis/adj_properties.tsv"
+    df_unique_adj_prop.to_csv(df_adj_prop_file_name, sep="\t", header=None, index=None)
+    
+    print (f"df_is_only_adj.shape : {df_is_only_adj.shape}")
+    print ("Adjective Unique Property", len(unique_adj_prop))
+    
+    
+    print ()
+    df_last_word_noun = df_prop_count_cut_off[df_prop_count_cut_off["is_last_word_noun"] == True]
+    print (f"df_last_word_noun.shape : {df_last_word_noun.shape}")
+    
+    noun_file_name = "data/evaluation_data/nn_analysis/prefix_plus_gkb_df_with_last_word_noun_properties.tsv"
+    df_last_word_noun.to_csv(noun_file_name, sep="\t", index=None, header=None)
+    
+    unique_last_word_noun = df_last_word_noun["property"].unique()
+    
+    print ("unique_last_word_noun : ", len(unique_last_word_noun))
+    
+    unique_last_word_noun = [x.strip().replace("(part)", "").replace(".", "") for x in unique_last_word_noun]
+    unique_last_word_noun = [("dummy_con", prop, 0) for prop in unique_last_word_noun]
+    
+    df_unique_last_word_noun = pd.DataFrame.from_records(unique_last_word_noun)
+    df_unique_last_word_noun_file_name = "data/evaluation_data/nn_analysis/noun_properties.tsv"
+    
+    df_unique_last_word_noun.to_csv(df_unique_last_word_noun_file_name, sep="\t", header=None, index=None)
 
-    df_prop = pd.DataFrame.from_records(df_list)
+    print (f"df_unique_last_word_noun.shape : {df_unique_last_word_noun.shape}")
+    print ("Noun Unique Property", len(unique_last_word_noun))
+    
+    
+con_prop_file_with_counts = "data/evaluation_data/nn_analysis/prefix_adj_plus_gkb_prop_with_prop_count.tsv"
+    
+# get_top_k_properties(con_prop_file_with_counts, pos_tag=True, cut_off=10)
 
-    df_prop.to_csv("data/evaluation_data/nn_analysis/adjs_prop_count_5_prefix_adj_plus_gkb_prop_with_prop_count.tsv", sep="\t", index=None, header=None)
 
-# get_top_k_properties("data/evaluation_data/nn_analysis/hd_data/prefix_adj_plus_gkb_prop_with_prop_count.tsv", pos_tag=True, cut_off=15)
+# In[ ]:
+
+
+
 
 
 # In[ ]:
@@ -197,19 +241,29 @@ def preprocess_hd_data(vocab_file, test_concept_file):
 # preprocess_hd_data (vocab_file = hd_vocab_file, test_concept_file= test_file)
 
 
-# # Loading the BERT Large Model for generating Property Embedding
-# # Here change the property test_file in config to the tsv file which contain the properties
-# 
-# local_prop_config_file_path = "configs/nn_analysis/prop_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
-# hawk_prop_config_file_path = "configs/nn_analysis/hawk_prop_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
-# 
-# torch.cuda.empty_cache()
-# 
-# prop_config = read_config(hawk_prop_config_file_path)
-# prop_model = load_pretrained_model(prop_config)
-# prop_model.eval()
-# prop_model.to(device)
-# print("Property Model Loaded")
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+#### Loading the BERT Large Model for generating Property Embedding
+#### Here change the property test_file in config to the tsv file which contain the properties
+
+local_prop_config_file_path = "configs/nn_analysis/prop_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
+hawk_prop_config_file_path = "configs/nn_analysis/hawk_prop_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
+
+torch.cuda.empty_cache()
+
+prop_config = read_config(hawk_prop_config_file_path)
+prop_model = load_pretrained_model(prop_config)
+prop_model.eval()
+prop_model.to(device)
+print("Property Model Loaded")
+
 
 # In[ ]:
 
@@ -279,9 +333,17 @@ def get_embedding (model, config):
             
 
 
-# _, _, prop_list, prop_emb = get_embedding(prop_model, prop_config)
+# In[ ]:
 
-# print (f"prop_list len - {len(prop_list)}, Property Emb Len - {len(prop_emb)}")
+
+_, _, prop_list, prop_emb = get_embedding(prop_model, prop_config)
+
+
+# In[ ]:
+
+
+print (f"prop_list len - {len(prop_list)}, Property Emb Len - {len(prop_emb)}")
+
 
 # In[ ]:
 
@@ -297,97 +359,41 @@ def transform(vecs):
     return new_vecs
 
 
-# prop_trans = transform(prop_emb)
-
-# prop_name_emb_dict = {"name_list_prop" : prop_list,
-#                       "untransformed_prop_emb":prop_emb,
-#                      "transformed_prop_emb" : prop_trans}
-
-# print (f"Pickling the transformed property name list and their embeddings.")
-# 
-# with open ("data/evaluation_data/nn_analysis/hd_data/hd_prop_name_emb.pickle", "wb") as f:
-#     pickle.dump(prop_name_emb_dict, f)
-#     
-
-# for key, value in prop_name_emb_dict.items():
-#     print (f"{key} : {len(value)}")
-# 
-# print ()
-# print ("*" * 50)
-# print (*prop_list, sep="\t")
-
 # In[ ]:
 
 
-
+prop_trans = transform(prop_emb)
 
 
 # In[ ]:
 
 
-
-
-
-# In[ ]:
-
-
-# Loading the model model to generate concept embeddings
-# Here change the concept test file the file where the test (query) concepts are loaded
-
-torch.cuda.empty_cache()
-
-local_con_conf_file_path = "configs/nn_analysis/con_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
-hawk_con_conf_file_path = "configs/nn_analysis/hawk_con_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
-
-con_config = read_config(hawk_con_conf_file_path)
-con_model = load_pretrained_model(con_config)
-con_model.eval()
-con_model.to(device)
-print ("Concept Model Loaded")
+prop_name_emb_dict = {"name_list_prop" : prop_list,
+                      "untransformed_prop_emb":prop_emb,
+                     "transformed_prop_emb" : prop_trans}
 
 
 # In[ ]:
 
 
-con_list, con_emb, _, _ = get_embedding(con_model, con_config)
+print (f"Pickling the transformed property name list and their embeddings.")
+
+pickle_file_name = "data/evaluation_data/nn_analysis/noun_prop_emb.pickle"
+
+with open (pickle_file_name, "wb") as f:
+    pickle.dump(prop_name_emb_dict, f)
+    
 
 
 # In[ ]:
 
 
-print (f"con_list len - {len(con_list)}, con_emb Len - {len(con_emb)}")
-
-
-# In[ ]:
-
-
-con_trans = transform(con_emb)
-
-
-# In[ ]:
-
-
-con_name_emb_dict = {"name_list_con" : con_list,
-                     "untransformed_con_emb": con_emb,
-                    "transformed_con_emb" : con_trans}
-
-
-# In[ ]:
-
-
-with open ("data/evaluation_data/nn_analysis/hd_data/hd_con_name_emb.pickle", "wb") as f:
-    pickle.dump(con_name_emb_dict, f)
-
-
-# In[ ]:
-
-
-for key, value in con_name_emb_dict.items():
+for key, value in prop_name_emb_dict.items():
     print (f"{key} : {len(value)}")
 
 print ()
 print ("*" * 50)
-print (*con_list, sep="\t")
+print (*prop_list, sep="\t")
 
 
 # In[ ]:
@@ -396,8 +402,64 @@ print (*con_list, sep="\t")
 
 
 
-# with open("data/evaluation_data/nn_analysis/hd_data/hd_con_name_emb.pickle", "rb") as con_emb, \
-#     open("data/evaluation_data/nn_analysis/hd_data/hd_prop_name_emb.pickle", "rb") as prop_emb:
+# In[ ]:
+
+
+
+
+
+# # Loading the model model to generate concept embeddings
+# # Here change the concept test file the file where the test (query) concepts are loaded
+# 
+# torch.cuda.empty_cache()
+# 
+# local_con_conf_file_path = "configs/nn_analysis/con_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
+# hawk_con_conf_file_path = "configs/nn_analysis/hawk_con_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
+# 
+# con_config = read_config(hawk_con_conf_file_path)
+# con_model = load_pretrained_model(con_config)
+# con_model.eval()
+# con_model.to(device)
+# print ("Concept Model Loaded")
+
+# con_list, con_emb, _, _ = get_embedding(con_model, con_config)
+
+# print (f"con_list len - {len(con_list)}, con_emb Len - {len(con_emb)}")
+
+# con_trans = transform(con_emb)
+
+# con_name_emb_dict = {"name_list_con" : con_list,
+#                      "untransformed_con_emb": con_emb,
+#                     "transformed_con_emb" : con_trans}
+
+# with open ("data/evaluation_data/nn_analysis/hd_data/hd_con_name_emb.pickle", "wb") as f:
+#     pickle.dump(con_name_emb_dict, f)
+
+# for key, value in con_name_emb_dict.items():
+#     print (f"{key} : {len(value)}")
+# 
+# print ()
+# print ("*" * 50)
+# print (*con_list, sep="\t")
+
+# 
+
+# 
+
+# import pickle
+# import numpy as np
+# import nltk
+# from sklearn.neighbors import NearestNeighbors
+# from collections import Counter
+# import pandas as pd
+# from collections import Counter
+# 
+
+# 
+# hd_con_emb_file = "/home/amitgajbhiye/cardiff_work/dot_product_model_nn_analysis/hd_con_name_emb.pickle"
+# hd_prop_emb_file = "/home/amitgajbhiye/cardiff_work/dot_product_model_nn_analysis/hd_prop_name_emb.pickle"
+# 
+# with open(hd_con_emb_file, "rb") as con_emb, open(hd_prop_emb_file, "rb") as prop_emb:
 #     
 #     con_name_emb = pickle.load(con_emb)
 #     prop_name_emb = pickle.load(prop_emb)
@@ -405,40 +467,133 @@ print (*con_list, sep="\t")
 # print (con_name_emb.keys())
 # print (prop_name_emb.keys())
 
-# logits = (concept_mask_vector * property_mask_vector).sum(-1).reshape(concept_mask_vector.shape[0], 1)
-
-# con_embs = torch.tensor(con_name_emb.get("con_transformed_emb"))
-# con_embs.shape
-
-# prop_embs = torch.tensor(prop_name_emb.get("prop_transformed_emb"))
-# prop_embs.shape
-
-# l = (con_embs * prop_embs).sum(-1)
-
-# print (f'Number of Properties in the loaded prop pickel : {len(prop_name_emb.get("prop_name_list"))}', flush=True)
-# print (f'Number of Properties Embedding in the loaded prop pickel : {len(prop_name_emb.get("prop_transformed_emb"))}', flush=True)
+# print (f'Number of Properties in the loaded prop pickel : {len(prop_name_emb.get("name_list_prop"))}', flush=True)
+# print (f'Number of Untransformed Properties Embedding in the loaded prop pickel : {len(prop_name_emb.get("untransformed_prop_emb"))}', flush=True)
+# print (f'Number of TRansformed Properties Embedding in the loaded prop pickel : {len(prop_name_emb.get("transformed_prop_emb"))}', flush=True)
 # 
-# print (f'Number of Concepts in the loaded con pickel : {len(con_name_emb.get("con_name_list"))}', flush=True)
-# print (f'Number of Concepts Embedding in the loaded prop pickel : {len(con_name_emb.get("con_transformed_emb"))}', flush=True)
+# print ()
+# print (f'Number of Concepts in the loaded con pickel : {len(con_name_emb.get("name_list_con"))}', flush=True)
+# print (f'Number of Untransformed Concepts Embedding in the loaded prop pickel : {len(con_name_emb.get("untransformed_con_emb"))}', flush=True)
+# print (f'Number of Transformed Concepts Embedding in the loaded prop pickel : {len(con_name_emb.get("transformed_con_emb"))}', flush=True)
 
-# num_nearest_neighbours = 15
+# prop_name_emb.get("transformed_prop_emb")[0].shape
+
+# num_nearest_neighbours = 40
 
 # # Learning Nearest Neighbours
-# nbrs = NearestNeighbors(n_neighbors=num_nearest_neighbours, algorithm='brute').fit(np.array(prop_name_emb.get("prop_transformed_emb")))
+# nbrs = NearestNeighbors(n_neighbors=num_nearest_neighbours, algorithm='brute').fit(np.array(prop_name_emb.get("transformed_prop_emb")))
 
-# distances, indices = nbrs.kneighbors(np.array(con_name_emb.get("con_transformed_emb")))
+# distances, indices = nbrs.kneighbors(np.array(con_name_emb.get("transformed_con_emb")))
 
 # print (indices)
+# print (indices.shape)
 
-# !pwd
+# print (con_name_emb.keys())
+# print (prop_name_emb.keys())
 
-# for idx, con in zip(indices, con_name_emb.get("con_name_list")):
-#     print (f"{con} : {[prop_name_emb.get('prop_name_list') [prop_id] for prop_id in idx]}\n", flush=True)
-# 
-# 
-# generated_hypernyms_file = "data/evaluation_data/nn_analysis/hd_data/hd_test_concepts_generated_hypernyms_file.txt"
-# 
-# with open(generated_hypernyms_file, "w") as file:
-#     for idx, con in zip(indices, con_name_emb.get("con_name_list")):
-#         file.write(f"{con} : {[prop_name_emb.get('prop_name_list') [prop_id] for prop_id in idx]}\n")
+# len(prop_name_emb.get("untransformed_prop_emb"))
+
+# for idx, con in zip(indices, con_name_emb.get("name_list_con")):    
+#     print (f"{con} : {[prop_name_emb.get('name_list_prop') [prop_id] for prop_id in idx]}\n", flush=True)
+
+# for idx, con in zip(indices[0:5], con_name_emb.get("name_list_con")[0:5]):    
+#     print (f"{con} : {[prop_name_emb.get('name_list_prop') [prop_id] for prop_id in idx]}\n", flush=True)
+
+# d = {}
+# for idx, con in zip(indices, con_name_emb.get("name_list_con")):
+#     d[con] = [prop_name_emb.get('name_list_prop') [prop_id].strip() for prop_id in idx]
+
+# def pos_tagger(x):
 #     
+#     tokens = nltk.word_tokenize(x)
+#     # print ("tokens :", tokens)
+#     # print ("pos tags :", nltk.pos_tag(tokens))
+#     return nltk.pos_tag(tokens)
+#     
+# 
+# def filter_prop (con, prop_list):
+#     
+#     filtered_prop_list = []
+#     
+#     con = con.lower().strip()
+#     prop_list = [prop.lower().strip() for prop in prop_list]
+#     
+#     for prop in prop_list:
+#         if (con not in prop) and (prop not in con) :
+#             # print (f"{con} : {prop}, {pos_tagger(prop)}, {pos_tagger(prop)[-1]}")
+#             
+#             if pos_tagger(prop)[-1][1] in ("NN","NNS","NNPS"):
+#                 filtered_prop_list.append(prop)
+#         
+#             # print (f"filtered_prop_list : {filtered_prop_list}")
+#     
+#     print (len(filtered_prop_list))
+#     print (filtered_prop_list)
+#     print ()
+#     
+#     filtered_prop_list = [prop.strip() for prop in filtered_prop_list]
+# 
+#     if len(filtered_prop_list) >= 15:
+#         return filtered_prop_list[0:15]
+#     else:
+#         return filtered_prop_list
+# 
+#     
+# 
+# d = {}
+# for idx, con in zip(indices, con_name_emb.get("name_list_con")):
+#     
+#     filtered_prop_list = []
+#     
+#     prop_for_con = [prop_name_emb.get('name_list_prop') [prop_id].strip() for prop_id in idx]
+#     
+#     print (f"concept : {con}")
+#     print (f"All properties : {prop_for_con}")
+#     print ([pos_tagger(prop) for prop in prop_for_con] )
+#     filtered_prop_list = filter_prop(con, prop_for_con)
+#     
+#     d[con] = filtered_prop_list
+#     
+# 
+
+# l = []
+# for key, value in d.items():
+#     print (f"{key} : {len(value)}")
+#     
+#     l.append(len(value))
+# 
+# counts = Counter(l)
+# 
+
+# print (counts)
+
+# print (len(d.keys()))
+
+# df = pd.DataFrame.from_dict(d, orient="index")
+
+# print (list(df.columns))
+
+# df.reset_index(inplace=True, drop=False)
+
+# df
+
+# hypo_hyper_file_name = "/home/amitgajbhiye/cardiff_work/dot_product_model_nn_analysis/filtered_hd_test_results.csv"
+# columns =["hypo","hyp=1","hyp=2","hyp=3","hyp=4","hyp=5","hyp=6","hyp=7","hyp=8","hyp=9","hyp=10","hyp=11","hyp=12","hyp=13","hyp=14","hyp=15"]
+# 
+# df.columns = columns
+# 
+# df["hypo"] = df["hypo"].str.strip()
+# 
+# df.to_csv(hypo_hyper_file_name, sep = ",", index=False, header=True)
+
+# 
+
+# 
+
+# for idx, con in zip(indices, con_name_emb.get("name_list_con")):
+#     print (f"{con} : {[prop_name_emb.get('name_list_prop') [prop_id] for prop_id in idx]}\n", flush=True)
+# 
+
+# 
+
+# 
