@@ -25,7 +25,7 @@
         "model_name": "joint_enc_con_split_bert_base_mcrae_data_without_fine_tune_baseline_model.pt",
         "hf_checkpoint_name": "bert-base-uncased",
         "hf_model_path": "/scratch/c.scmag3/conceptEmbeddingModel/bert_base_uncased_seq_class_pretrained/model",
-        "vector_strategy": "mask_token"
+        "vector_strategy": "None"
     },
     "training_params": {
         "do_cv": false,
