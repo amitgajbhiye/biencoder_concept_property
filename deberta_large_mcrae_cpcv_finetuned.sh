@@ -1,6 +1,6 @@
 #!/bin/bash --login
 
-#SBATCH --job-name=cpmDLf
+#SBATCH --job-name=cp_m_DLf
 
 #SBATCH --output=logs/cslb_deberta_logs/out_mcrae_con_prop_split_deberta_large_finetuned.txt
 #SBATCH --error=logs/cslb_deberta_logs/err_mcrae_con_prop_split_deberta_large_finetuned.txt
@@ -10,7 +10,7 @@
 #SBATCH -A scw1858
 
 #SBATCH -p gpu_v100
-#SBATCH --mem=15g
+#SBATCH --mem=20g
 #SBATCH --gres=gpu:1
 
 #SBATCH -t 2-00:00:00
