@@ -7,7 +7,7 @@
 # tok = BertTokenizer.from_pretrained("bert-large-uncased")
 # tok.save_pretrained("/home/amitgajbhiye/cardiff_work/100k_data_experiments/bert_large_uncased_pretrained/tokenizer/")
 
-# In[1]:
+# In[ ]:
 
 
 import numpy as np
@@ -287,23 +287,7 @@ def transform(vecs):
     return new_vecs
 
 
-# In[ ]:
-
-
-#### Loading the BERT Large Model for generating Property Embedding
-#### Here change the property test_file in config to the tsv file which contain the properties
-
-local_prop_config_file_path = "configs/nn_analysis/prop_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
-hawk_prop_config_file_path = "configs/nn_analysis/hawk_prop_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
-
-torch.cuda.empty_cache()
-
-prop_config = read_config(hawk_prop_config_file_path)
-prop_model = load_pretrained_model(prop_config)
-prop_model.eval()
-prop_model.to(device)
-print("Property Model Loaded")
-
+# 
 
 # In[ ]:
 
@@ -373,100 +357,108 @@ def get_embedding (model, config):
             
 
 
-# In[ ]:
-
-
-_, _, prop_list, prop_emb = get_embedding(prop_model, prop_config)
-
-
-# In[ ]:
-
-
-print (f"prop_list len - {len(prop_list)}, Property Emb Len - {len(prop_emb)}")
-
-
-# In[ ]:
-
-
-prop_trans = transform(prop_emb)
-
-
-# In[ ]:
-
-
-prop_name_emb_dict = {"name_list_prop" : prop_list,
-                      "untransformed_prop_emb":prop_emb,
-                     "transformed_prop_emb" : prop_trans}
-
-
-# In[ ]:
-
-
-print (f"Pickling the transformed property name list and their embeddings.")
-
-pickle_file_name = "/scratch/c.scmag3/biencoder_concept_property/data/evaluation_data/nn_analysis/paper_noun_properties.pkl"
-
-with open (pickle_file_name, "wb") as f:
-    pickle.dump(prop_name_emb_dict, f)
-    
-
-
-# In[ ]:
-
-
-for key, value in prop_name_emb_dict.items():
-    print (f"{key} : {len(value)}")
-
-print ()
-print ("*" * 50)
-print (*prop_list, sep="\t")
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# # Loading the model model to generate concept embeddings
-# # Here change the concept test file the file where the test (query) concepts are loaded
+# #### Loading the BERT Large Model for generating Property Embedding
+# #### Here change the property test_file in config to the tsv file which contain the properties
+# 
+# local_prop_config_file_path = "configs/nn_analysis/prop_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
+# hawk_prop_config_file_path = "configs/nn_analysis/hawk_prop_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
 # 
 # torch.cuda.empty_cache()
 # 
-# local_con_conf_file_path = "configs/nn_analysis/con_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
-# hawk_con_conf_file_path = "configs/nn_analysis/hawk_con_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
+# prop_config = read_config(hawk_prop_config_file_path)
+# prop_model = load_pretrained_model(prop_config)
+# prop_model.eval()
+# prop_model.to(device)
+# print("Property Model Loaded")
+
+# _, _, prop_list, prop_emb = get_embedding(prop_model, prop_config)
+
+# print (f"prop_list len - {len(prop_list)}, Property Emb Len - {len(prop_emb)}")
+
+# prop_trans = transform(prop_emb)
+
+# prop_name_emb_dict = {"name_list_prop" : prop_list,
+#                       "untransformed_prop_emb":prop_emb,
+#                      "transformed_prop_emb" : prop_trans}
+
+# print (f"Pickling the transformed property name list and their embeddings.")
 # 
-# con_config = read_config(hawk_con_conf_file_path)
-# con_model = load_pretrained_model(con_config)
-# con_model.eval()
-# con_model.to(device)
-# print ("Concept Model Loaded")
+# pickle_file_name = "/scratch/c.scmag3/biencoder_concept_property/data/evaluation_data/nn_analysis/paper_noun_properties.pkl"
+# 
+# with open (pickle_file_name, "wb") as f:
+#     pickle.dump(prop_name_emb_dict, f)
+#     
 
-# con_list, con_emb, _, _ = get_embedding(con_model, con_config)
-
-# print (f"con_list len - {len(con_list)}, con_emb Len - {len(con_emb)}")
-
-# con_trans = transform(con_emb)
-
-# con_name_emb_dict = {"name_list_con" : con_list,
-#                      "untransformed_con_emb": con_emb,
-#                     "transformed_con_emb" : con_trans}
-
-# with open ("data/evaluation_data/nn_analysis/paper_concepts_name_emb.pickle", "wb") as f:
-#     pickle.dump(con_name_emb_dict, f)
-
-# for key, value in con_name_emb_dict.items():
+# for key, value in prop_name_emb_dict.items():
 #     print (f"{key} : {len(value)}")
 # 
 # print ()
 # print ("*" * 50)
-# print (*con_list, sep="\t")
+# print (*prop_list, sep="\t")
+
+# 
+
+# In[ ]:
+
+
+# Loading the model model to generate concept embeddings
+# Here change the concept test file the file where the test (query) concepts are loaded
+
+torch.cuda.empty_cache()
+
+local_con_conf_file_path = "configs/nn_analysis/con_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
+hawk_con_conf_file_path = "configs/nn_analysis/hawk_con_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
+
+con_config = read_config(hawk_con_conf_file_path)
+con_model = load_pretrained_model(con_config)
+con_model.eval()
+con_model.to(device)
+print ("Concept Model Loaded")
+
+
+# In[ ]:
+
+
+con_list, con_emb, _, _ = get_embedding(con_model, con_config)
+
+
+# In[ ]:
+
+
+print (f"con_list len - {len(con_list)}, con_emb Len - {len(con_emb)}")
+
+
+# In[ ]:
+
+
+con_trans = transform(con_emb)
+
+
+# In[ ]:
+
+
+con_name_emb_dict = {"name_list_con" : con_list,
+                     "untransformed_con_emb": con_emb,
+                    "transformed_con_emb" : con_trans}
+
+
+# In[ ]:
+
+
+with open ("data/evaluation_data/nn_analysis/paper_concepts_name_emb.pickle", "wb") as f:
+    pickle.dump(con_name_emb_dict, f)
+
+
+# In[ ]:
+
+
+for key, value in con_name_emb_dict.items():
+    print (f"{key} : {len(value)}")
+
+print ()
+print ("*" * 50)
+print (*con_list, sep="\t")
+
 
 # 
 
@@ -482,8 +474,8 @@ print (*prop_list, sep="\t")
 # 
 
 # 
-# hd_con_emb_file = "/home/amitgajbhiye/cardiff_work/dot_product_model_nn_analysis/hd_con_name_emb.pickle"
-# hd_prop_emb_file = "/home/amitgajbhiye/cardiff_work/dot_product_model_nn_analysis/hd_prop_name_emb.pickle"
+# hd_con_emb_file = "/home/amitgajbhiye/cardiff_work/dot_product_model_nn_analysis/paper_concepts_name_emb.pickle"
+# hd_prop_emb_file = "/home/amitgajbhiye/cardiff_work/dot_product_model_nn_analysis/paper_noun_properties.pkl"
 # 
 # with open(hd_con_emb_file, "rb") as con_emb, open(hd_prop_emb_file, "rb") as prop_emb:
 #     
@@ -504,9 +496,8 @@ print (*prop_list, sep="\t")
 
 # prop_name_emb.get("transformed_prop_emb")[0].shape
 
-# num_nearest_neighbours = 40
-
 # # Learning Nearest Neighbours
+# num_nearest_neighbours = 15
 # nbrs = NearestNeighbors(n_neighbors=num_nearest_neighbours, algorithm='brute').fit(np.array(prop_name_emb.get("transformed_prop_emb")))
 
 # distances, indices = nbrs.kneighbors(np.array(con_name_emb.get("transformed_con_emb")))
@@ -529,6 +520,7 @@ print (*prop_list, sep="\t")
 # for idx, con in zip(indices, con_name_emb.get("name_list_con")):
 #     d[con] = [prop_name_emb.get('name_list_prop') [prop_id].strip() for prop_id in idx]
 
+# 
 # def pos_tagger(x):
 #     
 #     tokens = nltk.word_tokenize(x)
@@ -541,6 +533,9 @@ print (*prop_list, sep="\t")
 #     
 #     filtered_prop_list = []
 #     
+#     filtered_prop_ends_in_adj = []
+#     filtered_hyp_ends_in_noun = []
+#     
 #     con = con.lower().strip()
 #     prop_list = [prop.lower().strip() for prop in prop_list]
 #     
@@ -550,19 +545,28 @@ print (*prop_list, sep="\t")
 #             
 #             if pos_tagger(prop)[-1][1] in ("NN","NNS","NNPS"):
 #                 filtered_prop_list.append(prop)
+#                 filtered_hyp_ends_in_noun.append(prop)
+#             elif pos_tagger(prop)[-1][1] in ("JJ"):
+#                 filtered_prop_ends_in_adj.append(prop)
 #         
 #             # print (f"filtered_prop_list : {filtered_prop_list}")
 #     
-#     print (len(filtered_prop_list))
-#     print (filtered_prop_list)
+#     print ("Property :", filtered_prop_ends_in_adj)
+#     print ("Hypernym :", filtered_hyp_ends_in_noun)
+#     print ("*"*20)
 #     print ()
 #     
-#     filtered_prop_list = [prop.strip() for prop in filtered_prop_list]
+#     
+#     # print (len(filtered_prop_list))
+#     # print (filtered_prop_list)
+#     # print ()
+#     
+# #     filtered_prop_list = [prop.strip() for prop in filtered_prop_list]
 # 
-#     if len(filtered_prop_list) >= 15:
-#         return filtered_prop_list[0:15]
-#     else:
-#         return filtered_prop_list
+# #     if len(filtered_prop_list) >= 15:
+# #         return filtered_prop_list[0:15]
+# #     else:
+# #         return filtered_prop_list
 # 
 #     
 # 
@@ -574,13 +578,21 @@ print (*prop_list, sep="\t")
 #     prop_for_con = [prop_name_emb.get('name_list_prop') [prop_id].strip() for prop_id in idx]
 #     
 #     print (f"concept : {con}")
-#     print (f"All properties : {prop_for_con}")
-#     print ([pos_tagger(prop) for prop in prop_for_con] )
+#     # print (f"All properties : {prop_for_con}")
+#     # print ([pos_tagger(prop) for prop in prop_for_con])
 #     filtered_prop_list = filter_prop(con, prop_for_con)
 #     
 #     d[con] = filtered_prop_list
 #     
 # 
+
+# 
+
+# In[ ]:
+
+
+
+
 
 # l = []
 # for key, value in d.items():
