@@ -273,7 +273,7 @@ def preprocess_hd_data(vocab_file, test_concept_file):
 
 
 
-# In[4]:
+# In[ ]:
 
 
 def transform(vecs):
@@ -404,7 +404,7 @@ prop_name_emb_dict = {"name_list_prop" : prop_list,
 
 print (f"Pickling the transformed property name list and their embeddings.")
 
-pickle_file_name = "/scratch/c.scmag3/biencoder_concept_property/data/evaluation_data/nn_analysis/noun_properties.pkl"
+pickle_file_name = "/scratch/c.scmag3/biencoder_concept_property/data/evaluation_data/nn_analysis/paper_noun_properties.pkl"
 
 with open (pickle_file_name, "wb") as f:
     pickle.dump(prop_name_emb_dict, f)
