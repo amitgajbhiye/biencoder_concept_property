@@ -16,6 +16,7 @@ import os
 
 import torch
 import nltk
+import pickle
 
 from model.concept_property_model import ConceptPropertyModel
 from utils.functions import create_model
@@ -378,7 +379,7 @@ prop_name_emb_dict = {"name_list_prop" : prop_list,
 
 print (f"Pickling the transformed property name list and their embeddings.")
 
-pickle_file_name = "data/evaluation_data/nn_analysis/noun_prop_emb.pickle"
+pickle_file_name = "/scratch/c.scmag3/biencoder_concept_property/data/evaluation_data/nn_analysis/noun_properties.pkl"
 
 with open (pickle_file_name, "wb") as f:
     pickle.dump(prop_name_emb_dict, f)
