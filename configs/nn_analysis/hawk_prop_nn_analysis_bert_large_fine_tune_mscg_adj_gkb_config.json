@@ -2,7 +2,7 @@
     "experiment_name": "nn_ana_prop_bert_large_mcrae_data_fine_tuned_on_100k_mscg_8k_pre_adj_100k_gkb_prop",
     "log_dirctory": "nn_analysis",
     "dataset_params": {
-        "dataset_name": "hd_data",
+        "dataset_name": "test_data",
         "train_file_path": "None",
         "val_file_path": "None",
         "test_file_path": "data/evaluation_data/nn_analysis/cut_off_prop_count_10_unique.tsv",
@@ -19,7 +19,6 @@
         }
     },
     "model_params": {
-        "log_dirctory": "nn_analysis",
         "load_pretrained": true,
         "pretrained_model_name": "bert_large_100k_mscg_8k_prefix_adj_100k_gkb_properties_best_model.pt",
         "pretrained_model_path": "trained_models/100k_data_experiments/bert_large_100k_mscg_8k_prefix_adj_100k_gkb_properties_best_model.pt",

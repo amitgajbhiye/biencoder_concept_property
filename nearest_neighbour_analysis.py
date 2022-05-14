@@ -7,7 +7,7 @@
 # tok = BertTokenizer.from_pretrained("bert-large-uncased")
 # tok.save_pretrained("/home/amitgajbhiye/cardiff_work/100k_data_experiments/bert_large_uncased_pretrained/tokenizer/")
 
-# In[ ]:
+# In[1]:
 
 
 import numpy as np
@@ -247,18 +247,25 @@ def preprocess_hd_data(vocab_file, test_concept_file):
 # con_prop_df = pd.read_csv(con_prop_file, sep="\t", header=0)
 # 
 # print (con_prop_df)
-# 
 
+# 
+# file_cut_off_prop_count_10_unique = "data/evaluation_data/nn_analysis/cut_off_prop_count_10_unique.tsv"
+# 
 # cut_off_prop_count_10 = con_prop_df[con_prop_df["prop_count"] >= 10]
-# cut_off_prop_count_10
 # 
 # cut_off_prop_count_10.drop("prop_count", axis=1, inplace=True)
-# cut_off_prop_count_10["label"] = int(0)
 # 
-# file_name_cut_off_prop_count_10 = "data/evaluation_data/nn_analysis/all_properties_cut_off_prop_count_10.tsv"
+# unique_prop_list = cut_off_prop_count_10["property"].unique()
 # 
-# cut_off_prop_count_10.to_csv(file_name_cut_off_prop_count_10, sep="\t", header=None, index=None)
-# cut_off_prop_count_10
+# print ("Unique Prop Count :", len(unique_prop_list))
+# 
+# unique_prop_list = [("dummy_con", prop.strip(), int(0)) for prop in unique_prop_list]
+# 
+# unique_prop_df = pd.DataFrame(unique_prop_list)
+# 
+# unique_prop_df.to_csv(file_cut_off_prop_count_10_unique, sep="\t", header=None, index=None)
+# 
+# 
 
 # In[ ]:
 
@@ -266,23 +273,33 @@ def preprocess_hd_data(vocab_file, test_concept_file):
 
 
 
-# In[ ]:
+# In[4]:
 
 
-#### Loading the BERT Large Model for generating Property Embedding
-#### Here change the property test_file in config to the tsv file which contain the properties
+def transform(vecs):
+    
+    maxnorm = max([np.linalg.norm(v) for v in vecs])
+    new_vecs = []
+    
+    for v in vecs:
+        new_vecs.append(np.insert(v, 0, np.sqrt(maxnorm**2-np.linalg.norm(v)**2)))
+    
+    return new_vecs
 
-local_prop_config_file_path = "configs/nn_analysis/prop_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
-hawk_prop_config_file_path = "configs/nn_analysis/hawk_prop_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
 
-torch.cuda.empty_cache()
-
-prop_config = read_config(hawk_prop_config_file_path)
-prop_model = load_pretrained_model(prop_config)
-prop_model.eval()
-prop_model.to(device)
-print("Property Model Loaded")
-
+# #### Loading the BERT Large Model for generating Property Embedding
+# #### Here change the property test_file in config to the tsv file which contain the properties
+# 
+# local_prop_config_file_path = "configs/nn_analysis/prop_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
+# hawk_prop_config_file_path = "configs/nn_analysis/hawk_prop_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
+# 
+# torch.cuda.empty_cache()
+# 
+# prop_config = read_config(hawk_prop_config_file_path)s
+# prop_model = load_pretrained_model(prop_config)
+# prop_model.eval()
+# prop_model.to(device)
+# print("Property Model Loaded")
 
 # In[ ]:
 
@@ -352,114 +369,104 @@ def get_embedding (model, config):
             
 
 
-# In[ ]:
+# _, _, prop_list, prop_emb = get_embedding(prop_model, prop_config)
 
+# print (f"prop_list len - {len(prop_list)}, Property Emb Len - {len(prop_emb)}")
 
-_, _, prop_list, prop_emb = get_embedding(prop_model, prop_config)
+# prop_trans = transform(prop_emb)
 
+# prop_name_emb_dict = {"name_list_prop" : prop_list,
+#                       "untransformed_prop_emb":prop_emb,
+#                      "transformed_prop_emb" : prop_trans}
 
-# In[ ]:
-
-
-print (f"prop_list len - {len(prop_list)}, Property Emb Len - {len(prop_emb)}")
-
-
-# In[ ]:
-
-
-def transform(vecs):
-    
-    maxnorm = max([np.linalg.norm(v) for v in vecs])
-    new_vecs = []
-    
-    for v in vecs:
-        new_vecs.append(np.insert(v, 0, np.sqrt(maxnorm**2-np.linalg.norm(v)**2)))
-    
-    return new_vecs
-
-
-# In[ ]:
-
-
-prop_trans = transform(prop_emb)
-
-
-# In[ ]:
-
-
-prop_name_emb_dict = {"name_list_prop" : prop_list,
-                      "untransformed_prop_emb":prop_emb,
-                     "transformed_prop_emb" : prop_trans}
-
-
-# In[ ]:
-
-
-print (f"Pickling the transformed property name list and their embeddings.")
-
-pickle_file_name = "/scratch/c.scmag3/biencoder_concept_property/data/evaluation_data/nn_analysis/noun_properties.pkl"
-
-with open (pickle_file_name, "wb") as f:
-    pickle.dump(prop_name_emb_dict, f)
-    
-
-
-# In[ ]:
-
-
-for key, value in prop_name_emb_dict.items():
-    print (f"{key} : {len(value)}")
-
-print ()
-print ("*" * 50)
-print (*prop_list, sep="\t")
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# # Loading the model model to generate concept embeddings
-# # Here change the concept test file the file where the test (query) concepts are loaded
+# print (f"Pickling the transformed property name list and their embeddings.")
 # 
-# torch.cuda.empty_cache()
+# pickle_file_name = "/scratch/c.scmag3/biencoder_concept_property/data/evaluation_data/nn_analysis/noun_properties.pkl"
 # 
-# local_con_conf_file_path = "configs/nn_analysis/con_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
-# hawk_con_conf_file_path = "configs/nn_analysis/hawk_con_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
-# 
-# con_config = read_config(hawk_con_conf_file_path)
-# con_model = load_pretrained_model(con_config)
-# con_model.eval()
-# con_model.to(device)
-# print ("Concept Model Loaded")
+# with open (pickle_file_name, "wb") as f:
+#     pickle.dump(prop_name_emb_dict, f)
+#     
 
-# con_list, con_emb, _, _ = get_embedding(con_model, con_config)
-
-# print (f"con_list len - {len(con_list)}, con_emb Len - {len(con_emb)}")
-
-# con_trans = transform(con_emb)
-
-# con_name_emb_dict = {"name_list_con" : con_list,
-#                      "untransformed_con_emb": con_emb,
-#                     "transformed_con_emb" : con_trans}
-
-# with open ("data/evaluation_data/nn_analysis/hd_data/hd_con_name_emb.pickle", "wb") as f:
-#     pickle.dump(con_name_emb_dict, f)
-
-# for key, value in con_name_emb_dict.items():
+# for key, value in prop_name_emb_dict.items():
 #     print (f"{key} : {len(value)}")
 # 
 # print ()
 # print ("*" * 50)
-# print (*con_list, sep="\t")
+# print (*prop_list, sep="\t")
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+# Loading the model model to generate concept embeddings
+# Here change the concept test file the file where the test (query) concepts are loaded
+
+torch.cuda.empty_cache()
+
+local_con_conf_file_path = "configs/nn_analysis/con_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
+hawk_con_conf_file_path = "configs/nn_analysis/hawk_con_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
+
+con_config = read_config(hawk_con_conf_file_path)
+con_model = load_pretrained_model(con_config)
+con_model.eval()
+con_model.to(device)
+print ("Concept Model Loaded")
+
+
+# In[ ]:
+
+
+con_list, con_emb, _, _ = get_embedding(con_model, con_config)
+
+
+# In[ ]:
+
+
+print (f"con_list len - {len(con_list)}, con_emb Len - {len(con_emb)}")s
+
+
+# In[ ]:
+
+
+con_trans = transform(con_emb)
+
+
+# In[ ]:
+
+
+con_name_emb_dict = {"name_list_con" : con_list,
+                     "untransformed_con_emb": con_emb,
+                    "transformed_con_emb" : con_trans}
+
+
+# In[ ]:
+
+
+with open ("data/evaluation_data/nn_analysis/paper_concepts_name_emb.pickle", "wb") as f:
+    pickle.dump(con_name_emb_dict, f)
+
+
+# In[ ]:
+
+
+for key, value in con_name_emb_dict.items():
+    print (f"{key} : {len(value)}")
+
+print ()
+print ("*" * 50)
+print (*con_list, sep="\t")
+
 
 # 
 
