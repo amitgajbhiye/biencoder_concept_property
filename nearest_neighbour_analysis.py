@@ -298,7 +298,7 @@ hawk_prop_config_file_path = "configs/nn_analysis/hawk_prop_nn_analysis_bert_lar
 
 torch.cuda.empty_cache()
 
-prop_config = read_config(hawk_prop_config_file_path)s
+prop_config = read_config(hawk_prop_config_file_path)
 prop_model = load_pretrained_model(prop_config)
 prop_model.eval()
 prop_model.to(device)
