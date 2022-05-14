@@ -1,6 +1,6 @@
 #!/bin/bash --login
 
-#SBATCH --job-name=ps_DL
+#SBATCH --job-name=psmDL
 
 #SBATCH --output=logs/cslb_deberta_logs/out_mcrae_prop_split_deberta_large_baseline.txt
 #SBATCH --error=logs/cslb_deberta_logs/err_mcrae_prop_split_deberta_large_baseline.txt

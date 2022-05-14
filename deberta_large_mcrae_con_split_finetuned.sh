@@ -1,6 +1,6 @@
 #!/bin/bash --login
 
-#SBATCH --job-name=cs_DLF
+#SBATCH --job-name=csmDLF
 
 #SBATCH --output=logs/cslb_deberta_logs/out_con_split_deberta_large_mcrae_finetuned.txt
 #SBATCH --error=logs/cslb_deberta_logs/err_con_split_deberta_large_mcrae_finetuned.txt

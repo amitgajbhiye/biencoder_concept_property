@@ -1,6 +1,6 @@
 #!/bin/bash --login
 
-#SBATCH --job-name=ps_DLF
+#SBATCH --job-name=psmDLF
 
 #SBATCH --output=logs/cslb_deberta_logs/out_prop_split_deberta_large_mcrae_finetuned.txt
 #SBATCH --error=logs/cslb_deberta_logs/err_prop_split_deberta_large_mcrae_finetuned.txt

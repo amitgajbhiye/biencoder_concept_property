@@ -1,6 +1,6 @@
 #!/bin/bash --login
 
-#SBATCH --job-name=cs_DL
+#SBATCH --job-name=csmDL
 
 #SBATCH --output=logs/cslb_deberta_logs/out_mcrae_con_split_deberta_large_no_fine_tune_baseline.txt
 #SBATCH --error=logs/cslb_deberta_logs/err_mcrae_con_split_deberta_large_no_fine_tune_baseline.txt
