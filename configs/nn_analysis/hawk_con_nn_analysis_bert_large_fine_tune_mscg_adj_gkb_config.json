@@ -4,7 +4,7 @@
         "dataset_name": "hd_data",
         "train_file_path": "None",
         "val_file_path": "None",
-        "test_file_path": "data/evaluation_data/nn_analysis/hd_data/concepts_hd_test_con_prop.tsv",
+        "test_file_path": "data/evaluation_data/nn_analysis/con_df.tsv",
         "hf_tokenizer_name": "bert-large-uncased",
         "hf_tokenizer_path": "/scratch/c.scmag3/conceptEmbeddingModel/bert-large-uncased/tokenizer",
         "concept_max_len": 64,

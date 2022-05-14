@@ -1,8 +1,8 @@
 #!/bin/bash --login
 #SBATCH --job-name=hd_nn
 
-#SBATCH --output=logs/nn_analysis/out_concepts_embeddngs_hd_data_nn_analysis.txt
-#SBATCH --error=logs/nn_analysis/err_concepts_embeddngs_hd_data_nn_analysis.txt
+#SBATCH --output=logs/nn_analysis/out_real_concepts_embeddngs_hd_data_nn_analysis.txt
+#SBATCH --error=logs/nn_analysis/err_real_concepts_embeddngs_hd_data_nn_analysis.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
@@ -12,7 +12,7 @@
 #SBATCH --mem=10g
 #SBATCH --gres=gpu:1
 
-#SBATCH -t 0-01:00:00
+#SBATCH -t 0-0:30:00
 
 echo 'This script is running on:'
 hostname
