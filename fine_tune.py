@@ -9,6 +9,7 @@ import numpy as np
 import pandas as pd
 import torch
 import torch.nn as nn
+import pickle
 
 from sklearn.model_selection import StratifiedKFold
 from transformers import AdamW, get_linear_schedule_with_warmup
@@ -640,6 +641,24 @@ def model_evaluation_concept_property_cross_validation(config):
         log.info(f"Test Df Columns : {test_df.columns}")
 
         load_pretrained = config.get("model_params").get("load_pretrained")
+
+        train_file_name = os.path.join(
+            "data/evaluation_data/nn_analysis/prop_split_train_test_files",
+            f"{fold}_train_prop_split_con_prop.pkl",
+        )
+        test_file_name = os.path.join(
+            "data/evaluation_data/nn_analysis/prop_split_train_test_files",
+            f"{fold}_test_prop_split_con_prop.pkl",
+        )
+
+        with open("train_file_name", "wb") as train_file, open(
+            "test_file_name", "wb"
+        ) as test_file:
+
+            pickle.dump(train_df, train_file)
+            pickle.dump(test_df, test_file)
+
+        continue
 
         if load_pretrained:
             log.info(f"load_pretrained is : {load_pretrained}")
