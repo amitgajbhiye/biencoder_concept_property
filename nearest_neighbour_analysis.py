@@ -462,7 +462,7 @@ prop_name_emb_dict = {"name_list_prop" : prop_list,
 
 print (f"Pickling the transformed property name list and their embeddings.")
 
-pickle_file_name = "/scratch/c.scmag3/biencoder_concept_property/data/evaluation_data/nn_analysis/mcrae_bert_base_train_prop_embeds.pkl"
+pickle_file_name = "/scratch/c.scmag3/biencoder_concept_property/data/evaluation_data/nn_analysis/mcrae_bert_base_test_prop_embeds.pkl"
 
 with open (pickle_file_name, "wb") as f:
     pickle.dump(prop_name_emb_dict, f)
@@ -542,7 +542,7 @@ con_name_emb_dict = {"name_list_con" : con_list,
 # In[ ]:
 
 
-with open ("data/evaluation_data/nn_analysis/mcrae_bert_base_train_cons_embeds.pkl", "wb") as f:
+with open ("data/evaluation_data/nn_analysis/mcrae_bert_base_test_cons_embeds.pkl", "wb") as f:
     pickle.dump(con_name_emb_dict, f)
 
 
