@@ -2,10 +2,10 @@
     "experiment_name": "nn_ana_con_bert_large_mcrae_data_fine_tuned_on_100k_mscg_8k_prefix_adj_100k_gkb_prop",
     "log_dirctory": "nn_analysis",
     "dataset_params": {
-        "dataset_name": "mcrae_train_concepts",
+        "dataset_name": "mcrae_test_concepts",
         "train_file_path": "None",
         "val_file_path": "None",
-        "test_file_path": "data/evaluation_data/nn_analysis/mcrae_unique_train_concepts.tsv",
+        "test_file_path": "data/evaluation_data/nn_analysis/mcrae_unique_test_concepts.tsv",
         "hf_tokenizer_name": "bert-large-uncased",
         "hf_tokenizer_path": "/scratch/c.scmag3/conceptEmbeddingModel/bert-large-uncased/tokenizer",
         "concept_max_len": 64,

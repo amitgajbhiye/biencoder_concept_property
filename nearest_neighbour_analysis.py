@@ -7,7 +7,7 @@
 # tok = BertTokenizer.from_pretrained("bert-large-uncased")
 # tok.save_pretrained("/home/amitgajbhiye/cardiff_work/100k_data_experiments/bert_large_uncased_pretrained/tokenizer/")
 
-# In[ ]:
+# In[1]:
 
 
 import numpy as np
@@ -267,6 +267,60 @@ def preprocess_hd_data(vocab_file, test_concept_file):
 # 
 # 
 
+# mc_train_file = "data/evaluation_data/extended_mcrae/train_mcrae.tsv"
+# 
+# train_df = pd.read_csv(mc_train_file, sep="\t", names=["concept", "property", "label"])
+# 
+# unique_train_con = train_df["concept"].unique()
+# unique_train_con = [(con.strip(), "dummy_prop", int(0)) for con in unique_train_con]
+# 
+# unique_train_df = pd.DataFrame.from_records(unique_train_con)
+# unique_train_df.to_csv("data/evaluation_data/nn_analysis/mcrae_unique_train_concepts.tsv", sep="\t", header=None, index=None)
+# 
+# 
+# unique_train_prop = train_df["property"].unique()
+# unique_train_prop = [("dummy_con", prop.strip(), int(0)) for prop in unique_train_prop]
+# 
+# unique_train_prop_df = pd.DataFrame.from_records(unique_train_prop)
+# 
+# unique_train_prop_df.to_csv("data/evaluation_data/nn_analysis/mcrae_unique_train_properties.tsv", sep="\t", header=None, index=None)
+# 
+# 
+# print (len(unique_train_con))
+# print (len(unique_train_prop))
+# 
+# 
+
+# mc_test_file = "data/evaluation_data/extended_mcrae/test_mcrae.tsv"
+# 
+# test_df = pd.read_csv(mc_test_file, sep="\t", names=["concept", "property", "label"])
+# 
+# unique_test_con = test_df["concept"].unique()
+# unique_test_con = [(con.strip(), "dummy_prop", int(0)) for con in unique_test_con]
+# 
+# unique_test_df = pd.DataFrame.from_records(unique_test_con)
+# unique_test_df.to_csv("data/evaluation_data/nn_analysis/mcrae_unique_test_concepts.tsv", sep="\t", header=None, index=None)
+# 
+# 
+# unique_test_prop = test_df["property"].unique()
+# unique_test_prop = [("dummy_con", prop.strip(), int(0)) for prop in unique_test_prop]
+# 
+# unique_test_prop_df = pd.DataFrame.from_records(unique_test_prop)
+# 
+# unique_test_prop_df.to_csv("data/evaluation_data/nn_analysis/mcrae_unique_test_properties.tsv", sep="\t", header=None, index=None)
+# 
+# 
+# print (len(unique_test_con))
+# print (len(unique_test_prop))
+# 
+# 
+
+# In[ ]:
+
+
+
+
+
 # In[ ]:
 
 
@@ -406,7 +460,7 @@ prop_name_emb_dict = {"name_list_prop" : prop_list,
 
 print (f"Pickling the transformed property name list and their embeddings.")
 
-pickle_file_name = "/scratch/c.scmag3/biencoder_concept_property/data/evaluation_data/nn_analysis/mcrae_train_properties_embedding.pkl"
+pickle_file_name = "/scratch/c.scmag3/biencoder_concept_property/data/evaluation_data/nn_analysis/mcrae_test_properties_embedding.pkl"
 
 with open (pickle_file_name, "wb") as f:
     pickle.dump(prop_name_emb_dict, f)
@@ -484,7 +538,7 @@ con_name_emb_dict = {"name_list_con" : con_list,
 # In[ ]:
 
 
-with open ("data/evaluation_data/nn_analysis/mcrae_train_concept_embedding.pickle", "wb") as f:
+with open ("data/evaluation_data/nn_analysis/mcrae_test_concept_embedding.pkl", "wb") as f:
     pickle.dump(con_name_emb_dict, f)
 
 
@@ -500,6 +554,24 @@ print (*con_list, sep="\t")
 
 
 # 
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
 
 # 
 
