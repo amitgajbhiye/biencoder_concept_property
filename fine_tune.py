@@ -658,35 +658,36 @@ def model_evaluation_concept_property_cross_validation(config):
             pickle.dump(train_df, train_file)
             pickle.dump(test_df, test_file)
 
-        continue
+        log.info(f"Finished Saving {fold} files")
+        log.info("\n")
 
-        if load_pretrained:
-            log.info(f"load_pretrained is : {load_pretrained}")
-            log.info(f"Loading Pretrained Model ...")
-            model = load_pretrained_model(config)
-        else:
-            # Untrained LM is Loaded  - for baselines results
-            log.info(f"load_pretrained is : {load_pretrained}")
-            model = create_model(config.get("model_params"))
+        # if load_pretrained:
+        #     log.info(f"load_pretrained is : {load_pretrained}")
+        #     log.info(f"Loading Pretrained Model ...")
+        #     model = load_pretrained_model(config)
+        # else:
+        #     # Untrained LM is Loaded  - for baselines results
+        #     log.info(f"load_pretrained is : {load_pretrained}")
+        #     model = create_model(config.get("model_params"))
 
-        total_params, trainable_params = count_parameters(model)
+        # total_params, trainable_params = count_parameters(model)
 
-        log.info(f"The total number of parameters in the model : {total_params}")
-        log.info(f"Trainable parameters in the model : {trainable_params}")
+        # log.info(f"The total number of parameters in the model : {total_params}")
+        # log.info(f"Trainable parameters in the model : {trainable_params}")
 
-        train(model, config, train_df, fold, valid_df=None)
+        # train(model, config, train_df, fold, valid_df=None)
 
-        log.info(f"Test scores for fold :  {fold}")
+        # log.info(f"Test scores for fold :  {fold}")
 
-        fold_label, fold_preds = test_best_model(
-            config=config, test_df=test_df, fold=fold,
-        )
+        # fold_label, fold_preds = test_best_model(
+        #     config=config, test_df=test_df, fold=fold,
+        # )
 
-        label.append(fold_label)
-        preds.append(fold_preds)
+        # label.append(fold_label)
+        # preds.append(fold_preds)
 
-        log.info(f"Fold : {fold} label shape - {fold_label.shape}")
-        log.info(f"Fold : {fold} preds shape - {fold_preds.shape}")
+        # log.info(f"Fold : {fold} label shape - {fold_label.shape}")
+        # log.info(f"Fold : {fold} preds shape - {fold_preds.shape}")
 
     # log.info(f"\n {'*' * 50}")
     # log.info(f"Test scores for all the Folds")
