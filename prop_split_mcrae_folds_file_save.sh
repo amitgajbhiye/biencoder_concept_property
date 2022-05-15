@@ -2,8 +2,8 @@
 
 #SBATCH --job-name=PSFS
 
-#SBATCH --output=logs/nn_analysis/out_mcrae_prop_split_roberta_large_baseline.txt
-#SBATCH --error=logs/nn_analysis/err_mcrae_prop_split_roberta_large_baseline.txt
+#SBATCH --output=logs/nn_analysis/out_mcrae_prop_split.txt
+#SBATCH --error=logs/nn_analysis/err_mcrae_prop_split.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5

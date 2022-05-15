@@ -651,8 +651,8 @@ def model_evaluation_concept_property_cross_validation(config):
             f"{fold}_test_prop_split_con_prop.pkl",
         )
 
-        with open("train_file_name", "wb") as train_file, open(
-            "test_file_name", "wb"
+        with open(train_file_name, "wb") as train_file, open(
+            test_file_name, "wb"
         ) as test_file:
 
             pickle.dump(train_df, train_file)
@@ -688,19 +688,19 @@ def model_evaluation_concept_property_cross_validation(config):
         log.info(f"Fold : {fold} label shape - {fold_label.shape}")
         log.info(f"Fold : {fold} preds shape - {fold_preds.shape}")
 
-    log.info(f"\n {'*' * 50}")
-    log.info(f"Test scores for all the Folds")
+    # log.info(f"\n {'*' * 50}")
+    # log.info(f"Test scores for all the Folds")
 
-    label = np.concatenate(label, axis=0)
-    preds = np.concatenate(preds, axis=0)
+    # label = np.concatenate(label, axis=0)
+    # preds = np.concatenate(preds, axis=0)
 
-    log.info(f"All labels shape : {label.shape}")
-    log.info(f"All preds shape : {preds.shape}")
+    # log.info(f"All labels shape : {label.shape}")
+    # log.info(f"All preds shape : {preds.shape}")
 
-    scores = compute_scores(label, preds)
+    # scores = compute_scores(label, preds)
 
-    for key, value in scores.items():
-        log.info(f"{key} : {value}")
+    # for key, value in scores.items():
+    #     log.info(f"{key} : {value}")
 
 
 def test_best_model(config, test_df, fold=None):
