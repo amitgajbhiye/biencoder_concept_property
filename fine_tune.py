@@ -498,48 +498,67 @@ def model_evaluation_property_cross_validation(config):
         train_df = train_df[["concept", "property", "label"]]
         test_df = test_df[["concept", "property", "label"]]
 
-        load_pretrained = config.get("model_params").get("load_pretrained")
-
-        if load_pretrained:
-            log.info(f"load_pretrained is : {load_pretrained}")
-            log.info(f"Loading Pretrained Model ...")
-            model = load_pretrained_model(config)
-        else:
-            # Untrained LM is Loaded  - for baselines results
-            log.info(f"load_pretrained is : {load_pretrained}")
-            model = create_model(config.get("model_params"))
-
-        total_params, trainable_params = count_parameters(model)
-
-        log.info(f"The total number of parameters in the model : {total_params}")
-        log.info(f"Trainable parameters in the model : {trainable_params}")
-
-        train(model, config, train_df, fold, valid_df=None)
-
-        log.info(f"Test scores for fold :  {fold}")
-
-        fold_label, fold_preds = test_best_model(
-            config=config, test_df=test_df, fold=fold,
+        train_file_name = os.path.join(
+            "data/evaluation_data/nn_analysis/prop_split_train_test_files",
+            f"{fold}_train_prop_split_con_prop.pkl",
+        )
+        test_file_name = os.path.join(
+            "data/evaluation_data/nn_analysis/prop_split_train_test_files",
+            f"{fold}_test_prop_split_con_prop.pkl",
         )
 
-        label.append(fold_label)
-        preds.append(fold_preds)
+        with open(train_file_name, "wb") as train_file, open(
+            test_file_name, "wb"
+        ) as test_file:
 
-        log.info(f"Fold : {fold} label shape - {fold_label.shape}")
-        log.info(f"Fold : {fold} preds shape - {fold_preds.shape}")
+            pickle.dump(train_df, train_file)
+            pickle.dump(test_df, test_file)
 
-    log.info(f"\n {'*' * 50}")
-    log.info(f"Test scores for all the Folds")
-    label = np.concatenate(label, axis=0)
-    preds = np.concatenate(preds, axis=0).flatten()
+        log.info(f"Finished Saving {fold} files")
+        log.info("\n")
 
-    log.info(f"All labels shape : {label.shape}")
-    log.info(f"All preds shape : {preds.shape}")
+    #     load_pretrained = config.get("model_params").get("load_pretrained")
 
-    scores = compute_scores(label, preds)
+    #     if load_pretrained:
+    #         log.info(f"load_pretrained is : {load_pretrained}")
+    #         log.info(f"Loading Pretrained Model ...")
+    #         model = load_pretrained_model(config)
+    #     else:
+    #         # Untrained LM is Loaded  - for baselines results
+    #         log.info(f"load_pretrained is : {load_pretrained}")
+    #         model = create_model(config.get("model_params"))
 
-    for key, value in scores.items():
-        log.info(f"{key} : {value}")
+    #     total_params, trainable_params = count_parameters(model)
+
+    #     log.info(f"The total number of parameters in the model : {total_params}")
+    #     log.info(f"Trainable parameters in the model : {trainable_params}")
+
+    #     train(model, config, train_df, fold, valid_df=None)
+
+    #     log.info(f"Test scores for fold :  {fold}")
+
+    #     fold_label, fold_preds = test_best_model(
+    #         config=config, test_df=test_df, fold=fold,
+    #     )
+
+    #     label.append(fold_label)
+    #     preds.append(fold_preds)
+
+    #     log.info(f"Fold : {fold} label shape - {fold_label.shape}")
+    #     log.info(f"Fold : {fold} preds shape - {fold_preds.shape}")
+
+    # log.info(f"\n {'*' * 50}")
+    # log.info(f"Test scores for all the Folds")
+    # label = np.concatenate(label, axis=0)
+    # preds = np.concatenate(preds, axis=0).flatten()
+
+    # log.info(f"All labels shape : {label.shape}")
+    # log.info(f"All preds shape : {preds.shape}")
+
+    # scores = compute_scores(label, preds)
+
+    # for key, value in scores.items():
+    #     log.info(f"{key} : {value}")
 
 
 def model_evaluation_concept_property_cross_validation(config):
@@ -640,14 +659,14 @@ def model_evaluation_concept_property_cross_validation(config):
         log.info(f"Train DF Columns : {train_df.columns}")
         log.info(f"Test Df Columns : {test_df.columns}")
 
-        load_pretrained = config.get("model_params").get("load_pretrained")
+        # load_pretrained = config.get("model_params").get("load_pretrained")
 
         train_file_name = os.path.join(
-            "data/evaluation_data/nn_analysis/prop_split_train_test_files",
+            "data/evaluation_data/nn_analysis/con_prop_split_train_test_files",
             f"{fold}_train_prop_split_con_prop.pkl",
         )
         test_file_name = os.path.join(
-            "data/evaluation_data/nn_analysis/prop_split_train_test_files",
+            "data/evaluation_data/nn_analysis/con_prop_split_train_test_files",
             f"{fold}_test_prop_split_con_prop.pkl",
         )
 
