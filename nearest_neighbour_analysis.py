@@ -542,7 +542,7 @@ con_name_emb_dict = {"name_list_con" : con_list,
 # In[ ]:
 
 
-with open ("data/evaluation_data/nn_analysis/mcrae_bert_base_test_cons_embeds.pkl.pkl", "wb") as f:
+with open ("data/evaluation_data/nn_analysis/mcrae_bert_base_test_cons_embeds.pkl", "wb") as f:
     pickle.dump(con_name_emb_dict, f)
 
 
