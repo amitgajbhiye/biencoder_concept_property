@@ -7,7 +7,7 @@
 # tok = BertTokenizer.from_pretrained("bert-large-uncased")
 # tok.save_pretrained("/home/amitgajbhiye/cardiff_work/100k_data_experiments/bert_large_uncased_pretrained/tokenizer/")
 
-# In[1]:
+# In[ ]:
 
 
 import numpy as np
@@ -418,11 +418,13 @@ def get_embedding (model, config):
 #### Here change the property test_file in config to the tsv file which contain the properties
 
 local_prop_config_file_path = "configs/nn_analysis/prop_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
-hawk_prop_config_file_path = "configs/nn_analysis/hawk_prop_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
+hawk_bert_large_prop_config_file_path = "configs/nn_analysis/hawk_prop_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
+
+hawk_bert_base_prop_config_file_path = "configs/nn_analysis/hawk_prop_nn_analysis_bert_base_fine_tune_mscg_adj_gkb_config.json"
 
 torch.cuda.empty_cache()
 
-prop_config = read_config(hawk_prop_config_file_path)
+prop_config = read_config(hawk_bert_base_prop_config_file_path)
 prop_model = load_pretrained_model(prop_config)
 prop_model.eval()
 prop_model.to(device)
@@ -460,7 +462,7 @@ prop_name_emb_dict = {"name_list_prop" : prop_list,
 
 print (f"Pickling the transformed property name list and their embeddings.")
 
-pickle_file_name = "/scratch/c.scmag3/biencoder_concept_property/data/evaluation_data/nn_analysis/mcrae_test_properties_embedding.pkl"
+pickle_file_name = "/scratch/c.scmag3/biencoder_concept_property/data/evaluation_data/nn_analysis/mcrae_bert_base_test_prop_embeds.pkl"
 
 with open (pickle_file_name, "wb") as f:
     pickle.dump(prop_name_emb_dict, f)
@@ -502,7 +504,9 @@ torch.cuda.empty_cache()
 local_con_conf_file_path = "configs/nn_analysis/con_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
 hawk_con_conf_file_path = "configs/nn_analysis/hawk_con_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
 
-con_config = read_config(hawk_con_conf_file_path)
+hawk_bert_base_con_config_file_path = "configs/nn_analysis/hawk_con_nn_analysis_bert_base_fine_tune_mscg_adj_gkb_config.json"
+
+con_config = read_config(hawk_bert_base_con_config_file_path)
 con_model = load_pretrained_model(con_config)
 con_model.eval()
 con_model.to(device)
@@ -538,7 +542,7 @@ con_name_emb_dict = {"name_list_con" : con_list,
 # In[ ]:
 
 
-with open ("data/evaluation_data/nn_analysis/mcrae_test_concept_embedding.pkl", "wb") as f:
+with open ("data/evaluation_data/nn_analysis/mcrae_bert_base_test_cons_embeds.pkl.pkl", "wb") as f:
     pickle.dump(con_name_emb_dict, f)
 
 

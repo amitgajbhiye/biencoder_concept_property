@@ -1,8 +1,8 @@
 #!/bin/bash --login
 #SBATCH --job-name=hd_nn
 
-#SBATCH --output=logs/nn_analysis/out_mcrae_test_con_prope_mbeddngs_nn_analysis.txt
-#SBATCH --error=logs/nn_analysis/err_mcrae_test_con_prope_mbeddngs_nn_analysis.txt
+#SBATCH --output=logs/nn_analysis/out_bert_base_mcrae_test_con_prope_mbeddngs_nn_analysis.txt
+#SBATCH --error=logs/nn_analysis/err_bert_base_mcrae_test_con_prope_mbeddngs_nn_analysis.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5

@@ -1,0 +1,48 @@
+{
+    "experiment_name": "nn_ana_prop_bert_base_mcrae_data_fine_tuned_on_100k_mscg_8k_pre_adj_100k_gkb_prop",
+    "log_dirctory": "nn_analysis",
+    "dataset_params": {
+        "dataset_name": "mcrae_test_properties",
+        "train_file_path": "None",
+        "val_file_path": "None",
+        "test_file_path": "data/evaluation_data/nn_analysis/mcrae_unique_test_properties.tsv",
+        "hf_tokenizer_name": "bert-base-uncased",
+        "hf_tokenizer_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained/tokenizer",
+        "concept_max_len": 64,
+        "property_max_len": 64,
+        "add_context": true,
+        "context_num": 6,
+        "loader_params": {
+            "batch_size": 256,
+            "num_workers": 4,
+            "pin_memory": true
+        }
+    },
+    "model_params": {
+        "load_pretrained": true,
+        "pretrained_model_name": "100k_mscg_8k_prefix_adj_100k_gkb_properties_best_model.pt",
+        "pretrained_model_path": "trained_models/100k_data_experiments/100k_mscg_8k_prefix_adj_100k_gkb_properties_best_model.pt",
+        "model_name": "None",
+        "hf_checkpoint_name": "bert-base-uncased",
+        "hf_model_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained",
+        "vector_strategy": "mask_token"
+    },
+    "training_params": {
+        "do_cv": "false",
+        "cv_type": "None",
+        "lr": 2e-6,
+        "num_warmup_steps": 0,
+        "max_epochs": 6,
+        "early_stopping_patience": 20,
+        "export_path": "None",
+        "printout_freq": 100,
+        "checkpoint_path": "",
+        "load_checkpoint": -1,
+        "lr_policy": "warmup",
+        "lr_decay_iters": 15
+    },
+    "visualization_params": {
+        "name": "None"
+    },
+    "model_update_freq": 1
+}
