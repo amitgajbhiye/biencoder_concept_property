@@ -1,5 +1,5 @@
 #!/bin/bash --login
-#SBATCH --job-name=PS_NNcls
+#SBATCH --job-name=CP_NNcls
 
 #SBATCH --output=logs/nn_analysis/out_bert_base_mcrae_con_prop_split_nn_3_classifier.txt
 #SBATCH --error=logs/nn_analysis/err_bert_base_mcrae_con_prop_split_nn_3_classifier.txt
@@ -9,10 +9,10 @@
 #SBATCH -A scw1858
 
 #SBATCH -p gpu,gpu_v100
-#SBATCH --mem=6g
+#SBATCH --mem=4g
 #SBATCH --gres=gpu:1
 
-#SBATCH -t 0-2:00:00
+#SBATCH -t 0-00:01:00
 
 echo 'This script is running on:'
 hostname
