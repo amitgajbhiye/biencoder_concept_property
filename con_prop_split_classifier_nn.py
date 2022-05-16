@@ -162,7 +162,7 @@ torch.cuda.empty_cache()
 
 local_base_path = "/home/amitgajbhiye/cardiff_work/dot_product_model_nn_analysis/mcrae_train_test_embeddings/con_prop_split_train_test_files"
 
-hawk_base_path = "data/evaluation_data/nn_analysis/con_prop_split_train_test_files"
+hawk_base_path = "data/evaluation_data/nn_analysis/mcrae_con_prop_split_train_test_files"
 
 all_gold_labels, all_preds  = [], []
 
