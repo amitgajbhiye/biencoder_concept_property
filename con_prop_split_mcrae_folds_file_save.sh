@@ -10,8 +10,10 @@
 #SBATCH -A scw1858
 
 #SBATCH -p gpu,gpu_v100
-#SBATCH --mem=5g
-#SBATCH --gres=gpu:1
+##SBATCH --mem=5g
+##SBATCH --gres=gpu:1
+
+#SBATCH -p dev
 
 #SBATCH -t 0-00:30:00
 
