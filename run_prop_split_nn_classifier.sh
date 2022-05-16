@@ -1,8 +1,8 @@
 #!/bin/bash --login
 #SBATCH --job-name=PS_NNcls
 
-#SBATCH --output=logs/nn_analysis/out_bert_base_mcrae_propsplit_nn_classifier.txt
-#SBATCH --error=logs/nn_analysis/err_bert_base_mcrae_propsplit_nn_classifier.txt
+#SBATCH --output=logs/nn_analysis/out_bert_base_mcrae_prop_split_nn_1_classifier.txt
+#SBATCH --error=logs/nn_analysis/err_bert_base_mcrae_prop_split_nn_1_classifier.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5

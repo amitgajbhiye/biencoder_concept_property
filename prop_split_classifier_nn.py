@@ -141,7 +141,8 @@ def predict_label(train_props_similar_to_test, train_df, test_df):
         print ("test_pred :", test_pred)
         print()
     
-    print (f"All Preds for fold : {preds}")
+    print (f"All Preds for fold : {len(preds)}")
+    # print (f"All Preds for fold : {preds}")
     return preds
 
 
@@ -150,7 +151,7 @@ def predict_label(train_props_similar_to_test, train_df, test_df):
 
 #### Loading the BERT Base Model for generating Property Embedding
 
-num_nearest_neighbours = 3
+num_nearest_neighbours = 1
 torch.cuda.empty_cache()
 
 local_base_path = "/home/amitgajbhiye/cardiff_work/dot_product_model_nn_analysis/mcrae_train_test_embeddings/prop_split_train_test_files"
