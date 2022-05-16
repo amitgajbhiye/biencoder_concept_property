@@ -669,13 +669,21 @@ def model_evaluation_concept_property_cross_validation(config):
 
         # load_pretrained = config.get("model_params").get("load_pretrained")
 
+        log.info(
+            f"Fold {fold}, Unique Train Concepts {len(train_df['concept'].unique())}, Unique Test Concepts{len(test_df['concept'].unique())}"
+        )
+
+        log.info(
+            f"Fold {fold}, Unique Train Property {len(train_df['property'].unique())}, Unique Test Concepts{len(test_df['property'].unique())}"
+        )
+
         train_file_name = os.path.join(
             "data/evaluation_data/nn_analysis/con_prop_split_train_test_files",
-            f"{fold}_train_prop_split_con_prop.pkl",
+            f"{fold}_train_con_prop_split_con_prop.pkl",
         )
         test_file_name = os.path.join(
             "data/evaluation_data/nn_analysis/con_prop_split_train_test_files",
-            f"{fold}_test_prop_split_con_prop.pkl",
+            f"{fold}_test_con_prop_split_con_prop.pkl",
         )
 
         with open(train_file_name, "wb") as train_file, open(
