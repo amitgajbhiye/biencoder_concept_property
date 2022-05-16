@@ -7,7 +7,7 @@
         "val_file_path": "None",
         "test_file_path": "None",
         "hf_tokenizer_name": "bert-base-uncased",
-        "hf_tokenizer_path": "/home/amitgajbhiye/cardiff_work/100k_data_experiments/bert_base_uncased_pretrained/tokenizer",
+        "hf_tokenizer_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained/tokenizer",
         "concept_max_len": 64,
         "property_max_len": 64,
         "add_context": true,
@@ -20,10 +20,10 @@
     },
     "model_params": {
         "pretrained_model_name": "100k_mscg_8k_prefix_adj_100k_gkb_properties_best_model.pt",
-        "pretrained_model_path": "/home/amitgajbhiye/cardiff_work/100k_mscg_8k_prefix_adj_100k_gkb_properties_best_model.pt",
+        "pretrained_model_path": "trained_models/100k_data_experiments/100k_mscg_8k_prefix_adj_100k_gkb_properties_best_model.pt",
         "model_name": "100k_mscg_8k_prefix_adj_100k_gkb_properties_best_model.pt",
         "hf_checkpoint_name": "bert-base-uncased",
-        "hf_model_path": "/home/amitgajbhiye/cardiff_work/100k_data_experiments/bert_base_uncased_pretrained/model",
+        "hf_model_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained",
         "vector_strategy": "mask_token"
     },
     "training_params": {
@@ -33,7 +33,7 @@
         "num_warmup_steps": 0,
         "max_epochs": 6,
         "early_stopping_patience": 20,
-        "export_path": "/home/amitgajbhiye/cardiff_work/100k_data_experiments",
+        "export_path": "trained_models/100k_data_experiments",
         "printout_freq": 100,
         "checkpoint_path": "",
         "load_checkpoint": -1,
