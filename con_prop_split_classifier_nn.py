@@ -166,7 +166,7 @@ hawk_base_path = "data/evaluation_data/nn_analysis/con_prop_split_train_test_fil
 
 all_gold_labels, all_preds  = [], []
 
-for x in range(2):
+for x in range(9):
     
     print()
     print (f"For Fold {x}")
