@@ -143,6 +143,9 @@ def predict_label(train_cons_similar_to_test, train_props_similar_to_test, train
             
         label_sum = sum(label_list)
         
+        print ("label_sum :", label_sum)
+        print ("threshold :", threshold)
+        
         if label_sum >= threshold:
             test_pred = 1
         else:
