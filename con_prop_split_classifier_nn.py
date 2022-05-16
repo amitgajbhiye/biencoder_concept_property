@@ -80,7 +80,7 @@ print (model_config["dataset_params"])
 # In[ ]:
 
 
-num_nearest_neighbours = 3
+num_nearest_neighbours = 1
 
 
 # In[ ]:
