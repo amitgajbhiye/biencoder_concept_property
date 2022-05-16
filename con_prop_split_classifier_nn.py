@@ -80,7 +80,7 @@ print (model_config["dataset_params"])
 # In[ ]:
 
 
-num_nearest_neighbours = 1
+num_nearest_neighbours = 3
 
 
 # In[ ]:
@@ -121,9 +121,6 @@ def predict_label(train_cons_similar_to_test, train_props_similar_to_test, train
         
         label_list = []
         
-        print ("label_list")
-        print (label_list)
-        
         for con, prop in combination:
             df = train_df.loc[(train_df["concept"] == con) & (train_df["property"] == prop) & (train_df["label"] == 1)]
             print (f"Dataframe {con} : {prop} is Empty {df.empty}")
@@ -150,6 +147,8 @@ def predict_label(train_cons_similar_to_test, train_props_similar_to_test, train
             test_pred = 1
         else:
             test_pred = 0
+        
+        print ("test_pred :", test_pred)
         
         preds.append(test_pred)
     
