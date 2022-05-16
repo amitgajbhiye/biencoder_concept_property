@@ -507,11 +507,11 @@ def model_evaluation_property_cross_validation(config):
         )
 
         train_file_name = os.path.join(
-            "data/evaluation_data/nn_analysis/prop_split_train_test_files",
+            "data/evaluation_data/nn_analysis/cslb_prop_split_train_test_files",
             f"{fold}_train_prop_split_con_prop.pkl",
         )
         test_file_name = os.path.join(
-            "data/evaluation_data/nn_analysis/prop_split_train_test_files",
+            "data/evaluation_data/nn_analysis/cslb_prop_split_train_test_files",
             f"{fold}_test_prop_split_con_prop.pkl",
         )
 
@@ -678,11 +678,11 @@ def model_evaluation_concept_property_cross_validation(config):
         )
 
         train_file_name = os.path.join(
-            "data/evaluation_data/nn_analysis/con_prop_split_train_test_files",
+            "data/evaluation_data/nn_analysis/cslb_con_prop_split_train_test_files",
             f"{fold}_train_con_prop_split_con_prop.pkl",
         )
         test_file_name = os.path.join(
-            "data/evaluation_data/nn_analysis/con_prop_split_train_test_files",
+            "data/evaluation_data/nn_analysis/cslb_con_prop_split_train_test_files",
             f"{fold}_test_con_prop_split_con_prop.pkl",
         )
 
