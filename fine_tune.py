@@ -498,6 +498,14 @@ def model_evaluation_property_cross_validation(config):
         train_df = train_df[["concept", "property", "label"]]
         test_df = test_df[["concept", "property", "label"]]
 
+        log.info(
+            f"Fold {fold}, Unique Train Concepts {len(train_df['concept'].unique())}, Unique Test Concepts{len(test_df['concept'].unique())}"
+        )
+
+        log.info(
+            f"Fold {fold}, Unique Train Property {len(train_df['property'].unique())}, Unique Test Concepts{len(test_df['property'].unique())}"
+        )
+
         train_file_name = os.path.join(
             "data/evaluation_data/nn_analysis/prop_split_train_test_files",
             f"{fold}_train_prop_split_con_prop.pkl",
@@ -812,7 +820,12 @@ def test_best_model(config, test_df, fold=None):
         log.info(f"{key} : {value}")
     print(flush=True)
 
-    return label, np.array(all_test_preds, dtype=np.int32)
+    return (
+        concept_embedding,
+        property_embedding,
+        label,
+        np.array(all_test_preds, dtype=np.int32),
+    )
 
 
 if __name__ == "__main__":
