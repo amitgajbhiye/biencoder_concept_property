@@ -205,14 +205,18 @@ con_prop_file_with_counts = "data/evaluation_data/nn_analysis/prefix_adj_plus_gk
 
 
 
-# In[6]:
+# In[7]:
 
 
 # hd_vocab_file = "data/evaluation_data/nn_analysis/hd_data/1A.english.vocabulary.txt"
 # test_file = "data/evaluation_data/nn_analysis/hd_data/hd_concept_test.csv"
 
-music_hd_vocab = "data/evaluation_data/nn_analysis/music_hd/2B.music.vocabulary.txt"
-music_hd_test = "data/evaluation_data/nn_analysis/music_hd/music__hd_concept_test.csv"
+# music_hd_vocab = "data/evaluation_data/nn_analysis/music_hd/2B.music.vocabulary.txt"
+# music_hd_test = "data/evaluation_data/nn_analysis/music_hd/music__hd_concept_test.csv"
+
+medical_hd_vocab = "data/evaluation_data/nn_analysis/medical_hd/2A.medical.vocabulary.txt"
+medical_hd_test = "data/evaluation_data/nn_analysis/medical_hd/medical__hd_concept_test.csv"
+
 
 def preprocess_hd_data(vocab_file, test_concept_file):
 
@@ -223,8 +227,9 @@ def preprocess_hd_data(vocab_file, test_concept_file):
     con_prop_vocab_df = pd.DataFrame.from_records(lines)
     con_prop_vocab_df = pd.DataFrame.from_records(lines)
     
-    con_prop_vocab_df.to_csv("data/evaluation_data/nn_analysis/music_hd/properties_music_hd_vocab_con_prop.tsv", sep="\t", index=None, header=None)
+    print (f"Vocab Df shape : {con_prop_vocab_df.shape}")
     
+    con_prop_vocab_df.to_csv("data/evaluation_data/nn_analysis/medical_hd/properties_medical_hd_vocab_con_prop.tsv", sep="\t", index=None, header=None)
     
     test_concepts_df = pd.read_csv(test_concept_file, sep=",", header=0)
     print (f"Test Concepts DF shape : {test_concepts_df.shape}")
@@ -241,10 +246,16 @@ def preprocess_hd_data(vocab_file, test_concept_file):
     
     test_con_prop_df  = pd.DataFrame.from_records(test_con_prop_list)
     
-    test_con_prop_df.to_csv("data/evaluation_data/nn_analysis/music_hd/concepts_music_hd_test_con_prop.tsv", sep="\t", index=None, header=None)
+    test_con_prop_df.to_csv("data/evaluation_data/nn_analysis/medical_hd/concepts_medical_hd_test_con_prop.tsv", sep="\t", index=None, header=None)
     
     
-# preprocess_hd_data (vocab_file = music_hd_vocab, test_concept_file = music_hd_test)
+# preprocess_hd_data (vocab_file = medical_hd_vocab, test_concept_file = medical_hd_test)
+
+
+# In[ ]:
+
+
+
 
 
 # con_prop_file = "data/evaluation_data/nn_analysis/prefix_adj_plus_gkb_prop_with_prop_count.tsv"
@@ -319,12 +330,6 @@ def preprocess_hd_data(vocab_file, test_concept_file):
 # print (len(unique_test_prop))
 # 
 # 
-
-# In[ ]:
-
-
-
-
 
 # In[ ]:
 
@@ -428,7 +433,6 @@ def get_embedding (model, config):
 hawk_bert_large_prop_config_file_path = "configs/nn_analysis/hawk_prop_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
 
 
-
 torch.cuda.empty_cache()
 
 prop_config = read_config(hawk_bert_large_prop_config_file_path)
@@ -469,7 +473,7 @@ prop_name_emb_dict = {"name_list_prop" : prop_list,
 
 print (f"Pickling the transformed property name list and their embeddings.")
 
-pickle_file_name = "/scratch/c.scmag3/biencoder_concept_property/data/evaluation_data/nn_analysis/music_hd/properties_music_hd_vocab_embeds.pkl"
+pickle_file_name = "/scratch/c.scmag3/biencoder_concept_property/data/evaluation_data/nn_analysis/medical_hd/properties_medical_hd_vocab_embeds.pkl"
 
 with open (pickle_file_name, "wb") as f:
     pickle.dump(prop_name_emb_dict, f)
@@ -484,7 +488,7 @@ for key, value in prop_name_emb_dict.items():
 
 print ()
 print ("*" * 50)
-print (*prop_list, sep="\t")
+# print (*prop_list, sep="\t")
 
 
 # In[ ]:
@@ -512,8 +516,6 @@ torch.cuda.empty_cache()
 # hawk_bert_base_con_config_file_path = "configs/nn_analysis/hawk_con_nn_analysis_bert_base_fine_tune_mscg_adj_gkb_config.json"
 
 hawk_bert_large_con_conf_file_path = "configs/nn_analysis/hawk_con_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
-
-
 
 con_config = read_config(hawk_bert_large_con_conf_file_path)
 con_model = load_pretrained_model(con_config)
@@ -551,7 +553,7 @@ con_name_emb_dict = {"name_list_con" : con_list,
 # In[ ]:
 
 
-with open ("data/evaluation_data/nn_analysis/music_hd/concept_music_hd_test_embeds.pkl", "wb") as f:
+with open ("data/evaluation_data/nn_analysis/medical_hd/concept_music_hd_test_embeds.pkl", "wb") as f:
     pickle.dump(con_name_emb_dict, f)
 
 
@@ -598,10 +600,13 @@ print (*con_list, sep="\t")
 # 
 
 # 
-# hd_con_emb_file = "/home/amitgajbhiye/cardiff_work/dot_product_model_nn_analysis/paper_concepts_name_emb.pickle"
-# hd_prop_emb_file = "/home/amitgajbhiye/cardiff_work/dot_product_model_nn_analysis/paper_noun_properties.pkl"
+# # hd_con_emb_file = "/home/amitgajbhiye/cardiff_work/dot_product_model_nn_analysis/paper_concepts_name_emb.pickle"
+# # hd_prop_emb_file = "/home/amitgajbhiye/cardiff_work/dot_product_model_nn_analysis/paper_noun_properties.pkl"
 # 
-# with open(hd_con_emb_file, "rb") as con_emb, open(hd_prop_emb_file, "rb") as prop_emb:
+# music_con_emb_file = "/home/amitgajbhiye/cardiff_work/dot_product_model_nn_analysis/music_hd_embds_pkl/concept_music_hd_test_embeds.pkl"
+# music_prop_emb_file = "/home/amitgajbhiye/cardiff_work/dot_product_model_nn_analysis/music_hd_embds_pkl/properties_music_hd_vocab_embeds.pkl"
+# 
+# with open(music_con_emb_file, "rb") as con_emb, open(music_prop_emb_file, "rb") as prop_emb:
 #     
 #     con_name_emb = pickle.load(con_emb)
 #     prop_name_emb = pickle.load(prop_emb)
@@ -620,11 +625,8 @@ print (*con_list, sep="\t")
 
 # prop_name_emb.get("transformed_prop_emb")[0].shape
 
-# prop_list = prop_name_emb.get("name_list_prop")
-# del prop_name_emb.get("transformed_prop_emb")[(prop_list.index("fruit."))]
-
 # # Learning Nearest Neighbours
-# num_nearest_neighbours = 10
+# num_nearest_neighbours = 20
 # nbrs = NearestNeighbors(n_neighbors=num_nearest_neighbours, algorithm='brute').fit(np.array(prop_name_emb.get("transformed_prop_emb")))
 
 # distances, indices = nbrs.kneighbors(np.array(con_name_emb.get("transformed_con_emb")))
@@ -637,26 +639,11 @@ print (*con_list, sep="\t")
 
 # len(prop_name_emb.get("untransformed_prop_emb"))
 
-# for idx, con in zip(indices, con_name_emb.get("name_list_con")):    
+# # for idx, con in zip(indices, con_name_emb.get("name_list_con")):    
+# #     print (f"{con} : {[prop_name_emb.get('name_list_prop') [prop_id] for prop_id in idx]}\n", flush=True)
+
+# for idx, con in zip(indices[0:5], con_name_emb.get("name_list_con")[0:5]):    
 #     print (f"{con} : {[prop_name_emb.get('name_list_prop') [prop_id] for prop_id in idx]}\n", flush=True)
-
-# for idx, con in zip(indices, con_name_emb.get("name_list_con")):
-#     
-#     # print (f"{con} : {[prop_name_emb.get('name_list_prop') [prop_id] for prop_id in idx]}\n", flush=True)
-#     
-#     prop_list = [prop_name_emb.get('name_list_prop') [prop_id] for prop_id in idx]
-#     
-#     # prop_list = [prop.replace(".", "") for prop in prop_list]
-#     
-#     print (con , ":", prop_list)
-#     
-#     
-#     print ()
-#     
-
-# d = {}
-# for idx, con in zip(indices, con_name_emb.get("name_list_con")):
-#     d[con] = [prop_name_emb.get('name_list_prop') [prop_id].strip() for prop_id in idx]
 
 # 
 # def pos_tagger(x):
@@ -684,27 +671,28 @@ print (*con_list, sep="\t")
 #             if pos_tagger(prop)[-1][1] in ("NN","NNS","NNPS"):
 #                 filtered_prop_list.append(prop)
 #                 filtered_hyp_ends_in_noun.append(prop)
+#                 
 #             elif pos_tagger(prop)[-1][1] in ("JJ"):
 #                 filtered_prop_ends_in_adj.append(prop)
 #         
 #             # print (f"filtered_prop_list : {filtered_prop_list}")
 #     
-#     print ("Property :", filtered_prop_ends_in_adj)
-#     print ("Hypernym :", filtered_hyp_ends_in_noun)
-#     print ("*"*20)
-#     print ()
-#     
-#     
-#     # print (len(filtered_prop_list))
-#     # print (filtered_prop_list)
+#     # print ("Property :", filtered_prop_ends_in_adj)
+#     # print ("Hypernym :", filtered_hyp_ends_in_noun)
+#     # print ("*"*20)
 #     # print ()
 #     
-# #     filtered_prop_list = [prop.strip() for prop in filtered_prop_list]
+#     
+#     print (len(filtered_prop_list))
+#     print (filtered_prop_list)
+#     print ()
+#     
+#     filtered_prop_list = [prop.strip() for prop in filtered_prop_list]
 # 
-# #     if len(filtered_prop_list) >= 15:
-# #         return filtered_prop_list[0:15]
-# #     else:
-# #         return filtered_prop_list
+#     if len(filtered_prop_list) >= 15:
+#         return filtered_prop_list[0:15]
+#     else:
+#         return filtered_prop_list
 # 
 #     
 # 
@@ -722,8 +710,6 @@ print (*con_list, sep="\t")
 #     
 #     d[con] = filtered_prop_list
 #     
-# 
-
 # 
 
 # 
@@ -749,14 +735,18 @@ print (*con_list, sep="\t")
 
 # df
 
-# hypo_hyper_file_name = "/home/amitgajbhiye/cardiff_work/dot_product_model_nn_analysis/filtered_hd_test_results.csv"
+# 
+# # hypo_hyper_file_name = "/home/amitgajbhiye/cardiff_work/dot_product_model_nn_analysis/filtered_hd_test_results.csv"
+# 
+# music_hypo_hyper_file_name = "/home/amitgajbhiye/cardiff_work/dot_product_model_nn_analysis/music_hd_embds_pkl/music_test_results_filtered.csv"
+# 
 # columns =["hypo","hyp=1","hyp=2","hyp=3","hyp=4","hyp=5","hyp=6","hyp=7","hyp=8","hyp=9","hyp=10","hyp=11","hyp=12","hyp=13","hyp=14","hyp=15"]
 # 
 # df.columns = columns
 # 
 # df["hypo"] = df["hypo"].str.strip()
 # 
-# df.to_csv(hypo_hyper_file_name, sep = ",", index=False, header=True)
+# df.to_csv(music_hypo_hyper_file_name, sep = ",", index=False, header=True)
 
 # 
 
@@ -774,6 +764,32 @@ print (*con_list, sep="\t")
 
 
 
+
+
+# In[ ]:
+
+
+# d = {}
+# for idx, con in zip(indices, con_name_emb.get("name_list_con")):
+#     d[con] = [prop_name_emb.get('name_list_prop') [prop_id].strip() for prop_id in idx]
+
+
+# In[ ]:
+
+
+# for idx, con in zip(indices, con_name_emb.get("name_list_con")):
+    
+#     # print (f"{con} : {[prop_name_emb.get('name_list_prop') [prop_id] for prop_id in idx]}\n", flush=True)
+    
+#     prop_list = [prop_name_emb.get('name_list_prop') [prop_id] for prop_id in idx]
+    
+#     # prop_list = [prop.replace(".", "") for prop in prop_list]
+    
+#     print (con , ":", prop_list)
+    
+    
+#     print ()
+    
 
 
 # In[ ]:

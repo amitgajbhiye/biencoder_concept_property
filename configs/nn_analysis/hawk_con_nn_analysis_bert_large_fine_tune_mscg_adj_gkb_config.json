@@ -1,11 +1,11 @@
 {
-    "experiment_name": "nn_music_hd_concepts_bert_large",
+    "experiment_name": "nn_medical_hd_concepts_bert_large",
     "log_dirctory": "nn_analysis",
     "dataset_params": {
-        "dataset_name": "music_hd_concepts",
+        "dataset_name": "medical_hd_concepts",
         "train_file_path": "None",
         "val_file_path": "None",
-        "test_file_path": "data/evaluation_data/nn_analysis/music_hd/concepts_music_hd_test_con_prop.tsv",
+        "test_file_path": "data/evaluation_data/nn_analysis/medical_hd/concepts_medical_hd_test_con_prop.tsv",
         "hf_tokenizer_name": "bert-large-uncased",
         "hf_tokenizer_path": "/scratch/c.scmag3/conceptEmbeddingModel/bert-large-uncased/tokenizer",
         "concept_max_len": 64,
