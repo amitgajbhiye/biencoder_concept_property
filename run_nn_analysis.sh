@@ -1,8 +1,8 @@
 #!/bin/bash --login
 #SBATCH --job-name=hd_nn
 
-#SBATCH --output=logs/nn_analysis/out_music_hd_con_prop_embedding_generation_bert_large.txt
-#SBATCH --error=logs/nn_analysis/err_music_hd_con_prop_embedding_generation_bert_large.txt
+#SBATCH --output=logs/nn_analysis/out_medical_hd_con_prop_embedding_generation_bert_large.txt
+#SBATCH --error=logs/nn_analysis/err_medical_hd_con_prop_embedding_generation_bert_large.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
