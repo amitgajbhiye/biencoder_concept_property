@@ -1,11 +1,11 @@
 {
-    "experiment_name": "nn_ana_prop_bert_large_mcrae_data_fine_tuned_on_100k_mscg_8k_pre_adj_100k_gkb_prop",
+    "experiment_name": "nn_music_hd_properties_bert_large",
     "log_dirctory": "nn_analysis",
     "dataset_params": {
-        "dataset_name": "mcrae_test_properties",
+        "dataset_name": "music_hd_properties",
         "train_file_path": "None",
         "val_file_path": "None",
-        "test_file_path": "data/evaluation_data/nn_analysis/mcrae_unique_test_properties.tsv",
+        "test_file_path": "data/evaluation_data/nn_analysis/music_hd/properties_music_hd_vocab_con_prop.tsv",
         "hf_tokenizer_name": "bert-large-uncased",
         "hf_tokenizer_path": "/scratch/c.scmag3/conceptEmbeddingModel/bert-large-uncased/tokenizer",
         "concept_max_len": 64,
