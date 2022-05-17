@@ -7,7 +7,7 @@
 # tok = BertTokenizer.from_pretrained("bert-large-uncased")
 # tok.save_pretrained("/home/amitgajbhiye/cardiff_work/100k_data_experiments/bert_large_uncased_pretrained/tokenizer/")
 
-# In[ ]:
+# In[1]:
 
 
 import numpy as np
@@ -31,7 +31,7 @@ print (f"Device Name : {device}")
 print (f"Conda Environment Name : {os.environ['CONDA_DEFAULT_ENV']}")
 
 
-# In[ ]:
+# In[2]:
 
 
 def pos_tagger(x):
@@ -43,7 +43,7 @@ def pos_tagger(x):
     
 
 
-# In[ ]:
+# In[3]:
 
 
 def tag_adj(pos_tag_list):
@@ -61,7 +61,7 @@ def tag_adj(pos_tag_list):
         return False
 
 
-# In[ ]:
+# In[4]:
 
 
 def tag_noun(pos_tag_list):
@@ -205,11 +205,14 @@ con_prop_file_with_counts = "data/evaluation_data/nn_analysis/prefix_adj_plus_gk
 
 
 
-# In[ ]:
+# In[6]:
 
 
-hd_vocab_file = "data/evaluation_data/nn_analysis/hd_data/1A.english.vocabulary.txt"
-test_file = "data/evaluation_data/nn_analysis/hd_data/hd_concept_test.csv"
+# hd_vocab_file = "data/evaluation_data/nn_analysis/hd_data/1A.english.vocabulary.txt"
+# test_file = "data/evaluation_data/nn_analysis/hd_data/hd_concept_test.csv"
+
+music_hd_vocab = "data/evaluation_data/nn_analysis/music_hd/2B.music.vocabulary.txt"
+music_hd_test = "data/evaluation_data/nn_analysis/music_hd/music__hd_concept_test.csv"
 
 def preprocess_hd_data(vocab_file, test_concept_file):
 
@@ -218,17 +221,19 @@ def preprocess_hd_data(vocab_file, test_concept_file):
         lines = [("con_dummy", prop.strip(), int(0)) for prop in lines]
         
     con_prop_vocab_df = pd.DataFrame.from_records(lines)
-    # con_prop_vocab_df = pd.DataFrame.from_records(lines)[0:2500]
+    con_prop_vocab_df = pd.DataFrame.from_records(lines)[0:2500]
     
-    con_prop_vocab_df.to_csv("data/evaluation_data/nn_analysis/hd_data/properties_hd_vocab_con_prop.tsv", sep="\t", index=None, header=None)
+    con_prop_vocab_df.to_csv("data/evaluation_data/nn_analysis/music_hd/properties_music_hd_vocab_con_prop.tsv", sep="\t", index=None, header=None)
     
     
     test_concepts_df = pd.read_csv(test_concept_file, sep=",", header=0)
     print (f"Test Concepts DF shape : {test_concepts_df.shape}")
+    print ("test_concepts_df")
+    print (test_concepts_df)
+    
     
     test_cons_list = test_concepts_df["hypo"].unique()
     # test_cons_list = test_concepts_df["hypo"].unique()[0:10]
-    
     
     print (f"Num Test Concepts : {len(test_cons_list)}")
     
@@ -236,10 +241,10 @@ def preprocess_hd_data(vocab_file, test_concept_file):
     
     test_con_prop_df  = pd.DataFrame.from_records(test_con_prop_list)
     
-    test_con_prop_df.to_csv("data/evaluation_data/nn_analysis/hd_data/concepts_hd_test_con_prop.tsv", sep="\t", index=None, header=None)
+    test_con_prop_df.to_csv("data/evaluation_data/nn_analysis/music_hd/concepts_music_hd_test_con_prop.tsv", sep="\t", index=None, header=None)
     
     
-# preprocess_hd_data (vocab_file = hd_vocab_file, test_concept_file= test_file)
+# preprocess_hd_data (vocab_file = music_hd_vocab, test_concept_file = music_hd_test)
 
 
 # con_prop_file = "data/evaluation_data/nn_analysis/prefix_adj_plus_gkb_prop_with_prop_count.tsv"
@@ -417,14 +422,16 @@ def get_embedding (model, config):
 #### Loading the BERT Large Model for generating Property Embedding
 #### Here change the property test_file in config to the tsv file which contain the properties
 
-local_prop_config_file_path = "configs/nn_analysis/prop_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
+# local_prop_config_file_path = "configs/nn_analysis/prop_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
+# hawk_bert_base_prop_config_file_path = "configs/nn_analysis/hawk_prop_nn_analysis_bert_base_fine_tune_mscg_adj_gkb_config.json"
+
 hawk_bert_large_prop_config_file_path = "configs/nn_analysis/hawk_prop_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
 
-hawk_bert_base_prop_config_file_path = "configs/nn_analysis/hawk_prop_nn_analysis_bert_base_fine_tune_mscg_adj_gkb_config.json"
+
 
 torch.cuda.empty_cache()
 
-prop_config = read_config(hawk_bert_base_prop_config_file_path)
+prop_config = read_config(hawk_bert_large_prop_config_file_path)
 prop_model = load_pretrained_model(prop_config)
 prop_model.eval()
 prop_model.to(device)
@@ -462,7 +469,7 @@ prop_name_emb_dict = {"name_list_prop" : prop_list,
 
 print (f"Pickling the transformed property name list and their embeddings.")
 
-pickle_file_name = "/scratch/c.scmag3/biencoder_concept_property/data/evaluation_data/nn_analysis/mcrae_bert_base_test_prop_embeds.pkl"
+pickle_file_name = "/scratch/c.scmag3/biencoder_concept_property/data/evaluation_data/nn_analysis/music_hd/properties_music_hd_vocab_embeds.pkl"
 
 with open (pickle_file_name, "wb") as f:
     pickle.dump(prop_name_emb_dict, f)
@@ -501,12 +508,14 @@ print ("Now Loading the model for Concepts Embeddings...")
 
 torch.cuda.empty_cache()
 
-local_con_conf_file_path = "configs/nn_analysis/con_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
-hawk_con_conf_file_path = "configs/nn_analysis/hawk_con_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
+# local_con_conf_file_path = "configs/nn_analysis/con_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
+# hawk_bert_base_con_config_file_path = "configs/nn_analysis/hawk_con_nn_analysis_bert_base_fine_tune_mscg_adj_gkb_config.json"
 
-hawk_bert_base_con_config_file_path = "configs/nn_analysis/hawk_con_nn_analysis_bert_base_fine_tune_mscg_adj_gkb_config.json"
+hawk_bert_large_con_conf_file_path = "configs/nn_analysis/hawk_con_nn_analysis_bert_large_fine_tune_mscg_adj_gkb_config.json"
 
-con_config = read_config(hawk_bert_base_con_config_file_path)
+
+
+con_config = read_config(hawk_bert_large_con_conf_file_path)
 con_model = load_pretrained_model(con_config)
 con_model.eval()
 con_model.to(device)
@@ -542,7 +551,7 @@ con_name_emb_dict = {"name_list_con" : con_list,
 # In[ ]:
 
 
-with open ("data/evaluation_data/nn_analysis/mcrae_bert_base_test_cons_embeds.pkl", "wb") as f:
+with open ("data/evaluation_data/nn_analysis/music_hd/concept_music_hd_test_embeds.pkl", "wb") as f:
     pickle.dump(con_name_emb_dict, f)
 
 
@@ -760,3 +769,15 @@ print (*con_list, sep="\t")
 # 
 
 # 
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
