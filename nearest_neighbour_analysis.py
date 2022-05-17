@@ -221,7 +221,7 @@ def preprocess_hd_data(vocab_file, test_concept_file):
         lines = [("con_dummy", prop.strip(), int(0)) for prop in lines]
         
     con_prop_vocab_df = pd.DataFrame.from_records(lines)
-    con_prop_vocab_df = pd.DataFrame.from_records(lines)[0:2500]
+    con_prop_vocab_df = pd.DataFrame.from_records(lines)
     
     con_prop_vocab_df.to_csv("data/evaluation_data/nn_analysis/music_hd/properties_music_hd_vocab_con_prop.tsv", sep="\t", index=None, header=None)
     
@@ -229,7 +229,7 @@ def preprocess_hd_data(vocab_file, test_concept_file):
     test_concepts_df = pd.read_csv(test_concept_file, sep=",", header=0)
     print (f"Test Concepts DF shape : {test_concepts_df.shape}")
     print ("test_concepts_df")
-    print (test_concepts_df)
+    print (test_concepts_df.head())
     
     
     test_cons_list = test_concepts_df["hypo"].unique()
