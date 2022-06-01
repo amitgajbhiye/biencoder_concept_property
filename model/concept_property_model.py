@@ -167,3 +167,4 @@ class ConceptPropertyModel(nn.Module):
             print(property_mask_token_index)
 
             return concept_mask_vector, property_mask_vector, logits
+
