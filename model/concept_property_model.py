@@ -3,21 +3,20 @@ import logging
 from torch import logit, nn
 from torch.nn.functional import normalize
 from transformers import (
-    BertModel,
     BertForSequenceClassification,
-    RobertaModel,
-    DebertaModel,
+    RobertaForSequenceClassification,
+    DebertaForSequenceClassification,
 )
 
 log = logging.getLogger(__name__)
 
 MODEL_CLASS = {
-    "bert-base-uncased": (BertModel, 103),
-    "bert-large-uncased": (BertModel, 103),
-    "roberta-base": (RobertaModel, 50264),
-    "roberta-large": (RobertaModel, 50264),
-    "deberta-base": (DebertaModel, 50264),
-    "deberta-large": (DebertaModel, 50264),
+    "bert-base-uncased": (BertForSequenceClassification, 103),
+    "bert-large-uncased": (BertForSequenceClassification, 103),
+    "roberta-base": (RobertaForSequenceClassification, 50264),
+    "roberta-large": (RobertaForSequenceClassification, 50264),
+    "deberta-base": (DebertaForSequenceClassification, 50264),
+    "deberta-large": (DebertaForSequenceClassification, 50264),
 }
 
 
@@ -29,7 +28,7 @@ class ConceptPropertyModel(nn.Module):
 
         self.model_class, self.mask_token_id = MODEL_CLASS.get(self.hf_checkpoint_name)
 
-        self._concept_property_encoder = BertForSequenceClassification.from_pretrained(
+        self._concept_property_encoder = self.model_class.from_pretrained(
             model_params.get("hf_model_path"), num_labels=2
         )
 
@@ -45,4 +44,3 @@ class ConceptPropertyModel(nn.Module):
         loss, logit = model_output[:2]
 
         return loss, logit
-
