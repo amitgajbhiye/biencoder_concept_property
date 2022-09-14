@@ -1,6 +1,6 @@
 #!/bin/bash --login
 
-#SBATCH --job-name=100kCN
+#SBATCH --job-name=100kAWW
 
 #SBATCH --output=logs/gkb_source_analysis/out_bb_train_arc_wiki_waterloo_100k.txt
 #SBATCH --error=logs/gkb_source_analysis/err_bb_train_arc_wiki_waterloo_100k.txt
