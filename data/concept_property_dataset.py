@@ -259,7 +259,7 @@ class ConceptPropertyDataset(Dataset):
         return concepts_batch, property_batch
 
     def tokenize(
-        self, concept_batch, property_batch, concept_max_len=64, property_max_len=64
+        self, concept_batch, property_batch, concept_max_len=256, property_max_len=256
     ):
 
         if self.context_num in (1, 2, 3, 4, 5, 6):
