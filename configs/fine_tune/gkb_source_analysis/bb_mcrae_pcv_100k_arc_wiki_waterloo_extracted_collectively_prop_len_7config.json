@@ -20,8 +20,8 @@
     },
     "model_params": {
         "load_pretrained": true,
-        "pretrained_model_name": "bb_train_arc_wiki_waterloo_100k.pt",
-        "pretrained_model_path": "trained_models/gkb_source_analysis/bb_train_arc_wiki_waterloo_100k.pt",
+        "pretrained_model_name": "bb_arc_wiki_waterloo_100k_extracted_collectively.pt",
+        "pretrained_model_path": "trained_models/gkb_source_analysis/bb_arc_wiki_waterloo_100k_extracted_collectively.pt",
         "model_name": "prop_split_bb_mcrae_pcv_100k_arc_wiki_waterloo_extracted_collectively_prop_len_7.pt",
         "hf_checkpoint_name": "bert-base-uncased",
         "hf_model_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained",
