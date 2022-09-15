@@ -1,5 +1,5 @@
 #!/bin/bash --login
-#SBATCH --job-name=AWWProp7
+#SBATCH --job-name=AWWplen7
 
 #SBATCH --output=logs/mcrae_fine_tune_gkb_source_analysis/out_prop_split_bb_mcrae_pcv_100k_arc_wiki_waterloo_extracted_collectively_prop_len_7.txt
 #SBATCH --error=logs/mcrae_fine_tune_gkb_source_analysis/err_prop_split_bb_mcrae_pcv_100k_arc_wiki_waterloo_extracted_collectively_prop_len_7.txt
