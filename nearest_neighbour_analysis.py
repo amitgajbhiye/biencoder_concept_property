@@ -27,33 +27,32 @@ from utils.functions import mcrae_dataset_and_dataloader
 device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
 # assert os.environ["CONDA_DEFAULT_ENV"] == "gvenv", "Activate 'gvenv' conda environment"
 
-print (f"Device Name : {device}")
-print (f"Conda Environment Name : {os.environ['CONDA_DEFAULT_ENV']}")
+print(f"Device Name : {device}")
+print(f"Conda Environment Name : {os.environ['CONDA_DEFAULT_ENV']}")
 
 
 # In[2]:
 
 
 def pos_tagger(x):
-    
+
     tokens = nltk.word_tokenize(x)
     # print ("tokens :", tokens)
     # print ("pos tags :", nltk.pos_tag(tokens))
     return nltk.pos_tag(tokens)
-    
 
 
 # In[3]:
 
 
 def tag_adj(pos_tag_list):
-    
+
     tags = [word_tag[1] for word_tag in pos_tag_list]
     # print ("tags :", tags)
     # print ([tag == "JJ" for tag in tags])
     # print (all([tag == "JJ" for tag in tags]))
-    
-    if all ([tag == "JJ" for tag in tags]):
+
+    if all([tag == "JJ" for tag in tags]):
         # print (f"Returning True : {tags}")
         return True
     else:
@@ -65,10 +64,10 @@ def tag_adj(pos_tag_list):
 
 
 def tag_noun(pos_tag_list):
-    
+
     tags = [word_tag[1] for word_tag in pos_tag_list]
-    
-    if  tags[-1] in ("NN","NNS","NNPS"):
+
+    if tags[-1] in ("NN", "NNS", "NNPS"):
         # print (f"Returning True : {tags}")
         return True
     else:
@@ -81,46 +80,59 @@ def tag_noun(pos_tag_list):
 
 # Function to count properties
 
-local_files_list = ["data/train_data/500k_MSCG/mscg_prefix_adj_41k_train.tsv",
-             "data/train_data/500k_MSCG/gkb_prop_500k_train.tsv"]
+local_files_list = [
+    "data/train_data/500k_MSCG/mscg_prefix_adj_41k_train.tsv",
+    "data/train_data/500k_MSCG/gkb_prop_500k_train.tsv",
+]
 
-prefix_adj_local_files_list = ["data/train_data/500k_MSCG/mscg_prefix_adj_41k_train.tsv"]
+prefix_adj_local_files_list = [
+    "data/train_data/500k_MSCG/mscg_prefix_adj_41k_train.tsv"
+]
 
-hawk_files_list = ["/scratch/c.scmag3/biencoder_concept_property/data/train_data/500k_MSCG/mscg_prefix_adj_41k_train.tsv",
-             "/scratch/c.scmag3/biencoder_concept_property/data/train_data/500k_MSCG/gkb_prop_500k_train.tsv"]
+hawk_files_list = [
+    "/scratch/c.scmag3/biencoder_concept_property/data/train_data/500k_MSCG/mscg_prefix_adj_41k_train.tsv",
+    "/scratch/c.scmag3/biencoder_concept_property/data/train_data/500k_MSCG/gkb_prop_500k_train.tsv",
+]
 
-def read_con_prop_data (files_list):
-    
+
+def read_con_prop_data(files_list):
+
     df_list = []
     for i, file in enumerate(files_list):
         df_list.append(pd.read_csv(file, sep="\t", names=["concept", "property"]))
-        
-    print (f"Shapes of the DF read : {[df.shape for df in df_list]}")
-    
+
+    print(f"Shapes of the DF read : {[df.shape for df in df_list]}")
+
     df = pd.concat(df_list, axis=0, ignore_index=True)
-    print (f"Columns in concatenated DF : {df.columns}")
-    print (f"Concatenated DF shape : {df.shape}")
-    
+    print(f"Columns in concatenated DF : {df.columns}")
+    print(f"Concatenated DF shape : {df.shape}")
+
     df.dropna(axis=0, how="any", inplace=True)
-    df.drop_duplicates(subset=['concept', 'property'], keep="first", inplace=True)
-    
+    df.drop_duplicates(subset=["concept", "property"], keep="first", inplace=True)
+
     df["prop_count"] = -1
-    
+
     unique_property = df["property"].unique()
-    
-    print ("num_unique_property :", unique_property.shape, flush=True)
-    print ("unique_property :", unique_property, flush=True)
-    
+
+    print("num_unique_property :", unique_property.shape, flush=True)
+    print("unique_property :", unique_property, flush=True)
+
     df.set_index("property", inplace=True)
-    
+
     for i, prop in enumerate(unique_property):
         df.loc[prop, "prop_count"] = df.loc[prop].shape[0]
-    
+
     df.reset_index(inplace=True)
-    
+
     df = df[["concept", "property", "prop_count"]]
-    
-    df.to_csv("data/evaluation_data/nn_analysis/only_prefix_adj_with_prop_count.tsv", sep='\t', index=None, header=True)
+
+    df.to_csv(
+        "data/evaluation_data/nn_analysis/only_prefix_adj_with_prop_count.tsv",
+        sep="\t",
+        index=None,
+        header=True,
+    )
+
 
 # read_con_prop_data(files_list=prefix_adj_local_files_list)
 
@@ -128,8 +140,8 @@ def read_con_prop_data (files_list):
 # In[ ]:
 
 
-def get_top_k_properties(con_prop_file, pos_tag = False, cut_off = 5):
-    
+def get_top_k_properties(con_prop_file, pos_tag=False, cut_off=5):
+
     df = pd.read_csv(con_prop_file, sep="\t", header=0)
 
     # df.sort_values("prop_count", ascending=False, inplace=True)
@@ -137,72 +149,88 @@ def get_top_k_properties(con_prop_file, pos_tag = False, cut_off = 5):
     # print (f"DF sorted on prop count : {df}")
 
     df_prop_count_cut_off = df[df["prop_count"] >= cut_off]
-    
+
     # df_prop_count_cut_off = df_prop_count_cut_off[0:2000]
 
-    print (f"Dataframe with prop_count >= {cut_off} = {df_prop_count_cut_off.shape}")
-    
+    print(f"Dataframe with prop_count >= {cut_off} = {df_prop_count_cut_off.shape}")
+
     if pos_tag:
-        df_prop_count_cut_off["pos_tag"] = df_prop_count_cut_off["property"].apply(pos_tagger)
-        
-        df_prop_count_cut_off["is_only_adj"] = df_prop_count_cut_off["pos_tag"].apply(tag_adj)
-        
-        df_prop_count_cut_off["is_last_word_noun"] = df_prop_count_cut_off["pos_tag"].apply(tag_noun)
-        
-        
-    df_prop_count_cut_off.to_csv("data/evaluation_data/nn_analysis/df_with_adj_and_noun_tags.tsv", sep="\t", index=False)
-    print (df_prop_count_cut_off)
-    
-    
+        df_prop_count_cut_off["pos_tag"] = df_prop_count_cut_off["property"].apply(
+            pos_tagger
+        )
+
+        df_prop_count_cut_off["is_only_adj"] = df_prop_count_cut_off["pos_tag"].apply(
+            tag_adj
+        )
+
+        df_prop_count_cut_off["is_last_word_noun"] = df_prop_count_cut_off[
+            "pos_tag"
+        ].apply(tag_noun)
+
+    df_prop_count_cut_off.to_csv(
+        "data/evaluation_data/nn_analysis/df_with_adj_and_noun_tags.tsv",
+        sep="\t",
+        index=False,
+    )
+    print(df_prop_count_cut_off)
+
     df_is_only_adj = df_prop_count_cut_off[df_prop_count_cut_off["is_only_adj"] == True]
-    
+
     adj_file_name = "data/evaluation_data/nn_analysis/prefix_plus_gkb_df_with_only_adj_properties.tsv"
     df_is_only_adj.to_csv(adj_file_name, sep="\t", index=None, header=None)
-    
+
     unique_adj_prop = df_is_only_adj["property"].unique()
-    unique_adj_prop = [x.strip().replace("(part)", "").replace(".", "") for x in unique_adj_prop]
+    unique_adj_prop = [
+        x.strip().replace("(part)", "").replace(".", "") for x in unique_adj_prop
+    ]
     unique_adj_prop = [("dummy_con", prop, 0) for prop in unique_adj_prop]
     df_unique_adj_prop = pd.DataFrame.from_records(unique_adj_prop)
-    
+
     df_adj_prop_file_name = "data/evaluation_data/nn_analysis/adj_properties.tsv"
     df_unique_adj_prop.to_csv(df_adj_prop_file_name, sep="\t", header=None, index=None)
-    
-    print (f"df_is_only_adj.shape : {df_is_only_adj.shape}")
-    print ("Adjective Unique Property", len(unique_adj_prop))
-    
-    
-    print ()
-    df_last_word_noun = df_prop_count_cut_off[df_prop_count_cut_off["is_last_word_noun"] == True]
-    print (f"df_last_word_noun.shape : {df_last_word_noun.shape}")
-    
+
+    print(f"df_is_only_adj.shape : {df_is_only_adj.shape}")
+    print("Adjective Unique Property", len(unique_adj_prop))
+
+    print()
+    df_last_word_noun = df_prop_count_cut_off[
+        df_prop_count_cut_off["is_last_word_noun"] == True
+    ]
+    print(f"df_last_word_noun.shape : {df_last_word_noun.shape}")
+
     noun_file_name = "data/evaluation_data/nn_analysis/prefix_plus_gkb_df_with_last_word_noun_properties.tsv"
     df_last_word_noun.to_csv(noun_file_name, sep="\t", index=None, header=None)
-    
-    unique_last_word_noun = df_last_word_noun["property"].unique()
-    
-    print ("unique_last_word_noun : ", len(unique_last_word_noun))
-    
-    unique_last_word_noun = [x.strip().replace("(part)", "").replace(".", "") for x in unique_last_word_noun]
-    unique_last_word_noun = [("dummy_con", prop, 0) for prop in unique_last_word_noun]
-    
-    df_unique_last_word_noun = pd.DataFrame.from_records(unique_last_word_noun)
-    df_unique_last_word_noun_file_name = "data/evaluation_data/nn_analysis/noun_properties.tsv"
-    
-    df_unique_last_word_noun.to_csv(df_unique_last_word_noun_file_name, sep="\t", header=None, index=None)
 
-    print (f"df_unique_last_word_noun.shape : {df_unique_last_word_noun.shape}")
-    print ("Noun Unique Property", len(unique_last_word_noun))
-    
-    
-con_prop_file_with_counts = "data/evaluation_data/nn_analysis/prefix_adj_plus_gkb_prop_with_prop_count.tsv"
-    
+    unique_last_word_noun = df_last_word_noun["property"].unique()
+
+    print("unique_last_word_noun : ", len(unique_last_word_noun))
+
+    unique_last_word_noun = [
+        x.strip().replace("(part)", "").replace(".", "") for x in unique_last_word_noun
+    ]
+    unique_last_word_noun = [("dummy_con", prop, 0) for prop in unique_last_word_noun]
+
+    df_unique_last_word_noun = pd.DataFrame.from_records(unique_last_word_noun)
+    df_unique_last_word_noun_file_name = (
+        "data/evaluation_data/nn_analysis/noun_properties.tsv"
+    )
+
+    df_unique_last_word_noun.to_csv(
+        df_unique_last_word_noun_file_name, sep="\t", header=None, index=None
+    )
+
+    print(f"df_unique_last_word_noun.shape : {df_unique_last_word_noun.shape}")
+    print("Noun Unique Property", len(unique_last_word_noun))
+
+
+con_prop_file_with_counts = (
+    "data/evaluation_data/nn_analysis/prefix_adj_plus_gkb_prop_with_prop_count.tsv"
+)
+
 # get_top_k_properties(con_prop_file_with_counts, pos_tag=True, cut_off=10)
 
 
 # In[ ]:
-
-
-
 
 
 # In[7]:
@@ -214,160 +242,166 @@ con_prop_file_with_counts = "data/evaluation_data/nn_analysis/prefix_adj_plus_gk
 # music_hd_vocab = "data/evaluation_data/nn_analysis/music_hd/2B.music.vocabulary.txt"
 # music_hd_test = "data/evaluation_data/nn_analysis/music_hd/music__hd_concept_test.csv"
 
-medical_hd_vocab = "data/evaluation_data/nn_analysis/medical_hd/2A.medical.vocabulary.txt"
-medical_hd_test = "data/evaluation_data/nn_analysis/medical_hd/medical__hd_concept_test.csv"
+medical_hd_vocab = (
+    "data/evaluation_data/nn_analysis/medical_hd/2A.medical.vocabulary.txt"
+)
+medical_hd_test = (
+    "data/evaluation_data/nn_analysis/medical_hd/medical__hd_concept_test.csv"
+)
 
 
 def preprocess_hd_data(vocab_file, test_concept_file):
 
-    with open(vocab_file,  "r") as f:
+    with open(vocab_file, "r") as f:
         lines = f.readlines()
         lines = [("con_dummy", prop.strip(), int(0)) for prop in lines]
-        
+
     con_prop_vocab_df = pd.DataFrame.from_records(lines)
     con_prop_vocab_df = pd.DataFrame.from_records(lines)
-    
-    print (f"Vocab Df shape : {con_prop_vocab_df.shape}")
-    
-    con_prop_vocab_df.to_csv("data/evaluation_data/nn_analysis/medical_hd/properties_medical_hd_vocab_con_prop.tsv", sep="\t", index=None, header=None)
-    
+
+    print(f"Vocab Df shape : {con_prop_vocab_df.shape}")
+
+    con_prop_vocab_df.to_csv(
+        "data/evaluation_data/nn_analysis/medical_hd/properties_medical_hd_vocab_con_prop.tsv",
+        sep="\t",
+        index=None,
+        header=None,
+    )
+
     test_concepts_df = pd.read_csv(test_concept_file, sep=",", header=0)
-    print (f"Test Concepts DF shape : {test_concepts_df.shape}")
-    print ("test_concepts_df")
-    print (test_concepts_df.head())
-    
-    
+    print(f"Test Concepts DF shape : {test_concepts_df.shape}")
+    print("test_concepts_df")
+    print(test_concepts_df.head())
+
     test_cons_list = test_concepts_df["hypo"].unique()
     # test_cons_list = test_concepts_df["hypo"].unique()[0:10]
-    
-    print (f"Num Test Concepts : {len(test_cons_list)}")
-    
+
+    print(f"Num Test Concepts : {len(test_cons_list)}")
+
     test_con_prop_list = [(con.strip(), "prop_dummy", int(0)) for con in test_cons_list]
-    
-    test_con_prop_df  = pd.DataFrame.from_records(test_con_prop_list)
-    
-    test_con_prop_df.to_csv("data/evaluation_data/nn_analysis/medical_hd/concepts_medical_hd_test_con_prop.tsv", sep="\t", index=None, header=None)
-    
-    
+
+    test_con_prop_df = pd.DataFrame.from_records(test_con_prop_list)
+
+    test_con_prop_df.to_csv(
+        "data/evaluation_data/nn_analysis/medical_hd/concepts_medical_hd_test_con_prop.tsv",
+        sep="\t",
+        index=None,
+        header=None,
+    )
+
+
 # preprocess_hd_data (vocab_file = medical_hd_vocab, test_concept_file = medical_hd_test)
 
 
 # In[ ]:
 
 
-
-
-
 # con_prop_file = "data/evaluation_data/nn_analysis/prefix_adj_plus_gkb_prop_with_prop_count.tsv"
-# 
+#
 # con_prop_df = pd.read_csv(con_prop_file, sep="\t", header=0)
-# 
+#
 # print (con_prop_df)
 
-# 
+#
 # file_cut_off_prop_count_10_unique = "data/evaluation_data/nn_analysis/cut_off_prop_count_10_unique.tsv"
-# 
+#
 # cut_off_prop_count_10 = con_prop_df[con_prop_df["prop_count"] >= 10]
-# 
+#
 # cut_off_prop_count_10.drop("prop_count", axis=1, inplace=True)
-# 
+#
 # unique_prop_list = cut_off_prop_count_10["property"].unique()
-# 
+#
 # print ("Unique Prop Count :", len(unique_prop_list))
-# 
+#
 # unique_prop_list = [("dummy_con", prop.strip(), int(0)) for prop in unique_prop_list]
-# 
+#
 # unique_prop_df = pd.DataFrame(unique_prop_list)
-# 
+#
 # unique_prop_df.to_csv(file_cut_off_prop_count_10_unique, sep="\t", header=None, index=None)
-# 
-# 
+#
+#
 
 # mc_train_file = "data/evaluation_data/extended_mcrae/train_mcrae.tsv"
-# 
+#
 # train_df = pd.read_csv(mc_train_file, sep="\t", names=["concept", "property", "label"])
-# 
+#
 # unique_train_con = train_df["concept"].unique()
 # unique_train_con = [(con.strip(), "dummy_prop", int(0)) for con in unique_train_con]
-# 
+#
 # unique_train_df = pd.DataFrame.from_records(unique_train_con)
 # unique_train_df.to_csv("data/evaluation_data/nn_analysis/mcrae_unique_train_concepts.tsv", sep="\t", header=None, index=None)
-# 
-# 
+#
+#
 # unique_train_prop = train_df["property"].unique()
 # unique_train_prop = [("dummy_con", prop.strip(), int(0)) for prop in unique_train_prop]
-# 
+#
 # unique_train_prop_df = pd.DataFrame.from_records(unique_train_prop)
-# 
+#
 # unique_train_prop_df.to_csv("data/evaluation_data/nn_analysis/mcrae_unique_train_properties.tsv", sep="\t", header=None, index=None)
-# 
-# 
+#
+#
 # print (len(unique_train_con))
 # print (len(unique_train_prop))
-# 
-# 
+#
+#
 
 # mc_test_file = "data/evaluation_data/extended_mcrae/test_mcrae.tsv"
-# 
+#
 # test_df = pd.read_csv(mc_test_file, sep="\t", names=["concept", "property", "label"])
-# 
+#
 # unique_test_con = test_df["concept"].unique()
 # unique_test_con = [(con.strip(), "dummy_prop", int(0)) for con in unique_test_con]
-# 
+#
 # unique_test_df = pd.DataFrame.from_records(unique_test_con)
 # unique_test_df.to_csv("data/evaluation_data/nn_analysis/mcrae_unique_test_concepts.tsv", sep="\t", header=None, index=None)
-# 
-# 
+#
+#
 # unique_test_prop = test_df["property"].unique()
 # unique_test_prop = [("dummy_con", prop.strip(), int(0)) for prop in unique_test_prop]
-# 
+#
 # unique_test_prop_df = pd.DataFrame.from_records(unique_test_prop)
-# 
+#
 # unique_test_prop_df.to_csv("data/evaluation_data/nn_analysis/mcrae_unique_test_properties.tsv", sep="\t", header=None, index=None)
-# 
-# 
+#
+#
 # print (len(unique_test_con))
 # print (len(unique_test_prop))
-# 
-# 
+#
+#
 
 # In[ ]:
-
-
-
 
 
 # In[ ]:
 
 
 def transform(vecs):
-    
+
     maxnorm = max([np.linalg.norm(v) for v in vecs])
     new_vecs = []
-    
+
     for v in vecs:
-        new_vecs.append(np.insert(v, 0, np.sqrt(maxnorm**2-np.linalg.norm(v)**2)))
-    
+        new_vecs.append(np.insert(v, 0, np.sqrt(maxnorm ** 2 - np.linalg.norm(v) ** 2)))
+
     return new_vecs
 
 
-# 
+#
 
 # In[ ]:
 
 
 # Get the embeddings for property and concepts
 
-def get_embedding (model, config):
-    
-    print (f"Config in get_embedding function : {config}")
-    
+
+def get_embedding(model, config):
+
+    print(f"Config in get_embedding function : {config}")
+
     test_dataset, test_dataloader = mcrae_dataset_and_dataloader(
-        dataset_params=config.get("dataset_params"),
-        dataset_type="test",
-        data_df=None,
+        dataset_params=config.get("dataset_params"), dataset_type="test", data_df=None,
     )
-    
+
     con_list, con_emb, prop_list, prop_emb = [], [], [], []
 
     for step, batch in enumerate(test_dataloader):
@@ -395,30 +429,29 @@ def get_embedding (model, config):
                 property_attention_mask=property_attention_mask,
                 property_token_type_id=property_token_type_id,
             )
-            
+
             print()
-            print (f"Concepts Data :", len(batch[0]))
-            print (f"Concepts Data :", batch[0])
-            print (f"concept_embedding.shape : {concept_embedding.shape}")
-            
-            print (f"Property Data :", len(batch[1]))
-            print (f"Property Data :", batch[1])
-            print (f"property_embedding.shape : {property_embedding.shape}")
-            
-            # con_vec = [(con, vec) for con, vec in zip (batch[0], concept_embedding)]    
+            print(f"Concepts Data :", len(batch[0]))
+            print(f"Concepts Data :", batch[0])
+            print(f"concept_embedding.shape : {concept_embedding.shape}")
+
+            print(f"Property Data :", len(batch[1]))
+            print(f"Property Data :", batch[1])
+            print(f"property_embedding.shape : {property_embedding.shape}")
+
+            # con_vec = [(con, vec) for con, vec in zip (batch[0], concept_embedding)]
             # prop_vec = [(prop, vec) for prop, vec in zip(batch[1], property_embedding)]
-            
+
             con_list.extend(batch[0])
             con_emb.extend(concept_embedding)
-            
+
             prop_list.extend(batch[1])
             prop_emb.extend(property_embedding)
-            
+
     con_emb = [x.cpu().numpy() for x in con_emb]
     prop_emb = [x.cpu().numpy() for x in prop_emb]
-    
+
     return con_list, con_emb, prop_list, prop_emb
-            
 
 
 # In[ ]:
@@ -451,7 +484,7 @@ _, _, prop_list, prop_emb = get_embedding(prop_model, prop_config)
 # In[ ]:
 
 
-print (f"prop_list len - {len(prop_list)}, Property Emb Len - {len(prop_emb)}")
+print(f"prop_list len - {len(prop_list)}, Property Emb Len - {len(prop_emb)}")
 
 
 # In[ ]:
@@ -463,45 +496,43 @@ prop_trans = transform(prop_emb)
 # In[ ]:
 
 
-prop_name_emb_dict = {"name_list_prop" : prop_list,
-                      "untransformed_prop_emb":prop_emb,
-                     "transformed_prop_emb" : prop_trans}
+prop_name_emb_dict = {
+    "name_list_prop": prop_list,
+    "untransformed_prop_emb": prop_emb,
+    "transformed_prop_emb": prop_trans,
+}
 
 
 # In[ ]:
 
 
-print (f"Pickling the transformed property name list and their embeddings.")
+print(f"Pickling the transformed property name list and their embeddings.")
 
 pickle_file_name = "/scratch/c.scmag3/biencoder_concept_property/data/evaluation_data/nn_analysis/medical_hd/properties_medical_hd_vocab_embeds.pkl"
 
-with open (pickle_file_name, "wb") as f:
+with open(pickle_file_name, "wb") as f:
     pickle.dump(prop_name_emb_dict, f)
-    
 
 
 # In[ ]:
 
 
 for key, value in prop_name_emb_dict.items():
-    print (f"{key} : {len(value)}")
+    print(f"{key} : {len(value)}")
 
-print ()
-print ("*" * 50)
+print()
+print("*" * 50)
 # print (*prop_list, sep="\t")
 
 
 # In[ ]:
 
 
-print ("Fininshed Getting Property Embeddings....")
-print ("Now Loading the model for Concepts Embeddings...")
+print("Fininshed Getting Property Embeddings....")
+print("Now Loading the model for Concepts Embeddings...")
 
 
 # In[ ]:
-
-
-
 
 
 # In[ ]:
@@ -521,7 +552,7 @@ con_config = read_config(hawk_bert_large_con_conf_file_path)
 con_model = load_pretrained_model(con_config)
 con_model.eval()
 con_model.to(device)
-print ("Concept Model Loaded")
+print("Concept Model Loaded")
 
 
 # In[ ]:
@@ -533,7 +564,7 @@ con_list, con_emb, _, _ = get_embedding(con_model, con_config)
 # In[ ]:
 
 
-print (f"con_list len - {len(con_list)}, con_emb Len - {len(con_emb)}")
+print(f"con_list len - {len(con_list)}, con_emb Len - {len(con_emb)}")
 
 
 # In[ ]:
@@ -545,15 +576,19 @@ con_trans = transform(con_emb)
 # In[ ]:
 
 
-con_name_emb_dict = {"name_list_con" : con_list,
-                     "untransformed_con_emb": con_emb,
-                    "transformed_con_emb" : con_trans}
+con_name_emb_dict = {
+    "name_list_con": con_list,
+    "untransformed_con_emb": con_emb,
+    "transformed_con_emb": con_trans,
+}
 
 
 # In[ ]:
 
 
-with open ("data/evaluation_data/nn_analysis/medical_hd/concept_music_hd_test_embeds.pkl", "wb") as f:
+with open(
+    "data/evaluation_data/nn_analysis/medical_hd/concept_music_hd_test_embeds.pkl", "wb"
+) as f:
     pickle.dump(con_name_emb_dict, f)
 
 
@@ -561,34 +596,25 @@ with open ("data/evaluation_data/nn_analysis/medical_hd/concept_music_hd_test_em
 
 
 for key, value in con_name_emb_dict.items():
-    print (f"{key} : {len(value)}")
+    print(f"{key} : {len(value)}")
 
-print ()
-print ("*" * 50)
-print (*con_list, sep="\t")
-
-
-# 
-
-# In[ ]:
+print()
+print("*" * 50)
+print(*con_list, sep="\t")
 
 
-
-
+#
 
 # In[ ]:
-
-
-
 
 
 # In[ ]:
 
 
+# In[ ]:
 
 
-
-# 
+#
 
 # import pickle
 # import numpy as np
@@ -597,27 +623,27 @@ print (*con_list, sep="\t")
 # from collections import Counter
 # import pandas as pd
 # from collections import Counter
-# 
+#
 
-# 
+#
 # # hd_con_emb_file = "/home/amitgajbhiye/cardiff_work/dot_product_model_nn_analysis/paper_concepts_name_emb.pickle"
 # # hd_prop_emb_file = "/home/amitgajbhiye/cardiff_work/dot_product_model_nn_analysis/paper_noun_properties.pkl"
-# 
+#
 # music_con_emb_file = "/home/amitgajbhiye/cardiff_work/dot_product_model_nn_analysis/music_hd_embds_pkl/concept_music_hd_test_embeds.pkl"
 # music_prop_emb_file = "/home/amitgajbhiye/cardiff_work/dot_product_model_nn_analysis/music_hd_embds_pkl/properties_music_hd_vocab_embeds.pkl"
-# 
+#
 # with open(music_con_emb_file, "rb") as con_emb, open(music_prop_emb_file, "rb") as prop_emb:
-#     
+#
 #     con_name_emb = pickle.load(con_emb)
 #     prop_name_emb = pickle.load(prop_emb)
-# 
+#
 # print (con_name_emb.keys())
 # print (prop_name_emb.keys())
 
 # print (f'Number of Properties in the loaded prop pickel : {len(prop_name_emb.get("name_list_prop"))}', flush=True)
 # print (f'Number of Untransformed Properties Embedding in the loaded prop pickel : {len(prop_name_emb.get("untransformed_prop_emb"))}', flush=True)
 # print (f'Number of TRansformed Properties Embedding in the loaded prop pickel : {len(prop_name_emb.get("transformed_prop_emb"))}', flush=True)
-# 
+#
 # print ()
 # print (f'Number of Concepts in the loaded con pickel : {len(con_name_emb.get("name_list_con"))}', flush=True)
 # print (f'Number of Untransformed Concepts Embedding in the loaded prop pickel : {len(con_name_emb.get("untransformed_con_emb"))}', flush=True)
@@ -639,89 +665,89 @@ print (*con_list, sep="\t")
 
 # len(prop_name_emb.get("untransformed_prop_emb"))
 
-# # for idx, con in zip(indices, con_name_emb.get("name_list_con")):    
+# # for idx, con in zip(indices, con_name_emb.get("name_list_con")):
 # #     print (f"{con} : {[prop_name_emb.get('name_list_prop') [prop_id] for prop_id in idx]}\n", flush=True)
 
-# for idx, con in zip(indices[0:5], con_name_emb.get("name_list_con")[0:5]):    
+# for idx, con in zip(indices[0:5], con_name_emb.get("name_list_con")[0:5]):
 #     print (f"{con} : {[prop_name_emb.get('name_list_prop') [prop_id] for prop_id in idx]}\n", flush=True)
 
-# 
+#
 # def pos_tagger(x):
-#     
+#
 #     tokens = nltk.word_tokenize(x)
 #     # print ("tokens :", tokens)
 #     # print ("pos tags :", nltk.pos_tag(tokens))
 #     return nltk.pos_tag(tokens)
-#     
-# 
+#
+#
 # def filter_prop (con, prop_list):
-#     
+#
 #     filtered_prop_list = []
-#     
+#
 #     filtered_prop_ends_in_adj = []
 #     filtered_hyp_ends_in_noun = []
-#     
+#
 #     con = con.lower().strip()
 #     prop_list = [prop.lower().strip() for prop in prop_list]
-#     
+#
 #     for prop in prop_list:
 #         if (con not in prop) and (prop not in con) :
 #             # print (f"{con} : {prop}, {pos_tagger(prop)}, {pos_tagger(prop)[-1]}")
-#             
+#
 #             if pos_tagger(prop)[-1][1] in ("NN","NNS","NNPS"):
 #                 filtered_prop_list.append(prop)
 #                 filtered_hyp_ends_in_noun.append(prop)
-#                 
+#
 #             elif pos_tagger(prop)[-1][1] in ("JJ"):
 #                 filtered_prop_ends_in_adj.append(prop)
-#         
+#
 #             # print (f"filtered_prop_list : {filtered_prop_list}")
-#     
+#
 #     # print ("Property :", filtered_prop_ends_in_adj)
 #     # print ("Hypernym :", filtered_hyp_ends_in_noun)
 #     # print ("*"*20)
 #     # print ()
-#     
-#     
+#
+#
 #     print (len(filtered_prop_list))
 #     print (filtered_prop_list)
 #     print ()
-#     
+#
 #     filtered_prop_list = [prop.strip() for prop in filtered_prop_list]
-# 
+#
 #     if len(filtered_prop_list) >= 15:
 #         return filtered_prop_list[0:15]
 #     else:
 #         return filtered_prop_list
-# 
-#     
-# 
+#
+#
+#
 # d = {}
 # for idx, con in zip(indices, con_name_emb.get("name_list_con")):
-#     
+#
 #     filtered_prop_list = []
-#     
+#
 #     prop_for_con = [prop_name_emb.get('name_list_prop') [prop_id].strip() for prop_id in idx]
-#     
+#
 #     print (f"concept : {con}")
 #     # print (f"All properties : {prop_for_con}")
 #     # print ([pos_tagger(prop) for prop in prop_for_con])
 #     filtered_prop_list = filter_prop(con, prop_for_con)
-#     
+#
 #     d[con] = filtered_prop_list
-#     
-# 
+#
+#
 
-# 
+#
 
 # l = []
 # for key, value in d.items():
 #     print (f"{key} : {len(value)}")
-#     
+#
 #     l.append(len(value))
-# 
+#
 # counts = Counter(l)
-# 
+#
 
 # print (counts)
 
@@ -735,35 +761,32 @@ print (*con_list, sep="\t")
 
 # df
 
-# 
+#
 # # hypo_hyper_file_name = "/home/amitgajbhiye/cardiff_work/dot_product_model_nn_analysis/filtered_hd_test_results.csv"
-# 
+#
 # music_hypo_hyper_file_name = "/home/amitgajbhiye/cardiff_work/dot_product_model_nn_analysis/music_hd_embds_pkl/music_test_results_filtered.csv"
-# 
+#
 # columns =["hypo","hyp=1","hyp=2","hyp=3","hyp=4","hyp=5","hyp=6","hyp=7","hyp=8","hyp=9","hyp=10","hyp=11","hyp=12","hyp=13","hyp=14","hyp=15"]
-# 
+#
 # df.columns = columns
-# 
+#
 # df["hypo"] = df["hypo"].str.strip()
-# 
+#
 # df.to_csv(music_hypo_hyper_file_name, sep = ",", index=False, header=True)
 
-# 
+#
 
-# 
+#
 
 # for idx, con in zip(indices, con_name_emb.get("name_list_con")):
 #     print (f"{con} : {[prop_name_emb.get('name_list_prop') [prop_id] for prop_id in idx]}\n", flush=True)
-# 
+#
 
-# 
+#
 
-# 
+#
 
 # In[ ]:
-
-
-
 
 
 # In[ ]:
@@ -778,22 +801,18 @@ print (*con_list, sep="\t")
 
 
 # for idx, con in zip(indices, con_name_emb.get("name_list_con")):
-    
+
 #     # print (f"{con} : {[prop_name_emb.get('name_list_prop') [prop_id] for prop_id in idx]}\n", flush=True)
-    
+
 #     prop_list = [prop_name_emb.get('name_list_prop') [prop_id] for prop_id in idx]
-    
+
 #     # prop_list = [prop.replace(".", "") for prop in prop_list]
-    
+
 #     print (con , ":", prop_list)
-    
-    
+
+
 #     print ()
-    
 
 
 # In[ ]:
-
-
-
 
