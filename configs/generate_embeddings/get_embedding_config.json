@@ -1,5 +1,5 @@
 {
-    "experiment_name": "get_con_pro_embeddings",
+    "experiment_name": "bert_large_get_con_pro_embeddings",
     "log_dirctory": "get_con_pro_embeddings",
     "dataset_params": {
         "dataset_name": "dummy_mscg_properties",
@@ -40,6 +40,6 @@
         "pretrained_model_path": "/scratch/c.scmag3/biencoder_concept_property/trained_models/100k_data_experiments/bert_large_100k_mscg_8k_prefix_adj_100k_gkb_properties_best_model.pt",
         "input_data_type": "property",
         "con_property_file": "data/generate_embeddding_data/property.tsv",
-        "save_dir": "trained_models/"
+        "save_dir": "trained_models/get_con_pro_embeddings"
     }
 }
