@@ -1,0 +1,45 @@
+{
+    "experiment_name": "get_con_pro_embeddings",
+    "log_dirctory": "get_con_pro_embeddings",
+    "dataset_params": {
+        "dataset_name": "dummy_mscg_properties",
+        "train_file_path": "None",
+        "val_file_path": "None",
+        "test_file_path": "None",
+        "hf_tokenizer_name": "bert-large-uncased",
+        "hf_tokenizer_path": "/scratch/c.scmag3/conceptEmbeddingModel/bert-large-uncased/tokenizer",
+        "concept_max_len": 256,
+        "property_max_len": 256,
+        "add_context": true,
+        "context_num": 6,
+        "loader_params": {
+            "batch_size": 1000,
+            "num_workers": 4,
+            "pin_memory": true
+        }
+    },
+    "model_params": {
+        "model_name": "None",
+        "hf_checkpoint_name": "bert-large-uncased",
+        "hf_model_path": "/scratch/c.scmag3/conceptEmbeddingModel/bert-large-uncased/model",
+        "vector_strategy": "mask_token"
+    },
+    "training_params": {
+        "lr": 2e-6,
+        "num_warmup_steps": 0,
+        "max_epochs": 100,
+        "early_stopping_patience": 20,
+        "export_path": "trained_models/gkb_source_analysis",
+        "printout_freq": 100,
+        "checkpoint_path": "",
+        "load_checkpoint": -1,
+        "lr_policy": "warmup",
+        "lr_decay_iters": 15
+    },
+    "inference_params": {
+        "pretrained_model_path": "/scratch/c.scmag3/biencoder_concept_property/trained_models/100k_data_experiments/bert_large_100k_mscg_8k_prefix_adj_100k_gkb_properties_best_model.pt",
+        "input_data_type": "property",
+        "con_property_file": "data/generate_embeddding_data/property.tsv",
+        "save_dir": "trained_models/"
+    }
+}
