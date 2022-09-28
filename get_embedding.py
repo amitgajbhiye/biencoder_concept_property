@@ -83,7 +83,8 @@ def preprocess_get_embedding_data(config):
 def generate_embedings(config):
 
     inference_params = config.get("inference_params")
-    input_data_type = inference_params["inference_params"]
+
+    input_data_type = inference_params["input_data_type"]
     model_params = config.get("model_params")
     dataset_params = config.get("dataset_params")
 
