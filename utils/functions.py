@@ -51,6 +51,10 @@ def set_logger(config):
 log = logging.getLogger(__name__)
 
 
+def to_cpu(x):
+    return x.cpu().numpy()
+
+
 def read_config(config_file):
 
     if isinstance(config_file, str):

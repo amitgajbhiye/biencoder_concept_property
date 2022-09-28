@@ -8,7 +8,6 @@ import torch
 
 from utils.functions import (
     create_model,
-    preprocess_inference_data,
     read_config,
     to_cpu,
     mcrae_dataset_and_dataloader,
