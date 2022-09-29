@@ -112,7 +112,7 @@ def generate_embedings(config):
         dataset_params, dataset_type="test", data_df=data_df
     )
 
-    embeddings = []
+    embeddings = dict
 
     for step, batch in enumerate(dataloader):
 
@@ -159,19 +159,22 @@ def generate_embedings(config):
         if input_data_type == "concept":
 
             for con, con_embed in zip(batch[0], concept_embedding):
-                embeddings.append((con, to_cpu(con_embed)))
+                # embeddings.append((con, to_cpu(con_embed)))
+                embeddings[con] = to_cpu(con_embed)
 
         elif input_data_type == "property":
 
             for prop, prop_embed in zip(batch[1], property_embedding):
-                embeddings.append((prop, to_cpu(prop_embed)))
+                # embeddings.append((prop, to_cpu(prop_embed)))
+                embeddings[prop] = to_cpu(prop_embed)
 
         elif input_data_type == "concept_and_property":
 
             for con, prop, con_embed, prop_embed in zip(
                 batch[0], batch[1], concept_embedding, property_embedding
             ):
-                embeddings.append((con, prop, to_cpu(con_embed), to_cpu(prop_embed)))
+                # embeddings.append((con, prop, to_cpu(con_embed), to_cpu(prop_embed)))
+                embeddings[(con, prop)] = [to_cpu(con_embed), to_cpu(prop_embed)]
 
     save_dir = inference_params["save_dir"]
     file_name = dataset_params["dataset_name"] + ".pkl"
