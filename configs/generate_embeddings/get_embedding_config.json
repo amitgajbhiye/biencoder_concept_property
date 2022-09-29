@@ -13,7 +13,7 @@
         "add_context": true,
         "context_num": 6,
         "loader_params": {
-            "batch_size": 1000,
+            "batch_size": 11670,
             "num_workers": 4,
             "pin_memory": true
         }
@@ -24,22 +24,11 @@
         "hf_model_path": "/scratch/c.scmag3/conceptEmbeddingModel/bert-large-uncased/model",
         "vector_strategy": "mask_token"
     },
-    "training_params": {
-        "lr": 2e-6,
-        "num_warmup_steps": 0,
-        "max_epochs": 100,
-        "early_stopping_patience": 20,
-        "export_path": "trained_models/gkb_source_analysis",
-        "printout_freq": 100,
-        "checkpoint_path": "",
-        "load_checkpoint": -1,
-        "lr_policy": "warmup",
-        "lr_decay_iters": 15
-    },
     "inference_params": {
         "pretrained_model_path": "/scratch/c.scmag3/biencoder_concept_property/trained_models/100k_data_experiments/bert_large_100k_mscg_8k_prefix_adj_100k_gkb_properties_best_model.pt",
-        "input_data_type": "property",
-        "con_property_file": "data/generate_embeddding_data/property.tsv",
-        "save_dir": "trained_models/get_con_pro_embeddings"
+        "input_data_type": "concept",
+        "con_property_file": "data/generate_embeddding_data/concept.tsv",
+        "save_dir": "trained_models/get_con_pro_embeddings",
+        "pickle_save_file_name": "concept_embeddings_mscg.pkl"
     }
 }

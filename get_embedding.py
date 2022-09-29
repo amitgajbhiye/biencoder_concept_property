@@ -12,7 +12,6 @@ from utils.functions import (
     read_config,
     to_cpu,
     mcrae_dataset_and_dataloader,
-    load_pretrained_model,
 )
 
 
@@ -159,13 +158,11 @@ def generate_embedings(config):
         if input_data_type == "concept":
 
             for con, con_embed in zip(batch[0], concept_embedding):
-                # embeddings.append((con, to_cpu(con_embed)))
                 embeddings[con] = to_cpu(con_embed)
 
         elif input_data_type == "property":
 
             for prop, prop_embed in zip(batch[1], property_embedding):
-                # embeddings.append((prop, to_cpu(prop_embed)))
                 embeddings[prop] = to_cpu(prop_embed)
 
         elif input_data_type == "concept_and_property":
@@ -173,11 +170,10 @@ def generate_embedings(config):
             for con, prop, con_embed, prop_embed in zip(
                 batch[0], batch[1], concept_embedding, property_embedding
             ):
-                # embeddings.append((con, prop, to_cpu(con_embed), to_cpu(prop_embed)))
                 embeddings[(con, prop)] = [to_cpu(con_embed), to_cpu(prop_embed)]
 
     save_dir = inference_params["save_dir"]
-    file_name = dataset_params["dataset_name"] + ".pkl"
+    file_name = inference_params["pickle_save_file_name"]
 
     embedding_save_file_name = os.path.join(save_dir, file_name)
 
