@@ -176,7 +176,7 @@ def generate_embedings(config):
     save_dir = inference_params["save_dir"]
     file_name = dataset_params["dataset_name"] + ".pkl"
 
-    embedding_save_file_name = os.join(save_dir, file_name)
+    embedding_save_file_name = os.path.join(save_dir, file_name)
 
     with open(embedding_save_file_name, "wb") as pkl_file:
         pickle.dump(embeddings, pkl_file, protocol=pickle.DEFAULT_PROTOCOL)
