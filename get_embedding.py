@@ -112,7 +112,7 @@ def generate_embedings(config):
         dataset_params, dataset_type="test", data_df=data_df
     )
 
-    embeddings = dict
+    embeddings = {}
 
     for step, batch in enumerate(dataloader):
 
