@@ -1,4 +1,5 @@
 import argparse
+from fileinput import filename
 import logging
 import os
 import pickle
@@ -173,14 +174,17 @@ def generate_embedings(config):
                 embeddings.append((con, prop, to_cpu(con_embed), to_cpu(prop_embed)))
 
     save_dir = inference_params["save_dir"]
-    file_name = os.path.join(save_dir, f"{input_data_type}_embedding.pkl")
+    file_name = dataset_params["dataset_name"] + ".pkl"
 
-    with open(file_name, "wb") as pkl_file:
+    embedding_save_file_name = os.join(save_dir, file_name)
+
+    with open(embedding_save_file_name, "wb") as pkl_file:
         pickle.dump(embeddings, pkl_file, protocol=pickle.DEFAULT_PROTOCOL)
 
-    log.info("Finished Generating the Embeddings")
-    log.info(f"Embeddings are saved in : {file_name}")
     log.info(f"{'*' * 20} Finished {'*' * 20}")
+    log.info("Finished Generating the Embeddings")
+    log.info(f"Embeddings are saved in : {embedding_save_file_name}")
+    log.info(f"{'*' * 40}")
 
     # with open(file_name, "rb") as pkl_file:
     #     emb_from_pkl = pickle.load(pkl_file)
