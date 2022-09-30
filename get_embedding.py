@@ -25,10 +25,18 @@ device = torch.device("cuda") if cuda_available else torch.device("cpu")
 def preprocess_get_embedding_data(config):
 
     inference_params = config.get("inference_params")
+    input_data_type = inference_params["input_data_type"]
 
-    data_df = pd.read_csv(
-        inference_params.get("con_property_file"), sep="\t", header=None,
-    )
+    if input_data_type == "concept":
+        data_df = pd.read_csv(inference_params["concept_file"], sep="\t", header=None,)
+
+    elif input_data_type == "property":
+        data_df = pd.read_csv(inference_params["property_file"], sep="\t", header=None,)
+
+    elif input_data_type == "concept_and_property":
+        data_df = pd.read_csv(
+            inference_params["concept_property_file"], sep="\t", header=None,
+        )
 
     num_columns = len(data_df.columns)
     log.info(f"Number of columns in input file : {num_columns}")
@@ -65,8 +73,6 @@ def preprocess_get_embedding_data(config):
         log.info(f"Number of records : {data_df.shape[0]}")
 
         data_df.rename(columns={0: "concept", 1: "property"}, inplace=True)
-        data_df.drop_duplicates(inplace=True)
-        data_df.dropna(inplace=True)
 
     else:
         raise Exception(
@@ -111,7 +117,7 @@ def generate_embedings(config):
         dataset_params, dataset_type="test", data_df=data_df
     )
 
-    embeddings = {}
+    con_embedding, prop_embedding = {}, {}
 
     for step, batch in enumerate(dataloader):
 
@@ -158,27 +164,52 @@ def generate_embedings(config):
         if input_data_type == "concept":
 
             for con, con_embed in zip(batch[0], concept_embedding):
-                embeddings[con] = to_cpu(con_embed)
+                con_embedding[con] = to_cpu(con_embed)
 
         elif input_data_type == "property":
 
             for prop, prop_embed in zip(batch[1], property_embedding):
-                embeddings[prop] = to_cpu(prop_embed)
+                prop_embedding[prop] = to_cpu(prop_embed)
 
         elif input_data_type == "concept_and_property":
 
-            for con, prop, con_embed, prop_embed in zip(
-                batch[0], batch[1], concept_embedding, property_embedding
-            ):
-                embeddings[(con, prop)] = [to_cpu(con_embed), to_cpu(prop_embed)]
+            for con, con_embed in zip(batch[0], concept_embedding):
+                if con not in con_embedding:
+                    con_embedding[con] = to_cpu(con_embed)
+
+            for prop, prop_embed in zip(batch[1], property_embedding):
+                if prop not in prop_embedding:
+                    prop_embedding[prop] = to_cpu(prop_embed)
 
     save_dir = inference_params["save_dir"]
-    file_name = inference_params["pickle_save_file_name"]
 
-    embedding_save_file_name = os.path.join(save_dir, file_name)
+    if input_data_type == "concept":
+        file_name = dataset_params["dataset_name"] + "_concept_embeddings.pkl"
+        embedding_save_file_name = os.path.join(save_dir, file_name)
 
-    with open(embedding_save_file_name, "wb") as pkl_file:
-        pickle.dump(embeddings, pkl_file, protocol=pickle.DEFAULT_PROTOCOL)
+        with open(embedding_save_file_name, "wb") as pkl_file:
+            pickle.dump(con_embedding, pkl_file, protocol=pickle.DEFAULT_PROTOCOL)
+
+    if input_data_type == "property":
+        file_name = dataset_params["dataset_name"] + "_property_embeddings.pkl"
+        embedding_save_file_name = os.path.join(save_dir, file_name)
+
+        with open(embedding_save_file_name, "wb") as pkl_file:
+            pickle.dump(prop_embedding, pkl_file, protocol=pickle.DEFAULT_PROTOCOL)
+
+    if input_data_type == "concept_and_property":
+
+        con_file_name = dataset_params["dataset_name"] + "_con_embeddings.pkl"
+        prop_file_name = dataset_params["dataset_name"] + "_prop_embeddings.pkl"
+
+        con_embedding_save_file_name = os.path.join(save_dir, con_file_name)
+        prop_embedding_save_file_name = os.path.join(save_dir, prop_file_name)
+
+        with open(con_embedding_save_file_name, "wb") as pkl_file:
+            pickle.dump(con_embedding, pkl_file, protocol=pickle.DEFAULT_PROTOCOL)
+
+        with open(prop_embedding_save_file_name, "wb") as pkl_file:
+            pickle.dump(prop_embedding, pkl_file, protocol=pickle.DEFAULT_PROTOCOL)
 
     log.info(f"{'*' * 20} Finished {'*' * 20}")
     log.info("Finished Generating the Embeddings")
