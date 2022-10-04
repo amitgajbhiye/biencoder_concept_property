@@ -230,7 +230,7 @@ def generate_embedings(config):
         log.info(f"{'*' * 20} Finished {'*' * 20}")
         log.info("Finished Generating the Concept and Property Embeddings")
         log.info(
-            f"Concept Property Embeddings are saved in : {embedding_save_file_name}"
+            f"Concept Property Embeddings are saved in : {con_embedding_save_file_name, prop_embedding_save_file_name}"
         )
         log.info(f"{'*' * 40}")
 
