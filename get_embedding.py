@@ -314,7 +314,7 @@ def get_similar_properties(
     log.info(f"con_similar_prop_dict")
     log.info(con_similar_prop_dict)
 
-    con_prop_file = dataset_params["concept_property_file"]
+    con_prop_file = inference_params["concept_property_file"]
 
     con_prop_df = pd.read_csv(
         con_prop_file, sep="\t", names=["concept", "property"], header=None
