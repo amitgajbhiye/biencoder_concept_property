@@ -320,7 +320,7 @@ def get_similar_properties(
         con_prop_file, sep="\t", names=["concept", "property"], header=None
     )
 
-    unique_concepts = con_prop_file["concept"].unique()
+    unique_concepts = con_prop_df["concept"].unique()
 
     all_data = []
 
