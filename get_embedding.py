@@ -342,7 +342,7 @@ def get_similar_properties(
             [prop_dict_zero[prop] for prop in properties_of_concept]
         )
 
-        num_nearest_neighbours = 10
+        num_nearest_neighbours = 40
 
         prop_similar_properties = NearestNeighbors(
             n_neighbors=num_nearest_neighbours, algorithm="brute"
@@ -369,7 +369,7 @@ def get_similar_properties(
                 if similar_prop not in properties_of_concept:
                     prop_data.append(similar_prop)
 
-                if len(prop_data) >= num_nearest_neighbours:
+                if len(prop_data) >= 10:
                     break
 
             # prop_data = ", ".join(prop_data)
