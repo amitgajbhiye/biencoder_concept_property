@@ -260,7 +260,7 @@ def get_similar_properties(
     if input_data_type == "concept_and_property":
 
         with open(concept_embedding_pkl_file, "rb") as con_pkl_file, open(
-            property_embedding_pkl_file, "wb"
+            property_embedding_pkl_file, "rb"
         ) as prop_pkl_file:
 
             con_dict = pickle.load(con_pkl_file)
