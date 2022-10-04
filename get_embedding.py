@@ -1,9 +1,10 @@
 import argparse
-from fileinput import filename
+from enum import unique
 import logging
 import os
 import pickle
 import pandas as pd
+import numpy as np
 
 import torch
 
@@ -13,6 +14,7 @@ from utils.functions import (
     to_cpu,
     mcrae_dataset_and_dataloader,
 )
+from sklearn.neighbors import NearestNeighbors
 
 
 log = logging.getLogger(__name__)
@@ -190,12 +192,26 @@ def generate_embedings(config):
         with open(embedding_save_file_name, "wb") as pkl_file:
             pickle.dump(con_embedding, pkl_file, protocol=pickle.DEFAULT_PROTOCOL)
 
+        log.info(f"{'*' * 20} Finished {'*' * 20}")
+        log.info("Finished Generating the Concept Embeddings")
+        log.info(f"Concept Embeddings are saved in : {embedding_save_file_name}")
+        log.info(f"{'*' * 40}")
+
+        return embedding_save_file_name
+
     if input_data_type == "property":
         file_name = dataset_params["dataset_name"] + "_property_embeddings.pkl"
         embedding_save_file_name = os.path.join(save_dir, file_name)
 
         with open(embedding_save_file_name, "wb") as pkl_file:
             pickle.dump(prop_embedding, pkl_file, protocol=pickle.DEFAULT_PROTOCOL)
+
+        log.info(f"{'*' * 20} Finished {'*' * 20}")
+        log.info("Finished Generating the Property Embeddings")
+        log.info(f"Property Embeddings are saved in : {embedding_save_file_name}")
+        log.info(f"{'*' * 40}")
+
+        return embedding_save_file_name
 
     if input_data_type == "concept_and_property":
 
@@ -211,13 +227,175 @@ def generate_embedings(config):
         with open(prop_embedding_save_file_name, "wb") as pkl_file:
             pickle.dump(prop_embedding, pkl_file, protocol=pickle.DEFAULT_PROTOCOL)
 
-    log.info(f"{'*' * 20} Finished {'*' * 20}")
-    log.info("Finished Generating the Embeddings")
-    log.info(f"Embeddings are saved in : {embedding_save_file_name}")
-    log.info(f"{'*' * 40}")
+        log.info(f"{'*' * 20} Finished {'*' * 20}")
+        log.info("Finished Generating the Concept and Property Embeddings")
+        log.info(
+            f"Concept Property Embeddings are saved in : {embedding_save_file_name}"
+        )
+        log.info(f"{'*' * 40}")
 
-    # with open(file_name, "rb") as pkl_file:
-    #     emb_from_pkl = pickle.load(pkl_file)
+        return con_embedding_save_file_name, prop_embedding_save_file_name
+
+
+def transform(vecs):
+
+    maxnorm = max([np.linalg.norm(v) for v in vecs])
+    new_vecs = []
+
+    for v in vecs:
+        new_vecs.append(np.insert(v, 0, np.sqrt(maxnorm ** 2 - np.linalg.norm(v) ** 2)))
+
+    return new_vecs
+
+
+def get_similar_properties(
+    config, concept_embedding_pkl_file, property_embedding_pkl_file
+):
+
+    inference_params = config.get("inference_params")
+    input_data_type = inference_params["input_data_type"]
+    dataset_params = config.get("dataset_params")
+    save_dir = inference_params["save_dir"]
+
+    if input_data_type == "concept_and_property":
+
+        with open(concept_embedding_pkl_file, "rb") as con_pkl_file, open(
+            property_embedding_pkl_file, "wb"
+        ) as prop_pkl_file:
+
+            con_dict = pickle.load(con_pkl_file)
+            prop_dict = pickle.load(prop_pkl_file)
+
+    concepts = list(con_dict.keys())
+    con_embeds = list(con_dict.values())
+    zero_con_embeds = np.array([np.insert(l, 0, float(0)) for l in con_embeds])
+    transformed_con_embeds = np.array(transform(con_embeds))
+
+    log.info(f"In get_similar_properties function")
+    log.info(f"Number of Concepts : {len(concepts)}")
+    log.info(f"Length of Concepts Embeddings : {len(con_embeds)}")
+    log.info(f"Shape of zero_con_embeds: {zero_con_embeds.shape}")
+    log.info(f"Shape of transformed_con_embeds : {transformed_con_embeds.shape}")
+
+    properties = list(prop_dict.keys())
+    prop_embeds = list(prop_dict.values())
+    zero_prop_embeds = np.array([np.insert(l, 0, 0) for l in prop_embeds])
+    transformed_prop_embeds = np.array(transform(prop_embeds))
+
+    log.info(f"Number of Properties : {len(properties)}")
+    log.info(f"Length of Properties Embeddings : {len(prop_embeds)}")
+    log.info(f"Shape of zero_prop_embeds: {zero_prop_embeds.shape}")
+    log.info(f"Shape of transformed_prop_embeds : {transformed_prop_embeds.shape}")
+
+    prop_dict_transform = {
+        prop: trans for prop, trans in zip(properties, transformed_prop_embeds)
+    }
+
+    prop_dict_zero = {prop: trans for prop, trans in zip(properties, zero_prop_embeds)}
+
+    # Learning Nearest Neighbours
+    num_nearest_neighbours = 50
+
+    con_similar_properties = NearestNeighbors(
+        n_neighbors=num_nearest_neighbours, algorithm="brute"
+    ).fit(np.array(transformed_prop_embeds))
+
+    con_distances, con_indices = con_similar_properties.kneighbors(
+        np.array(zero_con_embeds)
+    )
+
+    log.info(f"con_distances shape : {con_distances.shape}")
+    log.info(f"con_indices shape : {con_indices.shape}")
+
+    con_similar_prop_dict = {}
+    for con_idx, prop_idx in enumerate(con_indices):
+        con_similar_prop_dict[concepts[con_idx]] = [properties[idx] for idx in prop_idx]
+
+    log.info(f"con_similar_prop_dict")
+    log.info(con_similar_prop_dict)
+
+    con_prop_file = dataset_params["concept_property_file"]
+
+    con_prop_df = pd.read_csv(
+        con_prop_file, sep="\t", names=["concept", "property"], header=None
+    )
+
+    unique_concepts = con_prop_file["concept"].unique()
+
+    all_data = []
+
+    for concept in unique_concepts:
+
+        properties_of_concept = (
+            con_prop_df[con_prop_df["concept"] == concept]["property"]
+            .str.strip()
+            .to_list()
+        )
+
+        top_k_con_similar_prop = con_similar_prop_dict[concept]
+
+        top_k_con_similar_prop_transformed_embs = np.array(
+            [prop_dict_transform[prop] for prop in top_k_con_similar_prop]
+        )
+
+        con_prop_embed = np.array(
+            [prop_dict_zero[prop] for prop in properties_of_concept]
+        )
+
+        num_nearest_neighbours = 20
+
+        prop_similar_properties = NearestNeighbors(
+            n_neighbors=num_nearest_neighbours, algorithm="brute"
+        ).fit(np.array(top_k_con_similar_prop_transformed_embs))
+
+        prop_distances, prop_indices = prop_similar_properties.kneighbors(
+            con_prop_embed
+        )
+
+        for idx, pro_idx in enumerate(prop_indices):
+
+            prop_data = []
+
+            predict_property = properties_of_concept[idx]
+
+            predict_property_similar_properties = [
+                top_k_con_similar_prop[idx] for idx in pro_idx
+            ]
+
+            print(f"{concept} - {predict_property}")
+
+            for similar_prop in predict_property_similar_properties:
+                if predict_property != similar_prop:
+                    prop_data.append(similar_prop)
+
+                    if len(prop_data) >= 5:
+                        break
+
+            all_data.append((concept, prop_data, predict_property))
+
+            print(
+                f"Final Similar Properties for Concept Property Pair : {concept, predict_property}"
+            )
+            print(prop_data)
+
+            print()
+
+        print()
+
+    data_df = pd.DataFrame.from_records(
+        all_data, columns=["concept", "similar_properties", "property"]
+    )
+
+    data_df.to_csv(
+        "data/generate_embeddding_data/property_conjuction_data.tsv",
+        sep="\t",
+        header=None,
+        index=None,
+    )
+
+    log.info(
+        f"Extracted data saved in  : data/generate_embeddding_data/property_conjuction_data.tsv"
+    )
 
 
 if __name__ == "__main__":
@@ -242,4 +420,12 @@ if __name__ == "__main__":
 
     log.info(f"\n {config} \n")
 
-    generate_embedings(config)
+    (concept_embedding_pkl_file, prop_embedding_save_file_name) = generate_embedings(
+        config
+    )
+
+    if get_similar_properties:
+        get_similar_properties(
+            config, concept_embedding_pkl_file, prop_embedding_save_file_name
+        )
+
