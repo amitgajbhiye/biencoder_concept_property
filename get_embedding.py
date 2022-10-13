@@ -30,14 +30,27 @@ def preprocess_get_embedding_data(config):
     input_data_type = inference_params["input_data_type"]
 
     if input_data_type == "concept":
-        data_df = pd.read_csv(inference_params["concept_file"], sep="\t", header=None,)
+        data_df = pd.read_csv(
+            inference_params["concept_file"],
+            sep="\t",
+            header=None,
+            keep_default_na=False,
+        )
 
     elif input_data_type == "property":
-        data_df = pd.read_csv(inference_params["property_file"], sep="\t", header=None,)
+        data_df = pd.read_csv(
+            inference_params["property_file"],
+            sep="\t",
+            header=None,
+            keep_default_na=False,
+        )
 
     elif input_data_type == "concept_and_property":
         data_df = pd.read_csv(
-            inference_params["concept_property_file"], sep="\t", header=None,
+            inference_params["concept_property_file"],
+            sep="\t",
+            header=None,
+            keep_default_na=False,
         )
 
     num_columns = len(data_df.columns)
