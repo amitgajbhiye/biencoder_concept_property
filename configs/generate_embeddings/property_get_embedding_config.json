@@ -2,7 +2,7 @@
     "experiment_name": "bert_base_gkb_cnet_trained_model_top_500k_mscg_properties",
     "log_dirctory": "get_con_pro_embeddings",
     "dataset_params": {
-        "dataset_name": "bert_base_gkb_cnet_trained_model_top_500k_mscg",
+        "dataset_name": "bert_base_gkb_cnet_trained_model_top_500k_mscg_properties",
         "train_file_path": null,
         "val_file_path": null,
         "test_file_path": null,
