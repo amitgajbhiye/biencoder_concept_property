@@ -25,12 +25,12 @@
         "vector_strategy": "mask_token"
     },
     "inference_params": {
-        "pretrained_model_path": "/scratch/c.scmag3/biencoder_concept_property/trained_models/100k_data_experiments/bert_large_100k_mscg_8k_prefix_adj_100k_gkb_properties_best_model.pt",
-        "input_data_type": "concept_and_property",
-        "concept_file": null,
+        "pretrained_model_path": "trained_models/100k_data_experiments/bert_large_100k_mscg_8k_prefix_adj_100k_gkb_properties_best_model.pt",
+        "input_data_type": "concept",
+        "concept_file": "data/generate_embeddding_data/concept.tsv",
         "property_file": null,
-        "concept_property_file": "data/generate_embeddding_data/generate_embedding_mscg.tsv",
-        "save_dir": "trained_models/get_con_pro_embeddings",
-        "get_similar_properties": true
+        "concept_property_file": null,
+        "save_dir": "trained_models/con_pro_embeddings",
+        "get_similar_properties": null
     }
 }

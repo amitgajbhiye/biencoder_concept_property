@@ -254,6 +254,7 @@ def get_similar_properties(
 
     inference_params = config.get("inference_params")
     input_data_type = inference_params["input_data_type"]
+
     dataset_params = config.get("dataset_params")
     save_dir = inference_params["save_dir"]
 
@@ -313,6 +314,9 @@ def get_similar_properties(
 
     log.info(f"con_similar_prop_dict")
     log.info(con_similar_prop_dict)
+
+    print(f"con_similar_prop_dict")
+    print(con_similar_prop_dict)
 
     con_prop_file = inference_params["concept_property_file"]
 
@@ -423,9 +427,25 @@ if __name__ == "__main__":
 
     log.info(f"\n {config} \n")
 
-    (concept_embedding_pkl_file, prop_embedding_save_file_name) = generate_embedings(
-        config
-    )
+    inference_params = config.get("inference_params")
+    input_data_type = inference_params["input_data_type"]
+
+    assert input_data_type in (
+        "concept",
+        "property",
+        "concept_and_property",
+    ), "Please specify 'input_data_type' \
+        from ('concept', 'property', 'concept_and_property')"
+
+    if input_data_type in ("concept", "property"):
+        embedding_file_name = generate_embedings(config)
+    elif input_data_type == "concept_and_property":
+        (
+            concept_embedding_pkl_file,
+            prop_embedding_save_file_name,
+        ) = generate_embedings(config)
+
+    log.info(f"get_similar_properties : {get_similar_properties}")
 
     if get_similar_properties:
         get_similar_properties(
