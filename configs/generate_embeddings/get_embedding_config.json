@@ -1,5 +1,5 @@
 {
-    "experiment_name": "bert_large_get_con_pro_embeddings",
+    "experiment_name": "bert_large_get_concept_embeddings",
     "log_dirctory": "get_con_pro_embeddings",
     "dataset_params": {
         "dataset_name": "bert_large_mscg",
