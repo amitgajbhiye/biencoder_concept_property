@@ -429,6 +429,7 @@ if __name__ == "__main__":
 
     inference_params = config.get("inference_params")
     input_data_type = inference_params["input_data_type"]
+    similar_properties = inference_params["get_similar_properties"]
 
     assert input_data_type in (
         "concept",
@@ -445,9 +446,9 @@ if __name__ == "__main__":
             prop_embedding_save_file_name,
         ) = generate_embedings(config)
 
-    log.info(f"get_similar_properties : {get_similar_properties}")
+    log.info(f"get_similar_properties : {similar_properties}")
 
-    if get_similar_properties:
+    if similar_properties:
         get_similar_properties(
             config, concept_embedding_pkl_file, prop_embedding_save_file_name
         )
