@@ -3,9 +3,9 @@
     "log_dirctory": "get_con_pro_embeddings",
     "dataset_params": {
         "dataset_name": "bert_large_mscg",
-        "train_file_path": "None",
-        "val_file_path": "None",
-        "test_file_path": "None",
+        "train_file_path": null,
+        "val_file_path": null,
+        "test_file_path": null,
         "hf_tokenizer_name": "bert-large-uncased",
         "hf_tokenizer_path": "/scratch/c.scmag3/conceptEmbeddingModel/bert-large-uncased/tokenizer",
         "concept_max_len": 256,
@@ -19,7 +19,7 @@
         }
     },
     "model_params": {
-        "model_name": "None",
+        "model_name": null,
         "hf_checkpoint_name": "bert-large-uncased",
         "hf_model_path": "/scratch/c.scmag3/conceptEmbeddingModel/bert-large-uncased/model",
         "vector_strategy": "mask_token"
@@ -31,6 +31,6 @@
         "property_file": null,
         "concept_property_file": null,
         "save_dir": "trained_models/con_pro_embeddings",
-        "get_similar_properties": null
+        "get_similar_properties": false
     }
 }
