@@ -2,7 +2,7 @@
     "experiment_name": "bert_large_get_con_pro_embeddings",
     "log_dirctory": "get_con_pro_embeddings",
     "dataset_params": {
-        "dataset_name": "bert_large_mscg_con_prop_embeddings",
+        "dataset_name": "bert_large_mscg",
         "train_file_path": "None",
         "val_file_path": "None",
         "test_file_path": "None",
