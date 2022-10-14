@@ -325,7 +325,7 @@ def get_concept_similar_properties(
     con_similar_prop_dict = {}
     file_name = os.path.join(save_dir, dataset_params["dataset_name"])
 
-    with open(file_name, "wb") as file:
+    with open(file_name, "w") as file:
 
         for con_idx, prop_idx in enumerate(con_indices):
 
@@ -337,7 +337,7 @@ def get_concept_similar_properties(
             print(f"{concept} - {similar_properties}")
 
             for prop in similar_properties:
-                line = concept + "\t" + prop
+                line = concept + "\t" + prop + "\n"
                 file.write(line)
 
     log.info(f"Finished getting similar properties")
