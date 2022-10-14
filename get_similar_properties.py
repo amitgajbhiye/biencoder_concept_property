@@ -287,7 +287,7 @@ def get_concept_similar_properties(
     zero_con_embeds = np.array([np.insert(l, 0, float(0)) for l in con_embeds])
     transformed_con_embeds = np.array(transform(con_embeds))
 
-    log.info(f"In get_similar_properties function")
+    log.info(f"In get_concept_similar_properties function")
     log.info(f"Number of Concepts : {len(concepts)}")
     log.info(f"Length of Concepts Embeddings : {len(con_embeds)}")
     log.info(f"Shape of zero_con_embeds: {zero_con_embeds.shape}")
@@ -468,7 +468,7 @@ if __name__ == "__main__":
         from ('concept', 'property', 'concept_and_property')"
 
     concept_pkl_file = inference_params["concept_file"]
-    property_pkl_file = inference_params["concept_file"]
+    property_pkl_file = inference_params["property_file"]
 
     log.info(f"get_similar_properties : {similar_properties}")
 

@@ -1,8 +1,8 @@
 {
-    "experiment_name": "bert_base_gkb_cnet_trained_model_top_500k_mscg_properties",
+    "experiment_name": "bert_base_gkb_cnet_trained_model_mcrae_concept_similar_properties",
     "log_dirctory": "get_con_pro_embeddings",
     "dataset_params": {
-        "dataset_name": "bert_base_gkb_cnet_trained_model_top_500k_mscg_properties",
+        "dataset_name": "bert_base_gkb_cnet_trained_model_mcrae_concept_similar_properties",
         "train_file_path": null,
         "val_file_path": null,
         "test_file_path": null,
@@ -26,9 +26,9 @@
     },
     "inference_params": {
         "pretrained_model_path": "trained_models/gkb_source_analysis/bb_gkb_cnet_plus_cnet_has_property.pt",
-        "input_data_type": "property",
-        "concept_file": null,
-        "property_file": "data/generate_embeddding_data/property_vocab_500k_mscg_properties.txt",
+        "input_data_type": "concept_and_property",
+        "concept_file": "trained_models/con_pro_embeddings/bert_base_gkb_cnet_trained_model_mcrae_concepts_concept_embeddings.pkl",
+        "property_file": "trained_models/con_pro_embeddings/bert_base_gkb_cnet_trained_model_top_500k_mscg_properties_property_embeddings.pkl",
         "concept_property_file": null,
         "save_dir": "trained_models/con_pro_embeddings"
     }
