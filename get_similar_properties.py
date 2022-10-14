@@ -250,6 +250,7 @@ def generate_embedings(config):
         return con_embedding_save_file_name, prop_embedding_save_file_name
 
 
+######################################
 def transform(vecs):
 
     maxnorm = max([np.linalg.norm(v) for v in vecs])
@@ -305,7 +306,6 @@ def get_concept_similar_properties(
     prop_dict_transform = {
         prop: trans for prop, trans in zip(properties, transformed_prop_embeds)
     }
-
     prop_dict_zero = {prop: trans for prop, trans in zip(properties, zero_prop_embeds)}
 
     # Learning Nearest Neighbours
@@ -338,6 +338,8 @@ def get_concept_similar_properties(
 
             for prop in similar_properties:
                 file.write(f"{concept}\t{prop}\n")
+
+    log.info(f"Finished getting similar properties")
 
     # log.info(f"con_similar_prop_dict")
     # log.info(con_similar_prop_dict)
@@ -468,18 +470,7 @@ if __name__ == "__main__":
     concept_pkl_file = inference_params["concept_file"]
     property_pkl_file = inference_params["concept_file"]
 
-    if input_data_type in ("concept", "property"):
-        embedding_file_name = generate_embedings(config)
-    elif input_data_type == "concept_and_property":
-        (
-            concept_embedding_pkl_file,
-            prop_embedding_save_file_name,
-        ) = generate_embedings(config)
-
     log.info(f"get_similar_properties : {similar_properties}")
 
-    if similar_properties:
-        get_similar_properties(
-            config, concept_embedding_pkl_file, prop_embedding_save_file_name
-        )
+    get_concept_similar_properties(config, concept_pkl_file, property_pkl_file)
 
