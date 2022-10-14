@@ -2,8 +2,8 @@
 
 #SBATCH --job-name=getProps
 
-#SBATCH --output=logs/get_con_pro_embeddings/out_bert_large_get_con_pro_embeddings.txt
-#SBATCH --error=logs/get_con_pro_embeddings/err_bert_large_get_con_pro_embeddings.txt
+#SBATCH --output=logs/get_con_pro_embeddings/out_bert_base_gkb_cnet_trained_model_mcrae_concept_similar_properties.txt
+#SBATCH --error=logs/get_con_pro_embeddings/err_bert_base_gkb_cnet_trained_model_mcrae_concept_similar_properties.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5

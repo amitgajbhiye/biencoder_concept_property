@@ -458,7 +458,6 @@ if __name__ == "__main__":
 
     inference_params = config.get("inference_params")
     input_data_type = inference_params["input_data_type"]
-    similar_properties = inference_params["get_similar_properties"]
 
     assert input_data_type in (
         "concept",
@@ -469,8 +468,6 @@ if __name__ == "__main__":
 
     concept_pkl_file = inference_params["concept_file"]
     property_pkl_file = inference_params["property_file"]
-
-    log.info(f"get_similar_properties : {similar_properties}")
 
     get_concept_similar_properties(config, concept_pkl_file, property_pkl_file)
 
