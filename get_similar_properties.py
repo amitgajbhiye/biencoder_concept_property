@@ -337,7 +337,8 @@ def get_concept_similar_properties(
             print(f"{concept} - {similar_properties}")
 
             for prop in similar_properties:
-                file.write(f"{concept}\t{prop}\n")
+                line = concept + "\t" + prop
+                file.write(line)
 
     log.info(f"Finished getting similar properties")
 
