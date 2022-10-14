@@ -323,7 +323,7 @@ def get_concept_similar_properties(
     log.info(f"con_indices shape : {con_indices.shape}")
 
     con_similar_prop_dict = {}
-    file_name = os.path.join(save_dir, dataset_params["dataset_name"])
+    file_name = os.path.join(save_dir, dataset_params["dataset_name"], ".tsv")
 
     with open(file_name, "w") as file:
 
