@@ -334,7 +334,7 @@ def get_concept_similar_properties(
 
             con_similar_prop_dict[concept] = similar_properties
 
-            print(f"{concept} - {similar_properties}")
+            print(f"{concept} \t {similar_properties}\n")
 
             for prop in similar_properties:
                 line = concept + "\t" + prop + "\n"
