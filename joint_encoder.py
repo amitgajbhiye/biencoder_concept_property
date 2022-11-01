@@ -82,7 +82,7 @@ class ConPropDataset(Dataset):
             + prop.replace(".", "")
         )
 
-        print("Processing data: ", sent, labels.item(), flush=True)
+        # print("Processing data: ", sent, labels.item(), flush=True)
 
         encoded_dict = self.tokenizer.encode_plus(
             sent,
@@ -265,8 +265,8 @@ patience_early_stopping = 10
 patience_counter = 0
 start_epoch = 1
 
-model_save_path = "----"
-model_name = "----"
+model_save_path = "trained_models/joint_encoder_gkbcnet_cnethasprop"
+model_name = "joint_encoder_gkbcnet_cnethasprop.pt"
 
 best_model_path = os.path.join(model_save_path, model_name)
 
