@@ -75,7 +75,13 @@ class ConPropDataset(Dataset):
         labels = self.labels[idx]
 
         # sent = prop.replace(".", "") + " such as " + concept
-        sent = concept + " " + self.sep_token + " " + prop
+        sent = (
+            concept.replace(".", "")
+            + " "
+            + self.sep_token
+            + " "
+            + prop.replace(".", "")
+        )
 
         print("Processing data: ", sent, flush=True)
 
