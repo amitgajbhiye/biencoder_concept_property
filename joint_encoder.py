@@ -55,7 +55,7 @@ class ConPropDataset(Dataset):
             sep="\t",
             header=None,
             names=["concept", "property", "labels"],
-        )
+        )[0:2000]
 
         self.tokenizer = BertTokenizer.from_pretrained(bb_tokenizer)
 
@@ -74,7 +74,6 @@ class ConPropDataset(Dataset):
         prop = self.data_df["property"][idx]
         labels = self.labels[idx]
 
-        # sent = prop.replace(".", "") + " such as " + concept
         sent = (
             concept.replace(".", "")
             + " "
