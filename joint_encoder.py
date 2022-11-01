@@ -179,15 +179,13 @@ def train():
 
         model.zero_grad()
 
-        input_ids = torch.tensor([x["input_ids"] for x in batch]).to(device)
-        attention_masks = torch.tensor([x["attention_masks"] for x in batch]).to(device)
+        input_ids = torch.cat([x["input_ids"] for x in batch], dim=0).to(device)
+
+        attention_masks = torch.cat([x["attention_masks"] for x in batch], dim=0).to(
+            device
+        )
+
         labels = torch.tensor([x["labels"] for x in batch]).to(device)
-
-        # input_ids = batch["input_ids"].to(device)
-        # attention_masks = batch["attention_masks"].to(device)
-        # labels = torch.tensor([x["labels"] for x in batch]).to(device)
-
-        labels = batch["labels"].to(device)
 
         loss, logits = model(input_ids, attention_masks, labels)
 
