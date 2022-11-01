@@ -181,7 +181,9 @@ def train():
 
         input_ids = batch["input_ids"].to(device)
         attention_masks = batch["attention_masks"].to(device)
-        labels = torch.tensor([x["labels"] for x in batch]).to(device)
+        # labels = torch.tensor([x["labels"] for x in batch]).to(device)
+
+        labels = batch["labels"].to(device)
 
         loss, logits = model(input_ids, attention_masks, labels)
 
