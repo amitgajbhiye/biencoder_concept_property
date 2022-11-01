@@ -55,7 +55,7 @@ class ConPropDataset(Dataset):
             sep="\t",
             header=None,
             names=["concept", "property", "labels"],
-        )[0:2000]
+        )
 
         self.tokenizer = BertTokenizer.from_pretrained(bb_tokenizer)
 
@@ -82,7 +82,7 @@ class ConPropDataset(Dataset):
             + prop.replace(".", "")
         )
 
-        # print("Processing data: ", sent, labels.item(), flush=True)
+        print("Processing data: ", sent, labels.item(), flush=True)
 
         encoded_dict = self.tokenizer.encode_plus(
             sent,
