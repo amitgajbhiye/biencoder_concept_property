@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
-
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -42,8 +36,8 @@ print(
 # In[ ]:
 
 
-tokenizer_bert_large_uncased_path = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_bert_large_uncased/tokenizer"
-model_bert_large_uncased_path = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_bert_large_uncased/model"
+# tokenizer_bert_large_uncased_path = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_bert_large_uncased/tokenizer"
+# model_bert_large_uncased_path = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_bert_large_uncased/model"
 
 
 bb_tokenizer = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_bert_base_uncased/tokenizer"
@@ -139,8 +133,10 @@ batch_size = 32
 num_epoch = 100
 
 
-train_file = "------"
-valid_file = "------"
+train_file = (
+    "data/train_data/joint_encoder/5_neg_train_gkbcnet_plus_cnethasproperty.tsv"
+)
+valid_file = "data/train_data/joint_encoder/5_neg_val_gkbcnet_plus_cnethasproperty.tsv"
 # test_file = "/scratch/c.scmag3/conceptEmbeddingModel/data/70k_test_ms_concept_graph.tsv"
 
 
