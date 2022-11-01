@@ -231,8 +231,8 @@ def evaluate():
 
     for step, batch in enumerate(val_dataloader):
 
-        input_ids = torch.tensor([x["input_ids"] for x in batch], dim=0).to(device)
-        attention_masks = torch.tensor([x["attention_masks"] for x in batch], dim=0).to(
+        input_ids = torch.cat([x["input_ids"] for x in batch], dim=0).to(device)
+        attention_masks = torch.cat([x["attention_masks"] for x in batch], dim=0).to(
             device
         )
         labels = torch.tensor([x["labels"] for x in batch]).to(device)
