@@ -2,8 +2,8 @@
 
 #SBATCH --job-name=JE
 
-#SBATCH --output=logs/joint_encoder/out_joint_encoder.txt
-#SBATCH --error=logs/joint_encoder/err_joint_encoder.txt
+#SBATCH --output=logs/joint_enc_logs/out_joint_encoder.txt
+#SBATCH --error=logs/joint_enc_logs/err_joint_encoder.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
