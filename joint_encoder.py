@@ -142,11 +142,15 @@ valid_file = "data/train_data/joint_encoder/5_neg_val_gkbcnet_plus_cnethasproper
 
 train_data = ConPropDataset(train_file)
 train_sampler = RandomSampler(train_data)
-train_dataloader = DataLoader(train_data, batch_size=batch_size, sampler=train_sampler,)
+train_dataloader = DataLoader(
+    train_data, batch_size=batch_size, sampler=train_sampler, collate_fn=default_convert
+)
 
 val_data = ConPropDataset(valid_file)
 val_sampler = RandomSampler(val_data)
-val_dataloader = DataLoader(val_data, batch_size=batch_size, sampler=val_sampler)
+val_dataloader = DataLoader(
+    val_data, batch_size=batch_size, sampler=val_sampler, collate_fn=default_convert
+)
 
 
 # In[ ]:
@@ -175,12 +179,12 @@ def train():
 
         model.zero_grad()
 
-        # input_ids = torch.tensor([x["input_ids"] for x in batch]).to(device)
-        # attention_masks = torch.tensor([x["attention_masks"] for x in batch]).to(device)
-        # labels = torch.tensor([x["labels"] for x in batch]).to(device)
+        input_ids = torch.tensor([x["input_ids"] for x in batch]).to(device)
+        attention_masks = torch.tensor([x["attention_masks"] for x in batch]).to(device)
+        labels = torch.tensor([x["labels"] for x in batch]).to(device)
 
-        input_ids = batch["input_ids"].to(device)
-        attention_masks = batch["attention_masks"].to(device)
+        # input_ids = batch["input_ids"].to(device)
+        # attention_masks = batch["attention_masks"].to(device)
         # labels = torch.tensor([x["labels"] for x in batch]).to(device)
 
         labels = batch["labels"].to(device)
