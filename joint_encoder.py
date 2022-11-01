@@ -83,7 +83,7 @@ class ConPropDataset(Dataset):
             + prop.replace(".", "")
         )
 
-        print("Processing data: ", sent, flush=True)
+        print("Processing data: ", sent, labels, flush=True)
 
         encoded_dict = self.tokenizer.encode_plus(
             sent,
