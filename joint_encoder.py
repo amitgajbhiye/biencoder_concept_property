@@ -82,7 +82,7 @@ class ConPropDataset(Dataset):
             + prop.replace(".", "")
         )
 
-        print("Processing data: ", sent, labels.item(), flush=True)
+        # print("Processing data: ", sent, labels.item(), flush=True)
 
         encoded_dict = self.tokenizer.encode_plus(
             sent,
@@ -134,7 +134,7 @@ class MusubuModel(nn.Module):
 # In[ ]:
 
 
-batch_size = 32
+batch_size = 64  # 32
 num_epoch = 100
 
 
