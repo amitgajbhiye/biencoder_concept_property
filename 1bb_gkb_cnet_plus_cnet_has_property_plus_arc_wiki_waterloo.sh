@@ -25,6 +25,6 @@ module load anaconda/2020.02
 
 conda activate venv
 
-python3 run_model.py --config_file configs/gkb_source_analysis/bb_gkb_cnet_plus_cnet_has_property_plus_tuplekb_wordnet_config.json
+python3 run_model.py --config_file configs/gkb_source_analysis/bb_gkb_cnet_plus_cnet_has_property_plus_arc_wiki_waterloo_config.json
 
 echo 'finished!'
