@@ -1,5 +1,5 @@
 import argparse
-from enum import unique
+
 import logging
 import os
 import pickle
@@ -15,7 +15,6 @@ from utils.functions import (
     mcrae_dataset_and_dataloader,
 )
 from sklearn.neighbors import NearestNeighbors
-
 
 log = logging.getLogger(__name__)
 
