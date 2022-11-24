@@ -11,7 +11,6 @@
 
 #SBATCH -p highmem
 #SBATCH --mem=10g
-#SBATCH --gres=gpu:1
 
 #SBATCH -t 0-06:00:00
 
