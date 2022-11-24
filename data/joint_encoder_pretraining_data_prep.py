@@ -82,7 +82,7 @@ def random_conjuct_properties(input_df, num_random_prop_to_conjuct=None):
     # file_name = "siamese_concept_property/data/train_data/joint_encoder_property_conjuction_data/random_conjuct_property.tsv"
 
     file_name = "/scratch/c.scmag3/biencoder_concept_property/data/train_data/joint_encoder_property_conjuction_data/random_conjuct_property.tsv"
-    random_data_df.to_csv(file_name, indexfor=None, header=None, sep="\t")
+    random_data_df.to_csv(file_name, index=None, header=None, sep="\t")
 
 
 def match_props(predict_prop, similar_prop):
