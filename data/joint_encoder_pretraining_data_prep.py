@@ -81,9 +81,7 @@ def random_conjuct_properties(input_df, num_random_prop_to_conjuct=None):
 
     # file_name = "siamese_concept_property/data/train_data/joint_encoder_property_conjuction_data/random_conjuct_property.tsv"
 
-    file_name = (
-        "train_data/joint_encoder_property_conjuction_data/random_conjuct_property.tsv"
-    )
+    file_name = "/scratch/c.scmag3/biencoder_concept_property/data/train_data/joint_encoder_property_conjuction_data/random_conjuct_property.tsv"
     random_data_df.to_csv(file_name, indexfor=None, header=None, sep="\t")
 
 
@@ -208,9 +206,9 @@ def get_predict_property_similar_properties(
 
     similar_data_df = pd.DataFrame.from_records(all_similar_data)
 
-    # file_name = "siamese_concept_property/data/train_data/joint_encoder_property_conjuction_data/predict_property_similar_vocab_properties.txt"
+    # file_name = "siamese_concept_property/data/train_data/joint_encoder_property_conjuction_data/predict_property_similar_vocab_properties.tsv"
 
-    file_name = "train_data/joint_encoder_property_conjuction_data/predict_property_similar_vocab_properties.tsv"
+    file_name = "/scratch/c.scmag3/biencoder_concept_property/data/train_data/joint_encoder_property_conjuction_data/predict_property_similar_vocab_properties.tsv"
 
     similar_data_df.to_csv(
         file_name, index=None, header=None, sep="\t",
@@ -352,7 +350,7 @@ def random_and_similar_conjuct_properties(
 
     all_random_and_similar_df = pd.DataFrame.from_records(all_random_and_similar)
 
-    file_name = "train_data/joint_encoder_property_conjuction_data/random_and_similar_conjuct_properties.tsv"
+    file_name = "/scratch/c.scmag3/biencoder_concept_property/data/train_data/joint_encoder_property_conjuction_data/random_and_similar_conjuct_properties.tsv"
 
     all_random_and_similar_df.to_csv(file_name, index=None, header=None, sep="\t")
 
@@ -389,10 +387,8 @@ def prepare_joint_encoder_pretraining_data(input_file_path, strategy):
 
     elif strategy == "random_and_similar":
 
-        simila_prop_file = "joint_encoder_property_conjuction_data/predict_property_similar_vocab_properties.txt"
-        random_prop_file = (
-            "joint_encoder_property_conjuction_data/random_conjuct_property.tsv"
-        )
+        simila_prop_file = "/scratch/c.scmag3/biencoder_concept_property/data/train_data/joint_encoder_property_conjuction_data/predict_property_similar_vocab_properties.tsv"
+        random_prop_file = "/scratch/c.scmag3/biencoder_concept_property/data/train_data/joint_encoder_property_conjuction_data/random_conjuct_property.tsv"
 
         random_and_similar_data = random_and_similar_conjuct_properties(
             input_df=input_df,
@@ -401,9 +397,11 @@ def prepare_joint_encoder_pretraining_data(input_file_path, strategy):
         )
 
 
-input_file_path = (
-    "train_data/gkb_source_analysis/train_gkbcnet_plus_cnethasproperty.tsv"
-)
+# input_file_path = (
+#     "train_data/gkb_source_analysis/train_gkbcnet_plus_cnethasproperty.tsv"
+# )
+
+input_file_path = "/scratch/c.scmag3/biencoder_concept_property/data/train_data/gkb_source_analysis/train_gkbcnet_plus_cnethasproperty.tsv"
 
 # strategy = "random_and_similar"
 # prepare_joint_encoder_pretraining_data(input_file_path=input_file_path, strategy=strategy)
