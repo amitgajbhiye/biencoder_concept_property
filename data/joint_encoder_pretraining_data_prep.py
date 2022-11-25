@@ -18,6 +18,8 @@ def random_conjuct_properties(input_df, num_random_prop_to_conjuct=None):
 
     all_random_data = []
 
+    counter = 0
+
     for i, concept in enumerate(unique_concepts):
 
         print()
@@ -31,7 +33,7 @@ def random_conjuct_properties(input_df, num_random_prop_to_conjuct=None):
         print(f"Num Properties for Concept : {num_properties_for_concept}")
         print()
 
-        if len(properties_for_concept) <= 3:
+        if (len(properties_for_concept) - 1) < 3:
             print(
                 f"***** Properties for the concept is less than 3, {num_properties_for_concept}, Not Enough *****"
             )
@@ -48,8 +50,8 @@ def random_conjuct_properties(input_df, num_random_prop_to_conjuct=None):
                 ]
                 num_rest_of_prop = len(rest_of_prop)
 
-                # print (f"Predict Property : {predict_prop}")
-                # print (f"Rest of Properties : {rest_of_prop}")
+                print(f"Predict Property : {predict_prop}")
+                print(f"Rest of Properties : {rest_of_prop}")
 
                 if 3 <= num_rest_of_prop <= 10:
 
@@ -61,9 +63,9 @@ def random_conjuct_properties(input_df, num_random_prop_to_conjuct=None):
                         [concept, conjuction_properties, predict_prop]
                     )
 
-                    # print (f"Case 2 : num_prop : {num_prop}")
-                    # print (f"Properties to Conjuct : {conjuction_properties}")
-                    # print ()
+                    print(f"Case 2 : num_prop : {num_prop}")
+                    print(f"Properties to Conjuct : {conjuction_properties}")
+                    print()
 
                 elif num_rest_of_prop >= 10:
 
@@ -74,15 +76,22 @@ def random_conjuct_properties(input_df, num_random_prop_to_conjuct=None):
                     all_random_data.append(
                         [concept, conjuction_properties, predict_prop]
                     )
-                    # print (f"Case 3 : num_prop : {num_prop}")
-                    # print (f"Properties to Conjuct : {conjuction_properties}")
-                    # print ()
+                    print(f"Case 3 : num_prop : {num_prop}")
+                    print(f"Properties to Conjuct : {conjuction_properties}")
+                    print()
+
+                else:
+                    print(f"Case 4 : None of the above")
+                    print(f"Concept : {concept}")
+                    counter += 1
 
     # print (f"All Randomly Generated Properties to Conjuct")
     # print (all_random_data)
 
     random_data_df = pd.DataFrame.from_records(all_random_data)
 
+    print(f"Counter for case 4 : {counter}")
+    print(f"all_random_data - len : {len(all_random_data)}")
     print(f"random_data_df.shape : {random_data_df.shape}")
     print(f"input_df.shape: {input_df.shape}")
 
