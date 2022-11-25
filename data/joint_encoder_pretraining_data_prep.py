@@ -41,38 +41,42 @@ def random_conjuct_properties(input_df, num_random_prop_to_conjuct=None):
                 all_random_data.append([concept, "Nothing to Conjuct", predict_prop])
 
             continue
+        else:
+            for predict_prop in properties_for_concept:
+                rest_of_prop = [
+                    prop for prop in properties_for_concept if prop != predict_prop
+                ]
+                num_rest_of_prop = len(rest_of_prop)
 
-        for predict_prop in properties_for_concept:
-            rest_of_prop = [
-                prop for prop in properties_for_concept if prop != predict_prop
-            ]
-            num_rest_of_prop = len(rest_of_prop)
+                # print (f"Predict Property : {predict_prop}")
+                # print (f"Rest of Properties : {rest_of_prop}")
 
-            # print (f"Predict Property : {predict_prop}")
-            # print (f"Rest of Properties : {rest_of_prop}")
+                if 3 <= num_rest_of_prop <= 10:
 
-            if 3 <= num_rest_of_prop <= 10:
+                    num_prop = random.randint(3, num_rest_of_prop)
+                    random_props = random.sample(rest_of_prop, num_prop)
+                    conjuction_properties = ",".join(random_props)
 
-                num_prop = random.randint(3, num_rest_of_prop)
-                random_props = random.sample(rest_of_prop, num_prop)
-                conjuction_properties = ",".join(random_props)
+                    all_random_data.append(
+                        [concept, conjuction_properties, predict_prop]
+                    )
 
-                all_random_data.append([concept, conjuction_properties, predict_prop])
+                    # print (f"Case 2 : num_prop : {num_prop}")
+                    # print (f"Properties to Conjuct : {conjuction_properties}")
+                    # print ()
 
-                # print (f"Case 2 : num_prop : {num_prop}")
-                # print (f"Properties to Conjuct : {conjuction_properties}")
-                # print ()
+                elif num_rest_of_prop >= 10:
 
-            elif num_rest_of_prop >= 10:
+                    num_prop = random.randint(3, 10)
+                    random_props = random.sample(rest_of_prop, num_prop)
+                    conjuction_properties = ", ".join(random_props)
 
-                num_prop = random.randint(3, 10)
-                random_props = random.sample(rest_of_prop, num_prop)
-                conjuction_properties = ", ".join(random_props)
-
-                all_random_data.append([concept, conjuction_properties, predict_prop])
-                # print (f"Case 3 : num_prop : {num_prop}")
-                # print (f"Properties to Conjuct : {conjuction_properties}")
-                # print ()
+                    all_random_data.append(
+                        [concept, conjuction_properties, predict_prop]
+                    )
+                    # print (f"Case 3 : num_prop : {num_prop}")
+                    # print (f"Properties to Conjuct : {conjuction_properties}")
+                    # print ()
 
     # print (f"All Randomly Generated Properties to Conjuct")
     # print (all_random_data)
