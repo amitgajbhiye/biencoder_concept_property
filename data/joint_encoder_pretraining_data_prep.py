@@ -79,13 +79,14 @@ def random_conjuct_properties(input_df, num_random_prop_to_conjuct=None):
 
     random_data_df = pd.DataFrame.from_records(all_random_data)
 
+    print(f"random_data_df.shape : {random_data_df.shape}")
+    print(f"input_df.shape: {input_df.shape}")
+
     assert (
         random_data_df.shape[0] == input_df.shape[0]
     ), "Number of Concepts in random_data_df is not equal to input_df"
 
     print("Assert in random_conjuct_properties function passed")
-    print(f"random_data_df.shape : {random_data_df.shape}")
-    print(f"input_df.shape: {input_df.shape}")
 
     # file_name = "siamese_concept_property/data/train_data/joint_encoder_property_conjuction_data/random_conjuct_property.tsv"
 
