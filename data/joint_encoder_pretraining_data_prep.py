@@ -114,10 +114,10 @@ def random_conjuct_properties(input_df, num_random_prop_to_conjuct=None):
     print(f"Concepts Unique to Random Generated Data")
     print(generated_unique.difference(input_unique))
 
-    # assert (
-    #     random_data_df.shape[0] == input_df.shape[0]
-    # ), "Number of Concepts in random_data_df is not equal to input_df"
-    # print("Assert in random_conjuct_properties function passed")
+    assert (
+        input_unique == generated_unique
+    ), "Number of Concepts in random_data_df is not equal to input_df"
+    print("Assert in random_conjuct_properties function passed")
 
     # file_name = "siamese_concept_property/data/train_data/joint_encoder_property_conjuction_data/random_conjuct_property.tsv"
 
