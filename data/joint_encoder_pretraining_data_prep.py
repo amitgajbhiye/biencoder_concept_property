@@ -31,7 +31,7 @@ def random_conjuct_properties(input_df, num_random_prop_to_conjuct=None):
         print(f"Num Properties for Concept : {num_properties_for_concept}")
         print()
 
-        if len(properties_for_concept) < 3:
+        if len(properties_for_concept) <= 3:
             print(
                 f"***** Properties for the concept is less than 3, {num_properties_for_concept}, Not Enough *****"
             )
@@ -79,6 +79,9 @@ def random_conjuct_properties(input_df, num_random_prop_to_conjuct=None):
 
     random_data_df = pd.DataFrame.from_records(all_random_data)
 
+    assert random_data_df.shape(0) == input_df.shape(
+        0
+    ), "Number of Concepts in random_data_df is not equal to input_df"
     # file_name = "siamese_concept_property/data/train_data/joint_encoder_property_conjuction_data/random_conjuct_property.tsv"
 
     file_name = "/scratch/c.scmag3/biencoder_concept_property/data/train_data/joint_encoder_property_conjuction_data/random_conjuct_property.tsv"
