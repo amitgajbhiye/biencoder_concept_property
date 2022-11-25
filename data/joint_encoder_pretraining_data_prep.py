@@ -42,6 +42,8 @@ def random_conjuct_properties(input_df, num_random_prop_to_conjuct=None):
             print(f"Moving to Next Concept")
 
             for predict_prop in properties_for_concept:
+
+                print([concept, "Nothing to Conjuct", predict_prop])
                 all_random_data.append([concept, "Nothing to Conjuct", predict_prop])
 
             continue
@@ -79,7 +81,7 @@ def random_conjuct_properties(input_df, num_random_prop_to_conjuct=None):
                     all_random_data.append(
                         [concept, conjuction_properties, predict_prop]
                     )
-                    print(f"Case 3 : num_rest_of_prop : {num_rest_of_prop}")
+                    print(f"Case-3 : num_rest_of_prop : {num_rest_of_prop}")
                     print(f"Properties to Conjuct : {conjuction_properties}")
                     print()
 
@@ -95,7 +97,7 @@ def random_conjuct_properties(input_df, num_random_prop_to_conjuct=None):
     random_data_df = pd.DataFrame.from_records(all_random_data)
 
     input_unique = set(unique_concepts)
-    generated_unique = set(random_data_df["0"].unique())
+    generated_unique = set(random_data_df[0].unique())
     concepts_unique_to_input = input_unique.difference(generated_unique)
 
     print(f"random_data_df - Unique Concepts : {len(generated_unique)}")
