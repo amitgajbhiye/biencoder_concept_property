@@ -104,7 +104,7 @@ class DatasetPropConjuction(Dataset):
             con_prop_conj = concept + " " + self.sep_token + " " + conjuct_props
             prop_to_predict = predict_prop + " "
 
-        print(f"{con_prop_conj} - {prop_to_predict}")
+        print(f"{con_prop_conj} - {prop_to_predict} - {labels}.item()")
 
         encoded_dict = self.tokenizer.encode_plus(
             text=con_prop_conj,
