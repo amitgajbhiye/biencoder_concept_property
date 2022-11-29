@@ -116,11 +116,7 @@ class DatasetPropConjuction(Dataset):
             )
             prop_to_predict = predict_prop + " "
 
-        print("con_prop_conj")
-        print(con_prop_conj)
-
-        print("prop_to_predict")
-        print(prop_to_predict)
+        print(f"{con_prop_conj}, {prop_to_predict}")
 
         encoded_dict = self.tokenizer.encode_plus(
             text=con_prop_conj,
@@ -136,6 +132,12 @@ class DatasetPropConjuction(Dataset):
         input_ids = encoded_dict["input_ids"]
         attention_mask = encoded_dict["attention_mask"]
         token_type_ids = encoded_dict["token_type_ids"]
+
+        print(f"input_ids : {input_ids}")
+        print(f"attention_mask : {attention_mask}")
+        print(f"token_type_ids : {token_type_ids}")
+        print(f"labels :", {labels})
+        print()
 
         return {
             "input_ids": input_ids,
@@ -153,10 +155,6 @@ class ModelPropConjuctionJoint(nn.Module):
         self.bert = BertForSequenceClassification.from_pretrained(
             hawk_bb_model, num_labels=num_labels
         )
-
-        print()
-        print("self.bert.config.num_labels")
-        print(self.bert.config.num_labels)
 
         assert self.bert.config.num_labels == 2
 
