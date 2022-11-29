@@ -73,7 +73,7 @@ class DatasetPropConjuction(Dataset):
             sep="\t",
             header=None,
             names=["concept", "conjuct_prop", "predict_prop", "labels"],
-        )[0:256]
+        )
 
         self.tokenizer = BertTokenizer.from_pretrained(hawk_bb_tokenizer)
         self.max_len = max_len
@@ -121,11 +121,11 @@ class DatasetPropConjuction(Dataset):
         attention_mask = encoded_dict["attention_mask"]
         token_type_ids = encoded_dict["token_type_ids"]
 
-        print(f"input_ids : {input_ids}")
-        print(f"attention_mask : {attention_mask}")
-        print(f"token_type_ids : {token_type_ids}")
-        print(f"labels :", {labels})
-        print()
+        # print(f"input_ids : {input_ids}")
+        # print(f"attention_mask : {attention_mask}")
+        # print(f"token_type_ids : {token_type_ids}")
+        # print(f"labels :", {labels})
+        # print()
 
         return {
             "input_ids": input_ids,
