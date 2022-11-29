@@ -38,8 +38,6 @@ print(f"The Model is Trained on : {device}")
 hawk_bb_tokenizer = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_bert_base_uncased/tokenizer"
 hawk_bb_model = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_bert_base_uncased/model"
 
-max_len = 200
-
 data_path = "/scratch/c.scmag3/biencoder_concept_property/data/train_data/joint_encoder_property_conjuction_data"
 
 train_file = os.path.join(
@@ -49,24 +47,22 @@ valid_file = os.path.join(
     data_path, "5_neg_valid_random_and_similar_conjuct_properties.tsv"
 )
 
+model_save_path = "/scratch/c.scmag3/biencoder_concept_property/trained_models/joint_encoder_gkbcnet_cnethasprop"
+model_name = (
+    "joint_encoder_random_similar_prop_conj_gkbcnet_cnethasprop_pretrained_model.pt"
+)
+best_model_path = os.path.join(model_save_path, model_name)
+
+max_len = 128
 
 num_labels = 2
 
 patience_early_stopping = 10
 patience_counter = 0
 start_epoch = 1
-
-batch_size = 64  # 32
+batch_size = 32
 num_epoch = 100
-
 lr = 2e-6
-
-model_save_path = "/scratch/c.scmag3/biencoder_concept_property/trained_models/joint_encoder_gkbcnet_cnethasprop"
-model_name = (
-    "joint_encoder_random_similar_prop_conj_gkbcnet_cnethasprop_pretrained_model.pt"
-)
-
-best_model_path = os.path.join(model_save_path, model_name)
 
 
 class DatasetPropConjuction(Dataset):
@@ -105,18 +101,10 @@ class DatasetPropConjuction(Dataset):
 
         else:
 
-            con_prop_conj = (
-                concept
-                + " "
-                + self.sep_token
-                + " "
-                + conjuct_props
-                + " "
-                + self.sep_token
-            )
+            con_prop_conj = concept + " " + self.sep_token + " " + conjuct_props
             prop_to_predict = predict_prop + " "
 
-        print(f"{con_prop_conj}, {prop_to_predict}")
+        print(f"{con_prop_conj} - {prop_to_predict}")
 
         encoded_dict = self.tokenizer.encode_plus(
             text=con_prop_conj,
