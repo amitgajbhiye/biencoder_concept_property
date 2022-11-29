@@ -40,7 +40,7 @@ hawk_bb_model = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_
 
 max_len = 512
 
-data_path = "./../data/train_data/joint_encoder_property_conjuction_data"
+data_path = "/scratch/c.scmag3/biencoder_concept_property/data/train_data/joint_encoder_property_conjuction_data"
 
 train_file = os.path.join(
     data_path, "5_neg_train_random_and_similar_conjuct_properties.tsv"
@@ -61,7 +61,7 @@ num_epoch = 100
 
 lr = 2e-6
 
-model_save_path = "./../trained_models/joint_encoder_gkbcnet_cnethasprop"
+model_save_path = "/scratch/c.scmag3/biencoder_concept_property/trained_models/joint_encoder_gkbcnet_cnethasprop"
 model_name = (
     "joint_encoder_random_similar_prop_conj_gkbcnet_cnethasprop_pretrained_model.pt"
 )
