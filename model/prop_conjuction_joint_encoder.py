@@ -35,15 +35,20 @@ print(f"The Model is Trained on : {device}")
 # }
 
 
-bb_tokenizer = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_bert_base_uncased/tokenizer"
-bb_model = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_bert_base_uncased/model"
+hawk_bb_tokenizer = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_bert_base_uncased/tokenizer"
+hawk_bb_model = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_bert_base_uncased/model"
 
 max_len = 512
-train_file = (
-    "data/train_data/joint_encoder/5_neg_train_gkbcnet_plus_cnethasproperty.tsv"
+
+data_path = "./../data/train_data/joint_encoder_property_conjuction_data"
+
+train_file = os.path.join(
+    data_path, "5_neg_train_random_and_similar_conjuct_properties.tsv"
 )
-valid_file = "data/train_data/joint_encoder/5_neg_val_gkbcnet_plus_cnethasproperty.tsv"
-# test_file = "/scratch/c.scmag3/conceptEmbeddingModel/data/70k_test_ms_concept_graph.tsv"
+valid_file = os.path.join(
+    data_path, "5_neg_valid_random_and_similar_conjuct_properties.tsv"
+)
+
 
 num_labels = 2
 
@@ -56,8 +61,10 @@ num_epoch = 100
 
 lr = 2e-6
 
-model_save_path = "trained_models/joint_encoder_gkbcnet_cnethasprop"
-model_name = "joint_encoder_gkbcnet_cnethasprop.pt"
+model_save_path = "./../trained_models/joint_encoder_gkbcnet_cnethasprop"
+model_name = (
+    "joint_encoder_random_similar_prop_conj_gkbcnet_cnethasprop_pretrained_model.pt"
+)
 
 best_model_path = os.path.join(model_save_path, model_name)
 
@@ -70,9 +77,9 @@ class DatasetPropConjuction(Dataset):
             sep="\t",
             header=None,
             names=["concept", "conjuct_prop", "predict_prop", "labels"],
-        )
+        )[0:256]
 
-        self.tokenizer = BertTokenizer.from_pretrained(bb_tokenizer)
+        self.tokenizer = BertTokenizer.from_pretrained(hawk_bb_tokenizer)
         self.max_len = max_len
 
         self.sep_token = self.tokenizer.sep_token
@@ -100,6 +107,12 @@ class DatasetPropConjuction(Dataset):
 
             con_prop_conj = concept + " " + self.sep_token + " " + conjuct_props
             prop_to_predict = predict_prop + " "
+
+        print("con_prop_conj")
+        print(con_prop_conj)
+
+        print("prop_to_predict")
+        print(prop_to_predict)
 
         encoded_dict = self.tokenizer.encode_plus(
             text=con_prop_conj,
@@ -130,7 +143,7 @@ class ModelPropConjuctionJoint(nn.Module):
 
         # self.bert = BertForSequenceClassification.from_pretrained('bert-base-uncased', num_labels=num_labels)
         self.bert = BertForSequenceClassification.from_pretrained(
-            bb_model, num_labels=num_labels
+            hawk_bb_model, num_labels=num_labels
         )
 
         print()
