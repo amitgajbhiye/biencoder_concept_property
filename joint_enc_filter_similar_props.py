@@ -70,21 +70,23 @@ def predict(test_dataloader):
 
 loss, accuracy, predictions, logits = predict(test_dataloader)
 
+max_logits = [np.max(logit) for logit in logits]
 
 print(f"Number of Logits : {len(logits)}")
 print(f"test_data.data_df.shape[0] : {test_data.data_df.shape[0]}")
 
 print(f"Logits: {logits}")
+print(f"max_logits: {max_logits}")
 
 assert test_data.data_df.shape[0] == len(
-    logits
+    max_logits
 ), "length of test dataframe is not equal to logits"
 
 new_test_dataframe = test_data.data_df.copy(deep=True)
 
 new_test_dataframe.drop("labels", axis=1, inplace=True)
 
-new_test_dataframe["logits"] = logits
+new_test_dataframe["logits"] = max_logits
 
 
 logit_filename = "data/generate_embeddding_data/mcrae_related_data/with_logits_bert_base_gkb_cnet_trained_model_mcrae_concept_similar_properties.tsv"
