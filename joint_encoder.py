@@ -29,13 +29,11 @@ warnings.filterwarnings("ignore")
 hawk_bb_tokenizer = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_bert_base_uncased/tokenizer"
 hawk_bb_model = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_bert_base_uncased/model"
 
-# train_file = (
-#     "data/train_data/joint_encoder/5_neg_train_gkbcnet_plus_cnethasproperty.tsv"
-# )
-# valid_file = "data/train_data/joint_encoder/5_neg_val_gkbcnet_plus_cnethasproperty.tsv"
+train_file = (
+    "data/train_data/joint_encoder/5_neg_train_gkbcnet_plus_cnethasproperty.tsv"
+)
+valid_file = "data/train_data/joint_encoder/5_neg_val_gkbcnet_plus_cnethasproperty.tsv"
 
-train_file = "/scratch/c.scmag3/biencoder_concept_property/data/generate_embeddding_data/mcrae_related_data/dummy.txt"
-valid_file = "/scratch/c.scmag3/biencoder_concept_property/data/generate_embeddding_data/mcrae_related_data/dummy.txt"
 
 batch_size = 64  # 32
 num_epoch = 100
