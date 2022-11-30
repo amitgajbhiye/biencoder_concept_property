@@ -23,6 +23,9 @@ test_dataloader = DataLoader(
     test_data, batch_size=batch_size, sampler=test_sampler, collate_fn=default_convert
 )
 
+print(f"Loaded Data Frame")
+print(test_data.data_df)
+
 
 def predict(test_dataloader):
 

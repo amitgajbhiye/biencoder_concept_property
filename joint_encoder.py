@@ -26,17 +26,42 @@ import warnings
 warnings.filterwarnings("ignore")
 
 
-print(
-    "Fintuning the BERT Large Uncased model in Musubu Model with 'MSCG + Prefix_Adjectives + GKB_Properties' Data"
+hawk_bb_tokenizer = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_bert_base_uncased/tokenizer"
+hawk_bb_model = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_bert_base_uncased/model"
+
+train_file = (
+    "data/train_data/joint_encoder/5_neg_train_gkbcnet_plus_cnethasproperty.tsv"
 )
+valid_file = "data/train_data/joint_encoder/5_neg_val_gkbcnet_plus_cnethasproperty.tsv"
 
+batch_size = 64  # 32
+num_epoch = 100
 
-# tokenizer_bert_large_uncased_path = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_bert_large_uncased/tokenizer"
-# model_bert_large_uncased_path = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_bert_large_uncased/model"
+patience_early_stopping = 10
+patience_counter = 0
+start_epoch = 1
 
+model_save_path = "trained_models/joint_encoder_gkbcnet_cnethasprop"
+model_name = "joint_encoder_pretrained_on_gkbcnet_cnethasprop.pt"
 
-bb_tokenizer = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_bert_base_uncased/tokenizer"
-bb_model = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_bert_base_uncased/model"
+best_model_path = os.path.join(model_save_path, model_name)
+
+print(f"Pretraining the BERT Base Joint Encoder GKB CNet and CNet Has Property Data")
+print(f"Number of Negatives considered is 5")
+
+print(f"Tokenizer Path : {hawk_bb_tokenizer}")
+print(f"Model Path : {hawk_bb_model}")
+
+print(f"Train File : {train_file}")
+print(f"Valid File : {valid_file}")
+
+print(f"Batch Size: {batch_size}")
+print(f"Number of Epochs: {num_epoch}")
+
+print(f"Model Save Path : {model_save_path}")
+print(f"Model Name : {model_name}")
+
+print(f"Best Model Path: {best_model_path}")
 
 
 class ConPropDataset(Dataset):
@@ -49,7 +74,7 @@ class ConPropDataset(Dataset):
             names=["concept", "property", "labels"],
         )
 
-        self.tokenizer = BertTokenizer.from_pretrained(bb_tokenizer)
+        self.tokenizer = BertTokenizer.from_pretrained(hawk_bb_tokenizer)
 
         self.max_len = max_len
         self.sep_token = self.tokenizer.sep_token
@@ -102,7 +127,7 @@ class MusubuModel(nn.Module):
 
         # self.bert = BertForSequenceClassification.from_pretrained('bert-base-uncased', num_labels=2)
         self.bert = BertForSequenceClassification.from_pretrained(
-            bb_model, num_labels=2
+            hawk_bb_model, num_labels=2
         )
 
         print()
@@ -120,17 +145,6 @@ class MusubuModel(nn.Module):
         return loss, logits
 
 
-batch_size = 64  # 32
-num_epoch = 100
-
-
-train_file = (
-    "data/train_data/joint_encoder/5_neg_train_gkbcnet_plus_cnethasproperty.tsv"
-)
-valid_file = "data/train_data/joint_encoder/5_neg_val_gkbcnet_plus_cnethasproperty.tsv"
-# test_file = "/scratch/c.scmag3/conceptEmbeddingModel/data/70k_test_ms_concept_graph.tsv"
-
-
 train_data = ConPropDataset(train_file)
 train_sampler = RandomSampler(train_data)
 train_dataloader = DataLoader(
@@ -146,8 +160,8 @@ val_dataloader = DataLoader(
 
 model = MusubuModel()
 model.to(device)
-optimizer = AdamW(model.parameters(), lr=2e-6)
 
+optimizer = AdamW(model.parameters(), lr=2e-6)
 total_steps = len(train_dataloader) * num_epoch
 scheduler = get_linear_schedule_with_warmup(
     optimizer, num_warmup_steps=0, num_training_steps=total_steps
@@ -234,17 +248,7 @@ def evaluate():
 
 def train():
 
-    best_valid_loss = 0.0
-    best_valid_f1 = 0.0
-
-    patience_early_stopping = 10
-    patience_counter = 0
-    start_epoch = 1
-
-    model_save_path = "trained_models/joint_encoder_gkbcnet_cnethasprop"
-    model_name = "joint_encoder_gkbcnet_cnethasprop.pt"
-
-    best_model_path = os.path.join(model_save_path, model_name)
+    best_valid_loss, best_valid_f1 = 0.0, 0.0
 
     train_losses = []
     valid_losses = []
@@ -333,100 +337,14 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    print(args.pretrain)
-    print(args.finetune)
+    print("args.pretrain", args.pretrain)
+    print("args.finetune", args.finetune)
 
-    # if args.pretrain:
-    #     pass
+    if args.pretrain:
 
+        print(f"Pretraining the Joint Encoder")
+        train()
 
-# test_data = ConPropDataset(test_file)
-#
-# test_sampler = SequentialSampler(test_data)
-# test_dataloader = DataLoader(test_data,
-#                              batch_size = batch_size,
-#                              sampler = test_sampler,
-#                              collate_fn=default_convert)
-
-# def predict(test_dataloader):
-#
-#     print("\n Predicting From Best Saved Model...", flush=True)
-#
-#     best_model_path = os.path.join('saved_model/musubu_models', model_name)
-#
-#     model = MusubuModel()
-#
-#     model.load_state_dict(torch.load(best_model_path))
-#     model.eval()
-#     model.to(device)
-#
-#
-#     test_loss, test_accuracy, test_preds = [], [], []
-#
-#     for step, batch in enumerate(test_dataloader):
-#
-#         input_ids = torch.cat([x["input_ids"] for x in batch], dim=0).to(device)
-#         attention_masks = torch.cat([x["attention_masks"] for x in batch], dim=0).to(device)
-#         labels = torch.tensor([x["labels"] for x in batch]).to(device)
-#
-#         with torch.no_grad():
-#             loss, logits = model(input_ids, attention_masks, labels)
-#
-#         test_loss.append(loss.item())
-#
-#         batch_preds = torch.argmax(logits, dim=1).flatten()
-#
-#         batch_accuracy = (labels == batch_preds).cpu().numpy().mean() * 100
-#
-#         test_accuracy.append(batch_accuracy)
-#         test_preds.extend(batch_preds.cpu().detach().numpy())
-#
-#     loss = np.mean(test_loss)
-#     accuracy = np.mean(test_accuracy)
-#
-#     return loss, accuracy, test_preds
-#
-
-# loss, accuracy, predictions = predict(test_dataloader)
-#
-# predictions = np.array(predictions).flatten()
-#
-# print ('Test Loss :', loss, flush=True)
-# print ('Test Accuracy :', accuracy, flush=True)
-#
-# test_glod_labels = test_data.labels.cpu().detach().numpy()
-#
-# with open ('saved_model/musubu_models/musubu_70k_best_model_predictions.txt', 'w') as pred_file:
-#     for pred in predictions:
-#         pred_file.write(f'{int(pred)}\n')
-#
-# print ('\n', '#' * 50, flush=True)
-# print ('predictions :', predictions, flush=True)
-#
-
-# print ('\nTest Metrices', flush=True)
-
-# print (len(predictions))
-
-# print (len(test_data.labels))
-
-# print ('\nAccuracy : ', round(accuracy_score(test_glod_labels, predictions) * 100), 4)
-
-# print ('\nF1 Score Binary: ', round(f1_score(test_glod_labels, predictions, average='binary'), 4))
-# print ('\nF1 Score Micro: ', round(f1_score(test_glod_labels, predictions, average='micro'), 4))
-# print ('\nF1 Score Macro: ', round(f1_score(test_glod_labels, predictions, average='macro'), 4))
-# print ('\nF1 Score Weighted: ', round(f1_score(test_glod_labels, predictions, average='weighted'), 4))
-
-# print ('\nClassification Report: ')
-# print (classification_report(test_glod_labels, predictions, labels=[0, 1]))
-
-# print ('\nConfusion Matrix: ')
-# print (confusion_matrix(test_glod_labels, predictions, labels=[0, 1]))
-
-#
-# from collections import Counter
-# print ('Counter')
-# print(Counter(list(predictions)))
-
-#
-
+    elif args.finetune:
+        print(f"Finetuning the Joint Encoder")
+        pass
