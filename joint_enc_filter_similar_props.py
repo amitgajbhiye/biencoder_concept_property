@@ -70,7 +70,13 @@ def predict(test_dataloader):
 
 loss, accuracy, predictions, logits = predict(test_dataloader)
 
-assert test_data.data_df.shape == len(
+
+print(f"Number of Logits : {len(logits)}")
+print(f"test_data.data_df.shape[0] : {test_data.data_df.shape[0]}")
+
+print(f"Logits: {logits}")
+
+assert test_data.data_df.shape[0] == len(
     logits
 ), "length of test dataframe is not equal to logits"
 
