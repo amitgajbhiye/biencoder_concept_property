@@ -60,7 +60,7 @@ def predict(test_dataloader):
         test_accuracy.append(batch_accuracy)
         test_preds.extend(batch_preds.cpu().detach().numpy())
 
-        test_logits.extend(torch.max(torch.sigmoid(logits)).cpu().detach().numpy())
+        test_logits.append(torch.max(torch.sigmoid(logits)).item())
 
     loss = np.mean(test_loss)
     accuracy = np.mean(test_accuracy)
