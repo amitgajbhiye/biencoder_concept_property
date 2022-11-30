@@ -42,7 +42,7 @@ patience_counter = 0
 start_epoch = 1
 
 model_save_path = "trained_models/joint_encoder_gkbcnet_cnethasprop"
-model_name = "joint_encoder_pretrained_on_gkbcnet_cnethasprop.pt"
+model_name = "joint_encoder_step2_pretrained_on_gkbcnet_cnethasprop.pt"
 
 best_model_path = os.path.join(model_save_path, model_name)
 
