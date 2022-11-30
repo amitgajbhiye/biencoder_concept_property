@@ -4,6 +4,7 @@ import torch.nn.functional as F
 import pandas as pd
 import numpy as np
 import os
+from argparse import ArgumentParser
 
 from torch.utils.data import Dataset
 from torch.utils.data._utils.collate import default_convert
@@ -25,15 +26,9 @@ import warnings
 warnings.filterwarnings("ignore")
 
 
-# In[ ]:
-
-
 print(
     "Fintuning the BERT Large Uncased model in Musubu Model with 'MSCG + Prefix_Adjectives + GKB_Properties' Data"
 )
-
-
-# In[ ]:
 
 
 # tokenizer_bert_large_uncased_path = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_bert_large_uncased/tokenizer"
@@ -42,9 +37,6 @@ print(
 
 bb_tokenizer = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_bert_base_uncased/tokenizer"
 bb_model = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_bert_base_uncased/model"
-
-
-# In[ ]:
 
 
 class ConPropDataset(Dataset):
@@ -104,9 +96,6 @@ class ConPropDataset(Dataset):
         }
 
 
-# In[ ]:
-
-
 class MusubuModel(nn.Module):
     def __init__(self):
         super(MusubuModel, self).__init__()
@@ -129,9 +118,6 @@ class MusubuModel(nn.Module):
         loss, logits = output.loss, output.logits
 
         return loss, logits
-
-
-# In[ ]:
 
 
 batch_size = 64  # 32
@@ -158,9 +144,6 @@ val_dataloader = DataLoader(
 )
 
 
-# In[ ]:
-
-
 model = MusubuModel()
 model.to(device)
 optimizer = AdamW(model.parameters(), lr=2e-6)
@@ -171,10 +154,7 @@ scheduler = get_linear_schedule_with_warmup(
 )
 
 
-# In[ ]:
-
-
-def train():
+def train_on_single_epoch():
 
     total_epoch_loss = 0
 
@@ -217,9 +197,6 @@ def train():
     return avg_train_loss
 
 
-# In[ ]:
-
-
 def evaluate():
 
     print("\n Running Validation...")
@@ -255,100 +232,113 @@ def evaluate():
     return val_loss, val_accuracy, valid_preds
 
 
-# In[ ]:
+def train():
+
+    best_valid_loss = 0.0
+    best_valid_f1 = 0.0
+
+    patience_early_stopping = 10
+    patience_counter = 0
+    start_epoch = 1
+
+    model_save_path = "trained_models/joint_encoder_gkbcnet_cnethasprop"
+    model_name = "joint_encoder_gkbcnet_cnethasprop.pt"
+
+    best_model_path = os.path.join(model_save_path, model_name)
+
+    train_losses = []
+    valid_losses = []
+
+    for epoch in range(start_epoch, num_epoch + 1):
+
+        print("\n Epoch {:} of {:}".format(epoch, num_epoch), flush=True)
+
+        train_loss = train_on_single_epoch()
+        valid_loss, valid_accuracy, valid_preds = evaluate()
+
+        val_gold_labels = val_data.labels.cpu().detach().numpy().flatten()
+
+        valid_binary_f1 = round(
+            f1_score(val_gold_labels, valid_preds, average="binary"), 4
+        )
+        valid_micro_f1 = round(
+            f1_score(val_gold_labels, valid_preds, average="micro"), 4
+        )
+        valid_macro_f1 = round(
+            f1_score(val_gold_labels, valid_preds, average="macro"), 4
+        )
+        valid_weighted_f1 = round(
+            f1_score(val_gold_labels, valid_preds, average="weighted"), 4
+        )
+
+        if valid_binary_f1 < best_valid_f1:
+            patience_counter += 1
+        else:
+            best_valid_f1 = valid_binary_f1
+
+            print("\n", "+" * 20)
+            print("Saving Best Model at Epoch :", epoch, model_name)
+            print("Epoch :", epoch)
+            print("   Best Validation F1:", best_valid_f1)
+
+            torch.save(model.state_dict(), best_model_path)
+
+            print(f"The best model is saved at : {best_model_path}")
+
+        train_losses.append(train_loss)
+        valid_losses.append(valid_loss)
+
+        print("valid_preds shape:", valid_preds.shape)
+        print("val_gold_labels shape:", val_gold_labels.shape)
+
+        print("\n", flush=True)
+        print("+" * 50, flush=True)
+        print(f"\nTraining Loss: {train_loss}", flush=True)
+        print(f"Validation Loss: {valid_loss}", flush=True)
+
+        print(f"Validation Accuracy: {valid_accuracy}", flush=True)
+        print(
+            f"sk_learn Validation Accuracy: {accuracy_score(val_gold_labels, valid_preds)}",
+            flush=True,
+        )
+
+        print(f"Best Validation F1 Score Yet : {best_valid_f1}", flush=True)
+        print(f"Validation F1 Score Binary {valid_binary_f1}", flush=True)
+        print(f"Validation F1 Score Micro {valid_micro_f1}", flush=True)
+        print(f"Validation F1 Score Macro {valid_macro_f1}", flush=True)
+        print(f"Validation F1 Score Weighted {valid_weighted_f1}", flush=True)
+
+        print(f"\nValidation Classification Report :", flush=True)
+        print(
+            classification_report(val_gold_labels, valid_preds, labels=[0, 1]),
+            flush=True,
+        )
+
+        print(f"\nValidation Confusion Matrix :", flush=True)
+        print(confusion_matrix(val_gold_labels, valid_preds, labels=[0, 1]), flush=True)
+
+        if patience_counter > patience_early_stopping:
+            print("Early Stopping ---> Patience Reached!!!")
+
+    print(f"\nTrain Losses :", train_losses, flush=True)
+    print(f"Validation Losses: ", valid_losses, flush=True)
 
 
-best_valid_loss = 0.0
-best_valid_f1 = 0.0
+if __name__ == "__main__":
 
-patience_early_stopping = 10
-patience_counter = 0
-start_epoch = 1
+    parser = ArgumentParser(description="Joint Encoder")
 
-model_save_path = "trained_models/joint_encoder_gkbcnet_cnethasprop"
-model_name = "joint_encoder_gkbcnet_cnethasprop.pt"
+    parser.add_argument("--pretrain", action="store_true")
+    parser.add_argument("--finetune", action="store_true")
 
-best_model_path = os.path.join(model_save_path, model_name)
+    args = parser.parse_args()
 
+    print(args.pretrain)
+    print(args.finetune)
 
-train_losses = []
-valid_losses = []
+    # if args.pretrain:
+    #     pass
 
-for epoch in range(start_epoch, num_epoch + 1):
-
-    print("\n Epoch {:} of {:}".format(epoch, num_epoch), flush=True)
-
-    train_loss = train()
-    valid_loss, valid_accuracy, valid_preds = evaluate()
-
-    val_gold_labels = val_data.labels.cpu().detach().numpy().flatten()
-
-    valid_binary_f1 = round(f1_score(val_gold_labels, valid_preds, average="binary"), 4)
-    valid_micro_f1 = round(f1_score(val_gold_labels, valid_preds, average="micro"), 4)
-    valid_macro_f1 = round(f1_score(val_gold_labels, valid_preds, average="macro"), 4)
-    valid_weighted_f1 = round(
-        f1_score(val_gold_labels, valid_preds, average="weighted"), 4
-    )
-
-    if valid_binary_f1 < best_valid_f1:
-        patience_counter += 1
-    else:
-        best_valid_f1 = valid_binary_f1
-
-        print("\n", "+" * 20)
-        print("Saving Best Model at Epoch :", epoch, model_name)
-        print("Epoch :", epoch)
-        print("   Best Validation F1:", best_valid_f1)
-
-        torch.save(model.state_dict(), best_model_path)
-
-        print(f"The best model is saved at : {best_model_path}")
-
-    train_losses.append(train_loss)
-    valid_losses.append(valid_loss)
-
-    print("valid_preds shape:", valid_preds.shape)
-    print("val_gold_labels shape:", val_gold_labels.shape)
-
-    print("\n", flush=True)
-    print("+" * 50, flush=True)
-    print(f"\nTraining Loss: {train_loss}", flush=True)
-    print(f"Validation Loss: {valid_loss}", flush=True)
-
-    print(f"Validation Accuracy: {valid_accuracy}", flush=True)
-    print(
-        f"sk_learn Validation Accuracy: {accuracy_score(val_gold_labels, valid_preds)}",
-        flush=True,
-    )
-
-    print(f"Best Validation F1 Score Yet : {best_valid_f1}", flush=True)
-    print(f"Validation F1 Score Binary {valid_binary_f1}", flush=True)
-    print(f"Validation F1 Score Micro {valid_micro_f1}", flush=True)
-    print(f"Validation F1 Score Macro {valid_macro_f1}", flush=True)
-    print(f"Validation F1 Score Weighted {valid_weighted_f1}", flush=True)
-
-    print(f"\nValidation Classification Report :", flush=True)
-    print(
-        classification_report(val_gold_labels, valid_preds, labels=[0, 1]), flush=True
-    )
-
-    print(f"\nValidation Confusion Matrix :", flush=True)
-    print(confusion_matrix(val_gold_labels, valid_preds, labels=[0, 1]), flush=True)
-
-    if patience_counter > patience_early_stopping:
-        print("Early Stopping ---> Patience Reached!!!")
-
-print(f"\nTrain Losses :", train_losses, flush=True)
-print(f"Validation Losses: ", valid_losses, flush=True)
-
-
-# In[ ]:
-
-
-# In[ ]:
-
-
-#
 
 # test_data = ConPropDataset(test_file)
 #

@@ -2,8 +2,8 @@
 
 #SBATCH --job-name=JE
 
-#SBATCH --output=logs/joint_enc_logs/out_joint_encoder.txt
-#SBATCH --error=logs/joint_enc_logs/err_joint_encoder.txt
+#SBATCH --output=logs/joint_enc_logs/out_dummy_fine_tune.txt
+#SBATCH --error=logs/joint_enc_logs/err_dummy_fine_tune.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
@@ -13,7 +13,7 @@
 #SBATCH --mem=12gs
 #SBATCH --gres=gpu:1
 
-#SBATCH -t 2-00:00:00
+#SBATCH -t 0-01:00:00
 
 echo 'This script is running on:'
 hostname
@@ -24,6 +24,6 @@ module load anaconda/2020.02
 
 conda activate venv
 
-python3 joint_encoder.py
+python3 joint_encoder.py --pretrain
 
 echo 'finished!'
