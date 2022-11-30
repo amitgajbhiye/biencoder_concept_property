@@ -29,17 +29,17 @@ warnings.filterwarnings("ignore")
 hawk_bb_tokenizer = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_bert_base_uncased/tokenizer"
 hawk_bb_model = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_bert_base_uncased/model"
 
-train_file = (
-    "data/train_data/joint_encoder/5_neg_train_gkbcnet_plus_cnethasproperty.tsv"
-)
-valid_file = "data/train_data/joint_encoder/5_neg_val_gkbcnet_plus_cnethasproperty.tsv"
+# train_file = (
+#     "data/train_data/joint_encoder/5_neg_train_gkbcnet_plus_cnethasproperty.tsv"
+# )
+# valid_file = "data/train_data/joint_encoder/5_neg_val_gkbcnet_plus_cnethasproperty.tsv"
+
+train_file = "/scratch/c.scmag3/biencoder_concept_property/data/generate_embeddding_data/mcrae_related_data/dummy.txt"
+valid_file = "/scratch/c.scmag3/biencoder_concept_property/data/generate_embeddding_data/mcrae_related_data/dummy.txt"
 
 batch_size = 64  # 32
 num_epoch = 100
 
-patience_early_stopping = 10
-patience_counter = 0
-start_epoch = 1
 
 model_save_path = "trained_models/joint_encoder_gkbcnet_cnethasprop"
 model_name = "joint_encoder_step2_pretrained_on_gkbcnet_cnethasprop.pt"
@@ -250,6 +250,10 @@ def train():
 
     best_valid_loss, best_valid_f1 = 0.0, 0.0
 
+    patience_early_stopping = 10
+    patience_counter = 0
+    start_epoch = 1
+
     train_losses = []
     valid_losses = []
 
@@ -278,6 +282,7 @@ def train():
         if valid_binary_f1 < best_valid_f1:
             patience_counter += 1
         else:
+            patience_counter = 0
             best_valid_f1 = valid_binary_f1
 
             print("\n", "+" * 20)
@@ -297,12 +302,12 @@ def train():
 
         print("\n", flush=True)
         print("+" * 50, flush=True)
-        print(f"\nTraining Loss: {train_loss}", flush=True)
-        print(f"Validation Loss: {valid_loss}", flush=True)
+        print(f"\nTraining Loss: {round(train_loss, 4)}", flush=True)
+        print(f"Validation Loss: {round(valid_loss, 4)}", flush=True)
 
-        print(f"Validation Accuracy: {valid_accuracy}", flush=True)
+        print(f"Validation Accuracy: {round(valid_accuracy, 4)}", flush=True)
         print(
-            f"sk_learn Validation Accuracy: {accuracy_score(val_gold_labels, valid_preds)}",
+            f"sk_learn Validation Accuracy: {round(accuracy_score(val_gold_labels, valid_preds), 4)}",
             flush=True,
         )
 
@@ -321,8 +326,9 @@ def train():
         print(f"\nValidation Confusion Matrix :", flush=True)
         print(confusion_matrix(val_gold_labels, valid_preds, labels=[0, 1]), flush=True)
 
-        if patience_counter > patience_early_stopping:
+        if patience_counter >= patience_early_stopping:
             print("Early Stopping ---> Patience Reached!!!")
+            break
 
     print(f"\nTrain Losses :", train_losses, flush=True)
     print(f"Validation Losses: ", valid_losses, flush=True)
