@@ -1,9 +1,9 @@
 #!/bin/bash --login
 
-#SBATCH --job-name=JEPreTrain
+#SBATCH --job-name=JEPropConjPreTrain
 
-#SBATCH --output=logs/joint_enc_logs/out_dummy_data_joint_encoder_prop_conj_pretraining.txt
-#SBATCH --error=logs/joint_enc_logs/err_dummy_data_joint_encoder_prop_conj_pretraining.txt
+#SBATCH --output=logs/joint_enc_logs/out_joint_encoder_prop_conj_pretraining_gkbcnet_cnethasprop_data.txt
+#SBATCH --error=logs/joint_enc_logs/err_joint_encoder_prop_conj_pretraining_gkbcnet_cnethasprop_data.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
@@ -13,7 +13,7 @@
 #SBATCH --mem=10g
 #SBATCH --gres=gpu:1
 
-#SBATCH -t 0-01:00:00
+#SBATCH -t 3-0:00:00
 
 echo 'This script is running on:'
 hostname

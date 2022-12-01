@@ -42,15 +42,15 @@ hawk_bb_model = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_
 
 data_path = "/scratch/c.scmag3/biencoder_concept_property/data/train_data/joint_encoder_property_conjuction_data"
 
-# train_file = os.path.join(
-#     data_path, "5_neg_train_random_and_similar_conjuct_properties.tsv"
-# )
-# valid_file = os.path.join(
-#     data_path, "5_neg_valid_random_and_similar_conjuct_properties.tsv"
-# )
+train_file = os.path.join(
+    data_path, "5_neg_train_random_and_similar_conjuct_properties.tsv"
+)
+valid_file = os.path.join(
+    data_path, "5_neg_valid_random_and_similar_conjuct_properties.tsv"
+)
 
-train_file = os.path.join(data_path, "dummy_prop_conj.tsv")
-valid_file = os.path.join(data_path, "dummy_prop_conj.tsv")
+# train_file = os.path.join(data_path, "dummy_prop_conj.tsv")
+# valid_file = os.path.join(data_path, "dummy_prop_conj.tsv")
 
 print(f"Train File : {train_file}")
 print(f"Valid File : {valid_file}")
@@ -237,7 +237,7 @@ def train_on_single_epoch(
 
     avg_train_loss = total_epoch_loss / len(train_dataloader)
 
-    print("avg_train_loss :", avg_train_loss, flush=True)
+    print("Average Train Loss :", avg_train_loss, flush=True)
 
     return avg_train_loss, model
 
