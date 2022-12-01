@@ -304,7 +304,7 @@ def train(model, train_dataloader, val_dataloader, scheduler, optimizer):
         print("\n Epoch {:} of {:}".format(epoch, num_epoch), flush=True)
 
         train_loss, model = train_on_single_epoch(
-            model, train_dataloader, optimizer, scheduler
+            model, train_dataloader, val_dataloader, scheduler, optimizer
         )
         valid_loss, valid_accuracy, valid_preds, valid_gold_labels = evaluate(
             model, val_dataloader
