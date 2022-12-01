@@ -63,7 +63,7 @@ max_len = 128
 
 num_labels = 2
 batch_size = 32
-num_epoch = 100
+num_epoch = 5
 lr = 2e-6
 
 
@@ -106,7 +106,7 @@ class DatasetPropConjuction(Dataset):
             con_prop_conj = concept + " " + self.sep_token + " " + conjuct_props
             prop_to_predict = predict_prop + " "
 
-        print(f"{con_prop_conj} - {prop_to_predict} - {labels.item()}", flush=True)
+        # print(f"{con_prop_conj} - {prop_to_predict} - {labels.item()}", flush=True)
 
         encoded_dict = self.tokenizer.encode_plus(
             text=con_prop_conj,
@@ -272,16 +272,15 @@ def evaluate(model, val_dataloader):
         val_loss.append(loss.item())
 
         batch_preds = torch.argmax(logits, dim=1).flatten()
-
         batch_accuracy = (labels == batch_preds).cpu().numpy().mean() * 100
 
         val_accuracy.append(batch_accuracy)
-        valid_preds.extend(batch_preds.cpu().detach().numpy())
+        val_preds.extend(batch_preds.cpu().detach().numpy())
         val_labels.extend(labels.cpu().detach().numpy())
 
     val_loss = np.mean(val_loss)
     val_accuracy = np.mean(val_accuracy)
-    valid_preds = np.array(valid_preds).flatten()
+    val_preds = np.array(val_preds).flatten()
     val_labels = np.array(val_labels).flatten()
 
     return val_loss, val_accuracy, val_preds, val_labels
