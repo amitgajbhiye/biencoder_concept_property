@@ -62,7 +62,7 @@ best_model_path = os.path.join(model_save_path, model_name)
 max_len = 128
 
 num_labels = 2
-batch_size = 32
+batch_size = 64
 num_epoch = 5
 lr = 2e-6
 
