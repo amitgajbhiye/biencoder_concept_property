@@ -5,7 +5,7 @@ import numpy as np
 from torch.utils.data import DataLoader
 from torch.utils.data import SequentialSampler
 from torch.utils.data._utils.collate import default_convert
-from joint_encoder import MusubuModel, ConPropDataset
+from run_scripts.old_joint_encoder import MusubuModel, ConPropDataset
 
 
 device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")

@@ -35,7 +35,8 @@ print(f"The Model is Trained on : {device}")
 #     ),
 # }
 
-print(f"Property Conjuction Joint Encoder Model- Step3")
+print(f"Concept Property Joint Encoder Model - Step2")
+
 
 hawk_bb_tokenizer = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_bert_base_uncased/tokenizer"
 hawk_bb_model = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_bert_base_uncased/model"
@@ -59,7 +60,7 @@ model_save_path = "/scratch/c.scmag3/biencoder_concept_property/trained_models/j
 model_name = "joint_encoder_prop_conj_random_similar_prop_gkbcnet_cnethasprop_step3_pretrained_model.pt"
 best_model_path = os.path.join(model_save_path, model_name)
 
-max_len = 128
+max_len = 64
 
 num_labels = 2
 batch_size = 64
@@ -67,14 +68,14 @@ num_epoch = 100
 lr = 2e-6
 
 
-class DatasetPropConjuction(Dataset):
+class DatasetConceptProperty(Dataset):
     def __init__(self, concept_property_file, max_len=max_len):
 
         self.data_df = pd.read_csv(
             concept_property_file,
             sep="\t",
             header=None,
-            names=["concept", "conjuct_prop", "predict_prop", "labels"],
+            names=["concept", "property", "labels"],
         )
 
         self.tokenizer = BertTokenizer.from_pretrained(hawk_bb_tokenizer)
@@ -83,7 +84,7 @@ class DatasetPropConjuction(Dataset):
         self.sep_token = self.tokenizer.sep_token
         self.cls_token = self.tokenizer.cls_token
 
-        self.labels = torch.tensor(self.data_df["labels"].values)
+        # self.labels = torch.tensor(self.data_df["labels"].values)
 
     def __len__(self):
 
@@ -92,25 +93,14 @@ class DatasetPropConjuction(Dataset):
     def __getitem__(self, idx):
 
         concept = self.data_df["concept"][idx].replace(".", "").strip()
-        conjuct_props = self.data_df["conjuct_prop"][idx].strip()
-        predict_prop = self.data_df["predict_prop"][idx].replace(".", "").strip()
+        property = self.data_df["property"][idx].replace(".", "").strip()
         labels = self.data_df["labels"][idx]
-
-        if conjuct_props == "Nothing to Conjuct":
-
-            con_prop_conj = concept + " " + self.sep_token
-            prop_to_predict = predict_prop + " "
-
-        else:
-
-            con_prop_conj = concept + " " + self.sep_token + " " + conjuct_props
-            prop_to_predict = predict_prop + " "
 
         # print(f"{con_prop_conj} - {prop_to_predict} - {labels.item()}", flush=True)
 
         encoded_dict = self.tokenizer.encode_plus(
-            text=con_prop_conj,
-            text_pair=prop_to_predict,
+            text=concept,
+            text_pair=property,
             max_length=self.max_len,
             add_special_tokens=True,
             padding="max_length",
@@ -137,9 +127,9 @@ class DatasetPropConjuction(Dataset):
         }
 
 
-class ModelPropConjuctionJoint(nn.Module):
+class ModelConceptProperty(nn.Module):
     def __init__(self):
-        super(ModelPropConjuctionJoint, self).__init__()
+        super(ModelConceptProperty, self).__init__()
 
         # self.bert = BertForSequenceClassification.from_pretrained('bert-base-uncased', num_labels=num_labels)
         self.bert = BertForSequenceClassification.from_pretrained(
@@ -164,7 +154,7 @@ class ModelPropConjuctionJoint(nn.Module):
 
 def prepare_pretrain_data_and_models():
 
-    train_data = DatasetPropConjuction(train_file)
+    train_data = DatasetConceptProperty(train_file)
     train_sampler = RandomSampler(train_data)
     train_dataloader = DataLoader(
         train_data,
@@ -173,13 +163,13 @@ def prepare_pretrain_data_and_models():
         collate_fn=default_convert,
     )
 
-    val_data = DatasetPropConjuction(valid_file)
+    val_data = DatasetConceptProperty(valid_file)
     val_sampler = RandomSampler(val_data)
     val_dataloader = DataLoader(
         val_data, batch_size=batch_size, sampler=val_sampler, collate_fn=default_convert
     )
 
-    model = ModelPropConjuctionJoint()
+    model = ModelConceptProperty()
     model.to(device)
 
     optimizer = AdamW(model.parameters(), lr=lr)
@@ -384,9 +374,7 @@ def train(model, train_dataloader, val_dataloader, scheduler, optimizer):
 
 if __name__ == "__main__":
 
-    parser = ArgumentParser(
-        description="Joint Encoder Property Conjuction Model - Step 3"
-    )
+    parser = ArgumentParser(description="Joint Encoder Concept Property Model - Step 2")
 
     parser.add_argument("--pretrain", action="store_true")
     parser.add_argument("--finetune", action="store_true")
