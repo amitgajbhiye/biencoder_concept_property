@@ -230,7 +230,7 @@ def train_on_single_epoch(
         if step % 100 == 0 and not step == 0:
             print(
                 "   Batch {} of Batch {} ---> Batch Loss {}".format(
-                    step, len(train_dataloader), round(loss, 4)
+                    step, len(train_dataloader), round(loss.item(), 4)
                 ),
                 flush=True,
             )

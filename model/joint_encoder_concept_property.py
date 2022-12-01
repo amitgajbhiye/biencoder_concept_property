@@ -43,12 +43,8 @@ hawk_bb_model = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_
 
 data_path = "/scratch/c.scmag3/biencoder_concept_property/data/train_data/joint_encoder_concept_property_data"
 
-train_file = os.path.join(
-    data_path, "5_neg_train_random_and_similar_conjuct_properties.tsv"
-)
-valid_file = os.path.join(
-    data_path, "5_neg_valid_random_and_similar_conjuct_properties.tsv"
-)
+train_file = os.path.join(data_path, "5_neg_train_gkbcnet_plus_cnethasproperty.tsv")
+valid_file = os.path.join(data_path, "5_neg_val_gkbcnet_plus_cnethasproperty.tsv.tsv")
 
 # train_file = os.path.join(data_path, "dummy_concept_property_data.tsv")
 # valid_file = os.path.join(data_path, "dummy_concept_property_data.tsv")
@@ -223,7 +219,7 @@ def train_on_single_epoch(
         if step % 100 == 0 and not step == 0:
             print(
                 "   Batch {} of Batch {} ---> Batch Loss {}".format(
-                    step, len(train_dataloader), round(loss, 4)
+                    step, len(train_dataloader), round(loss.item(), 4)
                 ),
                 flush=True,
             )
