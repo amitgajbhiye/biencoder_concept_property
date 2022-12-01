@@ -44,7 +44,7 @@ hawk_bb_model = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_
 data_path = "/scratch/c.scmag3/biencoder_concept_property/data/train_data/joint_encoder_concept_property_data"
 
 train_file = os.path.join(data_path, "5_neg_train_gkbcnet_plus_cnethasproperty.tsv")
-valid_file = os.path.join(data_path, "5_neg_val_gkbcnet_plus_cnethasproperty.tsv.tsv")
+valid_file = os.path.join(data_path, "5_neg_val_gkbcnet_plus_cnethasproperty.tsv")
 
 # train_file = os.path.join(data_path, "dummy_concept_property_data.tsv")
 # valid_file = os.path.join(data_path, "dummy_concept_property_data.tsv")
