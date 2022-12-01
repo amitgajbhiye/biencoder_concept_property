@@ -68,7 +68,7 @@ max_len = 64
 
 num_labels = 2
 batch_size = 64
-num_epoch = 100
+num_epoch = 3
 lr = 2e-6
 
 
