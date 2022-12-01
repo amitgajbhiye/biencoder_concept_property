@@ -43,16 +43,15 @@ hawk_bb_model = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_
 
 data_path = "/scratch/c.scmag3/biencoder_concept_property/data/train_data/joint_encoder_concept_property_data"
 
-# train_file = os.path.join(
-#     data_path, "5_neg_train_random_and_similar_conjuct_properties.tsv"
-# )
-# valid_file = os.path.join(
-#     data_path, "5_neg_valid_random_and_similar_conjuct_properties.tsv"
-# )
+train_file = os.path.join(
+    data_path, "5_neg_train_random_and_similar_conjuct_properties.tsv"
+)
+valid_file = os.path.join(
+    data_path, "5_neg_valid_random_and_similar_conjuct_properties.tsv"
+)
 
-
-train_file = os.path.join(data_path, "dummy_concept_property_data.tsv")
-valid_file = os.path.join(data_path, "dummy_concept_property_data.tsv")
+# train_file = os.path.join(data_path, "dummy_concept_property_data.tsv")
+# valid_file = os.path.join(data_path, "dummy_concept_property_data.tsv")
 
 print(f"Train File : {train_file}")
 print(f"Valid File : {valid_file}")
@@ -68,7 +67,7 @@ max_len = 64
 
 num_labels = 2
 batch_size = 64
-num_epoch = 3
+num_epoch = 100
 lr = 2e-6
 
 
@@ -224,14 +223,14 @@ def train_on_single_epoch(
         if step % 100 == 0 and not step == 0:
             print(
                 "   Batch {} of Batch {} ---> Batch Loss {}".format(
-                    step, len(train_dataloader), loss
+                    step, len(train_dataloader), round(loss, 4)
                 ),
                 flush=True,
             )
 
     avg_train_loss = total_epoch_loss / len(train_dataloader)
 
-    print("Average Train Loss :", avg_train_loss, flush=True)
+    print("Average Train Loss :", round(avg_train_loss, 4), flush=True)
 
     return avg_train_loss, model
 
