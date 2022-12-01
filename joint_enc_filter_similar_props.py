@@ -68,6 +68,8 @@ def predict(test_dataloader):
     return loss, accuracy, test_preds, test_logits
 
 
++++++++++++++++++++ Think on logits again can I use them as it is
+
 loss, accuracy, predictions, logits = predict(test_dataloader)
 
 max_logits = [np.max(logit) for logit in logits]

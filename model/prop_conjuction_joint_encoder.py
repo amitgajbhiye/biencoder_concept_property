@@ -4,6 +4,7 @@ import torch.nn.functional as F
 import pandas as pd
 import numpy as np
 import os
+from argparse import ArgumentParser
 
 from torch.utils.data import Dataset
 from torch.utils.data._utils.collate import default_convert
@@ -34,32 +35,33 @@ print(f"The Model is Trained on : {device}")
 #     ),
 # }
 
+print(f"")
 
 hawk_bb_tokenizer = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_bert_base_uncased/tokenizer"
 hawk_bb_model = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_bert_base_uncased/model"
 
 data_path = "/scratch/c.scmag3/biencoder_concept_property/data/train_data/joint_encoder_property_conjuction_data"
 
-train_file = os.path.join(
-    data_path, "5_neg_train_random_and_similar_conjuct_properties.tsv"
-)
-valid_file = os.path.join(
-    data_path, "5_neg_valid_random_and_similar_conjuct_properties.tsv"
-)
+# train_file = os.path.join(
+#     data_path, "5_neg_train_random_and_similar_conjuct_properties.tsv"
+# )
+# valid_file = os.path.join(
+#     data_path, "5_neg_valid_random_and_similar_conjuct_properties.tsv"
+# )
+
+train_file = os.path.join(data_path, "dummy_prop_conj.tsv")
+valid_file = os.path.join(data_path, "dummy_prop_conj.tsv")
+
+print(f"Train File : {train_file}")
+print(f"Valid File : {valid_file}")
 
 model_save_path = "/scratch/c.scmag3/biencoder_concept_property/trained_models/joint_encoder_gkbcnet_cnethasprop"
-model_name = (
-    "joint_encoder_random_similar_prop_conj_gkbcnet_cnethasprop_pretrained_model.pt"
-)
+model_name = "joint_encoder_prop_conj_random_similar_prop_gkbcnet_cnethasprop_step3_pretrained_model.pt"
 best_model_path = os.path.join(model_save_path, model_name)
 
 max_len = 128
 
 num_labels = 2
-
-patience_early_stopping = 10
-patience_counter = 0
-start_epoch = 1
 batch_size = 32
 num_epoch = 100
 lr = 2e-6
@@ -160,29 +162,38 @@ class ModelPropConjuctionJoint(nn.Module):
         return loss, logits
 
 
-train_data = DatasetPropConjuction(train_file)
-train_sampler = RandomSampler(train_data)
-train_dataloader = DataLoader(
-    train_data, batch_size=batch_size, sampler=train_sampler, collate_fn=default_convert
-)
+def prepare_pretrain_data_and_models():
 
-val_data = DatasetPropConjuction(valid_file)
-val_sampler = RandomSampler(val_data)
-val_dataloader = DataLoader(
-    val_data, batch_size=batch_size, sampler=val_sampler, collate_fn=default_convert
-)
+    train_data = DatasetPropConjuction(train_file)
+    train_sampler = RandomSampler(train_data)
+    train_dataloader = DataLoader(
+        train_data,
+        batch_size=batch_size,
+        sampler=train_sampler,
+        collate_fn=default_convert,
+    )
 
-model = ModelPropConjuctionJoint()
-model.to(device)
-optimizer = AdamW(model.parameters(), lr=lr)
+    val_data = DatasetPropConjuction(valid_file)
+    val_sampler = RandomSampler(val_data)
+    val_dataloader = DataLoader(
+        val_data, batch_size=batch_size, sampler=val_sampler, collate_fn=default_convert
+    )
 
-total_steps = len(train_dataloader) * num_epoch
-scheduler = get_linear_schedule_with_warmup(
-    optimizer, num_warmup_steps=0, num_training_steps=total_steps
-)
+    model = ModelPropConjuctionJoint()
+    model.to(device)
+
+    optimizer = AdamW(model.parameters(), lr=lr)
+    total_steps = len(train_dataloader) * num_epoch
+    scheduler = get_linear_schedule_with_warmup(
+        optimizer, num_warmup_steps=0, num_training_steps=total_steps
+    )
+
+    return model, train_dataloader, val_dataloader, scheduler, optimizer
 
 
-def train():
+def train_on_single_epoch(
+    model, train_dataloader, val_dataloader, scheduler, optimizer
+):
 
     total_epoch_loss = 0
 
@@ -228,16 +239,16 @@ def train():
 
     print("avg_train_loss :", avg_train_loss, flush=True)
 
-    return avg_train_loss
+    return avg_train_loss, model
 
 
-def evaluate():
+def evaluate(model, val_dataloader):
 
     print("\n Running Validation...")
 
     model.eval()
 
-    val_loss, val_accuracy, valid_preds = [], [], []
+    val_loss, val_accuracy, val_preds, val_labels = [], [], [], []
 
     for step, batch in enumerate(val_dataloader):
 
@@ -266,83 +277,137 @@ def evaluate():
 
         val_accuracy.append(batch_accuracy)
         valid_preds.extend(batch_preds.cpu().detach().numpy())
+        val_labels.extend(labels.cpu().detach().numpy())
 
     val_loss = np.mean(val_loss)
     val_accuracy = np.mean(val_accuracy)
     valid_preds = np.array(valid_preds).flatten()
+    val_labels = np.array(val_labels).flatten()
 
-    return val_loss, val_accuracy, valid_preds
+    return val_loss, val_accuracy, val_preds, val_labels
 
 
-best_valid_loss = 0.0
-best_valid_f1 = 0.0
+def train(model, train_dataloader, val_dataloader, scheduler, optimizer):
 
-train_losses = []
-valid_losses = []
+    best_valid_loss = 0.0
+    best_valid_f1 = 0.0
 
-for epoch in range(start_epoch, num_epoch + 1):
+    patience_early_stopping = 10
+    patience_counter = 0
+    start_epoch = 1
 
-    print("\n Epoch {:} of {:}".format(epoch, num_epoch), flush=True)
+    train_losses = []
+    valid_losses = []
 
-    train_loss = train()
-    valid_loss, valid_accuracy, valid_preds = evaluate()
+    for epoch in range(start_epoch, num_epoch + 1):
 
-    val_gold_labels = val_data.labels.cpu().detach().numpy().flatten()
+        print("\n Epoch {:} of {:}".format(epoch, num_epoch), flush=True)
 
-    valid_binary_f1 = round(f1_score(val_gold_labels, valid_preds, average="binary"), 4)
-    valid_micro_f1 = round(f1_score(val_gold_labels, valid_preds, average="micro"), 4)
-    valid_macro_f1 = round(f1_score(val_gold_labels, valid_preds, average="macro"), 4)
-    valid_weighted_f1 = round(
-        f1_score(val_gold_labels, valid_preds, average="weighted"), 4
+        train_loss, model = train_on_single_epoch(
+            model, train_dataloader, optimizer, scheduler
+        )
+        valid_loss, valid_accuracy, valid_preds, valid_gold_labels = evaluate(
+            model, val_dataloader
+        )
+
+        # val_gold_labels = val_data.labels.cpu().detach().numpy().flatten()
+
+        valid_binary_f1 = round(
+            f1_score(valid_gold_labels, valid_preds, average="binary"), 4
+        )
+        valid_micro_f1 = round(
+            f1_score(valid_gold_labels, valid_preds, average="micro"), 4
+        )
+        valid_macro_f1 = round(
+            f1_score(valid_gold_labels, valid_preds, average="macro"), 4
+        )
+        valid_weighted_f1 = round(
+            f1_score(valid_gold_labels, valid_preds, average="weighted"), 4
+        )
+
+        if valid_binary_f1 < best_valid_f1:
+            patience_counter += 1
+        else:
+            patience_counter = 0
+            best_valid_f1 = valid_binary_f1
+
+            print("\n", "+" * 20)
+            print("Saving Best Model at Epoch :", epoch, model_name)
+            print("Epoch :", epoch)
+            print("   Best Validation F1:", best_valid_f1)
+
+            torch.save(model.state_dict(), best_model_path)
+
+            print(f"The best model is saved at : {best_model_path}")
+
+        train_losses.append(train_loss)
+        valid_losses.append(valid_loss)
+
+        print("valid_preds shape:", valid_preds.shape)
+        print("val_gold_labels shape:", valid_gold_labels.shape)
+
+        print("\n", flush=True)
+        print("+" * 50, flush=True)
+        print(f"\nTraining Loss: {train_loss}", flush=True)
+        print(f"Validation Loss: {valid_loss}", flush=True)
+
+        print(f"Validation Accuracy: {valid_accuracy}", flush=True)
+        print(
+            f"sk_learn Validation Accuracy: {accuracy_score(valid_gold_labels, valid_preds)}",
+            flush=True,
+        )
+
+        print(f"Best Validation F1 Score Yet : {best_valid_f1}", flush=True)
+        print(f"Validation F1 Score Binary {valid_binary_f1}", flush=True)
+        print(f"Validation F1 Score Micro {valid_micro_f1}", flush=True)
+        print(f"Validation F1 Score Macro {valid_macro_f1}", flush=True)
+        print(f"Validation F1 Score Weighted {valid_weighted_f1}", flush=True)
+
+        print(f"\nValidation Classification Report :", flush=True)
+        print(
+            classification_report(valid_gold_labels, valid_preds, labels=[0, 1]),
+            flush=True,
+        )
+
+        print(f"\nValidation Confusion Matrix :", flush=True)
+        print(
+            confusion_matrix(valid_gold_labels, valid_preds, labels=[0, 1]), flush=True
+        )
+
+        if patience_counter > patience_early_stopping:
+            print("Early Stopping ---> Patience Reached!!!")
+            break
+
+    print(f"\nTrain Losses :", train_losses, flush=True)
+    print(f"Validation Losses: ", valid_losses, flush=True)
+
+
+if __name__ == "__main__":
+
+    parser = ArgumentParser(
+        description="Joint Encoder Property Conjuction Model - Step 3"
     )
 
-    if valid_binary_f1 < best_valid_f1:
-        patience_counter += 1
-    else:
-        best_valid_f1 = valid_binary_f1
+    parser.add_argument("--pretrain", action="store_true")
+    parser.add_argument("--finetune", action="store_true")
 
-        print("\n", "+" * 20)
-        print("Saving Best Model at Epoch :", epoch, model_name)
-        print("Epoch :", epoch)
-        print("   Best Validation F1:", best_valid_f1)
+    args = parser.parse_args()
 
-        torch.save(model.state_dict(), best_model_path)
+    print(args.pretrain)
+    print(args.finetune)
 
-        print(f"The best model is saved at : {best_model_path}")
+    if args.pretrain:
 
-    train_losses.append(train_loss)
-    valid_losses.append(valid_loss)
+        (
+            model,
+            train_dataloader,
+            val_dataloader,
+            scheduler,
+            optimizer,
+        ) = prepare_pretrain_data_and_models()
 
-    print("valid_preds shape:", valid_preds.shape)
-    print("val_gold_labels shape:", val_gold_labels.shape)
+        train(model, train_dataloader, val_dataloader, scheduler, optimizer)
 
-    print("\n", flush=True)
-    print("+" * 50, flush=True)
-    print(f"\nTraining Loss: {train_loss}", flush=True)
-    print(f"Validation Loss: {valid_loss}", flush=True)
+    elif args.finetune:
+        pass
 
-    print(f"Validation Accuracy: {valid_accuracy}", flush=True)
-    print(
-        f"sk_learn Validation Accuracy: {accuracy_score(val_gold_labels, valid_preds)}",
-        flush=True,
-    )
-
-    print(f"Best Validation F1 Score Yet : {best_valid_f1}", flush=True)
-    print(f"Validation F1 Score Binary {valid_binary_f1}", flush=True)
-    print(f"Validation F1 Score Micro {valid_micro_f1}", flush=True)
-    print(f"Validation F1 Score Macro {valid_macro_f1}", flush=True)
-    print(f"Validation F1 Score Weighted {valid_weighted_f1}", flush=True)
-
-    print(f"\nValidation Classification Report :", flush=True)
-    print(
-        classification_report(val_gold_labels, valid_preds, labels=[0, 1]), flush=True
-    )
-
-    print(f"\nValidation Confusion Matrix :", flush=True)
-    print(confusion_matrix(val_gold_labels, valid_preds, labels=[0, 1]), flush=True)
-
-    if patience_counter > patience_early_stopping:
-        print("Early Stopping ---> Patience Reached!!!")
-
-print(f"\nTrain Losses :", train_losses, flush=True)
-print(f"Validation Losses: ", valid_losses, flush=True)
