@@ -342,22 +342,23 @@ def train(model, train_dataloader, val_dataloader, scheduler, optimizer):
         train_losses.append(train_loss)
         valid_losses.append(valid_loss)
 
+        print("\n", flush=True)
+        print("+" * 50, flush=True)
+
         print("valid_preds shape:", valid_preds.shape)
         print("val_gold_labels shape:", valid_gold_labels.shape)
 
-        print("\n", flush=True)
-        print("+" * 50, flush=True)
-        print(f"\nTraining Loss: {train_loss}", flush=True)
-        print(f"Validation Loss: {valid_loss}", flush=True)
+        print(f"\nTraining Loss: {round(train_loss, 4)}", flush=True)
+        print(f"Validation Loss: {round(valid_loss, 4)}", flush=True)
 
-        print(f"Validation Accuracy: {valid_accuracy}", flush=True)
+        print(f"Current Validation F1 Score Binary {valid_binary_f1}", flush=True)
+        print(f"Best Validation F1 Score Yet : {best_valid_f1}", flush=True)
+
+        # print(f"Validation Accuracy: {valid_accuracy}", flush=True)
         print(
-            f"sk_learn Validation Accuracy: {accuracy_score(valid_gold_labels, valid_preds)}",
+            f"Validation Accuracy: {accuracy_score(valid_gold_labels, valid_preds)}",
             flush=True,
         )
-
-        print(f"Best Validation F1 Score Yet : {best_valid_f1}", flush=True)
-        print(f"Validation F1 Score Binary {valid_binary_f1}", flush=True)
         print(f"Validation F1 Score Micro {valid_micro_f1}", flush=True)
         print(f"Validation F1 Score Macro {valid_macro_f1}", flush=True)
         print(f"Validation F1 Score Weighted {valid_weighted_f1}", flush=True)
