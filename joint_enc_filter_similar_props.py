@@ -14,7 +14,7 @@ from model.joint_encoder_concept_property import (
 
 device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
 
-test_file = "data/generate_embeddding_data/mcrae_related_data/data/generate_embeddding_data/mcrae_related_data/with_false_label_bert_base_gkb_cnet_trained_model_mcrae_concept_similar_properties.tsv"
+test_file = "data/generate_embeddding_data/mcrae_related_data/with_false_label_bert_base_gkb_cnet_trained_model_mcrae_concept_similar_properties.tsv"
 # test_file = "data/generate_embeddding_data/mcrae_related_data/dummy.txt"
 batch_size = 256
 
