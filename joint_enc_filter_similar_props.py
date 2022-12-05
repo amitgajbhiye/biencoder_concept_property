@@ -110,23 +110,29 @@ new_test_dataframe["logit"] = positive_class_logits
 
 unique_concepts = new_test_dataframe["concept"].unique()
 
+top_k_prop = 20
+
 all_data_list = []
 for concept in unique_concepts:
 
     con_df = new_test_dataframe[new_test_dataframe["concept"] == concept].sort_values(
         by="logit", ascending=False
     )
-
-    con_df = con_df[0:20]
+    con_df = con_df[0:top_k_prop]
     all_data_list.extend(con_df.values.tolist())
+
+top_k_df_with_logit = pd.DataFrame.from_records(
+    all_data_list, columns=["concept", "property", "logit"]
+)
+
+top_k_df_with_logit.drop(labels="logit", inplace=True)
 
 top_k_df_with_logit = pd.DataFrame.from_records(all_data_list)
 
-logit_filename = "data/generate_embeddding_data/mcrae_related_data/with_logits_bert_base_gkb_cnet_trained_model_mcrae_concept_similar_properties.tsv"
+logit_filename = f"data/generate_embeddding_data/mcrae_related_data/with_logits_bert_base_gkb_cnet_trained_model_mcrae_concept_top_{top_k_prop}similar_properties.tsv"
 top_k_df_with_logit.to_csv(logit_filename, sep="\t", index=None, header=None)
 
 print(top_k_df_with_logit.head(n=20), flush=True)
-
 
 # predictions = np.array(predictions).flatten()
 
