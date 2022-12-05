@@ -472,7 +472,7 @@ def create_property_conjuction_data_for_fine_tuning(
                 concept_similar_prop_file["concept"] == concept
             ]
 
-            concept_data_props = concept_data["similar_prop"].unique()
+            concept_data_props = concept_data["similar_prop"].unique().tolist()
 
             conjuct_properties = random.sample(concept_data_props, num_prop_conjuct)
 
