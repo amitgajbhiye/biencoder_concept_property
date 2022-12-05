@@ -14,8 +14,8 @@ from model.joint_encoder_concept_property import (
 
 device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
 
-# test_file = "data/generate_embeddding_data/mcrae_related_data/data/generate_embeddding_data/mcrae_related_data/with_false_label_bert_base_gkb_cnet_trained_model_mcrae_concept_similar_properties.tsv"
-test_file = "data/generate_embeddding_data/mcrae_related_data/dummy.txt"
+test_file = "data/generate_embeddding_data/mcrae_related_data/data/generate_embeddding_data/mcrae_related_data/with_false_label_bert_base_gkb_cnet_trained_model_mcrae_concept_similar_properties.tsv"
+# test_file = "data/generate_embeddding_data/mcrae_related_data/dummy.txt"
 batch_size = 256
 
 model_save_path = "trained_models/joint_encoder_gkbcnet_cnethasprop"
@@ -125,9 +125,13 @@ top_k_df_with_logit = pd.DataFrame.from_records(
     all_data_list, columns=["concept", "property", "logit"]
 )
 
-top_k_df_with_logit.drop(labels="logit", axis=1, inplace=True)
-
 logit_filename = f"data/generate_embeddding_data/mcrae_related_data/with_logits_bert_base_gkb_cnet_trained_model_mcrae_concept_top_{top_k_prop}similar_properties.tsv"
+top_k_df_with_logit.to_csv(logit_filename, sep="\t", index=None, header=None)
+print(top_k_df_with_logit.head(n=20), flush=True)
+
+
+top_k_df_with_logit.drop(labels="logit", axis=1, inplace=True)
+logit_filename = f"data/generate_embeddding_data/mcrae_related_data/bert_base_gkb_cnet_trained_model_mcrae_concept_top_{top_k_prop}similar_properties.tsv"
 top_k_df_with_logit.to_csv(logit_filename, sep="\t", index=None, header=None)
 
 print(top_k_df_with_logit.head(n=20), flush=True)
