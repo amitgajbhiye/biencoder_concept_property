@@ -1,6 +1,7 @@
 import os
 import torch
 import numpy as np
+import pandas as pd
 
 from torch.utils.data import DataLoader
 from torch.utils.data import SequentialSampler
@@ -13,8 +14,8 @@ from model.joint_encoder_concept_property import (
 
 device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
 
-# test_file = "data/generate_embeddding_data/mcrae_related_data/with_false_label_bert_base_gkb_cnet_trained_model_mcrae_concept_similar_properties.tsv"
-test_file = "data/generate_embeddding_data/mcrae_related_data/dummy.txt"
+# test_file = "data/generate_embeddding_data/mcrae_related_data/data/generate_embeddding_data/mcrae_related_data/with_false_label_bert_base_gkb_cnet_trained_model_mcrae_concept_similar_properties.tsv"
+test_file = "data/generate_embeddding_data/mcrae_related_data/data/generate_embeddding_data/mcrae_related_data/dummy.txt"
 batch_size = 256
 
 model_save_path = "trained_models/joint_encoder_gkbcnet_cnethasprop"
@@ -81,23 +82,22 @@ def predict(test_dataloader):
     return loss, accuracy, test_preds, test_logits
 
 
-loss, accuracy, predictions, logits = predict(test_dataloader)
+loss, accuracy, predictions, logit = predict(test_dataloader)
 
-print("logits")
-print(logits)
+# print("logits")
+# print(logits)
 
 
 ## Here taking the logit of the positive class - What the model thinks about the propety.
 ## That is how confident the model is about the property that it applies to concepts
 
-positive_class_logits = [logit[1] for logit in logits]
+positive_class_logits = [round(l[1], 4) for l in logit]
 
-# max_logits = [np.max(logit) for logit in logits]
 
-print(f"Number of Logits : {len(logits)}")
+print(f"Number of Logits : {len(logit)}")
 print(f"test_data.data_df.shape[0] : {test_data.data_df.shape[0]}")
 
-print(f"Logits: {logits}")
+print(f"Logits: {logit}")
 print(f"positive_class_logits: {positive_class_logits}")
 
 assert test_data.data_df.shape[0] == len(
@@ -105,16 +105,27 @@ assert test_data.data_df.shape[0] == len(
 ), "length of test dataframe is not equal to logits"
 
 new_test_dataframe = test_data.data_df.copy(deep=True)
-
 new_test_dataframe.drop("labels", axis=1, inplace=True)
+new_test_dataframe["logit"] = positive_class_logits
 
-new_test_dataframe["logits"] = positive_class_logits
+unique_concepts = new_test_dataframe["concept"].unique()
 
+all_data_list = []
+for concept in unique_concepts:
+
+    con_df = new_test_dataframe[new_test_dataframe["concept"] == concept].sort_values(
+        by="logit", ascending=False
+    )
+
+    con_df = con_df[0:20]
+    all_data_list.append(con_df.values())
+
+top_k_df_with_logit = pd.DataFrame.from_records(all_data_list)
 
 logit_filename = "data/generate_embeddding_data/mcrae_related_data/with_logits_bert_base_gkb_cnet_trained_model_mcrae_concept_similar_properties.tsv"
-new_test_dataframe.to_csv(logit_filename, sep="\t", index=None, header=None)
+top_k_df_with_logit.to_csv(logit_filename, sep="\t", index=None, header=None)
 
-print(new_test_dataframe.head(n=20), flush=True)
+print(top_k_df_with_logit.head(n=20), flush=True)
 
 
 # predictions = np.array(predictions).flatten()
