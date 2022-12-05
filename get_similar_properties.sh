@@ -2,8 +2,8 @@
 
 #SBATCH --job-name=ConPropMcRaeEmbedsings
 
-#SBATCH --output=logs/get_con_pro_embeddings/out_bb_gkb_cnet_pretrained_model_generated_mcrae_concept_similar_vocab_prop_embeddings.txt
-#SBATCH --error=logs/get_con_pro_embeddings/err_bb_gkb_cnet_pretrained_model_generated_mcrae_concept_similar_vocab_prop_embeddings.txt
+#SBATCH --output=logs/get_con_pro_embeddings/out_mcrae_fine_tune_property_split_property_comjuction_folds_data.txt
+#SBATCH --error=logs/get_con_pro_embeddings/err_mcrae_fine_tune_property_split_property_comjuction_folds_data.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
@@ -24,6 +24,6 @@ module load anaconda/2020.02
 
 conda activate venv
 
-python3 get_similar_properties.py --config_file configs/generate_embeddings/get_con_similar_vocab_props_embeds_from_gkb_cnet_cnet_has_prop_pretrained_bb_model_config.json
+python3 get_similar_properties.py --config_file configs/generate_embeddings/get_predict_prop_similar_vocab_properties_from_gkb_cnet_cnet_has_prop_pretrained_bb_model_config.json
 
 echo 'finished!'

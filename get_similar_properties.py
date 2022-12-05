@@ -545,3 +545,61 @@ if __name__ == "__main__":
         if input_data_type == "concept_and_property":
             get_concept_similar_properties(config, concept_pkl_file, property_pkl_file)
 
+    if get_predict_prop_similar_vocab_properties:
+
+        predict_property_embed_pkl_file = inference_params.get(
+            "predict_property_embed_pkl_file"
+        )
+        vocab_property_embed_pkl_file = inference_params.get(
+            "vocab_property_embed_pkl_file"
+        )
+
+        concept_similar_prop_file = inference_params.get("concept_similar_prop_file")
+
+        predict_prop_similar_vocab_props = get_predict_prop_similar_vocab_properties(
+            config=config,
+            predict_property_embed_pkl_file=predict_property_embed_pkl_file,
+            vocab_property_embed_pkl_file=vocab_property_embed_pkl_file,
+        )
+
+        save_path = inference_params.get("save_dir")
+
+        num_folds = 5
+        for fold_num in range(num_folds):
+
+            base_prop_split_file_paths = (
+                "data/evaluation_data/mcrae_prop_split_train_test_files"
+            )
+            train_file = os.path.join(
+                base_prop_split_file_paths, f"{fold_num}_train_prop_split_con_prop.pkl"
+            )
+            test_file = os.path.join(
+                base_prop_split_file_paths, f"{fold_num}_test_prop_split_con_prop.pkl"
+            )
+
+            with open(train_file, "rb") as train_pkl, open(test_file, "rb") as test_pkl:
+
+                train_df = pickle.load(train_pkl)
+                test_df = pickle.load(test_pkl)
+
+            train_save_file_name = os.path.join(
+                save_path, f"{fold_num}_prop_conj_train_prop_split_con_prop.pkl"
+            )
+            test_save_file_name = os.path.join(
+                save_path, f"{fold_num}_prop_conj_test_prop_split_con_prop.pkl"
+            )
+
+            create_property_conjuction_data_for_fine_tuning(
+                predict_prop_similar_vocab_props=predict_prop_similar_vocab_props,
+                concept_similar_prop_file=concept_similar_prop_file,
+                data_df=train_df,
+                save_path=train_save_file_name,
+            )
+
+            create_property_conjuction_data_for_fine_tuning(
+                predict_prop_similar_vocab_props=predict_prop_similar_vocab_props,
+                concept_similar_prop_file=concept_similar_prop_file,
+                data_df=test_df,
+                save_path=test_save_file_name,
+            )
+
