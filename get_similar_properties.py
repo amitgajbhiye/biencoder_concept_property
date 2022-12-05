@@ -196,14 +196,14 @@ def generate_embeddings(config):
             for con, con_embed in zip(batch[0], concept_embedding):
                 if con not in con_embedding:
                     con_embedding[con] = to_cpu(con_embed)
-                else:
-                    log.info(f"Concept : {con} is already in dictionary !!")
+                # else:
+                # log.info(f"Concept : {con} is already in dictionary !!")
 
             for prop, prop_embed in zip(batch[1], property_embedding):
                 if prop not in prop_embedding:
                     prop_embedding[prop] = to_cpu(prop_embed)
-                else:
-                    log.info(f"Property : {prop} is already in dictionary !!")
+                # else:
+                # log.info(f"Property : {prop} is already in dictionary !!")
 
     save_dir = inference_params["save_dir"]
 
