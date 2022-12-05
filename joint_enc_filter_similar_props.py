@@ -118,7 +118,7 @@ for concept in unique_concepts:
     )
 
     con_df = con_df[0:20]
-    all_data_list.append(con_df.values())
+    all_data_list.append(con_df.values)
 
 top_k_df_with_logit = pd.DataFrame.from_records(all_data_list)
 
