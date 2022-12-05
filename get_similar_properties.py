@@ -531,8 +531,17 @@ if __name__ == "__main__":
         from ('concept', 'property', 'concept_and_property')"
 
     if get_con_prop_embeds:
-        concept_pkl_file, property_pkl_file = generate_embeddings(config=config)
+
+        if input_data_type == "concept":
+            concept_pkl_file = generate_embeddings(config=config)
+
+        elif input_data_type == "property":
+            property_pkl_file = generate_embeddings(config=config)
+
+        elif input_data_type == "concept_and_property":
+            concept_pkl_file, property_pkl_file = generate_embeddings(config=config)
 
     if get_similar_properties:
-        get_concept_similar_properties(config, concept_pkl_file, property_pkl_file)
+        if input_data_type == "concept_and_property":
+            get_concept_similar_properties(config, concept_pkl_file, property_pkl_file)
 
