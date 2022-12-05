@@ -36,6 +36,6 @@
         "get_predict_prop_similar_vocab_properties": true,
         "predict_property_embed_pkl_file": "trained_models/con_pro_embeddings/mcrae_con_prop_embeds_from_bb_gkb_cnet_plus_cnet_has_prop_pretrained_model_property_embeddings.pkl",
         "vocab_property_embed_pkl_file": "trained_models/con_pro_embeddings/mcrae_concepts_similar_vocab_properties_embeds_from_bb_gkb_cnet_plus_cnet_has_prop_pretrained_model_property_embeddings.pkl",
-        "concept_similar_prop_file": "data/generate_embeddding_data/bert_base_gkb_cnet_trained_model_mcrae_concept_top_20similar_properties.tsv"
+        "concept_similar_prop_file": "data/generate_embeddding_data/mcrae_related_data/bert_base_gkb_cnet_trained_model_mcrae_concept_top_20similar_properties.tsv"
     }
 }
