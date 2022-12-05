@@ -134,6 +134,7 @@ top_k_df_with_logit.drop(labels="logit", axis=1, inplace=True)
 logit_filename = f"data/generate_embeddding_data/mcrae_related_data/bert_base_gkb_cnet_trained_model_mcrae_concept_top_{top_k_prop}similar_properties.tsv"
 top_k_df_with_logit.to_csv(logit_filename, sep="\t", index=None, header=None)
 
+print()
 print(top_k_df_with_logit.head(n=20), flush=True)
 
 # predictions = np.array(predictions).flatten()
