@@ -403,7 +403,7 @@ if __name__ == "__main__":
     ), "Please specify 'input_data_type' \
         from ('concept', 'property', 'concept_and_property')"
 
-    if not get_con_prop_embeds:
+    if get_con_prop_embeds:
         concept_pkl_file, property_pkl_file = generate_embeddings(config=config)
 
     if get_similar_properties:
