@@ -5,7 +5,10 @@ import numpy as np
 from torch.utils.data import DataLoader
 from torch.utils.data import SequentialSampler
 from torch.utils.data._utils.collate import default_convert
-from run_scripts.old_joint_encoder import MusubuModel, ConPropDataset
+from model.joint_encoder_concept_property import (
+    DatasetConceptProperty,
+    ModelConceptProperty,
+)
 
 
 device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
@@ -15,15 +18,18 @@ test_file = "data/generate_embeddding_data/mcrae_related_data/dummy.txt"
 batch_size = 256
 
 model_save_path = "trained_models/joint_encoder_gkbcnet_cnethasprop"
-model_name = "joint_encoder_gkbcnet_cnethasprop.pt"
+model_name = (
+    "joint_encoder_concept_property_gkbcnet_cnethasprop_step2_pretrained_model.pt"
+)
 best_model_path = os.path.join(model_save_path, model_name)
 
-test_data = ConPropDataset(test_file)
+test_data = DatasetConceptProperty(test_file)
 test_sampler = SequentialSampler(test_data)
 test_dataloader = DataLoader(
     test_data, batch_size=batch_size, sampler=test_sampler, collate_fn=default_convert
 )
 
+print(f"Best Model Path : {best_model_path}")
 print(f"Loaded Data Frame")
 print(test_data.data_df)
 
@@ -32,7 +38,7 @@ def predict(test_dataloader):
 
     print(f"Predicting From Best Saved Model : {best_model_path}", flush=True)
 
-    model = MusubuModel()
+    model = ModelConceptProperty()
 
     model.load_state_dict(torch.load(best_model_path))
     model.eval()
@@ -43,14 +49,21 @@ def predict(test_dataloader):
     for step, batch in enumerate(test_dataloader):
 
         input_ids = torch.cat([x["input_ids"] for x in batch], dim=0).to(device)
-        attention_masks = torch.cat([x["attention_masks"] for x in batch], dim=0).to(
+        attention_mask = torch.cat([x["attention_masks"] for x in batch], dim=0).to(
+            device
+        )
+        token_type_ids = torch.cat([x["token_type_ids"] for x in batch], dim=0).to(
             device
         )
         labels = torch.tensor([x["labels"] for x in batch]).to(device)
 
         with torch.no_grad():
-            loss, logits = model(input_ids, attention_masks, labels)
-
+            loss, logits = model(
+                input_ids=input_ids,
+                token_type_ids=token_type_ids,
+                attention_mask=attention_mask,
+                labels=labels,
+            )
         test_loss.append(loss.item())
 
         batch_preds = torch.argmax(logits, dim=1).flatten()
@@ -68,27 +81,34 @@ def predict(test_dataloader):
     return loss, accuracy, test_preds, test_logits
 
 
-# +++++++++++++++++++ Think on logits again can I use them as it is
-
 loss, accuracy, predictions, logits = predict(test_dataloader)
 
-max_logits = [np.max(logit) for logit in logits]
+print("logits")
+print(logits)
+
+
+## Here taking the logit of the positive class - What the model thinks about the propety.
+## That is how confident the model is about the property that it applies to concepts
+
+positive_class_logits = [logit[1] for logit in logits]
+
+# max_logits = [np.max(logit) for logit in logits]
 
 print(f"Number of Logits : {len(logits)}")
 print(f"test_data.data_df.shape[0] : {test_data.data_df.shape[0]}")
 
 print(f"Logits: {logits}")
-print(f"max_logits: {max_logits}")
+print(f"positive_class_logits: {positive_class_logits}")
 
 assert test_data.data_df.shape[0] == len(
-    max_logits
+    positive_class_logits
 ), "length of test dataframe is not equal to logits"
 
 new_test_dataframe = test_data.data_df.copy(deep=True)
 
 new_test_dataframe.drop("labels", axis=1, inplace=True)
 
-new_test_dataframe["logits"] = max_logits
+new_test_dataframe["logits"] = positive_class_logits
 
 
 logit_filename = "data/generate_embeddding_data/mcrae_related_data/with_logits_bert_base_gkb_cnet_trained_model_mcrae_concept_similar_properties.tsv"
