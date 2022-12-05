@@ -16,7 +16,7 @@ device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cp
 
 test_file = "data/generate_embeddding_data/mcrae_related_data/with_false_label_bert_base_gkb_cnet_trained_model_mcrae_concept_similar_properties.tsv"
 # test_file = "data/generate_embeddding_data/mcrae_related_data/dummy.txt"
-batch_size = 256
+batch_size = 512
 
 model_save_path = "trained_models/joint_encoder_gkbcnet_cnethasprop"
 model_name = (
@@ -97,8 +97,8 @@ positive_class_logits = [round(l[1], 4) for l in logit]
 print(f"Number of Logits : {len(logit)}")
 print(f"test_data.data_df.shape[0] : {test_data.data_df.shape[0]}")
 
-print(f"Logits: {logit}")
-print(f"positive_class_logits: {positive_class_logits}")
+# print(f"Logits: {logit}")
+# print(f"positive_class_logits: {positive_class_logits}")
 
 assert test_data.data_df.shape[0] == len(
     positive_class_logits

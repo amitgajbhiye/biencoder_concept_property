@@ -2,8 +2,8 @@
 
 #SBATCH --job-name=getLogits
 
-#SBATCH --output=logs/joint_enc_logs/out_dummy_data_pretrain_joint_encoder_prop_filtering.txt
-#SBATCH --error=logs/joint_enc_logs/err_dummy_data_pretrain_joint_encoder_prop_filtering.txt
+#SBATCH --output=logs/joint_enc_logs/out_pretrained_joint_encoder_con_similar_prop_filtering.txt
+#SBATCH --error=logs/joint_enc_logs/err_pretrained_joint_encoder_con_similar_prop_filtering.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
