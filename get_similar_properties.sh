@@ -1,9 +1,9 @@
 #!/bin/bash --login
 
-#SBATCH --job-name=getProps
+#SBATCH --job-name=ConPropMcRaeEmbedsings
 
-#SBATCH --output=logs/get_con_pro_embeddings/out_bert_base_gkb_cnet_trained_model_mcrae_concept_similar_properties.txt
-#SBATCH --error=logs/get_con_pro_embeddings/err_bert_base_gkb_cnet_trained_model_mcrae_concept_similar_properties.txt
+#SBATCH --output=logs/get_con_pro_embeddings/out_bb_gkb_cnet_pretrained_model_generated_mcrae_concept_and_property_embeddings.txt
+#SBATCH --error=logs/get_con_pro_embeddings/err_bb_gkb_cnet_pretrained_model_generated_mcrae_concept_and_property_embeddings.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
@@ -13,7 +13,7 @@
 #SBATCH --mem=10gs
 #SBATCH --gres=gpu:1
 
-#SBATCH -t 0-01:00:00
+#SBATCH -t 0-01:30:00
 
 echo 'This script is running on:'
 hostname
@@ -24,6 +24,6 @@ module load anaconda/2020.02
 
 conda activate venv
 
-python3 get_similar_properties.py --config_file configs/generate_embeddings/get_concept_similar_properties_config.json
+python3 get_similar_properties.py --config_file configs/generate_embeddings/get_mcrae_con_prop_embeds_from_gkb_cnet_cnet_has_prop_pretrained_bb_model_config.json
 
 echo 'finished!'

@@ -28,6 +28,8 @@ def preprocess_get_embedding_data(config):
     inference_params = config.get("inference_params")
     input_data_type = inference_params["input_data_type"]
 
+    log.info(f"Input Data Type : {input_data_type}")
+
     if input_data_type == "concept":
         data_df = pd.read_csv(
             inference_params["concept_file"],
@@ -68,6 +70,7 @@ def preprocess_get_embedding_data(config):
         data_df = pd.DataFrame(unique_concepts, columns=["concept"])
 
         data_df["property"] = "dummy_property"
+        data_df["label"] = int(0)
 
     elif input_data_type == "property" and num_columns == 1:
 
@@ -80,27 +83,30 @@ def preprocess_get_embedding_data(config):
         data_df = pd.DataFrame(unique_properties, columns=["property"])
 
         data_df["concept"] = "dummy_concept"
+        data_df["label"] = int(0)
 
     elif input_data_type == "concept_and_property" and num_columns == 2:
 
         log.info("Generating Embeddings for Concepts and Properties")
         log.info(f"Number of records : {data_df.shape[0]}")
 
-        data_df.rename(columns={0: "concept", 1: "property"}, inplace=True)
+        data_df.rename(columns={0: "concept", 1: "property", 2: "label"}, inplace=True)
 
     else:
         raise Exception(
-            f"Please Enter a Valid Input data type from: 'concept', 'property' or conncept and property. \
+            f"Please Enter a Valid Input data type from: 'concept', 'property' or conncept_and_property. \
             Current 'input_data_type' is: {input_data_type}"
         )
 
-    data_df["label"] = int(0)
     data_df = data_df[["concept", "property", "label"]]
+
+    log.info(f"Final Data Df")
+    log.info(data_df.head(n=20))
 
     return data_df
 
 
-def generate_embedings(config):
+def generate_embeddings(config):
 
     inference_params = config.get("inference_params")
 
@@ -190,10 +196,14 @@ def generate_embedings(config):
             for con, con_embed in zip(batch[0], concept_embedding):
                 if con not in con_embedding:
                     con_embedding[con] = to_cpu(con_embed)
+                else:
+                    log.info(f"Concept : {con} is already in dictionary !!")
 
             for prop, prop_embed in zip(batch[1], property_embedding):
                 if prop not in prop_embedding:
                     prop_embedding[prop] = to_cpu(prop_embed)
+                else:
+                    log.info(f"Property : {prop} is already in dictionary !!")
 
     save_dir = inference_params["save_dir"]
 
@@ -227,8 +237,8 @@ def generate_embedings(config):
 
     if input_data_type == "concept_and_property":
 
-        con_file_name = dataset_params["dataset_name"] + "_con_embeddings.pkl"
-        prop_file_name = dataset_params["dataset_name"] + "_prop_embeddings.pkl"
+        con_file_name = dataset_params["dataset_name"] + "_concept_embeddings.pkl"
+        prop_file_name = dataset_params["dataset_name"] + "_property_embeddings.pkl"
 
         con_embedding_save_file_name = os.path.join(save_dir, con_file_name)
         prop_embedding_save_file_name = os.path.join(save_dir, prop_file_name)
@@ -241,9 +251,8 @@ def generate_embedings(config):
 
         log.info(f"{'*' * 20} Finished {'*' * 20}")
         log.info("Finished Generating the Concept and Property Embeddings")
-        log.info(
-            f"Concept Property Embeddings are saved in : {con_embedding_save_file_name, prop_embedding_save_file_name}"
-        )
+        log.info(f"Concept Embeddings are saved in : {con_embedding_save_file_name}")
+        log.info(f"Property Embeddings are saved in : {prop_embedding_save_file_name}")
         log.info(f"{'*' * 40}")
 
         return con_embedding_save_file_name, prop_embedding_save_file_name
@@ -265,11 +274,15 @@ def get_concept_similar_properties(
     config, concept_embedding_pkl_file, property_embedding_pkl_file
 ):
 
+    log.info(f"Getting Concept Similar Properties")
+
     inference_params = config.get("inference_params")
     input_data_type = inference_params["input_data_type"]
 
     dataset_params = config.get("dataset_params")
     save_dir = inference_params["save_dir"]
+
+    log.info(f"Input Data Type : {input_data_type}")
 
     if input_data_type == "concept_and_property":
 
@@ -309,6 +322,7 @@ def get_concept_similar_properties(
 
     # Learning Nearest Neighbours
     num_nearest_neighbours = 50
+    log.info(f"Learning {num_nearest_neighbours} neighbours !!")
 
     con_similar_properties = NearestNeighbors(
         n_neighbors=num_nearest_neighbours, algorithm="brute"
@@ -322,7 +336,11 @@ def get_concept_similar_properties(
     log.info(f"con_indices shape : {con_indices.shape}")
 
     con_similar_prop_dict = {}
-    file_name = os.path.join(save_dir, dataset_params["dataset_name"]) + ".tsv"
+    file_name = (
+        os.path.join(save_dir, dataset_params["dataset_name"])
+        + f"concept_similar_{num_nearest_neighbours}_properties"
+        + ".tsv"
+    )
 
     with open(file_name, "w") as file:
 
@@ -341,105 +359,15 @@ def get_concept_similar_properties(
 
     log.info(f"Finished getting similar properties")
 
-    # log.info(f"con_similar_prop_dict")
-    # log.info(con_similar_prop_dict)
-
-    # print(f"con_similar_prop_dict")
-    # print(con_similar_prop_dict)
-
-    # con_prop_file = inference_params["concept_property_file"]
-
-    # con_prop_df = pd.read_csv(
-    #     con_prop_file, sep="\t", names=["concept", "property"], header=None
-    # )
-
-    # unique_concepts = con_prop_df["concept"].unique()
-
-    # all_data = []
-
-    # for concept in unique_concepts:
-
-    #     properties_of_concept = (
-    #         con_prop_df[con_prop_df["concept"] == concept]["property"]
-    #         .str.strip()
-    #         .to_list()
-    #     )
-
-    #     top_k_con_similar_prop = con_similar_prop_dict[concept]
-
-    #     top_k_con_similar_prop_transformed_embs = np.array(
-    #         [prop_dict_transform[prop] for prop in top_k_con_similar_prop]
-    #     )
-
-    #     con_prop_embed = np.array(
-    #         [prop_dict_zero[prop] for prop in properties_of_concept]
-    #     )
-
-    #     num_nearest_neighbours = 40
-
-    #     prop_similar_properties = NearestNeighbors(
-    #         n_neighbors=num_nearest_neighbours, algorithm="brute"
-    #     ).fit(np.array(top_k_con_similar_prop_transformed_embs))
-
-    #     prop_distances, prop_indices = prop_similar_properties.kneighbors(
-    #         con_prop_embed
-    #     )
-
-    #     for idx, pro_idx in enumerate(prop_indices):
-
-    #         prop_data = []
-
-    #         predict_property = properties_of_concept[idx]
-
-    #         predict_property_similar_properties = [
-    #             top_k_con_similar_prop[idx] for idx in pro_idx
-    #         ]
-
-    #         print(f"{concept} - {predict_property}")
-
-    #         for similar_prop in predict_property_similar_properties:
-    #             # if predict_property != similar_prop:
-    #             if similar_prop not in properties_of_concept:
-    #                 prop_data.append(similar_prop)
-
-    #             if len(prop_data) >= 10:
-    #                 break
-
-    #         # prop_data = ", ".join(prop_data)
-
-    #         all_data.append((concept, prop_data, predict_property))
-
-    #         print(
-    #             f"Final Similar Properties for Concept Property Pair : {concept, predict_property}"
-    #         )
-    #         print(prop_data)
-
-    #         print()
-
-    #     print()
-
-    # data_df = pd.DataFrame.from_records(
-    #     all_data, columns=["concept", "similar_properties", "property"]
-    # )
-
-    # data_df.to_csv(
-    #     "data/generate_embeddding_data/property_conjuction_data.tsv",
-    #     sep="\t",
-    #     header=None,
-    #     index=None,
-    # )
-
-    # log.info(
-    #     f"Extracted data saved in  : data/generate_embeddding_data/property_conjuction_data.tsv"
-    # )
-
 
 if __name__ == "__main__":
 
     log.info(f"\n {'*' * 50}")
     log.info(f"Generating the Concept Property Embeddings")
 
-    parser = argparse.ArgumentParser(description="Concept Property Biencoder Model")
+    parser = argparse.ArgumentParser(
+        description="Pretrained Concept Property Biencoder Model"
+    )
 
     parser.add_argument(
         "--config_file",
@@ -458,6 +386,15 @@ if __name__ == "__main__":
 
     inference_params = config.get("inference_params")
     input_data_type = inference_params["input_data_type"]
+    get_con_prop_embeds = inference_params["get_con_prop_embeds"]
+    get_similar_properties = inference_params["get_similar_properties"]
+
+    log.info(
+        f"Get Concept, Property and Concept and Property Embedings : {get_con_prop_embeds}"
+    )
+    log.info(
+        f"Do I need concept similar top properties aslso, Step 1 of Model : {get_similar_properties} "
+    )
 
     assert input_data_type in (
         "concept",
@@ -466,8 +403,9 @@ if __name__ == "__main__":
     ), "Please specify 'input_data_type' \
         from ('concept', 'property', 'concept_and_property')"
 
-    concept_pkl_file = inference_params["concept_file"]
-    property_pkl_file = inference_params["property_file"]
+    if not get_con_prop_embeds:
+        concept_pkl_file, property_pkl_file = generate_embeddings(config=config)
 
-    get_concept_similar_properties(config, concept_pkl_file, property_pkl_file)
+    if get_similar_properties:
+        get_concept_similar_properties(config, concept_pkl_file, property_pkl_file)
 

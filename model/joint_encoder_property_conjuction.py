@@ -4,6 +4,8 @@ import torch.nn.functional as F
 import pandas as pd
 import numpy as np
 import os
+import pickle
+
 from argparse import ArgumentParser
 
 from torch.utils.data import Dataset
@@ -17,6 +19,8 @@ from transformers import AdamW, get_linear_schedule_with_warmup
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import f1_score, accuracy_score
 from sklearn.metrics import classification_report, confusion_matrix
+
+from utils.functions import compute_scores
 
 import warnings
 
@@ -42,12 +46,16 @@ hawk_bb_model = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_
 
 data_path = "/scratch/c.scmag3/biencoder_concept_property/data/train_data/joint_encoder_property_conjuction_data"
 
+
 train_file = os.path.join(
     data_path, "5_neg_train_random_and_similar_conjuct_properties.tsv"
 )
+
 valid_file = os.path.join(
     data_path, "5_neg_valid_random_and_similar_conjuct_properties.tsv"
 )
+
+test_file = None
 
 # train_file = os.path.join(data_path, "dummy_prop_conj.tsv")
 # valid_file = os.path.join(data_path, "dummy_prop_conj.tsv")
@@ -67,15 +75,35 @@ num_epoch = 100
 lr = 2e-6
 
 
+pretrained_model_path = ""
+cv_type = "concept_split"
+num_fold = 5
+load_pretrained = True
+
+
 class DatasetPropConjuction(Dataset):
     def __init__(self, concept_property_file, max_len=max_len):
 
-        self.data_df = pd.read_csv(
-            concept_property_file,
-            sep="\t",
-            header=None,
-            names=["concept", "conjuct_prop", "predict_prop", "labels"],
-        )
+        if isinstance(concept_property_file, pd.DataFrame):
+
+            self.data_df = concept_property_file
+            print(
+                f"Supplied Concept Property File is a Dataframe : {self.data_df.shape}"
+            )
+
+        else:
+
+            print(f"Supplied Concept Property File is a Path : {concept_property_file}")
+            print(f"Loading into Dataframe ... ")
+
+            self.data_df = pd.read_csv(
+                concept_property_file,
+                sep="\t",
+                header=None,
+                names=["concept", "conjuct_prop", "predict_prop", "labels"],
+            )
+
+            print(f"Loaded Dataframe Shape: {self.data_df.shape}")
 
         self.tokenizer = BertTokenizer.from_pretrained(hawk_bb_tokenizer)
         self.max_len = max_len
@@ -162,7 +190,17 @@ class ModelPropConjuctionJoint(nn.Module):
         return loss, logits
 
 
-def prepare_pretrain_data_and_models():
+def load_pretrained_model(pretrained_model_path):
+
+    model = ModelPropConjuctionJoint()
+    model.load_state_dict(torch.load(best_model_path))
+
+    print(f"The pretrained Model is loaded from : {pretrained_model_path}")
+
+    return model
+
+
+def prepare_data_and_models(train_file, valid_file, test_file, load_pretrained):
 
     train_data = DatasetPropConjuction(train_file)
     train_sampler = RandomSampler(train_data)
@@ -173,13 +211,35 @@ def prepare_pretrain_data_and_models():
         collate_fn=default_convert,
     )
 
-    val_data = DatasetPropConjuction(valid_file)
-    val_sampler = RandomSampler(val_data)
-    val_dataloader = DataLoader(
-        val_data, batch_size=batch_size, sampler=val_sampler, collate_fn=default_convert
-    )
+    if valid_file is not None:
+        val_data = DatasetPropConjuction(valid_file)
+        val_sampler = RandomSampler(val_data)
+        val_dataloader = DataLoader(
+            val_data,
+            batch_size=batch_size,
+            sampler=val_sampler,
+            collate_fn=default_convert,
+        )
+    else:
+        val_dataloader = None
 
-    model = ModelPropConjuctionJoint()
+    if test_file is not None:
+        test_data = DatasetPropConjuction(test_file)
+        test_sampler = SequentialSampler(test_data)
+        test_dataloader = DataLoader(
+            test_data,
+            batch_size=batch_size,
+            sampler=val_sampler,
+            collate_fn=default_convert,
+        )
+    else:
+        test_dataloader = None
+
+    if load_pretrained:
+        model = load_pretrained_model(pretrained_model_path)
+    else:
+        model = ModelPropConjuctionJoint()
+
     model.to(device)
 
     optimizer = AdamW(model.parameters(), lr=lr)
@@ -188,12 +248,17 @@ def prepare_pretrain_data_and_models():
         optimizer, num_warmup_steps=0, num_training_steps=total_steps
     )
 
-    return model, train_dataloader, val_dataloader, scheduler, optimizer
+    return (
+        model,
+        scheduler,
+        optimizer,
+        train_dataloader,
+        val_dataloader,
+        test_dataloader,
+    )
 
 
-def train_on_single_epoch(
-    model, train_dataloader, val_dataloader, scheduler, optimizer
-):
+def train_on_single_epoch(model, scheduler, optimizer, train_dataloader):
 
     total_epoch_loss = 0
 
@@ -242,15 +307,13 @@ def train_on_single_epoch(
     return avg_train_loss, model
 
 
-def evaluate(model, val_dataloader):
-
-    print("\n Running Validation...")
+def evaluate(model, dataloader):
 
     model.eval()
 
     val_loss, val_accuracy, val_preds, val_labels = [], [], [], []
 
-    for step, batch in enumerate(val_dataloader):
+    for step, batch in enumerate(dataloader):
 
         input_ids = torch.cat([x["input_ids"] for x in batch], dim=0).to(device)
         token_type_ids = torch.cat([x["token_type_ids"] for x in batch], dim=0).to(
@@ -283,103 +346,241 @@ def evaluate(model, val_dataloader):
     val_preds = np.array(val_preds).flatten()
     val_labels = np.array(val_labels).flatten()
 
-    return val_loss, val_accuracy, val_preds, val_labels
+    return val_loss, val_preds, val_labels
 
 
-def train(model, train_dataloader, val_dataloader, scheduler, optimizer):
+def train(
+    model,
+    scheduler,
+    optimizer,
+    train_dataloader,
+    val_dataloader=None,
+    test_dataloader=None,
+):
 
-    best_valid_loss = 0.0
-    best_valid_f1 = 0.0
+    best_valid_loss, best_valid_f1 = 0.0, 0.0
 
     patience_early_stopping = 10
     patience_counter = 0
     start_epoch = 1
 
-    train_losses = []
-    valid_losses = []
+    train_losses, valid_losses = [], []
 
     for epoch in range(start_epoch, num_epoch + 1):
 
         print("\n Epoch {:} of {:}".format(epoch, num_epoch), flush=True)
 
         train_loss, model = train_on_single_epoch(
-            model, train_dataloader, val_dataloader, scheduler, optimizer
-        )
-        valid_loss, valid_accuracy, valid_preds, valid_gold_labels = evaluate(
-            model, val_dataloader
-        )
-
-        # val_gold_labels = val_data.labels.cpu().detach().numpy().flatten()
-
-        valid_binary_f1 = round(
-            f1_score(valid_gold_labels, valid_preds, average="binary"), 4
-        )
-        valid_micro_f1 = round(
-            f1_score(valid_gold_labels, valid_preds, average="micro"), 4
-        )
-        valid_macro_f1 = round(
-            f1_score(valid_gold_labels, valid_preds, average="macro"), 4
-        )
-        valid_weighted_f1 = round(
-            f1_score(valid_gold_labels, valid_preds, average="weighted"), 4
+            model=model,
+            scheduler=scheduler,
+            optimizer=optimizer,
+            train_dataloader=train_dataloader,
         )
 
-        if valid_binary_f1 < best_valid_f1:
-            patience_counter += 1
+        if val_dataloader is not None:
+
+            print(f"Running Validation ....")
+
+            valid_loss, valid_preds, valid_gold_labels = evaluate(
+                model=model, dataloader=val_dataloader
+            )
+
+            scores = compute_scores(valid_gold_labels, valid_preds)
+            valid_binary_f1 = scores["binary_f1"]
+
+            if valid_binary_f1 < best_valid_f1:
+                patience_counter += 1
+            else:
+                patience_counter = 0
+                best_valid_f1 = valid_binary_f1
+
+                print("\n", "+" * 20)
+                print("Saving Best Model at Epoch :", epoch, model_name)
+                print("Epoch :", epoch)
+                print("   Best Validation F1:", best_valid_f1)
+
+                torch.save(model.state_dict(), best_model_path)
+
+                print(f"The best model is saved at : {best_model_path}")
+
+            train_losses.append(train_loss)
+            valid_losses.append(valid_loss)
+
+            print("\n", flush=True)
+            print("+" * 50, flush=True)
+
+            print("valid_preds shape:", valid_preds.shape)
+            print("val_gold_labels shape:", valid_gold_labels.shape)
+
+            print(f"\nTraining Loss: {round(train_loss, 4)}", flush=True)
+            print(f"Validation Loss: {round(valid_loss, 4)}", flush=True)
+
+            print(f"Current Validation F1 Score Binary {valid_binary_f1}", flush=True)
+            print(f"Best Validation F1 Score Yet : {best_valid_f1}", flush=True)
+
+            print("Validation Scores")
+            for key, value in scores.items():
+                print(f" {key} :  {value}")
+
+            if patience_counter > patience_early_stopping:
+
+                print(f"\nTrain Losses :", train_losses, flush=True)
+                print(f"Validation Losses: ", valid_losses, flush=True)
+
+                print("Early Stopping ---> Patience Reached!!!")
+                break
+
+        elif test_dataloader is not None:
+
+            _, test_preds, test_gold_labels = evaluate(model, val_dataloader)
+
+            return test_preds, test_gold_labels
+
+            print("************ Test Scores ************")
+            for key, value in scores.items():
+                print(f" {key} :  {value}")
         else:
-            patience_counter = 0
-            best_valid_f1 = valid_binary_f1
 
-            print("\n", "+" * 20)
-            print("Saving Best Model at Epoch :", epoch, model_name)
-            print("Epoch :", epoch)
-            print("   Best Validation F1:", best_valid_f1)
+            print(f"Valid Dataloader :{val_dataloader}")
+            print(f"Test Dataloader :{test_dataloader}")
 
-            torch.save(model.state_dict(), best_model_path)
+            print(f"Valid and Test Dataloaders both cant be None")
 
-            print(f"The best model is saved at : {best_model_path}")
 
-        train_losses.append(train_loss)
-        valid_losses.append(valid_loss)
+################ Fine Tuning Code Starts Here ################
 
-        print("\n", flush=True)
-        print("+" * 50, flush=True)
+# ft_param_dict = {"pretrained_model_path": "", "cv_type": "concept_split", "num_fold": 5}
 
-        print("valid_preds shape:", valid_preds.shape)
-        print("val_gold_labels shape:", valid_gold_labels.shape)
 
-        print(f"\nTraining Loss: {round(train_loss, 4)}", flush=True)
-        print(f"Validation Loss: {round(valid_loss, 4)}", flush=True)
+def concept_split_training(train_file, test_file, load_pretrained):
 
-        print(f"Current Validation F1 Score Binary {valid_binary_f1}", flush=True)
-        print(f"Best Validation F1 Score Yet : {best_valid_f1}", flush=True)
+    print(f"Training the Model on Concept Split")
+    print(f"Train File : {train_file}")
+    print(f"Test File : {test_file}")
+    print(f"Load Pretrained :{load_pretrained}")
 
-        # print(f"Validation Accuracy: {valid_accuracy}", flush=True)
-        print(
-            f"Validation Accuracy: {accuracy_score(valid_gold_labels, valid_preds)}",
-            flush=True,
-        )
-        print(f"Validation F1 Score Micro {valid_micro_f1}", flush=True)
-        print(f"Validation F1 Score Macro {valid_macro_f1}", flush=True)
-        print(f"Validation F1 Score Weighted {valid_weighted_f1}", flush=True)
+    (
+        model,
+        scheduler,
+        optimizer,
+        train_dataloader,
+        val_dataloader,
+        test_dataloader,
+    ) = prepare_data_and_models(
+        train_file=train_file,
+        valid_file=None,
+        test_file=test_file,
+        load_pretrained=load_pretrained,
+    )
 
-        print(f"\nValidation Classification Report :", flush=True)
-        print(
-            classification_report(valid_gold_labels, valid_preds, labels=[0, 1]),
-            flush=True,
-        )
+    train(
+        model=model,
+        scheduler=scheduler,
+        optimizer=optimizer,
+        train_dataloader=train_dataloader,
+        val_dataloader=val_dataloader,
+        test_dataloader=test_dataloader,
+    )
 
-        print(f"\nValidation Confusion Matrix :", flush=True)
-        print(
-            confusion_matrix(valid_gold_labels, valid_preds, labels=[0, 1]), flush=True
-        )
 
-        if patience_counter > patience_early_stopping:
-            print("Early Stopping ---> Patience Reached!!!")
-            break
+def do_cv(cv_type):
 
-    print(f"\nTrain Losses :", train_losses, flush=True)
-    print(f"Validation Losses: ", valid_losses, flush=True)
+    if cv_type == "concept_split":
+        concept_split_training(train_file, test_file, load_pretrained)
+
+    elif cv_type in ("property_split", "concept_property_split"):
+
+        if cv_type == "property_split":
+
+            num_fold = 5
+            dir_name = "data/evaluation_data/mcrae_prop_split_train_test_files"
+            train_file_base_name = "train_prop_split_con_prop.pkl"
+            test_file_base_name = "test_prop_split_con_prop.pkl"
+
+            print(f"Training the Property Split")
+            print(f"Number of Folds: {num_fold}")
+
+        elif cv_type == "concept_property_split":
+
+            num_fold = 9
+            dir_name = "data/evaluation_data/mcrae_con_prop_split_train_test_files"
+            train_file_base_name = "train_con_prop_split_con_prop.pkl"
+            test_file_base_name = "test_con_prop_split_con_prop.pkl"
+
+            print(f"Training the Concept Property Split")
+            print(f"Number of Folds: {num_fold}")
+
+        else:
+
+            raise Exception(f"Specify a correct Split")
+
+        all_folds_test_preds, all_folds_test_labels = [], []
+        for fold in range(num_fold):
+
+            print(f"Training the model on Fold : {fold}/{num_fold}")
+
+            train_file_name = os.path.join(dir_name, f"{fold}_{train_file_base_name}")
+            test_file_name = os.path.join(dir_name, f"{fold}_{test_file_base_name}")
+
+            print(f"Train File Name : {train_file_name}")
+            print(f"Test File Name : {test_file_name}")
+
+            with open(train_file_name, "rb") as train_pkl, open(
+                test_file_name, "rb"
+            ) as test_pkl:
+
+                train_df = pickle.load(train_pkl)
+                test_df = pickle.load(train_pkl)
+
+            (
+                model,
+                scheduler,
+                optimizer,
+                train_dataloader,
+                val_dataloader,
+                test_dataloader,
+            ) = prepare_data_and_models(
+                train_file=train_df,
+                valid_file=None,
+                test_file=test_df,
+                load_pretrained=load_pretrained,
+            )
+
+            fold_test_preds, fold_test_gold_labels = train(
+                model,
+                scheduler,
+                optimizer,
+                train_dataloader,
+                val_dataloader,
+                test_dataloader,
+            )
+
+            all_folds_test_preds.extend(fold_test_preds)
+            all_folds_test_labels.extend(fold_test_gold_labels)
+
+            scores = compute_scores(fold_test_gold_labels, fold_test_preds)
+
+            print(f"Scores for Fold {fold} ")
+
+            for key, value in scores.items():
+                print(f"{key} : {value}")
+
+        all_folds_test_preds = np.array(all_folds_test_preds).flatten()
+        all_folds_test_labels = np.array(all_folds_test_labels).flatten()
+
+        print(f"Shape of All Folds Preds : {all_folds_test_preds.shape}")
+        print(f"Shape of All Folds Labels : {all_folds_test_labels.shape}")
+
+        assert (
+            all_folds_test_preds.shape == all_folds_test_labels.shape
+        ), "shape of all folds labels not equal to all folds preds"
+
+        print(f"Calculating the scores for All Folds")
+
+        scores = compute_scores(all_folds_test_labels, all_folds_test_preds)
+
+        for key, value in scores.items():
+            print(f"{key} : {value}")
 
 
 if __name__ == "__main__":
@@ -390,6 +591,7 @@ if __name__ == "__main__":
 
     parser.add_argument("--pretrain", action="store_true")
     parser.add_argument("--finetune", action="store_true")
+    parser.add_argument("--cv_type",)
 
     args = parser.parse_args()
 
@@ -401,13 +603,26 @@ if __name__ == "__main__":
 
         (
             model,
-            train_dataloader,
-            val_dataloader,
             scheduler,
             optimizer,
-        ) = prepare_pretrain_data_and_models()
+            train_dataloader,
+            val_dataloader,
+            test_dataloader,
+        ) = prepare_data_and_models(
+            train_file=train_file,
+            valid_file=valid_file,
+            test_file=test_file,
+            load_pretrained=load_pretrained,
+        )
 
-        train(model, train_dataloader, val_dataloader, scheduler, optimizer)
+        train(
+            model,
+            scheduler,
+            optimizer,
+            train_dataloader,
+            val_dataloader,
+            test_dataloader,
+        )
 
     elif args.finetune:
         pass
