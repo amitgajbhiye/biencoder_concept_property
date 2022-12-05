@@ -1,5 +1,5 @@
 import argparse
-
+import random
 import logging
 import os
 import pickle
@@ -358,6 +358,133 @@ def get_concept_similar_properties(
                 file.write(line)
 
     log.info(f"Finished getting similar properties")
+
+
+def get_predict_prop_similar_vocab_properties(
+    config, predict_property_embed_pkl_file, vocab_property_embed_pkl_file
+):
+
+    log.info(f"Getting Predict Properti Similar Vocab Properties")
+
+    inference_params = config.get("inference_params")
+    input_data_type = inference_params["input_data_type"]
+
+    dataset_params = config.get("dataset_params")
+    save_dir = inference_params["save_dir"]
+
+    log.info(f"Input Data Type : {input_data_type}")
+
+    with open(predict_property_embed_pkl_file, "rb") as predict_prop_pkl_file, open(
+        vocab_property_embed_pkl_file, "rb"
+    ) as vocab_prop_pkl_file:
+
+        predict_prop_dict = pickle.load(predict_prop_pkl_file)
+        vocab_prop_dict = pickle.load(vocab_prop_pkl_file)
+
+    predict_props = list(predict_prop_dict.keys())
+    predict_props_embeds = list(predict_prop_dict.values())
+
+    zero_predict_props_embeds = np.array(
+        [np.insert(l, 0, float(0)) for l in predict_props_embeds]
+    )
+    transformed_con_embeds = np.array(transform(predict_props_embeds))
+
+    log.info(f"In get_predict_prop_similar_vocab_properties function")
+    log.info(f"Number of predict properties : {len(predict_props)}")
+    log.info(f"Length of predict prop Embeddings : {len(predict_props_embeds)}")
+    log.info(f"Shape of zero_predict_props_embeds: {zero_predict_props_embeds.shape}")
+    log.info(f"Shape of transformed_con_embeds : {transformed_con_embeds.shape}")
+
+    vocab_props = list(vocab_prop_dict.keys())
+    vocab_props_embeds = list(vocab_prop_dict.values())
+    zero_vocab_prop_embeds = np.array([np.insert(l, 0, 0) for l in vocab_props_embeds])
+    transformed_vocab_prop_embeds = np.array(transform(vocab_props_embeds))
+
+    log.info(f"Number of Vocab Properties : {len(vocab_props)}")
+    log.info(f"Length of Vocab Properties Embeddings : {len(vocab_props_embeds)}")
+    log.info(f"Shape of zero_vocab_prop_embeds: {zero_vocab_prop_embeds.shape}")
+    log.info(
+        f"Shape of transformed_vocab_prop_embeds : {transformed_vocab_prop_embeds.shape}"
+    )
+
+    # Learning Nearest Neighbours
+    num_nearest_neighbours = 15
+    log.info(f"Learning {num_nearest_neighbours} neighbours !!")
+
+    predict_prop_similar_voab_props = NearestNeighbors(
+        n_neighbors=num_nearest_neighbours, algorithm="brute"
+    ).fit(np.array(transformed_vocab_prop_embeds))
+
+    (
+        predict_prop_distances,
+        predict_prop_indices,
+    ) = predict_prop_similar_voab_props.kneighbors(np.array(zero_predict_props_embeds))
+
+    log.info(f"predict_prop_distances shape : {predict_prop_distances.shape}")
+    log.info(f"predict_prop_indices shape : {predict_prop_indices.shape}")
+
+    # file_name = (
+    #     os.path.join(save_dir, dataset_params["dataset_name"])
+    #     + f"mcrae_predict_prop_similar_{num_nearest_neighbours}_vocab_properties"
+    #     + ".tsv"
+    # )
+
+    predict_prop_similar_vocab_props = {}
+    for predict_prop_idx, vocab_prop_idx in enumerate(predict_prop_indices):
+
+        predict_prop = predict_props[predict_prop_idx]
+        vocab_similar_properties = [vocab_props[idx] for idx in vocab_prop_idx]
+
+        predict_prop_similar_vocab_props[predict_prop] = vocab_similar_properties
+
+        print(f"{predict_prop} \t {vocab_similar_properties}\n")
+
+    return predict_prop_similar_vocab_props
+
+
+def create_property_conjuction_data_for_fine_tuning(
+    predict_prop_similar_vocab_props, concept_similar_prop_file, data_df, save_path
+):
+
+    all_data = []
+
+    concept_similar_prop_file = pd.read_csv(
+        concept_similar_prop_file, sep="\t", names=["concept", "similar_prop"]
+    )
+
+    log.info(f"Input Data DF")
+    log.info(f"{data_df.head(n=20)}")
+
+    for concept, predict_prop, label in data_df.values:
+
+        num_prop_conjuct = random.randint(3, 10)
+
+        if label == 1:
+
+            conjuct_properties = predict_prop_similar_vocab_props[predict_prop]
+            conjuct_properties = conjuct_properties[0:num_prop_conjuct]
+
+            conjuct_properties = ", ".join(conjuct_properties)
+
+        elif label == 0:
+
+            concept_data = concept_similar_prop_file[
+                concept_similar_prop_file["concept"] == concept
+            ]
+
+            concept_data_props = concept_data["similar_prop"].unique()
+
+            conjuct_properties = random.sample(concept_data_props, num_prop_conjuct)
+
+            conjuct_properties = ", ".join(conjuct_properties)
+
+        all_data.append([concept, conjuct_properties, predict_prop, label])
+
+    all_data_df = pd.DataFrame.from_records(
+        all_data, columns=["concept", "conjuct_properties", "predict_prop", "label"]
+    )
+
+    all_data_df.to_csv(save_path, sep="\t", index=None, header=None)
 
 
 if __name__ == "__main__":
