@@ -49,7 +49,7 @@ def predict(test_dataloader):
     for step, batch in enumerate(test_dataloader):
 
         input_ids = torch.cat([x["input_ids"] for x in batch], dim=0).to(device)
-        attention_mask = torch.cat([x["attention_masks"] for x in batch], dim=0).to(
+        attention_mask = torch.cat([x["attention_mask"] for x in batch], dim=0).to(
             device
         )
         token_type_ids = torch.cat([x["token_type_ids"] for x in batch], dim=0).to(
