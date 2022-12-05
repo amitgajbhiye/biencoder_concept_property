@@ -85,7 +85,7 @@ def preprocess_get_embedding_data(config):
         data_df["concept"] = "dummy_concept"
         data_df["label"] = int(0)
 
-    elif input_data_type == "concept_and_property" and num_columns == 2:
+    elif input_data_type == "concept_and_property" and num_columns == 3:
 
         log.info("Generating Embeddings for Concepts and Properties")
         log.info(f"Number of records : {data_df.shape[0]}")
