@@ -20,7 +20,12 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import f1_score, accuracy_score
 from sklearn.metrics import classification_report, confusion_matrix
 
-from utils.functions import compute_scores
+from sklearn.metrics import (
+    accuracy_score,
+    classification_report,
+    confusion_matrix,
+    f1_score,
+)
 
 import warnings
 
@@ -28,6 +33,26 @@ warnings.filterwarnings("ignore")
 
 device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
 print(f"The Model is Trained on : {device}")
+
+
+def compute_scores(labels, preds):
+
+    assert len(labels) == len(
+        preds
+    ), f"labels len: {len(labels)} is not equal to preds len {len(preds)}"
+
+    scores = {
+        "binary_f1": round(f1_score(labels, preds, average="binary"), 4),
+        "micro_f1": round(f1_score(labels, preds, average="micro"), 4),
+        "macro_f1": round(f1_score(labels, preds, average="macro"), 4),
+        "weighted_f1": round(f1_score(labels, preds, average="weighted"), 4),
+        "accuracy": round(accuracy_score(labels, preds), 4),
+        "classification report": classification_report(labels, preds, labels=[0, 1]),
+        "confusion matrix": confusion_matrix(labels, preds, labels=[0, 1]),
+    }
+
+    return scores
+
 
 #### Parameters ####
 
