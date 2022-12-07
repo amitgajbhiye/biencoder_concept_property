@@ -257,7 +257,7 @@ def prepare_data_and_models(train_file, valid_file, test_file, load_pretrained):
         test_dataloader = DataLoader(
             test_data,
             batch_size=batch_size,
-            sampler=val_sampler,
+            sampler=test_sampler,
             collate_fn=default_convert,
         )
     else:
