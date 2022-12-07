@@ -99,14 +99,14 @@ max_len = 200
 num_labels = 2
 batch_size = 64
 # num_epoch = 100
-num_epoch = 2
+num_epoch = 12
 lr = 2e-6
 
 
+load_pretrained = True
 pretrained_model_path = "/scratch/c.scmag3/biencoder_concept_property/trained_models/joint_encoder_gkbcnet_cnethasprop/joint_encoder_property_conjuction_random_similar_props_gkbcnet_cnethasprop_step3_pretrained_model.pt"
 # cv_type = "concept_split"
 # num_fold = 5
-load_pretrained = True
 
 
 class DatasetPropConjuction(Dataset):
@@ -268,6 +268,7 @@ def prepare_data_and_models(train_file, valid_file, test_file, load_pretrained):
         test_dataloader = None
 
     if load_pretrained:
+        print(f"load_pretrained : {load_pretrained}")
         model = load_pretrained_model(pretrained_model_path)
     else:
         model = ModelPropConjuctionJoint()
@@ -531,11 +532,12 @@ def do_cv(cv_type):
 
         if cv_type == "property_split":
 
-            num_fold = 2
+            num_fold = 5
             dir_name = "/scratch/c.scmag3/biencoder_concept_property/data/evaluation_data/mcrae_joint_encoder_prop_conjuction_fine_tune/property_split"
             train_file_base_name = "prop_conj_train_prop_split_con_prop.pkl"
             test_file_base_name = "prop_conj_test_prop_split_con_prop.pkl"
 
+            print("CV Type : {cv_type}", flush=True)
             print(f"Training the Property Split", flush=True)
             print(f"Number of Folds: {num_fold}", flush=True)
 
@@ -601,16 +603,16 @@ def do_cv(cv_type):
             all_folds_test_preds.extend(fold_test_preds)
             all_folds_test_labels.extend(fold_test_gold_labels)
 
-            scores = compute_scores(fold_test_gold_labels, fold_test_preds)
+            # scores = compute_scores(fold_test_gold_labels, fold_test_preds)
+            # print(f"Scores for Fold : {fold} ", flush=True)
 
-            print(f"Scores for Fold : {fold} ", flush=True)
-
-            for key, value in scores.items():
-                print(f"{key} : {value}", flush=True)
+            # for key, value in scores.items():
+            #     print(f"{key} : {value}", flush=True)
 
         all_folds_test_preds = np.array(all_folds_test_preds).flatten()
         all_folds_test_labels = np.array(all_folds_test_labels).flatten()
 
+        print(flush=True)
         print(f"Shape of All Folds Preds : {all_folds_test_preds.shape}", flush=True)
         print(f"Shape of All Folds Labels : {all_folds_test_labels.shape}", flush=True)
 
@@ -618,12 +620,14 @@ def do_cv(cv_type):
             all_folds_test_preds.shape == all_folds_test_labels.shape
         ), "shape of all folds labels not equal to all folds preds"
 
+        print(flush=True)
+        print("*" * 50, flush=True)
         print(f"Calculating the scores for All Folds", flush=True)
-
         scores = compute_scores(all_folds_test_labels, all_folds_test_preds)
 
         for key, value in scores.items():
             print(f"{key} : {value}", flush=True)
+        print("*" * 50, flush=True)
 
 
 if __name__ == "__main__":
