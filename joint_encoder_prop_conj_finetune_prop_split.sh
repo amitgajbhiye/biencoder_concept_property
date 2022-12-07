@@ -13,7 +13,7 @@
 #SBATCH --mem=14g
 #SBATCH --gres=gpu:1
 
-#SBATCH -t 0-02:00:00
+#SBATCH -t 1-00:00:00
 
 echo 'This script is running on:'
 hostname
@@ -26,4 +26,4 @@ conda activate venv
 
 python3 model/joint_encoder_property_conjuction.py --finetune --cv_type="property_split"
 
-echo 'finished!'
+echo 'finished !!'
