@@ -32,7 +32,7 @@ import warnings
 warnings.filterwarnings("ignore")
 
 device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
-print(f"The Model is Trained on : {device}")
+print(f"The Model is Trained on : {device}", flush=True)
 
 
 def compute_scores(labels, preds):
@@ -64,7 +64,7 @@ def compute_scores(labels, preds):
 #     ),
 # }
 
-print(f"Property Conjuction Joint Encoder Model- Step3")
+print(f"Property Conjuction Joint Encoder Model- Step3", flush=True)
 
 hawk_bb_tokenizer = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_bert_base_uncased/tokenizer"
 hawk_bb_model = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_bert_base_uncased/model"
@@ -87,8 +87,8 @@ test_file = None
 # train_file = os.path.join(data_path, "dummy_prop_conj.tsv")
 # valid_file = os.path.join(data_path, "dummy_prop_conj.tsv")
 
-print(f"Train File : {train_file}")
-print(f"Valid File : {valid_file}")
+print(f"Train File : {train_file}", flush=True)
+print(f"Valid File : {valid_file}", flush=True)
 
 model_save_path = "/scratch/c.scmag3/biencoder_concept_property/trained_models/joint_encoder_gkbcnet_cnethasprop"
 model_name = "joint_encoder_property_conjuction_random_similar_props_gkbcnet_cnethasprop_step3_pretrained_model.pt"
@@ -99,7 +99,7 @@ max_len = 200
 num_labels = 2
 batch_size = 64
 # num_epoch = 100
-num_epoch = 12
+num_epoch = 2
 lr = 2e-6
 
 
@@ -116,13 +116,17 @@ class DatasetPropConjuction(Dataset):
 
             self.data_df = concept_property_file
             print(
-                f"Supplied Concept Property File is a Dataframe : {self.data_df.shape}"
+                f"Supplied Concept Property File is a Dataframe : {self.data_df.shape}",
+                flush=True,
             )
 
         else:
 
-            print(f"Supplied Concept Property File is a Path : {concept_property_file}")
-            print(f"Loading into Dataframe ... ")
+            print(
+                f"Supplied Concept Property File is a Path : {concept_property_file}",
+                flush=True,
+            )
+            print(f"Loading into Dataframe ... ", flush=True)
 
             self.data_df = pd.read_csv(
                 concept_property_file,
@@ -131,7 +135,7 @@ class DatasetPropConjuction(Dataset):
                 names=["concept", "conjuct_prop", "predict_prop", "labels"],
             )
 
-            print(f"Loaded Dataframe Shape: {self.data_df.shape}")
+            print(f"Loaded Dataframe Shape: {self.data_df.shape}", flush=True)
 
         self.tokenizer = BertTokenizer.from_pretrained(hawk_bb_tokenizer)
         self.max_len = max_len
@@ -179,10 +183,10 @@ class DatasetPropConjuction(Dataset):
         attention_mask = encoded_dict["attention_mask"]
         token_type_ids = encoded_dict["token_type_ids"]
 
-        # print(f"input_ids : {input_ids}")
-        # print(f"attention_mask : {attention_mask}")
-        # print(f"token_type_ids : {token_type_ids}")
-        # print(f"labels :", {labels})
+        # print(f"input_ids : {input_ids}", flush=True)
+        # print(f"attention_mask : {attention_mask}", flush=True)
+        # print(f"token_type_ids : {token_type_ids}", flush=True)
+        # print(f"labels :", {labels}, flush=True)
         # print()
 
         return {
@@ -223,7 +227,7 @@ def load_pretrained_model(pretrained_model_path):
     model = ModelPropConjuctionJoint()
     model.load_state_dict(torch.load(pretrained_model_path))
 
-    print(f"The pretrained Model is loaded from : {pretrained_model_path}")
+    print(f"The pretrained Model is loaded from : {pretrained_model_path}", flush=True)
 
     return model
 
@@ -407,7 +411,7 @@ def train(
 
         if val_dataloader is not None:
 
-            print(f"Running Validation ....")
+            print(f"Running Validation ....", flush=True)
 
             valid_loss, valid_preds, valid_gold_labels = evaluate(
                 model=model, dataloader=val_dataloader
@@ -422,14 +426,14 @@ def train(
                 patience_counter = 0
                 best_valid_f1 = valid_binary_f1
 
-                print("\n", "+" * 20)
-                print("Saving Best Model at Epoch :", epoch, model_name)
-                print("Epoch :", epoch)
-                print("   Best Validation F1:", best_valid_f1)
+                print("\n", "+" * 20, flush=True)
+                print("Saving Best Model at Epoch :", epoch, model_name, flush=True)
+                print("Epoch :", epoch, flush=True)
+                print("   Best Validation F1:", best_valid_f1, flush=True)
 
                 torch.save(model.state_dict(), best_model_path)
 
-                print(f"The best model is saved at : {best_model_path}")
+                print(f"The best model is saved at : {best_model_path}", flush=True)
 
             train_losses.append(train_loss)
             valid_losses.append(valid_loss)
@@ -437,8 +441,8 @@ def train(
             print("\n", flush=True)
             print("+" * 50, flush=True)
 
-            print("valid_preds shape:", valid_preds.shape)
-            print("val_gold_labels shape:", valid_gold_labels.shape)
+            print("valid_preds shape:", valid_preds.shape, flush=True)
+            print("val_gold_labels shape:", valid_gold_labels.shape, flush=True)
 
             print(f"\nTraining Loss: {round(train_loss, 4)}", flush=True)
             print(f"Validation Loss: {round(valid_loss, 4)}", flush=True)
@@ -448,26 +452,35 @@ def train(
 
             print("Validation Scores")
             for key, value in scores.items():
-                print(f" {key} :  {value}")
+                print(f" {key} :  {value}", flush=True)
 
             if patience_counter > patience_early_stopping:
 
                 print(f"\nTrain Losses :", train_losses, flush=True)
                 print(f"Validation Losses: ", valid_losses, flush=True)
 
-                print("Early Stopping ---> Patience Reached!!!")
+                print("Early Stopping ---> Patience Reached!!!", flush=True)
                 break
 
     if test_dataloader is not None:
-        print(f"Testing the Model ....")
+        print(f"Testing the Model on Fold ....", flush=True)
 
         _, test_preds, test_gold_labels = evaluate(
             model=model, dataloader=test_dataloader
         )
 
-        print("************ Test Scores ************")
+        scores = compute_scores(test_gold_labels, test_preds)
+
+        print(f"Fold test_gold_labels.shape : {test_gold_labels.shape}", flush=True)
+        print(f"Fold test_preds.shape : {test_preds.shape}", flush=True)
+
+        assert (
+            test_gold_labels.shape == test_preds.shape
+        ), "shape of fold's labels not equal to fold's preds"
+
+        print("************ Test Scores ************", flush=True)
         for key, value in scores.items():
-            print(f" {key} :  {value}")
+            print(f" {key} :  {value}", flush=True)
 
         return test_preds, test_gold_labels
 
@@ -479,10 +492,10 @@ def train(
 
 def concept_split_training(train_file, test_file, load_pretrained):
 
-    print(f"Training the Model on Concept Split")
-    print(f"Train File : {train_file}")
-    print(f"Test File : {test_file}")
-    print(f"Load Pretrained :{load_pretrained}")
+    print(f"Training the Model on Concept Split", flush=True)
+    print(f"Train File : {train_file}", flush=True)
+    print(f"Test File : {test_file}", flush=True)
+    print(f"Load Pretrained :{load_pretrained}", flush=True)
 
     (
         model,
@@ -518,13 +531,13 @@ def do_cv(cv_type):
 
         if cv_type == "property_split":
 
-            num_fold = 5
+            num_fold = 2
             dir_name = "/scratch/c.scmag3/biencoder_concept_property/data/evaluation_data/mcrae_joint_encoder_prop_conjuction_fine_tune/property_split"
             train_file_base_name = "prop_conj_train_prop_split_con_prop.pkl"
             test_file_base_name = "prop_conj_test_prop_split_con_prop.pkl"
 
-            print(f"Training the Property Split")
-            print(f"Number of Folds: {num_fold}")
+            print(f"Training the Property Split", flush=True)
+            print(f"Number of Folds: {num_fold}", flush=True)
 
         elif cv_type == "concept_property_split":
 
@@ -533,8 +546,8 @@ def do_cv(cv_type):
             train_file_base_name = "train_con_prop_split_con_prop.pkl"
             test_file_base_name = "test_con_prop_split_con_prop.pkl"
 
-            print(f"Training the Concept Property Split")
-            print(f"Number of Folds: {num_fold}")
+            print(f"Training the Concept Property Split", flush=True)
+            print(f"Number of Folds: {num_fold}", flush=True)
 
         else:
             raise Exception(f"Specify a correct Split")
@@ -542,13 +555,18 @@ def do_cv(cv_type):
         all_folds_test_preds, all_folds_test_labels = [], []
         for fold in range(num_fold):
 
-            print(f"Training the model on Fold : {fold}/{num_fold}")
+            print(flush=True)
+            print("*" * 50)
+            print(f"Training the model on Fold : {fold}/{num_fold}", flush=True)
+            print("*" * 50, flush=True)
+            print(flush=True)
 
             train_file_name = os.path.join(dir_name, f"{fold}_{train_file_base_name}")
             test_file_name = os.path.join(dir_name, f"{fold}_{test_file_base_name}")
 
-            print(f"Train File Name : {train_file_name}")
-            print(f"Test File Name : {test_file_name}")
+            print(f"Train File Name : {train_file_name}", flush=True)
+            print(f"Test File Name : {test_file_name}", flush=True)
+            print(flush=True)
 
             # with open(train_file_name, "rb") as train_pkl, open(
             #     test_file_name, "rb"
@@ -585,27 +603,27 @@ def do_cv(cv_type):
 
             scores = compute_scores(fold_test_gold_labels, fold_test_preds)
 
-            print(f"Scores for Fold : {fold} ")
+            print(f"Scores for Fold : {fold} ", flush=True)
 
             for key, value in scores.items():
-                print(f"{key} : {value}")
+                print(f"{key} : {value}", flush=True)
 
         all_folds_test_preds = np.array(all_folds_test_preds).flatten()
         all_folds_test_labels = np.array(all_folds_test_labels).flatten()
 
-        print(f"Shape of All Folds Preds : {all_folds_test_preds.shape}")
-        print(f"Shape of All Folds Labels : {all_folds_test_labels.shape}")
+        print(f"Shape of All Folds Preds : {all_folds_test_preds.shape}", flush=True)
+        print(f"Shape of All Folds Labels : {all_folds_test_labels.shape}", flush=True)
 
         assert (
             all_folds_test_preds.shape == all_folds_test_labels.shape
         ), "shape of all folds labels not equal to all folds preds"
 
-        print(f"Calculating the scores for All Folds")
+        print(f"Calculating the scores for All Folds", flush=True)
 
         scores = compute_scores(all_folds_test_labels, all_folds_test_preds)
 
         for key, value in scores.items():
-            print(f"{key} : {value}")
+            print(f"{key} : {value}", flush=True)
 
 
 if __name__ == "__main__":
@@ -620,9 +638,9 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    print(f"Supplied Arguments")
-    print("args.pretrain :", args.pretrain)
-    print("args.finetune:", args.finetune)
+    print(f"Supplied Arguments", flush=True)
+    print("args.pretrain :", args.pretrain, flush=True)
+    print("args.finetune:", args.finetune, flush=True)
 
     if args.pretrain:
 
@@ -651,7 +669,7 @@ if __name__ == "__main__":
 
     elif args.finetune:
 
-        print(f"Finetuning the Pretrained Model")
+        print(f"Finetuning the Pretrained Model", flush=True)
 
         cv_type = args.cv_type
 
