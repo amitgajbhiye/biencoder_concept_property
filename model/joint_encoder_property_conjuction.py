@@ -458,24 +458,18 @@ def train(
                 print("Early Stopping ---> Patience Reached!!!")
                 break
 
-        elif test_dataloader is not None:
-            print(f"Testing the Model ....")
+    if test_dataloader is not None:
+        print(f"Testing the Model ....")
 
-            _, test_preds, test_gold_labels = evaluate(
-                model=model, dataloader=test_dataloader
-            )
+        _, test_preds, test_gold_labels = evaluate(
+            model=model, dataloader=test_dataloader
+        )
 
-            print("************ Test Scores ************")
-            for key, value in scores.items():
-                print(f" {key} :  {value}")
+        print("************ Test Scores ************")
+        for key, value in scores.items():
+            print(f" {key} :  {value}")
 
-            return test_preds, test_gold_labels
-        else:
-
-            print(f"Valid Dataloader :{val_dataloader}")
-            print(f"Test Dataloader :{test_dataloader}")
-
-            print(f"Valid and Test Dataloaders both cant be None")
+        return test_preds, test_gold_labels
 
 
 ################ Fine Tuning Code Starts Here ################
