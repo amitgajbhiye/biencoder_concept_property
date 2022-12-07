@@ -461,7 +461,9 @@ def train(
         elif test_dataloader is not None:
             print(f"Testing the Model ....")
 
-            _, test_preds, test_gold_labels = evaluate(model, val_dataloader)
+            _, test_preds, test_gold_labels = evaluate(
+                model=model, dataloader=test_dataloader
+            )
 
             print("************ Test Scores ************")
             for key, value in scores.items():
