@@ -47,14 +47,16 @@ hawk_bb_model = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_
 data_path = "/scratch/c.scmag3/biencoder_concept_property/data/train_data/joint_encoder_property_conjuction_data"
 
 
-train_file = os.path.join(
-    data_path, "5_neg_train_random_and_similar_conjuct_properties.tsv"
-)
+# train_file = os.path.join(
+#     data_path, "5_neg_train_random_and_similar_conjuct_properties.tsv"
+# )
 
-valid_file = os.path.join(
-    data_path, "5_neg_valid_random_and_similar_conjuct_properties.tsv"
-)
+# valid_file = os.path.join(
+#     data_path, "5_neg_valid_random_and_similar_conjuct_properties.tsv"
+# )
 
+train_file = None
+valid_file = None
 test_file = None
 
 # train_file = os.path.join(data_path, "dummy_prop_conj.tsv")
@@ -67,17 +69,18 @@ model_save_path = "/scratch/c.scmag3/biencoder_concept_property/trained_models/j
 model_name = "joint_encoder_property_conjuction_random_similar_props_gkbcnet_cnethasprop_step3_pretrained_model.pt"
 best_model_path = os.path.join(model_save_path, model_name)
 
-max_len = 128
+max_len = 200
 
 num_labels = 2
 batch_size = 64
-num_epoch = 100
+# num_epoch = 100
+num_epoch = 12
 lr = 2e-6
 
 
-pretrained_model_path = ""
-cv_type = "concept_split"
-num_fold = 5
+pretrained_model_path = "/scratch/c.scmag3/biencoder_concept_property/trained_models/joint_encoder_gkbcnet_cnethasprop/joint_encoder_property_conjuction_random_similar_props_gkbcnet_cnethasprop_step3_pretrained_model.pt"
+# cv_type = "concept_split"
+# num_fold = 5
 load_pretrained = True
 
 
@@ -193,7 +196,7 @@ class ModelPropConjuctionJoint(nn.Module):
 def load_pretrained_model(pretrained_model_path):
 
     model = ModelPropConjuctionJoint()
-    model.load_state_dict(torch.load(best_model_path))
+    model.load_state_dict(torch.load(pretrained_model_path))
 
     print(f"The pretrained Model is loaded from : {pretrained_model_path}")
 
@@ -431,14 +434,15 @@ def train(
                 break
 
         elif test_dataloader is not None:
+            print(f"Testing the Model ....")
 
             _, test_preds, test_gold_labels = evaluate(model, val_dataloader)
-
-            return test_preds, test_gold_labels
 
             print("************ Test Scores ************")
             for key, value in scores.items():
                 print(f" {key} :  {value}")
+
+            return test_preds, test_gold_labels
         else:
 
             print(f"Valid Dataloader :{val_dataloader}")
@@ -486,16 +490,17 @@ def concept_split_training(train_file, test_file, load_pretrained):
 def do_cv(cv_type):
 
     if cv_type == "concept_split":
-        concept_split_training(train_file, test_file, load_pretrained)
+        pass
+        # concept_split_training(train_file, test_file, load_pretrained)
 
     elif cv_type in ("property_split", "concept_property_split"):
 
         if cv_type == "property_split":
 
             num_fold = 5
-            dir_name = "data/evaluation_data/mcrae_prop_split_train_test_files"
-            train_file_base_name = "train_prop_split_con_prop.pkl"
-            test_file_base_name = "test_prop_split_con_prop.pkl"
+            dir_name = "/scratch/c.scmag3/biencoder_concept_property/data/evaluation_data/mcrae_joint_encoder_prop_conjuction_fine_tune/property_split"
+            train_file_base_name = "prop_conj_train_prop_split_con_prop.pkl"
+            test_file_base_name = "prop_conj_test_prop_split_con_prop.pkl"
 
             print(f"Training the Property Split")
             print(f"Number of Folds: {num_fold}")
@@ -511,7 +516,6 @@ def do_cv(cv_type):
             print(f"Number of Folds: {num_fold}")
 
         else:
-
             raise Exception(f"Specify a correct Split")
 
         all_folds_test_preds, all_folds_test_labels = [], []
@@ -525,12 +529,12 @@ def do_cv(cv_type):
             print(f"Train File Name : {train_file_name}")
             print(f"Test File Name : {test_file_name}")
 
-            with open(train_file_name, "rb") as train_pkl, open(
-                test_file_name, "rb"
-            ) as test_pkl:
+            # with open(train_file_name, "rb") as train_pkl, open(
+            #     test_file_name, "rb"
+            # ) as test_pkl:
 
-                train_df = pickle.load(train_pkl)
-                test_df = pickle.load(train_pkl)
+            #     train_df = pickle.load(train_pkl)
+            #     test_df = pickle.load(train_pkl)
 
             (
                 model,
@@ -540,9 +544,9 @@ def do_cv(cv_type):
                 val_dataloader,
                 test_dataloader,
             ) = prepare_data_and_models(
-                train_file=train_df,
+                train_file=train_file_name,
                 valid_file=None,
-                test_file=test_df,
+                test_file=test_file_name,
                 load_pretrained=load_pretrained,
             )
 
@@ -560,7 +564,7 @@ def do_cv(cv_type):
 
             scores = compute_scores(fold_test_gold_labels, fold_test_preds)
 
-            print(f"Scores for Fold {fold} ")
+            print(f"Scores for Fold : {fold} ")
 
             for key, value in scores.items():
                 print(f"{key} : {value}")
@@ -625,5 +629,10 @@ if __name__ == "__main__":
         )
 
     elif args.finetune:
-        pass
+
+        print(f"Finetuning the Pretrained Model")
+
+        cv_type = args.cv_type
+
+        do_cv(cv_type=cv_type)
 
