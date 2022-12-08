@@ -476,7 +476,7 @@ def create_property_conjuction_data_for_fine_tuning(
             concept_data_props = [
                 prop
                 for prop in concept_data_props
-                if prop.lower.strip() != predict_prop.lower.strip()
+                if prop.lower().strip() != predict_prop.lower().strip()
             ]
 
             conjuct_properties = random.sample(concept_data_props, num_prop_conjuct)
