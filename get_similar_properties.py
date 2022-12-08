@@ -462,6 +462,11 @@ def create_property_conjuction_data_for_fine_tuning(
         if label == 1:
 
             conjuct_properties = predict_prop_similar_vocab_props[predict_prop]
+            conjuct_properties = [
+                prop
+                for prop in conjuct_properties
+                if prop.lower().strip() != predict_prop.lower().strip()
+            ]
             conjuct_properties = conjuct_properties[0:num_prop_conjuct]
 
             conjuct_properties = ", ".join(conjuct_properties)
