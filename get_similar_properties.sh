@@ -1,9 +1,9 @@
 #!/bin/bash --login
 
-#SBATCH --job-name=ConEmbeds
+#SBATCH --job-name=PropVocabEmbeds
 
-#SBATCH --output=logs/get_con_pro_embeddings/out_train_val_concepts_embed_from_gkb_cnet_cnet_has_prop_pretrained_bienc_bb_model.txt
-#SBATCH --error=logs/get_con_pro_embeddings/err_train_val_concepts_embed_from_gkb_cnet_cnet_has_prop_pretrained_bienc_bb_model.txt
+#SBATCH --output=logs/get_con_pro_embeddings/out_get_embeds_prop_vocab_from_gkb_cnet_cnet_has_prop_pretrained_bienc_bb_model.txt
+#SBATCH --error=logs/get_con_pro_embeddings/err_get_embeds_prop_vocab_from_gkb_cnet_cnet_has_prop_pretrained_bienc_bb_model.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
@@ -24,6 +24,6 @@ module load anaconda/2020.02
 
 conda activate venv
 
-python3 get_similar_properties.py --config_file configs/generate_embeddings/get_embeds_train_val_unique_cons_from_gkb_cnet_cnet_has_prop_pretrained_bienc_bb_model_config.json
+python3 get_similar_properties.py --config_file configs/generate_embeddings/get_embeds_prop_vocab_from_gkb_cnet_cnet_has_prop_pretrained_bienc_bb_model_config.json
 
 echo 'finished!'
