@@ -3,8 +3,6 @@ import numpy as np
 import random
 import os
 
-from sklearn.model_selection import train_test_split
-
 
 def negative_sampling(df, data_type=None, num_negative=5):
 

@@ -459,6 +459,8 @@ def create_property_conjuction_data_for_fine_tuning(
 
         num_prop_conjuct = random.randint(3, 10)
 
+        # Check logic here you are not mixing the concept similar properties and predict similar properties..
+
         if label == 1:
 
             conjuct_properties = predict_prop_similar_vocab_props[predict_prop]
