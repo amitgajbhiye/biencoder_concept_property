@@ -1,22 +1,19 @@
 #!/bin/bash --login
 
-#SBATCH --job-name=ConPropMcRaeEmbedsings
+#SBATCH --job-name=ConEmbeds
 
-#SBATCH --output=logs/get_con_pro_embeddings/out_mcrae_fine_tune_property_split_property_comjuction_folds_data.txt
-#SBATCH --error=logs/get_con_pro_embeddings/err_mcrae_fine_tune_property_split_property_comjuction_folds_data.txt
+#SBATCH --output=logs/get_con_pro_embeddings/out_train_val_concepts_embed_from_gkb_cnet_cnet_has_prop_pretrained_bienc_bb_model.txt
+#SBATCH --error=logs/get_con_pro_embeddings/err_train_val_concepts_embed_from_gkb_cnet_cnet_has_prop_pretrained_bienc_bb_model.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
 #SBATCH -A scw1858
 
 #SBATCH -p highmem
-#SBATCH --mem=10g
-
-##SBATCH -p gpu_v100,gpu
-##SBATCH --gres=gpu:1
+#SBATCH --mem=5g
 
 
-#SBATCH -t 0-03:00:00
+#SBATCH -t 0-02:00:00
 
 echo 'This script is running on:'
 hostname
@@ -27,6 +24,6 @@ module load anaconda/2020.02
 
 conda activate venv
 
-python3 get_similar_properties.py --config_file configs/generate_embeddings/get_predict_prop_similar_vocab_properties_from_gkb_cnet_cnet_has_prop_pretrained_bb_model_config.json
+python3 get_similar_properties.py --config_file configs/generate_embeddings/get_embeds_train_val_unique_cons_from_gkb_cnet_cnet_has_prop_pretrained_bienc_bb_model_config.json
 
 echo 'finished!'

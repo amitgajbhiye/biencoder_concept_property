@@ -535,14 +535,14 @@ if __name__ == "__main__":
         f"Do I need concept similar top properties aslso, Step 1 of Model : {get_similar_properties} "
     )
 
-    # assert input_data_type in (
-    #     "concept",
-    #     "property",
-    #     "concept_and_property",
-    # ), "Please specify 'input_data_type' \
-    #     from ('concept', 'property', 'concept_and_property')"
-
     if get_con_prop_embeds:
+
+        assert input_data_type in (
+            "concept",
+            "property",
+            "concept_and_property",
+        ), "Please specify 'input_data_type' \
+            from ('concept', 'property', 'concept_and_property')"
 
         if input_data_type == "concept":
             concept_pkl_file = generate_embeddings(config=config)

@@ -49,6 +49,7 @@ def random_conjuct_properties(input_df, num_random_prop_to_conjuct=None):
             continue
         else:
             for predict_prop in properties_for_concept:
+
                 rest_of_prop = [
                     prop for prop in properties_for_concept if prop != predict_prop
                 ]
@@ -62,7 +63,7 @@ def random_conjuct_properties(input_df, num_random_prop_to_conjuct=None):
 
                     num_prop = random.randint(3, num_rest_of_prop)
                     random_props = random.sample(rest_of_prop, num_prop)
-                    conjuction_properties = ",".join(random_props)
+                    conjuction_properties = ", ".join(random_props)
 
                     all_random_data.append(
                         [concept, conjuction_properties, predict_prop]
@@ -255,6 +256,9 @@ def get_predict_property_similar_properties(
     )
 
     print(f"Finished getting similar properties")
+
+
+############## Work TO DO  ##############
 
 
 def random_and_similar_conjuct_properties(
