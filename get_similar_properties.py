@@ -274,7 +274,7 @@ def get_concept_similar_properties(
     config, concept_embedding_pkl_file, property_embedding_pkl_file
 ):
 
-    log.info(f"Getting Concept Similar Properties")
+    log.info(f"Getting Concept Similar Properties ....")
 
     inference_params = config.get("inference_params")
     input_data_type = inference_params["input_data_type"]
@@ -284,14 +284,12 @@ def get_concept_similar_properties(
 
     log.info(f"Input Data Type : {input_data_type}")
 
-    if input_data_type == "concept_and_property":
+    with open(concept_embedding_pkl_file, "rb") as con_pkl_file, open(
+        property_embedding_pkl_file, "rb"
+    ) as prop_pkl_file:
 
-        with open(concept_embedding_pkl_file, "rb") as con_pkl_file, open(
-            property_embedding_pkl_file, "rb"
-        ) as prop_pkl_file:
-
-            con_dict = pickle.load(con_pkl_file)
-            prop_dict = pickle.load(prop_pkl_file)
+        con_dict = pickle.load(con_pkl_file)
+        prop_dict = pickle.load(prop_pkl_file)
 
     concepts = list(con_dict.keys())
     con_embeds = list(con_dict.values())
@@ -525,9 +523,10 @@ if __name__ == "__main__":
 
     inference_params = config.get("inference_params")
     input_data_type = inference_params["input_data_type"]
+
     get_con_prop_embeds = inference_params["get_con_prop_embeds"]
-    get_similar_properties = inference_params["get_similar_properties"]
-    get_predict_prop_similar_vocab_properties = inference_params[
+    get_con_similar_properties = inference_params["get_concept_similar_properties"]
+    get_predict_prop_sim_vocab_props = inference_params[
         "get_predict_prop_similar_vocab_properties"
     ]
 
@@ -535,7 +534,7 @@ if __name__ == "__main__":
         f"Get Concept, Property and Concept and Property Embedings : {get_con_prop_embeds}"
     )
     log.info(
-        f"Do I need concept similar top properties aslso, Step 1 of Model : {get_similar_properties} "
+        f"Do I need concept similar top properties aslso, Step 1 of Model : {get_concept_similar_properties} "
     )
 
     if get_con_prop_embeds:
@@ -556,11 +555,18 @@ if __name__ == "__main__":
         elif input_data_type == "concept_and_property":
             concept_pkl_file, property_pkl_file = generate_embeddings(config=config)
 
-    if get_similar_properties:
-        if input_data_type == "concept_and_property":
-            get_concept_similar_properties(config, concept_pkl_file, property_pkl_file)
+    if get_con_similar_properties:
 
-    if get_predict_prop_similar_vocab_properties:
+        concept_embed_pkl = inference_params["concept_embed_pkl"]
+        property_embed_pkl = inference_params["property_embed_pkl"]
+
+        get_concept_similar_properties(
+            config,
+            concept_embedding_pkl_file=concept_embed_pkl,
+            property_embedding_pkl_file=property_embed_pkl,
+        )
+
+    if get_predict_prop_sim_vocab_props:
 
         predict_property_embed_pkl_file = inference_params.get(
             "predict_property_embed_pkl_file"
