@@ -1,9 +1,5 @@
-import torch
-import pandas as pd
-import numpy as np
 import os
-
-from collections import Counter
+import pandas as pd
 
 
 def negative_sampling(df, data_type, num_negative=5):
@@ -164,8 +160,8 @@ def negative_sampling(df, data_type, num_negative=5):
 local_train_file = "data/train_data/joint_encoder_concept_property_data/original_train_gkbcnet_plus_cnethasproperty.tsv"
 local_val_file = "data/train_data/joint_encoder_concept_property_data/original_valid_gkbcnet_plus_cnethasproperty.tsv"
 
-hawk_train_file = "data/train_data/joint_encoder_concept_property_data/original_train_gkbcnet_plus_cnethasproperty.tsv"
-hawk_val_file = "data/train_data/joint_encoder_concept_property_data/original_valid_gkbcnet_plus_cnethasproperty.tsv"
+hawk_train_file = "/scratch/c.scmag3/biencoder_concept_property/data/train_data/joint_encoder_concept_property_data/original_train_gkbcnet_plus_cnethasproperty.tsv"
+hawk_val_file = "/scratch/c.scmag3/biencoder_concept_property/data/train_data/joint_encoder_concept_property_data/original_valid_gkbcnet_plus_cnethasproperty.tsv"
 
 train_df = pd.read_csv(
     hawk_train_file, header=None, names=["concept", "property"], sep="\t"
@@ -183,9 +179,7 @@ for num_neg in num_neg_pair:
     print(f"Generating Negative Train Data for num negative : {num_neg}")
 
     print("\n Training Data")
-    base_path = (
-        "/scratch/c.scmag3/biencoder_concept_property/data/train_data/joint_encoder/"
-    )
+    base_path = "/scratch/c.scmag3/biencoder_concept_property/data/train_data/joint_encoder_concept_property_data"
 
     train_file_name = os.path.join(
         base_path, f"{num_neg}_neg_train_gkbcnet_plus_cnethasproperty.tsv"
