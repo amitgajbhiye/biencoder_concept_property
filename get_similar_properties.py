@@ -527,6 +527,9 @@ if __name__ == "__main__":
     input_data_type = inference_params["input_data_type"]
     get_con_prop_embeds = inference_params["get_con_prop_embeds"]
     get_similar_properties = inference_params["get_similar_properties"]
+    get_predict_prop_similar_vocab_properties = inference_params[
+        "get_predict_prop_similar_vocab_properties"
+    ]
 
     log.info(
         f"Get Concept, Property and Concept and Property Embedings : {get_con_prop_embeds}"

@@ -26,12 +26,12 @@
     },
     "inference_params": {
         "pretrained_model_path": "trained_models/gkb_source_analysis/bb_gkb_cnet_plus_cnet_has_property.pt",
+        "get_con_prop_embeds": true,
         "input_data_type": "concept",
         "concept_file": "data/train_data/joint_encoder_concept_property_data/unique_train_valid_concepts_gkbcnet_plus_cnethasproperty.tsv",
         "property_file": null,
         "concept_property_file": null,
         "save_dir": "trained_models/con_pro_embeddings",
-        "get_con_prop_embeds": false,
         "get_similar_properties": false,
         "get_predict_prop_similar_vocab_properties": false,
         "predict_property_embed_pkl_file": null,
