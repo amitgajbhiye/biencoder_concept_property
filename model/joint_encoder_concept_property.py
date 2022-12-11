@@ -326,7 +326,7 @@ def train(model, train_dataloader, val_dataloader, scheduler, optimizer):
 
             torch.save(model.state_dict(), best_model_path)
 
-            print(f"The best model is saved at : {best_model_path}")
+            print(f"The best model is saved at {epoch}: {best_model_path}")
 
         train_losses.append(train_loss)
         valid_losses.append(valid_loss)
@@ -363,8 +363,8 @@ def train(model, train_dataloader, val_dataloader, scheduler, optimizer):
             confusion_matrix(valid_gold_labels, valid_preds, labels=[0, 1]), flush=True
         )
 
-        if patience_counter > patience_early_stopping:
-            print("Early Stopping ---> Patience Reached!!!")
+        if patience_counter >= patience_early_stopping:
+            print(f"Early Stopping ---> Patience, {patience_counter} Reached!!!")
             break
 
     print(f"\nTrain Losses :", train_losses, flush=True)
@@ -380,9 +380,11 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
+    print()
     print(f"Supplied Arguments")
     print("args.pretrain :", args.pretrain)
     print("args.finetune:", args.finetune)
+    print()
 
     if args.pretrain:
 
