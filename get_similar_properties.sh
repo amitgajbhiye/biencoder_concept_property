@@ -23,6 +23,6 @@ module load anaconda/2020.02
 
 conda activate venv
 
-python3 get_similar_properties.py --config_file configs/generate_embeddings/get_embeds_con_similar_prop_vocab_from_gkb_cnet_cnet_has_prop_pretrained_bienc_bb_model_config.json
+python3 get_similar_properties.py --config_file configs/generate_embeddings/get_embeds_train_val_unique_prop_from_gkb_cnet_cnet_has_prop_pretrained_bienc_bb_model_config.json
 
 echo 'finished!'
