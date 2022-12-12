@@ -14,8 +14,9 @@ from model.joint_encoder_concept_property import (
 
 device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
 
-test_file = "data/generate_embeddding_data/mcrae_related_data/with_false_label_bert_base_gkb_cnet_trained_model_mcrae_concept_similar_properties.tsv"
 # test_file = "data/generate_embeddding_data/mcrae_related_data/dummy.txt"
+
+test_file = "data/train_data/joint_encoder_concept_property_data/with_false_labels_gkb_cnet_cnet_has_prop_pretrained_bienc_bb_modelconcept_similar_50_properties.tsv"
 batch_size = 512
 
 model_save_path = "trained_models/joint_encoder_gkbcnet_cnethasprop"
@@ -111,32 +112,53 @@ new_test_dataframe["logit"] = positive_class_logits
 
 unique_concepts = new_test_dataframe["concept"].unique()
 
-top_k_prop = 20
+######### Taking Top K records  #########
 
-all_data_list = []
-for concept in unique_concepts:
+# top_k_prop = 20
+# all_data_list = []
+# for concept in unique_concepts:
 
-    con_df = new_test_dataframe[new_test_dataframe["concept"] == concept].sort_values(
-        by="logit", ascending=False
-    )
-    con_df = con_df[0:top_k_prop]
-    all_data_list.extend(con_df.values.tolist())
+#     con_df = new_test_dataframe[new_test_dataframe["concept"] == concept].sort_values(
+#         by="logit", ascending=False
+#     )
+#     con_df = con_df[0:top_k_prop]
+#     all_data_list.extend(con_df.values.tolist())
 
-top_k_df_with_logit = pd.DataFrame.from_records(
-    all_data_list, columns=["concept", "property", "logit"]
-)
-
-logit_filename = f"data/generate_embeddding_data/mcrae_related_data/with_logits_bert_base_gkb_cnet_trained_model_mcrae_concept_top_{top_k_prop}similar_properties.tsv"
-top_k_df_with_logit.to_csv(logit_filename, sep="\t", index=None, header=None)
-print(top_k_df_with_logit.head(n=20), flush=True)
+# top_k_df_with_logit = pd.DataFrame.from_records(
+#     all_data_list, columns=["concept", "property", "logit"]
+# )
 
 
-top_k_df_with_logit.drop(labels="logit", axis=1, inplace=True)
-logit_filename = f"data/generate_embeddding_data/mcrae_related_data/bert_base_gkb_cnet_trained_model_mcrae_concept_top_{top_k_prop}similar_properties.tsv"
-top_k_df_with_logit.to_csv(logit_filename, sep="\t", index=None, header=None)
+# logit_filename = f"data/generate_embeddding_data/mcrae_related_data/with_logits_bert_base_gkb_cnet_trained_model_mcrae_concept_top_{top_k_prop}similar_properties.tsv"
+# top_k_df_with_logit.to_csv(logit_filename, sep="\t", index=None, header=None)
+# print(top_k_df_with_logit.head(n=20), flush=True)
+
+
+# top_k_df_with_logit.drop(labels="logit", axis=1, inplace=True)
+# logit_filename = f"data/generate_embeddding_data/mcrae_related_data/bert_base_gkb_cnet_trained_model_mcrae_concept_top_{top_k_prop}similar_properties.tsv"
+# top_k_df_with_logit.to_csv(logit_filename, sep="\t", index=None, header=None)
+
+# print()
+# print(top_k_df_with_logit.head(n=20), flush=True)
+
+
+######### Taking records with positive class threshold of 0.50 #########
+
+df_with_threshold_50 = new_test_dataframe[new_test_dataframe["logit"] > 0.50]
+
+logit_filename = f"data/train_data/joint_encoder_concept_property_data/with_logits_threshold_50_gkb_cnet_cnet_has_prop_pretrained_bienc_bb_model_concept_similar_properties.tsv"
+
+df_with_threshold_50.to_csv(logit_filename, sep="\t", index=None, header=None)
+print(df_with_threshold_50.head(n=20), flush=True)
+
+
+df_with_threshold_50.drop(labels="logit", axis=1, inplace=True)
+logit_filename = f"data/train_data/joint_encoder_concept_property_data/threshold_50_gkb_cnet_cnet_has_prop_pretrained_bienc_bb_model_concept_similar_properties.tsv"
+df_with_threshold_50.to_csv(logit_filename, sep="\t", index=None, header=None)
 
 print()
-print(top_k_df_with_logit.head(n=20), flush=True)
+print(df_with_threshold_50.head(n=20), flush=True)
+
 
 # predictions = np.array(predictions).flatten()
 

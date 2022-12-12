@@ -2,8 +2,8 @@
 
 #SBATCH --job-name=getLogits
 
-#SBATCH --output=logs/joint_enc_logs/out_pretrained_joint_encoder_con_similar_prop_filtering.txt
-#SBATCH --error=logs/joint_enc_logs/err_pretrained_joint_encoder_con_similar_prop_filtering.txt
+#SBATCH --output=logs/joint_enc_logs/out_pretrained_joint_encoder_con_similar_prop_filtering_threshold_50.txt
+#SBATCH --error=logs/joint_enc_logs/err_pretrained_joint_encoder_con_similar_prop_filtering_threshold_50.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
@@ -13,7 +13,7 @@
 #SBATCH --mem=10gs
 #SBATCH --gres=gpu:1
 
-#SBATCH -t 0-01:00:00
+#SBATCH -t 0-01:30:00
 
 echo 'This script is running on:'
 hostname
