@@ -1,9 +1,9 @@
 #!/bin/bash --login
 
-#SBATCH --job-name=cNETPre
+#SBATCH --job-name=JEFilProp
 
-#SBATCH --output=logs/get_con_pro_embeddings/out_get_embeds_train_val_unique_prop_from_gkb_cnet_cnet_has_prop_pretrained_bienc_bb_model.txt
-#SBATCH --error=logs/get_con_pro_embeddings/err_get_embeds_train_val_unique_prop_from_gkb_cnet_cnet_has_prop_pretrained_bienc_bb_model.txt
+#SBATCH --output=logs/get_con_pro_embeddings/out_get_embeds_je_filtered_unique_prop_from_gkb_cnet_cnet_has_prop_pretrained_bienc_bb_model.txt
+#SBATCH --error=logs/get_con_pro_embeddings/err_get_embeds_je_filtered_unique_prop_from_gkb_cnet_cnet_has_prop_pretrained_bienc_bb_model.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
