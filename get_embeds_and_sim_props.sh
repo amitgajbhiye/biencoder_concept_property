@@ -1,9 +1,9 @@
 #!/bin/bash --login
 
-#SBATCH --job-name=step3
+#SBATCH --job-name=step5
 
-#SBATCH --output=logs/get_con_pro_embeddings/out_3_get_embeds_con_similar_prop_vocab.txt
-#SBATCH --error=logs/get_con_pro_embeddings/err_3_get_embeds_con_similar_prop_vocab.txt
+#SBATCH --output=logs/get_con_pro_embeddings/out_5_get_embeds_predict_property_cnet_premium.txt
+#SBATCH --error=logs/get_con_pro_embeddings/err_5_get_embeds_predict_property_cnet_premium.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
@@ -24,6 +24,6 @@ module load anaconda/2020.02
 
 conda activate venv
 
-python3 get_embeds_and_sim_props.py --config_file configs/generate_embeddings/3_get_embeds_con_similar_prop_vocab.json
+python3 get_embeds_and_sim_props.py --config_file configs/generate_embeddings/5_get_embeds_predict_property_cnet_premium.json
 
 echo 'finished!'
