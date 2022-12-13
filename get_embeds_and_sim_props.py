@@ -534,7 +534,7 @@ if __name__ == "__main__":
         f"Get Concept, Property and Concept and Property Embedings : {get_con_prop_embeds}"
     )
     log.info(
-        f"Do I need concept similar top properties aslso, Step 1 of Model : {get_con_similar_properties} "
+        f"Do I need concept similar top properties also, Step 1 of Model : {get_con_similar_properties} "
     )
 
     if get_con_prop_embeds:
