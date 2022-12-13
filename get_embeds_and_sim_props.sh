@@ -1,6 +1,6 @@
 #!/bin/bash --login
 
-#SBATCH --job-name=step2
+#SBATCH --job-name=step3
 
 #SBATCH --output=logs/get_con_pro_embeddings/out_3_con_similar_50_prop_vocab.txt
 #SBATCH --error=logs/get_con_pro_embeddings/err_3_con_similar_50_prop_vocab.txt
