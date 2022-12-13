@@ -8,6 +8,7 @@ import numpy as np
 
 import torch
 
+from nltk.stem import WordNetLemmatizer
 from utils.functions import (
     create_model,
     read_config,
@@ -270,6 +271,16 @@ def transform(vecs):
     return new_vecs
 
 
+def match_multi_words(word1, word2):
+
+    lemmatizer = WordNetLemmatizer()
+
+    word1 = " ".join([lemmatizer.lemmatize(word) for word in word1.split()])
+    word2 = " ".join([lemmatizer.lemmatize(word) for word in word2.split()])
+
+    return word1 == word2
+
+
 def get_concept_similar_properties(
     config, concept_embedding_pkl_file, property_embedding_pkl_file
 ):
@@ -346,6 +357,12 @@ def get_concept_similar_properties(
 
             concept = concepts[con_idx]
             similar_properties = [properties[idx] for idx in prop_idx]
+
+            similar_properties = [
+                prop
+                for prop in similar_properties
+                if not match_multi_words(concept, prop)
+            ]
 
             con_similar_prop_dict[concept] = similar_properties
 
