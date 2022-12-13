@@ -336,8 +336,8 @@ def get_concept_similar_properties(
     con_similar_prop_dict = {}
     file_name = (
         os.path.join(save_dir, dataset_params["dataset_name"])
-        + f"concept_similar_{num_nearest_neighbours}_properties"
-        + ".tsv"
+        + f"concept_similar_{num_nearest_neighbours}_vocab_properties"
+        + ".txt"
     )
 
     with open(file_name, "w") as file:

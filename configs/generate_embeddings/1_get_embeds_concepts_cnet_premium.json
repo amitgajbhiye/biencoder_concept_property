@@ -1,5 +1,5 @@
 {
-    "experiment_name": "get_embeds_concepts_cnet_premium",
+    "experiment_name": "1_get_embeds_concepts_cnet_premium",
     "log_dirctory": "get_con_pro_embeddings",
     "dataset_params": {
         "dataset_name": "concepts_embed_cnet_premium",
