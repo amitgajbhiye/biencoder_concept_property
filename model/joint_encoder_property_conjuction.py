@@ -72,17 +72,12 @@ hawk_bb_model = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_
 data_path = "/scratch/c.scmag3/biencoder_concept_property/data/train_data/joint_encoder_property_conjuction_data"
 
 
-# train_file = os.path.join(
-#     data_path, "5_neg_train_random_and_similar_conjuct_properties.tsv"
-# )
+train_file = os.path.join(data_path, "5_neg_prop_conj_train_cnet_premium.tsv")
+valid_file = os.path.join(data_path, "5_neg_prop_conj_valid_cnet_premium.tsv")
 
-# valid_file = os.path.join(
-#     data_path, "5_neg_valid_random_and_similar_conjuct_properties.tsv"
-# )
-
-train_file = None
-valid_file = None
-test_file = None
+# train_file = None
+# valid_file = None
+# test_file = None
 
 # train_file = os.path.join(data_path, "dummy_prop_conj.tsv")
 # valid_file = os.path.join(data_path, "dummy_prop_conj.tsv")
@@ -91,20 +86,21 @@ print(f"Train File : {train_file}", flush=True)
 print(f"Valid File : {valid_file}", flush=True)
 
 model_save_path = "/scratch/c.scmag3/biencoder_concept_property/trained_models/joint_encoder_gkbcnet_cnethasprop"
-model_name = "joint_encoder_property_conjuction_random_similar_props_gkbcnet_cnethasprop_step3_pretrained_model.pt"
+model_name = "joint_encoder_property_conjuction_cnet_premium_pretrained_step3_model.pt"
 best_model_path = os.path.join(model_save_path, model_name)
 
 max_len = 200
 
 num_labels = 2
 batch_size = 64
-# num_epoch = 100
-num_epoch = 12
+num_epoch = 100
+# num_epoch = 12
 lr = 2e-6
 
 
-load_pretrained = True
-pretrained_model_path = "/scratch/c.scmag3/biencoder_concept_property/trained_models/joint_encoder_gkbcnet_cnethasprop/joint_encoder_property_conjuction_random_similar_props_gkbcnet_cnethasprop_step3_pretrained_model.pt"
+load_pretrained = False
+pretrained_model_path = None
+
 # cv_type = "concept_split"
 # num_fold = 5
 
@@ -232,7 +228,9 @@ def load_pretrained_model(pretrained_model_path):
     return model
 
 
-def prepare_data_and_models(train_file, valid_file, test_file, load_pretrained):
+def prepare_data_and_models(
+    train_file, valid_file=None, test_file=None, load_pretrained=False
+):
 
     train_data = DatasetPropConjuction(train_file)
     train_sampler = RandomSampler(train_data)
@@ -658,7 +656,7 @@ if __name__ == "__main__":
         ) = prepare_data_and_models(
             train_file=train_file,
             valid_file=valid_file,
-            test_file=test_file,
+            test_file=None,
             load_pretrained=load_pretrained,
         )
 

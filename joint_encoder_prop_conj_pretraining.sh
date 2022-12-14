@@ -2,8 +2,8 @@
 
 #SBATCH --job-name=JEPropConjPreTrain
 
-#SBATCH --output=logs/joint_enc_logs/out_joint_encoder_prop_conj_pretraining_gkbcnet_cnethasprop_data.txt
-#SBATCH --error=logs/joint_enc_logs/err_joint_encoder_prop_conj_pretraining_gkbcnet_cnethasprop_data.txt
+#SBATCH --output=logs/je_logs/out_8_je_prop_conj_pretraining_cnet_premium_data.txt
+#SBATCH --error=logs/je_logs/err_8_je_prop_conj_pretraining_cnet_premium_data.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
