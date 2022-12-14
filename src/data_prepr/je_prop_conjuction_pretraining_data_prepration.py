@@ -113,7 +113,11 @@ def new_random_and_similar_conjuct_properties(input_file, save_file):
             ).reshape(1, -1)
             transformed_embed_similar_prop = np.array(transform(embed_similar_prop))
 
-            num_nearest_neighbours = 10
+            if len(similar_props) >= 5:
+                num_nearest_neighbours = 5
+            else:
+                num_nearest_neighbours = len(similar_props)
+
             predict_prop_similar_props = NearestNeighbors(
                 n_neighbors=num_nearest_neighbours, algorithm="brute"
             ).fit(transformed_embed_similar_prop)
@@ -126,9 +130,12 @@ def new_random_and_similar_conjuct_properties(input_file, save_file):
             similar_prop_indices = np.squeeze(similar_prop_indices)
             similar_properties = [similar_props[idx] for idx in similar_prop_indices]
 
-            conjuct_similar_props = similar_properties[:5]
+            # if len(similar_properties) >= 5:
+            #     conjuct_similar_props = similar_properties[:5]
+            # else:
+            #     conjuct_similar_props = similar_properties
 
-            conjuct_similar_props = ", ".join(conjuct_similar_props)
+            conjuct_similar_props = ", ".join(similar_properties)
 
             print(f"Concept : {concept}", flush=True)
             print(f"Predict Property : {predict_prop}", flush=True)
