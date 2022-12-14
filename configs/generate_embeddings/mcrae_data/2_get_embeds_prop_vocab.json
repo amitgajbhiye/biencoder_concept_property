@@ -1,4 +1,5 @@
 {
+    "No Need to get property vocab embedding, we already have voab prop embeddings from pretraining": "No Need to do",
     "experiment_name": "2_get_embeds_prop_vocab_500k_mscg_embeds",
     "log_dirctory": "get_con_pro_embeddings",
     "dataset_params": {

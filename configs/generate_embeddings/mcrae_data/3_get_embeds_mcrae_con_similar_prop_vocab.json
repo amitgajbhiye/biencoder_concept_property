@@ -1,8 +1,8 @@
 {
-    "experiment_name": "3_con_similar_50_prop_vocab",
-    "log_dirctory": "get_con_pro_embeddings",
+    "experiment_name": "3_get_embeds_mcrae_con_similar_prop_vocab",
+    "log_dirctory": "get_con_pro_embeddings/mcrae_logs",
     "dataset_params": {
-        "dataset_name": "con_similar_50_prop_vocab",
+        "dataset_name": "mcrae_con_similar_50_prop_vocab",
         "train_file_path": null,
         "val_file_path": null,
         "test_file_path": null,
