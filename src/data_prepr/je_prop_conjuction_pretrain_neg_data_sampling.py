@@ -96,15 +96,15 @@ def negative_sampling(df, data_type=None, num_negative=5):
 
     _ = [x.insert(len(x), int(0)) for x in all_negative_data]
 
-    print("all_negative_data")
-    print(all_negative_data)
+    # print("all_negative_data")
+    # print(all_negative_data)
 
     all_neg_data_df = pd.DataFrame.from_records(
         all_negative_data, columns=["concept", "conjuct_prop", "property", "label"]
     )
 
     neg_data_duplicate_records = all_neg_data_df[
-        all_neg_data_df.duplicated(["concept", "property"])
+        all_neg_data_df.duplicated(["concept", "conjuct_prop", "property"])
     ]
 
     print()
@@ -117,7 +117,10 @@ def negative_sampling(df, data_type=None, num_negative=5):
 
     print(f"Checking overlap between positive and negative data", flush=True)
     pos_neg_overlap_df = df.merge(
-        all_neg_data_df, how="inner", on=["concept", "property"], indicator=False
+        all_neg_data_df,
+        how="inner",
+        on=["concept", "conjuct_prop", "property"],
+        indicator=False,
     )
     print(f"Positive and Negative Overlapped Dataframe", flush=True)
     print(pos_neg_overlap_df, flush=True)
@@ -128,7 +131,9 @@ def negative_sampling(df, data_type=None, num_negative=5):
     print("DF after adding negative data", flush=True)
     print(pos_neg_df.shape, flush=True)
 
-    duplicate_records = pos_neg_df[pos_neg_df.duplicated(["concept", "property"])]
+    duplicate_records = pos_neg_df[
+        pos_neg_df.duplicated(["concept", "conjuct_prop", "property"])
+    ]
 
     print(f"Duplicate Records : {duplicate_records.shape}", flush=True)
     print(
@@ -138,13 +143,16 @@ def negative_sampling(df, data_type=None, num_negative=5):
     print()
 
     pos_neg_df = pos_neg_df[
-        ~pos_neg_df.duplicated(subset=["concept", "property"], keep="first")
+        ~pos_neg_df.duplicated(
+            subset=["concept", "conjuct_prop", "property"], keep="first"
+        )
     ]
 
     pos_neg_df.drop_duplicates(inplace=True)
     pos_neg_df.dropna(how="any", inplace=True)
 
     pos_neg_df.dropna(axis=0, subset=["concept"], inplace=True)
+    pos_neg_df.dropna(axis=0, subset=["conjuct_prop"], inplace=True)
     pos_neg_df.dropna(axis=0, subset=["property"], inplace=True)
     pos_neg_df.dropna(axis=0, subset=["label"], inplace=True)
 
@@ -157,72 +165,44 @@ def negative_sampling(df, data_type=None, num_negative=5):
     if data_type == "train":
 
         file_name = os.path.join(
-            save_path,
-            f"{num_negative}_neg_train_random_and_similar_conjuct_properties.tsv",
+            save_path, f"{num_negative}_neg_prop_conj_train_cnet_premium.tsv",
         )
         pos_neg_df.to_csv(file_name, sep="\t", index=None, header=None)
 
     elif data_type == "valid":
 
         file_name = os.path.join(
-            save_path,
-            f"{num_negative}_neg_valid_random_and_similar_conjuct_properties.tsv",
+            save_path, f"{num_negative}_neg_prop_conj_valid_cnet_premium.tsv",
         )
         pos_neg_df.to_csv(file_name, sep="\t", index=None, header=None)
 
     return pos_neg_df
 
 
-def comma_and_space(text):
-
-    text = text.strip().split(",")
-    text = ", ".join(text)
-
-    return text
-
-
 local_file_name = "siamese_concept_property/data/train_data/joint_encoder_property_conjuction_data/random_and_similar_conjuct_properties.tsv"
-hawk_file_name = "/scratch/c.scmag3/biencoder_concept_property/data/train_data/joint_encoder_property_conjuction_data/random_and_similar_conjuct_properties.tsv"
-
-
-df_rand_sim = pd.read_csv(
-    hawk_file_name, sep="\t", names=["concept", "conjuct_prop", "property"]
-)
-
-df_rand_sim["conjuct_prop"] = df_rand_sim["conjuct_prop"].apply(comma_and_space)
-
-print(df_rand_sim)
-
-unique_concepts = df_rand_sim["concept"].unique()
-
-print(f"Unique Concepts : {len(unique_concepts)}", flush=True)
-
-# valid_concepts = np.random.choice(a=unique_concepts, size = int(0.1 * len(unique_concepts)), replace=False)
-
-valid_concepts = np.random.choice(a=unique_concepts, size=1000, replace=False)
-
-print(f"Number of test concepts : {len(valid_concepts)}", flush=True)
-
-valid_df = df_rand_sim[df_rand_sim["concept"].isin(valid_concepts)]
-train_df = df_rand_sim[~df_rand_sim["concept"].isin(valid_concepts)]
-
-print()
-print("Total Random and Similar DF shape :", df_rand_sim.shape, flush=True)
-print("Train DF shape :", train_df.shape, train_df.columns, flush=True)
-print("Test DF shape :", valid_df.shape, valid_df.columns, flush=True)
-
-print("Checking Train Test DF Merge", flush=True)
-df1 = train_df.merge(valid_df, how="inner", on=["concept"], indicator=False)
-
-print(df1)
-assert df1.empty, "Error: Train Test Concepts Overlap"
-
 
 print(f"************ Generating Negative Train Data ************", flush=True)
+
+hawk_train_file = "/scratch/c.scmag3/biencoder_concept_property/data/train_data/joint_encoder_property_conjuction_data/prop_conj_train_cnet_premium.tsv"
+
+train_df = pd.read_csv(
+    hawk_train_file, sep="\t", names=["concept", "conjuct_prop", "property"]
+)
+
+print(f"Train File : {hawk_train_file}")
+print(f"Train DF Shape : {train_df.shape}")
 
 pos_neg_train_df = negative_sampling(train_df, "train", num_negative=5)
 
 print(f"************ Generating Negative Valid Data ************", flush=True)
+
+
+hawk_valid_file = "/scratch/c.scmag3/biencoder_concept_property/data/train_data/joint_encoder_property_conjuction_data/prop_conj_valid_cnet_premium.tsv"
+
+valid_df = pd.read_csv(
+    hawk_valid_file, sep="\t", names=["concept", "conjuct_prop", "property"]
+)
+
 pos_neg_valid_df = negative_sampling(valid_df, "valid", num_negative=5)
 
 print(f"************ Negative Data Generation Process Ends ************", flush=True)
