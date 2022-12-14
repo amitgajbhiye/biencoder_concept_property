@@ -9,7 +9,7 @@
 #SBATCH --ntasks=5
 #SBATCH -A scw1858
 
-#SBATCH -p compute
+#SBATCH -p compute_amd
 #SBATCH --mem=5g
 
 #SBATCH -t 0-02:00:00
