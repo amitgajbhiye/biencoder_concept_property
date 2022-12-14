@@ -12,7 +12,7 @@
 #SBATCH -p highmem
 #SBATCH --mem=5g
 
-#SBATCH -t 0-04:00:00
+#SBATCH -t 0-02:00:00
 
 echo 'This script is running on:'
 hostname
