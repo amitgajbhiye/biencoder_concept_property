@@ -1,8 +1,8 @@
 {
-    "experiment_name": "5_get_embeds_predict_property_cnet_premium",
+    "experiment_name": "5_get_embeds_mcrae_predict_property",
     "log_dirctory": "get_con_pro_embeddings",
     "dataset_params": {
-        "dataset_name": "predict_property_embeds_cnet_premium",
+        "dataset_name": "mcrae_predict_property_embeds",
         "train_file_path": null,
         "val_file_path": null,
         "test_file_path": null,
@@ -29,7 +29,7 @@
         "get_con_prop_embeds": true,
         "input_data_type": "property",
         "concept_file": null,
-        "property_file": "data/train_data/joint_encoder_property_conjuction_data/unique_train_valid_property_cnet_premium.tsv",
+        "property_file": "data/evaluation_data/mcrae_je_prop_conjuction/mcrae_train_test_uniq_property.txt",
         "concept_property_file": null,
         "save_dir": "trained_models/con_pro_embeddings",
         "get_concept_similar_properties": false,
