@@ -375,6 +375,7 @@ def get_concept_similar_properties(
     log.info(f"Finished getting similar properties")
 
 
+# ++++++++++++++++++++++++++++++++++++++
 def get_predict_prop_similar_vocab_properties(
     config, predict_property_embed_pkl_file, vocab_property_embed_pkl_file
 ):
@@ -423,7 +424,9 @@ def get_predict_prop_similar_vocab_properties(
     )
 
     # Learning Nearest Neighbours
-    num_nearest_neighbours = 15
+
+    num_nearest_neighbours = 10
+
     log.info(f"Learning {num_nearest_neighbours} neighbours !!")
 
     predict_prop_similar_voab_props = NearestNeighbors(
@@ -472,38 +475,18 @@ def create_property_conjuction_data_for_fine_tuning(
 
     for concept, predict_prop, label in data_df.values:
 
-        num_prop_conjuct = random.randint(3, 10)
+        num_prop_conjuct = 5
 
         # Check logic here you are not mixing the concept similar properties and predict similar properties..
 
-        if label == 1:
-
-            conjuct_properties = predict_prop_similar_vocab_props[predict_prop]
-            conjuct_properties = [
-                prop
-                for prop in conjuct_properties
-                if prop.lower().strip() != predict_prop.lower().strip()
-            ]
-            conjuct_properties = conjuct_properties[0:num_prop_conjuct]
-
-            conjuct_properties = ", ".join(conjuct_properties)
-
-        elif label == 0:
-
-            concept_data = concept_similar_prop_file[
-                concept_similar_prop_file["concept"] == concept
-            ]
-
-            concept_data_props = concept_data["similar_prop"].unique().tolist()
-            concept_data_props = [
-                prop
-                for prop in concept_data_props
-                if prop.lower().strip() != predict_prop.lower().strip()
-            ]
-
-            conjuct_properties = random.sample(concept_data_props, num_prop_conjuct)
-
-            conjuct_properties = ", ".join(conjuct_properties)
+        conjuct_properties = predict_prop_similar_vocab_props[predict_prop]
+        conjuct_properties = [
+            prop
+            for prop in conjuct_properties
+            if prop.lower().strip() != predict_prop.lower().strip()
+        ]
+        conjuct_properties = conjuct_properties[:num_prop_conjuct]
+        conjuct_properties = ", ".join(conjuct_properties)
 
         all_data.append([concept, conjuct_properties, predict_prop, label])
 
@@ -621,10 +604,10 @@ if __name__ == "__main__":
                 test_df = pickle.load(test_pkl)
 
             train_save_file_name = os.path.join(
-                save_path, f"{fold_num}_prop_conj_train_prop_split_con_prop.pkl"
+                save_path, f"{fold_num}_prop_conj_train_prop_split_con_prop.tsv"
             )
             test_save_file_name = os.path.join(
-                save_path, f"{fold_num}_prop_conj_test_prop_split_con_prop.pkl"
+                save_path, f"{fold_num}_prop_conj_test_prop_split_con_prop.tsv"
             )
 
             create_property_conjuction_data_for_fine_tuning(

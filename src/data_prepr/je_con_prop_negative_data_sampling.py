@@ -171,22 +171,17 @@ valid_df = pd.read_csv(
 )
 
 
-num_neg_pair = [5]
+num_neg_pair = [20]
 for num_neg in num_neg_pair:
 
     print()
     print("#" * 50)
     print(f"Generating Negative Train Data for num negative : {num_neg}")
 
-    print("\n Training Data")
+    print("Training Data")
     base_path = "/scratch/c.scmag3/biencoder_concept_property/data/train_data/joint_encoder_concept_property_data"
-
-    train_file_name = os.path.join(
-        base_path, f"{num_neg}_neg_train_gkbcnet_plus_cnethasproperty.tsv"
-    )
-    valid_file_name = os.path.join(
-        base_path, f"{num_neg}_neg_val_gkbcnet_plus_cnethasproperty.tsv"
-    )
+    train_file_name = os.path.join(base_path, f"{num_neg}_neg_train_cnet_premium.tsv")
+    valid_file_name = os.path.join(base_path, f"{num_neg}_neg_valid_cnet_premium.tsv")
 
     pos_neg_train_df = negative_sampling(
         train_df, data_type="train", num_negative=num_neg
