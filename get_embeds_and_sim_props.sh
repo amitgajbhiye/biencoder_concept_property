@@ -1,9 +1,9 @@
 #!/bin/bash --login
 
-#SBATCH --job-name=MCstep1
+#SBATCH --job-name=MCstep3
 
-#SBATCH --output=logs/get_con_pro_embeddings/mcrae_logs/out_1_get_embeds_mcrae_concepts.txt
-#SBATCH --error=logs/get_con_pro_embeddings/mcrae_logs/err_1_get_embeds_mcrae_concepts.txt
+#SBATCH --output=logs/get_con_pro_embeddings/mcrae_logs/out_3_get_embeds_mcrae_con_similar_prop_vocab.txt
+#SBATCH --error=logs/get_con_pro_embeddings/mcrae_logs/err_3_get_embeds_mcrae_con_similar_prop_vocab.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5

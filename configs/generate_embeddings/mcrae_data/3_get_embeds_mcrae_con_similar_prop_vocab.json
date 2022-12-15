@@ -33,7 +33,7 @@
         "concept_property_file": null,
         "save_dir": "trained_models/con_pro_embeddings",
         "get_concept_similar_properties": true,
-        "concept_embed_pkl": "trained_models/con_pro_embeddings/concepts_embed_cnet_premium_concept_embeddings.pkl",
+        "concept_embed_pkl": "trained_models/con_pro_embeddings/mcrae_concepts_embed_concept_embeddings.pkl",
         "property_embed_pkl": "trained_models/con_pro_embeddings/prop_vocab_500k_mscg_embeds_property_embeddings.pkl",
         "get_predict_prop_similar_vocab_properties": false,
         "predict_property_embed_pkl_file": null,
