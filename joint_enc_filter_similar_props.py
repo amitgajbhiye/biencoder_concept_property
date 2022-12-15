@@ -15,8 +15,9 @@ from model.joint_encoder_concept_property import (
 device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
 
 # test_file = "data/generate_embeddding_data/mcrae_related_data/dummy.txt"
+# test_file = "data/train_data/joint_encoder_property_conjuction_data/false_label_con_similar_50_vocab_props.txt"
 
-test_file = "data/train_data/joint_encoder_property_conjuction_data/false_label_con_similar_50_vocab_props.txt"
+test_file = "data/evaluation_data/mcrae_je_prop_conjuction/mcrae_false_label_con_similar_50_prop_vocab.txt"
 batch_size = 1024
 
 model_save_path = "trained_models/joint_encoder_gkbcnet_cnethasprop"
@@ -146,13 +147,14 @@ unique_concepts = new_test_dataframe["concept"].unique()
 
 df_with_threshold_50 = new_test_dataframe[new_test_dataframe["logit"] > 0.50]
 
-logit_filename = "data/train_data/joint_encoder_property_conjuction_data/with_logits_con_similar_50_vocab_props.txt"
+
+logit_filename = "data/evaluation_data/mcrae_je_prop_conjuction/with_logits_mcrae_con_similar_50_vocab_props.txt"
 df_with_threshold_50.to_csv(logit_filename, sep="\t", index=None, header=None)
 print(df_with_threshold_50.head(n=20), flush=True)
 
 
 df_with_threshold_50.drop(labels="logit", axis=1, inplace=True)
-logit_filename = "data/train_data/joint_encoder_property_conjuction_data/je_filtered_con_similar_vocab_properties.txt"
+logit_filename = "data/evaluation_data/mcrae_je_prop_conjuction/je_filtered_mcrae_con_similar_vocab_properties.txt"
 df_with_threshold_50.to_csv(logit_filename, sep="\t", index=None, header=None)
 
 print()

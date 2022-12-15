@@ -2,8 +2,8 @@
 
 #SBATCH --job-name=getLogits
 
-#SBATCH --output=logs/joint_enc_logs/out_4_filter_con_similar_props.txt
-#SBATCH --error=logs/joint_enc_logs/err_4_filter_con_similar_props.txt
+#SBATCH --output=logs/get_con_pro_embeddings/mcrae_logs/out_4_filter_con_similar_props.txt
+#SBATCH --error=logs/get_con_pro_embeddings/mcrae_logs/err_4_filter_con_similar_props.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
