@@ -13,7 +13,7 @@
 #SBATCH --mem=8g
 #SBATCH --gres=gpu:1
 
-#SBATCH -t 0-01:30:00
+#SBATCH -t 0-01:00:00
 
 echo 'This script is running on:'
 hostname
@@ -24,6 +24,6 @@ module load anaconda/2020.02
 
 conda activate venv
 
-python3 get_embeds_and_sim_props.py --config_file configs/generate_embeddings/mcrae_data/1_get_embeds_mcrae_concepts.json
+python3 get_embeds_and_sim_props.py --config_file configs/generate_embeddings/mcrae_data/3_get_embeds_mcrae_con_similar_prop_vocab.json
 
 echo 'finished!'
