@@ -347,8 +347,8 @@ def get_concept_similar_properties(
     con_similar_prop_dict = {}
     file_name = (
         os.path.join(save_dir, dataset_params["dataset_name"])
-        + f"concept_similar_{num_nearest_neighbours}_vocab_properties"
-        + ".txt"
+        + f"_concept_similar_{num_nearest_neighbours}_vocab_properties"
+        + ".tsv"
     )
 
     with open(file_name, "w") as file:
@@ -375,126 +375,124 @@ def get_concept_similar_properties(
     log.info(f"Finished getting similar properties")
 
 
-# ++++++++++++++++++++++++++++++++++++++
-def get_predict_prop_similar_vocab_properties(
-    config, predict_property_embed_pkl_file, vocab_property_embed_pkl_file
+def get_predict_prop_similar_properties(
+    input_file,
+    con_similar_prop,
+    prop_vocab_embed_pkl,
+    predict_prop_embed_pkl,
+    save_file,
+    num_prop_conjuct=5,
 ):
 
-    log.info(f"Getting Predict Properti Similar Vocab Properties")
+    # je_filtered_con_prop_file = "siamese_concept_property/data/train_data/joint_encoder_property_conjuction_data/je_filtered_con_similar_vocab_properties.txt"
+    # je_filtered_prop_embed_pkl = "/home/amitgajbhiye/cardiff_work/concept_property_embeddings/prop_vocab_500k_mscg_embeds_property_embeddings.pkl"
+    # predict_prop_embed_pkl = "/home/amitgajbhiye/cardiff_work/concept_property_embeddings/predict_property_embeds_cnet_premium_property_embeddings.pkl"
 
-    inference_params = config.get("inference_params")
-    input_data_type = inference_params["input_data_type"]
+    if os.path.isfile(input_file):
+        input_df = pd.read_csv(
+            input_file, sep="\t", names=["concept", "predict_property", "label"]
+        )
+    else:
+        input_df = input_file.rename(
+            columns={0: "concept", 1: "predict_property", 2: "label"}
+        )
 
-    dataset_params = config.get("dataset_params")
-    save_dir = inference_params["save_dir"]
+    input_concepts = input_df["concept"].unique()
+    input_predict_props = input_df["predict_property"].unique()
 
-    log.info(f"Input Data Type : {input_data_type}")
+    num_input_concepts = len(input_concepts)
+    num_input_predict_props = len(input_predict_props)
 
-    with open(predict_property_embed_pkl_file, "rb") as predict_prop_pkl_file, open(
-        vocab_property_embed_pkl_file, "rb"
-    ) as vocab_prop_pkl_file:
-
-        predict_prop_dict = pickle.load(predict_prop_pkl_file)
-        vocab_prop_dict = pickle.load(vocab_prop_pkl_file)
-
-    predict_props = list(predict_prop_dict.keys())
-    predict_props_embeds = list(predict_prop_dict.values())
-
-    zero_predict_props_embeds = np.array(
-        [np.insert(l, 0, float(0)) for l in predict_props_embeds]
-    )
-    transformed_con_embeds = np.array(transform(predict_props_embeds))
-
-    log.info(f"In get_predict_prop_similar_vocab_properties function")
-    log.info(f"Number of predict properties : {len(predict_props)}")
-    log.info(f"Length of predict prop Embeddings : {len(predict_props_embeds)}")
-    log.info(f"Shape of zero_predict_props_embeds: {zero_predict_props_embeds.shape}")
-    log.info(f"Shape of transformed_con_embeds : {transformed_con_embeds.shape}")
-
-    vocab_props = list(vocab_prop_dict.keys())
-    vocab_props_embeds = list(vocab_prop_dict.values())
-    zero_vocab_prop_embeds = np.array([np.insert(l, 0, 0) for l in vocab_props_embeds])
-    transformed_vocab_prop_embeds = np.array(transform(vocab_props_embeds))
-
-    log.info(f"Number of Vocab Properties : {len(vocab_props)}")
-    log.info(f"Length of Vocab Properties Embeddings : {len(vocab_props_embeds)}")
-    log.info(f"Shape of zero_vocab_prop_embeds: {zero_vocab_prop_embeds.shape}")
-    log.info(
-        f"Shape of transformed_vocab_prop_embeds : {transformed_vocab_prop_embeds.shape}"
+    je_filtered_con_prop_df = pd.read_csv(
+        con_similar_prop, sep="\t", names=["concept", "similar_property"]
     )
 
-    # Learning Nearest Neighbours
+    with open(prop_vocab_embed_pkl, "rb") as prop_vocab:
+        prop_vocab_embeds_dict = pickle.load(prop_vocab)
 
-    num_nearest_neighbours = 10
+    with open(predict_prop_embed_pkl, "rb") as predict_prop:
+        predict_prop_embeds_dict = pickle.load(predict_prop)
 
-    log.info(f"Learning {num_nearest_neighbours} neighbours !!")
+    print(
+        f"JE Filtered Concept Similar Properties DF Shape: {je_filtered_con_prop_df.shape}",
+        flush=True,
+    )
+    print(
+        f"Unique Properties in JE Filtered Con Prop Df : {len(je_filtered_con_prop_df['similar_property'].unique())}",
+        flush=True,
+    )
 
-    predict_prop_similar_voab_props = NearestNeighbors(
-        n_neighbors=num_nearest_neighbours, algorithm="brute"
-    ).fit(np.array(transformed_vocab_prop_embeds))
+    print(
+        f"Whole Property Vocab Embeddings : {len(prop_vocab_embeds_dict.keys())}",
+        flush=True,
+    )
 
-    (
-        predict_prop_distances,
-        predict_prop_indices,
-    ) = predict_prop_similar_voab_props.kneighbors(np.array(zero_predict_props_embeds))
-
-    log.info(f"predict_prop_distances shape : {predict_prop_distances.shape}")
-    log.info(f"predict_prop_indices shape : {predict_prop_indices.shape}")
-
-    # file_name = (
-    #     os.path.join(save_dir, dataset_params["dataset_name"])
-    #     + f"mcrae_predict_prop_similar_{num_nearest_neighbours}_vocab_properties"
-    #     + ".tsv"
-    # )
-
-    predict_prop_similar_vocab_props = {}
-    for predict_prop_idx, vocab_prop_idx in enumerate(predict_prop_indices):
-
-        predict_prop = predict_props[predict_prop_idx]
-        vocab_similar_properties = [vocab_props[idx] for idx in vocab_prop_idx]
-
-        predict_prop_similar_vocab_props[predict_prop] = vocab_similar_properties
-
-        print(f"{predict_prop} \t {vocab_similar_properties}\n")
-
-    return predict_prop_similar_vocab_props
-
-
-def create_property_conjuction_data_for_fine_tuning(
-    predict_prop_similar_vocab_props, concept_similar_prop_file, data_df, save_path
-):
+    print()
+    print(f"Input DF Shape : {input_df.shape}", flush=True)
+    print(f"#Unique input concepts : {num_input_concepts}", flush=True)
+    print(f"#Unique input predict properties : {num_input_predict_props}", flush=True)
 
     all_data = []
+    for idx, (concept, predict_property, label) in enumerate(
+        zip(input_df["concept"], input_df["predict_property"], input_df["label"])
+    ):
 
-    concept_similar_prop_file = pd.read_csv(
-        concept_similar_prop_file, sep="\t", names=["concept", "similar_prop"]
-    )
+        print(f"Processing Concept : {concept}, {idx+1} / {num_input_concepts}")
+        print(
+            f"Concept, Predict Property, Label : {(concept, predict_property, label)}"
+        )
 
-    log.info(f"Input Data DF")
-    log.info(f"{data_df.head(n=20)}")
-
-    for concept, predict_prop, label in data_df.values:
-
-        num_prop_conjuct = 5
-
-        # Check logic here you are not mixing the concept similar properties and predict similar properties..
-
-        conjuct_properties = predict_prop_similar_vocab_props[predict_prop]
-        conjuct_properties = [
-            prop
-            for prop in conjuct_properties
-            if prop.lower().strip() != predict_prop.lower().strip()
+        similar_props = (
+            je_filtered_con_prop_df[je_filtered_con_prop_df["concept"] == concept][
+                "similar_property"
+            ]
+            .unique()
+            .tolist()
+        )
+        similar_props = [
+            prop for prop in similar_props if not match_multi_words(predict_prop, prop)
         ]
-        conjuct_properties = conjuct_properties[:num_prop_conjuct]
-        conjuct_properties = ", ".join(conjuct_properties)
 
-        all_data.append([concept, conjuct_properties, predict_prop, label])
+        embed_predict_prop = predict_prop_embeds_dict[predict_prop]
+        embed_similar_prop = [prop_vocab_embeds_dict[prop] for prop in similar_props]
 
-    all_data_df = pd.DataFrame.from_records(
-        all_data, columns=["concept", "conjuct_properties", "predict_prop", "label"]
-    )
+        zero_embed_predict_prop = np.array(
+            np.insert(embed_predict_prop, 0, float(0))
+        ).reshape(1, -1)
+        transformed_embed_similar_prop = np.array(transform(embed_similar_prop))
 
-    all_data_df.to_csv(save_path, sep="\t", index=None, header=None)
+        if len(similar_props) >= num_prop_conjuct:
+            num_nearest_neighbours = num_prop_conjuct
+        else:
+            num_nearest_neighbours = len(similar_props)
+
+        predict_prop_similar_props = NearestNeighbors(
+            n_neighbors=num_nearest_neighbours, algorithm="brute"
+        ).fit(transformed_embed_similar_prop)
+
+        (
+            similar_prop_distances,
+            similar_prop_indices,
+        ) = predict_prop_similar_props.kneighbors(zero_embed_predict_prop)
+
+        similar_prop_indices = np.squeeze(similar_prop_indices)
+        similar_properties = [similar_props[idx] for idx in similar_prop_indices]
+
+        conjuct_similar_props = ", ".join(similar_properties)
+
+        print(f"Concept : {concept}", flush=True)
+        print(f"Predict Property : {predict_prop}", flush=True)
+        print(f"Predict Property Similar Properties", flush=True)
+        print(similar_properties, flush=True)
+        print(f"Conjuct Similar Props", flush=True)
+        print(conjuct_similar_props, flush=True)
+        print("*" * 30, flush=True)
+        print(flush=True)
+
+        all_data.append([concept, conjuct_similar_props, predict_prop, label])
+
+    df_all_data = pd.DataFrame.from_records(all_data)
+    df_all_data.to_csv(save_file, sep="\t", header=None, index=None)
 
 
 if __name__ == "__main__":
@@ -517,27 +515,26 @@ if __name__ == "__main__":
     log.info(f"Reading Configuration File: {args.config_file}")
     config = read_config(args.config_file)
 
-    log.info("The embeddings are generated with the following configuration")
-
-    log.info(f"\n {config} \n")
+    log.info("The program is run with following configuration")
+    log.info(f"{config} \n")
 
     inference_params = config.get("inference_params")
-    input_data_type = inference_params["input_data_type"]
 
     get_con_prop_embeds = inference_params["get_con_prop_embeds"]
     get_con_similar_properties = inference_params["get_concept_similar_properties"]
-    get_predict_prop_sim_vocab_props = inference_params[
-        "get_predict_prop_similar_vocab_properties"
-    ]
+    get_predict_prop_similar_props = inference_params["get_predict_prop_similar_props"]
 
     log.info(
-        f"Get Concept, Property and Concept and Property Embedings : {get_con_prop_embeds}"
+        f"Get Concept, Property or Concept and Property Embedings : {get_con_prop_embeds}"
     )
+    log.info(f"Get Concept Similar Vocab Properties  : {get_con_similar_properties} ")
     log.info(
-        f"Do I need concept similar top properties also, Step 1 of Model : {get_con_similar_properties} "
+        f"Get Predict Similar JE Filtered Properties  : {get_predict_prop_similar_props} "
     )
 
     if get_con_prop_embeds:
+
+        input_data_type = inference_params["input_data_type"]
 
         assert input_data_type in (
             "concept",
@@ -566,61 +563,124 @@ if __name__ == "__main__":
             property_embedding_pkl_file=property_embed_pkl,
         )
 
-    if get_predict_prop_sim_vocab_props:
+    if get_predict_prop_similar_props:
 
-        predict_property_embed_pkl_file = inference_params.get(
-            "predict_property_embed_pkl_file"
-        )
-        vocab_property_embed_pkl_file = inference_params.get(
-            "vocab_property_embed_pkl_file"
-        )
+        pretrain_data = inference_params["pretrain_data"]
+        finetune_data = inference_params["finetune_data"]
+        num_prop_conjuct = inference_params["num_prop_conjuct"]
 
+        predict_property_embed_pkl = inference_params.get("predict_property_embed_pkl")
+        vocab_property_embed_pkl = inference_params.get("vocab_property_embed_pkl")
         concept_similar_prop_file = inference_params.get("concept_similar_prop_file")
+        save_dir = inference_params["save_dir"]
 
-        predict_prop_similar_vocab_props = get_predict_prop_similar_vocab_properties(
-            config=config,
-            predict_property_embed_pkl_file=predict_property_embed_pkl_file,
-            vocab_property_embed_pkl_file=vocab_property_embed_pkl_file,
-        )
+        print()
+        print(f"pretrain_data : {pretrain_data}")
+        print(f"finetune_data : {finetune_data}")
+        print(f"num_prop_conjuct : {num_prop_conjuct}")
+        print(f"predict_property_embed_pkl : {predict_property_embed_pkl}")
+        print(f"vocab_property_embed_pkl : {vocab_property_embed_pkl}")
+        print(f"concept_similar_prop_file : {concept_similar_prop_file}")
+        print(f"save_dir : {save_dir}")
+        print()
 
-        save_path = inference_params.get("save_dir")
+        if pretrain_data:
 
-        num_folds = 5
-        for fold_num in range(num_folds):
+            input_file_base_path = inference_params["pretrain_data"]
 
-            base_prop_split_file_paths = (
-                "data/evaluation_data/mcrae_prop_split_train_test_files"
-            )
-            train_file = os.path.join(
-                base_prop_split_file_paths, f"{fold_num}_train_prop_split_con_prop.pkl"
-            )
-            test_file = os.path.join(
-                base_prop_split_file_paths, f"{fold_num}_test_prop_split_con_prop.pkl"
-            )
-
-            with open(train_file, "rb") as train_pkl, open(test_file, "rb") as test_pkl:
-
-                train_df = pickle.load(train_pkl)
-                test_df = pickle.load(test_pkl)
-
-            train_save_file_name = os.path.join(
-                save_path, f"{fold_num}_prop_conj_train_prop_split_con_prop.tsv"
-            )
-            test_save_file_name = os.path.join(
-                save_path, f"{fold_num}_prop_conj_test_prop_split_con_prop.tsv"
+            train_file = os.path.join(input_file_base_path, "train_file_name---------")
+            save_train_file = os.path.join(
+                input_file_base_path, "save_train_file_name-------"
             )
 
-            create_property_conjuction_data_for_fine_tuning(
-                predict_prop_similar_vocab_props=predict_prop_similar_vocab_props,
-                concept_similar_prop_file=concept_similar_prop_file,
-                data_df=train_df,
-                save_path=train_save_file_name,
+            get_predict_prop_similar_properties(
+                input_file=train_file,
+                con_similar_prop=concept_similar_prop_file,
+                prop_vocab_embed_pkl=vocab_property_embed_pkl,
+                predict_prop_embed_pkl=predict_property_embed_pkl,
+                save_file=save_train_file,
+                num_prop_conjuct=num_prop_conjuct,
             )
 
-            create_property_conjuction_data_for_fine_tuning(
-                predict_prop_similar_vocab_props=predict_prop_similar_vocab_props,
-                concept_similar_prop_file=concept_similar_prop_file,
-                data_df=test_df,
-                save_path=test_save_file_name,
+            valid_file = os.path.join(
+                input_file_base_path, "valid_file_name----------------"
+            )
+            save_valid_file = os.path.join(
+                input_file_base_path, "valid_save_valid_file_name---------"
             )
 
+            get_predict_prop_similar_properties(
+                input_file=valid_file,
+                con_similar_prop=concept_similar_prop_file,
+                prop_vocab_embed_pkl=vocab_property_embed_pkl,
+                predict_prop_embed_pkl=predict_property_embed_pkl,
+                save_file=save_valid_file,
+                num_prop_conjuct=num_prop_conjuct,
+            )
+
+        elif finetune_data:
+
+            split_type = inference_params["split_type"]
+
+            if split_type == "property_split":
+                num_folds = 5
+
+                train_file_suffix = "train_prop_split_con_prop.pkl"
+                test_file_suffix = "test_prop_split_con_prop.pkl"
+
+                input_file_base_path = inference_params["input_file_base_path"]
+
+            elif split_type == "concept_property_split":
+                num_folds = 9
+
+                train_file_suffix = "------------"
+                test_file_suffix = "------------"
+                save_file_suffix = "------------"
+
+            for fold_num in range(num_folds):
+
+                train_file = os.path.join(
+                    input_file_base_path, f"{fold_num}_{train_file_suffix}"
+                )
+                test_file = os.path.join(
+                    input_file_base_path, f"{fold_num}_{test_file_suffix}"
+                )
+
+                with open(train_file, "rb") as train_pkl, open(
+                    test_file, "rb"
+                ) as test_pkl:
+                    train_df = pickle.load(train_pkl)
+                    test_df = pickle.load(test_pkl)
+
+                train_save_file_name = os.path.join(
+                    save_dir, f"{fold_num}_train_prop_conj_prop_split.tsv"
+                )
+                test_save_file_name = os.path.join(
+                    save_dir, f"{fold_num}_test_prop_conj_prop_split.tsv"
+                )
+
+                log.info(f"Fold Number : {fold_num}")
+                log.info(f"Train File : {train_file}")
+                log.info(f"Test FIle : {test_file}")
+
+                print(f"Fold Number : {fold_num}")
+                print(f"Train File : {train_file}")
+                print(f"Test FIle : {test_file}")
+
+                get_predict_prop_similar_properties(
+                    input_file=train_file,
+                    con_similar_prop=concept_similar_prop_file,
+                    prop_vocab_embed_pkl=vocab_property_embed_pkl,
+                    predict_prop_embed_pkl=predict_property_embed_pkl,
+                    save_file=train_save_file_name,
+                    num_prop_conjuct=num_prop_conjuct,
+                )
+
+                get_predict_prop_similar_properties(
+                    input_file=test_file,
+                    con_similar_prop=concept_similar_prop_file,
+                    prop_vocab_embed_pkl=vocab_property_embed_pkl,
+                    predict_prop_embed_pkl=predict_property_embed_pkl,
+                    save_file=test_save_file_name,
+                    num_prop_conjuct=num_prop_conjuct,
+                )
