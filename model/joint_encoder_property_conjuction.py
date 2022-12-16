@@ -72,12 +72,12 @@ hawk_bb_model = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_
 data_path = "/scratch/c.scmag3/biencoder_concept_property/data/train_data/joint_encoder_property_conjuction_data"
 
 
-train_file = os.path.join(data_path, "5_neg_prop_conj_train_cnet_premium.tsv")
-valid_file = os.path.join(data_path, "5_neg_prop_conj_valid_cnet_premium.tsv")
+# train_file = os.path.join(data_path, "5_neg_prop_conj_train_cnet_premium.tsv")
+# valid_file = os.path.join(data_path, "5_neg_prop_conj_valid_cnet_premium.tsv")
 
-# train_file = None
-# valid_file = None
-# test_file = None
+train_file = None
+valid_file = None
+test_file = None
 
 # train_file = os.path.join(data_path, "dummy_prop_conj.tsv")
 # valid_file = os.path.join(data_path, "dummy_prop_conj.tsv")
@@ -93,8 +93,8 @@ max_len = 200
 
 num_labels = 2
 batch_size = 64
-num_epoch = 100
-# num_epoch = 12
+# num_epoch = 100
+num_epoch = 12
 lr = 2e-6
 
 
@@ -532,8 +532,8 @@ def do_cv(cv_type):
 
             num_fold = 5
             dir_name = "/scratch/c.scmag3/biencoder_concept_property/data/evaluation_data/mcrae_joint_encoder_prop_conjuction_fine_tune/property_split"
-            train_file_base_name = "prop_conj_train_prop_split_con_prop.pkl"
-            test_file_base_name = "prop_conj_test_prop_split_con_prop.pkl"
+            train_file_base_name = "train_prop_conj_prop_split.tsv"
+            test_file_base_name = "test_prop_conj_prop_split.tsv"
 
             print("CV Type : {cv_type}", flush=True)
             print(f"Training the Property Split", flush=True)
