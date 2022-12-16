@@ -501,7 +501,7 @@ def get_predict_prop_similar_properties(
         print("*" * 30, flush=True)
         print(flush=True)
 
-        all_data.append([concept, conjuct_similar_props, predict_property, label])
+        all_data.append([concept, conjuct_similar_props, predict_property, int(label)])
 
     df_all_data = pd.DataFrame.from_records(all_data)
     df_all_data.to_csv(save_file, sep="\t", header=None, index=None)
