@@ -417,11 +417,11 @@ def get_predict_prop_similar_properties(
         con_similar_prop, sep="\t", names=["concept", "similar_property"]
     )
 
-    with open(prop_vocab_embed_pkl, "rb") as prop_vocab:
-        prop_vocab_embeds_dict = pickle.load(prop_vocab)
+    with open(prop_vocab_embed_pkl, "rb") as prop_vocab_pkl:
+        prop_vocab_embeds_dict = pickle.load(prop_vocab_pkl)
 
-    with open(predict_prop_embed_pkl, "rb") as predict_prop:
-        predict_prop_embeds_dict = pickle.load(predict_prop)
+    with open(predict_prop_embed_pkl, "rb") as predict_prop_pkl:
+        predict_prop_embeds_dict = pickle.load(predict_prop_pkl)
 
     print(
         f"JE Filtered Concept Similar Properties DF Shape: {je_filtered_con_prop_df.shape}",
@@ -493,7 +493,7 @@ def get_predict_prop_similar_properties(
         conjuct_similar_props = ", ".join(similar_properties)
 
         print(f"Concept : {concept}", flush=True)
-        print(f"Predict Property : {predict_prop}", flush=True)
+        print(f"Predict Property : {predict_property}", flush=True)
         print(f"Predict Property Similar Properties", flush=True)
         print(similar_properties, flush=True)
         print(f"Conjuct Similar Props", flush=True)
@@ -501,7 +501,7 @@ def get_predict_prop_similar_properties(
         print("*" * 30, flush=True)
         print(flush=True)
 
-        all_data.append([concept, conjuct_similar_props, predict_prop, label])
+        all_data.append([concept, conjuct_similar_props, predict_property, label])
 
     df_all_data = pd.DataFrame.from_records(all_data)
     df_all_data.to_csv(save_file, sep="\t", header=None, index=None)
