@@ -1,6 +1,6 @@
 {
     "experiment_name": "7_mcrae_get_predict_prop_similar_props",
-    "log_dirctory": "get_con_pro_embeddings",
+    "log_dirctory": "get_con_pro_embeddings/mcrae_logs",
     "dataset_params": {
         "dataset_name": "predict_property_embeds_cnet_premium",
         "train_file_path": null,

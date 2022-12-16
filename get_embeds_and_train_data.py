@@ -389,13 +389,16 @@ def get_predict_prop_similar_properties(
     # predict_prop_embed_pkl = "/home/amitgajbhiye/cardiff_work/concept_property_embeddings/predict_property_embeds_cnet_premium_property_embeddings.pkl"
 
     if os.path.isfile(input_file):
-        input_df = pd.read_csv(
-            input_file, sep="\t", names=["concept", "predict_property", "label"]
-        )
-    else:
+        with open(input_file, "rb") as pkl_file:
+            input_df = pickle.load(pkl_file)
+
+    elif isinstance(input_file):
         input_df = input_file.rename(
             columns={0: "concept", 1: "predict_property", 2: "label"}
         )
+
+    print(input_df.head(n=20))
+    log.info(input_df.head(n=20))
 
     input_concepts = input_df["concept"].unique()
     input_predict_props = input_df["predict_property"].unique()
