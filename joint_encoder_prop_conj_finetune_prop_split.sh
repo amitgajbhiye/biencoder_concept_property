@@ -2,18 +2,18 @@
 
 #SBATCH --job-name=FtPSMc
 
-#SBATCH --output=logs/joint_enc_logs/out_joint_encoder_prop_conj_prop_split_mcrae_finetune.txt
-#SBATCH --error=logs/joint_enc_logs/err_joint_encoder_prop_conj_prop_split_mcrae_finetune.txt
+#SBATCH --output=logs/je_logs/out_new_joint_encoder_prop_conj_prop_split_mcrae_finetune.txt
+#SBATCH --error=logs/je_logs/err_new_joint_encoder_prop_conj_prop_split_mcrae_finetune.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
 #SBATCH -A scw1858
 
-#SBATCH -p gpu_v100
+#SBATCH -p gpu_v100,gpu
 #SBATCH --mem=9g
 #SBATCH --gres=gpu:1
 
-#SBATCH -t 0-13:00:00
+#SBATCH -t 0-10:00:00
 
 echo 'This script is running on:'
 hostname
