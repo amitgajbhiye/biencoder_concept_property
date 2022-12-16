@@ -396,7 +396,12 @@ def get_predict_prop_similar_properties(
         input_df = input_file
 
     input_df.rename(
-        columns={0: "concept", 1: "predict_property", 2: "label"}, inplace=True
+        columns={
+            "concept": "concept",
+            "property": "predict_property",
+            "label": "label",
+        },
+        inplace=True,
     )
 
     print(input_df.head(n=20))
