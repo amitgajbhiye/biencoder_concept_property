@@ -392,10 +392,12 @@ def get_predict_prop_similar_properties(
         with open(input_file, "rb") as pkl_file:
             input_df = pickle.load(pkl_file)
 
-    elif isinstance(input_file):
-        input_df = input_file.rename(
-            columns={0: "concept", 1: "predict_property", 2: "label"}
-        )
+    elif isinstance(input_file, pd.DataFrame):
+        input_df = input_file
+
+    input_df.rename(
+        columns={0: "concept", 1: "predict_property", 2: "label"}, inplace=True
+    )
 
     print(input_df.head(n=20))
     log.info(input_df.head(n=20))
