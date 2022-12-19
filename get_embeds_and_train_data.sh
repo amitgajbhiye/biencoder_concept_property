@@ -1,9 +1,9 @@
 #!/bin/bash --login
 
-#SBATCH --job-name=step1
+#SBATCH --job-name=step3
 
-#SBATCH --output=logs/redo_prop_conj_exp/out_2_get_embeds_prop_vocab_cnetp.txt
-#SBATCH --error=logs/redo_prop_conj_exp/err_2_get_embeds_prop_vocab_cnetp.txt
+#SBATCH --output=logs/redo_prop_conj_exp/out_3_con_similar_50_prop_vocab.txt
+#SBATCH --error=logs/redo_prop_conj_exp/err_3_con_similar_50_prop_vocab.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
@@ -13,7 +13,7 @@
 #SBATCH --mem=8g
 #SBATCH --gres=gpu:1
 
-#SBATCH -t 0-01:00:00
+#SBATCH -t 0-02:00:00
 
 echo 'This script is running on:'
 hostname
@@ -24,6 +24,6 @@ module load anaconda/2020.02
 
 conda activate venv
 
-python3 get_embeds_and_train_data.py --config_file configs/redo_con_prop_exp/2_get_embeds_prop_vocab.json
+python3 get_embeds_and_train_data.py --config_file configs/redo_con_prop_exp/3_get_embeds_con_similar_prop_vocab.json
 
 echo 'finished!'

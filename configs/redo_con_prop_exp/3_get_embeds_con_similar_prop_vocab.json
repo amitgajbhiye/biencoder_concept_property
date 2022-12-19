@@ -1,6 +1,6 @@
 {
     "experiment_name": "3_con_similar_50_prop_vocab",
-    "log_dirctory": "get_con_pro_embeddings",
+    "log_dirctory": "redo_prop_conj_exp",
     "dataset_params": {
         "dataset_name": "con_similar_50_prop_vocab",
         "train_file_path": null,
@@ -31,10 +31,10 @@
         "concept_file": null,
         "property_file": null,
         "concept_property_file": null,
-        "save_dir": "trained_models/con_pro_embeddings",
+        "save_dir": "trained_models/redo_prop_conj_exp",
         "get_concept_similar_properties": true,
-        "concept_embed_pkl": "trained_models/con_pro_embeddings/concepts_embed_cnet_premium_concept_embeddings.pkl",
-        "property_embed_pkl": "trained_models/con_pro_embeddings/prop_vocab_500k_mscg_embeds_property_embeddings.pkl",
+        "concept_embed_pkl": "trained_models/redo_prop_conj_exp/concepts_embed_cnet_premium_concept_embeddings.pkl",
+        "property_embed_pkl": "trained_models/redo_prop_conj_exp/prop_vocab_embed_cnetp_property_embeddings.pkl",
         "get_predict_prop_similar_vocab_properties": false,
         "predict_property_embed_pkl_file": null,
         "vocab_property_embed_pkl_file": null,
