@@ -35,7 +35,7 @@
         "get_concept_similar_properties": false,
         "concept_embed_pkl": null,
         "property_embed_pkl": null,
-        "get_predict_prop_similar_vocab_properties": false,
+        "get_predict_prop_similar_props": false,
         "predict_property_embed_pkl_file": null,
         "vocab_property_embed_pkl_file": null,
         "concept_similar_prop_file": null
