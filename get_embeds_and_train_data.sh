@@ -1,9 +1,9 @@
 #!/bin/bash --login
 
-#SBATCH --job-name=MCstep5
+#SBATCH --job-name=step1
 
-#SBATCH --output=logs/get_con_pro_embeddings/mcrae_logs/out_7_mcrae_get_predict_prop_similar_props.txt
-#SBATCH --error=logs/get_con_pro_embeddings/mcrae_logs/err_7_mcrae_get_predict_prop_similar_props.txt
+#SBATCH --output=logs/redo_prop_conj_exp/out_1_get_embeds_concepts_cnet_premium.txt
+#SBATCH --error=logs/redo_prop_conj_exp/err_1_get_embeds_concepts_cnet_premium.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
@@ -24,6 +24,6 @@ module load anaconda/2020.02
 
 conda activate venv
 
-python3 get_embeds_and_train_data.py --config_file configs/generate_embeddings/mcrae_data/7_mcrae_get_predict_prop_similar_props.json
+python3 get_embeds_and_train_data.py --config_file configs/redo_con_prop_exp/1_get_embeds_concepts_cnet_premium.json
 
 echo 'finished!'

@@ -37,7 +37,6 @@ print(f"The Model is Trained on : {device}")
 
 print(f"Concept Property Joint Encoder Model - Step2")
 
-
 hawk_bb_tokenizer = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_bert_base_uncased/tokenizer"
 hawk_bb_model = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_bert_base_uncased/model"
 
