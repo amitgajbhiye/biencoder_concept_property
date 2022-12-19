@@ -2,8 +2,8 @@
 
 #SBATCH --job-name=step3
 
-#SBATCH --output=logs/redo_prop_conj_exp/out_3_con_similar_50_prop_vocab.txt
-#SBATCH --error=logs/redo_prop_conj_exp/err_3_con_similar_50_prop_vocab.txt
+#SBATCH --output=logs/redo_prop_conj_exp/out_5_get_embeds_predict_property_cnet_premium.txt
+#SBATCH --error=logs/redo_prop_conj_exp/err_5_get_embeds_predict_property_cnet_premium.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
