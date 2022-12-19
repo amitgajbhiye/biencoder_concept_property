@@ -43,26 +43,29 @@ hawk_bb_model = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_
 
 data_path = "/scratch/c.scmag3/biencoder_concept_property/data/train_data/joint_encoder_concept_property_data"
 
-train_file = os.path.join(data_path, "5_neg_train_gkbcnet_plus_cnethasproperty.tsv")
-valid_file = os.path.join(data_path, "5_neg_val_gkbcnet_plus_cnethasproperty.tsv")
+# train_file = os.path.join(data_path, "5_neg_train_gkbcnet_plus_cnethasproperty.tsv")
+# valid_file = os.path.join(data_path, "5_neg_val_gkbcnet_plus_cnethasproperty.tsv")
 
 # train_file = os.path.join(data_path, "dummy_concept_property_data.tsv")
 # valid_file = os.path.join(data_path, "dummy_concept_property_data.tsv")
+
+
+train_file = os.path.join(data_path, "20_neg_train_cnet_premium.tsv")
+valid_file = os.path.join(data_path, "20_neg_valid_cnet_premium.tsv")
+
 
 print(f"Train File : {train_file}")
 print(f"Valid File : {valid_file}")
 
 model_save_path = "/scratch/c.scmag3/biencoder_concept_property/trained_models/joint_encoder_gkbcnet_cnethasprop"
-model_name = (
-    "joint_encoder_concept_property_gkbcnet_cnethasprop_step2_pretrained_model.pt"
-)
+model_name = "je_con_prop_cnet_premium_20negdata_pretrained_model.pt"
 
 best_model_path = os.path.join(model_save_path, model_name)
 
 max_len = 64
 
 num_labels = 2
-batch_size = 64
+batch_size = 128
 num_epoch = 100
 lr = 2e-6
 
@@ -280,7 +283,7 @@ def train(model, train_dataloader, val_dataloader, scheduler, optimizer):
     best_valid_loss = 0.0
     best_valid_f1 = 0.0
 
-    patience_early_stopping = 10
+    patience_early_stopping = 3
     patience_counter = 0
     start_epoch = 1
 

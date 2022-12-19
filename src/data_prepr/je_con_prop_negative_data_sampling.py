@@ -37,6 +37,7 @@ def negative_sampling(df, data_type, num_negative=5):
         properties_for_concept = concept_data["property"].unique()
 
         if concept == "humans":
+            # Concept - humans was going into infinite while loop so skiping genetaing negative for it, for now.
             print(f"Skiping concept : {concept}")
             continue
 

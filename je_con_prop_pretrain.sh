@@ -1,19 +1,20 @@
 #!/bin/bash --login
 
-#SBATCH --job-name=JEConProp
+#SBATCH --job-name=JEcpPre
 
-#SBATCH --output=logs/joint_enc_logs/out_joint_enc_concept_property_step2_pretrained_on_gkbcnet_cnethasprop.txt
-#SBATCH --error=logs/joint_enc_logs/err_joint_enc_concept_property_step2_pretrained_on_gkbcnet_cnethasprop.txt
+#SBATCH --output=logs/je_logs/out_je_pretrain_con_prop_cnet_premium_20negdata.txt
+#SBATCH --error=logs/je_logs/err_je_pretrain_con_prop_cnet_premium_20negdata.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
 #SBATCH -A scw1858
 
 #SBATCH -p gpu_v100
-#SBATCH --mem=14gs
+#SBATCH --mem=10g
 #SBATCH --gres=gpu:1
+#SBATCH --qos=gpu4d
 
-#SBATCH -t 2-00:00:00
+#SBATCH -t 5-00:00:00
 
 echo 'This script is running on:'
 hostname
