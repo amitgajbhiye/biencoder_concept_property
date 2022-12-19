@@ -43,22 +43,24 @@ hawk_bb_model = "/scratch/c.scmag3/conceptEmbeddingModel/for_seq_classification_
 
 data_path = "/scratch/c.scmag3/biencoder_concept_property/data/train_data/joint_encoder_concept_property_data"
 
-# train_file = os.path.join(data_path, "5_neg_train_gkbcnet_plus_cnethasproperty.tsv")
-# valid_file = os.path.join(data_path, "5_neg_val_gkbcnet_plus_cnethasproperty.tsv")
-
 # train_file = os.path.join(data_path, "dummy_concept_property_data.tsv")
 # valid_file = os.path.join(data_path, "dummy_concept_property_data.tsv")
 
+# train_file = os.path.join(data_path, "5_neg_train_gkbcnet_plus_cnethasproperty.tsv")
+# valid_file = os.path.join(data_path, "5_neg_val_gkbcnet_plus_cnethasproperty.tsv")
 
-train_file = os.path.join(data_path, "20_neg_train_cnet_premium.tsv")
-valid_file = os.path.join(data_path, "20_neg_valid_cnet_premium.tsv")
+# train_file = os.path.join(data_path, "20_neg_train_cnet_premium.tsv")
+# valid_file = os.path.join(data_path, "20_neg_valid_cnet_premium.tsv")
+
+train_file = os.path.join(data_path, "10_neg_train_cnet_premium.tsv")
+valid_file = os.path.join(data_path, "10_neg_valid_cnet_premium.tsv")
 
 
 print(f"Train File : {train_file}")
 print(f"Valid File : {valid_file}")
 
 model_save_path = "/scratch/c.scmag3/biencoder_concept_property/trained_models/joint_encoder_gkbcnet_cnethasprop"
-model_name = "je_con_prop_cnet_premium_20negdata_pretrained_model.pt"
+model_name = "je_con_prop_cnet_premium_10negdata_pretrained_model.pt"
 
 best_model_path = os.path.join(model_save_path, model_name)
 
@@ -179,6 +181,9 @@ def prepare_pretrain_data_and_models():
     scheduler = get_linear_schedule_with_warmup(
         optimizer, num_warmup_steps=0, num_training_steps=total_steps
     )
+
+    print(f"Train Data Shape : {train_data.data_df.shape}")
+    print(f"Validation Data Shape : {val_data.data_df.shape}")
 
     return model, train_dataloader, val_dataloader, scheduler, optimizer
 

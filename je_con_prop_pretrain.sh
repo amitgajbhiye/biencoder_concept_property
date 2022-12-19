@@ -1,9 +1,9 @@
 #!/bin/bash --login
 
-#SBATCH --job-name=JEcpPre
+#SBATCH --job-name=JEcpP10
 
-#SBATCH --output=logs/je_logs/out_je_pretrain_con_prop_cnet_premium_20negdata.txt
-#SBATCH --error=logs/je_logs/err_je_pretrain_con_prop_cnet_premium_20negdata.txt
+#SBATCH --output=logs/je_logs/out_je_pretrain_con_prop_cnet_premium_10negdata.txt
+#SBATCH --error=logs/je_logs/err_je_pretrain_con_prop_cnet_premium_10negdata.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
@@ -12,9 +12,9 @@
 #SBATCH -p gpu_v100
 #SBATCH --mem=10g
 #SBATCH --gres=gpu:1
-#SBATCH --qos="gpu7d"
+##SBATCH --qos="gpu7d"
 
-#SBATCH -t 5-00:00:00
+#SBATCH -t 2-00:00:00
 
 echo 'This script is running on:'
 hostname
