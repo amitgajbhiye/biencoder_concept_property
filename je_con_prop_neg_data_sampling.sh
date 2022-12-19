@@ -1,9 +1,9 @@
 #!/bin/bash --login
 
-#SBATCH --job-name=CPv20Neg
+#SBATCH --job-name=CPv10Neg
 
-#SBATCH --output=logs/je_logs/out_je_con_prop_20neg_valid_data_samp.txt
-#SBATCH --error=logs/je_logs/err_je_con_prop_20neg_valid_data_samp.txt
+#SBATCH --output=logs/je_logs/out_je_con_prop_10neg_valid_data_samp.txt
+#SBATCH --error=logs/je_logs/err_je_con_prop_10neg_valid_data_samp.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
