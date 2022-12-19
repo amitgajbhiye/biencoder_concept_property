@@ -1,9 +1,9 @@
 #!/bin/bash --login
 
-#SBATCH --job-name=CP20Neg
+#SBATCH --job-name=CPv20Neg
 
-#SBATCH --output=logs/je_logs/out_je_con_prop_20negative_data_sampling.txt
-#SBATCH --error=logs/je_logs/err_je_con_prop_20negative_data_sampling.txt
+#SBATCH --output=logs/je_logs/out_je_con_prop_20neg_valid_data_samp.txt
+#SBATCH --error=logs/je_logs/err_je_con_prop_20neg_valid_data_samp.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
@@ -14,7 +14,7 @@
 ##SBATCH --gres=gpu:1
 
 #SBATCH -p highmem
-#SBATCH -t 0-13:00:00
+#SBATCH -t 0-6:00:00
 
 echo 'This script is running on:'
 hostname

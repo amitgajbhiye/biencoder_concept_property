@@ -183,16 +183,16 @@ for num_neg in num_neg_pair:
     train_file_name = os.path.join(base_path, f"{num_neg}_neg_train_cnet_premium.tsv")
     valid_file_name = os.path.join(base_path, f"{num_neg}_neg_valid_cnet_premium.tsv")
 
-    pos_neg_train_df = negative_sampling(
-        train_df, data_type="train", num_negative=num_neg
-    )
-    pos_neg_train_df.to_csv(train_file_name, sep="\t", index=None, header=None)
+    # pos_neg_train_df = negative_sampling(
+    #     train_df, data_type="train", num_negative=num_neg
+    # )
+    # pos_neg_train_df.to_csv(train_file_name, sep="\t", index=None, header=None)
 
-    print("New Train 0/1 Labels")
-    print(pos_neg_train_df["label"].value_counts())
+    # print("New Train 0/1 Labels")
+    # print(pos_neg_train_df["label"].value_counts())
 
-    print("Train Record Before Negative Data:", len(train_df))
-    print("Train Record After Negative Data:", len(pos_neg_train_df))
+    # print("Train Record Before Negative Data:", len(train_df))
+    # print("Train Record After Negative Data:", len(pos_neg_train_df))
 
     print("#" * 50)
     print(f"Generating Negative Valid Data for num negative : {num_neg}")
