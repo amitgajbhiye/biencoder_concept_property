@@ -35,7 +35,7 @@
         "get_concept_similar_properties": true,
         "concept_embed_pkl": "trained_models/redo_prop_conj_exp/concepts_embed_cnet_premium_concept_embeddings.pkl",
         "property_embed_pkl": "trained_models/redo_prop_conj_exp/prop_vocab_embed_cnetp_property_embeddings.pkl",
-        "get_predict_prop_similar_vocab_properties": false,
+        "get_predict_prop_similar_props": false,
         "predict_property_embed_pkl_file": null,
         "vocab_property_embed_pkl_file": null,
         "concept_similar_prop_file": null
