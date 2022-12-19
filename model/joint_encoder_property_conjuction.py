@@ -82,9 +82,6 @@ test_file = None
 # train_file = os.path.join(data_path, "dummy_prop_conj.tsv")
 # valid_file = os.path.join(data_path, "dummy_prop_conj.tsv")
 
-print(f"Train File : {train_file}", flush=True)
-print(f"Valid File : {valid_file}", flush=True)
-
 model_save_path = "/scratch/c.scmag3/biencoder_concept_property/trained_models/joint_encoder_gkbcnet_cnethasprop"
 model_name = "joint_encoder_property_conjuction_cnet_premium_pretrained_step3_model.pt"
 best_model_path = os.path.join(model_save_path, model_name)
@@ -97,12 +94,16 @@ batch_size = 64
 num_epoch = 12
 lr = 2e-6
 
-
-load_pretrained = False
-pretrained_model_path = None
+load_pretrained = True
+pretrained_model_path = "/scratch/c.scmag3/biencoder_concept_property/trained_models/joint_encoder_gkbcnet_cnethasprop/joint_encoder_property_conjuction_cnet_premium_pretrained_step3_model.pt"
 
 # cv_type = "concept_split"
 # num_fold = 5
+
+print(f"Train File : {train_file}", flush=True)
+print(f"Valid File : {valid_file}", flush=True)
+print(f"Load Pretrained : {load_pretrained}")
+print(f"Pretrained Model Path : {pretrained_model_path}")
 
 
 class DatasetPropConjuction(Dataset):
@@ -535,7 +536,7 @@ def do_cv(cv_type):
             train_file_base_name = "train_prop_conj_prop_split.tsv"
             test_file_base_name = "test_prop_conj_prop_split.tsv"
 
-            print("CV Type : {cv_type}", flush=True)
+            print(f"CV Type : {cv_type}", flush=True)
             print(f"Training the Property Split", flush=True)
             print(f"Number of Folds: {num_fold}", flush=True)
 
@@ -671,7 +672,8 @@ if __name__ == "__main__":
 
     elif args.finetune:
 
-        print(f"Finetuning the Pretrained Model", flush=True)
+        print(f"Arg Finetune : {args.finetune}", flush=True)
+        print(f"Arg CV Type : {args.cv_type}", flush=True)
 
         cv_type = args.cv_type
 
