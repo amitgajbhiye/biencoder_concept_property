@@ -17,7 +17,9 @@ device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cp
 # test_file = "data/generate_embeddding_data/mcrae_related_data/dummy.txt"
 # test_file = "data/train_data/joint_encoder_property_conjuction_data/false_label_con_similar_50_vocab_props.txt"
 
-test_file = "data/evaluation_data/mcrae_je_prop_conjuction/mcrae_false_label_con_similar_50_prop_vocab.txt"
+test_file = (
+    "data/redo_prop_conj_exp/with_false_labels_cnetp_con_similar_50_prop_vocab.tsv"
+)
 batch_size = 1024
 
 model_save_path = "trained_models/joint_encoder_gkbcnet_cnethasprop"
@@ -148,71 +150,17 @@ unique_concepts = new_test_dataframe["concept"].unique()
 df_with_threshold_50 = new_test_dataframe[new_test_dataframe["logit"] > 0.50]
 
 
-logit_filename = "data/evaluation_data/mcrae_je_prop_conjuction/with_logits_mcrae_con_similar_50_vocab_props.txt"
+logit_filename = (
+    "trained_models/redo_prop_conj_exp/with_logits_cnetp_con_similar_50_vocab_props.tsv"
+)
 df_with_threshold_50.to_csv(logit_filename, sep="\t", index=None, header=None)
 print(df_with_threshold_50.head(n=20), flush=True)
 
 
 df_with_threshold_50.drop(labels="logit", axis=1, inplace=True)
-logit_filename = "data/evaluation_data/mcrae_je_prop_conjuction/je_filtered_mcrae_con_similar_vocab_properties.txt"
+logit_filename = "trained_models/redo_prop_conj_exp/je_filtered_cnetp_con_similar_vocab_properties.tsv"
 df_with_threshold_50.to_csv(logit_filename, sep="\t", index=None, header=None)
 
 print()
 print(df_with_threshold_50.head(n=20), flush=True)
-
-
-# predictions = np.array(predictions).flatten()
-
-
-# print("Test Loss :", loss, flush=True)
-# print("Test Accuracy :", accuracy, flush=True)
-
-# test_glod_labels = test_data.labels.cpu().detach().numpy()
-
-# with open(
-#     "saved_model/musubu_models/musubu_70k_best_model_predictions.txt", "w"
-# ) as pred_file:
-#     for pred in predictions:
-#         pred_file.write(f"{int(pred)}\n")
-
-# print("\n", "#" * 50, flush=True)
-# print("predictions :", predictions, flush=True)
-
-
-# print("\nTest Metrices", flush=True)
-
-# print(len(predictions))
-
-# print(len(test_data.labels))
-
-# print("\nAccuracy : ", round(accuracy_score(test_glod_labels, predictions) * 100), 4)
-
-# print(
-#     "\nF1 Score Binary: ",
-#     round(f1_score(test_glod_labels, predictions, average="binary"), 4),
-# )
-# print(
-#     "\nF1 Score Micro: ",
-#     round(f1_score(test_glod_labels, predictions, average="micro"), 4),
-# )
-# print(
-#     "\nF1 Score Macro: ",
-#     round(f1_score(test_glod_labels, predictions, average="macro"), 4),
-# )
-# print(
-#     "\nF1 Score Weighted: ",
-#     round(f1_score(test_glod_labels, predictions, average="weighted"), 4),
-# )
-
-# print("\nClassification Report: ")
-# print(classification_report(test_glod_labels, predictions, labels=[0, 1]))
-
-# print("\nConfusion Matrix: ")
-# print(confusion_matrix(test_glod_labels, predictions, labels=[0, 1]))
-
-
-# from collections import Counter
-
-# print("Counter")
-# print(Counter(list(predictions)))
 
