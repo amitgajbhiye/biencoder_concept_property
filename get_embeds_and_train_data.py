@@ -603,7 +603,7 @@ if __name__ == "__main__":
 
         if pretrain_data:
 
-            input_file_base_path = inference_params["pretrain_data"]
+            input_file_base_path = inference_params["input_file_base_path"]
 
             print(f"Input File Base Path : {input_file_base_path}")
 
