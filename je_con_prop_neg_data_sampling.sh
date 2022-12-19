@@ -14,7 +14,7 @@
 ##SBATCH --gres=gpu:1
 
 #SBATCH -p highmem
-#SBATCH -t 0-6:00:00
+#SBATCH -t 0-13:00:00
 
 echo 'This script is running on:'
 hostname
