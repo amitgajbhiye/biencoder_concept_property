@@ -385,8 +385,12 @@ def get_predict_prop_similar_properties(
     # predict_prop_embed_pkl = "/home/amitgajbhiye/cardiff_work/concept_property_embeddings/predict_property_embeds_cnet_premium_property_embeddings.pkl"
 
     if os.path.isfile(input_file):
-        with open(input_file, "rb") as pkl_file:
-            input_df = pickle.load(pkl_file)
+        # with open(input_file, "rb") as pkl_file:
+        #     input_df = pickle.load(pkl_file)
+
+        input_df = pd.read_csv(
+            input_file, sep="\t", names=["concept", "property", "label"]
+        )
 
     elif isinstance(input_file, pd.DataFrame):
         input_df = input_file
@@ -575,20 +579,25 @@ if __name__ == "__main__":
 
         pretrain_data = inference_params["pretrain_data"]
         finetune_data = inference_params["finetune_data"]
+
         num_prop_conjuct = inference_params["num_prop_conjuct"]
 
         predict_property_embed_pkl = inference_params.get("predict_property_embed_pkl")
         vocab_property_embed_pkl = inference_params.get("vocab_property_embed_pkl")
         concept_similar_prop_file = inference_params.get("concept_similar_prop_file")
+
         save_dir = inference_params["save_dir"]
 
         print()
         print(f"pretrain_data : {pretrain_data}")
         print(f"finetune_data : {finetune_data}")
+
         print(f"num_prop_conjuct : {num_prop_conjuct}")
+
         print(f"predict_property_embed_pkl : {predict_property_embed_pkl}")
         print(f"vocab_property_embed_pkl : {vocab_property_embed_pkl}")
         print(f"concept_similar_prop_file : {concept_similar_prop_file}")
+
         print(f"save_dir : {save_dir}")
         print()
 
@@ -596,10 +605,18 @@ if __name__ == "__main__":
 
             input_file_base_path = inference_params["pretrain_data"]
 
-            train_file = os.path.join(input_file_base_path, "train_file_name---------")
-            save_train_file = os.path.join(
-                input_file_base_path, "save_train_file_name-------"
+            print(f"Input File Base Path : {input_file_base_path}")
+
+            train_file = os.path.join(
+                input_file_base_path, "5_neg_train_gkbcnet_plus_cnethasproperty.tsv"
             )
+
+            save_train_file = os.path.join(
+                input_file_base_path, "train_cnetp_5prop_conj.tsv"
+            )
+
+            print(f"Train File Path : {train_file}")
+            print(f"Train Save File Path : {save_train_file}")
 
             get_predict_prop_similar_properties(
                 input_file=train_file,
@@ -611,11 +628,14 @@ if __name__ == "__main__":
             )
 
             valid_file = os.path.join(
-                input_file_base_path, "valid_file_name----------------"
+                input_file_base_path, "5_neg_val_gkbcnet_plus_cnethasproperty.tsv"
             )
             save_valid_file = os.path.join(
-                input_file_base_path, "valid_save_valid_file_name---------"
+                input_file_base_path, "valid_cnetp_5prop_conj.tsv"
             )
+
+            print(f"Valid File Path : {valid_file}")
+            print(f"Valid Save File Path : {save_valid_file}")
 
             get_predict_prop_similar_properties(
                 input_file=valid_file,
