@@ -12,7 +12,7 @@
 #SBATCH -p gpu_v100
 #SBATCH --mem=10g
 #SBATCH --gres=gpu:1
-#SBATCH --qos=gpu4d
+#SBATCH --qos="gpu4d"
 
 #SBATCH -t 5-00:00:00
 
