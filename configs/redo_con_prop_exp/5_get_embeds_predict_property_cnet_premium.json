@@ -1,6 +1,6 @@
 {
     "experiment_name": "5_get_embeds_predict_property_cnet_premium",
-    "log_dirctory": "get_con_pro_embeddings",
+    "log_dirctory": "redo_prop_conj_exp",
     "dataset_params": {
         "dataset_name": "predict_property_embeds_cnet_premium",
         "train_file_path": null,
@@ -29,9 +29,9 @@
         "get_con_prop_embeds": true,
         "input_data_type": "property",
         "concept_file": null,
-        "property_file": "data/train_data/joint_encoder_property_conjuction_data/unique_train_valid_property_cnet_premium.tsv",
+        "property_file": "data/redo_prop_conj_exp/uniq_cnet_premium_properties.txt",
         "concept_property_file": null,
-        "save_dir": "trained_models/con_pro_embeddings",
+        "save_dir": "trained_models/redo_prop_conj_exp",
         "get_concept_similar_properties": false,
         "concept_embed_pkl": null,
         "property_embed_pkl": null,

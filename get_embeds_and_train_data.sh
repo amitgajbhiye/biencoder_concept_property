@@ -24,6 +24,6 @@ module load anaconda/2020.02
 
 conda activate venv
 
-python3 get_embeds_and_train_data.py --config_file configs/redo_con_prop_exp/3_get_embeds_con_similar_prop_vocab.json
+python3 get_embeds_and_train_data.py --config_file configs/redo_con_prop_exp/5_get_embeds_predict_property_cnet_premium.json
 
 echo 'finished!'
