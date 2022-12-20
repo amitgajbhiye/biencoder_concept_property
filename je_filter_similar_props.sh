@@ -1,9 +1,9 @@
 #!/bin/bash --login
 
-#SBATCH --job-name=getLogJE10neg
+#SBATCH --job-name=getLogJE20neg
 
-#SBATCH --output=logs/redo_prop_conj_exp/out_4_je_10neg_filter_con_similar_props.txt
-#SBATCH --error=logs/redo_prop_conj_exp/err_4_je_10neg_filter_con_similar_props.txt
+#SBATCH --output=logs/redo_prop_conj_exp/out_4_je_20neg_filter_con_similar_props.txt
+#SBATCH --error=logs/redo_prop_conj_exp/err_4_je_20neg_filter_con_similar_props.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5

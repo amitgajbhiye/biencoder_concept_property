@@ -28,7 +28,10 @@ model_save_path = "trained_models/joint_encoder_gkbcnet_cnethasprop"
 #     "joint_encoder_concept_property_gkbcnet_cnethasprop_step2_pretrained_model.pt"
 # )
 
-model_name = "je_con_prop_cnet_premium_10negdata_pretrained_model.pt"
+# model_name = "je_con_prop_cnet_premium_10negdata_pretrained_model.pt"
+
+model_name = "je_con_prop_cnet_premium_20negdata_pretrained_model.pt"
+
 
 best_model_path = os.path.join(model_save_path, model_name)
 
@@ -127,13 +130,13 @@ unique_concepts = new_test_dataframe["concept"].unique()
 df_with_threshold_50 = new_test_dataframe[new_test_dataframe["logit"] > 0.50]
 
 
-logit_filename = "trained_models/redo_prop_conj_exp/with_logits_10neg_cnetp_con_similar_50_vocab_props.tsv"
+logit_filename = "trained_models/redo_prop_conj_exp/with_logits_20neg_cnetp_con_similar_50_vocab_props.tsv"
 df_with_threshold_50.to_csv(logit_filename, sep="\t", index=None, header=None)
 print(df_with_threshold_50.head(n=20), flush=True)
 
 
 df_with_threshold_50.drop(labels="logit", axis=1, inplace=True)
-logit_filename = "trained_models/redo_prop_conj_exp/je_10neg_filtered_cnetp_con_similar_vocab_properties.tsv"
+logit_filename = "trained_models/redo_prop_conj_exp/je_20neg_filtered_cnetp_con_similar_vocab_properties.tsv"
 df_with_threshold_50.to_csv(logit_filename, sep="\t", index=None, header=None)
 
 print()
