@@ -449,6 +449,7 @@ def get_predict_prop_similar_properties(
     print(f"#Unique input predict properties : {num_input_predict_props}", flush=True)
 
     all_data, skipped_concepts = [], []
+    concepts_with_one_similar_prop = 0
     for idx, (concept, predict_property, label) in enumerate(
         zip(input_df["concept"], input_df["predict_property"], input_df["label"])
     ):
@@ -501,19 +502,12 @@ def get_predict_prop_similar_properties(
             similar_prop_indices,
         ) = predict_prop_similar_props.kneighbors(zero_embed_predict_prop)
 
-        print(f"similar_prop_indices shape 0: {similar_prop_indices.shape}")
-
         if similar_prop_indices.shape[1] != 1:
-            print(f"similar_prop_indices shape 1: {similar_prop_indices.shape}")
             similar_prop_indices = np.squeeze(similar_prop_indices)
-            print(f"similar_prop_indices shape 2: {similar_prop_indices.shape}")
         else:
-            print(f"similar_prop_indices shape 4: {similar_prop_indices.shape}")
-            print(f"similar_prop_indices : {similar_prop_indices}")
+            concepts_with_one_similar_prop += 1
             print(f"similar_props : {similar_props}")
-
             similar_prop_indices = similar_prop_indices[0]
-            print(f"similar_prop_indices shape 4: {similar_prop_indices.shape}")
 
         similar_properties = [similar_props[idx] for idx in similar_prop_indices]
 
@@ -533,6 +527,7 @@ def get_predict_prop_similar_properties(
     df_all_data = pd.DataFrame.from_records(all_data)
     df_all_data.to_csv(save_file, sep="\t", header=None, index=None)
 
+    print(f"concepts_with_one_similar_prop : {concepts_with_one_similar_prop}")
     print(f"Skipped Concepts : {skipped_concepts}", flush=True)
 
 

@@ -1,6 +1,6 @@
 #!/bin/bash --login
 
-#SBATCH --job-name=step62070
+#SBATCH --job-name=st6-2070
 
 #SBATCH --output=logs/redo_prop_conj_exp/out_6_get_predict_property_similiar_props_20neg_70threshold.txt
 #SBATCH --error=logs/redo_prop_conj_exp/err_6_get_predict_property_similiar_props_20neg_70threshold.txt
@@ -13,8 +13,8 @@
 ##SBATCH --mem=8g
 ##SBATCH --gres=gpu:1
 
-#SBATCH -p dev
-#SBATCH -t 0-01:00:00
+#SBATCH -p compute
+#SBATCH -t 0-12:00:00
 
 echo 'This script is running on:'
 hostname
