@@ -627,7 +627,7 @@ if __name__ == "__main__":
             )
 
             save_train_file = os.path.join(
-                input_file_base_path, "20neg_50threshold_train_cnetp_5prop_conj.tsv"
+                input_file_base_path, "20neg_70threshold_train_cnetp_5prop_conj.tsv"
             )
 
             print(f"Train File Path : {train_file}")
@@ -646,7 +646,7 @@ if __name__ == "__main__":
                 input_file_base_path, "5_neg_val_gkbcnet_plus_cnethasproperty.tsv"
             )
             save_valid_file = os.path.join(
-                input_file_base_path, "20neg_50threshold_valid_cnetp_5prop_conj.tsv"
+                input_file_base_path, "20neg_70threshold_valid_cnetp_5prop_conj.tsv"
             )
 
             print(f"Valid File Path : {valid_file}")
