@@ -447,7 +447,7 @@ def get_predict_prop_similar_properties(
         zip(input_df["concept"], input_df["predict_property"], input_df["label"])
     ):
 
-        print(f"Processing Concept : {concept}, {idx+1} / {num_input_concepts}")
+        print(f"Processing Concept : {concept}, {idx+1} / {input_df.shape[0]}")
         print(
             f"Concept, Predict Property, Label : {(concept, predict_property, label)}"
         )

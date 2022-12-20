@@ -4,7 +4,7 @@ import torch.nn.functional as F
 import pandas as pd
 import numpy as np
 import os
-import pickle
+
 
 from argparse import ArgumentParser
 
@@ -75,30 +75,31 @@ data_path = "/scratch/c.scmag3/biencoder_concept_property/data/train_data/joint_
 # train_file = os.path.join(data_path, "5_neg_prop_conj_train_cnet_premium.tsv")
 # valid_file = os.path.join(data_path, "5_neg_prop_conj_valid_cnet_premium.tsv")
 
-train_file = None
-valid_file = None
+train_file = "/scratch/c.scmag3/biencoder_concept_property/trained_models/redo_prop_conj_exp/train_cnetp_5prop_conj.tsv"
+valid_file = "/scratch/c.scmag3/biencoder_concept_property/trained_models/redo_prop_conj_exp/valid_cnetp_5prop_conj.tsv"
 test_file = None
 
 # train_file = os.path.join(data_path, "dummy_prop_conj.tsv")
 # valid_file = os.path.join(data_path, "dummy_prop_conj.tsv")
 
-model_save_path = "/scratch/c.scmag3/biencoder_concept_property/trained_models/joint_encoder_gkbcnet_cnethasprop"
-model_name = "joint_encoder_property_conjuction_cnet_premium_pretrained_step3_model.pt"
+model_save_path = (
+    "/scratch/c.scmag3/biencoder_concept_property/trained_models/redo_prop_conj_exp/"
+)
+model_name = "je_prop_conj_pretrained_cnetp_je_5neg_cnetp_filtered_props.pt"
 best_model_path = os.path.join(model_save_path, model_name)
 
 max_len = 200
 
 num_labels = 2
 batch_size = 64
-# num_epoch = 100
-num_epoch = 12
+num_epoch = 100
+# num_epoch = 12
 lr = 2e-6
 
-load_pretrained = True
-pretrained_model_path = "/scratch/c.scmag3/biencoder_concept_property/trained_models/joint_encoder_gkbcnet_cnethasprop/joint_encoder_property_conjuction_cnet_premium_pretrained_step3_model.pt"
+load_pretrained = False
+# pretrained_model_path = "/scratch/c.scmag3/biencoder_concept_property/trained_models/joint_encoder_gkbcnet_cnethasprop/joint_encoder_property_conjuction_cnet_premium_pretrained_step3_model.pt"
+pretrained_model_path = None
 
-# cv_type = "concept_split"
-# num_fold = 5
 
 print(f"Train File : {train_file}", flush=True)
 print(f"Valid File : {valid_file}", flush=True)
@@ -224,7 +225,7 @@ def load_pretrained_model(pretrained_model_path):
     model = ModelPropConjuctionJoint()
     model.load_state_dict(torch.load(pretrained_model_path))
 
-    print(f"The pretrained Model is loaded from : {pretrained_model_path}", flush=True)
+    print(f"The pretrained model is loaded from : {pretrained_model_path}", flush=True)
 
     return model
 
@@ -242,6 +243,8 @@ def prepare_data_and_models(
         collate_fn=default_convert,
     )
 
+    print(f"Train Data DF shape : {train_data.data_df.shape}")
+
     if valid_file is not None:
         val_data = DatasetPropConjuction(valid_file)
         val_sampler = RandomSampler(val_data)
@@ -251,6 +254,7 @@ def prepare_data_and_models(
             sampler=val_sampler,
             collate_fn=default_convert,
         )
+        print(f"Valid Data DF shape : {val_data.data_df.shape}")
     else:
         val_dataloader = None
 
@@ -263,6 +267,7 @@ def prepare_data_and_models(
             sampler=test_sampler,
             collate_fn=default_convert,
         )
+        print(f"Test Data DF shape : {test_data.data_df.shape}")
     else:
         test_dataloader = None
 
@@ -486,8 +491,6 @@ def train(
 
 
 ################ Fine Tuning Code Starts Here ################
-
-# ft_param_dict = {"pretrained_model_path": "", "cv_type": "concept_split", "num_fold": 5}
 
 
 def concept_split_training(train_file, test_file, load_pretrained):
