@@ -473,15 +473,11 @@ def get_predict_prop_similar_properties(
             .tolist()
         )
 
-        print(f"similar_props 1: {similar_props}")
-
         similar_props = [
             prop
             for prop in similar_props
             if not match_multi_words(predict_property, prop)
         ]
-
-        print(f"similar_props 2: {similar_props}")
 
         embed_predict_prop = predict_prop_embeds_dict[predict_property]
         embed_similar_prop = [prop_vocab_embeds_dict[prop] for prop in similar_props]
@@ -506,6 +502,13 @@ def get_predict_prop_similar_properties(
         ) = predict_prop_similar_props.kneighbors(zero_embed_predict_prop)
 
         similar_prop_indices = np.squeeze(similar_prop_indices)
+        print(f"similar_prop_indices shape : {similar_prop_indices.shape}")
+        # if similar_prop_indices.shape[0] != 1:
+        #     similar_prop_indices = np.squeeze(similar_prop_indices)
+        # else:
+        #     print(f"similar_prop_indices shape: {similar_prop_indices.shape}")
+        #     print(f"similar_props : {similar_props}")
+
         similar_properties = [similar_props[idx] for idx in similar_prop_indices]
 
         conjuct_similar_props = ", ".join(similar_properties)
