@@ -508,10 +508,12 @@ def get_predict_prop_similar_properties(
             similar_prop_indices = np.squeeze(similar_prop_indices)
             print(f"similar_prop_indices shape 2: {similar_prop_indices.shape}")
         else:
+            print(f"similar_prop_indices shape 4: {similar_prop_indices.shape}")
             print(f"similar_prop_indices : {similar_prop_indices}")
-            similar_prop_indices = similar_prop_indices[1]
-            print(f"similar_prop_indices shape 3: {similar_prop_indices.shape}")
             print(f"similar_props : {similar_props}")
+
+            similar_prop_indices = similar_prop_indices[0]
+            print(f"similar_prop_indices shape 4: {similar_prop_indices.shape}")
 
         similar_properties = [similar_props[idx] for idx in similar_prop_indices]
 
