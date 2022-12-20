@@ -2,8 +2,8 @@
 
 #SBATCH --job-name=step62070
 
-#SBATCH --output=logs/redo_prop_conj_exp/out_6_get_predict_property_similiar_props_20neg_70_threshold.txt
-#SBATCH --error=logs/redo_prop_conj_exp/err_6_get_predict_property_similiar_props_20neg_70_threshold.txt
+#SBATCH --output=logs/redo_prop_conj_exp/out_6_get_predict_property_similiar_props_20neg_70threshold.txt
+#SBATCH --error=logs/redo_prop_conj_exp/err_6_get_predict_property_similiar_props_20neg_70threshold.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
@@ -25,6 +25,6 @@ module load anaconda/2020.02
 
 conda activate venv
 
-python3 get_embeds_and_train_data.py --config_file configs/redo_con_prop_exp/6_get_predict_property_similiar_props_20neg_50_threshold.json
+python3 get_embeds_and_train_data.py --config_file configs/redo_con_prop_exp/6_get_predict_property_similiar_props_20neg_70_threshold.json
 
 echo 'finished!'
