@@ -6,7 +6,7 @@ import pandas as pd
 from torch.utils.data import DataLoader
 from torch.utils.data import SequentialSampler
 from torch.utils.data._utils.collate import default_convert
-from model.joint_encoder_concept_property import (
+from model.je_concept_property import (
     DatasetConceptProperty,
     ModelConceptProperty,
 )
@@ -23,9 +23,13 @@ test_file = (
 batch_size = 1024
 
 model_save_path = "trained_models/joint_encoder_gkbcnet_cnethasprop"
-model_name = (
-    "joint_encoder_concept_property_gkbcnet_cnethasprop_step2_pretrained_model.pt"
-)
+
+# model_name = (
+#     "joint_encoder_concept_property_gkbcnet_cnethasprop_step2_pretrained_model.pt"
+# )
+
+model_name = "je_con_prop_cnet_premium_10negdata_pretrained_model.pt"
+
 best_model_path = os.path.join(model_save_path, model_name)
 
 test_data = DatasetConceptProperty(test_file)
@@ -34,8 +38,10 @@ test_dataloader = DataLoader(
     test_data, batch_size=batch_size, sampler=test_sampler, collate_fn=default_convert
 )
 
-print(f"Best Model Path : {best_model_path}")
-print(f"Loaded Data Frame")
+print(f"Loaded Best Model Path : {best_model_path}", flush=True)
+print(f"Loaded File Path : {test_file}")
+print(f"Loaded Data Frame Shape: {test_data.data_df.shape}", flush=True)
+print(f"Loaded DataFrame")
 print(test_data.data_df)
 
 
@@ -115,6 +121,25 @@ new_test_dataframe["logit"] = positive_class_logits
 
 unique_concepts = new_test_dataframe["concept"].unique()
 
+
+######### Taking records with positive class threshold of 0.50 #########
+
+df_with_threshold_50 = new_test_dataframe[new_test_dataframe["logit"] > 0.50]
+
+
+logit_filename = "trained_models/redo_prop_conj_exp/with_logits_10neg_cnetp_con_similar_50_vocab_props.tsv"
+df_with_threshold_50.to_csv(logit_filename, sep="\t", index=None, header=None)
+print(df_with_threshold_50.head(n=20), flush=True)
+
+
+df_with_threshold_50.drop(labels="logit", axis=1, inplace=True)
+logit_filename = "trained_models/redo_prop_conj_exp/je_10neg_filtered_cnetp_con_similar_vocab_properties.tsv"
+df_with_threshold_50.to_csv(logit_filename, sep="\t", index=None, header=None)
+
+print()
+print(df_with_threshold_50.head(n=20), flush=True)
+
+
 ######### Taking Top K records  #########
 
 # top_k_prop = 20
@@ -143,24 +168,4 @@ unique_concepts = new_test_dataframe["concept"].unique()
 
 # print()
 # print(top_k_df_with_logit.head(n=20), flush=True)
-
-
-######### Taking records with positive class threshold of 0.50 #########
-
-df_with_threshold_50 = new_test_dataframe[new_test_dataframe["logit"] > 0.50]
-
-
-logit_filename = (
-    "trained_models/redo_prop_conj_exp/with_logits_cnetp_con_similar_50_vocab_props.tsv"
-)
-df_with_threshold_50.to_csv(logit_filename, sep="\t", index=None, header=None)
-print(df_with_threshold_50.head(n=20), flush=True)
-
-
-df_with_threshold_50.drop(labels="logit", axis=1, inplace=True)
-logit_filename = "trained_models/redo_prop_conj_exp/je_filtered_cnetp_con_similar_vocab_properties.tsv"
-df_with_threshold_50.to_csv(logit_filename, sep="\t", index=None, header=None)
-
-print()
-print(df_with_threshold_50.head(n=20), flush=True)
 
