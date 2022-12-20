@@ -417,7 +417,7 @@ def get_predict_prop_similar_properties(
         con_similar_prop, sep="\t", names=["concept", "similar_property"]
     )
 
-    je_filtered_concepts = je_filtered_con_prop_df["concept"].unique()
+    je_filtered_concepts = je_filtered_con_prop_df["concept"].unique().tolist()
 
     print(
         f"Number of Unique Concept in je_filtered_con_prop_df : {len(je_filtered_concepts)}"
@@ -472,11 +472,16 @@ def get_predict_prop_similar_properties(
             .unique()
             .tolist()
         )
+
+        print(f"similar_props 1: {similar_props}")
+
         similar_props = [
             prop
             for prop in similar_props
             if not match_multi_words(predict_property, prop)
         ]
+
+        print(f"similar_props 2: {similar_props}")
 
         embed_predict_prop = predict_prop_embeds_dict[predict_property]
         embed_similar_prop = [prop_vocab_embeds_dict[prop] for prop in similar_props]
