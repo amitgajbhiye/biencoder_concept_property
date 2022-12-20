@@ -417,6 +417,12 @@ def get_predict_prop_similar_properties(
         con_similar_prop, sep="\t", names=["concept", "similar_property"]
     )
 
+    je_filtered_concepts = je_filtered_con_prop_df["concept"].unique()
+
+    print(
+        f"Number of Unique Concept in je_filtered_con_prop_df : {len(je_filtered_concepts)}"
+    )
+
     with open(prop_vocab_embed_pkl, "rb") as prop_vocab_pkl:
         prop_vocab_embeds_dict = pickle.load(prop_vocab_pkl)
 
@@ -442,7 +448,7 @@ def get_predict_prop_similar_properties(
     print(f"#Unique input concepts : {num_input_concepts}", flush=True)
     print(f"#Unique input predict properties : {num_input_predict_props}", flush=True)
 
-    all_data = []
+    all_data, skipped_concepts = [], []
     for idx, (concept, predict_property, label) in enumerate(
         zip(input_df["concept"], input_df["predict_property"], input_df["label"])
     ):
@@ -451,6 +457,13 @@ def get_predict_prop_similar_properties(
         print(
             f"Concept, Predict Property, Label : {(concept, predict_property, label)}"
         )
+
+        if concept not in (je_filtered_concepts):
+            skipped_concepts.append(concept)
+            print(
+                f"Skipping concept : {concept}, as it is not in je_filtered_con_prop_df"
+            )
+            continue
 
         similar_props = (
             je_filtered_con_prop_df[je_filtered_con_prop_df["concept"] == concept][
@@ -505,6 +518,8 @@ def get_predict_prop_similar_properties(
 
     df_all_data = pd.DataFrame.from_records(all_data)
     df_all_data.to_csv(save_file, sep="\t", header=None, index=None)
+
+    print(f"Skipped Concepts : {skipped_concepts}", flush=True)
 
 
 if __name__ == "__main__":
@@ -612,7 +627,7 @@ if __name__ == "__main__":
             )
 
             save_train_file = os.path.join(
-                input_file_base_path, "train_cnetp_5prop_conj.tsv"
+                input_file_base_path, "20neg_50threshold_train_cnetp_5prop_conj.tsv"
             )
 
             print(f"Train File Path : {train_file}")
@@ -631,7 +646,7 @@ if __name__ == "__main__":
                 input_file_base_path, "5_neg_val_gkbcnet_plus_cnethasproperty.tsv"
             )
             save_valid_file = os.path.join(
-                input_file_base_path, "valid_cnetp_5prop_conj.tsv"
+                input_file_base_path, "20neg_50threshold_valid_cnetp_5prop_conj.tsv"
             )
 
             print(f"Valid File Path : {valid_file}")
