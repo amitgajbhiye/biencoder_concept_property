@@ -106,7 +106,8 @@ num_epoch = 8
 lr = 2e-6
 
 load_pretrained = True
-pretrained_model_path = "/scratch/c.scmag3/biencoder_concept_property/trained_models/joint_encoder_gkbcnet_cnethasprop/joint_encoder_concept_property_gkbcnet_cnethasprop_step2_pretrained_model.pt"
+# pretrained_model_path = "/scratch/c.scmag3/biencoder_concept_property/trained_models/joint_encoder_gkbcnet_cnethasprop/joint_encoder_concept_property_gkbcnet_cnethasprop_step2_pretrained_model.pt"
+pretrained_model_path = "/scratch/c.scmag3/biencoder_concept_property/trained_models/joint_encoder_gkbcnet_cnethasprop/je_con_prop_cnet_premium_10negdata_pretrained_model.pt"
 
 print(flush=True)
 print(f"Train File : {train_file}", flush=True)
