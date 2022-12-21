@@ -6,7 +6,7 @@ import pandas as pd
 from torch.utils.data import DataLoader
 from torch.utils.data import SequentialSampler
 from torch.utils.data._utils.collate import default_convert
-from model.je_concept_property import (
+from model.je_con_prop import (
     DatasetConceptProperty,
     ModelConceptProperty,
 )
