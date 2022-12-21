@@ -2,8 +2,8 @@
 
 #SBATCH --job-name=CPMr10FT
 
-#SBATCH --output=logs/redo_prop_conj_exp/out_mcrae_con_prop_propsplit_fintune_10neg_pretrain_model.txt
-#SBATCH --error=logs/redo_prop_conj_exp/err_mcrae_con_prop_propsplit_fintune_10neg_pretrain_model.txt
+#SBATCH --output=logs/redo_prop_conj_exp/out_mcrae_con_prop_propsplit_fintune_20neg_pretrain_model.txt
+#SBATCH --error=logs/redo_prop_conj_exp/err_mcrae_con_prop_propsplit_fintune_20neg_pretrain_model.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
