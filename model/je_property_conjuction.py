@@ -100,7 +100,7 @@ max_len = 200
 num_labels = 2
 batch_size = 64
 # num_epoch = 100
-num_epoch = 5
+num_epoch = 8
 lr = 2e-6
 
 load_pretrained = True

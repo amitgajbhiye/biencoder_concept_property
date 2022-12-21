@@ -480,6 +480,8 @@ def get_predict_prop_similar_properties(
             if not match_multi_words(predict_property, prop)
         ]
 
+        print(f"similar_props 1 : {similar_props}")
+
         embed_predict_prop = predict_prop_embeds_dict[predict_property]
         embed_similar_prop = [prop_vocab_embeds_dict[prop] for prop in similar_props]
 

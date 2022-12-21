@@ -2,7 +2,7 @@
 
 #SBATCH --job-name=FtPSMc
 
-#SBATCH --output=logs/redo_prop_conj_exp/out_mcrae_prop_split_finetuned_5neg_50threshold_cnetp_pretrained_model.txt
+#SBATCH --output=logs/redo_prop_conj_exp/out_mcrae_epoch_prop_split_finetuned_5neg_50threshold_cnetp_pretrained_model.txt
 #SBATCH --error=logs/redo_prop_conj_exp/err_mcrae_prop_split_finetuned_5neg_50threshold_cnetp_pretrained_model.txt
 
 #SBATCH --tasks-per-node=5
@@ -13,7 +13,7 @@
 #SBATCH --mem=9g
 #SBATCH --gres=gpu:1
 
-#SBATCH -t 0-10:00:00
+#SBATCH -t 0-08:00:00
 
 echo 'This script is running on:'
 hostname
