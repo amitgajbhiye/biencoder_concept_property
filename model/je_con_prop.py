@@ -130,7 +130,7 @@ class DatasetConceptProperty(Dataset):
                 concept_property_file,
                 sep="\t",
                 header=None,
-                names=["concept", "property", "labels"],
+                names=["concept", "property", "label"],
             )
 
         print(f"Loaded Dataframe")
@@ -152,7 +152,7 @@ class DatasetConceptProperty(Dataset):
 
         concept = self.data_df["concept"][idx].replace(".", "").strip()
         property = self.data_df["property"][idx].replace(".", "").strip()
-        labels = self.data_df["labels"][idx]
+        labels = self.data_df["label"][idx]
 
         # print(f"{con_prop_conj} - {prop_to_predict} - {labels.item()}", flush=True)
 
