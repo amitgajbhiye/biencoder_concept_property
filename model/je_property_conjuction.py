@@ -98,7 +98,8 @@ valid_file = None
 max_len = 200
 
 num_labels = 2
-batch_size = 64
+# batch_size = 64
+batch_size = 32
 # num_epoch = 100
 num_epoch = 8
 lr = 2e-6
