@@ -75,31 +75,37 @@ data_path = "/scratch/c.scmag3/biencoder_concept_property/data/train_data/joint_
 # train_file = os.path.join(data_path, "5_neg_prop_conj_train_cnet_premium.tsv")
 # valid_file = os.path.join(data_path, "5_neg_prop_conj_valid_cnet_premium.tsv")
 
-train_file = "/scratch/c.scmag3/biencoder_concept_property/trained_models/redo_prop_conj_exp/train_cnetp_5prop_conj.tsv"
-valid_file = "/scratch/c.scmag3/biencoder_concept_property/trained_models/redo_prop_conj_exp/valid_cnetp_5prop_conj.tsv"
-test_file = None
+# train_file = "/scratch/c.scmag3/biencoder_concept_property/trained_models/redo_prop_conj_exp/train_cnetp_5prop_conj.tsv"
+# valid_file = "/scratch/c.scmag3/biencoder_concept_property/trained_models/redo_prop_conj_exp/valid_cnetp_5prop_conj.tsv"
+# test_file = None
 
 # train_file = os.path.join(data_path, "dummy_prop_conj.tsv")
 # valid_file = os.path.join(data_path, "dummy_prop_conj.tsv")
 
-model_save_path = (
-    "/scratch/c.scmag3/biencoder_concept_property/trained_models/redo_prop_conj_exp/"
-)
-model_name = "je_prop_conj_pretrained_cnetp_je_5neg_cnetp_filtered_props.pt"
-best_model_path = os.path.join(model_save_path, model_name)
+# model_save_path = (
+#     "/scratch/c.scmag3/biencoder_concept_property/trained_models/redo_prop_conj_exp/"
+# )
+# model_name = "je_prop_conj_pretrained_cnetp_je_5neg_cnetp_filtered_props.pt"
+# best_model_path = os.path.join(model_save_path, model_name)
+
+# For Fine Tuning
+best_model_path = None
+model_name = None
+train_file = None
+valid_file = None
+
 
 max_len = 200
 
 num_labels = 2
 batch_size = 64
-num_epoch = 100
-# num_epoch = 12
+# num_epoch = 100
+num_epoch = 5
 lr = 2e-6
 
-load_pretrained = False
+load_pretrained = True
 # pretrained_model_path = "/scratch/c.scmag3/biencoder_concept_property/trained_models/joint_encoder_gkbcnet_cnethasprop/joint_encoder_property_conjuction_cnet_premium_pretrained_step3_model.pt"
-pretrained_model_path = None
-
+pretrained_model_path = "/scratch/c.scmag3/biencoder_concept_property/trained_models/redo_prop_conj_exp/je_prop_conj_pretrained_cnetp_je_5neg_50threshold_cnetp_filtered_props.pt"
 
 print(f"Train File : {train_file}", flush=True)
 print(f"Valid File : {valid_file}", flush=True)

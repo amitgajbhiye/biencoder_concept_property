@@ -2,8 +2,8 @@
 
 #SBATCH --job-name=FtPSMc
 
-#SBATCH --output=logs/je_logs/out_new_joint_encoder_prop_conj_prop_split_mcrae_finetune.txt
-#SBATCH --error=logs/je_logs/err_new_joint_encoder_prop_conj_prop_split_mcrae_finetune.txt
+#SBATCH --output=logs/redo_prop_conj_exp/out_mcrae_prop_split_finetuned_5neg_50threshold_cnetp_pretrained_model.txt
+#SBATCH --error=logs/redo_prop_conj_exp/err_mcrae_prop_split_finetuned_5neg_50threshold_cnetp_pretrained_model.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
@@ -24,6 +24,6 @@ module load anaconda/2020.02
 
 conda activate venv
 
-python3 model/joint_encoder_property_conjuction.py --finetune --cv_type="property_split"
+python3 model/je_property_conjuction.py --finetune --cv_type="property_split"
 
 echo 'finished !!'
