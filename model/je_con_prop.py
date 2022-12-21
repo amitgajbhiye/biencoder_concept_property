@@ -108,6 +108,7 @@ lr = 2e-6
 load_pretrained = True
 pretrained_model_path = "/scratch/c.scmag3/biencoder_concept_property/trained_models/joint_encoder_gkbcnet_cnethasprop/joint_encoder_concept_property_gkbcnet_cnethasprop_step2_pretrained_model.pt"
 
+print(flush=True)
 print(f"Train File : {train_file}", flush=True)
 print(f"Valid File : {valid_file}", flush=True)
 print(f"Load Pretrained : {load_pretrained}")
@@ -116,6 +117,7 @@ print(f"Pretrained Model Path : {pretrained_model_path}")
 print(f"Batch Size : {batch_size}")
 print(f"Num Epoch : {num_epoch}")
 print(f"Learning Rate : {lr}")
+print(flush=True)
 
 
 class DatasetConceptProperty(Dataset):
