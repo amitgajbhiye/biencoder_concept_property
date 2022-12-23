@@ -101,8 +101,9 @@ num_labels = 2
 # batch_size = 64
 batch_size = 32
 # num_epoch = 100
-num_epoch = 8
-lr = 2e-6
+num_epoch = 10
+# lr = 2e-6
+lr = 1e-5
 
 load_pretrained = True
 # pretrained_model_path = "/scratch/c.scmag3/biencoder_concept_property/trained_models/joint_encoder_gkbcnet_cnethasprop/joint_encoder_property_conjuction_cnet_premium_pretrained_step3_model.pt"
@@ -112,6 +113,10 @@ print(f"Train File : {train_file}", flush=True)
 print(f"Valid File : {valid_file}", flush=True)
 print(f"Load Pretrained : {load_pretrained}")
 print(f"Pretrained Model Path : {pretrained_model_path}")
+
+print("batch_size : {batch_size}")
+print("num_epoch : {num_epoch}")
+print("LR : {lr}")
 
 
 class DatasetPropConjuction(Dataset):
