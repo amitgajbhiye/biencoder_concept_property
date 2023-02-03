@@ -1,18 +1,20 @@
 #!/bin/bash --login
 
-#SBATCH --job-name=JEnegDataPrep
+#SBATCH --job-name=CPv10Neg
 
-#SBATCH --output=logs/joint_encoder_pretraining_data_prep/out_je_con_prop_pretraining_neg_data_sampling.txt
-#SBATCH --error=logs/joint_encoder_pretraining_data_prep/err_je_con_prop_pretraining_neg_data_sampling.txt
+#SBATCH --output=logs/je_logs/out_je_con_prop_10neg_valid_data_samp.txt
+#SBATCH --error=logs/je_logs/err_je_con_prop_10neg_valid_data_samp.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
 #SBATCH -A scw1858
 
-#SBATCH -p highmem
-#SBATCH --mem=5g
+##SBATCH -p gpu_v100,gpu
+##SBATCH --mem=6gs
+##SBATCH --gres=gpu:1
 
-#SBATCH -t 0-03:00:00
+#SBATCH -p highmem
+#SBATCH -t 0-13:00:00
 
 echo 'This script is running on:'
 hostname
