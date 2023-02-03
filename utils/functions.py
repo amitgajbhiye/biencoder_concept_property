@@ -29,13 +29,20 @@ def set_seed(seed):
 
 def set_logger(config):
 
-    # log_file_name = f"logs/cslb_fine_tuned_100k_logs/log_{config.get('experiment_name')}_{time.strftime('%d-%m-%Y_%H-%M-%S')}.txt"
+    sub_log_directory = config.get("log_dirctory")
 
-    log_file_name = os.path.join(
-        "logs",
-        config.get("log_dirctory"),
-        f"log_{config.get('experiment_name')}_{time.strftime('%d-%m-%Y_%H-%M-%S')}.txt",
-    )
+    if sub_log_directory:
+
+        log_file_name = os.path.join(
+            "logs",
+            config.get("log_dirctory"),
+            f"log_{config.get('experiment_name')}_{time.strftime('%d-%m-%Y_%H-%M-%S')}.txt",
+        )
+    else:
+        log_file_name = os.path.join(
+            "logs",
+            f"log_{config.get('experiment_name')}_{time.strftime('%d-%m-%Y_%H-%M-%S')}.txt",
+        )
 
     print("config.get('experiment_name') :", config.get("experiment_name"))
     print("\nlog_file_name :", log_file_name)
