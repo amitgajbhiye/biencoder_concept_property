@@ -28,36 +28,15 @@ def preprocess_get_embedding_data(config):
     inference_params = config.get("inference_params")
     input_data_type = inference_params["input_data_type"]
 
-    if input_data_type == "concept":
-        data_df = pd.read_csv(
-            inference_params["concept_file"],
-            sep="\t",
-            header=None,
-            keep_default_na=False,
-        )
+    input_file_name = inference_params["input_file_name"]
 
-    elif input_data_type == "property":
-        data_df = pd.read_csv(
-            inference_params["property_file"],
-            sep="\t",
-            header=None,
-            keep_default_na=False,
-        )
-
-    elif input_data_type == "concept_and_property":
-        data_df = pd.read_csv(
-            inference_params["concept_property_file"],
-            sep="\t",
-            header=None,
-            keep_default_na=False,
-        )
-
-    num_columns = len(data_df.columns)
-    log.info(f"Number of columns in input file : {num_columns}")
+    data_df = pd.read_csv(
+        input_file_name, sep="\t", header=None, keep_default_na=False,
+    )
 
     input_data_type = inference_params["input_data_type"]
 
-    if input_data_type == "concept" and num_columns == 1:
+    if input_data_type == "concept":
 
         log.info(f"Generating Embeddings for Concepts")
         log.info(f"Number of records : {data_df.shape[0]}")
@@ -69,7 +48,7 @@ def preprocess_get_embedding_data(config):
 
         data_df["property"] = "dummy_property"
 
-    elif input_data_type == "property" and num_columns == 1:
+    elif input_data_type == "property":
 
         log.info("Generating Embeddings for Properties")
         log.info(f"Number of records : {data_df.shape[0]}")
@@ -81,7 +60,7 @@ def preprocess_get_embedding_data(config):
 
         data_df["concept"] = "dummy_concept"
 
-    elif input_data_type == "concept_and_property" and num_columns == 2:
+    elif input_data_type == "concept_and_property":
 
         log.info("Generating Embeddings for Concepts and Properties")
         log.info(f"Number of records : {data_df.shape[0]}")
@@ -102,11 +81,11 @@ def preprocess_get_embedding_data(config):
 
 def generate_embedings(config):
 
-    inference_params = config.get("inference_params")
+    inference_params = config["inference_params"]
 
     input_data_type = inference_params["input_data_type"]
-    model_params = config.get("model_params")
-    dataset_params = config.get("dataset_params")
+    model_params = config["model_params"]
+    dataset_params = config["dataset_params"]
 
     model = create_model(model_params)
 
@@ -172,9 +151,6 @@ def generate_embedings(config):
                 property_token_type_id=property_token_type_id,
             )
 
-            # print("shape concept_pair_embedding: ", concept_pair_embedding.shape)
-            # print("shape relation_embedding: ", relation_embedding.shape)
-
         if input_data_type == "concept":
 
             for con, con_embed in zip(batch[0], concept_embedding):
@@ -208,6 +184,7 @@ def generate_embedings(config):
         log.info("Finished Generating the Concept Embeddings")
         log.info(f"Concept Embeddings are saved in : {embedding_save_file_name}")
         log.info(f"{'*' * 40}")
+        print(f"Concept Embeddings are saved in : {embedding_save_file_name}")
 
         return embedding_save_file_name
 
@@ -222,6 +199,7 @@ def generate_embedings(config):
         log.info("Finished Generating the Property Embeddings")
         log.info(f"Property Embeddings are saved in : {embedding_save_file_name}")
         log.info(f"{'*' * 40}")
+        print(f"Property Embeddings are saved in : {embedding_save_file_name}")
 
         return embedding_save_file_name
 
@@ -245,6 +223,10 @@ def generate_embedings(config):
             f"Concept Property Embeddings are saved in : {con_embedding_save_file_name, prop_embedding_save_file_name}"
         )
         log.info(f"{'*' * 40}")
+
+        log.info(
+            f"Concept Property Embeddings are saved in : {con_embedding_save_file_name, prop_embedding_save_file_name}"
+        )
 
         return con_embedding_save_file_name, prop_embedding_save_file_name
 
@@ -271,7 +253,7 @@ if __name__ == "__main__":
 
     log.info(f"\n {config} \n")
 
-    inference_params = config.get("inference_params")
+    inference_params = config["inference_params"]
     input_data_type = inference_params["input_data_type"]
 
     assert input_data_type in (

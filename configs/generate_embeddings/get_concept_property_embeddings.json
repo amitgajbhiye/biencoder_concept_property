@@ -2,10 +2,7 @@
     "experiment_name": "get_embeds",
     "log_dirctory": null,
     "dataset_params": {
-        "dataset_name": "concept",
-        "train_file_path": null,
-        "val_file_path": null,
-        "test_file_path": null,
+        "dataset_name": "concepts",
         "hf_tokenizer_name": "bert-base-uncased",
         "hf_tokenizer_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained/tokenizer",
         "concept_max_len": 64,
