@@ -2,12 +2,12 @@
     "experiment_name": "get_embeds",
     "log_dirctory": "logs",
     "dataset_params": {
-        "dataset_name": "concept_property",
+        "dataset_name": "concept",
         "train_file_path": null,
         "val_file_path": null,
         "test_file_path": null,
         "hf_tokenizer_name": "bert-base-uncased",
-        "hf_tokenizer_path": null,
+        "hf_tokenizer_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained/tokenizer",
         "concept_max_len": 64,
         "property_max_len": 64,
         "add_context": true,
@@ -21,7 +21,7 @@
     "model_params": {
         "model_name": null,
         "hf_checkpoint_name": "bert-base-uncased",
-        "hf_model_path": null,
+        "hf_model_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained",
         "vector_strategy": "mask_token"
     },
     "inference_params": {

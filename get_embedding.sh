@@ -10,11 +10,10 @@
 #SBATCH -A scw1858
 
 #SBATCH -p gpu_v100,gpu
-#SBATCH --mem=10gs
+#SBATCH --mem=8G
 #SBATCH --gres=gpu:1
 
 #SBATCH -t 0-01:00:00
-
 
 # module load anaconda/2020.02
 
