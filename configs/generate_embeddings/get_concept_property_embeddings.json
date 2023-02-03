@@ -1,6 +1,6 @@
 {
     "experiment_name": "get_embeds",
-    "log_dirctory": "logs",
+    "log_dirctory": null,
     "dataset_params": {
         "dataset_name": "concept",
         "train_file_path": null,
