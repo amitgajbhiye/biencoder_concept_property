@@ -15,9 +15,6 @@
 
 #SBATCH -t 0-00:40:00
 
-# module load anaconda/2020.02
-
-# . activate
 
 conda activate venv
 
