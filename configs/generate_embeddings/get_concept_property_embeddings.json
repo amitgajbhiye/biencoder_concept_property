@@ -25,9 +25,7 @@
         "pretrained_model_path": "trained_models/gkb_source_analysis/bb_gkb_cnet_plus_cnet_has_property.pt",
         "get_con_prop_embeds": true,
         "input_data_type": "concept",
-        "concept_file": "data/train_data/joint_encoder_property_conjuction_data/unique_train_valid_concepts_cnet_premium.tsv",
-        "property_file": null,
-        "concept_property_file": null,
+        "input_file_name": "data/train_data/joint_encoder_property_conjuction_data/unique_train_valid_concepts_cnet_premium.tsv",
         "save_dir": "trained_models/embeddings"
     }
 }
