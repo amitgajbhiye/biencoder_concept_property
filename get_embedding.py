@@ -16,7 +16,6 @@ from utils.functions import (
 )
 from sklearn.neighbors import NearestNeighbors
 
-
 log = logging.getLogger(__name__)
 
 cuda_available = torch.cuda.is_available()

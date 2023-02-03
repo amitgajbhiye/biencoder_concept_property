@@ -4,6 +4,7 @@ import torch
 from torch import nn
 from torch.nn.functional import normalize
 from transformers import BertModel, RobertaModel, DebertaModel
+from transformers import AutoModel
 
 log = logging.getLogger(__name__)
 
@@ -21,27 +22,21 @@ class ConceptPropertyModel(nn.Module):
     def __init__(self, model_params):
         super(ConceptPropertyModel, self).__init__()
 
-        # self._concept_encoder = BertModel.from_pretrained("bert-base-uncased")
-        # self._property_encoder = BertModel.from_pretrained("bert-base-uncased")
-
-        # self._concept_encoder = BertModel.from_pretrained(
-        #     model_params.get("hf_model_path")
-        # )
-        # self._property_encoder = BertModel.from_pretrained(
-        #     model_params.get("hf_model_path")
-        # )
-
         self.hf_checkpoint_name = model_params.get("hf_checkpoint_name")
 
         self.model_class, self.mask_token_id = MODEL_CLASS.get(self.hf_checkpoint_name)
 
-        self._concept_encoder = self.model_class.from_pretrained(
-            model_params.get("hf_model_path")
-        )
+        if model_params.get("hf_model_path") is not None:
+            self._concept_encoder = self.model_class.from_pretrained(
+                model_params.get("hf_model_path")
+            )
 
-        self._property_encoder = self.model_class.from_pretrained(
-            model_params.get("hf_model_path")
-        )
+            self._property_encoder = self.model_class.from_pretrained(
+                model_params.get("hf_model_path")
+            )
+        else:
+            self._concept_encoder = AutoModel.from_pretrained(self.hf_checkpoint_name)
+            self._property_encoder = AutoModel.from_pretrained(self.hf_checkpoint_name)
 
         self.dropout_prob = model_params.get("dropout_prob")
         self.strategy = model_params.get("vector_strategy")

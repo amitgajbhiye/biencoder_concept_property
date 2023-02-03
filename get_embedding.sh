@@ -2,8 +2,8 @@
 
 #SBATCH --job-name=getEmb
 
-#SBATCH --output=logs/get_con_pro_embeddings/out_bert_large_get_con_pro_embeddings.txt
-#SBATCH --error=logs/get_con_pro_embeddings/err_bert_large_get_con_pro_embeddings.txt
+#SBATCH --output=logs/out_get_embeds.txt
+#SBATCH --error=logs/err_get_embeds.txt
 
 #SBATCH --tasks-per-node=5
 #SBATCH --ntasks=5
@@ -15,15 +15,13 @@
 
 #SBATCH -t 0-01:00:00
 
-echo 'This script is running on:'
-hostname
 
-module load anaconda/2020.02
+# module load anaconda/2020.02
 
-. activate
+# . activate
 
 conda activate venv
 
-python3 get_embedding.py --config_file configs/generate_embeddings/get_embedding_config.json
+python3 get_embedding.py --config_file configs/generate_embeddings/get_concept_property_embeddings.json
 
 echo 'finished!'
