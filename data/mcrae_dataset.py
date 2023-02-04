@@ -7,6 +7,7 @@ import numpy as np
 from torch.utils.data import Dataset
 from transformers import BertTokenizer
 from data.concept_property_dataset import TOKENIZER_CLASS
+from transformers import AutoTokenizer
 
 
 log = logging.getLogger(__name__)
@@ -48,10 +49,16 @@ class McRaeConceptPropertyDataset(Dataset):
 
         self.tokenizer_class = TOKENIZER_CLASS.get(self.hf_tokenizer_name)
 
-        # self.tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
-        self.tokenizer = self.tokenizer_class.from_pretrained(
-            dataset_params.get("hf_tokenizer_path")
-        )
+        # self.tokenizer = self.tokenizer_class.from_pretrained(
+        #     dataset_params.get("hf_tokenizer_path")
+        # )
+
+        if dataset_params.get("hf_tokenizer_path") is not None:
+            self.tokenizer = self.tokenizer_class.from_pretrained(
+                dataset_params.get("hf_tokenizer_path")
+            )
+        else:
+            self.tokenizer = AutoTokenizer.from_pretrained(self.hf_tokenizer_name)
 
         self.mask_token = self.tokenizer.mask_token
         self.concept_max_len = dataset_params.get("concept_max_len", 510)
