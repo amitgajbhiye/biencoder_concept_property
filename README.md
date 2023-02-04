@@ -6,14 +6,16 @@ The dot product model for concept property classification consists of two separa
 
 ## Getting Concept and Property Embedding from Pretrained Models
 
-- Run the `download_models.sh` bash script. This will download two `BERT-base-uncased` pretrained models. First the model pretrained on ConceptNet data in Generics KB plus the `has_property` relation data in the Conceppt Net. The second model is pretrained on `Microsoft Concept Graph (mscg)`, `Generics KB Properties (gkb)` and `Prefix Adjectives`. The model will be downloaded in the `trained_models` directory.
+- Run the `download_models.sh` bash script. This will download two `BERT-base-uncased` pretrained models. First the model pretrained on ConceptNet data in Generics KB plus the `has_property` relation data in the Concept Net. We refer to this model as `conceptnet_premium`. The second model is pretrained on `Microsoft Concept Graph (mscg)`, `Generics KB Properties (gkb)` and `Prefix Adjectives`. The model will be downloaded in the `trained_models` directory.
     - `bash download_models.sh`
 
-- Once the model is downloaded run the `get_embedding.py` module with the configuration file as follows :
+- Once the model is downloaded run the `get_embedding.py` module with the configuration file as follows:
 
 	- `python3 get_embedding.py --config_file configs/generate_embeddings/get_concept_property_embeddings.json`
 
-- Change the fields of the configuration file as per the requirement. Following are the important fields of the configuration file:
+- The above script will generate a pickled dictionary of concept/property in the `save_dir` field of configuration file.
+
+- Following are the important fields of the configuration file:
 	- `dataset_name` - Name that will be used to save the embedding pickle file at the directory path specified in `save_dir` field.
 	- `hf_checkpoint_name` and `hf_tokenizer_name` - The huggingface pretrained model ID and tokenizer name. For example, `bert-base-uncased`.
 	- `context_num` - Context ID used in pretraining the models. We used context ID - 6.
@@ -25,8 +27,6 @@ The dot product model for concept property classification consists of two separa
 		- `property` : for property embeddings. The input file must be a file with each property in one line.
 		- `concept_and_property` : for the concept and property embeddings. The input file must be a with each concept and property in one line, separated bt tab. 
 	
-
-
 
 ## Training Methodology 
 
