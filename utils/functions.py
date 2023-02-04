@@ -19,7 +19,7 @@ from torch.utils.data import DataLoader, RandomSampler, SequentialSampler
 
 import warnings
 
-warnings.filters("ignore")
+warnings.filterwarnings("ignore")
 
 
 def set_seed(seed):
