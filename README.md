@@ -3,6 +3,30 @@
 ## Model Details
 The dot product model for concept property classification consists of two separate pre-trained Language Model (LM) based encoders. The concept encoder is trained on the input of the form `concept means [MASK]` and the property encoder on the form `property means [MASK]`. The vector encoding for the `[MASK]` is taken as the representation for the concept or the property. The dot product of the vector encodings of the concept and property is passed through the sigmoid activation to get the model prediction.
 
+
+## Getting Concept and Property Embedding from Pretrained Models
+
+- Run the `download_models.sh` bash script. This will download two `BERT-base-uncased` pretrained models. First the model pretrained on ConceptNet data in Generics KB plus the `has_property` relation data in the Conceppt Net. The second model is pretrained on `Microsoft Concept Graph (mscg)`, `Generics KB Properties (gkb)` and `Prefix Adjectives`. The model will be downloaded in the `trained_models` directory.
+    - `bash download_models.sh`
+
+- Once the model is downloaded run the `get_embedding.py` module with the configuration file - `configs/generate_embeddings/get_concept_property_embeddings.json` as follows :
+
+	- `python3 get_embedding.py --config_file configs/generate_embeddings/get_concept_property_embeddings.json`
+
+- Change the fields of the configuration file as per the requirement. Following are the important fields of the configuration file:
+	- `dataset_name` - Name that will be used to save the embedding pickle file at the directory path specified in `save_dir` field.
+	- `hf_checkpoint_name` and `hf_tokenizer_name` - The huggingface pretrained model ID and tokenizer name. For example, `bert-base-uncased`.
+	- `context_num` - Context ID used in pretraining the models. We used context ID - 6.
+	- `pretrained_model_path` - Path of the pretrained model. It is `trained_models/bb_gkb_cnet_plus_cnet_has_property.pt` or `trained_models/bb_mscg_prefix_adjective_gkb.pt` for the two downloaded models.
+	- `get_con_prop_embeds` - Flag set to `true` to get concept or property embeddings. 
+	- `input_data_type` - Type of the embddings to generate. 
+		- `concept` : for concept embeddings. The input file must be a file with each concept in one line.
+		- `property` : for property embeddings. The input file must be a file with each property in one line.
+		- `concept_and_property` : for the concept and property embeddings. The input file must be a with each concept and property in one line, separated bt tab. 
+	
+
+
+
 ## Training Methodology 
 
 ### Pre-training on Different Data
