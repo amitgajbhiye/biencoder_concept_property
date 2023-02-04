@@ -2,7 +2,7 @@
     "experiment_name": "get_embeds",
     "log_dirctory": null,
     "dataset_params": {
-        "dataset_name": "concepts",
+        "dataset_name": "dummy_concepts",
         "hf_tokenizer_name": "bert-base-uncased",
         "hf_tokenizer_path": null,
         "concept_max_len": 32,
