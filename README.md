@@ -1,4 +1,4 @@
-## Dot Product Model For Concept Property Classification Task
+## BiEncoder Model For Concept Property Classification Task
 
 ## Model Details
 The dot product model for concept property classification consists of two separate pre-trained Language Model (LM) based encoders. The concept encoder is trained on the input of the form `concept means [MASK]` and the property encoder on the form `property means [MASK]`. The vector encoding for the `[MASK]` is taken as the representation for the concept or the property. The dot product of the vector encodings of the concept and property is passed through the sigmoid activation to get the model prediction.
@@ -80,3 +80,27 @@ Following are the steps to fine-tune a pretrained model:
 - To fine tuning the model execute the `fine_tune.py` script with the config file path as argument.
 - For example, to fine the model trained on `100k mscg` data with `Property` split run the following command:
 	- `python3 fine_tune.py --config_file configs/sample_configs/pcv_sample_config_file.json`
+
+
+
+## Citation
+
+If you make use of the code in this repository, please cite the following pape
+
+```
+
+@inproceedings{gajbhiye2022modelling,
+    title = "Modelling Commonsense Properties Using Pre-Trained Bi-Encoders",
+    author = "Gajbhiye, Amit  and
+      Espinosa-Anke, Luis  and
+      Schockaert, Steven",
+    booktitle = "Proceedings of the 29th International Conference on Computational Linguistics",
+    month = oct,
+    year = "2022",
+    address = "Gyeongju, Republic of Korea",
+    publisher = "International Committee on Computational Linguistics",
+    url = "https://aclanthology.org/2022.coling-1.349",
+    pages = "3971--3983"
+}
+
+```
