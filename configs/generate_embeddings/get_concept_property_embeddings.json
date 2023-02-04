@@ -4,7 +4,7 @@
     "dataset_params": {
         "dataset_name": "concepts",
         "hf_tokenizer_name": "bert-base-uncased",
-        "hf_tokenizer_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained/tokenizer",
+        "hf_tokenizer_path": null,
         "concept_max_len": 64,
         "property_max_len": 64,
         "add_context": true,
@@ -18,11 +18,11 @@
     "model_params": {
         "model_name": null,
         "hf_checkpoint_name": "bert-base-uncased",
-        "hf_model_path": "/scratch/c.scmag3/conceptEmbeddingModel/bertBaseUncasedPreTrained",
+        "hf_model_path": null,
         "vector_strategy": "mask_token"
     },
     "inference_params": {
-        "pretrained_model_path": "trained_models/gkb_source_analysis/bb_gkb_cnet_plus_cnet_has_property.pt",
+        "pretrained_model_path": "trained_models/bb_gkb_cnet_plus_cnet_has_property.pt",
         "get_con_prop_embeds": true,
         "input_data_type": "concept",
         "input_file_name": "data/train_data/joint_encoder_property_conjuction_data/unique_train_valid_concepts_cnet_premium.tsv",

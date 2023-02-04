@@ -24,19 +24,23 @@ class ConceptPropertyModel(nn.Module):
 
         self.hf_checkpoint_name = model_params.get("hf_checkpoint_name")
 
-        self.model_class, self.mask_token_id = MODEL_CLASS.get(self.hf_checkpoint_name)
+        _, self.mask_token_id = MODEL_CLASS.get(self.hf_checkpoint_name)
 
         if model_params.get("hf_model_path") is not None:
-            self._concept_encoder = self.model_class.from_pretrained(
+            self._concept_encoder = AutoModel.from_pretrained(
                 model_params.get("hf_model_path")
             )
 
-            self._property_encoder = self.model_class.from_pretrained(
+            self._property_encoder = AutoModel.from_pretrained(
                 model_params.get("hf_model_path")
             )
         else:
-            self._concept_encoder = AutoModel.from_pretrained(self.hf_checkpoint_name)
-            self._property_encoder = AutoModel.from_pretrained(self.hf_checkpoint_name)
+            self._concept_encoder = AutoModel.from_pretrained(
+                model_params.get("hf_checkpoint_name")
+            )
+            self._property_encoder = AutoModel.from_pretrained(
+                model_params.get("hf_checkpoint_name")
+            )
 
         self.dropout_prob = model_params.get("dropout_prob")
         self.strategy = model_params.get("vector_strategy")
