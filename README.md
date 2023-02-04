@@ -13,8 +13,6 @@ The dot product model for concept property classification consists of two separa
 
 	- `python3 get_embedding.py --config_file configs/generate_embeddings/get_concept_property_embeddings.json`
 
-
-
 - Change the fields of the configuration file as per the requirement. Following are the important fields of the configuration file:
 	- `dataset_name` - Name that will be used to save the embedding pickle file at the directory path specified in `save_dir` field.
 	- `hf_checkpoint_name` and `hf_tokenizer_name` - The huggingface pretrained model ID and tokenizer name. For example, `bert-base-uncased`.
