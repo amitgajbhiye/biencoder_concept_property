@@ -85,7 +85,7 @@ Following are the steps to fine-tune a pretrained model:
 
 ## Citation
 
-If you make use of the code in this repository, please cite the following pape
+If you make use of the code in this repository, please cite the following paper.
 
 ```
 
