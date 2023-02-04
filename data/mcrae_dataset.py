@@ -49,10 +49,6 @@ class McRaeConceptPropertyDataset(Dataset):
 
         self.tokenizer_class = TOKENIZER_CLASS.get(self.hf_tokenizer_name)
 
-        # self.tokenizer = self.tokenizer_class.from_pretrained(
-        #     dataset_params.get("hf_tokenizer_path")
-        # )
-
         if dataset_params.get("hf_tokenizer_path") is not None:
             self.tokenizer = self.tokenizer_class.from_pretrained(
                 dataset_params.get("hf_tokenizer_path")

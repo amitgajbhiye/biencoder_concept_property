@@ -17,6 +17,10 @@ from sklearn.metrics import (
 )
 from torch.utils.data import DataLoader, RandomSampler, SequentialSampler
 
+import warnings
+
+warnings.filters("ignore")
+
 
 def set_seed(seed):
     np.random.seed(seed)
