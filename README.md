@@ -35,7 +35,7 @@ The BiEncoder model can generate the embeddings of concept and properties. Pleas
 ### Pre-training on Different Data
 The biencoder model is first trained on the different types and amounts (100K and 500K) of data from the `Microsoft Concept Graph (mscg)`, `Generics KB Properties (gkb)` and `Prefix Adjectives`. The data can be found in the `data` directory of the repo. The model in this configuration uses in-batch negative sampling. The input file is a `tsv` in the form of `concept property`. The negatives are sampled via in-batch negative sampling during model training.  
 
-The `neg_batch_sampling` branch of the codebase contains the latest code. 
+<!-- The `neg_batch_sampling` branch of the codebase contains the latest code.  -->
 
 Following are the steps to train the model:
 - Clone the repo and checkout the `neg_batch_sampling` branch:
@@ -56,9 +56,10 @@ function in the `utils/functions.py` module. The name of the log file is of the 
 - The best-trained model is saved at the path specified in the `export_path`  with the name specified in the `model_name` parameter of the configuration file.
 
 - The models trained on 100k and 500k different datasets are saved in One Drive at the [link](https://cf.sharepoint.com/:f:/t/ELEXIR/EvB5Kj7yY_pLp8uExM6xqVYBl2PIz-uMsGBMwICmR8Se_A?e=bnnoN7 )
-- The models are also available on Hawk. I have changed the `/scratch` partition permission, so they are readable. The models are saved in : 
+
+<!-- - The models are also available on Hawk. I have changed the `/scratch` partition permission, so they are readable. The models are saved in : 
 	- 100k Models - `/scratch/c.scmag3/biencoder_concept_property/trained_models/100k_data_experiments`
-	- 500k Models - `/scratch/c.scmag3/biencoder_concept_property/trained_models/500k_trained_models`
+	- 500k Models - `/scratch/c.scmag3/biencoder_concept_property/trained_models/500k_trained_models` -->
 
 
 ### Fine-tuning Trained Model
