@@ -8,18 +8,29 @@ The BiEncoder model for concept property classification consists of two separate
 
 ## Getting Concept and Property Embedding from Pretrained Models
 
-The BiEncoder model can generate the embeddings of concept and properties. Please follow the following steps to get the embeddings. 
+The BiEncoder model can generate the embeddings of concept and properties. Please run the following scripts to download our pretrained model and generate the embeddings.
 
-- Run the `download_models.sh` bash script. This will download two `BERT-base-uncased` pretrained models. First the model pretrained on ConceptNet data in Generics KB plus the `has_property` relation data in the Concept Net. We refer to this data as `conceptnet_premium`. The second model is pretrained on `Microsoft Concept Graph (mscg)`, `Generics KB Properties (gkb)` and `Prefix Adjectives`. The model will be downloaded in the `trained_models` directory.
+```
+bash download_models.sh
+python3 get_embedding.py --config_file configs/generate_embeddings/get_concept_property_embeddings.json
+
+```
+
+The `download_models.sh` will download `BERT-base-uncased` model pretrained on ConceptNet data in Generics KB plus the `has_property` relation data in the Concept Net. The default configurations for generating the concept/property embeddings are mentioned in the configuration file - `configs/generate_embeddings/get_concept_property_embeddings.json`. 
+
+From the downloaded model, by default the above script will generate the concept embeddings (`input_data_type : 'concept'`, field in configuration file). The concepts are taken from the input file `data/generate_embeddding_data/dummy_concepts.txt` (`input_file_name`). The embeddings will be saved in `trained_models/embeddings` path (`'save_dir'`). The generated embeddings will be a pickled dictionary with concepts as key and their embdding as value.             
+
+<!-- - Run the `download_models.sh` bash script. This will download two `BERT-base-uncased` pretrained models. First the model pretrained on ConceptNet data in Generics KB plus the `has_property` relation data in the Concept Net. We refer to this data as `conceptnet_premium`. The second model is pretrained on `Microsoft Concept Graph (mscg)`, `Generics KB Properties (gkb)` and `Prefix Adjectives`. The model will be downloaded in the `trained_models` directory.
     - `bash download_models.sh`
 
 - Once the model is downloaded run the `get_embedding.py` module with the configuration file as follows:
 
 	- `python3 get_embedding.py --config_file configs/generate_embeddings/get_concept_property_embeddings.json`
 
-- The above script will generate a pickled dictionary of concept/property in the `save_dir` field of configuration file.
+- The above script will generate a pickled dictionary of concept/property in the `save_dir` field of configuration file. -->
 
-- Following are the important fields of the configuration file:
+- To generate the embeddings of your own data, following is the explanation of the fields of the configuration file:
+
 	- `dataset_name` - Name that will be used to save the embedding pickle file at the directory path specified in `save_dir` field.
 	- `hf_checkpoint_name` and `hf_tokenizer_name` - The huggingface pretrained model ID and tokenizer name. For example, `bert-base-uncased`.
 	- `context_num` - Context ID used in pretraining the models. We used context ID - 6.
