@@ -29,7 +29,7 @@ The BiEncoder model can generate the embeddings of concept and properties. Pleas
 	- `input_data_type` - Type of the embddings to generate. 
 		- `concept` : for concept embeddings. The input file must be a file with each concept in one line.
 		- `property` : for property embeddings. The input file must be a file with each property in one line.
-		- `concept_and_property` : for the concept and property embeddings. The input file must be a with each concept and property in one line, separated bt tab. 
+		- `concept_and_property` : for the concept and property embeddings. The input file must file with each concept and associated property, one per line, separated by tab. 
 	
 
 ## Training Methodology 
