@@ -6,7 +6,9 @@ The dot product model for concept property classification consists of two separa
 
 ## Getting Concept and Property Embedding from Pretrained Models
 
-- Run the `download_models.sh` bash script. This will download two `BERT-base-uncased` pretrained models. First the model pretrained on ConceptNet data in Generics KB plus the `has_property` relation data in the Concept Net. We refer to this model as `conceptnet_premium`. The second model is pretrained on `Microsoft Concept Graph (mscg)`, `Generics KB Properties (gkb)` and `Prefix Adjectives`. The model will be downloaded in the `trained_models` directory.
+The BiEncoder model can generate the embeddings of concept and properties. Please follow the following steps to get the embeddings. 
+
+- Run the `download_models.sh` bash script. This will download two `BERT-base-uncased` pretrained models. First the model pretrained on ConceptNet data in Generics KB plus the `has_property` relation data in the Concept Net. We refer to this data as `conceptnet_premium`. The second model is pretrained on `Microsoft Concept Graph (mscg)`, `Generics KB Properties (gkb)` and `Prefix Adjectives`. The model will be downloaded in the `trained_models` directory.
     - `bash download_models.sh`
 
 - Once the model is downloaded run the `get_embedding.py` module with the configuration file as follows:
