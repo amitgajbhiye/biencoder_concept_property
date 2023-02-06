@@ -1,4 +1,6 @@
-## BiEncoder Model For Concept Property Classification Task
+## BiEncoder Model For Concept Property Classification
+
+```[Modelling Commonsense Properties using Pre-Trained Bi-Encoders](https://aclanthology.org/2022.coling-1.349/)```
 
 ## Model Details
 The BiEncoder model for concept property classification consists of two separate pre-trained Language Model (LM) based encoders. The concept encoder is trained on the prompt `concept means [MASK]` and the property encoder on `property means [MASK]`. The vector encoding for the `[MASK]` is taken as the representation for the concept or the property. The dot product of the `[MASK]` embeddings of the concept and property is passed through the sigmoid activation to get the model prediction.
