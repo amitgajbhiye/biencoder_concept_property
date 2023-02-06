@@ -31,7 +31,7 @@ The dot product model for concept property classification consists of two separa
 ## Training Methodology 
 
 ### Pre-training on Different Data
-The dot product model is first trained on the different types and amounts (100K and 500K) of data from the `Microsoft Concept Graph (mscg)`, `Generics KB Properties (gkb)` and `Prefix Adjectives`. The data can be found in the `data` directory of the repo. The model in this configuration uses in-batch negative sampling. The input file is a `tsv` in the form of `concept property`. The negatives are sampled via in-batch negative sampling during model training.  
+The biencoder model is first trained on the different types and amounts (100K and 500K) of data from the `Microsoft Concept Graph (mscg)`, `Generics KB Properties (gkb)` and `Prefix Adjectives`. The data can be found in the `data` directory of the repo. The model in this configuration uses in-batch negative sampling. The input file is a `tsv` in the form of `concept property`. The negatives are sampled via in-batch negative sampling during model training.  
 
 The `neg_batch_sampling` branch of the codebase contains the latest code. 
 
@@ -39,7 +39,7 @@ Following are the steps to train the model:
 - Clone the repo and checkout the `neg_batch_sampling` branch:
 	- git clone git@github.com:amitgajbhiye/biencoder_concept_property.git
 	- cd biencoder_concept_property/
-	- git checkout neg_batch_sampling
+	<!-- - git checkout neg_batch_sampling -->
 - Create `logs` and `trained_models` directories:
 	- mkdir logs trained_models 
 - The model is trained with a configuration file that contains all the parameters for the datasets, model and training. 
