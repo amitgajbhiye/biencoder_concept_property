@@ -16,7 +16,7 @@ python3 get_embedding.py --config_file configs/generate_embeddings/get_concept_p
 
 ```
 
-The `download_models.sh` will download `BERT-base-uncased` model pretrained on ConceptNet data in Generics KB plus the `has_property` relation data in the Concept Net. 
+The `download_models.sh` will download `BERT-base-uncased` model pretrained on ConceptNet data in Generics KB and the `has_property` relation data in the Concept Net. 
 
 The default configurations for generating the concept/property embeddings are mentioned in the configuration file - `configs/generate_embeddings/get_concept_property_embeddings.json`. 
 
