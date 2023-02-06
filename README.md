@@ -35,8 +35,8 @@ From the downloaded model, by default the above script will generate the concept
 
 	- `dataset_name` - Name that will be used to save the embedding pickle file at the directory path specified in `save_dir` field.
 	- `hf_checkpoint_name` and `hf_tokenizer_name` - The huggingface pretrained model ID and tokenizer name. For example, `bert-base-uncased`.
-	- `context_num` - Context ID used in pretraining the models. We used context ID - 6.
-	- `pretrained_model_path` - Path of the pretrained model. It is `trained_models/bb_gkb_cnet_plus_cnet_has_property.pt` or `trained_models/bb_mscg_prefix_adjective_gkb.pt` for the two downloaded models.
+	- `context_num` - Context ID used in pretraining the models. To get the correct embeddings please keep it 6.
+	- `pretrained_model_path` - Path of the pretrained model. It is `trained_models/bb_gkb_cnet_plus_cnet_has_property.pt`.
 	- `get_con_prop_embeds` - Flag set to `true` to get concept or property embeddings.
 	- `input_file_name`: Path of the input concept, property or concept and property file. 
 	- `input_data_type` - Type of the embddings to generate. 
