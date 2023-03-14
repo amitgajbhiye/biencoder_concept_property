@@ -11,14 +11,21 @@ The BiEncoder model for concept property classification consists of two separate
 The BiEncoder model can generate the embeddings of concept and properties. Please run the following scripts to download our pretrained model and generate the embeddings.
 
 ```
-bash download_models.sh
+sh download_models.sh
+
+# For generating embeddings from BERT base model
 python3 get_embedding.py --config_file configs/generate_embeddings/get_concept_property_embeddings.json
+
+# For generating embeddings from BERT large model
+python3 get_embedding.py --config_file configs/generate_embeddings/get_concept_property_embeddings_bert_large.json
 
 ```
 
-The `download_models.sh` will download `BERT-base-uncased` model pretrained on ConceptNet data in Generics KB and the `has_property` relation data in the Concept Net. 
+The `download_models.sh` will download `BERT-base-uncased` and `BERT-large-uncased` models pretrained on ConceptNet data in Generics KB and the `has_property` relation data in the Concept Net. 
 
-The default configurations for generating the concept/property embeddings are mentioned in the configuration file - `configs/generate_embeddings/get_concept_property_embeddings.json`. 
+The default configurations for generating the concept/property embeddings from BERT base model are mentioned in the configuration file - `configs/generate_embeddings/get_concept_property_embeddings.json`.
+
+For using our BERT large the default configuration are in - `configs/generate_embeddings/get_concept_property_embeddings_bert_large.json` configuration file. 
 
 From the downloaded model, by default the above script will generate the concept embeddings as `input_data_type` field is concept in the configuration file. The concepts are taken from the input file `data/generate_embeddding_data/dummy_concepts.txt`. The embeddings will be saved in `trained_models/embeddings` path as a pickled dictionary with concepts as key and their embdding as value.             
 
