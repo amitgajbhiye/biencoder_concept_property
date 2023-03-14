@@ -1,5 +1,5 @@
 {
-    "experiment_name": "get_embeds",
+    "experiment_name": "get_embeds_bert_large",
     "log_dirctory": null,
     "dataset_params": {
         "dataset_name": "dummy_concepts",
