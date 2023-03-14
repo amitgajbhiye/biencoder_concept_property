@@ -154,7 +154,7 @@ class ConceptPropertyModel(nn.Module):
             )
 
             logits = (
-                (concept_mask_vector * property_mask_vector)
+                (concept_mask_vector * property_mask_vector)  # Elementwise product
                 .sum(-1)
                 .reshape(concept_mask_vector.shape[0], 1)
             )
