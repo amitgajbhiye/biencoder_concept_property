@@ -22,7 +22,7 @@
         "vector_strategy": "mask_token"
     },
     "inference_params": {
-        "pretrained_model_path": "trained_models/bienc_cnetp_pretrained/contastive_bienc_cnetp_pretrain_bert_base_uncased.pt",
+        "pretrained_model_path": "trained_models/contastive_bienc_cnetp_pretrain_bert_base_uncased.pt",
         "get_con_prop_embeds": true,
         "input_data_type": "concept",
         "input_file_name": "data/generate_embeddding_data/dummy_concepts.txt",

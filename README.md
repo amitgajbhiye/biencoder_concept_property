@@ -56,10 +56,10 @@ From the downloaded model, by default the above script will generate the concept
 
 We train the BiEncoder model with contrastive loss and also jointly with cross-entropy loss. To download these models run the `download_models.sh` script. All these models are `bert-base-uncased` so the configuration file mentioned above for `bert-base-uncased` can be used to get the concept/property embeddings. To get the embeddings from these models change the `pretrained_model_path` in the configuration file to one of the following:
 
-	- `entropy_infonce_joint_loss_cnetp_pretrain_bb_bienc_bert_base_uncased.pt` - Model jointly trained on contrastive and cross-entropy loss.
-	- `contastive_bienc_cnetp_pretrain_bert_base_uncased.pt` - Contrastive model - Model where concept and its positive properties are close in embedding space than the negative properties.
-	- `prop_fix_bienc_infonce_bert_base_cnetp_pretrain.pt` - Contrastive model - Model where property and the concept it applies to are close than the concepts to which property do not apply.
-	- `conprop_fix_infonce_cnetp_pretrain_bb_bienc_bert_base_uncased.pt` - Contrastive model - Model jointly trained on with above two criterion. 
+-`entropy_infonce_joint_loss_cnetp_pretrain_bb_bienc_bert_base_uncased.pt` - Model jointly trained on contrastive and cross-entropy loss.
+- `contastive_bienc_cnetp_pretrain_bert_base_uncased.pt` - Contrastive model - Model where concept and its positive properties are close in embedding space than the negative properties.
+- `prop_fix_bienc_infonce_bert_base_cnetp_pretrain.pt` - Contrastive model - Model where property and the concept it applies to are close than the concepts to which property do not apply.
+- `conprop_fix_infonce_cnetp_pretrain_bb_bienc_bert_base_uncased.pt` - Contrastive model - Model jointly trained on with above two criterion. 
 
 
 ## Training Methodology 
