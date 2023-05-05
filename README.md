@@ -52,6 +52,16 @@ From the downloaded model, by default the above script will generate the concept
 		- `concept_and_property` : for the concept and property embeddings. The input file must file with each concept and associated property, one per line, separated by tab. 
 	
 
+## Contrastive Loss and Joint Models
+
+We train the BiEncoder model with contrastive loss and also jointly with cross-entropy loss. To download these models run the `download_models.sh` script. All these models are `bert-base-uncased` so the configuration file mentioned above for `bert-base-uncased` can be used to get the concept/property embedddings.
+
+The following models are available:
+	- `1`	
+
+
+
+
 ## Training Methodology 
 
 ### Pre-training on Different Data
