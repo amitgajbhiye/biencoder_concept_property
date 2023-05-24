@@ -25,7 +25,9 @@ The `download_models.sh` will download `BERT-base-uncased` and `BERT-large-uncas
 
 The default configurations for generating the concept/property embeddings from BERT base model are mentioned in the configuration file - `configs/generate_embeddings/get_concept_property_embeddings.json`.
 
-For using our BERT large the default configuration are in - `configs/generate_embeddings/get_concept_property_embeddings_bert_large.json` configuration file. 
+For using our BERT large the default configuration are in - `configs/generate_embeddings/get_concept_property_embeddings_bert_large.json` configuration file.
+
+- ******* To use the `bert-large-uncased` model trained on conceptnet premium and chatgpt data specify the pretrained model name as - `entropy_cnetp_chatgpt100k_bert_large_uncased.pt` *******
 
 From the downloaded model, by default the above script will generate the concept embeddings as `input_data_type` field is concept in the configuration file. The concepts are taken from the input file `data/generate_embeddding_data/dummy_concepts.txt`. The embeddings will be saved in `trained_models/embeddings` path as a pickled dictionary with concepts as key and their embdding as value.             
 
