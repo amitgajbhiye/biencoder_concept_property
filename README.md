@@ -58,7 +58,7 @@ We train the BiEncoder model with contrastive loss and also jointly with cross-e
 
 ### BERT Large Models ###
 
-To generate the embeddings from BERT-large model use the configuration file - `configs/generate_embeddings/get_concept_property_embeddings_contrastive_bert_large.json`. To get the embeddings from these models change the `pretrained_model_path` in the configuration file to one of the following:
+To generate the embeddings from BERT-large model use the configuration file - `configs/generate_embeddings/get_concept_property_embeddings_contrastive_bert_large.json`. To get the embeddings change the `pretrained_model_path` in the configuration file to one of the following:
 
 - `infonce_cnetp_chatgpt100k_conceptfix_bert_large_uncased.pt` - Concept centric contrastive model.
 - `infonce_cnetp_chatgpt100k_propertyfix_bert_large_uncased.pt` - Property centric contrastive model.
@@ -66,7 +66,7 @@ To generate the embeddings from BERT-large model use the configuration file - `c
 
 ### BERT Base Models ###
 
-To generate the embeddings from BERT-base model use the configuration file - `configs/generate_embeddings/get_concept_property_embeddings_contrastive_bert_base.json`. To get the embeddings from these models change the `pretrained_model_path` in the configuration file to one of the following:
+To generate the embeddings from BERT-base model use the configuration file - `configs/generate_embeddings/get_concept_property_embeddings_contrastive_bert_base.json`. To get the embedding change the `pretrained_model_path` in the configuration file to one of the following:
 
 -`entropy_infonce_joint_loss_cnetp_pretrain_bb_bienc_bert_base_uncased.pt` : Model jointly trained on contrastive and cross-entropy loss.
 
