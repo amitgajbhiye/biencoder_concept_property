@@ -18,7 +18,7 @@ wget https://huggingface.co/amitgajbhiye/biencoder_concept_property_pretrained_m
 # wget https://huggingface.co/amitgajbhiye/biencoder_concept_property_pretrained_models/resolve/main/bb_mscg_prefix_adjective_gkb.pt
 
 
-# Date 5th May 2023
+####### Date 5th May 2023 #######
 
 # Contrastive and Cross Entropy Jointly Trained Model
 wget https://huggingface.co/amitgajbhiye/biencoder_concept_property_pretrained_models/resolve/main/entropy_infonce_joint_loss_cnetp_pretrain_bb_bienc_bert_base_uncased.pt
@@ -34,3 +34,11 @@ wget https://huggingface.co/amitgajbhiye/biencoder_concept_property_pretrained_m
 #Contrastive Property fix Model
 wget https://huggingface.co/amitgajbhiye/biencoder_concept_property_pretrained_models/resolve/main/prop_fix_bienc_infonce_bert_base_cnetp_pretrain.pt
 
+
+####### Date 24th May 2023 #######
+#Concept Fix - Bert Large Conceptnet + ChatGPT 100k Contrastive 
+wget https://huggingface.co/amitgajbhiye/biencoder_concept_property_pretrained_models/resolve/main/infonce_cnetp_chatgpt100k_conceptfix_bert_large_uncased.pt
+
+
+#Property fix Model - Bert Large Conceptnet + ChatGPT 100k Contrastive 
+wget https://huggingface.co/amitgajbhiye/biencoder_concept_property_pretrained_models/resolve/main/infonce_cnetp_chatgpt100k_propertyfix_bert_large_uncased.pt
