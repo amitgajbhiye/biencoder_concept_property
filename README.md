@@ -27,7 +27,7 @@ The default configurations for generating the concept/property embeddings from B
 
 For using our BERT large the default configuration are in - `configs/generate_embeddings/get_concept_property_embeddings_bert_large.json` configuration file.
 
-******* To use the `bert-large-uncased` model trained on chatgpt data specify the pretrained model name as - `bienc_bert_large_chatgpt100k_pretrain.pt` *******
+- ******* To use the `bert-large-uncased` model trained on chatgpt data specify the pretrained model name as - `bienc_bert_large_chatgpt100k_pretrain.pt` *******
 - ******* To use the `bert-large-uncased` model trained on conceptnet premium and chatgpt data specify the pretrained model name as - `entropy_cnetp_chatgpt100k_bert_large_uncased.pt` *******
 
 
