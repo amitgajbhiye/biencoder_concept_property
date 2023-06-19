@@ -47,3 +47,8 @@ wget https://huggingface.co/amitgajbhiye/biencoder_concept_property_pretrained_m
 
 #Contrastive Property fix Model - Bert Large Conceptnet + ChatGPT 100k
 wget https://huggingface.co/amitgajbhiye/biencoder_concept_property_pretrained_models/resolve/main/infonce_cnetp_chatgpt100k_propertyfix_bert_large_uncased.pt
+
+
+
+# Cross Entropy - Bert Large ChatGPT 100k 
+wget https://huggingface.co/amitgajbhiye/biencoder_concept_property_pretrained_models/resolve/main/bienc_bert_large_chatgpt100k_pretrain.pt
