@@ -24,20 +24,21 @@ device = torch.device("cuda") if cuda_available else torch.device("cpu")
 
 
 def preprocess_get_embedding_data(config):
-
     inference_params = config.get("inference_params")
     input_data_type = inference_params["input_data_type"]
 
     input_file_name = inference_params["input_file_name"]
 
     data_df = pd.read_csv(
-        input_file_name, sep="\t", header=None, keep_default_na=False,
+        input_file_name,
+        sep="\t",
+        header=None,
+        keep_default_na=False,
     )
 
     input_data_type = inference_params["input_data_type"]
 
     if input_data_type == "concept":
-
         log.info(f"Generating Embeddings for Concepts")
         log.info(f"Number of records : {data_df.shape[0]}")
 
@@ -49,7 +50,6 @@ def preprocess_get_embedding_data(config):
         data_df["property"] = "dummy_property"
 
     elif input_data_type == "property":
-
         log.info("Generating Embeddings for Properties")
         log.info(f"Number of records : {data_df.shape[0]}")
 
@@ -61,7 +61,6 @@ def preprocess_get_embedding_data(config):
         data_df["concept"] = "dummy_concept"
 
     elif input_data_type == "concept_and_property":
-
         log.info("Generating Embeddings for Concepts and Properties")
         log.info(f"Number of records : {data_df.shape[0]}")
 
@@ -80,7 +79,6 @@ def preprocess_get_embedding_data(config):
 
 
 def generate_embedings(config):
-
     inference_params = config["inference_params"]
 
     input_data_type = inference_params["input_data_type"]
@@ -113,13 +111,11 @@ def generate_embedings(config):
     con_embedding, prop_embedding = {}, {}
 
     for step, batch in enumerate(dataloader):
-
         concepts_batch, property_batch = dataset.add_context(batch)
 
         ids_dict = dataset.tokenize(concepts_batch, property_batch)
 
         if dataset.hf_tokenizer_name in ("roberta-base", "roberta-large"):
-
             (
                 concept_inp_id,
                 concept_attention_mask,
@@ -141,7 +137,6 @@ def generate_embedings(config):
             ) = [val.to(device) for _, val in ids_dict.items()]
 
         with torch.no_grad():
-
             concept_embedding, property_embedding, logits = model(
                 concept_input_id=concept_inp_id,
                 concept_attention_mask=concept_attention_mask,
@@ -152,17 +147,14 @@ def generate_embedings(config):
             )
 
         if input_data_type == "concept":
-
             for con, con_embed in zip(batch[0], concept_embedding):
                 con_embedding[con] = to_cpu(con_embed)
 
         elif input_data_type == "property":
-
             for prop, prop_embed in zip(batch[1], property_embedding):
                 prop_embedding[prop] = to_cpu(prop_embed)
 
         elif input_data_type == "concept_and_property":
-
             for con, con_embed in zip(batch[0], concept_embedding):
                 if con not in con_embedding:
                     con_embedding[con] = to_cpu(con_embed)
@@ -204,7 +196,6 @@ def generate_embedings(config):
         return embedding_save_file_name
 
     if input_data_type == "concept_and_property":
-
         con_file_name = dataset_params["dataset_name"] + "_con_embeddings.pkl"
         prop_file_name = dataset_params["dataset_name"] + "_prop_embeddings.pkl"
 
@@ -232,7 +223,6 @@ def generate_embedings(config):
 
 
 if __name__ == "__main__":
-
     log.info(f"\n {'*' * 50}")
     log.info(f"Generating the Concept Property Embeddings")
 
@@ -270,4 +260,3 @@ if __name__ == "__main__":
             concept_embedding_pkl_file,
             prop_embedding_save_file_name,
         ) = generate_embedings(config)
-
