@@ -15,9 +15,10 @@
 
 #SBATCH -t 0-00:40:00
 
-
 conda activate venv
 
-python3 get_embedding.py --config_file configs/generate_embeddings/get_concept_property_embeddings.json
+# python3 get_embedding.py --config_file configs/generate_embeddings/get_concept_property_embeddings.json
+
+python3 get_embedding.py --config_file configs/generate_embeddings/get_concept_property_embeddings_bert_large.json
 
 echo 'finished!'
